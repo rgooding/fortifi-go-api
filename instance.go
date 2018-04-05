@@ -5,7 +5,6 @@ package api
 import (
 	"errors"
 	"fmt"
-	"sync"
 	"time"
 
 	"github.com/fortifi/go-api/client"
@@ -29,15 +28,10 @@ const (
 var (
 	debugFortifiRequests = false
 	localSchemes         = []string{"http"}
-
-	// map with relationship fidenttoken.ISS > ForitifInstance
-	fortifiAPIMap = sync.Map{}
-	productCache  = sync.Map{}
-	groupCache    = sync.Map{}
 )
 
-// FortifiInstance is a single org API instance
-type FortifiInstance struct {
+// Instance is a single org API instance
+type Instance struct {
 	expiry              int64
 	organisationFID     string
 	authtoken           string
@@ -55,25 +49,9 @@ type Authenticator struct {
 	authtoken       string
 }
 
-// SetInstanceForIssuer is setter for instance relationship store
-func SetInstanceForIssuer(iss string, instance FortifiInstance) {
-	fortifiAPIMap.Store(iss, instance)
-}
-
-// GetInstanceForIssuer is getter for instance relationship store
-func GetInstanceForIssuer(iss string) (*FortifiInstance, error) {
-	i, ok := fortifiAPIMap.Load(iss)
-	if !ok {
-		return nil, errors.New("No Fortifi instance map for issuer")
-	}
-
-	in := i.(FortifiInstance)
-	return &in, nil
-}
-
 // NewInstance creates a new FortifiInstance with embeded tokenhelper
-func NewInstance(orgFid, user, key string, debug bool) (FortifiInstance, error) {
-	inst := FortifiInstance{}
+func NewInstance(orgFid, user, key string, debug bool) (Instance, error) {
+	inst := Instance{}
 	inst.SetOrganisationFID(orgFid)
 	inst.SetUser(user)
 	inst.SetKey(key)
@@ -90,13 +68,13 @@ func (a *Authenticator) AuthenticateRequest(req runtime.ClientRequest, reg strfm
 }
 
 // InitAPI called by main function to start the fortifi API and webhook listener
-func (f *FortifiInstance) InitAPI() error {
+func (f *Instance) InitAPI() error {
 	_, err := f.GetAPIInstance()
 	return err
 }
 
 // GetAPIInstance returns current instance of fortifi API
-func (f *FortifiInstance) GetAPIInstance() (*client.Fortifi, error) {
+func (f *Instance) GetAPIInstance() (*client.Fortifi, error) {
 	if f.apiInstance != nil && time.Now().Unix() < (f.expiry-expiryBuffer) {
 		return f.apiInstance, nil
 	}
@@ -125,7 +103,7 @@ func (f *FortifiInstance) GetAPIInstance() (*client.Fortifi, error) {
 	return f.apiInstance, nil
 }
 
-func (f *FortifiInstance) getNewToken(transport *httptransport.Runtime) error {
+func (f *Instance) getNewToken(transport *httptransport.Runtime) error {
 	c := client.New(transport, strfmt.Default)
 	p := operations.NewGetServiceAuthTokenParams()
 	p.Payload = &models.ServiceAccountCredentialsPayload{
@@ -144,12 +122,12 @@ func (f *FortifiInstance) getNewToken(transport *httptransport.Runtime) error {
 }
 
 // GetAuthenticator returns fortifi authenticator instance
-func (f *FortifiInstance) GetAuthenticator() *Authenticator {
+func (f *Instance) GetAuthenticator() *Authenticator {
 	return &Authenticator{organisationFID: f.organisationFID, authtoken: f.authtoken}
 }
 
 // GetSchemes returns the API protocol
-func (f *FortifiInstance) GetSchemes() []string {
+func (f *Instance) GetSchemes() []string {
 	if debugFortifiRequests {
 		return localSchemes
 	}
@@ -157,12 +135,12 @@ func (f *FortifiInstance) GetSchemes() []string {
 }
 
 // SetLocalDebug determines if local debug vars and logging are used for API
-func (f *FortifiInstance) SetLocalDebug(s bool) {
+func (f *Instance) SetLocalDebug(s bool) {
 	debugFortifiRequests = s
 }
 
 // GetAPIHost returns the API host URL
-func (f *FortifiInstance) GetAPIHost() string {
+func (f *Instance) GetAPIHost() string {
 	host := client.DefaultHost
 	res := ""
 	if debugFortifiRequests {
@@ -174,16 +152,16 @@ func (f *FortifiInstance) GetAPIHost() string {
 
 // SetOrganisationFID sets the organisation fid used by the fortifi API
 // this is case sensitive
-func (f *FortifiInstance) SetOrganisationFID(of string) {
+func (f *Instance) SetOrganisationFID(of string) {
 	f.organisationFID = of
 }
 
 // SetUser sets the user ID (This should be a service account) used by the fortifi API
-func (f *FortifiInstance) SetUser(u string) {
+func (f *Instance) SetUser(u string) {
 	f.user = u
 }
 
 // SetKey sets the key for given User ID used by the fortifi API
-func (f *FortifiInstance) SetKey(k string) {
+func (f *Instance) SetKey(k string) {
 	f.key = k
 }
