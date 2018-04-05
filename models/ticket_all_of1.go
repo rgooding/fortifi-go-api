@@ -16,8 +16,104 @@ import (
 // swagger:model ticketAllOf1
 type TicketAllOf1 struct {
 
-	// timestamp
-	Timestamp int64 `json:"timestamp,omitempty"`
+	// agent fid
+	AgentFid string `json:"agentFid,omitempty"`
+
+	// attachments
+	Attachments int64 `json:"attachments,omitempty"`
+
+	// bcc
+	Bcc string `json:"bcc,omitempty"`
+
+	// cc
+	Cc string `json:"cc,omitempty"`
+
+	// company fid
+	CompanyFid string `json:"companyFid,omitempty"`
+
+	// customer fid
+	CustomerFid string `json:"customerFid,omitempty"`
+
+	// data created
+	DataCreated int64 `json:"dataCreated,omitempty"`
+
+	// date modified
+	DateModified int64 `json:"dateModified,omitempty"`
+
+	// department fid
+	DepartmentFid string `json:"departmentFid,omitempty"`
+
+	// hash
+	Hash string `json:"hash,omitempty"`
+
+	// impact
+	Impact int64 `json:"impact,omitempty"`
+
+	// inbound email
+	InboundEmail string `json:"inboundEmail,omitempty"`
+
+	// inbound name
+	InboundName string `json:"inboundName,omitempty"`
+
+	// is spam
+	IsSpam bool `json:"isSpam,omitempty"`
+
+	// language
+	Language string `json:"language,omitempty"`
+
+	// last reply received time
+	LastReplyReceivedTime int64 `json:"lastReplyReceivedTime,omitempty"`
+
+	// last reply sent time
+	LastReplySentTime int64 `json:"lastReplySentTime,omitempty"`
+
+	// locked
+	Locked bool `json:"locked,omitempty"`
+
+	// locked by fid
+	LockedByFid string `json:"lockedByFid,omitempty"`
+
+	// outbound email
+	OutboundEmail string `json:"outboundEmail,omitempty"`
+
+	// outbound name
+	OutboundName string `json:"outboundName,omitempty"`
+
+	// post count
+	PostCount int64 `json:"postCount,omitempty"`
+
+	// priority
+	Priority int64 `json:"priority,omitempty"`
+
+	// priority adjustment
+	PriorityAdjustment int64 `json:"priorityAdjustment,omitempty"`
+
+	// queue fid
+	QueueFid string `json:"queueFid,omitempty"`
+
+	// resolve target time
+	ResolveTargetTime int64 `json:"resolveTargetTime,omitempty"`
+
+	// response target time
+	ResponseTargetTime int64 `json:"responseTargetTime,omitempty"`
+
+	// restricted access
+	RestrictedAccess bool `json:"restrictedAccess,omitempty"`
+
+	// sla fid
+	SLAFid string `json:"slaFid,omitempty"`
+
+	// status
+	Status int64 `json:"status,omitempty"`
+
+	// ticket type
+	TicketType string `json:"ticketType,omitempty"`
+
+	// tier
+	Tier int64 `json:"tier,omitempty"`
+
+	// urgency
+	Urgency int64 `json:"urgency,omitempty"`
 }
 
 // Validate validates this ticket all of1

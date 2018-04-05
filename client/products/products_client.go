@@ -54,6 +54,35 @@ func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientA
 }
 
 /*
+GetProductsGroups gets a list of all product groups
+*/
+func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsGroupsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetProductsGroupsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetProductsGroups",
+		Method:             "GET",
+		PathPattern:        "/products/groups",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetProductsGroupsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetProductsGroupsOK), nil
+
+}
+
+/*
 GetProductsOffers retrieves all offers
 */
 func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsOffersOK, error) {

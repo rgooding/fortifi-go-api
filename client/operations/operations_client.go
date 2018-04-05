@@ -112,6 +112,35 @@ func (a *Client) GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomers
 }
 
 /*
+GetCustomersCustomerFidTickets gets support tickets for customer
+*/
+func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidTicketsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidTickets",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/tickets",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidTicketsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetCustomersCustomerFidTicketsOK), nil
+
+}
+
+/*
 GetPayCoinbase gets a new checkout ID
 */
 func (a *Client) GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error) {

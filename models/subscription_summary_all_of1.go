@@ -16,6 +16,9 @@ import (
 // swagger:model subscriptionSummaryAllOf1
 type SubscriptionSummaryAllOf1 struct {
 
+	// auto charge
+	AutoCharge bool `json:"autoCharge,omitempty"`
+
 	// cycle
 	Cycle string `json:"cycle,omitempty"`
 
@@ -24,6 +27,9 @@ type SubscriptionSummaryAllOf1 struct {
 
 	// paid until
 	PaidUntil IsoTime `json:"paidUntil,omitempty"`
+
+	// product fid
+	ProductFid string `json:"productFid,omitempty"`
 
 	// renewal date
 	RenewalDate IsoTime `json:"renewalDate,omitempty"`

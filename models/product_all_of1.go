@@ -17,7 +17,7 @@ import (
 type ProductAllOf1 struct {
 
 	// allow quantity
-	AllowQuantity bool `json:"allowQuantity,omitempty"`
+	AllowQuantity int32 `json:"allowQuantity,omitempty"`
 
 	// default price
 	DefaultPrice *ProductPrice `json:"defaultPrice,omitempty"`
@@ -26,13 +26,13 @@ type ProductAllOf1 struct {
 	DefaultPriceFid string `json:"defaultPriceFid,omitempty"`
 
 	// max quantity
-	MaxQuantity string `json:"maxQuantity,omitempty"`
+	MaxQuantity int64 `json:"maxQuantity,omitempty"`
 
 	// parent fid
 	ParentFid string `json:"parentFid,omitempty"`
 
 	// product type
-	ProductType string `json:"productType,omitempty"`
+	ProductType int32 `json:"productType,omitempty"`
 
 	// statement description
 	StatementDescription string `json:"statementDescription,omitempty"`
@@ -41,10 +41,10 @@ type ProductAllOf1 struct {
 	TaxGroupFid string `json:"taxGroupFid,omitempty"`
 
 	// taxable
-	Taxable string `json:"taxable,omitempty"`
+	Taxable int64 `json:"taxable,omitempty"`
 
 	// trial days
-	TrialDays string `json:"trialDays,omitempty"`
+	TrialDays int32 `json:"trialDays,omitempty"`
 }
 
 // Validate validates this product all of1
