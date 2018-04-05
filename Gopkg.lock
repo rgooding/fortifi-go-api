@@ -81,12 +81,6 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/lucidcube/omni-flux"
-  packages = ["fortifiapi/client","fortifiapi/client/configuration","fortifiapi/client/contacts","fortifiapi/client/custom_properties","fortifiapi/client/customers","fortifiapi/client/licence","fortifiapi/client/marketing","fortifiapi/client/operations","fortifiapi/client/orders","fortifiapi/client/polymers","fortifiapi/client/products","fortifiapi/client/reasons","fortifiapi/client/support","fortifiapi/models"]
-  revision = "71e6f9331bc5be362c6bb2f4f892ca8f2fd76e55"
-
-[[projects]]
-  branch = "master"
   name = "github.com/mailru/easyjson"
   packages = ["buffer","jlexer","jwriter"]
   revision = "8b799c424f57fa123fc63a99d6383bc6e4c02578"
@@ -124,6 +118,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "313b33a1929d9aa71b216f3d2df8b538e015e78e3528145a1734273cd2b36026"
+  inputs-digest = "dad9d376e6c09247ef04103c385e8fdb1ba3001231e7f32cc5e9eb455eeb5bfc"
   solver-name = "gps-cdcl"
   solver-version = 1

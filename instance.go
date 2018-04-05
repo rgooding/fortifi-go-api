@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lucidcube/omni-flux/fortifiapi/client"
-	"github.com/lucidcube/omni-flux/fortifiapi/client/operations"
-	"github.com/lucidcube/omni-flux/fortifiapi/models"
+	"github.com/fortifi/go-api/client"
+	"github.com/fortifi/go-api/client/operations"
+	"github.com/fortifi/go-api/models"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
