@@ -50,12 +50,11 @@ type Authenticator struct {
 }
 
 // NewInstance creates a new FortifiInstance with embeded tokenhelper
-func NewInstance(orgFid, user, key string, debug bool) (Instance, error) {
+func NewInstance(orgFid, user, key string) (Instance, error) {
 	inst := Instance{}
 	inst.SetOrganisationFID(orgFid)
 	inst.SetUser(user)
 	inst.SetKey(key)
-	inst.SetLocalDebug(debug)
 	return inst, nil
 }
 
