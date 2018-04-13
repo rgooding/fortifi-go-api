@@ -11,5 +11,5 @@ echo -e "\033[4mGetting latest swagger...\033[0m"
 wget "https://api.fortifi.io/swagger.yaml"
 
 # Generate new models & client from spec
-echo -e "\033[4mGenerating fortifi API (Swagger spec has changed)...\033[0m"
+echo -e "\033[4mGenerating fortifi API from Swagger spec...\033[0m"
 (swagger generate client && go fix ./...)
