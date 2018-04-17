@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -71,12 +72,12 @@ type GetCustomersCustomerFidInvoicesParams struct {
 	  Maximum number of records per page (default: 20)
 
 	*/
-	Limit *string
+	Limit *int64
 	/*Page
-	  Page number (default: 0)
+	  Page number (default: 1)
 
 	*/
-	Page *string
+	Page *int64
 
 	timeout    time.Duration
 	Context    context.Context
@@ -128,24 +129,24 @@ func (o *GetCustomersCustomerFidInvoicesParams) SetCustomerFid(customerFid strin
 }
 
 // WithLimit adds the limit to the get customers customer fid invoices params
-func (o *GetCustomersCustomerFidInvoicesParams) WithLimit(limit *string) *GetCustomersCustomerFidInvoicesParams {
+func (o *GetCustomersCustomerFidInvoicesParams) WithLimit(limit *int64) *GetCustomersCustomerFidInvoicesParams {
 	o.SetLimit(limit)
 	return o
 }
 
 // SetLimit adds the limit to the get customers customer fid invoices params
-func (o *GetCustomersCustomerFidInvoicesParams) SetLimit(limit *string) {
+func (o *GetCustomersCustomerFidInvoicesParams) SetLimit(limit *int64) {
 	o.Limit = limit
 }
 
 // WithPage adds the page to the get customers customer fid invoices params
-func (o *GetCustomersCustomerFidInvoicesParams) WithPage(page *string) *GetCustomersCustomerFidInvoicesParams {
+func (o *GetCustomersCustomerFidInvoicesParams) WithPage(page *int64) *GetCustomersCustomerFidInvoicesParams {
 	o.SetPage(page)
 	return o
 }
 
 // SetPage adds the page to the get customers customer fid invoices params
-func (o *GetCustomersCustomerFidInvoicesParams) SetPage(page *string) {
+func (o *GetCustomersCustomerFidInvoicesParams) SetPage(page *int64) {
 	o.Page = page
 }
 
@@ -165,11 +166,11 @@ func (o *GetCustomersCustomerFidInvoicesParams) WriteToRequest(r runtime.ClientR
 	if o.Limit != nil {
 
 		// query param limit
-		var qrLimit string
+		var qrLimit int64
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
-		qLimit := qrLimit
+		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
@@ -181,11 +182,11 @@ func (o *GetCustomersCustomerFidInvoicesParams) WriteToRequest(r runtime.ClientR
 	if o.Page != nil {
 
 		// query param page
-		var qrPage string
+		var qrPage int64
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
-		qPage := qrPage
+		qPage := swag.FormatInt64(qrPage)
 		if qPage != "" {
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err

@@ -228,6 +228,35 @@ func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsPa
 }
 
 /*
+PutOrdersOrderFidCancel cancels an order
+*/
+func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidCancelOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutOrdersOrderFidCancelParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutOrdersOrderFidCancel",
+		Method:             "PUT",
+		PathPattern:        "/orders/{orderFid}/cancel",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutOrdersOrderFidCancelReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PutOrdersOrderFidCancelOK), nil
+
+}
+
+/*
 PutOrdersOrderFidConfirmCard confirms an order authorize the payment
 */
 func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmCardOK, error) {

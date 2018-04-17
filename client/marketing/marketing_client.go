@@ -54,6 +54,35 @@ func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertiser
 }
 
 /*
+GetAdvertisers lists advertisers
+*/
+func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAdvertisersParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetAdvertisers",
+		Method:             "GET",
+		PathPattern:        "/advertisers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAdvertisersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetAdvertisersOK), nil
+
+}
+
+/*
 GetAdvertisersAdvertiserFid retrieves an advertiser
 */
 func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error) {

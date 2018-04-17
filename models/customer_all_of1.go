@@ -19,6 +19,9 @@ type CustomerAllOf1 struct {
 	// company fid
 	CompanyFid string `json:"companyFid,omitempty"`
 
+	// currency
+	Currency string `json:"currency,omitempty"`
+
 	// email
 	Email string `json:"email,omitempty"`
 
