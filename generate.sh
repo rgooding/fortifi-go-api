@@ -10,6 +10,7 @@ echo -e "\033[4mEnsuring swagger generator...\033[0m"
 
 # Get latest swagger spec from citadel
 echo -e "\033[4mGetting latest swagger...\033[0m"
+rm -f swagger.yaml
 wget "https://api.fortifi.io/swagger.yaml"
 
 # Generate new models & client from spec
