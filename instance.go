@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	_ "github.com/go-swagger/go-swagger"
 )
 
 const (
