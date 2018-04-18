@@ -1,7 +1,6 @@
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/go-swagger/go-swagger"
+required = [
+  "github.com/go-swagger/go-swagger",
+]
 
 [[constraint]]
   branch = "master"
