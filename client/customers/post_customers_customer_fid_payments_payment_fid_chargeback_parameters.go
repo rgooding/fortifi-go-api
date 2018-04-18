@@ -79,10 +79,10 @@ type PostCustomersCustomerFidPaymentsPaymentFidChargebackParams struct {
 	*/
 	CustomerFid string
 	/*DateSubmitted
-	  Date the chargeback was received
+	  Date the chargeback was received (Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z)
 
 	*/
-	DateSubmitted string
+	DateSubmitted strfmt.DateTime
 	/*Description
 	  Notes
 
@@ -196,13 +196,13 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) SetCustomer
 }
 
 // WithDateSubmitted adds the dateSubmitted to the post customers customer fid payments payment fid chargeback params
-func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WithDateSubmitted(dateSubmitted string) *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WithDateSubmitted(dateSubmitted strfmt.DateTime) *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
 	o.SetDateSubmitted(dateSubmitted)
 	return o
 }
 
 // SetDateSubmitted adds the dateSubmitted to the post customers customer fid payments payment fid chargeback params
-func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) SetDateSubmitted(dateSubmitted string) {
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) SetDateSubmitted(dateSubmitted strfmt.DateTime) {
 	o.DateSubmitted = dateSubmitted
 }
 
@@ -327,7 +327,7 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WriteToRequ
 
 	// form param dateSubmitted
 	frDateSubmitted := o.DateSubmitted
-	fDateSubmitted := frDateSubmitted
+	fDateSubmitted := frDateSubmitted.String()
 	if fDateSubmitted != "" {
 		if err := r.SetFormParam("dateSubmitted", fDateSubmitted); err != nil {
 			return err
