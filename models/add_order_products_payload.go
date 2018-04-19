@@ -15,35 +15,45 @@ import (
 // AddOrderProductsPayload add order products payload
 // swagger:model AddOrderProductsPayload
 type AddOrderProductsPayload struct {
+	OrderProductsPayload
+}
 
-	// Product price FIDs to add
-	ProductPriceFids []string `json:"productPriceFids"`
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (m *AddOrderProductsPayload) UnmarshalJSON(raw []byte) error {
 
-	// quantity product price fids
-	QuantityProductPriceFids AddOrderProductsPayloadQuantityProductPriceFids `json:"quantityProductPriceFids"`
+	var aO0 OrderProductsPayload
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	m.OrderProductsPayload = aO0
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (m AddOrderProductsPayload) MarshalJSON() ([]byte, error) {
+	var _parts [][]byte
+
+	aO0, err := swag.WriteJSON(m.OrderProductsPayload)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+
+	return swag.ConcatJSON(_parts...), nil
 }
 
 // Validate validates this add order products payload
 func (m *AddOrderProductsPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateProductPriceFids(formats); err != nil {
-		// prop
+	if err := m.OrderProductsPayload.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *AddOrderProductsPayload) validateProductPriceFids(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ProductPriceFids) { // not required
-		return nil
-	}
-
 	return nil
 }
 

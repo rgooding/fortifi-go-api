@@ -21,7 +21,7 @@ type OrderProductQuantityPayload struct {
 	PriceFid PriceFid `json:"priceFid"`
 
 	// quantity
-	Quantity *float64 `json:"quantity,omitempty"`
+	Quantity *int64 `json:"quantity,omitempty"`
 }
 
 // Validate validates this order product quantity payload

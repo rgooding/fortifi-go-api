@@ -373,6 +373,35 @@ func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirm
 }
 
 /*
+PutOrdersOrderFidProducts sets the products on an order
+*/
+func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidProductsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutOrdersOrderFidProductsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutOrdersOrderFidProducts",
+		Method:             "PUT",
+		PathPattern:        "/orders/{orderFid}/products",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutOrdersOrderFidProductsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PutOrdersOrderFidProductsOK), nil
+
+}
+
+/*
 PutOrdersOrderFidProductsOrderProductFidQuantity sets the quantity of a product on an order
 */
 func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrdersOrderFidProductsOrderProductFidQuantityParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidProductsOrderProductFidQuantityOK, error) {
