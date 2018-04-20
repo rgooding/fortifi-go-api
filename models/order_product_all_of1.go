@@ -29,7 +29,7 @@ type OrderProductAllOf1 struct {
 	ProductFid string `json:"productFid,omitempty"`
 
 	// quantity
-	Quantity float64 `json:"quantity,omitempty"`
+	Quantity int64 `json:"quantity,omitempty"`
 
 	// renewal date
 	RenewalDate IsoTime `json:"renewalDate,omitempty"`
