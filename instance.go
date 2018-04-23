@@ -18,7 +18,6 @@ import (
 
 const (
 	expiryBuffer             = 14400
-	devHost                  = "api.fortifi.biz:9090"
 	fortifiOrgHeader         = "x-fortifi-org"
 	fortifiAuthHeader        = "authorization"
 	fortifiBearerTokenSchema = "Bearer %s"
@@ -32,8 +31,9 @@ var (
 // Instance is a single org API instance
 type Instance struct {
 	expiry              int64
+	apiHost             string
 	organisationFID     string
-	authtoken           string
+	authToken           string
 	user                string
 	key                 string
 	apiInstance         *client.Fortifi
@@ -114,13 +114,13 @@ func (f *Instance) getNewToken(transport *httptransport.Runtime) error {
 	}
 
 	f.expiry = re.Payload.GetServiceAuthTokenOKBodyAllOf1.Data.Expiry
-	f.authtoken = re.Payload.GetServiceAuthTokenOKBodyAllOf1.Data.Token
+	f.authToken = re.Payload.GetServiceAuthTokenOKBodyAllOf1.Data.Token
 	return nil
 }
 
 // GetAuthenticator returns fortifi authenticator instance
 func (f *Instance) GetAuthenticator() *Authenticator {
-	return &Authenticator{organisationFID: f.organisationFID, authtoken: f.authtoken}
+	return &Authenticator{organisationFID: f.organisationFID, authtoken: f.authToken}
 }
 
 // GetSchemes returns the API protocol
@@ -136,15 +136,17 @@ func (f *Instance) SetLocalDebug(s bool) {
 	debugFortifiRequests = s
 }
 
+func (f *Instance) SetAPIHost(host string) {
+	f.apiHost = host
+}
+
 // GetAPIHost returns the API host URL
 func (f *Instance) GetAPIHost() string {
 	host := client.DefaultHost
-	res := ""
-	if debugFortifiRequests {
-		host = devHost
+	if f.apiHost != "" {
+		host = f.apiHost
 	}
-	res = host
-	return res
+	return host
 }
 
 // SetOrganisationFID sets the organisation fid used by the fortifi API
