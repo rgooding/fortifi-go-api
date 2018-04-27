@@ -112,6 +112,35 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *Del
 }
 
 /*
+GetEntitiesEntityFidPropertiesValuesPropertyName gets a property value from an entity
+*/
+func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetEntitiesEntityFidPropertiesValuesPropertyNameParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetEntitiesEntityFidPropertiesValuesPropertyName",
+		Method:             "GET",
+		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetEntitiesEntityFidPropertiesValuesPropertyNameReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetEntitiesEntityFidPropertiesValuesPropertyNameOK), nil
+
+}
+
+/*
 PutEntitiesEntityFidProperties writes multiple entity properties
 */
 func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesOK, error) {
