@@ -47,7 +47,7 @@ func NewGetProductsGroupsOK() *GetProductsGroupsOK {
 Products groups
 */
 type GetProductsGroupsOK struct {
-	Payload *models.ProductGroups
+	Payload *models.GetProductsGroupsOKBody
 }
 
 func (o *GetProductsGroupsOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetProductsGroupsOK) Error() string {
 
 func (o *GetProductsGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProductGroups)
+	o.Payload = new(models.GetProductsGroupsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

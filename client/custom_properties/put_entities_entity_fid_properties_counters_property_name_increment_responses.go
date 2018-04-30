@@ -7,10 +7,13 @@ package custom_properties
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementReader is a Reader for the PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement structure.
@@ -37,7 +40,14 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementReader) Read
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementBadRequest) 
 }
 
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault creates a PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault with default headers values
+func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault(code int) *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault {
+	return &PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault handles this case with default header values.
+
+Error
+*/
+type PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put entities entity fid properties counters property name increment default response
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) Error() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/increment][%d] PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

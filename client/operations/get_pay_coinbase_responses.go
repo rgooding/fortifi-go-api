@@ -47,7 +47,7 @@ func NewGetPayCoinbaseOK() *GetPayCoinbaseOK {
 Coinbase checkout ID
 */
 type GetPayCoinbaseOK struct {
-	Payload *models.CoinbaseCheckout
+	Payload *models.GetPayCoinbaseOKBody
 }
 
 func (o *GetPayCoinbaseOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetPayCoinbaseOK) Error() string {
 
 func (o *GetPayCoinbaseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CoinbaseCheckout)
+	o.Payload = new(models.GetPayCoinbaseOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -54,7 +54,14 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReader) ReadResponse(response runt
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostVisitorsVisitorIDActionsActionKeyDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -68,7 +75,7 @@ func NewPostVisitorsVisitorIDActionsActionKeyOK() *PostVisitorsVisitorIDActionsA
 Action Tracked
 */
 type PostVisitorsVisitorIDActionsActionKeyOK struct {
-	Payload *models.VisitorPostAction
+	Payload *models.PostVisitorsVisitorIDActionsActionKeyOKBody
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyOK) Error() string {
@@ -77,7 +84,7 @@ func (o *PostVisitorsVisitorIDActionsActionKeyOK) Error() string {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.VisitorPostAction)
+	o.Payload = new(models.PostVisitorsVisitorIDActionsActionKeyOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -150,6 +157,44 @@ func (o *PostVisitorsVisitorIDActionsActionKeyConflict) Error() string {
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostVisitorsVisitorIDActionsActionKeyDefault creates a PostVisitorsVisitorIDActionsActionKeyDefault with default headers values
+func NewPostVisitorsVisitorIDActionsActionKeyDefault(code int) *PostVisitorsVisitorIDActionsActionKeyDefault {
+	return &PostVisitorsVisitorIDActionsActionKeyDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostVisitorsVisitorIDActionsActionKeyDefault handles this case with default header values.
+
+Error
+*/
+type PostVisitorsVisitorIDActionsActionKeyDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post visitors visitor ID actions action key default response
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) Error() string {
+	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] PostVisitorsVisitorIDActionsActionKey default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

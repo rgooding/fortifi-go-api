@@ -47,7 +47,7 @@ func NewPostOrdersOK() *PostOrdersOK {
 Order created successfully
 */
 type PostOrdersOK struct {
-	Payload *models.Fid
+	Payload *models.PostOrdersOKBody
 }
 
 func (o *PostOrdersOK) Error() string {
@@ -56,7 +56,7 @@ func (o *PostOrdersOK) Error() string {
 
 func (o *PostOrdersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	o.Payload = new(models.PostOrdersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

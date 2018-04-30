@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PubKey pub key
+// PubKey Generic Response
 // swagger:model PubKey
 type PubKey struct {
 

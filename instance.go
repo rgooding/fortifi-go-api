@@ -20,7 +20,6 @@ const (
 	expiryBuffer             = 14400
 	devHost                  = "api.fortifi.biz:9090"
 	fortifiOrgHeader         = "x-fortifi-org"
-	fortifiStrictHeader      = "x-fortifi-strict"
 	fortifiAuthHeader        = "authorization"
 	fortifiBearerTokenSchema = "Bearer %s"
 )
@@ -61,7 +60,6 @@ func NewInstance(orgFid, user, key string) (Instance, error) {
 // AuthenticateRequest handles request authentication
 func (a *Authenticator) AuthenticateRequest(req runtime.ClientRequest, reg strfmt.Registry) error {
 	req.SetHeaderParam(fortifiOrgHeader, a.organisationFID)
-	req.SetHeaderParam(fortifiStrictHeader, "true")
 	req.SetHeaderParam(fortifiAuthHeader, fmt.Sprintf(fortifiBearerTokenSchema, a.authtoken))
 	return nil
 }
@@ -115,8 +113,8 @@ func (f *Instance) getNewToken(transport *httptransport.Runtime) error {
 		return err
 	}
 
-	f.expiry = re.Payload.Expiry
-	f.authtoken = re.Payload.Token
+	f.expiry = re.Payload.Data.Expiry
+	f.authtoken = re.Payload.Data.Token
 	return nil
 }
 

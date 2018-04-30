@@ -10,33 +10,35 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PostActionPayload post action payload
 // swagger:model PostActionPayload
 type PostActionPayload struct {
 
-	// brand fid
+	// FID of a valid Brand
 	// Required: true
-	BrandFid BrandFid `json:"brandFid"`
+	BrandFid *string `json:"brandFid"`
 
-	// campaign hash
-	CampaignHash CampaignHash `json:"campaignHash,omitempty"`
+	// Advertiser Campaign to track this action to (if not already locked)
+	//
+	CampaignHash string `json:"campaignHash,omitempty"`
 
-	// client Ip
-	ClientIP ClientIP `json:"clientIp,omitempty"`
+	// IP Address of the visitor
+	ClientIP string `json:"clientIp,omitempty"`
 
 	// Coupon code used for the transaction
 	CouponCode string `json:"couponCode,omitempty"`
 
-	// encoding
-	Encoding Encoding `json:"encoding,omitempty"`
+	// Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
+	Encoding string `json:"encoding,omitempty"`
 
-	// external reference
-	ExternalReference VisitorExternalReference `json:"externalReference,omitempty"`
+	// External (to Fortifi) Reference for this visitor e.g. a user ID
+	ExternalReference string `json:"externalReference,omitempty"`
 
-	// language
-	Language Language `json:"language,omitempty"`
+	// Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
+	Language string `json:"language,omitempty"`
 
 	// meta data
 	MetaData MetaData `json:"metaData"`
@@ -54,17 +56,17 @@ type PostActionPayload struct {
 	//
 	ReturnPixels *bool `json:"returnPixels,omitempty"`
 
-	// sid1
-	Sid1 Sid1 `json:"sid1,omitempty"`
+	// Advertised sub tracking ID 1
+	Sid1 string `json:"sid1,omitempty"`
 
-	// sid2
-	Sid2 Sid2 `json:"sid2,omitempty"`
+	// Advertised sub tracking ID 2
+	Sid2 string `json:"sid2,omitempty"`
 
-	// sid3
-	Sid3 Sid3 `json:"sid3,omitempty"`
+	// Advertised sub tracking ID 3
+	Sid3 string `json:"sid3,omitempty"`
 
-	// time
-	Time IsoTime `json:"time,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	Time strfmt.DateTime `json:"time,omitempty"`
 
 	// Your unique transaction ID for this event e.g. Order ID
 	TransactionID string `json:"transactionId,omitempty"`
@@ -72,8 +74,8 @@ type PostActionPayload struct {
 	// Your unique transaction ID for this event
 	TransactionValue float32 `json:"transactionValue,omitempty"`
 
-	// user agent
-	UserAgent UserAgent `json:"userAgent,omitempty"`
+	// User Agent of the visitors browser 'HTTP_USER_AGENT'
+	UserAgent string `json:"userAgent,omitempty"`
 
 	// Username associated with this transaction (e.g. Join)
 	Username string `json:"username,omitempty"`
@@ -96,10 +98,7 @@ func (m *PostActionPayload) Validate(formats strfmt.Registry) error {
 
 func (m *PostActionPayload) validateBrandFid(formats strfmt.Registry) error {
 
-	if err := m.BrandFid.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("brandFid")
-		}
+	if err := validate.Required("brandFid", "body", m.BrandFid); err != nil {
 		return err
 	}
 

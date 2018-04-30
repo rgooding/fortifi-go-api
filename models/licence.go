@@ -12,15 +12,15 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Licence licence
+// Licence Licence
 // swagger:model Licence
 type Licence struct {
 
-	// auto cancel date
-	AutoCancelDate IsoTime `json:"autoCancelDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	AutoCancelDate strfmt.DateTime `json:"autoCancelDate,omitempty"`
 
-	// auto suspend date
-	AutoSuspendDate IsoTime `json:"autoSuspendDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	AutoSuspendDate strfmt.DateTime `json:"autoSuspendDate,omitempty"`
 
 	// customer fid
 	CustomerFid string `json:"customerFid,omitempty"`
@@ -34,35 +34,35 @@ type Licence struct {
 	// cycle type
 	CycleType string `json:"cycleType,omitempty"`
 
-	// date created
-	DateCreated IsoTime `json:"dateCreated,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateCreated strfmt.DateTime `json:"dateCreated,omitempty"`
 
-	// end date
-	EndDate IsoTime `json:"endDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
-	// last renew date
-	LastRenewDate IsoTime `json:"lastRenewDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	LastRenewDate strfmt.DateTime `json:"lastRenewDate,omitempty"`
 
-	// next renew date
-	NextRenewDate IsoTime `json:"nextRenewDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	NextRenewDate strfmt.DateTime `json:"nextRenewDate,omitempty"`
 
 	// purchase fid
 	PurchaseFid string `json:"purchaseFid,omitempty"`
 
-	// renew date
-	RenewDate IsoTime `json:"renewDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	RenewDate strfmt.DateTime `json:"renewDate,omitempty"`
 
-	// start date
-	StartDate IsoTime `json:"startDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
 	// status
 	Status string `json:"status,omitempty"`
 
-	// trial end date
-	TrialEndDate IsoTime `json:"trialEndDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	TrialEndDate strfmt.DateTime `json:"trialEndDate,omitempty"`
 
-	// trial start date
-	TrialStartDate IsoTime `json:"trialStartDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	TrialStartDate strfmt.DateTime `json:"trialStartDate,omitempty"`
 }
 
 // Validate validates this licence

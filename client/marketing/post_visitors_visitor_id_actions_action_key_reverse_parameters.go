@@ -72,9 +72,9 @@ type PostVisitorsVisitorIDActionsActionKeyReverseParams struct {
 	/*Payload*/
 	Payload *models.ReverseActionPayload
 	/*VisitorID
-	  "Visitor ID from the cookie.
+	  'Visitor ID from the cookie.
 	If providing a pre-linked external reference, should be set to 'byref'.
-	If no visitor ID is known, client IP should be provided and visitorId should be set to 'unknown'"
+	If no visitor ID is known, client IP should be provided and visitorId should be set to 'unknown''
 
 
 	*/

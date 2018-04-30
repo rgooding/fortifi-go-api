@@ -12,6 +12,8 @@ import (
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // GetVersionReader is a Reader for the GetVersion structure.
@@ -45,7 +47,7 @@ func NewGetVersionOK() *GetVersionOK {
 Version
 */
 type GetVersionOK struct {
-	Payload string
+	Payload *models.GetVersionOKBody
 }
 
 func (o *GetVersionOK) Error() string {
@@ -54,8 +56,10 @@ func (o *GetVersionOK) Error() string {
 
 func (o *GetVersionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.GetVersionOKBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

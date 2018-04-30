@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PaypalInit paypal init
+// PaypalInit Generic Response
 // swagger:model PaypalInit
 type PaypalInit struct {
 

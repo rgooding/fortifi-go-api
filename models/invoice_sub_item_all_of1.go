@@ -16,8 +16,8 @@ import (
 // swagger:model invoiceSubItemAllOf1
 type InvoiceSubItemAllOf1 struct {
 
-	// from date
-	FromDate IsoTime `json:"fromDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	FromDate strfmt.DateTime `json:"fromDate,omitempty"`
 
 	// item type
 	ItemType string `json:"itemType,omitempty"`
@@ -28,8 +28,8 @@ type InvoiceSubItemAllOf1 struct {
 	// quantity
 	Quantity int32 `json:"quantity,omitempty"`
 
-	// to date
-	ToDate IsoTime `json:"toDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	ToDate strfmt.DateTime `json:"toDate,omitempty"`
 
 	// total amount
 	TotalAmount float32 `json:"totalAmount,omitempty"`

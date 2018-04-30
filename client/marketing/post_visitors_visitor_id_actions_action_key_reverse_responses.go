@@ -47,7 +47,14 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseReader) ReadResponse(respon
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostVisitorsVisitorIDActionsActionKeyReverseDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -61,7 +68,7 @@ func NewPostVisitorsVisitorIDActionsActionKeyReverseOK() *PostVisitorsVisitorIDA
 Action Reversed
 */
 type PostVisitorsVisitorIDActionsActionKeyReverseOK struct {
-	Payload *models.VisitorReversalAction
+	Payload *models.PostVisitorsVisitorIDActionsActionKeyReverseOKBody
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
@@ -70,7 +77,7 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.VisitorReversalAction)
+	o.Payload = new(models.PostVisitorsVisitorIDActionsActionKeyReverseOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -120,6 +127,44 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseConflict) Error() string {
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostVisitorsVisitorIDActionsActionKeyReverseDefault creates a PostVisitorsVisitorIDActionsActionKeyReverseDefault with default headers values
+func NewPostVisitorsVisitorIDActionsActionKeyReverseDefault(code int) *PostVisitorsVisitorIDActionsActionKeyReverseDefault {
+	return &PostVisitorsVisitorIDActionsActionKeyReverseDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostVisitorsVisitorIDActionsActionKeyReverseDefault handles this case with default header values.
+
+Error
+*/
+type PostVisitorsVisitorIDActionsActionKeyReverseDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post visitors visitor ID actions action key reverse default response
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Error() string {
+	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] PostVisitorsVisitorIDActionsActionKeyReverse default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

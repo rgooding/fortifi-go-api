@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CoinbaseCheckout coinbase checkout
+// CoinbaseCheckout Generic Response
 // swagger:model CoinbaseCheckout
 type CoinbaseCheckout struct {
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Advertisers advertisers
+// Advertisers Advertisers
 // swagger:model Advertisers
 type Advertisers struct {
 	Pagination

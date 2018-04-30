@@ -40,7 +40,14 @@ func (o *PutOrdersOrderFidConfirmCoinbaseReader) ReadResponse(response runtime.C
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutOrdersOrderFidConfirmCoinbaseDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPutOrdersOrderFidConfirmCoinbaseOK() *PutOrdersOrderFidConfirmCoinbaseOK
 Order confirmed; awaiting blockchain confirmation.
 */
 type PutOrdersOrderFidConfirmCoinbaseOK struct {
-	Payload *models.OrderConfirmation
+	Payload *models.PutOrdersOrderFidConfirmCoinbaseOKBody
 }
 
 func (o *PutOrdersOrderFidConfirmCoinbaseOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PutOrdersOrderFidConfirmCoinbaseOK) Error() string {
 
 func (o *PutOrdersOrderFidConfirmCoinbaseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OrderConfirmation)
+	o.Payload = new(models.PutOrdersOrderFidConfirmCoinbaseOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *PutOrdersOrderFidConfirmCoinbaseServiceUnavailable) Error() string {
 }
 
 func (o *PutOrdersOrderFidConfirmCoinbaseServiceUnavailable) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutOrdersOrderFidConfirmCoinbaseDefault creates a PutOrdersOrderFidConfirmCoinbaseDefault with default headers values
+func NewPutOrdersOrderFidConfirmCoinbaseDefault(code int) *PutOrdersOrderFidConfirmCoinbaseDefault {
+	return &PutOrdersOrderFidConfirmCoinbaseDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutOrdersOrderFidConfirmCoinbaseDefault handles this case with default header values.
+
+Error
+*/
+type PutOrdersOrderFidConfirmCoinbaseDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put orders order fid confirm coinbase default response
+func (o *PutOrdersOrderFidConfirmCoinbaseDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutOrdersOrderFidConfirmCoinbaseDefault) Error() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCoinbase][%d] PutOrdersOrderFidConfirmCoinbase default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmCoinbaseDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Entity entity
+// Entity Generic Response
 // swagger:model Entity
 type Entity struct {
 	Fid

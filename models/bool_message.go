@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// BoolMessage bool message
+// BoolMessage Generic Response
 // swagger:model BoolMessage
 type BoolMessage struct {
 

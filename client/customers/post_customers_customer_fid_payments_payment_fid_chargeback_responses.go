@@ -47,7 +47,14 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackReader) ReadRespons
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostCustomersCustomerFidPaymentsPaymentFidChargebackDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -61,7 +68,7 @@ func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackOK() *PostCustomersC
 Chargeback Opened
 */
 type PostCustomersCustomerFidPaymentsPaymentFidChargebackOK struct {
-	Payload *models.Fid
+	Payload *models.PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody
 }
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) Error() string {
@@ -70,7 +77,7 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) Error() string 
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	o.Payload = new(models.PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -118,6 +125,44 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackNotFound) Error() s
 }
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostCustomersCustomerFidPaymentsPaymentFidChargebackDefault creates a PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault with default headers values
+func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackDefault(code int) *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault {
+	return &PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault handles this case with default header values.
+
+Error
+*/
+type PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post customers customer fid payments payment fid chargeback default response
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) Error() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] PostCustomersCustomerFidPaymentsPaymentFidChargeback default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

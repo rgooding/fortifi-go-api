@@ -40,7 +40,14 @@ func (o *PutOrdersOrderFidConfirmCardReader) ReadResponse(response runtime.Clien
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutOrdersOrderFidConfirmCardDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPutOrdersOrderFidConfirmCardOK() *PutOrdersOrderFidConfirmCardOK {
 Order confirmed and payment authroized
 */
 type PutOrdersOrderFidConfirmCardOK struct {
-	Payload *models.OrderConfirmation
+	Payload *models.PutOrdersOrderFidConfirmCardOKBody
 }
 
 func (o *PutOrdersOrderFidConfirmCardOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PutOrdersOrderFidConfirmCardOK) Error() string {
 
 func (o *PutOrdersOrderFidConfirmCardOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OrderConfirmation)
+	o.Payload = new(models.PutOrdersOrderFidConfirmCardOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *PutOrdersOrderFidConfirmCardServiceUnavailable) Error() string {
 }
 
 func (o *PutOrdersOrderFidConfirmCardServiceUnavailable) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutOrdersOrderFidConfirmCardDefault creates a PutOrdersOrderFidConfirmCardDefault with default headers values
+func NewPutOrdersOrderFidConfirmCardDefault(code int) *PutOrdersOrderFidConfirmCardDefault {
+	return &PutOrdersOrderFidConfirmCardDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutOrdersOrderFidConfirmCardDefault handles this case with default header values.
+
+Error
+*/
+type PutOrdersOrderFidConfirmCardDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put orders order fid confirm card default response
+func (o *PutOrdersOrderFidConfirmCardDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutOrdersOrderFidConfirmCardDefault) Error() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] PutOrdersOrderFidConfirmCard default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmCardDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

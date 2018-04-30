@@ -40,7 +40,14 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidReader) ReadResponse
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetCustomersCustomerFidSubscriptionsSubscriptionFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidOK() *GetCustomersCus
 Loaded subscription
 */
 type GetCustomersCustomerFidSubscriptionsSubscriptionFidOK struct {
-	Payload *models.Subscription
+	Payload *models.GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody
 }
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) Error() string {
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Subscription)
+	o.Payload = new(models.GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidNotFound) Error() st
 }
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetCustomersCustomerFidSubscriptionsSubscriptionFidDefault creates a GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault with default headers values
+func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidDefault(code int) *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault {
+	return &GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault handles this case with default header values.
+
+Error
+*/
+type GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get customers customer fid subscriptions subscription fid default response
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Error() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] GetCustomersCustomerFidSubscriptionsSubscriptionFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

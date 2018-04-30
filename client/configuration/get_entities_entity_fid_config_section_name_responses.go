@@ -47,7 +47,7 @@ func NewGetEntitiesEntityFidConfigSectionNameOK() *GetEntitiesEntityFidConfigSec
 List Of Config Items
 */
 type GetEntitiesEntityFidConfigSectionNameOK struct {
-	Payload *models.ConfigItems
+	Payload *models.GetEntitiesEntityFidConfigSectionNameOKBody
 }
 
 func (o *GetEntitiesEntityFidConfigSectionNameOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetEntitiesEntityFidConfigSectionNameOK) Error() string {
 
 func (o *GetEntitiesEntityFidConfigSectionNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConfigItems)
+	o.Payload = new(models.GetEntitiesEntityFidConfigSectionNameOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

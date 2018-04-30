@@ -47,7 +47,7 @@ func NewGetOrganisationOK() *GetOrganisationOK {
 Organisation Information
 */
 type GetOrganisationOK struct {
-	Payload *models.Organisation
+	Payload *models.GetOrganisationOKBody
 }
 
 func (o *GetOrganisationOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetOrganisationOK) Error() string {
 
 func (o *GetOrganisationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Organisation)
+	o.Payload = new(models.GetOrganisationOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

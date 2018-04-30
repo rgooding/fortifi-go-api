@@ -10,14 +10,15 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateCustomerPayload Payload for creating a customer
 // swagger:model CreateCustomerPayload
 type CreateCustomerPayload struct {
 
-	// account manager fid
-	AccountManagerFid AccountManagerFid `json:"accountManagerFid,omitempty"`
+	// FID of an Account Manager
+	AccountManagerFid string `json:"accountManagerFid,omitempty"`
 
 	// account status
 	AccountStatus CustomerAccountStatus `json:"accountStatus,omitempty"`
@@ -25,42 +26,42 @@ type CreateCustomerPayload struct {
 	// account type
 	AccountType CustomerAccountType `json:"accountType,omitempty"`
 
-	// brand fid
+	// FID of a valid Brand
 	// Required: true
-	BrandFid BrandFid `json:"brandFid"`
+	BrandFid *string `json:"brandFid"`
 
-	// client Ip
-	ClientIP ClientIP `json:"clientIp,omitempty"`
+	// IP Address of the visitor
+	ClientIP string `json:"clientIp,omitempty"`
 
-	// currency
-	Currency Currency `json:"currency,omitempty"`
+	// Currency
+	Currency string `json:"currency,omitempty"`
 
-	// email
-	Email Email `json:"email,omitempty"`
+	// Email Address
+	Email string `json:"email,omitempty"`
 
-	// external reference
-	ExternalReference ExternalReference `json:"externalReference,omitempty"`
+	// External (to Fortifi) Reference e.g. your internal Unique ID
+	ExternalReference string `json:"externalReference,omitempty"`
 
-	// first name
-	FirstName FirstName `json:"firstName,omitempty"`
+	// First Name
+	FirstName string `json:"firstName,omitempty"`
 
-	// last name
-	LastName LastName `json:"lastName,omitempty"`
+	// Last Name
+	LastName string `json:"lastName,omitempty"`
 
 	// lifecycle
 	Lifecycle CustomerLifecycle `json:"lifecycle,omitempty"`
 
-	// phone number
-	PhoneNumber PhoneNumber `json:"phoneNumber,omitempty"`
+	// Phone Number
+	PhoneNumber string `json:"phoneNumber,omitempty"`
 
 	// subscription type
 	SubscriptionType CustomerSubscriptionType `json:"subscriptionType,omitempty"`
 
-	// time
-	Time IsoTime `json:"time,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	Time strfmt.DateTime `json:"time,omitempty"`
 
-	// visitor Id
-	VisitorID VisitorID `json:"visitorId,omitempty"`
+	// Visitor ID of the visitor
+	VisitorID string `json:"visitorId,omitempty"`
 }
 
 // Validate validates this create customer payload
@@ -132,10 +133,7 @@ func (m *CreateCustomerPayload) validateAccountType(formats strfmt.Registry) err
 
 func (m *CreateCustomerPayload) validateBrandFid(formats strfmt.Registry) error {
 
-	if err := m.BrandFid.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("brandFid")
-		}
+	if err := validate.Required("brandFid", "body", m.BrandFid); err != nil {
 		return err
 	}
 

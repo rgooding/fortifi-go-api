@@ -7,10 +7,13 @@ package orders
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // DeleteOrdersOrderFidOffersOfferFidReader is a Reader for the DeleteOrdersOrderFidOffersOfferFid structure.
@@ -37,7 +40,14 @@ func (o *DeleteOrdersOrderFidOffersOfferFidReader) ReadResponse(response runtime
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewDeleteOrdersOrderFidOffersOfferFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *DeleteOrdersOrderFidOffersOfferFidNotFound) Error() string {
 }
 
 func (o *DeleteOrdersOrderFidOffersOfferFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteOrdersOrderFidOffersOfferFidDefault creates a DeleteOrdersOrderFidOffersOfferFidDefault with default headers values
+func NewDeleteOrdersOrderFidOffersOfferFidDefault(code int) *DeleteOrdersOrderFidOffersOfferFidDefault {
+	return &DeleteOrdersOrderFidOffersOfferFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*DeleteOrdersOrderFidOffersOfferFidDefault handles this case with default header values.
+
+Error
+*/
+type DeleteOrdersOrderFidOffersOfferFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the delete orders order fid offers offer fid default response
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) Error() string {
+	return fmt.Sprintf("[DELETE /orders/{orderFid}/offers/{offerFid}][%d] DeleteOrdersOrderFidOffersOfferFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

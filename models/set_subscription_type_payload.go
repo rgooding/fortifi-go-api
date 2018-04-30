@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// SetSubscriptionTypePayload set subscription type payload
+// SetSubscriptionTypePayload Subscription Type
 // swagger:model SetSubscriptionTypePayload
 type SetSubscriptionTypePayload struct {
 

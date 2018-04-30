@@ -17,11 +17,11 @@ import (
 // swagger:model CreateAdvertiserPayload
 type CreateAdvertiserPayload struct {
 
-	// account manager fid
-	AccountManagerFid AccountManagerFid `json:"accountManagerFid,omitempty"`
+	// FID of an Account Manager
+	AccountManagerFid string `json:"accountManagerFid,omitempty"`
 
-	// brand fid
-	BrandFid BrandFid `json:"brandFid,omitempty"`
+	// FID of a valid Brand
+	BrandFid string `json:"brandFid,omitempty"`
 
 	// Name of the company
 	CompanyName string `json:"companyName,omitempty"`
@@ -30,32 +30,32 @@ type CreateAdvertiserPayload struct {
 	// Required: true
 	ContactName *string `json:"contactName"`
 
-	// display name
-	DisplayName DisplayName `json:"displayName,omitempty"`
+	// Visible Display Name
+	DisplayName string `json:"displayName,omitempty"`
 
-	// email
-	Email Email `json:"email,omitempty"`
+	// Email Address
+	Email string `json:"email,omitempty"`
 
-	// foundation fid
-	FoundationFid FoundationFid `json:"foundationFid,omitempty"`
+	// FID of a valid Foundation
+	FoundationFid string `json:"foundationFid,omitempty"`
 
-	// password
+	// Password
 	// Required: true
-	Password Password `json:"password"`
+	Password *string `json:"password"`
 
-	// phone
-	Phone PhoneNumber `json:"phone,omitempty"`
+	// Phone Number
+	Phone string `json:"phone,omitempty"`
 
 	// type
 	// Required: true
 	Type AdvertiserType `json:"type"`
 
-	// username
+	// Username
 	// Required: true
-	Username Username `json:"username"`
+	Username *string `json:"username"`
 
-	// website
-	Website URL `json:"website,omitempty"`
+	// URL
+	Website string `json:"website,omitempty"`
 }
 
 // Validate validates this create advertiser payload
@@ -99,10 +99,7 @@ func (m *CreateAdvertiserPayload) validateContactName(formats strfmt.Registry) e
 
 func (m *CreateAdvertiserPayload) validatePassword(formats strfmt.Registry) error {
 
-	if err := m.Password.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("password")
-		}
+	if err := validate.Required("password", "body", m.Password); err != nil {
 		return err
 	}
 
@@ -123,10 +120,7 @@ func (m *CreateAdvertiserPayload) validateType(formats strfmt.Registry) error {
 
 func (m *CreateAdvertiserPayload) validateUsername(formats strfmt.Registry) error {
 
-	if err := m.Username.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("username")
-		}
+	if err := validate.Required("username", "body", m.Username); err != nil {
 		return err
 	}
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Ticket ticket
+// Ticket Generic Response
 // swagger:model Ticket
 type Ticket struct {
 	Entity

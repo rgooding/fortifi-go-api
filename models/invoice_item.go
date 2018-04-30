@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InvoiceItem invoice item
+// InvoiceItem Generic Response
 // swagger:model InvoiceItem
 type InvoiceItem struct {
 	Entity

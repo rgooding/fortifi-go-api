@@ -47,7 +47,7 @@ func NewGetVisitorsVisitorIDPixelsOK() *GetVisitorsVisitorIDPixelsOK {
 Pixels
 */
 type GetVisitorsVisitorIDPixelsOK struct {
-	Payload models.GetVisitorsVisitorIDPixelsOKBody
+	Payload *models.GetVisitorsVisitorIDPixelsOKBody
 }
 
 func (o *GetVisitorsVisitorIDPixelsOK) Error() string {
@@ -56,8 +56,10 @@ func (o *GetVisitorsVisitorIDPixelsOK) Error() string {
 
 func (o *GetVisitorsVisitorIDPixelsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.GetVisitorsVisitorIDPixelsOKBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

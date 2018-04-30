@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AdvertiserCampaign advertiser campaign
+// AdvertiserCampaign Campaign
 // swagger:model AdvertiserCampaign
 type AdvertiserCampaign struct {
 	Entity

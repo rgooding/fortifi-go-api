@@ -47,7 +47,7 @@ func NewGetProductsOffersOK() *GetProductsOffersOK {
 Available Offers
 */
 type GetProductsOffersOK struct {
-	Payload *models.ProductOffers
+	Payload *models.GetProductsOffersOKBody
 }
 
 func (o *GetProductsOffersOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetProductsOffersOK) Error() string {
 
 func (o *GetProductsOffersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProductOffers)
+	o.Payload = new(models.GetProductsOffersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

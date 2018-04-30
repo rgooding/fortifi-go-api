@@ -34,9 +34,6 @@ type AdvertiserAllOf1 struct {
 	// contact name
 	ContactName string `json:"contactName,omitempty"`
 
-	// display name
-	DisplayName string `json:"displayName,omitempty"`
-
 	// email
 	Email string `json:"email,omitempty"`
 

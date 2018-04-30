@@ -40,7 +40,14 @@ func (o *GetCustomersCustomerFidReader) ReadResponse(response runtime.ClientResp
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetCustomersCustomerFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetCustomersCustomerFidOK() *GetCustomersCustomerFidOK {
 Loaded Customer
 */
 type GetCustomersCustomerFidOK struct {
-	Payload *models.Customer
+	Payload *models.GetCustomersCustomerFidOKBody
 }
 
 func (o *GetCustomersCustomerFidOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetCustomersCustomerFidOK) Error() string {
 
 func (o *GetCustomersCustomerFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Customer)
+	o.Payload = new(models.GetCustomersCustomerFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetCustomersCustomerFidNotFound) Error() string {
 }
 
 func (o *GetCustomersCustomerFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetCustomersCustomerFidDefault creates a GetCustomersCustomerFidDefault with default headers values
+func NewGetCustomersCustomerFidDefault(code int) *GetCustomersCustomerFidDefault {
+	return &GetCustomersCustomerFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetCustomersCustomerFidDefault handles this case with default header values.
+
+Error
+*/
+type GetCustomersCustomerFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get customers customer fid default response
+func (o *GetCustomersCustomerFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetCustomersCustomerFidDefault) Error() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}][%d] GetCustomersCustomerFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

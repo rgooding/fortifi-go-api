@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Organisation organisation
+// Organisation Organisation
 // swagger:model Organisation
 type Organisation struct {
 

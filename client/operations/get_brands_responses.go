@@ -47,7 +47,7 @@ func NewGetBrandsOK() *GetBrandsOK {
 Brand Information
 */
 type GetBrandsOK struct {
-	Payload models.GetBrandsOKBody
+	Payload *models.GetBrandsOKBody
 }
 
 func (o *GetBrandsOK) Error() string {
@@ -56,8 +56,10 @@ func (o *GetBrandsOK) Error() string {
 
 func (o *GetBrandsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.GetBrandsOKBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

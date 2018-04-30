@@ -16,11 +16,11 @@ import (
 // swagger:model ConfirmOrderPayload
 type ConfirmOrderPayload struct {
 
-	// payment account fid
-	PaymentAccountFid PaymentAccountFid `json:"paymentAccountFid,omitempty"`
+	// FID for the payment account you wish to charge the customer through
+	PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 
-	// payment service fid
-	PaymentServiceFid PaymentServiceFid `json:"paymentServiceFid,omitempty"`
+	// FID for the payment service you wish to charge the customer through
+	PaymentServiceFid string `json:"paymentServiceFid,omitempty"`
 
 	// payment service processor
 	PaymentServiceProcessor PaymentServiceProcessor `json:"paymentServiceProcessor,omitempty"`

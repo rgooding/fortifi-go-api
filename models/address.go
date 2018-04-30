@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Address address
+// Address Generic Response
 // swagger:model Address
 type Address struct {
 	Entity

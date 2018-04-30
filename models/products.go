@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Products products
+// Products Generic Response
 // swagger:model Products
 type Products struct {
 

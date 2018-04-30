@@ -40,7 +40,14 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidReader) ReadResponse(res
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutCustomersCustomerFidChargebacksChargebackFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPutCustomersCustomerFidChargebacksChargebackFidOK() *PutCustomersCustome
 Chargeback Actioned
 */
 type PutCustomersCustomerFidChargebacksChargebackFidOK struct {
-	Payload *models.BoolMessage
+	Payload *models.PutCustomersCustomerFidChargebacksChargebackFidOKBody
 }
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BoolMessage)
+	o.Payload = new(models.PutCustomersCustomerFidChargebacksChargebackFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidBadRequest) Error() stri
 }
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutCustomersCustomerFidChargebacksChargebackFidDefault creates a PutCustomersCustomerFidChargebacksChargebackFidDefault with default headers values
+func NewPutCustomersCustomerFidChargebacksChargebackFidDefault(code int) *PutCustomersCustomerFidChargebacksChargebackFidDefault {
+	return &PutCustomersCustomerFidChargebacksChargebackFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutCustomersCustomerFidChargebacksChargebackFidDefault handles this case with default header values.
+
+Error
+*/
+type PutCustomersCustomerFidChargebacksChargebackFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put customers customer fid chargebacks chargeback fid default response
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] PutCustomersCustomerFidChargebacksChargebackFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

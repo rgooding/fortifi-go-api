@@ -7,10 +7,13 @@ package custom_properties
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutEntitiesEntityFidPropertiesValuesPropertyNameReader is a Reader for the PutEntitiesEntityFidPropertiesValuesPropertyName structure.
@@ -37,7 +40,14 @@ func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameReader) ReadResponse(re
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutEntitiesEntityFidPropertiesValuesPropertyNameDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameBadRequest) Error() str
 }
 
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutEntitiesEntityFidPropertiesValuesPropertyNameDefault creates a PutEntitiesEntityFidPropertiesValuesPropertyNameDefault with default headers values
+func NewPutEntitiesEntityFidPropertiesValuesPropertyNameDefault(code int) *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault {
+	return &PutEntitiesEntityFidPropertiesValuesPropertyNameDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutEntitiesEntityFidPropertiesValuesPropertyNameDefault handles this case with default header values.
+
+Error
+*/
+type PutEntitiesEntityFidPropertiesValuesPropertyNameDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put entities entity fid properties values property name default response
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] PutEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

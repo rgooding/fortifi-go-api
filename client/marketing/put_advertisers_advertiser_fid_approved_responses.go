@@ -7,10 +7,13 @@ package marketing
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutAdvertisersAdvertiserFidApprovedReader is a Reader for the PutAdvertisersAdvertiserFidApproved structure.
@@ -37,7 +40,14 @@ func (o *PutAdvertisersAdvertiserFidApprovedReader) ReadResponse(response runtim
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutAdvertisersAdvertiserFidApprovedDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutAdvertisersAdvertiserFidApprovedNotFound) Error() string {
 }
 
 func (o *PutAdvertisersAdvertiserFidApprovedNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutAdvertisersAdvertiserFidApprovedDefault creates a PutAdvertisersAdvertiserFidApprovedDefault with default headers values
+func NewPutAdvertisersAdvertiserFidApprovedDefault(code int) *PutAdvertisersAdvertiserFidApprovedDefault {
+	return &PutAdvertisersAdvertiserFidApprovedDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutAdvertisersAdvertiserFidApprovedDefault handles this case with default header values.
+
+Error
+*/
+type PutAdvertisersAdvertiserFidApprovedDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put advertisers advertiser fid approved default response
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) Error() string {
+	return fmt.Sprintf("[PUT /advertisers/{advertiserFid}/approved][%d] PutAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

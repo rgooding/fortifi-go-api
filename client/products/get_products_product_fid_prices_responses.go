@@ -40,7 +40,14 @@ func (o *GetProductsProductFidPricesReader) ReadResponse(response runtime.Client
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetProductsProductFidPricesDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetProductsProductFidPricesOK() *GetProductsProductFidPricesOK {
 List of product prices
 */
 type GetProductsProductFidPricesOK struct {
-	Payload *models.ProductPrices
+	Payload *models.GetProductsProductFidPricesOKBody
 }
 
 func (o *GetProductsProductFidPricesOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetProductsProductFidPricesOK) Error() string {
 
 func (o *GetProductsProductFidPricesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProductPrices)
+	o.Payload = new(models.GetProductsProductFidPricesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetProductsProductFidPricesNotFound) Error() string {
 }
 
 func (o *GetProductsProductFidPricesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetProductsProductFidPricesDefault creates a GetProductsProductFidPricesDefault with default headers values
+func NewGetProductsProductFidPricesDefault(code int) *GetProductsProductFidPricesDefault {
+	return &GetProductsProductFidPricesDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetProductsProductFidPricesDefault handles this case with default header values.
+
+Error
+*/
+type GetProductsProductFidPricesDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get products product fid prices default response
+func (o *GetProductsProductFidPricesDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetProductsProductFidPricesDefault) Error() string {
+	return fmt.Sprintf("[GET /products/{productFid}/prices][%d] GetProductsProductFidPrices default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetProductsProductFidPricesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

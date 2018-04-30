@@ -47,7 +47,7 @@ func NewPostTicketsOK() *PostTicketsOK {
 Ticket Information
 */
 type PostTicketsOK struct {
-	Payload *models.Ticket
+	Payload *models.PostTicketsOKBody
 }
 
 func (o *PostTicketsOK) Error() string {
@@ -56,7 +56,7 @@ func (o *PostTicketsOK) Error() string {
 
 func (o *PostTicketsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Ticket)
+	o.Payload = new(models.PostTicketsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

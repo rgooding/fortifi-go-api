@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// OrderVerification order verification
+// OrderVerification Generic Response
 // swagger:model OrderVerification
 type OrderVerification struct {
 

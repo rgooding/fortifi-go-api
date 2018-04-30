@@ -31,8 +31,8 @@ type OrderProductAllOf1 struct {
 	// quantity
 	Quantity int64 `json:"quantity,omitempty"`
 
-	// renewal date
-	RenewalDate IsoTime `json:"renewalDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
 }
 
 // Validate validates this order product all of1

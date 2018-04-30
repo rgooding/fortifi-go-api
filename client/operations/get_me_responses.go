@@ -47,7 +47,7 @@ func NewGetMeOK() *GetMeOK {
 User Information
 */
 type GetMeOK struct {
-	Payload *models.User
+	Payload *models.GetMeOKBody
 }
 
 func (o *GetMeOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetMeOK) Error() string {
 
 func (o *GetMeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.User)
+	o.Payload = new(models.GetMeOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

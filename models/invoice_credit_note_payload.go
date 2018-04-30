@@ -21,15 +21,15 @@ type InvoiceCreditNotePayload struct {
 	// Required: true
 	Amount *float32 `json:"amount"`
 
-	// charge request fid
-	ChargeRequestFid ChargeRequestFid `json:"chargeRequestFid,omitempty"`
+	// Charge Request FID
+	ChargeRequestFid string `json:"chargeRequestFid,omitempty"`
 
 	// credit amount type
 	// Required: true
 	CreditAmountType CreditAmountType `json:"creditAmountType"`
 
-	// currency
-	Currency Currency `json:"currency,omitempty"`
+	// Currency
+	Currency string `json:"currency,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -37,8 +37,8 @@ type InvoiceCreditNotePayload struct {
 	// display name
 	DisplayName string `json:"displayName,omitempty"`
 
-	// reason fid
-	ReasonFid ReasonFid `json:"reasonFid,omitempty"`
+	// Reason FID
+	ReasonFid string `json:"reasonFid,omitempty"`
 }
 
 // Validate validates this invoice credit note payload

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// OrderConfirmation order confirmation
+// OrderConfirmation Generic Response
 // swagger:model OrderConfirmation
 type OrderConfirmation struct {
 

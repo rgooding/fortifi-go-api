@@ -40,7 +40,14 @@ func (o *GetReasonsGroupsReasonGroupFidReader) ReadResponse(response runtime.Cli
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetReasonsGroupsReasonGroupFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetReasonsGroupsReasonGroupFidOK() *GetReasonsGroupsReasonGroupFidOK {
 Reason Group retrieved
 */
 type GetReasonsGroupsReasonGroupFidOK struct {
-	Payload *models.Reasons
+	Payload *models.GetReasonsGroupsReasonGroupFidOKBody
 }
 
 func (o *GetReasonsGroupsReasonGroupFidOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetReasonsGroupsReasonGroupFidOK) Error() string {
 
 func (o *GetReasonsGroupsReasonGroupFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Reasons)
+	o.Payload = new(models.GetReasonsGroupsReasonGroupFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetReasonsGroupsReasonGroupFidNotFound) Error() string {
 }
 
 func (o *GetReasonsGroupsReasonGroupFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetReasonsGroupsReasonGroupFidDefault creates a GetReasonsGroupsReasonGroupFidDefault with default headers values
+func NewGetReasonsGroupsReasonGroupFidDefault(code int) *GetReasonsGroupsReasonGroupFidDefault {
+	return &GetReasonsGroupsReasonGroupFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetReasonsGroupsReasonGroupFidDefault handles this case with default header values.
+
+Error
+*/
+type GetReasonsGroupsReasonGroupFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get reasons groups reason group fid default response
+func (o *GetReasonsGroupsReasonGroupFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetReasonsGroupsReasonGroupFidDefault) Error() string {
+	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] GetReasonsGroupsReasonGroupFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetReasonsGroupsReasonGroupFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

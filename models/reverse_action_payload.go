@@ -16,20 +16,20 @@ import (
 // swagger:model ReverseActionPayload
 type ReverseActionPayload struct {
 
-	// client Ip
-	ClientIP ClientIP `json:"clientIp,omitempty"`
+	// IP Address of the visitor
+	ClientIP string `json:"clientIp,omitempty"`
 
-	// encoding
-	Encoding Encoding `json:"encoding,omitempty"`
+	// Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
+	Encoding string `json:"encoding,omitempty"`
 
-	// event Id
-	EventID EventID `json:"eventId,omitempty"`
+	// If known, the Fortifi event ID for this visitors action
+	EventID string `json:"eventId,omitempty"`
 
-	// external reference
-	ExternalReference VisitorExternalReference `json:"externalReference,omitempty"`
+	// External (to Fortifi) Reference for this visitor e.g. a user ID
+	ExternalReference string `json:"externalReference,omitempty"`
 
-	// language
-	Language Language `json:"language,omitempty"`
+	// Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
+	Language string `json:"language,omitempty"`
 
 	// meta data
 	MetaData MetaData `json:"metaData"`
@@ -37,20 +37,20 @@ type ReverseActionPayload struct {
 	// reason
 	Reason ReversalReason `json:"reason,omitempty"`
 
-	// reversal amount
-	ReversalAmount ReversalAmount `json:"reversalAmount,omitempty"`
+	// Amount of revene refunded to the client from the original transaction / chargeback amount
+	ReversalAmount float32 `json:"reversalAmount,omitempty"`
 
-	// reversal Id
-	ReversalID ReversalID `json:"reversalId,omitempty"`
+	// Your unique transaction ID for this event e.g. Refund ID
+	ReversalID string `json:"reversalId,omitempty"`
 
-	// source transaction Id
-	SourceTransactionID SourceTransactionID `json:"sourceTransactionId,omitempty"`
+	// Your unique transaction ID for the event to be reversed
+	SourceTransactionID string `json:"sourceTransactionId,omitempty"`
 
-	// time
-	Time IsoTime `json:"time,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	Time strfmt.DateTime `json:"time,omitempty"`
 
-	// user agent
-	UserAgent UserAgent `json:"userAgent,omitempty"`
+	// User Agent of the visitors browser 'HTTP_USER_AGENT'
+	UserAgent string `json:"userAgent,omitempty"`
 }
 
 // Validate validates this reverse action payload

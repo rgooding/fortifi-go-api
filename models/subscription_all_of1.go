@@ -19,14 +19,14 @@ type SubscriptionAllOf1 struct {
 	// amount
 	Amount float32 `json:"amount,omitempty"`
 
-	// auto cancel date
-	AutoCancelDate IsoTime `json:"autoCancelDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	AutoCancelDate strfmt.DateTime `json:"autoCancelDate,omitempty"`
 
 	// auto charge
 	AutoCharge bool `json:"autoCharge,omitempty"`
 
-	// auto suspend date
-	AutoSuspendDate IsoTime `json:"autoSuspendDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	AutoSuspendDate strfmt.DateTime `json:"autoSuspendDate,omitempty"`
 
 	// cancel days
 	CancelDays int32 `json:"cancelDays,omitempty"`
@@ -40,32 +40,32 @@ type SubscriptionAllOf1 struct {
 	// cycle
 	Cycle string `json:"cycle,omitempty"`
 
-	// date cancelled
-	DateCancelled IsoTime `json:"dateCancelled,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateCancelled strfmt.DateTime `json:"dateCancelled,omitempty"`
 
-	// date created
-	DateCreated IsoTime `json:"dateCreated,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateCreated strfmt.DateTime `json:"dateCreated,omitempty"`
 
-	// date inactive
-	DateInactive IsoTime `json:"dateInactive,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateInactive strfmt.DateTime `json:"dateInactive,omitempty"`
 
-	// date modified
-	DateModified IsoTime `json:"dateModified,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateModified strfmt.DateTime `json:"dateModified,omitempty"`
 
-	// date state changed
-	DateStateChanged IsoTime `json:"dateStateChanged,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateStateChanged strfmt.DateTime `json:"dateStateChanged,omitempty"`
 
-	// date suspended
-	DateSuspended IsoTime `json:"dateSuspended,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateSuspended strfmt.DateTime `json:"dateSuspended,omitempty"`
 
-	// date upgraded
-	DateUpgraded IsoTime `json:"dateUpgraded,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DateUpgraded strfmt.DateTime `json:"dateUpgraded,omitempty"`
 
 	// discount
 	Discount float32 `json:"discount,omitempty"`
 
-	// end date
-	EndDate IsoTime `json:"endDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
 	// invoice fid
 	InvoiceFid string `json:"invoiceFid,omitempty"`
@@ -73,14 +73,14 @@ type SubscriptionAllOf1 struct {
 	// is paid
 	IsPaid bool `json:"isPaid,omitempty"`
 
-	// last renew date
-	LastRenewDate IsoTime `json:"lastRenewDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	LastRenewDate strfmt.DateTime `json:"lastRenewDate,omitempty"`
 
-	// next payment date
-	NextPaymentDate IsoTime `json:"nextPaymentDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	NextPaymentDate strfmt.DateTime `json:"nextPaymentDate,omitempty"`
 
-	// next renew date
-	NextRenewDate IsoTime `json:"nextRenewDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	NextRenewDate strfmt.DateTime `json:"nextRenewDate,omitempty"`
 
 	// next renewal amount
 	NextRenewalAmount float32 `json:"nextRenewalAmount,omitempty"`
@@ -88,14 +88,14 @@ type SubscriptionAllOf1 struct {
 	// paid renewals
 	PaidRenewals int32 `json:"paidRenewals,omitempty"`
 
-	// paid until
-	PaidUntil IsoTime `json:"paidUntil,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
 
 	// quantity
 	Quantity int32 `json:"quantity,omitempty"`
 
-	// renew date
-	RenewDate IsoTime `json:"renewDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	RenewDate strfmt.DateTime `json:"renewDate,omitempty"`
 
 	// renewal advance days
 	RenewalAdvanceDays int32 `json:"renewalAdvanceDays,omitempty"`
@@ -112,8 +112,8 @@ type SubscriptionAllOf1 struct {
 	// should suspend
 	ShouldSuspend bool `json:"shouldSuspend,omitempty"`
 
-	// start date
-	StartDate IsoTime `json:"startDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
 	// status
 	Status string `json:"status,omitempty"`
@@ -133,11 +133,11 @@ type SubscriptionAllOf1 struct {
 	// total renewals
 	TotalRenewals int32 `json:"totalRenewals,omitempty"`
 
-	// trial end date
-	TrialEndDate IsoTime `json:"trialEndDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	TrialEndDate strfmt.DateTime `json:"trialEndDate,omitempty"`
 
-	// trial start date
-	TrialStartDate IsoTime `json:"trialStartDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	TrialStartDate strfmt.DateTime `json:"trialStartDate,omitempty"`
 
 	// unique reference
 	UniqueReference string `json:"uniqueReference,omitempty"`

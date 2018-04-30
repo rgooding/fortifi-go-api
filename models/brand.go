@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Brand brand
+// Brand Brand
 // swagger:model Brand
 type Brand struct {
 

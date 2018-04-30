@@ -12,54 +12,54 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CardUpdatePayload card update payload
+// CardUpdatePayload Update card details
 // swagger:model CardUpdatePayload
 type CardUpdatePayload struct {
 
-	// address city
-	AddressCity CardAddressCity `json:"addressCity,omitempty"`
+	// City for the card
+	AddressCity string `json:"addressCity,omitempty"`
 
-	// address country
-	AddressCountry CardAddressCountry `json:"addressCountry,omitempty"`
+	// Country of the card
+	AddressCountry string `json:"addressCountry,omitempty"`
 
-	// address fid
-	AddressFid CardAddressFid `json:"addressFid,omitempty"`
+	// FID of an existing address to use with the card
+	AddressFid string `json:"addressFid,omitempty"`
 
-	// address line1
-	AddressLine1 CardAddressLine1 `json:"addressLine1,omitempty"`
+	// Address Line 1 of the card
+	AddressLine1 string `json:"addressLine1,omitempty"`
 
-	// address line2
-	AddressLine2 CardAddressLine2 `json:"addressLine2,omitempty"`
+	// Address Line 2 of the card
+	AddressLine2 string `json:"addressLine2,omitempty"`
 
-	// address line3
-	AddressLine3 CardAddressLine3 `json:"addressLine3,omitempty"`
+	// Address Line 3 of the card
+	AddressLine3 string `json:"addressLine3,omitempty"`
 
-	// address postal
-	AddressPostal CardAddressPostal `json:"addressPostal,omitempty"`
+	// Postal/Zip Code of the card
+	AddressPostal string `json:"addressPostal,omitempty"`
 
-	// address state
-	AddressState CardAddressState `json:"addressState,omitempty"`
+	// State/County of the card
+	AddressState string `json:"addressState,omitempty"`
 
 	// as default
 	AsDefault bool `json:"asDefault,omitempty"`
 
-	// card holder
-	CardHolder CardCardHolder `json:"cardHolder,omitempty"`
+	// Name as appears on card
+	CardHolder string `json:"cardHolder,omitempty"`
 
-	// expiry month
-	ExpiryMonth CardExpiryMonth `json:"expiryMonth,omitempty"`
+	// Expiration Month of the card
+	ExpiryMonth int32 `json:"expiryMonth,omitempty"`
 
-	// expiry year
-	ExpiryYear CardExpiryYear `json:"expiryYear,omitempty"`
+	// Expiration Year of the card
+	ExpiryYear int32 `json:"expiryYear,omitempty"`
 
-	// issue
-	Issue CardIssue `json:"issue,omitempty"`
+	// Issue number of the card
+	Issue int32 `json:"issue,omitempty"`
 
-	// start month
-	StartMonth CardStartMonth `json:"startMonth,omitempty"`
+	// Start Month of the card
+	StartMonth int32 `json:"startMonth,omitempty"`
 
-	// start year
-	StartYear CardStartYear `json:"startYear,omitempty"`
+	// Start Year of the card
+	StartYear int32 `json:"startYear,omitempty"`
 }
 
 // Validate validates this card update payload

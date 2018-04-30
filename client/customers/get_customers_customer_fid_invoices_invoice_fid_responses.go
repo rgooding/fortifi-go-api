@@ -40,7 +40,14 @@ func (o *GetCustomersCustomerFidInvoicesInvoiceFidReader) ReadResponse(response 
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetCustomersCustomerFidInvoicesInvoiceFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -90,6 +97,44 @@ func (o *GetCustomersCustomerFidInvoicesInvoiceFidNotFound) Error() string {
 }
 
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetCustomersCustomerFidInvoicesInvoiceFidDefault creates a GetCustomersCustomerFidInvoicesInvoiceFidDefault with default headers values
+func NewGetCustomersCustomerFidInvoicesInvoiceFidDefault(code int) *GetCustomersCustomerFidInvoicesInvoiceFidDefault {
+	return &GetCustomersCustomerFidInvoicesInvoiceFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetCustomersCustomerFidInvoicesInvoiceFidDefault handles this case with default header values.
+
+Error
+*/
+type GetCustomersCustomerFidInvoicesInvoiceFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get customers customer fid invoices invoice fid default response
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDefault) Error() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}][%d] GetCustomersCustomerFidInvoicesInvoiceFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

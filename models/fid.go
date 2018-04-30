@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// Fid fid
+// Fid Generic Response
 // swagger:model Fid
 type Fid struct {
 

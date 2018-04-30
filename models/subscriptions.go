@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Subscriptions subscriptions
+// Subscriptions Generic Response
 // swagger:model Subscriptions
 type Subscriptions struct {
 	Pagination

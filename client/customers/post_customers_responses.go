@@ -47,7 +47,14 @@ func (o *PostCustomersReader) ReadResponse(response runtime.ClientResponse, cons
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostCustomersDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -61,7 +68,7 @@ func NewPostCustomersOK() *PostCustomersOK {
 Customer Created
 */
 type PostCustomersOK struct {
-	Payload *models.Customer
+	Payload *models.PostCustomersOKBody
 }
 
 func (o *PostCustomersOK) Error() string {
@@ -70,7 +77,7 @@ func (o *PostCustomersOK) Error() string {
 
 func (o *PostCustomersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Customer)
+	o.Payload = new(models.PostCustomersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -113,16 +120,46 @@ The external reference has already been used to create a customer
 
 */
 type PostCustomersConflict struct {
-	Payload *models.Fid
 }
 
 func (o *PostCustomersConflict) Error() string {
-	return fmt.Sprintf("[POST /customers][%d] postCustomersConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[POST /customers][%d] postCustomersConflict ", 409)
 }
 
 func (o *PostCustomersConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	return nil
+}
+
+// NewPostCustomersDefault creates a PostCustomersDefault with default headers values
+func NewPostCustomersDefault(code int) *PostCustomersDefault {
+	return &PostCustomersDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostCustomersDefault handles this case with default header values.
+
+Error
+*/
+type PostCustomersDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post customers default response
+func (o *PostCustomersDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostCustomersDefault) Error() string {
+	return fmt.Sprintf("[POST /customers][%d] PostCustomers default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

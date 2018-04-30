@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VisitorReversalAction visitor reversal action
+// VisitorReversalAction Visitor Action Reversal
 // swagger:model VisitorReversalAction
 type VisitorReversalAction struct {
 

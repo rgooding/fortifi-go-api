@@ -40,7 +40,14 @@ func (o *PostPolymersReader) ReadResponse(response runtime.ClientResponse, consu
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostPolymersDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPostPolymersOK() *PostPolymersOK {
 Polymer created
 */
 type PostPolymersOK struct {
-	Payload *models.Fid
+	Payload *models.PostPolymersOKBody
 }
 
 func (o *PostPolymersOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PostPolymersOK) Error() string {
 
 func (o *PostPolymersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	o.Payload = new(models.PostPolymersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *PostPolymersBadRequest) Error() string {
 }
 
 func (o *PostPolymersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostPolymersDefault creates a PostPolymersDefault with default headers values
+func NewPostPolymersDefault(code int) *PostPolymersDefault {
+	return &PostPolymersDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostPolymersDefault handles this case with default header values.
+
+Error
+*/
+type PostPolymersDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post polymers default response
+func (o *PostPolymersDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostPolymersDefault) Error() string {
+	return fmt.Sprintf("[POST /polymers][%d] PostPolymers default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostPolymersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

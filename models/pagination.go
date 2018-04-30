@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Pagination pagination
+// Pagination Generic Response
 // swagger:model Pagination
 type Pagination struct {
 

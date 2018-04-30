@@ -47,7 +47,7 @@ func NewGetPayPublicKeyOK() *GetPayPublicKeyOK {
 RSA Public Key
 */
 type GetPayPublicKeyOK struct {
-	Payload *models.PubKey
+	Payload *models.GetPayPublicKeyOKBody
 }
 
 func (o *GetPayPublicKeyOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetPayPublicKeyOK) Error() string {
 
 func (o *GetPayPublicKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PubKey)
+	o.Payload = new(models.GetPayPublicKeyOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

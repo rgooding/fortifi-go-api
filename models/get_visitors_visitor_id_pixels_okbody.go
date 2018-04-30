@@ -6,8 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"strconv"
-
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -16,32 +14,81 @@ import (
 
 // GetVisitorsVisitorIDPixelsOKBody get visitors visitor Id pixels o k body
 // swagger:model getVisitorsVisitorIdPixelsOKBody
-type GetVisitorsVisitorIDPixelsOKBody []*AdvertiserPixel
+type GetVisitorsVisitorIDPixelsOKBody struct {
+	Envelope
+
+	GetVisitorsVisitorIDPixelsOKBodyAllOf1
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (m *GetVisitorsVisitorIDPixelsOKBody) UnmarshalJSON(raw []byte) error {
+
+	var aO0 Envelope
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	m.Envelope = aO0
+
+	var aO1 GetVisitorsVisitorIDPixelsOKBodyAllOf1
+	if err := swag.ReadJSON(raw, &aO1); err != nil {
+		return err
+	}
+	m.GetVisitorsVisitorIDPixelsOKBodyAllOf1 = aO1
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (m GetVisitorsVisitorIDPixelsOKBody) MarshalJSON() ([]byte, error) {
+	var _parts [][]byte
+
+	aO0, err := swag.WriteJSON(m.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+
+	aO1, err := swag.WriteJSON(m.GetVisitorsVisitorIDPixelsOKBodyAllOf1)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
 
 // Validate validates this get visitors visitor Id pixels o k body
-func (m GetVisitorsVisitorIDPixelsOKBody) Validate(formats strfmt.Registry) error {
+func (m *GetVisitorsVisitorIDPixelsOKBody) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	for i := 0; i < len(m); i++ {
+	if err := m.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
 
-		if swag.IsZero(m[i]) { // not required
-			continue
-		}
-
-		if m[i] != nil {
-
-			if err := m[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName(strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
+	if err := m.GetVisitorsVisitorIDPixelsOKBodyAllOf1.Validate(formats); err != nil {
+		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GetVisitorsVisitorIDPixelsOKBody) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GetVisitorsVisitorIDPixelsOKBody) UnmarshalBinary(b []byte) error {
+	var res GetVisitorsVisitorIDPixelsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
 	return nil
 }

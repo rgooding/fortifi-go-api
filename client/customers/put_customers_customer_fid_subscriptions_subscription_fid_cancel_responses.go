@@ -47,7 +47,14 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelReader) ReadRe
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -61,7 +68,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK() *PutCustom
 Subscription cancelled
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK struct {
-	Payload *models.Subscription
+	Payload *models.PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK) Error() string {
@@ -70,7 +77,7 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK) Error() st
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Subscription)
+	o.Payload = new(models.PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -118,6 +125,44 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelNotFound) Erro
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault creates a PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault with default headers values
+func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault(code int) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault {
+	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault handles this case with default header values.
+
+Error
+*/
+type PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put customers customer fid subscriptions subscription fid cancel default response
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/cancel][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Order order
+// Order Generic Response
 // swagger:model Order
 type Order struct {
 	Fid

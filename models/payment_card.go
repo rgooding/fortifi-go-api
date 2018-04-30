@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PaymentCard payment card
+// PaymentCard Generic Response
 // swagger:model PaymentCard
 type PaymentCard struct {
 	Entity

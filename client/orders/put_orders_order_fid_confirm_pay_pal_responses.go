@@ -40,7 +40,14 @@ func (o *PutOrdersOrderFidConfirmPayPalReader) ReadResponse(response runtime.Cli
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutOrdersOrderFidConfirmPayPalDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPutOrdersOrderFidConfirmPayPalOK() *PutOrdersOrderFidConfirmPayPalOK {
 Order confirmed and payment authroized
 */
 type PutOrdersOrderFidConfirmPayPalOK struct {
-	Payload *models.OrderConfirmation
+	Payload *models.PutOrdersOrderFidConfirmPayPalOKBody
 }
 
 func (o *PutOrdersOrderFidConfirmPayPalOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PutOrdersOrderFidConfirmPayPalOK) Error() string {
 
 func (o *PutOrdersOrderFidConfirmPayPalOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OrderConfirmation)
+	o.Payload = new(models.PutOrdersOrderFidConfirmPayPalOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *PutOrdersOrderFidConfirmPayPalServiceUnavailable) Error() string {
 }
 
 func (o *PutOrdersOrderFidConfirmPayPalServiceUnavailable) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutOrdersOrderFidConfirmPayPalDefault creates a PutOrdersOrderFidConfirmPayPalDefault with default headers values
+func NewPutOrdersOrderFidConfirmPayPalDefault(code int) *PutOrdersOrderFidConfirmPayPalDefault {
+	return &PutOrdersOrderFidConfirmPayPalDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutOrdersOrderFidConfirmPayPalDefault handles this case with default header values.
+
+Error
+*/
+type PutOrdersOrderFidConfirmPayPalDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put orders order fid confirm pay pal default response
+func (o *PutOrdersOrderFidConfirmPayPalDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutOrdersOrderFidConfirmPayPalDefault) Error() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] PutOrdersOrderFidConfirmPayPal default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmPayPalDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ModifySubscriptionPayload modify subscription payload
@@ -19,12 +20,12 @@ type ModifySubscriptionPayload struct {
 	// mode
 	Mode ModifySubscriptionMode `json:"mode,omitempty"`
 
-	// offer fid
-	OfferFid OfferFid `json:"offerFid,omitempty"`
+	// Price FID to modify subscription with
+	OfferFid string `json:"offerFid,omitempty"`
 
-	// price fid
+	// Price FID to modify subscription with
 	// Required: true
-	PriceFid PriceFid `json:"priceFid"`
+	PriceFid *string `json:"priceFid"`
 }
 
 // Validate validates this modify subscription payload
@@ -65,10 +66,7 @@ func (m *ModifySubscriptionPayload) validateMode(formats strfmt.Registry) error 
 
 func (m *ModifySubscriptionPayload) validatePriceFid(formats strfmt.Registry) error {
 
-	if err := m.PriceFid.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("priceFid")
-		}
+	if err := validate.Required("priceFid", "body", m.PriceFid); err != nil {
 		return err
 	}
 

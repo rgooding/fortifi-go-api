@@ -47,7 +47,7 @@ func NewPutOrdersOrderFidVerifyOK() *PutOrdersOrderFidVerifyOK {
 Order payment account verified
 */
 type PutOrdersOrderFidVerifyOK struct {
-	Payload *models.OrderVerification
+	Payload *models.PutOrdersOrderFidVerifyOKBody
 }
 
 func (o *PutOrdersOrderFidVerifyOK) Error() string {
@@ -56,7 +56,7 @@ func (o *PutOrdersOrderFidVerifyOK) Error() string {
 
 func (o *PutOrdersOrderFidVerifyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OrderVerification)
+	o.Payload = new(models.PutOrdersOrderFidVerifyOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

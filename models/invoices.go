@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Invoices invoices
+// Invoices Generic Response
 // swagger:model Invoices
 type Invoices struct {
 	Pagination

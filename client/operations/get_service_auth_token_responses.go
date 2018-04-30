@@ -47,7 +47,7 @@ func NewGetServiceAuthTokenOK() *GetServiceAuthTokenOK {
 Token
 */
 type GetServiceAuthTokenOK struct {
-	Payload *models.AuthTokenResponse
+	Payload *models.GetServiceAuthTokenOKBody
 }
 
 func (o *GetServiceAuthTokenOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetServiceAuthTokenOK) Error() string {
 
 func (o *GetServiceAuthTokenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AuthTokenResponse)
+	o.Payload = new(models.GetServiceAuthTokenOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

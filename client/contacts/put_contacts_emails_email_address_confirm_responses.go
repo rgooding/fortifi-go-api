@@ -7,10 +7,13 @@ package contacts
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutContactsEmailsEmailAddressConfirmReader is a Reader for the PutContactsEmailsEmailAddressConfirm structure.
@@ -37,7 +40,14 @@ func (o *PutContactsEmailsEmailAddressConfirmReader) ReadResponse(response runti
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutContactsEmailsEmailAddressConfirmDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutContactsEmailsEmailAddressConfirmNotFound) Error() string {
 }
 
 func (o *PutContactsEmailsEmailAddressConfirmNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutContactsEmailsEmailAddressConfirmDefault creates a PutContactsEmailsEmailAddressConfirmDefault with default headers values
+func NewPutContactsEmailsEmailAddressConfirmDefault(code int) *PutContactsEmailsEmailAddressConfirmDefault {
+	return &PutContactsEmailsEmailAddressConfirmDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutContactsEmailsEmailAddressConfirmDefault handles this case with default header values.
+
+Error
+*/
+type PutContactsEmailsEmailAddressConfirmDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put contacts emails email address confirm default response
+func (o *PutContactsEmailsEmailAddressConfirmDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutContactsEmailsEmailAddressConfirmDefault) Error() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/confirm][%d] PutContactsEmailsEmailAddressConfirm default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutContactsEmailsEmailAddressConfirmDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

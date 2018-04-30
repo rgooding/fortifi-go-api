@@ -7,10 +7,13 @@ package operations
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PostCustomersCustomerFidEmailsReader is a Reader for the PostCustomersCustomerFidEmails structure.
@@ -37,7 +40,14 @@ func (o *PostCustomersCustomerFidEmailsReader) ReadResponse(response runtime.Cli
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostCustomersCustomerFidEmailsDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PostCustomersCustomerFidEmailsNotFound) Error() string {
 }
 
 func (o *PostCustomersCustomerFidEmailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostCustomersCustomerFidEmailsDefault creates a PostCustomersCustomerFidEmailsDefault with default headers values
+func NewPostCustomersCustomerFidEmailsDefault(code int) *PostCustomersCustomerFidEmailsDefault {
+	return &PostCustomersCustomerFidEmailsDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostCustomersCustomerFidEmailsDefault handles this case with default header values.
+
+Error
+*/
+type PostCustomersCustomerFidEmailsDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post customers customer fid emails default response
+func (o *PostCustomersCustomerFidEmailsDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostCustomersCustomerFidEmailsDefault) Error() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/emails][%d] PostCustomersCustomerFidEmails default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidEmailsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

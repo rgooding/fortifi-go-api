@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PropertyFlagPayload property flag payload
+// PropertyFlagPayload Flag Property
 // swagger:model PropertyFlagPayload
 type PropertyFlagPayload struct {
 

@@ -7,10 +7,13 @@ package customers
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidAccountTypeReader is a Reader for the PutCustomersCustomerFidAccountType structure.
@@ -37,7 +40,14 @@ func (o *PutCustomersCustomerFidAccountTypeReader) ReadResponse(response runtime
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutCustomersCustomerFidAccountTypeDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutCustomersCustomerFidAccountTypeNotFound) Error() string {
 }
 
 func (o *PutCustomersCustomerFidAccountTypeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutCustomersCustomerFidAccountTypeDefault creates a PutCustomersCustomerFidAccountTypeDefault with default headers values
+func NewPutCustomersCustomerFidAccountTypeDefault(code int) *PutCustomersCustomerFidAccountTypeDefault {
+	return &PutCustomersCustomerFidAccountTypeDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutCustomersCustomerFidAccountTypeDefault handles this case with default header values.
+
+Error
+*/
+type PutCustomersCustomerFidAccountTypeDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put customers customer fid account type default response
+func (o *PutCustomersCustomerFidAccountTypeDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutCustomersCustomerFidAccountTypeDefault) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/accountType][%d] PutCustomersCustomerFidAccountType default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidAccountTypeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

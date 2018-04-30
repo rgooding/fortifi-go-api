@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ConfigItems config items
+// ConfigItems Generic Response
 // swagger:model ConfigItems
 type ConfigItems struct {
 

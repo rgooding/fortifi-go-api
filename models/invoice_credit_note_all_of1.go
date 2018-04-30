@@ -22,8 +22,8 @@ type InvoiceCreditNoteAllOf1 struct {
 	// charge request fid
 	ChargeRequestFid string `json:"chargeRequestFid,omitempty"`
 
-	// credit date
-	CreditDate IsoTime `json:"creditDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	CreditDate strfmt.DateTime `json:"creditDate,omitempty"`
 
 	// currency
 	Currency string `json:"currency,omitempty"`

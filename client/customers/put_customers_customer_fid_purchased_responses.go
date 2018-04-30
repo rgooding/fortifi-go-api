@@ -7,10 +7,13 @@ package customers
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidPurchasedReader is a Reader for the PutCustomersCustomerFidPurchased structure.
@@ -37,7 +40,14 @@ func (o *PutCustomersCustomerFidPurchasedReader) ReadResponse(response runtime.C
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutCustomersCustomerFidPurchasedDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutCustomersCustomerFidPurchasedNotFound) Error() string {
 }
 
 func (o *PutCustomersCustomerFidPurchasedNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutCustomersCustomerFidPurchasedDefault creates a PutCustomersCustomerFidPurchasedDefault with default headers values
+func NewPutCustomersCustomerFidPurchasedDefault(code int) *PutCustomersCustomerFidPurchasedDefault {
+	return &PutCustomersCustomerFidPurchasedDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutCustomersCustomerFidPurchasedDefault handles this case with default header values.
+
+Error
+*/
+type PutCustomersCustomerFidPurchasedDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put customers customer fid purchased default response
+func (o *PutCustomersCustomerFidPurchasedDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutCustomersCustomerFidPurchasedDefault) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/purchased][%d] PutCustomersCustomerFidPurchased default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidPurchasedDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

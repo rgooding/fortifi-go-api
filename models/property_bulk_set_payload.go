@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PropertyBulkSetPayload property bulk set payload
+// PropertyBulkSetPayload Set Many Properties
 // swagger:model PropertyBulkSetPayload
 type PropertyBulkSetPayload struct {
 

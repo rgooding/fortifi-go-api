@@ -16,20 +16,20 @@ import (
 // swagger:model CreateOrderPayload
 type CreateOrderPayload struct {
 
-	// brand fid
-	BrandFid BrandFid `json:"brandFid,omitempty"`
+	// FID of a valid Brand
+	BrandFid string `json:"brandFid,omitempty"`
 
-	// client Ip
-	ClientIP ClientIP `json:"clientIp,omitempty"`
+	// IP Address of the visitor
+	ClientIP string `json:"clientIp,omitempty"`
 
-	// customer fid
-	CustomerFid CustomerFid `json:"customerFid,omitempty"`
+	// FID for the customer placing the order
+	CustomerFid string `json:"customerFid,omitempty"`
 
 	// Offer FIDs to apply to the order
 	OfferFids []string `json:"offerFids"`
 
-	// payment account fid
-	PaymentAccountFid PaymentAccountFid `json:"paymentAccountFid,omitempty"`
+	// FID for the payment account you wish to charge the customer through
+	PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 
 	// Product price FIDs to add
 	ProductPriceFids []string `json:"productPriceFids"`
@@ -37,8 +37,8 @@ type CreateOrderPayload struct {
 	// type
 	Type CreateOrderType `json:"type,omitempty"`
 
-	// user agent
-	UserAgent UserAgent `json:"userAgent,omitempty"`
+	// User Agent of the visitors browser 'HTTP_USER_AGENT'
+	UserAgent string `json:"userAgent,omitempty"`
 }
 
 // Validate validates this create order payload

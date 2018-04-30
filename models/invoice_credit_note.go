@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InvoiceCreditNote invoice credit note
+// InvoiceCreditNote Generic Response
 // swagger:model InvoiceCreditNote
 type InvoiceCreditNote struct {
 	Entity

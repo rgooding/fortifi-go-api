@@ -10,19 +10,20 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAdvertiserCampaignPayload Payload for creating an advertiser campaign
 // swagger:model CreateAdvertiserCampaignPayload
 type CreateAdvertiserCampaignPayload struct {
 
-	// brand fid
+	// FID of a valid Brand
 	// Required: true
-	BrandFid BrandFid `json:"brandFid"`
+	BrandFid *string `json:"brandFid"`
 
-	// display name
+	// Visible Display Name
 	// Required: true
-	DisplayName DisplayName `json:"displayName"`
+	DisplayName *string `json:"displayName"`
 }
 
 // Validate validates this create advertiser campaign payload
@@ -47,10 +48,7 @@ func (m *CreateAdvertiserCampaignPayload) Validate(formats strfmt.Registry) erro
 
 func (m *CreateAdvertiserCampaignPayload) validateBrandFid(formats strfmt.Registry) error {
 
-	if err := m.BrandFid.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("brandFid")
-		}
+	if err := validate.Required("brandFid", "body", m.BrandFid); err != nil {
 		return err
 	}
 
@@ -59,10 +57,7 @@ func (m *CreateAdvertiserCampaignPayload) validateBrandFid(formats strfmt.Regist
 
 func (m *CreateAdvertiserCampaignPayload) validateDisplayName(formats strfmt.Registry) error {
 
-	if err := m.DisplayName.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("displayName")
-		}
+	if err := validate.Required("displayName", "body", m.DisplayName); err != nil {
 		return err
 	}
 

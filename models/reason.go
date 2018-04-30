@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Reason reason
+// Reason Reason
 // swagger:model Reason
 type Reason struct {
 	Entity

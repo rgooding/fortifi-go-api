@@ -31,11 +31,11 @@ type InvoiceAllOf1 struct {
 	// discount amount
 	DiscountAmount float32 `json:"discountAmount,omitempty"`
 
-	// due date
-	DueDate IsoTime `json:"dueDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	DueDate strfmt.DateTime `json:"dueDate,omitempty"`
 
-	// invoice date
-	InvoiceDate IsoTime `json:"invoiceDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
 	// invoice items
 	InvoiceItems InvoiceAllOf1InvoiceItems `json:"invoiceItems"`
@@ -49,8 +49,8 @@ type InvoiceAllOf1 struct {
 	// outstanding amount
 	OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
 
-	// payment date
-	PaymentDate IsoTime `json:"paymentDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	PaymentDate strfmt.DateTime `json:"paymentDate,omitempty"`
 
 	// refund amount
 	RefundAmount float32 `json:"refundAmount,omitempty"`

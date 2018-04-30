@@ -28,8 +28,8 @@ type ProductOfferAllOf1 struct {
 	// discount type
 	DiscountType DiscountType `json:"discountType,omitempty"`
 
-	// expiry time
-	ExpiryTime IsoTime `json:"expiryTime,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	ExpiryTime strfmt.DateTime `json:"expiryTime,omitempty"`
 
 	// max usages
 	MaxUsages int32 `json:"maxUsages,omitempty"`

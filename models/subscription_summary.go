@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// SubscriptionSummary subscription summary
+// SubscriptionSummary Generic Response
 // swagger:model SubscriptionSummary
 type SubscriptionSummary struct {
 	Entity

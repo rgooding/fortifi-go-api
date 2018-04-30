@@ -47,7 +47,7 @@ func NewGetEntitiesEntityFidPropertiesValuesPropertyNameOK() *GetEntitiesEntityF
 Property Value
 */
 type GetEntitiesEntityFidPropertiesValuesPropertyNameOK struct {
-	Payload *models.PropertyValue
+	Payload *models.GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody
 }
 
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) Error() string {
 
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PropertyValue)
+	o.Payload = new(models.GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

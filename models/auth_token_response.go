@@ -15,17 +15,41 @@ import (
 // AuthTokenResponse Authentication token used to access services
 // swagger:model AuthTokenResponse
 type AuthTokenResponse struct {
+	AuthToken
+}
 
-	// expiry
-	Expiry int64 `json:"expiry,omitempty"`
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (m *AuthTokenResponse) UnmarshalJSON(raw []byte) error {
 
-	// token
-	Token string `json:"token,omitempty"`
+	var aO0 AuthToken
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	m.AuthToken = aO0
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (m AuthTokenResponse) MarshalJSON() ([]byte, error) {
+	var _parts [][]byte
+
+	aO0, err := swag.WriteJSON(m.AuthToken)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+
+	return swag.ConcatJSON(_parts...), nil
 }
 
 // Validate validates this auth token response
 func (m *AuthTokenResponse) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.AuthToken.Validate(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

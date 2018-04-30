@@ -40,7 +40,14 @@ func (o *PostAdvertisersAdvertiserFidCampaignsReader) ReadResponse(response runt
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostAdvertisersAdvertiserFidCampaignsDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPostAdvertisersAdvertiserFidCampaignsOK() *PostAdvertisersAdvertiserFidC
 Campaign Created
 */
 type PostAdvertisersAdvertiserFidCampaignsOK struct {
-	Payload *models.Fid
+	Payload *models.PostAdvertisersAdvertiserFidCampaignsOKBody
 }
 
 func (o *PostAdvertisersAdvertiserFidCampaignsOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PostAdvertisersAdvertiserFidCampaignsOK) Error() string {
 
 func (o *PostAdvertisersAdvertiserFidCampaignsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	o.Payload = new(models.PostAdvertisersAdvertiserFidCampaignsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -81,7 +88,6 @@ func NewPostAdvertisersAdvertiserFidCampaignsBadRequest() *PostAdvertisersAdvert
 /*PostAdvertisersAdvertiserFidCampaignsBadRequest handles this case with default header values.
 
 Invalid data supplied
-
 */
 type PostAdvertisersAdvertiserFidCampaignsBadRequest struct {
 }
@@ -91,6 +97,44 @@ func (o *PostAdvertisersAdvertiserFidCampaignsBadRequest) Error() string {
 }
 
 func (o *PostAdvertisersAdvertiserFidCampaignsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostAdvertisersAdvertiserFidCampaignsDefault creates a PostAdvertisersAdvertiserFidCampaignsDefault with default headers values
+func NewPostAdvertisersAdvertiserFidCampaignsDefault(code int) *PostAdvertisersAdvertiserFidCampaignsDefault {
+	return &PostAdvertisersAdvertiserFidCampaignsDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostAdvertisersAdvertiserFidCampaignsDefault handles this case with default header values.
+
+Error
+*/
+type PostAdvertisersAdvertiserFidCampaignsDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post advertisers advertiser fid campaigns default response
+func (o *PostAdvertisersAdvertiserFidCampaignsDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostAdvertisersAdvertiserFidCampaignsDefault) Error() string {
+	return fmt.Sprintf("[POST /advertisers/{advertiserFid}/campaigns][%d] PostAdvertisersAdvertiserFidCampaigns default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostAdvertisersAdvertiserFidCampaignsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

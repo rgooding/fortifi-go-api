@@ -47,7 +47,14 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteReader) ReadRespons
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -61,7 +68,7 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK() *PostCustomersC
 Credit Note Added
 */
 type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK struct {
-	Payload *models.InvoiceCreditNote
+	Payload *models.PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
 }
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string {
@@ -70,7 +77,7 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string 
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.InvoiceCreditNote)
+	o.Payload = new(models.PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -118,6 +125,44 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteNotFound) Error() s
 }
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault creates a PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault with default headers values
+func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault(code int) *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault {
+	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault handles this case with default header values.
+
+Error
+*/
+type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post customers customer fid invoices invoice fid credit note default response
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Error() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] PostCustomersCustomerFidInvoicesInvoiceFidCreditNote default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

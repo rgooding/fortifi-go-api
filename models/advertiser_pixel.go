@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// AdvertiserPixel advertiser pixel
+// AdvertiserPixel Pixel
 // swagger:model AdvertiserPixel
 type AdvertiserPixel struct {
 

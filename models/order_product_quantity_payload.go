@@ -10,15 +10,16 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OrderProductQuantityPayload order product quantity payload
 // swagger:model OrderProductQuantityPayload
 type OrderProductQuantityPayload struct {
 
-	// price fid
+	// Price FID to modify subscription with
 	// Required: true
-	PriceFid PriceFid `json:"priceFid"`
+	PriceFid *string `json:"priceFid"`
 
 	// quantity
 	Quantity *int64 `json:"quantity,omitempty"`
@@ -41,10 +42,7 @@ func (m *OrderProductQuantityPayload) Validate(formats strfmt.Registry) error {
 
 func (m *OrderProductQuantityPayload) validatePriceFid(formats strfmt.Registry) error {
 
-	if err := m.PriceFid.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("priceFid")
-		}
+	if err := validate.Required("priceFid", "body", m.PriceFid); err != nil {
 		return err
 	}
 

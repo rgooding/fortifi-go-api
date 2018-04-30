@@ -47,7 +47,7 @@ func NewPutOrdersOrderFidCancelOK() *PutOrdersOrderFidCancelOK {
 Order cancelled
 */
 type PutOrdersOrderFidCancelOK struct {
-	Payload *models.BoolMessage
+	Payload *models.PutOrdersOrderFidCancelOKBody
 }
 
 func (o *PutOrdersOrderFidCancelOK) Error() string {
@@ -56,7 +56,7 @@ func (o *PutOrdersOrderFidCancelOK) Error() string {
 
 func (o *PutOrdersOrderFidCancelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BoolMessage)
+	o.Payload = new(models.PutOrdersOrderFidCancelOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

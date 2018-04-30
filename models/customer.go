@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Customer customer
+// Customer Customer
 // swagger:model Customer
 type Customer struct {
 	Fid

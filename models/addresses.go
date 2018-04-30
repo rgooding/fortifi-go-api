@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Addresses addresses
+// Addresses Generic Response
 // swagger:model Addresses
 type Addresses struct {
 

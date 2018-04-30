@@ -40,7 +40,14 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseReader) ReadRespo
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK() *PostCustomer
 Redirect instructions
 */
 type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK struct {
-	Payload *models.PaypalInit
+	Payload *models.PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody
 }
 
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) Error() strin
 
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PaypalInit)
+	o.Payload = new(models.PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseNotImplemented) E
 }
 
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault creates a PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault with default headers values
+func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault(code int) *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault {
+	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault handles this case with default header values.
+
+Error
+*/
+type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post customers customer fid payment methods paypal initialise default response
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) Error() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] PostCustomersCustomerFidPaymentMethodsPaypalInitialise default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

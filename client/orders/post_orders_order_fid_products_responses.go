@@ -47,7 +47,7 @@ func NewPostOrdersOrderFidProductsOK() *PostOrdersOrderFidProductsOK {
 Product added to the order successfully
 */
 type PostOrdersOrderFidProductsOK struct {
-	Payload *models.OrderAddProducts
+	Payload *models.PostOrdersOrderFidProductsOKBody
 }
 
 func (o *PostOrdersOrderFidProductsOK) Error() string {
@@ -56,7 +56,7 @@ func (o *PostOrdersOrderFidProductsOK) Error() string {
 
 func (o *PostOrdersOrderFidProductsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OrderAddProducts)
+	o.Payload = new(models.PostOrdersOrderFidProductsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

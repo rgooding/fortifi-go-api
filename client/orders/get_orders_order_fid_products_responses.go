@@ -40,7 +40,14 @@ func (o *GetOrdersOrderFidProductsReader) ReadResponse(response runtime.ClientRe
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetOrdersOrderFidProductsDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetOrdersOrderFidProductsOK() *GetOrdersOrderFidProductsOK {
 List of order products
 */
 type GetOrdersOrderFidProductsOK struct {
-	Payload *models.OrderProducts
+	Payload *models.GetOrdersOrderFidProductsOKBody
 }
 
 func (o *GetOrdersOrderFidProductsOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetOrdersOrderFidProductsOK) Error() string {
 
 func (o *GetOrdersOrderFidProductsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OrderProducts)
+	o.Payload = new(models.GetOrdersOrderFidProductsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetOrdersOrderFidProductsNotFound) Error() string {
 }
 
 func (o *GetOrdersOrderFidProductsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetOrdersOrderFidProductsDefault creates a GetOrdersOrderFidProductsDefault with default headers values
+func NewGetOrdersOrderFidProductsDefault(code int) *GetOrdersOrderFidProductsDefault {
+	return &GetOrdersOrderFidProductsDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetOrdersOrderFidProductsDefault handles this case with default header values.
+
+Error
+*/
+type GetOrdersOrderFidProductsDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get orders order fid products default response
+func (o *GetOrdersOrderFidProductsDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetOrdersOrderFidProductsDefault) Error() string {
+	return fmt.Sprintf("[GET /orders/{orderFid}/products][%d] GetOrdersOrderFidProducts default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetOrdersOrderFidProductsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

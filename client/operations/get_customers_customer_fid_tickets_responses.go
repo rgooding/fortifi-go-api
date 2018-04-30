@@ -47,7 +47,7 @@ func NewGetCustomersCustomerFidTicketsOK() *GetCustomersCustomerFidTicketsOK {
 Ticket collection
 */
 type GetCustomersCustomerFidTicketsOK struct {
-	Payload *models.Tickets
+	Payload *models.GetCustomersCustomerFidTicketsOKBody
 }
 
 func (o *GetCustomersCustomerFidTicketsOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetCustomersCustomerFidTicketsOK) Error() string {
 
 func (o *GetCustomersCustomerFidTicketsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Tickets)
+	o.Payload = new(models.GetCustomersCustomerFidTicketsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

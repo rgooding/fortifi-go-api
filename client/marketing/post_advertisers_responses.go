@@ -40,7 +40,14 @@ func (o *PostAdvertisersReader) ReadResponse(response runtime.ClientResponse, co
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPostAdvertisersDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewPostAdvertisersOK() *PostAdvertisersOK {
 Advertiser Created
 */
 type PostAdvertisersOK struct {
-	Payload *models.Fid
+	Payload *models.PostAdvertisersOKBody
 }
 
 func (o *PostAdvertisersOK) Error() string {
@@ -63,7 +70,7 @@ func (o *PostAdvertisersOK) Error() string {
 
 func (o *PostAdvertisersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	o.Payload = new(models.PostAdvertisersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -91,6 +98,44 @@ func (o *PostAdvertisersBadRequest) Error() string {
 }
 
 func (o *PostAdvertisersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPostAdvertisersDefault creates a PostAdvertisersDefault with default headers values
+func NewPostAdvertisersDefault(code int) *PostAdvertisersDefault {
+	return &PostAdvertisersDefault{
+		_statusCode: code,
+	}
+}
+
+/*PostAdvertisersDefault handles this case with default header values.
+
+Error
+*/
+type PostAdvertisersDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the post advertisers default response
+func (o *PostAdvertisersDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PostAdvertisersDefault) Error() string {
+	return fmt.Sprintf("[POST /advertisers][%d] PostAdvertisers default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostAdvertisersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

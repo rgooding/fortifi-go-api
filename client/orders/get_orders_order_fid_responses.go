@@ -40,7 +40,14 @@ func (o *GetOrdersOrderFidReader) ReadResponse(response runtime.ClientResponse, 
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetOrdersOrderFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetOrdersOrderFidOK() *GetOrdersOrderFidOK {
 Order retrieved
 */
 type GetOrdersOrderFidOK struct {
-	Payload *models.Order
+	Payload *models.GetOrdersOrderFidOKBody
 }
 
 func (o *GetOrdersOrderFidOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetOrdersOrderFidOK) Error() string {
 
 func (o *GetOrdersOrderFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Order)
+	o.Payload = new(models.GetOrdersOrderFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetOrdersOrderFidNotFound) Error() string {
 }
 
 func (o *GetOrdersOrderFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetOrdersOrderFidDefault creates a GetOrdersOrderFidDefault with default headers values
+func NewGetOrdersOrderFidDefault(code int) *GetOrdersOrderFidDefault {
+	return &GetOrdersOrderFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetOrdersOrderFidDefault handles this case with default header values.
+
+Error
+*/
+type GetOrdersOrderFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get orders order fid default response
+func (o *GetOrdersOrderFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetOrdersOrderFidDefault) Error() string {
+	return fmt.Sprintf("[GET /orders/{orderFid}][%d] GetOrdersOrderFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetOrdersOrderFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

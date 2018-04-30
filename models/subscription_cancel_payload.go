@@ -16,8 +16,8 @@ import (
 // swagger:model SubscriptionCancelPayload
 type SubscriptionCancelPayload struct {
 
-	// reason fid
-	ReasonFid ReasonFid `json:"reasonFid,omitempty"`
+	// Reason FID
+	ReasonFid string `json:"reasonFid,omitempty"`
 
 	// subscription refund type
 	// Required: true

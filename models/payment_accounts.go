@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PaymentAccounts payment accounts
+// PaymentAccounts Generic Response
 // swagger:model PaymentAccounts
 type PaymentAccounts struct {
 

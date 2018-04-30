@@ -47,7 +47,14 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -61,7 +68,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 Parent subscription set
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK struct {
-	Payload *models.Fid
+	Payload *models.PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) Error() string {
@@ -70,7 +77,7 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Fid)
+	o.Payload = new(models.PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -118,6 +125,44 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault creates a PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault with default headers values
+func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault(code int) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault {
+	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault handles this case with default header values.
+
+Error
+*/
+type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put customers customer fid subscriptions subscription fid set parent subscription default response
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

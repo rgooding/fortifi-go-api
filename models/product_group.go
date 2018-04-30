@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ProductGroup product group
+// ProductGroup Generic Response
 // swagger:model ProductGroup
 type ProductGroup struct {
 	Entity

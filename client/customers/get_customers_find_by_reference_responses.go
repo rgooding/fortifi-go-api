@@ -40,7 +40,14 @@ func (o *GetCustomersFindByReferenceReader) ReadResponse(response runtime.Client
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetCustomersFindByReferenceDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetCustomersFindByReferenceOK() *GetCustomersFindByReferenceOK {
 Located Customer
 */
 type GetCustomersFindByReferenceOK struct {
-	Payload *models.Customer
+	Payload *models.GetCustomersFindByReferenceOKBody
 }
 
 func (o *GetCustomersFindByReferenceOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetCustomersFindByReferenceOK) Error() string {
 
 func (o *GetCustomersFindByReferenceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Customer)
+	o.Payload = new(models.GetCustomersFindByReferenceOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetCustomersFindByReferenceNotFound) Error() string {
 }
 
 func (o *GetCustomersFindByReferenceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetCustomersFindByReferenceDefault creates a GetCustomersFindByReferenceDefault with default headers values
+func NewGetCustomersFindByReferenceDefault(code int) *GetCustomersFindByReferenceDefault {
+	return &GetCustomersFindByReferenceDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetCustomersFindByReferenceDefault handles this case with default header values.
+
+Error
+*/
+type GetCustomersFindByReferenceDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get customers find by reference default response
+func (o *GetCustomersFindByReferenceDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetCustomersFindByReferenceDefault) Error() string {
+	return fmt.Sprintf("[GET /customers/findByReference][%d] GetCustomersFindByReference default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersFindByReferenceDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

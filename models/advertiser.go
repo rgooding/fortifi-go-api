@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Advertiser advertiser
+// Advertiser Advertiser
 // swagger:model Advertiser
 type Advertiser struct {
-	Fid
+	Entity
 
 	AdvertiserAllOf1
 }
@@ -23,11 +23,11 @@ type Advertiser struct {
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *Advertiser) UnmarshalJSON(raw []byte) error {
 
-	var aO0 Fid
+	var aO0 Entity
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
-	m.Fid = aO0
+	m.Entity = aO0
 
 	var aO1 AdvertiserAllOf1
 	if err := swag.ReadJSON(raw, &aO1); err != nil {
@@ -42,7 +42,7 @@ func (m *Advertiser) UnmarshalJSON(raw []byte) error {
 func (m Advertiser) MarshalJSON() ([]byte, error) {
 	var _parts [][]byte
 
-	aO0, err := swag.WriteJSON(m.Fid)
+	aO0, err := swag.WriteJSON(m.Entity)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func (m Advertiser) MarshalJSON() ([]byte, error) {
 func (m *Advertiser) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.Fid.Validate(formats); err != nil {
+	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

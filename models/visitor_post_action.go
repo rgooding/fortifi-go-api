@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VisitorPostAction visitor post action
+// VisitorPostAction Vistor Action
 // swagger:model VisitorPostAction
 type VisitorPostAction struct {
 

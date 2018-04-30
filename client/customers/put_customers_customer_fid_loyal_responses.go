@@ -7,10 +7,13 @@ package customers
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidLoyalReader is a Reader for the PutCustomersCustomerFidLoyal structure.
@@ -37,7 +40,14 @@ func (o *PutCustomersCustomerFidLoyalReader) ReadResponse(response runtime.Clien
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewPutCustomersCustomerFidLoyalDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -79,6 +89,44 @@ func (o *PutCustomersCustomerFidLoyalNotFound) Error() string {
 }
 
 func (o *PutCustomersCustomerFidLoyalNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPutCustomersCustomerFidLoyalDefault creates a PutCustomersCustomerFidLoyalDefault with default headers values
+func NewPutCustomersCustomerFidLoyalDefault(code int) *PutCustomersCustomerFidLoyalDefault {
+	return &PutCustomersCustomerFidLoyalDefault{
+		_statusCode: code,
+	}
+}
+
+/*PutCustomersCustomerFidLoyalDefault handles this case with default header values.
+
+Error
+*/
+type PutCustomersCustomerFidLoyalDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the put customers customer fid loyal default response
+func (o *PutCustomersCustomerFidLoyalDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *PutCustomersCustomerFidLoyalDefault) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/loyal][%d] PutCustomersCustomerFidLoyal default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidLoyalDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

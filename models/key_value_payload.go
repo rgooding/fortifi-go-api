@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// KeyValuePayload key value payload
+// KeyValuePayload Key Value Payload
 // swagger:model keyValuePayload
 type KeyValuePayload struct {
 

@@ -22,17 +22,17 @@ type SubscriptionSummaryAllOf1 struct {
 	// cycle
 	Cycle string `json:"cycle,omitempty"`
 
-	// last renewed
-	LastRenewed IsoTime `json:"lastRenewed,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	LastRenewed strfmt.DateTime `json:"lastRenewed,omitempty"`
 
-	// paid until
-	PaidUntil IsoTime `json:"paidUntil,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
 
 	// product fid
 	ProductFid string `json:"productFid,omitempty"`
 
-	// renewal date
-	RenewalDate IsoTime `json:"renewalDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
 
 	// renewal price
 	RenewalPrice float32 `json:"renewalPrice,omitempty"`

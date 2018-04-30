@@ -16,8 +16,8 @@ import (
 // swagger:model reasonAllOf1
 type ReasonAllOf1 struct {
 
-	// group fid
-	GroupFid ReasonGroupFid `json:"groupFid,omitempty"`
+	// FID for the reason group
+	GroupFid string `json:"groupFid,omitempty"`
 
 	// used count
 	UsedCount int64 `json:"usedCount,omitempty"`

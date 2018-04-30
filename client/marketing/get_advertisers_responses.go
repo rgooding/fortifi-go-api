@@ -47,7 +47,7 @@ func NewGetAdvertisersOK() *GetAdvertisersOK {
 List of advertisers
 */
 type GetAdvertisersOK struct {
-	Payload *models.Advertisers
+	Payload *models.GetAdvertisersOKBody
 }
 
 func (o *GetAdvertisersOK) Error() string {
@@ -56,7 +56,7 @@ func (o *GetAdvertisersOK) Error() string {
 
 func (o *GetAdvertisersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Advertisers)
+	o.Payload = new(models.GetAdvertisersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

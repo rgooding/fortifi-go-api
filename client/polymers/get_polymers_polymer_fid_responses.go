@@ -40,7 +40,14 @@ func (o *GetPolymersPolymerFidReader) ReadResponse(response runtime.ClientRespon
 		return nil, result
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		result := NewGetPolymersPolymerFidDefault(response.Code())
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		if response.Code()/100 == 2 {
+			return result, nil
+		}
+		return nil, result
 	}
 }
 
@@ -54,7 +61,7 @@ func NewGetPolymersPolymerFidOK() *GetPolymersPolymerFidOK {
 Polymer Information
 */
 type GetPolymersPolymerFidOK struct {
-	Payload *models.Entity
+	Payload *models.GetPolymersPolymerFidOKBody
 }
 
 func (o *GetPolymersPolymerFidOK) Error() string {
@@ -63,7 +70,7 @@ func (o *GetPolymersPolymerFidOK) Error() string {
 
 func (o *GetPolymersPolymerFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Entity)
+	o.Payload = new(models.GetPolymersPolymerFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -90,6 +97,44 @@ func (o *GetPolymersPolymerFidNotFound) Error() string {
 }
 
 func (o *GetPolymersPolymerFidNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetPolymersPolymerFidDefault creates a GetPolymersPolymerFidDefault with default headers values
+func NewGetPolymersPolymerFidDefault(code int) *GetPolymersPolymerFidDefault {
+	return &GetPolymersPolymerFidDefault{
+		_statusCode: code,
+	}
+}
+
+/*GetPolymersPolymerFidDefault handles this case with default header values.
+
+Error
+*/
+type GetPolymersPolymerFidDefault struct {
+	_statusCode int
+
+	Payload *models.Envelope
+}
+
+// Code gets the status code for the get polymers polymer fid default response
+func (o *GetPolymersPolymerFidDefault) Code() int {
+	return o._statusCode
+}
+
+func (o *GetPolymersPolymerFidDefault) Error() string {
+	return fmt.Sprintf("[GET /polymers/{polymerFid}][%d] GetPolymersPolymerFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetPolymersPolymerFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Envelope)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
