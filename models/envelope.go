@@ -17,6 +17,10 @@ import (
 // swagger:model Envelope
 type Envelope struct {
 
+	// data
+	// Required: true
+	Data interface{} `json:"data"`
+
 	// meta
 	// Required: true
 	Meta *EnvelopeMeta `json:"meta"`
@@ -26,6 +30,11 @@ type Envelope struct {
 func (m *Envelope) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateData(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
 	if err := m.validateMeta(formats); err != nil {
 		// prop
 		res = append(res, err)
@@ -34,6 +43,11 @@ func (m *Envelope) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Envelope) validateData(formats strfmt.Registry) error {
+
 	return nil
 }
 
