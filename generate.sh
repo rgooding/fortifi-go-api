@@ -14,5 +14,6 @@ rm -f swagger.yaml
 wget "https://api.fortifi.io/swagger.yaml"
 
 # Generate new models & client from spec
+rm -rf client models
 echo -e "\033[4mGenerating fortifi API from Swagger spec...\033[0m"
 (swagger generate client && go fix ./...)
