@@ -5,6 +5,7 @@ package api
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/fortifi/go-api/client"
@@ -25,7 +26,7 @@ const (
 
 var (
 	debugFortifiRequests = false
-	localSchemes         = []string{"http"}
+	unsecureSchemes      = []string{"http"}
 )
 
 // Instance is a single org API instance
@@ -125,8 +126,8 @@ func (f *Instance) GetAuthenticator() *Authenticator {
 
 // GetSchemes returns the API protocol
 func (f *Instance) GetSchemes() []string {
-	if debugFortifiRequests {
-		return localSchemes
+	if strings.HasPrefix(f.apiHost, "http://") {
+		return unsecureSchemes
 	}
 	return client.DefaultSchemes
 }
@@ -136,15 +137,17 @@ func (f *Instance) SetLocalDebug(s bool) {
 	debugFortifiRequests = s
 }
 
+// SetAPIHost sets fortifi API endpoint
 func (f *Instance) SetAPIHost(host string) {
 	f.apiHost = host
 }
 
-// GetAPIHost returns the API host URL
+// GetAPIHost returns the API host (no schema as per swagger format)
 func (f *Instance) GetAPIHost() string {
 	host := client.DefaultHost
 	if f.apiHost != "" {
-		host = f.apiHost
+		host = strings.TrimPrefix(f.apiHost, "https://")
+		host = strings.TrimPrefix(host, "http://")
 	}
 	return host
 }
