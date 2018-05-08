@@ -77,7 +77,7 @@ type OrderAllOf1 struct {
 	SetupAmount float32 `json:"setupAmount,omitempty"`
 
 	// state
-	State string `json:"state,omitempty"`
+	State int32 `json:"state,omitempty"`
 
 	// tax amount
 	TaxAmount float32 `json:"taxAmount,omitempty"`
