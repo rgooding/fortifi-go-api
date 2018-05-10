@@ -14,12 +14,12 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// GetBrandsOKBodyAllOf1Data get brands o k body all of1 data
-// swagger:model getBrandsOKBodyAllOf1Data
-type GetBrandsOKBodyAllOf1Data []*Brand
+// BrandsBrands brands brands
+// swagger:model brandsBrands
+type BrandsBrands []*Brand
 
-// Validate validates this get brands o k body all of1 data
-func (m GetBrandsOKBodyAllOf1Data) Validate(formats strfmt.Registry) error {
+// Validate validates this brands brands
+func (m BrandsBrands) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	for i := 0; i < len(m); i++ {
