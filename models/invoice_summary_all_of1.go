@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // InvoiceSummaryAllOf1 invoice summary all of1
@@ -32,9 +33,11 @@ type InvoiceSummaryAllOf1 struct {
 	DiscountAmount float32 `json:"discountAmount,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DueDate strfmt.DateTime `json:"dueDate,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
 	// invoice number
@@ -47,6 +50,7 @@ type InvoiceSummaryAllOf1 struct {
 	OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	PaymentDate strfmt.DateTime `json:"paymentDate,omitempty"`
 
 	// refund amount
@@ -63,9 +67,60 @@ type InvoiceSummaryAllOf1 struct {
 func (m *InvoiceSummaryAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDueDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInvoiceDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaymentDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceSummaryAllOf1) validateDueDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DueDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dueDate", "body", "date-time", m.DueDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InvoiceSummaryAllOf1) validateInvoiceDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.InvoiceDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("invoiceDate", "body", "date-time", m.InvoiceDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InvoiceSummaryAllOf1) validatePaymentDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaymentDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("paymentDate", "body", "date-time", m.PaymentDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

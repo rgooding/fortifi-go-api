@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -32,7 +34,7 @@ type VisitorPostAction struct {
 	EventID string `json:"eventId,omitempty"`
 
 	// pixels
-	Pixels VisitorPostActionPixels `json:"pixels"`
+	Pixels []*AdvertiserPixel `json:"pixels"`
 
 	// sid1
 	Sid1 string `json:"sid1,omitempty"`
@@ -51,9 +53,38 @@ type VisitorPostAction struct {
 func (m *VisitorPostAction) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validatePixels(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VisitorPostAction) validatePixels(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Pixels) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Pixels); i++ {
+		if swag.IsZero(m.Pixels[i]) { // not required
+			continue
+		}
+
+		if m.Pixels[i] != nil {
+			if err := m.Pixels[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("pixels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

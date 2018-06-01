@@ -22,13 +22,14 @@ type User struct {
 
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *User) UnmarshalJSON(raw []byte) error {
-
+	// AO0
 	var aO0 Fid
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
 	m.Fid = aO0
 
+	// AO1
 	var aO1 UserAllOf1
 	if err := swag.ReadJSON(raw, &aO1); err != nil {
 		return err
@@ -40,7 +41,7 @@ func (m *User) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m User) MarshalJSON() ([]byte, error) {
-	var _parts [][]byte
+	_parts := make([][]byte, 0, 2)
 
 	aO0, err := swag.WriteJSON(m.Fid)
 	if err != nil {
@@ -61,10 +62,11 @@ func (m User) MarshalJSON() ([]byte, error) {
 func (m *User) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	// validation for a type composition with Fid
 	if err := m.Fid.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-
+	// validation for a type composition with UserAllOf1
 	if err := m.UserAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}

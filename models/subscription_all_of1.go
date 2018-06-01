@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SubscriptionAllOf1 subscription all of1
@@ -20,12 +21,14 @@ type SubscriptionAllOf1 struct {
 	Amount float32 `json:"amount,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	AutoCancelDate strfmt.DateTime `json:"autoCancelDate,omitempty"`
 
 	// auto charge
 	AutoCharge bool `json:"autoCharge,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	AutoSuspendDate strfmt.DateTime `json:"autoSuspendDate,omitempty"`
 
 	// cancel days
@@ -37,34 +40,42 @@ type SubscriptionAllOf1 struct {
 	// currency
 	Currency string `json:"currency,omitempty"`
 
-	// cycle
+	// Interval in ISO 8601 standard
 	Cycle string `json:"cycle,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateCancelled strfmt.DateTime `json:"dateCancelled,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateCreated strfmt.DateTime `json:"dateCreated,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateInactive strfmt.DateTime `json:"dateInactive,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateModified strfmt.DateTime `json:"dateModified,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateStateChanged strfmt.DateTime `json:"dateStateChanged,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateSuspended strfmt.DateTime `json:"dateSuspended,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DateUpgraded strfmt.DateTime `json:"dateUpgraded,omitempty"`
 
 	// discount
 	Discount float32 `json:"discount,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
 	// invoice fid
@@ -74,12 +85,15 @@ type SubscriptionAllOf1 struct {
 	IsPaid bool `json:"isPaid,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	LastRenewDate strfmt.DateTime `json:"lastRenewDate,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	NextPaymentDate strfmt.DateTime `json:"nextPaymentDate,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	NextRenewDate strfmt.DateTime `json:"nextRenewDate,omitempty"`
 
 	// next renewal amount
@@ -89,12 +103,14 @@ type SubscriptionAllOf1 struct {
 	PaidRenewals int32 `json:"paidRenewals,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
 
 	// quantity
 	Quantity int32 `json:"quantity,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	RenewDate strfmt.DateTime `json:"renewDate,omitempty"`
 
 	// renewal advance days
@@ -113,6 +129,7 @@ type SubscriptionAllOf1 struct {
 	ShouldSuspend bool `json:"shouldSuspend,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
 	// status
@@ -134,9 +151,11 @@ type SubscriptionAllOf1 struct {
 	TotalRenewals int32 `json:"totalRenewals,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	TrialEndDate strfmt.DateTime `json:"trialEndDate,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	TrialStartDate strfmt.DateTime `json:"trialStartDate,omitempty"`
 
 	// unique reference
@@ -147,9 +166,315 @@ type SubscriptionAllOf1 struct {
 func (m *SubscriptionAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAutoCancelDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAutoSuspendDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateCancelled(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateCreated(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateInactive(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateModified(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateStateChanged(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateSuspended(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDateUpgraded(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLastRenewDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNextPaymentDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNextRenewDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaidUntil(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRenewDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrialEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrialStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateAutoCancelDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AutoCancelDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("autoCancelDate", "body", "date-time", m.AutoCancelDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateAutoSuspendDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AutoSuspendDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("autoSuspendDate", "body", "date-time", m.AutoSuspendDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateCancelled(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateCancelled) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateCancelled", "body", "date-time", m.DateCancelled.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateCreated(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateCreated) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateCreated", "body", "date-time", m.DateCreated.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateInactive(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateInactive) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateInactive", "body", "date-time", m.DateInactive.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateModified(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateModified) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateModified", "body", "date-time", m.DateModified.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateStateChanged(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateStateChanged) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateStateChanged", "body", "date-time", m.DateStateChanged.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateSuspended(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateSuspended) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateSuspended", "body", "date-time", m.DateSuspended.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateDateUpgraded(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DateUpgraded) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dateUpgraded", "body", "date-time", m.DateUpgraded.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateEndDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateLastRenewDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LastRenewDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastRenewDate", "body", "date-time", m.LastRenewDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateNextPaymentDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.NextPaymentDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("nextPaymentDate", "body", "date-time", m.NextPaymentDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateNextRenewDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.NextRenewDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("nextRenewDate", "body", "date-time", m.NextRenewDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validatePaidUntil(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaidUntil) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("paidUntil", "body", "date-time", m.PaidUntil.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateRenewDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.RenewDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("renewDate", "body", "date-time", m.RenewDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateStartDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateTrialEndDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TrialEndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("trialEndDate", "body", "date-time", m.TrialEndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionAllOf1) validateTrialStartDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TrialStartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("trialStartDate", "body", "date-time", m.TrialStartDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

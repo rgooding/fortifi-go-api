@@ -19,12 +19,16 @@ import (
 type CustomerSubscriptionType string
 
 const (
+
 	// CustomerSubscriptionTypeNone captures enum value "none"
 	CustomerSubscriptionTypeNone CustomerSubscriptionType = "none"
+
 	// CustomerSubscriptionTypeTrial captures enum value "trial"
 	CustomerSubscriptionTypeTrial CustomerSubscriptionType = "trial"
+
 	// CustomerSubscriptionTypeFree captures enum value "free"
 	CustomerSubscriptionTypeFree CustomerSubscriptionType = "free"
+
 	// CustomerSubscriptionTypePaid captures enum value "paid"
 	CustomerSubscriptionTypePaid CustomerSubscriptionType = "paid"
 )

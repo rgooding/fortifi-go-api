@@ -19,12 +19,16 @@ import (
 type ReasonGroupType string
 
 const (
+
 	// ReasonGroupTypeCancel captures enum value "cancel"
 	ReasonGroupTypeCancel ReasonGroupType = "cancel"
+
 	// ReasonGroupTypeSuspend captures enum value "suspend"
 	ReasonGroupTypeSuspend ReasonGroupType = "suspend"
+
 	// ReasonGroupTypeRefund captures enum value "refund"
 	ReasonGroupTypeRefund ReasonGroupType = "refund"
+
 	// ReasonGroupTypeCredit captures enum value "credit"
 	ReasonGroupTypeCredit ReasonGroupType = "credit"
 )

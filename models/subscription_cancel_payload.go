@@ -16,6 +16,9 @@ import (
 // swagger:model SubscriptionCancelPayload
 type SubscriptionCancelPayload struct {
 
+	// cancel at next renewal
+	CancelAtNextRenewal bool `json:"cancelAtNextRenewal,omitempty"`
+
 	// Reason FID
 	ReasonFid string `json:"reasonFid,omitempty"`
 
@@ -29,7 +32,6 @@ func (m *SubscriptionCancelPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateSubscriptionRefundType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

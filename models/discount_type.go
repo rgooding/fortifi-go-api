@@ -19,8 +19,10 @@ import (
 type DiscountType string
 
 const (
+
 	// DiscountTypeFixed captures enum value "fixed"
 	DiscountTypeFixed DiscountType = "fixed"
+
 	// DiscountTypePercentage captures enum value "percentage"
 	DiscountTypePercentage DiscountType = "percentage"
 )

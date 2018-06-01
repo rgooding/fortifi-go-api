@@ -22,13 +22,14 @@ type OrderAddProducts struct {
 
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *OrderAddProducts) UnmarshalJSON(raw []byte) error {
-
+	// AO0
 	var aO0 OrderProducts
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
 	m.OrderProducts = aO0
 
+	// AO1
 	var aO1 OrderAddProductsAllOf1
 	if err := swag.ReadJSON(raw, &aO1); err != nil {
 		return err
@@ -40,7 +41,7 @@ func (m *OrderAddProducts) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m OrderAddProducts) MarshalJSON() ([]byte, error) {
-	var _parts [][]byte
+	_parts := make([][]byte, 0, 2)
 
 	aO0, err := swag.WriteJSON(m.OrderProducts)
 	if err != nil {
@@ -61,10 +62,11 @@ func (m OrderAddProducts) MarshalJSON() ([]byte, error) {
 func (m *OrderAddProducts) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	// validation for a type composition with OrderProducts
 	if err := m.OrderProducts.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-
+	// validation for a type composition with OrderAddProductsAllOf1
 	if err := m.OrderAddProductsAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}

@@ -31,7 +31,6 @@ func (m *ReasonGroupAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

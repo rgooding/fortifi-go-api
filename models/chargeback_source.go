@@ -19,10 +19,13 @@ import (
 type ChargebackSource string
 
 const (
+
 	// ChargebackSourceGateway captures enum value "gateway"
 	ChargebackSourceGateway ChargebackSource = "gateway"
+
 	// ChargebackSourceEthoca captures enum value "ethoca"
 	ChargebackSourceEthoca ChargebackSource = "ethoca"
+
 	// ChargebackSourceVerifi captures enum value "verifi"
 	ChargebackSourceVerifi ChargebackSource = "verifi"
 )

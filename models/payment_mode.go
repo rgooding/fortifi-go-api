@@ -19,8 +19,10 @@ import (
 type PaymentMode string
 
 const (
+
 	// PaymentModeAutomatic captures enum value "automatic"
 	PaymentModeAutomatic PaymentMode = "automatic"
+
 	// PaymentModeRequest captures enum value "request"
 	PaymentModeRequest PaymentMode = "request"
 )

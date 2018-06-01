@@ -19,10 +19,13 @@ import (
 type AdvertiserType string
 
 const (
+
 	// AdvertiserTypeAffiliate captures enum value "affiliate"
 	AdvertiserTypeAffiliate AdvertiserType = "affiliate"
+
 	// AdvertiserTypeNetwork captures enum value "network"
 	AdvertiserTypeNetwork AdvertiserType = "network"
+
 	// AdvertiserTypeCustomer captures enum value "customer"
 	AdvertiserTypeCustomer AdvertiserType = "customer"
 )

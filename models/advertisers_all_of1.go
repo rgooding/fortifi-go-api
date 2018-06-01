@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,16 +19,45 @@ import (
 type AdvertisersAllOf1 struct {
 
 	// advertisers
-	Advertisers AdvertisersAllOf1Advertisers `json:"advertisers"`
+	Advertisers []*Advertiser `json:"advertisers"`
 }
 
 // Validate validates this advertisers all of1
 func (m *AdvertisersAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAdvertisers(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AdvertisersAllOf1) validateAdvertisers(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Advertisers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Advertisers); i++ {
+		if swag.IsZero(m.Advertisers[i]) { // not required
+			continue
+		}
+
+		if m.Advertisers[i] != nil {
+			if err := m.Advertisers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("advertisers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

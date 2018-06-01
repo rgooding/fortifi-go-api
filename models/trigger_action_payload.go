@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // TriggerActionPayload trigger action payload
@@ -23,6 +24,7 @@ type TriggerActionPayload struct {
 	MetaData MetaData `json:"metaData"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	Time strfmt.DateTime `json:"time,omitempty"`
 
 	// If set to true, transactional messenger chains will be triggered
@@ -33,9 +35,46 @@ type TriggerActionPayload struct {
 func (m *TriggerActionPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateMetaData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTime(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *TriggerActionPayload) validateMetaData(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.MetaData) { // not required
+		return nil
+	}
+
+	if err := m.MetaData.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("metaData")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *TriggerActionPayload) validateTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Time) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

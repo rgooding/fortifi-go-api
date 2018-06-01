@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/fortifi/go-api/models"
+	models "github.com/fortifi/go-api/models"
 )
 
 // DeleteEntitiesEntityFidPropertiesCountersPropertyNameReader is a Reader for the DeleteEntitiesEntityFidPropertiesCountersPropertyName structure.

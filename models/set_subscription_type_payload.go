@@ -25,7 +25,6 @@ func (m *SetSubscriptionTypePayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateSubscriptionType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

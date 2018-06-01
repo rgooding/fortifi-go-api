@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -19,16 +21,15 @@ type OrderProductsPayload struct {
 	// Product price FIDs to add
 	ProductPriceFids []string `json:"productPriceFids"`
 
-	// quantity product price fids
-	QuantityProductPriceFids OrderProductsPayloadQuantityProductPriceFids `json:"quantityProductPriceFids"`
+	// Products to add with specified quantity
+	QuantityProductPriceFids []*OrderProductQuantityPayload `json:"quantityProductPriceFids"`
 }
 
 // Validate validates this order products payload
 func (m *OrderProductsPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateProductPriceFids(formats); err != nil {
-		// prop
+	if err := m.validateQuantityProductPriceFids(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -38,10 +39,26 @@ func (m *OrderProductsPayload) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *OrderProductsPayload) validateProductPriceFids(formats strfmt.Registry) error {
+func (m *OrderProductsPayload) validateQuantityProductPriceFids(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.ProductPriceFids) { // not required
+	if swag.IsZero(m.QuantityProductPriceFids) { // not required
 		return nil
+	}
+
+	for i := 0; i < len(m.QuantityProductPriceFids); i++ {
+		if swag.IsZero(m.QuantityProductPriceFids[i]) { // not required
+			continue
+		}
+
+		if m.QuantityProductPriceFids[i] != nil {
+			if err := m.QuantityProductPriceFids[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("quantityProductPriceFids" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -19,10 +19,13 @@ import (
 type CustomerLifecycle string
 
 const (
+
 	// CustomerLifecycleProspect captures enum value "prospect"
 	CustomerLifecycleProspect CustomerLifecycle = "prospect"
+
 	// CustomerLifecycleCustomer captures enum value "customer"
 	CustomerLifecycleCustomer CustomerLifecycle = "customer"
+
 	// CustomerLifecycleClosed captures enum value "closed"
 	CustomerLifecycleClosed CustomerLifecycle = "closed"
 )

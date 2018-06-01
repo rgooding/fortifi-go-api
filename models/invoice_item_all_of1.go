@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,7 +19,7 @@ import (
 type InvoiceItemAllOf1 struct {
 
 	// sub items
-	SubItems InvoiceItemAllOf1SubItems `json:"subItems"`
+	SubItems []*InvoiceSubItem `json:"subItems"`
 
 	// total amount
 	TotalAmount float32 `json:"totalAmount,omitempty"`
@@ -27,9 +29,38 @@ type InvoiceItemAllOf1 struct {
 func (m *InvoiceItemAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateSubItems(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceItemAllOf1) validateSubItems(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.SubItems) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SubItems); i++ {
+		if swag.IsZero(m.SubItems[i]) { // not required
+			continue
+		}
+
+		if m.SubItems[i] != nil {
+			if err := m.SubItems[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

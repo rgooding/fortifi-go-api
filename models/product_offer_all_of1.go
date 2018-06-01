@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ProductOfferAllOf1 product offer all of1
@@ -29,10 +30,14 @@ type ProductOfferAllOf1 struct {
 	DiscountType DiscountType `json:"discountType,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	ExpiryTime strfmt.DateTime `json:"expiryTime,omitempty"`
 
 	// max usages
 	MaxUsages int32 `json:"maxUsages,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Period string `json:"period,omitempty"`
 
 	// restrictive
 	Restrictive bool `json:"restrictive,omitempty"`
@@ -55,17 +60,18 @@ func (m *ProductOfferAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDiscountType(formats); err != nil {
-		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateExpiryTime(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateSetupDiscountType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validateTermType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
@@ -85,6 +91,19 @@ func (m *ProductOfferAllOf1) validateDiscountType(formats strfmt.Registry) error
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("discountType")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProductOfferAllOf1) validateExpiryTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ExpiryTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("expiryTime", "body", "date-time", m.ExpiryTime.String(), formats); err != nil {
 		return err
 	}
 

@@ -45,42 +45,13 @@ type CreateOrderPayload struct {
 func (m *CreateOrderPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateOfferFids(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
-	if err := m.validateProductPriceFids(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
 	if err := m.validateType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *CreateOrderPayload) validateOfferFids(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.OfferFids) { // not required
-		return nil
-	}
-
-	return nil
-}
-
-func (m *CreateOrderPayload) validateProductPriceFids(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ProductPriceFids) { // not required
-		return nil
-	}
-
 	return nil
 }
 

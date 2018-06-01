@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // InvoiceSubItemAllOf1 invoice sub item all of1
@@ -17,6 +18,7 @@ import (
 type InvoiceSubItemAllOf1 struct {
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	FromDate strfmt.DateTime `json:"fromDate,omitempty"`
 
 	// item type
@@ -29,6 +31,7 @@ type InvoiceSubItemAllOf1 struct {
 	Quantity int32 `json:"quantity,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	ToDate strfmt.DateTime `json:"toDate,omitempty"`
 
 	// total amount
@@ -39,9 +42,43 @@ type InvoiceSubItemAllOf1 struct {
 func (m *InvoiceSubItemAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateFromDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateToDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceSubItemAllOf1) validateFromDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.FromDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("fromDate", "body", "date-time", m.FromDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InvoiceSubItemAllOf1) validateToDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ToDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("toDate", "body", "date-time", m.ToDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

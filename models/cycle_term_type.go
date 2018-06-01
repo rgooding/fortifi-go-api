@@ -19,16 +19,22 @@ import (
 type CycleTermType string
 
 const (
+
 	// CycleTermTypeOnetime captures enum value "onetime"
 	CycleTermTypeOnetime CycleTermType = "onetime"
+
 	// CycleTermTypeLifetime captures enum value "lifetime"
 	CycleTermTypeLifetime CycleTermType = "lifetime"
+
 	// CycleTermTypeDay captures enum value "day"
 	CycleTermTypeDay CycleTermType = "day"
+
 	// CycleTermTypeWeek captures enum value "week"
 	CycleTermTypeWeek CycleTermType = "week"
+
 	// CycleTermTypeMonth captures enum value "month"
 	CycleTermTypeMonth CycleTermType = "month"
+
 	// CycleTermTypeYear captures enum value "year"
 	CycleTermTypeYear CycleTermType = "year"
 )

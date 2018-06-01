@@ -19,8 +19,10 @@ import (
 type SubscriptionRefundType string
 
 const (
+
 	// SubscriptionRefundTypeProrate captures enum value "prorate"
 	SubscriptionRefundTypeProrate SubscriptionRefundType = "prorate"
+
 	// SubscriptionRefundTypeFull captures enum value "full"
 	SubscriptionRefundTypeFull SubscriptionRefundType = "full"
 )

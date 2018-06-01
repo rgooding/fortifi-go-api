@@ -22,13 +22,14 @@ type Invoices struct {
 
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *Invoices) UnmarshalJSON(raw []byte) error {
-
+	// AO0
 	var aO0 Pagination
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
 	m.Pagination = aO0
 
+	// AO1
 	var aO1 InvoicesAllOf1
 	if err := swag.ReadJSON(raw, &aO1); err != nil {
 		return err
@@ -40,7 +41,7 @@ func (m *Invoices) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m Invoices) MarshalJSON() ([]byte, error) {
-	var _parts [][]byte
+	_parts := make([][]byte, 0, 2)
 
 	aO0, err := swag.WriteJSON(m.Pagination)
 	if err != nil {
@@ -61,10 +62,11 @@ func (m Invoices) MarshalJSON() ([]byte, error) {
 func (m *Invoices) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	// validation for a type composition with Pagination
 	if err := m.Pagination.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-
+	// validation for a type composition with InvoicesAllOf1
 	if err := m.InvoicesAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}

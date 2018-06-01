@@ -31,17 +31,14 @@ func (m *PaymentAccountAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAccountType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validatePaymentMethod(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validatePaymentMode(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

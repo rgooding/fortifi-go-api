@@ -31,7 +31,6 @@ func (m *ConfirmOrderPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validatePaymentServiceProcessor(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,16 +19,45 @@ import (
 type Tickets struct {
 
 	// tickets
-	Tickets TicketsTickets `json:"tickets"`
+	Tickets []*Ticket `json:"tickets"`
 }
 
 // Validate validates this tickets
 func (m *Tickets) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateTickets(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Tickets) validateTickets(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Tickets) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Tickets); i++ {
+		if swag.IsZero(m.Tickets[i]) { // not required
+			continue
+		}
+
+		if m.Tickets[i] != nil {
+			if err := m.Tickets[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tickets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

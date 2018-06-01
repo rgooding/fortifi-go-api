@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/fortifi/go-api/models"
+	models "github.com/fortifi/go-api/models"
 )
 
 // DeleteCustomersCustomerFidVipReader is a Reader for the DeleteCustomersCustomerFidVip structure.

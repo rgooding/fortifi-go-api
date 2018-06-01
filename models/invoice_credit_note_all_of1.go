@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // InvoiceCreditNoteAllOf1 invoice credit note all of1
@@ -23,6 +24,7 @@ type InvoiceCreditNoteAllOf1 struct {
 	ChargeRequestFid string `json:"chargeRequestFid,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	CreditDate strfmt.DateTime `json:"creditDate,omitempty"`
 
 	// currency
@@ -36,9 +38,26 @@ type InvoiceCreditNoteAllOf1 struct {
 func (m *InvoiceCreditNoteAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCreditDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceCreditNoteAllOf1) validateCreditDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CreditDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("creditDate", "body", "date-time", m.CreditDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

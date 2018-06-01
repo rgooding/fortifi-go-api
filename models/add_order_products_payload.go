@@ -20,7 +20,7 @@ type AddOrderProductsPayload struct {
 
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *AddOrderProductsPayload) UnmarshalJSON(raw []byte) error {
-
+	// AO0
 	var aO0 OrderProductsPayload
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
@@ -32,7 +32,7 @@ func (m *AddOrderProductsPayload) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m AddOrderProductsPayload) MarshalJSON() ([]byte, error) {
-	var _parts [][]byte
+	_parts := make([][]byte, 0, 1)
 
 	aO0, err := swag.WriteJSON(m.OrderProductsPayload)
 	if err != nil {
@@ -47,6 +47,7 @@ func (m AddOrderProductsPayload) MarshalJSON() ([]byte, error) {
 func (m *AddOrderProductsPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	// validation for a type composition with OrderProductsPayload
 	if err := m.OrderProductsPayload.Validate(formats); err != nil {
 		res = append(res, err)
 	}

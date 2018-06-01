@@ -19,10 +19,13 @@ import (
 type CreditAmountType string
 
 const (
+
 	// CreditAmountTypePercentOfRemaining captures enum value "percent_of_remaining"
 	CreditAmountTypePercentOfRemaining CreditAmountType = "percent_of_remaining"
+
 	// CreditAmountTypePercentOfTotal captures enum value "percent_of_total"
 	CreditAmountTypePercentOfTotal CreditAmountType = "percent_of_total"
+
 	// CreditAmountTypeFixed captures enum value "fixed"
 	CreditAmountTypeFixed CreditAmountType = "fixed"
 )

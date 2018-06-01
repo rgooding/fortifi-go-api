@@ -34,7 +34,6 @@ func (m *OrderConfirmation) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validatePaymentMode(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

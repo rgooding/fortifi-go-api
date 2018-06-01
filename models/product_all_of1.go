@@ -51,9 +51,31 @@ type ProductAllOf1 struct {
 func (m *ProductAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDefaultPrice(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ProductAllOf1) validateDefaultPrice(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DefaultPrice) { // not required
+		return nil
+	}
+
+	if m.DefaultPrice != nil {
+		if err := m.DefaultPrice.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("defaultPrice")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

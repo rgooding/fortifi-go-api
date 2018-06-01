@@ -19,12 +19,16 @@ import (
 type CustomerAccountType string
 
 const (
+
 	// CustomerAccountTypeUnknown captures enum value "unknown"
 	CustomerAccountTypeUnknown CustomerAccountType = "unknown"
+
 	// CustomerAccountTypeBusiness captures enum value "business"
 	CustomerAccountTypeBusiness CustomerAccountType = "business"
+
 	// CustomerAccountTypeResidential captures enum value "residential"
 	CustomerAccountTypeResidential CustomerAccountType = "residential"
+
 	// CustomerAccountTypeStudent captures enum value "student"
 	CustomerAccountTypeStudent CustomerAccountType = "student"
 )

@@ -19,18 +19,25 @@ import (
 type PaymentServiceProcessor string
 
 const (
+
 	// PaymentServiceProcessorPaypal captures enum value "paypal"
 	PaymentServiceProcessorPaypal PaymentServiceProcessor = "paypal"
+
 	// PaymentServiceProcessorWire captures enum value "wire"
 	PaymentServiceProcessorWire PaymentServiceProcessor = "wire"
+
 	// PaymentServiceProcessorBlackhole captures enum value "blackhole"
 	PaymentServiceProcessorBlackhole PaymentServiceProcessor = "blackhole"
+
 	// PaymentServiceProcessorCheque captures enum value "cheque"
 	PaymentServiceProcessorCheque PaymentServiceProcessor = "cheque"
+
 	// PaymentServiceProcessorPrepayment captures enum value "prepayment"
 	PaymentServiceProcessorPrepayment PaymentServiceProcessor = "prepayment"
+
 	// PaymentServiceProcessorFortifipay captures enum value "fortifipay"
 	PaymentServiceProcessorFortifipay PaymentServiceProcessor = "fortifipay"
+
 	// PaymentServiceProcessorCoinbase captures enum value "coinbase"
 	PaymentServiceProcessorCoinbase PaymentServiceProcessor = "coinbase"
 )

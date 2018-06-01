@@ -24,9 +24,31 @@ type OrderAddProductsAllOf1 struct {
 func (m *OrderAddProductsAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateOrder(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *OrderAddProductsAllOf1) validateOrder(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Order) { // not required
+		return nil
+	}
+
+	if m.Order != nil {
+		if err := m.Order.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("order")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

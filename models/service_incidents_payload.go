@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ServiceIncidentsPayload service incidents payload
@@ -17,9 +18,11 @@ import (
 type ServiceIncidentsPayload struct {
 
 	// end date
+	// Format: date-time
 	EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
 	// start date
+	// Format: date-time
 	StartDate strfmt.DateTime `json:"startDate,omitempty"`
 }
 
@@ -27,9 +30,43 @@ type ServiceIncidentsPayload struct {
 func (m *ServiceIncidentsPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServiceIncidentsPayload) validateEndDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ServiceIncidentsPayload) validateStartDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

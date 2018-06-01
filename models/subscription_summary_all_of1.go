@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SubscriptionSummaryAllOf1 subscription summary all of1
@@ -19,19 +20,22 @@ type SubscriptionSummaryAllOf1 struct {
 	// auto charge
 	AutoCharge bool `json:"autoCharge,omitempty"`
 
-	// cycle
+	// Interval in ISO 8601 standard
 	Cycle string `json:"cycle,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	LastRenewed strfmt.DateTime `json:"lastRenewed,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
 
 	// product fid
 	ProductFid string `json:"productFid,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
 
 	// renewal price
@@ -45,9 +49,60 @@ type SubscriptionSummaryAllOf1 struct {
 func (m *SubscriptionSummaryAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateLastRenewed(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaidUntil(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRenewalDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SubscriptionSummaryAllOf1) validateLastRenewed(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LastRenewed) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastRenewed", "body", "date-time", m.LastRenewed.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionSummaryAllOf1) validatePaidUntil(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaidUntil) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("paidUntil", "body", "date-time", m.PaidUntil.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionSummaryAllOf1) validateRenewalDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.RenewalDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("renewalDate", "body", "date-time", m.RenewalDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

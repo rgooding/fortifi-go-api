@@ -19,10 +19,13 @@ import (
 type ModifySubscriptionMode string
 
 const (
+
 	// ModifySubscriptionModeProrate captures enum value "prorate"
 	ModifySubscriptionModeProrate ModifySubscriptionMode = "prorate"
+
 	// ModifySubscriptionModeExtend captures enum value "extend"
 	ModifySubscriptionModeExtend ModifySubscriptionMode = "extend"
+
 	// ModifySubscriptionModeReplace captures enum value "replace"
 	ModifySubscriptionModeReplace ModifySubscriptionMode = "replace"
 )

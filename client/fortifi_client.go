@@ -50,9 +50,6 @@ func NewHTTPClient(formats strfmt.Registry) *Fortifi {
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Fortifi {
 	// ensure nullable parameters have default
-	if formats == nil {
-		formats = strfmt.Default
-	}
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
 	}
@@ -64,6 +61,11 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *For
 
 // New creates a new fortifi client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *Fortifi {
+	// ensure nullable parameters have default
+	if formats == nil {
+		formats = strfmt.Default
+	}
+
 	cli := new(Fortifi)
 	cli.Transport = transport
 

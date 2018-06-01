@@ -58,6 +58,7 @@ type CreateCustomerPayload struct {
 	SubscriptionType CustomerSubscriptionType `json:"subscriptionType,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	Time strfmt.DateTime `json:"time,omitempty"`
 
 	// Visitor ID of the visitor
@@ -69,27 +70,26 @@ func (m *CreateCustomerPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAccountStatus(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validateAccountType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validateBrandFid(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validateLifecycle(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validateSubscriptionType(formats); err != nil {
-		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateTime(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -166,6 +166,19 @@ func (m *CreateCustomerPayload) validateSubscriptionType(formats strfmt.Registry
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("subscriptionType")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateCustomerPayload) validateTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Time) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
 		return err
 	}
 

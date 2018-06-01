@@ -8,7 +8,6 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
 )
 
@@ -18,6 +17,9 @@ type OrderProductAllOf1 struct {
 
 	// currency
 	Currency string `json:"currency,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Cycle string `json:"cycle,omitempty"`
 
 	// cycle exact
 	CycleExact int32 `json:"cycleExact,omitempty"`
@@ -70,11 +72,6 @@ type OrderProductAllOf1 struct {
 
 // Validate validates this order product all of1
 func (m *OrderProductAllOf1) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 

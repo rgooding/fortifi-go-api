@@ -19,10 +19,13 @@ import (
 type ReversalReason string
 
 const (
+
 	// ReversalReasonChargeback captures enum value "chargeback"
 	ReversalReasonChargeback ReversalReason = "chargeback"
+
 	// ReversalReasonCancel captures enum value "cancel"
 	ReversalReasonCancel ReversalReason = "cancel"
+
 	// ReversalReasonFraud captures enum value "fraud"
 	ReversalReasonFraud ReversalReason = "fraud"
 )

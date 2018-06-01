@@ -25,7 +25,6 @@ func (m *SetAccountTypePayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAccountType(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

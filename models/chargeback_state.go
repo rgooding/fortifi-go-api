@@ -19,16 +19,22 @@ import (
 type ChargebackState string
 
 const (
+
 	// ChargebackStateAlert captures enum value "alert"
 	ChargebackStateAlert ChargebackState = "alert"
+
 	// ChargebackStateInitiated captures enum value "initiated"
 	ChargebackStateInitiated ChargebackState = "initiated"
+
 	// ChargebackStateDisputed captures enum value "disputed"
 	ChargebackStateDisputed ChargebackState = "disputed"
+
 	// ChargebackStateWon captures enum value "won"
 	ChargebackStateWon ChargebackState = "won"
+
 	// ChargebackStateLost captures enum value "lost"
 	ChargebackStateLost ChargebackState = "lost"
+
 	// ChargebackStateUndisputedLoss captures enum value "undisputed_loss"
 	ChargebackStateUndisputedLoss ChargebackState = "undisputed_loss"
 )

@@ -20,7 +20,7 @@ type AuthTokenResponse struct {
 
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *AuthTokenResponse) UnmarshalJSON(raw []byte) error {
-
+	// AO0
 	var aO0 AuthToken
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
@@ -32,7 +32,7 @@ func (m *AuthTokenResponse) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m AuthTokenResponse) MarshalJSON() ([]byte, error) {
-	var _parts [][]byte
+	_parts := make([][]byte, 0, 1)
 
 	aO0, err := swag.WriteJSON(m.AuthToken)
 	if err != nil {
@@ -47,6 +47,7 @@ func (m AuthTokenResponse) MarshalJSON() ([]byte, error) {
 func (m *AuthTokenResponse) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	// validation for a type composition with AuthToken
 	if err := m.AuthToken.Validate(formats); err != nil {
 		res = append(res, err)
 	}

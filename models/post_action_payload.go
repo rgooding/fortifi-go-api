@@ -66,6 +66,7 @@ type PostActionPayload struct {
 	Sid3 string `json:"sid3,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	Time strfmt.DateTime `json:"time,omitempty"`
 
 	// Your unique transaction ID for this event e.g. Order ID
@@ -86,7 +87,14 @@ func (m *PostActionPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBrandFid(formats); err != nil {
-		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateMetaData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTime(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -99,6 +107,35 @@ func (m *PostActionPayload) Validate(formats strfmt.Registry) error {
 func (m *PostActionPayload) validateBrandFid(formats strfmt.Registry) error {
 
 	if err := validate.Required("brandFid", "body", m.BrandFid); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostActionPayload) validateMetaData(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.MetaData) { // not required
+		return nil
+	}
+
+	if err := m.MetaData.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("metaData")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostActionPayload) validateTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Time) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
 		return err
 	}
 

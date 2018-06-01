@@ -19,36 +19,52 @@ import (
 type PaymentAccountType string
 
 const (
+
 	// PaymentAccountTypeUnknown captures enum value "unknown"
 	PaymentAccountTypeUnknown PaymentAccountType = "unknown"
+
 	// PaymentAccountTypeVisa captures enum value "visa"
 	PaymentAccountTypeVisa PaymentAccountType = "visa"
+
 	// PaymentAccountTypeMastercard captures enum value "mastercard"
 	PaymentAccountTypeMastercard PaymentAccountType = "mastercard"
+
 	// PaymentAccountTypeAmex captures enum value "amex"
 	PaymentAccountTypeAmex PaymentAccountType = "amex"
+
 	// PaymentAccountTypeJcb captures enum value "jcb"
 	PaymentAccountTypeJcb PaymentAccountType = "jcb"
+
 	// PaymentAccountTypeDiscover captures enum value "discover"
 	PaymentAccountTypeDiscover PaymentAccountType = "discover"
+
 	// PaymentAccountTypeDiners captures enum value "diners"
 	PaymentAccountTypeDiners PaymentAccountType = "diners"
+
 	// PaymentAccountTypeEncrypted captures enum value "encrypted"
 	PaymentAccountTypeEncrypted PaymentAccountType = "encrypted"
+
 	// PaymentAccountTypePaypalPersonal captures enum value "paypal_personal"
 	PaymentAccountTypePaypalPersonal PaymentAccountType = "paypal_personal"
+
 	// PaymentAccountTypePaypalPremier captures enum value "paypal_premier"
 	PaymentAccountTypePaypalPremier PaymentAccountType = "paypal_premier"
+
 	// PaymentAccountTypePaypalBusiness captures enum value "paypal_business"
 	PaymentAccountTypePaypalBusiness PaymentAccountType = "paypal_business"
+
 	// PaymentAccountTypePaypalVerified captures enum value "paypal_verified"
 	PaymentAccountTypePaypalVerified PaymentAccountType = "paypal_verified"
+
 	// PaymentAccountTypePaypalUnverified captures enum value "paypal_unverified"
 	PaymentAccountTypePaypalUnverified PaymentAccountType = "paypal_unverified"
+
 	// PaymentAccountTypePaypal captures enum value "paypal"
 	PaymentAccountTypePaypal PaymentAccountType = "paypal"
+
 	// PaymentAccountTypeBitcoin captures enum value "bitcoin"
 	PaymentAccountTypeBitcoin PaymentAccountType = "bitcoin"
+
 	// PaymentAccountTypeAccountBalance captures enum value "account_balance"
 	PaymentAccountTypeAccountBalance PaymentAccountType = "account_balance"
 )

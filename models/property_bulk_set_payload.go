@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -16,26 +18,142 @@ import (
 // swagger:model PropertyBulkSetPayload
 type PropertyBulkSetPayload struct {
 
-	// decrement counters
-	DecrementCounters PropertyBulkSetPayloadDecrementCounters `json:"decrementCounters"`
+	// Additional information to store
+	DecrementCounters []*KeyValuePayload `json:"decrementCounters"`
 
-	// flags
-	Flags PropertyBulkSetPayloadFlags `json:"flags"`
+	// Additional information to store
+	Flags []*KeyValuePayload `json:"flags"`
 
-	// increment counters
-	IncrementCounters PropertyBulkSetPayloadIncrementCounters `json:"incrementCounters"`
+	// Additional information to store
+	IncrementCounters []*KeyValuePayload `json:"incrementCounters"`
 
-	// values
-	Values PropertyBulkSetPayloadValues `json:"values"`
+	// Additional information to store
+	Values []*KeyValuePayload `json:"values"`
 }
 
 // Validate validates this property bulk set payload
 func (m *PropertyBulkSetPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDecrementCounters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFlags(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIncrementCounters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateValues(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) validateDecrementCounters(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DecrementCounters) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DecrementCounters); i++ {
+		if swag.IsZero(m.DecrementCounters[i]) { // not required
+			continue
+		}
+
+		if m.DecrementCounters[i] != nil {
+			if err := m.DecrementCounters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("decrementCounters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) validateFlags(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Flags) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Flags); i++ {
+		if swag.IsZero(m.Flags[i]) { // not required
+			continue
+		}
+
+		if m.Flags[i] != nil {
+			if err := m.Flags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) validateIncrementCounters(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.IncrementCounters) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IncrementCounters); i++ {
+		if swag.IsZero(m.IncrementCounters[i]) { // not required
+			continue
+		}
+
+		if m.IncrementCounters[i] != nil {
+			if err := m.IncrementCounters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incrementCounters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) validateValues(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Values) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Values); i++ {
+		if swag.IsZero(m.Values[i]) { // not required
+			continue
+		}
+
+		if m.Values[i] != nil {
+			if err := m.Values[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("values" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

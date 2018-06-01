@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/fortifi/go-api/models"
+	models "github.com/fortifi/go-api/models"
 )
 
 // NewGetServicesServiceFidIncidentsParams creates a new GetServicesServiceFidIncidentsParams object

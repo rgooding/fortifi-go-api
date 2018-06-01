@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/fortifi/go-api/models"
+	models "github.com/fortifi/go-api/models"
 )
 
 // PutOrdersOrderFidVerifyReader is a Reader for the PutOrdersOrderFidVerify structure.

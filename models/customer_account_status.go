@@ -19,14 +19,19 @@ import (
 type CustomerAccountStatus string
 
 const (
+
 	// CustomerAccountStatusSetup captures enum value "setup"
 	CustomerAccountStatusSetup CustomerAccountStatus = "setup"
+
 	// CustomerAccountStatusActive captures enum value "active"
 	CustomerAccountStatusActive CustomerAccountStatus = "active"
+
 	// CustomerAccountStatusSuspended captures enum value "suspended"
 	CustomerAccountStatusSuspended CustomerAccountStatus = "suspended"
+
 	// CustomerAccountStatusExpired captures enum value "expired"
 	CustomerAccountStatusExpired CustomerAccountStatus = "expired"
+
 	// CustomerAccountStatusCancelled captures enum value "cancelled"
 	CustomerAccountStatusCancelled CustomerAccountStatus = "cancelled"
 )

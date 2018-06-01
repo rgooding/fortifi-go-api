@@ -33,12 +33,10 @@ func (m *ModifySubscriptionPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateMode(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
 	if err := m.validatePriceFid(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

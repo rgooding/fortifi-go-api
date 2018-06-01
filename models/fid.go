@@ -27,7 +27,6 @@ func (m *Fid) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateFid(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 

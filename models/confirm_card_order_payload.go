@@ -22,13 +22,14 @@ type ConfirmCardOrderPayload struct {
 
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *ConfirmCardOrderPayload) UnmarshalJSON(raw []byte) error {
-
+	// AO0
 	var aO0 ConfirmOrderPayload
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
 	m.ConfirmOrderPayload = aO0
 
+	// AO1
 	var aO1 ConfirmCardOrderPayloadAllOf1
 	if err := swag.ReadJSON(raw, &aO1); err != nil {
 		return err
@@ -40,7 +41,7 @@ func (m *ConfirmCardOrderPayload) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m ConfirmCardOrderPayload) MarshalJSON() ([]byte, error) {
-	var _parts [][]byte
+	_parts := make([][]byte, 0, 2)
 
 	aO0, err := swag.WriteJSON(m.ConfirmOrderPayload)
 	if err != nil {
@@ -61,10 +62,11 @@ func (m ConfirmCardOrderPayload) MarshalJSON() ([]byte, error) {
 func (m *ConfirmCardOrderPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	// validation for a type composition with ConfirmOrderPayload
 	if err := m.ConfirmOrderPayload.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-
+	// validation for a type composition with ConfirmCardOrderPayloadAllOf1
 	if err := m.ConfirmCardOrderPayloadAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}

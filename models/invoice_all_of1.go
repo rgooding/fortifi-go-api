@@ -6,10 +6,13 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // InvoiceAllOf1 invoice all of1
@@ -32,13 +35,15 @@ type InvoiceAllOf1 struct {
 	DiscountAmount float32 `json:"discountAmount,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	DueDate strfmt.DateTime `json:"dueDate,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
 	// invoice items
-	InvoiceItems InvoiceAllOf1InvoiceItems `json:"invoiceItems"`
+	InvoiceItems []*InvoiceItem `json:"invoiceItems"`
 
 	// invoice number
 	InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
@@ -50,6 +55,7 @@ type InvoiceAllOf1 struct {
 	OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
 	PaymentDate strfmt.DateTime `json:"paymentDate,omitempty"`
 
 	// refund amount
@@ -69,9 +75,89 @@ type InvoiceAllOf1 struct {
 func (m *InvoiceAllOf1) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDueDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInvoiceDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInvoiceItems(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaymentDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceAllOf1) validateDueDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DueDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dueDate", "body", "date-time", m.DueDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InvoiceAllOf1) validateInvoiceDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.InvoiceDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("invoiceDate", "body", "date-time", m.InvoiceDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InvoiceAllOf1) validateInvoiceItems(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.InvoiceItems) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.InvoiceItems); i++ {
+		if swag.IsZero(m.InvoiceItems[i]) { // not required
+			continue
+		}
+
+		if m.InvoiceItems[i] != nil {
+			if err := m.InvoiceItems[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("invoiceItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *InvoiceAllOf1) validatePaymentDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaymentDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("paymentDate", "body", "date-time", m.PaymentDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -23,6 +23,7 @@ type AdvertiserPixel struct {
 	Content string `json:"content,omitempty"`
 
 	// method
+	// Enum: [iframe img js curl html]
 	Method string `json:"method,omitempty"`
 
 	// url
@@ -34,7 +35,6 @@ func (m *AdvertiserPixel) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateMethod(formats); err != nil {
-		// prop
 		res = append(res, err)
 	}
 
@@ -57,14 +57,19 @@ func init() {
 }
 
 const (
+
 	// AdvertiserPixelMethodIframe captures enum value "iframe"
 	AdvertiserPixelMethodIframe string = "iframe"
+
 	// AdvertiserPixelMethodImg captures enum value "img"
 	AdvertiserPixelMethodImg string = "img"
+
 	// AdvertiserPixelMethodJs captures enum value "js"
 	AdvertiserPixelMethodJs string = "js"
+
 	// AdvertiserPixelMethodCurl captures enum value "curl"
 	AdvertiserPixelMethodCurl string = "curl"
+
 	// AdvertiserPixelMethodHTML captures enum value "html"
 	AdvertiserPixelMethodHTML string = "html"
 )

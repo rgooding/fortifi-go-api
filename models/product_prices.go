@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,16 +19,45 @@ import (
 type ProductPrices struct {
 
 	// prices
-	Prices ProductPricesPrices `json:"prices"`
+	Prices []*ProductPrice `json:"prices"`
 }
 
 // Validate validates this product prices
 func (m *ProductPrices) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validatePrices(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ProductPrices) validatePrices(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Prices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Prices); i++ {
+		if swag.IsZero(m.Prices[i]) { // not required
+			continue
+		}
+
+		if m.Prices[i] != nil {
+			if err := m.Prices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("prices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

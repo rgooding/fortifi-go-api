@@ -19,8 +19,10 @@ import (
 type CreateOrderType string
 
 const (
+
 	// CreateOrderTypeInitial captures enum value "initial"
 	CreateOrderTypeInitial CreateOrderType = "initial"
+
 	// CreateOrderTypePurchase captures enum value "purchase"
 	CreateOrderTypePurchase CreateOrderType = "purchase"
 )
