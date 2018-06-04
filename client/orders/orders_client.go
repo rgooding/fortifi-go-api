@@ -112,6 +112,35 @@ func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo run
 }
 
 /*
+GetOrdersOrderFidFraudScan retrieves fraud scan
+*/
+func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidFraudScanOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetOrdersOrderFidFraudScanParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetOrdersOrderFidFraudScan",
+		Method:             "GET",
+		PathPattern:        "/orders/{orderFid}/fraudScan",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetOrdersOrderFidFraudScanReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetOrdersOrderFidFraudScanOK), nil
+
+}
+
+/*
 GetOrdersOrderFidProducts retrieves order products
 */
 func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidProductsOK, error) {

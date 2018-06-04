@@ -170,6 +170,35 @@ func (a *Client) GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFi
 }
 
 /*
+GetCustomersCustomerFidChatSessions retrieves chat sessions for customer
+*/
+func (a *Client) GetCustomersCustomerFidChatSessions(params *GetCustomersCustomerFidChatSessionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidChatSessionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidChatSessionsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidChatSessions",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/chatSessions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidChatSessionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetCustomersCustomerFidChatSessionsOK), nil
+
+}
+
+/*
 GetCustomersCustomerFidInvoices lists of invoice summaries for given customer
 */
 func (a *Client) GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFidInvoicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesOK, error) {
@@ -955,6 +984,35 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(p
 		return nil, err
 	}
 	return result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK), nil
+
+}
+
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification calculates the changes before a modification to a subscription
+*/
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/calculateModification",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK), nil
 
 }
 

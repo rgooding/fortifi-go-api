@@ -8,7 +8,9 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OrderProductAllOf1 order product all of1
@@ -22,7 +24,7 @@ type OrderProductAllOf1 struct {
 	Cycle string `json:"cycle,omitempty"`
 
 	// cycle exact
-	CycleExact int32 `json:"cycleExact,omitempty"`
+	CycleExact string `json:"cycleExact,omitempty"`
 
 	// cycle term
 	CycleTerm int32 `json:"cycleTerm,omitempty"`
@@ -54,8 +56,9 @@ type OrderProductAllOf1 struct {
 	// quantity
 	Quantity int64 `json:"quantity,omitempty"`
 
-	// renewal date
-	RenewalDate int32 `json:"renewalDate,omitempty"`
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
 
 	// setup discount amount
 	SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
@@ -72,6 +75,28 @@ type OrderProductAllOf1 struct {
 
 // Validate validates this order product all of1
 func (m *OrderProductAllOf1) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateRenewalDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrderProductAllOf1) validateRenewalDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.RenewalDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("renewalDate", "body", "date-time", m.RenewalDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 
