@@ -16,8 +16,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 
 	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/fortifi/go-api/models"
 )
 
 // NewGetServicesServiceFidIncidentsParams creates a new GetServicesServiceFidIncidentsParams object
@@ -64,13 +62,15 @@ for the get services service fid incidents operation typically these are written
 */
 type GetServicesServiceFidIncidentsParams struct {
 
-	/*Payload*/
-	Payload *models.ServiceIncidentsPayload
+	/*EndDate*/
+	EndDate *strfmt.DateTime
 	/*ServiceFid
 	  Service FID to use
 
 	*/
 	ServiceFid string
+	/*StartDate*/
+	StartDate *strfmt.DateTime
 
 	timeout    time.Duration
 	Context    context.Context
@@ -110,15 +110,15 @@ func (o *GetServicesServiceFidIncidentsParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
-// WithPayload adds the payload to the get services service fid incidents params
-func (o *GetServicesServiceFidIncidentsParams) WithPayload(payload *models.ServiceIncidentsPayload) *GetServicesServiceFidIncidentsParams {
-	o.SetPayload(payload)
+// WithEndDate adds the endDate to the get services service fid incidents params
+func (o *GetServicesServiceFidIncidentsParams) WithEndDate(endDate *strfmt.DateTime) *GetServicesServiceFidIncidentsParams {
+	o.SetEndDate(endDate)
 	return o
 }
 
-// SetPayload adds the payload to the get services service fid incidents params
-func (o *GetServicesServiceFidIncidentsParams) SetPayload(payload *models.ServiceIncidentsPayload) {
-	o.Payload = payload
+// SetEndDate adds the endDate to the get services service fid incidents params
+func (o *GetServicesServiceFidIncidentsParams) SetEndDate(endDate *strfmt.DateTime) {
+	o.EndDate = endDate
 }
 
 // WithServiceFid adds the serviceFid to the get services service fid incidents params
@@ -132,6 +132,17 @@ func (o *GetServicesServiceFidIncidentsParams) SetServiceFid(serviceFid string) 
 	o.ServiceFid = serviceFid
 }
 
+// WithStartDate adds the startDate to the get services service fid incidents params
+func (o *GetServicesServiceFidIncidentsParams) WithStartDate(startDate *strfmt.DateTime) *GetServicesServiceFidIncidentsParams {
+	o.SetStartDate(startDate)
+	return o
+}
+
+// SetStartDate adds the startDate to the get services service fid incidents params
+func (o *GetServicesServiceFidIncidentsParams) SetStartDate(startDate *strfmt.DateTime) {
+	o.StartDate = startDate
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetServicesServiceFidIncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,15 +151,41 @@ func (o *GetServicesServiceFidIncidentsParams) WriteToRequest(r runtime.ClientRe
 	}
 	var res []error
 
-	if o.Payload != nil {
-		if err := r.SetBodyParam(o.Payload); err != nil {
-			return err
+	if o.EndDate != nil {
+
+		// query param endDate
+		var qrEndDate strfmt.DateTime
+		if o.EndDate != nil {
+			qrEndDate = *o.EndDate
 		}
+		qEndDate := qrEndDate.String()
+		if qEndDate != "" {
+			if err := r.SetQueryParam("endDate", qEndDate); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param serviceFid
 	if err := r.SetPathParam("serviceFid", o.ServiceFid); err != nil {
 		return err
+	}
+
+	if o.StartDate != nil {
+
+		// query param startDate
+		var qrStartDate strfmt.DateTime
+		if o.StartDate != nil {
+			qrStartDate = *o.StartDate
+		}
+		qStartDate := qrStartDate.String()
+		if qStartDate != "" {
+			if err := r.SetQueryParam("startDate", qStartDate); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {
