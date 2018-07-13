@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,7 +19,11 @@ import (
 type InvoiceItem struct {
 	Entity
 
-	InvoiceItemAllOf1
+	// sub items
+	SubItems []*InvoiceSubItem `json:"subItems"`
+
+	// total amount
+	TotalAmount float32 `json:"totalAmount,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +36,18 @@ func (m *InvoiceItem) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 InvoiceItemAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		SubItems []*InvoiceSubItem `json:"subItems,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.InvoiceItemAllOf1 = aO1
+
+	m.SubItems = dataAO1.SubItems
+
+	m.TotalAmount = dataAO1.TotalAmount
 
 	return nil
 }
@@ -49,11 +62,21 @@ func (m InvoiceItem) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.InvoiceItemAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		SubItems []*InvoiceSubItem `json:"subItems,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.SubItems = m.SubItems
+
+	dataAO1.TotalAmount = m.TotalAmount
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +89,39 @@ func (m *InvoiceItem) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with InvoiceItemAllOf1
-	if err := m.InvoiceItemAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateSubItems(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceItem) validateSubItems(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.SubItems) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SubItems); i++ {
+		if swag.IsZero(m.SubItems[i]) { // not required
+			continue
+		}
+
+		if m.SubItems[i] != nil {
+			if err := m.SubItems[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

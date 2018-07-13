@@ -17,7 +17,8 @@ import (
 type ConfirmPayPalOrderPayload struct {
 	ConfirmOrderPayload
 
-	ConfirmPayPalOrderPayloadAllOf1
+	// token
+	Token string `json:"token,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +31,14 @@ func (m *ConfirmPayPalOrderPayload) UnmarshalJSON(raw []byte) error {
 	m.ConfirmOrderPayload = aO0
 
 	// AO1
-	var aO1 ConfirmPayPalOrderPayloadAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Token string `json:"token,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ConfirmPayPalOrderPayloadAllOf1 = aO1
+
+	m.Token = dataAO1.Token
 
 	return nil
 }
@@ -49,11 +53,17 @@ func (m ConfirmPayPalOrderPayload) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ConfirmPayPalOrderPayloadAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Token string `json:"token,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Token = m.Token
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +74,6 @@ func (m *ConfirmPayPalOrderPayload) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with ConfirmOrderPayload
 	if err := m.ConfirmOrderPayload.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with ConfirmPayPalOrderPayloadAllOf1
-	if err := m.ConfirmPayPalOrderPayloadAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

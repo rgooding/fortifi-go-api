@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetMeOK() *GetMeOK {
 User Information
 */
 type GetMeOK struct {
-	Payload *models.GetMeOKBody
+	Payload *GetMeOKBody
 }
 
 func (o *GetMeOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetMeOK) Error() string {
 
 func (o *GetMeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetMeOKBody)
+	o.Payload = new(GetMeOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetMeDefault) readResponse(response runtime.ClientResponse, consumer ru
 		return err
 	}
 
+	return nil
+}
+
+/*GetMeOKBody get me o k body
+swagger:model GetMeOKBody
+*/
+type GetMeOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.User `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetMeOKBody) UnmarshalJSON(raw []byte) error {
+	// GetMeOKBodyAO0
+	var getMeOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getMeOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getMeOKBodyAO0
+
+	// GetMeOKBodyAO1
+	var dataGetMeOKBodyAO1 struct {
+		Data *models.User `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetMeOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetMeOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetMeOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getMeOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getMeOKBodyAO0)
+
+	var dataGetMeOKBodyAO1 struct {
+		Data *models.User `json:"data,omitempty"`
+	}
+
+	dataGetMeOKBodyAO1.Data = o.Data
+
+	jsonDataGetMeOKBodyAO1, errGetMeOKBodyAO1 := swag.WriteJSON(dataGetMeOKBodyAO1)
+	if errGetMeOKBodyAO1 != nil {
+		return nil, errGetMeOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetMeOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get me o k body
+func (o *GetMeOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetMeOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getMeOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetMeOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetMeOKBody) UnmarshalBinary(b []byte) error {
+	var res GetMeOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

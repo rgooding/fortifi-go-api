@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetVersionOK() *GetVersionOK {
 Version
 */
 type GetVersionOK struct {
-	Payload *models.GetVersionOKBody
+	Payload *GetVersionOKBody
 }
 
 func (o *GetVersionOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetVersionOK) Error() string {
 
 func (o *GetVersionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetVersionOKBody)
+	o.Payload = new(GetVersionOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,95 @@ func (o *GetVersionDefault) readResponse(response runtime.ClientResponse, consum
 		return err
 	}
 
+	return nil
+}
+
+/*GetVersionOKBody get version o k body
+swagger:model GetVersionOKBody
+*/
+type GetVersionOKBody struct {
+	models.Envelope
+
+	// data
+	Data string `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetVersionOKBody) UnmarshalJSON(raw []byte) error {
+	// GetVersionOKBodyAO0
+	var getVersionOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getVersionOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getVersionOKBodyAO0
+
+	// GetVersionOKBodyAO1
+	var dataGetVersionOKBodyAO1 struct {
+		Data string `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetVersionOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetVersionOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetVersionOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getVersionOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getVersionOKBodyAO0)
+
+	var dataGetVersionOKBodyAO1 struct {
+		Data string `json:"data,omitempty"`
+	}
+
+	dataGetVersionOKBodyAO1.Data = o.Data
+
+	jsonDataGetVersionOKBodyAO1, errGetVersionOKBodyAO1 := swag.WriteJSON(dataGetVersionOKBodyAO1)
+	if errGetVersionOKBodyAO1 != nil {
+		return nil, errGetVersionOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetVersionOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get version o k body
+func (o *GetVersionOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetVersionOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetVersionOKBody) UnmarshalBinary(b []byte) error {
+	var res GetVersionOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

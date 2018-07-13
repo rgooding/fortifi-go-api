@@ -17,7 +17,14 @@ import (
 type VerifyOrderPayload struct {
 	ConfirmOrderPayload
 
-	VerifyOrderPayloadAllOf1
+	// cancel Url
+	CancelURL string `json:"cancelUrl,omitempty"`
+
+	// fail Url
+	FailURL string `json:"failUrl,omitempty"`
+
+	// success Url
+	SuccessURL string `json:"successUrl,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +37,22 @@ func (m *VerifyOrderPayload) UnmarshalJSON(raw []byte) error {
 	m.ConfirmOrderPayload = aO0
 
 	// AO1
-	var aO1 VerifyOrderPayloadAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		CancelURL string `json:"cancelUrl,omitempty"`
+
+		FailURL string `json:"failUrl,omitempty"`
+
+		SuccessURL string `json:"successUrl,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.VerifyOrderPayloadAllOf1 = aO1
+
+	m.CancelURL = dataAO1.CancelURL
+
+	m.FailURL = dataAO1.FailURL
+
+	m.SuccessURL = dataAO1.SuccessURL
 
 	return nil
 }
@@ -49,11 +67,25 @@ func (m VerifyOrderPayload) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.VerifyOrderPayloadAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		CancelURL string `json:"cancelUrl,omitempty"`
+
+		FailURL string `json:"failUrl,omitempty"`
+
+		SuccessURL string `json:"successUrl,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.CancelURL = m.CancelURL
+
+	dataAO1.FailURL = m.FailURL
+
+	dataAO1.SuccessURL = m.SuccessURL
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +96,6 @@ func (m *VerifyOrderPayload) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with ConfirmOrderPayload
 	if err := m.ConfirmOrderPayload.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with VerifyOrderPayloadAllOf1
-	if err := m.VerifyOrderPayloadAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

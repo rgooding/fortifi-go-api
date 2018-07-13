@@ -17,7 +17,14 @@ import (
 type AdvertiserCampaign struct {
 	Entity
 
-	AdvertiserCampaignAllOf1
+	// affiliate fid
+	AffiliateFid string `json:"affiliateFid,omitempty"`
+
+	// brand fid
+	BrandFid string `json:"brandFid,omitempty"`
+
+	// hash
+	Hash string `json:"hash,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +37,22 @@ func (m *AdvertiserCampaign) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 AdvertiserCampaignAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		AffiliateFid string `json:"affiliateFid,omitempty"`
+
+		BrandFid string `json:"brandFid,omitempty"`
+
+		Hash string `json:"hash,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.AdvertiserCampaignAllOf1 = aO1
+
+	m.AffiliateFid = dataAO1.AffiliateFid
+
+	m.BrandFid = dataAO1.BrandFid
+
+	m.Hash = dataAO1.Hash
 
 	return nil
 }
@@ -49,11 +67,25 @@ func (m AdvertiserCampaign) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.AdvertiserCampaignAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		AffiliateFid string `json:"affiliateFid,omitempty"`
+
+		BrandFid string `json:"brandFid,omitempty"`
+
+		Hash string `json:"hash,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.AffiliateFid = m.AffiliateFid
+
+	dataAO1.BrandFid = m.BrandFid
+
+	dataAO1.Hash = m.Hash
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +96,6 @@ func (m *AdvertiserCampaign) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with AdvertiserCampaignAllOf1
-	if err := m.AdvertiserCampaignAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

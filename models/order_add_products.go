@@ -17,7 +17,8 @@ import (
 type OrderAddProducts struct {
 	OrderProducts
 
-	OrderAddProductsAllOf1
+	// order
+	Order *Order `json:"order,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +31,14 @@ func (m *OrderAddProducts) UnmarshalJSON(raw []byte) error {
 	m.OrderProducts = aO0
 
 	// AO1
-	var aO1 OrderAddProductsAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Order *Order `json:"order,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.OrderAddProductsAllOf1 = aO1
+
+	m.Order = dataAO1.Order
 
 	return nil
 }
@@ -49,11 +53,17 @@ func (m OrderAddProducts) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.OrderAddProductsAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Order *Order `json:"order,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Order = m.Order
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +76,32 @@ func (m *OrderAddProducts) Validate(formats strfmt.Registry) error {
 	if err := m.OrderProducts.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with OrderAddProductsAllOf1
-	if err := m.OrderAddProductsAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateOrder(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *OrderAddProducts) validateOrder(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Order) { // not required
+		return nil
+	}
+
+	if m.Order != nil {
+		if err := m.Order.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("order")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

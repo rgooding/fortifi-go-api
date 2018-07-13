@@ -17,7 +17,23 @@ import (
 type PaymentGateway struct {
 	Entity
 
-	PaymentGatewayAllOf1
+	// brands
+	Brands []string `json:"brands"`
+
+	// card types
+	CardTypes []string `json:"cardTypes"`
+
+	// currencies
+	Currencies []string `json:"currencies"`
+
+	// enabled
+	Enabled bool `json:"enabled,omitempty"`
+
+	// external Id
+	ExternalID string `json:"externalId,omitempty"`
+
+	// provider
+	Provider string `json:"provider,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +46,34 @@ func (m *PaymentGateway) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 PaymentGatewayAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Brands []string `json:"brands,omitempty"`
+
+		CardTypes []string `json:"cardTypes,omitempty"`
+
+		Currencies []string `json:"currencies,omitempty"`
+
+		Enabled bool `json:"enabled,omitempty"`
+
+		ExternalID string `json:"externalId,omitempty"`
+
+		Provider string `json:"provider,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.PaymentGatewayAllOf1 = aO1
+
+	m.Brands = dataAO1.Brands
+
+	m.CardTypes = dataAO1.CardTypes
+
+	m.Currencies = dataAO1.Currencies
+
+	m.Enabled = dataAO1.Enabled
+
+	m.ExternalID = dataAO1.ExternalID
+
+	m.Provider = dataAO1.Provider
 
 	return nil
 }
@@ -49,11 +88,37 @@ func (m PaymentGateway) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.PaymentGatewayAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Brands []string `json:"brands,omitempty"`
+
+		CardTypes []string `json:"cardTypes,omitempty"`
+
+		Currencies []string `json:"currencies,omitempty"`
+
+		Enabled bool `json:"enabled,omitempty"`
+
+		ExternalID string `json:"externalId,omitempty"`
+
+		Provider string `json:"provider,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Brands = m.Brands
+
+	dataAO1.CardTypes = m.CardTypes
+
+	dataAO1.Currencies = m.Currencies
+
+	dataAO1.Enabled = m.Enabled
+
+	dataAO1.ExternalID = m.ExternalID
+
+	dataAO1.Provider = m.Provider
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +129,6 @@ func (m *PaymentGateway) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with PaymentGatewayAllOf1
-	if err := m.PaymentGatewayAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

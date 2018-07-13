@@ -17,7 +17,14 @@ import (
 type User struct {
 	Fid
 
-	UserAllOf1
+	// Language
+	Language string `json:"language,omitempty"`
+
+	// Timezone for this user
+	Timezone string `json:"timezone,omitempty"`
+
+	// Username
+	Username string `json:"username,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +37,22 @@ func (m *User) UnmarshalJSON(raw []byte) error {
 	m.Fid = aO0
 
 	// AO1
-	var aO1 UserAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Language string `json:"language,omitempty"`
+
+		Timezone string `json:"timezone,omitempty"`
+
+		Username string `json:"username,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.UserAllOf1 = aO1
+
+	m.Language = dataAO1.Language
+
+	m.Timezone = dataAO1.Timezone
+
+	m.Username = dataAO1.Username
 
 	return nil
 }
@@ -49,11 +67,25 @@ func (m User) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.UserAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Language string `json:"language,omitempty"`
+
+		Timezone string `json:"timezone,omitempty"`
+
+		Username string `json:"username,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Language = m.Language
+
+	dataAO1.Timezone = m.Timezone
+
+	dataAO1.Username = m.Username
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +96,6 @@ func (m *User) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Fid
 	if err := m.Fid.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with UserAllOf1
-	if err := m.UserAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPutOrdersOrderFidConfirmPayPalOK() *PutOrdersOrderFidConfirmPayPalOK {
 Order confirmed and payment authroized
 */
 type PutOrdersOrderFidConfirmPayPalOK struct {
-	Payload *models.PutOrdersOrderFidConfirmPayPalOKBody
+	Payload *PutOrdersOrderFidConfirmPayPalOKBody
 }
 
 func (o *PutOrdersOrderFidConfirmPayPalOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PutOrdersOrderFidConfirmPayPalOK) Error() string {
 
 func (o *PutOrdersOrderFidConfirmPayPalOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PutOrdersOrderFidConfirmPayPalOKBody)
+	o.Payload = new(PutOrdersOrderFidConfirmPayPalOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PutOrdersOrderFidConfirmPayPalDefault) readResponse(response runtime.Cl
 		return err
 	}
 
+	return nil
+}
+
+/*PutOrdersOrderFidConfirmPayPalOKBody put orders order fid confirm pay pal o k body
+swagger:model PutOrdersOrderFidConfirmPayPalOKBody
+*/
+type PutOrdersOrderFidConfirmPayPalOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.OrderConfirmation `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PutOrdersOrderFidConfirmPayPalOKBody) UnmarshalJSON(raw []byte) error {
+	// PutOrdersOrderFidConfirmPayPalOKBodyAO0
+	var putOrdersOrderFidConfirmPayPalOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &putOrdersOrderFidConfirmPayPalOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = putOrdersOrderFidConfirmPayPalOKBodyAO0
+
+	// PutOrdersOrderFidConfirmPayPalOKBodyAO1
+	var dataPutOrdersOrderFidConfirmPayPalOKBodyAO1 struct {
+		Data *models.OrderConfirmation `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPutOrdersOrderFidConfirmPayPalOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPutOrdersOrderFidConfirmPayPalOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PutOrdersOrderFidConfirmPayPalOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	putOrdersOrderFidConfirmPayPalOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, putOrdersOrderFidConfirmPayPalOKBodyAO0)
+
+	var dataPutOrdersOrderFidConfirmPayPalOKBodyAO1 struct {
+		Data *models.OrderConfirmation `json:"data,omitempty"`
+	}
+
+	dataPutOrdersOrderFidConfirmPayPalOKBodyAO1.Data = o.Data
+
+	jsonDataPutOrdersOrderFidConfirmPayPalOKBodyAO1, errPutOrdersOrderFidConfirmPayPalOKBodyAO1 := swag.WriteJSON(dataPutOrdersOrderFidConfirmPayPalOKBodyAO1)
+	if errPutOrdersOrderFidConfirmPayPalOKBodyAO1 != nil {
+		return nil, errPutOrdersOrderFidConfirmPayPalOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPutOrdersOrderFidConfirmPayPalOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this put orders order fid confirm pay pal o k body
+func (o *PutOrdersOrderFidConfirmPayPalOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutOrdersOrderFidConfirmPayPalOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putOrdersOrderFidConfirmPayPalOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PutOrdersOrderFidConfirmPayPalOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PutOrdersOrderFidConfirmPayPalOKBody) UnmarshalBinary(b []byte) error {
+	var res PutOrdersOrderFidConfirmPayPalOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -17,7 +17,29 @@ import (
 type Customer struct {
 	Fid
 
-	CustomerAllOf1
+	// company fid
+	CompanyFid string `json:"companyFid,omitempty"`
+
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// external reference
+	ExternalReference string `json:"externalReference,omitempty"`
+
+	// first name
+	FirstName string `json:"firstName,omitempty"`
+
+	// last name
+	LastName string `json:"lastName,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// phone
+	Phone string `json:"phone,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +52,42 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 	m.Fid = aO0
 
 	// AO1
-	var aO1 CustomerAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		CompanyFid string `json:"companyFid,omitempty"`
+
+		Currency string `json:"currency,omitempty"`
+
+		Email string `json:"email,omitempty"`
+
+		ExternalReference string `json:"externalReference,omitempty"`
+
+		FirstName string `json:"firstName,omitempty"`
+
+		LastName string `json:"lastName,omitempty"`
+
+		Name string `json:"name,omitempty"`
+
+		Phone string `json:"phone,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.CustomerAllOf1 = aO1
+
+	m.CompanyFid = dataAO1.CompanyFid
+
+	m.Currency = dataAO1.Currency
+
+	m.Email = dataAO1.Email
+
+	m.ExternalReference = dataAO1.ExternalReference
+
+	m.FirstName = dataAO1.FirstName
+
+	m.LastName = dataAO1.LastName
+
+	m.Name = dataAO1.Name
+
+	m.Phone = dataAO1.Phone
 
 	return nil
 }
@@ -49,11 +102,45 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.CustomerAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		CompanyFid string `json:"companyFid,omitempty"`
+
+		Currency string `json:"currency,omitempty"`
+
+		Email string `json:"email,omitempty"`
+
+		ExternalReference string `json:"externalReference,omitempty"`
+
+		FirstName string `json:"firstName,omitempty"`
+
+		LastName string `json:"lastName,omitempty"`
+
+		Name string `json:"name,omitempty"`
+
+		Phone string `json:"phone,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.CompanyFid = m.CompanyFid
+
+	dataAO1.Currency = m.Currency
+
+	dataAO1.Email = m.Email
+
+	dataAO1.ExternalReference = m.ExternalReference
+
+	dataAO1.FirstName = m.FirstName
+
+	dataAO1.LastName = m.LastName
+
+	dataAO1.Name = m.Name
+
+	dataAO1.Phone = m.Phone
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +151,6 @@ func (m *Customer) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Fid
 	if err := m.Fid.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with CustomerAllOf1
-	if err := m.CustomerAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetLicenceCheckOK() *GetLicenceCheckOK {
 Licence Information
 */
 type GetLicenceCheckOK struct {
-	Payload *models.GetLicenceCheckOKBody
+	Payload *GetLicenceCheckOKBody
 }
 
 func (o *GetLicenceCheckOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetLicenceCheckOK) Error() string {
 
 func (o *GetLicenceCheckOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetLicenceCheckOKBody)
+	o.Payload = new(GetLicenceCheckOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetLicenceCheckDefault) readResponse(response runtime.ClientResponse, c
 		return err
 	}
 
+	return nil
+}
+
+/*GetLicenceCheckOKBody get licence check o k body
+swagger:model GetLicenceCheckOKBody
+*/
+type GetLicenceCheckOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Licence `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetLicenceCheckOKBody) UnmarshalJSON(raw []byte) error {
+	// GetLicenceCheckOKBodyAO0
+	var getLicenceCheckOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getLicenceCheckOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getLicenceCheckOKBodyAO0
+
+	// GetLicenceCheckOKBodyAO1
+	var dataGetLicenceCheckOKBodyAO1 struct {
+		Data *models.Licence `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetLicenceCheckOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetLicenceCheckOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetLicenceCheckOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getLicenceCheckOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getLicenceCheckOKBodyAO0)
+
+	var dataGetLicenceCheckOKBodyAO1 struct {
+		Data *models.Licence `json:"data,omitempty"`
+	}
+
+	dataGetLicenceCheckOKBodyAO1.Data = o.Data
+
+	jsonDataGetLicenceCheckOKBodyAO1, errGetLicenceCheckOKBodyAO1 := swag.WriteJSON(dataGetLicenceCheckOKBodyAO1)
+	if errGetLicenceCheckOKBodyAO1 != nil {
+		return nil, errGetLicenceCheckOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetLicenceCheckOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get licence check o k body
+func (o *GetLicenceCheckOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetLicenceCheckOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getLicenceCheckOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetLicenceCheckOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetLicenceCheckOKBody) UnmarshalBinary(b []byte) error {
+	var res GetLicenceCheckOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

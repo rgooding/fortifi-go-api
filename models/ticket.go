@@ -17,7 +17,104 @@ import (
 type Ticket struct {
 	Entity
 
-	TicketAllOf1
+	// agent fid
+	AgentFid string `json:"agentFid,omitempty"`
+
+	// attachments
+	Attachments int64 `json:"attachments,omitempty"`
+
+	// bcc
+	Bcc string `json:"bcc,omitempty"`
+
+	// cc
+	Cc string `json:"cc,omitempty"`
+
+	// company fid
+	CompanyFid string `json:"companyFid,omitempty"`
+
+	// customer fid
+	CustomerFid string `json:"customerFid,omitempty"`
+
+	// data created
+	DataCreated int64 `json:"dataCreated,omitempty"`
+
+	// date modified
+	DateModified int64 `json:"dateModified,omitempty"`
+
+	// department fid
+	DepartmentFid string `json:"departmentFid,omitempty"`
+
+	// hash
+	Hash string `json:"hash,omitempty"`
+
+	// impact
+	Impact int64 `json:"impact,omitempty"`
+
+	// inbound email
+	InboundEmail string `json:"inboundEmail,omitempty"`
+
+	// inbound name
+	InboundName string `json:"inboundName,omitempty"`
+
+	// is spam
+	IsSpam bool `json:"isSpam,omitempty"`
+
+	// language
+	Language string `json:"language,omitempty"`
+
+	// last reply received time
+	LastReplyReceivedTime int64 `json:"lastReplyReceivedTime,omitempty"`
+
+	// last reply sent time
+	LastReplySentTime int64 `json:"lastReplySentTime,omitempty"`
+
+	// locked
+	Locked bool `json:"locked,omitempty"`
+
+	// locked by fid
+	LockedByFid string `json:"lockedByFid,omitempty"`
+
+	// outbound email
+	OutboundEmail string `json:"outboundEmail,omitempty"`
+
+	// outbound name
+	OutboundName string `json:"outboundName,omitempty"`
+
+	// post count
+	PostCount int64 `json:"postCount,omitempty"`
+
+	// priority
+	Priority int64 `json:"priority,omitempty"`
+
+	// priority adjustment
+	PriorityAdjustment int64 `json:"priorityAdjustment,omitempty"`
+
+	// queue fid
+	QueueFid string `json:"queueFid,omitempty"`
+
+	// resolve target time
+	ResolveTargetTime int64 `json:"resolveTargetTime,omitempty"`
+
+	// response target time
+	ResponseTargetTime int64 `json:"responseTargetTime,omitempty"`
+
+	// restricted access
+	RestrictedAccess bool `json:"restrictedAccess,omitempty"`
+
+	// sla fid
+	SLAFid string `json:"slaFid,omitempty"`
+
+	// status
+	Status int64 `json:"status,omitempty"`
+
+	// ticket type
+	TicketType string `json:"ticketType,omitempty"`
+
+	// tier
+	Tier int64 `json:"tier,omitempty"`
+
+	// urgency
+	Urgency int64 `json:"urgency,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +127,142 @@ func (m *Ticket) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 TicketAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		AgentFid string `json:"agentFid,omitempty"`
+
+		Attachments int64 `json:"attachments,omitempty"`
+
+		Bcc string `json:"bcc,omitempty"`
+
+		Cc string `json:"cc,omitempty"`
+
+		CompanyFid string `json:"companyFid,omitempty"`
+
+		CustomerFid string `json:"customerFid,omitempty"`
+
+		DataCreated int64 `json:"dataCreated,omitempty"`
+
+		DateModified int64 `json:"dateModified,omitempty"`
+
+		DepartmentFid string `json:"departmentFid,omitempty"`
+
+		Hash string `json:"hash,omitempty"`
+
+		Impact int64 `json:"impact,omitempty"`
+
+		InboundEmail string `json:"inboundEmail,omitempty"`
+
+		InboundName string `json:"inboundName,omitempty"`
+
+		IsSpam bool `json:"isSpam,omitempty"`
+
+		Language string `json:"language,omitempty"`
+
+		LastReplyReceivedTime int64 `json:"lastReplyReceivedTime,omitempty"`
+
+		LastReplySentTime int64 `json:"lastReplySentTime,omitempty"`
+
+		Locked bool `json:"locked,omitempty"`
+
+		LockedByFid string `json:"lockedByFid,omitempty"`
+
+		OutboundEmail string `json:"outboundEmail,omitempty"`
+
+		OutboundName string `json:"outboundName,omitempty"`
+
+		PostCount int64 `json:"postCount,omitempty"`
+
+		Priority int64 `json:"priority,omitempty"`
+
+		PriorityAdjustment int64 `json:"priorityAdjustment,omitempty"`
+
+		QueueFid string `json:"queueFid,omitempty"`
+
+		ResolveTargetTime int64 `json:"resolveTargetTime,omitempty"`
+
+		ResponseTargetTime int64 `json:"responseTargetTime,omitempty"`
+
+		RestrictedAccess bool `json:"restrictedAccess,omitempty"`
+
+		SLAFid string `json:"slaFid,omitempty"`
+
+		Status int64 `json:"status,omitempty"`
+
+		TicketType string `json:"ticketType,omitempty"`
+
+		Tier int64 `json:"tier,omitempty"`
+
+		Urgency int64 `json:"urgency,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.TicketAllOf1 = aO1
+
+	m.AgentFid = dataAO1.AgentFid
+
+	m.Attachments = dataAO1.Attachments
+
+	m.Bcc = dataAO1.Bcc
+
+	m.Cc = dataAO1.Cc
+
+	m.CompanyFid = dataAO1.CompanyFid
+
+	m.CustomerFid = dataAO1.CustomerFid
+
+	m.DataCreated = dataAO1.DataCreated
+
+	m.DateModified = dataAO1.DateModified
+
+	m.DepartmentFid = dataAO1.DepartmentFid
+
+	m.Hash = dataAO1.Hash
+
+	m.Impact = dataAO1.Impact
+
+	m.InboundEmail = dataAO1.InboundEmail
+
+	m.InboundName = dataAO1.InboundName
+
+	m.IsSpam = dataAO1.IsSpam
+
+	m.Language = dataAO1.Language
+
+	m.LastReplyReceivedTime = dataAO1.LastReplyReceivedTime
+
+	m.LastReplySentTime = dataAO1.LastReplySentTime
+
+	m.Locked = dataAO1.Locked
+
+	m.LockedByFid = dataAO1.LockedByFid
+
+	m.OutboundEmail = dataAO1.OutboundEmail
+
+	m.OutboundName = dataAO1.OutboundName
+
+	m.PostCount = dataAO1.PostCount
+
+	m.Priority = dataAO1.Priority
+
+	m.PriorityAdjustment = dataAO1.PriorityAdjustment
+
+	m.QueueFid = dataAO1.QueueFid
+
+	m.ResolveTargetTime = dataAO1.ResolveTargetTime
+
+	m.ResponseTargetTime = dataAO1.ResponseTargetTime
+
+	m.RestrictedAccess = dataAO1.RestrictedAccess
+
+	m.SLAFid = dataAO1.SLAFid
+
+	m.Status = dataAO1.Status
+
+	m.TicketType = dataAO1.TicketType
+
+	m.Tier = dataAO1.Tier
+
+	m.Urgency = dataAO1.Urgency
 
 	return nil
 }
@@ -49,11 +277,145 @@ func (m Ticket) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.TicketAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		AgentFid string `json:"agentFid,omitempty"`
+
+		Attachments int64 `json:"attachments,omitempty"`
+
+		Bcc string `json:"bcc,omitempty"`
+
+		Cc string `json:"cc,omitempty"`
+
+		CompanyFid string `json:"companyFid,omitempty"`
+
+		CustomerFid string `json:"customerFid,omitempty"`
+
+		DataCreated int64 `json:"dataCreated,omitempty"`
+
+		DateModified int64 `json:"dateModified,omitempty"`
+
+		DepartmentFid string `json:"departmentFid,omitempty"`
+
+		Hash string `json:"hash,omitempty"`
+
+		Impact int64 `json:"impact,omitempty"`
+
+		InboundEmail string `json:"inboundEmail,omitempty"`
+
+		InboundName string `json:"inboundName,omitempty"`
+
+		IsSpam bool `json:"isSpam,omitempty"`
+
+		Language string `json:"language,omitempty"`
+
+		LastReplyReceivedTime int64 `json:"lastReplyReceivedTime,omitempty"`
+
+		LastReplySentTime int64 `json:"lastReplySentTime,omitempty"`
+
+		Locked bool `json:"locked,omitempty"`
+
+		LockedByFid string `json:"lockedByFid,omitempty"`
+
+		OutboundEmail string `json:"outboundEmail,omitempty"`
+
+		OutboundName string `json:"outboundName,omitempty"`
+
+		PostCount int64 `json:"postCount,omitempty"`
+
+		Priority int64 `json:"priority,omitempty"`
+
+		PriorityAdjustment int64 `json:"priorityAdjustment,omitempty"`
+
+		QueueFid string `json:"queueFid,omitempty"`
+
+		ResolveTargetTime int64 `json:"resolveTargetTime,omitempty"`
+
+		ResponseTargetTime int64 `json:"responseTargetTime,omitempty"`
+
+		RestrictedAccess bool `json:"restrictedAccess,omitempty"`
+
+		SLAFid string `json:"slaFid,omitempty"`
+
+		Status int64 `json:"status,omitempty"`
+
+		TicketType string `json:"ticketType,omitempty"`
+
+		Tier int64 `json:"tier,omitempty"`
+
+		Urgency int64 `json:"urgency,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.AgentFid = m.AgentFid
+
+	dataAO1.Attachments = m.Attachments
+
+	dataAO1.Bcc = m.Bcc
+
+	dataAO1.Cc = m.Cc
+
+	dataAO1.CompanyFid = m.CompanyFid
+
+	dataAO1.CustomerFid = m.CustomerFid
+
+	dataAO1.DataCreated = m.DataCreated
+
+	dataAO1.DateModified = m.DateModified
+
+	dataAO1.DepartmentFid = m.DepartmentFid
+
+	dataAO1.Hash = m.Hash
+
+	dataAO1.Impact = m.Impact
+
+	dataAO1.InboundEmail = m.InboundEmail
+
+	dataAO1.InboundName = m.InboundName
+
+	dataAO1.IsSpam = m.IsSpam
+
+	dataAO1.Language = m.Language
+
+	dataAO1.LastReplyReceivedTime = m.LastReplyReceivedTime
+
+	dataAO1.LastReplySentTime = m.LastReplySentTime
+
+	dataAO1.Locked = m.Locked
+
+	dataAO1.LockedByFid = m.LockedByFid
+
+	dataAO1.OutboundEmail = m.OutboundEmail
+
+	dataAO1.OutboundName = m.OutboundName
+
+	dataAO1.PostCount = m.PostCount
+
+	dataAO1.Priority = m.Priority
+
+	dataAO1.PriorityAdjustment = m.PriorityAdjustment
+
+	dataAO1.QueueFid = m.QueueFid
+
+	dataAO1.ResolveTargetTime = m.ResolveTargetTime
+
+	dataAO1.ResponseTargetTime = m.ResponseTargetTime
+
+	dataAO1.RestrictedAccess = m.RestrictedAccess
+
+	dataAO1.SLAFid = m.SLAFid
+
+	dataAO1.Status = m.Status
+
+	dataAO1.TicketType = m.TicketType
+
+	dataAO1.Tier = m.Tier
+
+	dataAO1.Urgency = m.Urgency
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +426,6 @@ func (m *Ticket) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with TicketAllOf1
-	if err := m.TicketAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

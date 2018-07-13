@@ -17,7 +17,53 @@ import (
 type Advertiser struct {
 	Entity
 
-	AdvertiserAllOf1
+	// accepted terms
+	AcceptedTerms string `json:"acceptedTerms,omitempty"`
+
+	// account manager fid
+	AccountManagerFid string `json:"accountManagerFid,omitempty"`
+
+	// approved
+	Approved bool `json:"approved,omitempty"`
+
+	// company fid
+	CompanyFid string `json:"companyFid,omitempty"`
+
+	// company name
+	CompanyName string `json:"companyName,omitempty"`
+
+	// contact name
+	ContactName string `json:"contactName,omitempty"`
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// email fid
+	EmailFid string `json:"emailFid,omitempty"`
+
+	// foundation fid
+	FoundationFid string `json:"foundationFid,omitempty"`
+
+	// is disabled
+	IsDisabled string `json:"isDisabled,omitempty"`
+
+	// payout type
+	PayoutType string `json:"payoutType,omitempty"`
+
+	// phone
+	Phone string `json:"phone,omitempty"`
+
+	// phone fid
+	PhoneFid string `json:"phoneFid,omitempty"`
+
+	// suspended
+	Suspended string `json:"suspended,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// website
+	Website string `json:"website,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +76,74 @@ func (m *Advertiser) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 AdvertiserAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		AcceptedTerms string `json:"acceptedTerms,omitempty"`
+
+		AccountManagerFid string `json:"accountManagerFid,omitempty"`
+
+		Approved bool `json:"approved,omitempty"`
+
+		CompanyFid string `json:"companyFid,omitempty"`
+
+		CompanyName string `json:"companyName,omitempty"`
+
+		ContactName string `json:"contactName,omitempty"`
+
+		Email string `json:"email,omitempty"`
+
+		EmailFid string `json:"emailFid,omitempty"`
+
+		FoundationFid string `json:"foundationFid,omitempty"`
+
+		IsDisabled string `json:"isDisabled,omitempty"`
+
+		PayoutType string `json:"payoutType,omitempty"`
+
+		Phone string `json:"phone,omitempty"`
+
+		PhoneFid string `json:"phoneFid,omitempty"`
+
+		Suspended string `json:"suspended,omitempty"`
+
+		Type string `json:"type,omitempty"`
+
+		Website string `json:"website,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.AdvertiserAllOf1 = aO1
+
+	m.AcceptedTerms = dataAO1.AcceptedTerms
+
+	m.AccountManagerFid = dataAO1.AccountManagerFid
+
+	m.Approved = dataAO1.Approved
+
+	m.CompanyFid = dataAO1.CompanyFid
+
+	m.CompanyName = dataAO1.CompanyName
+
+	m.ContactName = dataAO1.ContactName
+
+	m.Email = dataAO1.Email
+
+	m.EmailFid = dataAO1.EmailFid
+
+	m.FoundationFid = dataAO1.FoundationFid
+
+	m.IsDisabled = dataAO1.IsDisabled
+
+	m.PayoutType = dataAO1.PayoutType
+
+	m.Phone = dataAO1.Phone
+
+	m.PhoneFid = dataAO1.PhoneFid
+
+	m.Suspended = dataAO1.Suspended
+
+	m.Type = dataAO1.Type
+
+	m.Website = dataAO1.Website
 
 	return nil
 }
@@ -49,11 +158,77 @@ func (m Advertiser) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.AdvertiserAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		AcceptedTerms string `json:"acceptedTerms,omitempty"`
+
+		AccountManagerFid string `json:"accountManagerFid,omitempty"`
+
+		Approved bool `json:"approved,omitempty"`
+
+		CompanyFid string `json:"companyFid,omitempty"`
+
+		CompanyName string `json:"companyName,omitempty"`
+
+		ContactName string `json:"contactName,omitempty"`
+
+		Email string `json:"email,omitempty"`
+
+		EmailFid string `json:"emailFid,omitempty"`
+
+		FoundationFid string `json:"foundationFid,omitempty"`
+
+		IsDisabled string `json:"isDisabled,omitempty"`
+
+		PayoutType string `json:"payoutType,omitempty"`
+
+		Phone string `json:"phone,omitempty"`
+
+		PhoneFid string `json:"phoneFid,omitempty"`
+
+		Suspended string `json:"suspended,omitempty"`
+
+		Type string `json:"type,omitempty"`
+
+		Website string `json:"website,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.AcceptedTerms = m.AcceptedTerms
+
+	dataAO1.AccountManagerFid = m.AccountManagerFid
+
+	dataAO1.Approved = m.Approved
+
+	dataAO1.CompanyFid = m.CompanyFid
+
+	dataAO1.CompanyName = m.CompanyName
+
+	dataAO1.ContactName = m.ContactName
+
+	dataAO1.Email = m.Email
+
+	dataAO1.EmailFid = m.EmailFid
+
+	dataAO1.FoundationFid = m.FoundationFid
+
+	dataAO1.IsDisabled = m.IsDisabled
+
+	dataAO1.PayoutType = m.PayoutType
+
+	dataAO1.Phone = m.Phone
+
+	dataAO1.PhoneFid = m.PhoneFid
+
+	dataAO1.Suspended = m.Suspended
+
+	dataAO1.Type = m.Type
+
+	dataAO1.Website = m.Website
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +239,6 @@ func (m *Advertiser) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with AdvertiserAllOf1
-	if err := m.AdvertiserAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

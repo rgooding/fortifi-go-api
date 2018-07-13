@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPutOrdersOrderFidVerifyOK() *PutOrdersOrderFidVerifyOK {
 Order payment account verified
 */
 type PutOrdersOrderFidVerifyOK struct {
-	Payload *models.PutOrdersOrderFidVerifyOKBody
+	Payload *PutOrdersOrderFidVerifyOKBody
 }
 
 func (o *PutOrdersOrderFidVerifyOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PutOrdersOrderFidVerifyOK) Error() string {
 
 func (o *PutOrdersOrderFidVerifyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PutOrdersOrderFidVerifyOKBody)
+	o.Payload = new(PutOrdersOrderFidVerifyOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PutOrdersOrderFidVerifyDefault) readResponse(response runtime.ClientRes
 		return err
 	}
 
+	return nil
+}
+
+/*PutOrdersOrderFidVerifyOKBody put orders order fid verify o k body
+swagger:model PutOrdersOrderFidVerifyOKBody
+*/
+type PutOrdersOrderFidVerifyOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.OrderVerification `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PutOrdersOrderFidVerifyOKBody) UnmarshalJSON(raw []byte) error {
+	// PutOrdersOrderFidVerifyOKBodyAO0
+	var putOrdersOrderFidVerifyOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &putOrdersOrderFidVerifyOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = putOrdersOrderFidVerifyOKBodyAO0
+
+	// PutOrdersOrderFidVerifyOKBodyAO1
+	var dataPutOrdersOrderFidVerifyOKBodyAO1 struct {
+		Data *models.OrderVerification `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPutOrdersOrderFidVerifyOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPutOrdersOrderFidVerifyOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PutOrdersOrderFidVerifyOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	putOrdersOrderFidVerifyOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, putOrdersOrderFidVerifyOKBodyAO0)
+
+	var dataPutOrdersOrderFidVerifyOKBodyAO1 struct {
+		Data *models.OrderVerification `json:"data,omitempty"`
+	}
+
+	dataPutOrdersOrderFidVerifyOKBodyAO1.Data = o.Data
+
+	jsonDataPutOrdersOrderFidVerifyOKBodyAO1, errPutOrdersOrderFidVerifyOKBodyAO1 := swag.WriteJSON(dataPutOrdersOrderFidVerifyOKBodyAO1)
+	if errPutOrdersOrderFidVerifyOKBodyAO1 != nil {
+		return nil, errPutOrdersOrderFidVerifyOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPutOrdersOrderFidVerifyOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this put orders order fid verify o k body
+func (o *PutOrdersOrderFidVerifyOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutOrdersOrderFidVerifyOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putOrdersOrderFidVerifyOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PutOrdersOrderFidVerifyOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PutOrdersOrderFidVerifyOKBody) UnmarshalBinary(b []byte) error {
+	var res PutOrdersOrderFidVerifyOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

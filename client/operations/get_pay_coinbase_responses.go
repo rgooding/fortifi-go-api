@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetPayCoinbaseOK() *GetPayCoinbaseOK {
 Coinbase checkout ID
 */
 type GetPayCoinbaseOK struct {
-	Payload *models.GetPayCoinbaseOKBody
+	Payload *GetPayCoinbaseOKBody
 }
 
 func (o *GetPayCoinbaseOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetPayCoinbaseOK) Error() string {
 
 func (o *GetPayCoinbaseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetPayCoinbaseOKBody)
+	o.Payload = new(GetPayCoinbaseOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetPayCoinbaseDefault) readResponse(response runtime.ClientResponse, co
 		return err
 	}
 
+	return nil
+}
+
+/*GetPayCoinbaseOKBody get pay coinbase o k body
+swagger:model GetPayCoinbaseOKBody
+*/
+type GetPayCoinbaseOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.CoinbaseCheckout `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetPayCoinbaseOKBody) UnmarshalJSON(raw []byte) error {
+	// GetPayCoinbaseOKBodyAO0
+	var getPayCoinbaseOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getPayCoinbaseOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getPayCoinbaseOKBodyAO0
+
+	// GetPayCoinbaseOKBodyAO1
+	var dataGetPayCoinbaseOKBodyAO1 struct {
+		Data *models.CoinbaseCheckout `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetPayCoinbaseOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetPayCoinbaseOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetPayCoinbaseOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getPayCoinbaseOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getPayCoinbaseOKBodyAO0)
+
+	var dataGetPayCoinbaseOKBodyAO1 struct {
+		Data *models.CoinbaseCheckout `json:"data,omitempty"`
+	}
+
+	dataGetPayCoinbaseOKBodyAO1.Data = o.Data
+
+	jsonDataGetPayCoinbaseOKBodyAO1, errGetPayCoinbaseOKBodyAO1 := swag.WriteJSON(dataGetPayCoinbaseOKBodyAO1)
+	if errGetPayCoinbaseOKBodyAO1 != nil {
+		return nil, errGetPayCoinbaseOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetPayCoinbaseOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get pay coinbase o k body
+func (o *GetPayCoinbaseOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetPayCoinbaseOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getPayCoinbaseOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetPayCoinbaseOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetPayCoinbaseOKBody) UnmarshalBinary(b []byte) error {
+	var res GetPayCoinbaseOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // InvoiceSubItem Generic Response
@@ -17,7 +18,25 @@ import (
 type InvoiceSubItem struct {
 	Entity
 
-	InvoiceSubItemAllOf1
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	FromDate strfmt.DateTime `json:"fromDate,omitempty"`
+
+	// item type
+	ItemType string `json:"itemType,omitempty"`
+
+	// per unit amount
+	PerUnitAmount float32 `json:"perUnitAmount,omitempty"`
+
+	// quantity
+	Quantity int32 `json:"quantity,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	ToDate strfmt.DateTime `json:"toDate,omitempty"`
+
+	// total amount
+	TotalAmount float32 `json:"totalAmount,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +49,34 @@ func (m *InvoiceSubItem) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 InvoiceSubItemAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		FromDate strfmt.DateTime `json:"fromDate,omitempty"`
+
+		ItemType string `json:"itemType,omitempty"`
+
+		PerUnitAmount float32 `json:"perUnitAmount,omitempty"`
+
+		Quantity int32 `json:"quantity,omitempty"`
+
+		ToDate strfmt.DateTime `json:"toDate,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.InvoiceSubItemAllOf1 = aO1
+
+	m.FromDate = dataAO1.FromDate
+
+	m.ItemType = dataAO1.ItemType
+
+	m.PerUnitAmount = dataAO1.PerUnitAmount
+
+	m.Quantity = dataAO1.Quantity
+
+	m.ToDate = dataAO1.ToDate
+
+	m.TotalAmount = dataAO1.TotalAmount
 
 	return nil
 }
@@ -49,11 +91,37 @@ func (m InvoiceSubItem) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.InvoiceSubItemAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		FromDate strfmt.DateTime `json:"fromDate,omitempty"`
+
+		ItemType string `json:"itemType,omitempty"`
+
+		PerUnitAmount float32 `json:"perUnitAmount,omitempty"`
+
+		Quantity int32 `json:"quantity,omitempty"`
+
+		ToDate strfmt.DateTime `json:"toDate,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.FromDate = m.FromDate
+
+	dataAO1.ItemType = m.ItemType
+
+	dataAO1.PerUnitAmount = m.PerUnitAmount
+
+	dataAO1.Quantity = m.Quantity
+
+	dataAO1.ToDate = m.ToDate
+
+	dataAO1.TotalAmount = m.TotalAmount
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +134,44 @@ func (m *InvoiceSubItem) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with InvoiceSubItemAllOf1
-	if err := m.InvoiceSubItemAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateFromDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateToDate(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *InvoiceSubItem) validateFromDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.FromDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("fromDate", "body", "date-time", m.FromDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InvoiceSubItem) validateToDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ToDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("toDate", "body", "date-time", m.ToDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

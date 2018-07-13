@@ -17,7 +17,26 @@ import (
 type Address struct {
 	Entity
 
-	AddressAllOf1
+	// address1
+	Address1 string `json:"address1,omitempty"`
+
+	// address2
+	Address2 string `json:"address2,omitempty"`
+
+	// address3
+	Address3 string `json:"address3,omitempty"`
+
+	// country
+	Country string `json:"country,omitempty"`
+
+	// county
+	County string `json:"county,omitempty"`
+
+	// postal code
+	PostalCode string `json:"postalCode,omitempty"`
+
+	// town
+	Town string `json:"town,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +49,38 @@ func (m *Address) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 AddressAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Address1 string `json:"address1,omitempty"`
+
+		Address2 string `json:"address2,omitempty"`
+
+		Address3 string `json:"address3,omitempty"`
+
+		Country string `json:"country,omitempty"`
+
+		County string `json:"county,omitempty"`
+
+		PostalCode string `json:"postalCode,omitempty"`
+
+		Town string `json:"town,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.AddressAllOf1 = aO1
+
+	m.Address1 = dataAO1.Address1
+
+	m.Address2 = dataAO1.Address2
+
+	m.Address3 = dataAO1.Address3
+
+	m.Country = dataAO1.Country
+
+	m.County = dataAO1.County
+
+	m.PostalCode = dataAO1.PostalCode
+
+	m.Town = dataAO1.Town
 
 	return nil
 }
@@ -49,11 +95,41 @@ func (m Address) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.AddressAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Address1 string `json:"address1,omitempty"`
+
+		Address2 string `json:"address2,omitempty"`
+
+		Address3 string `json:"address3,omitempty"`
+
+		Country string `json:"country,omitempty"`
+
+		County string `json:"county,omitempty"`
+
+		PostalCode string `json:"postalCode,omitempty"`
+
+		Town string `json:"town,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Address1 = m.Address1
+
+	dataAO1.Address2 = m.Address2
+
+	dataAO1.Address3 = m.Address3
+
+	dataAO1.Country = m.Country
+
+	dataAO1.County = m.County
+
+	dataAO1.PostalCode = m.PostalCode
+
+	dataAO1.Town = m.Town
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +140,6 @@ func (m *Address) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with AddressAllOf1
-	if err := m.AddressAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

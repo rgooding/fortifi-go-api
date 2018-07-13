@@ -17,7 +17,23 @@ import (
 type PaymentCard struct {
 	Entity
 
-	PaymentCardAllOf1
+	// card type
+	CardType string `json:"cardType,omitempty"`
+
+	// expiry month
+	ExpiryMonth float64 `json:"expiryMonth,omitempty"`
+
+	// expiry year
+	ExpiryYear float64 `json:"expiryYear,omitempty"`
+
+	// issue
+	Issue float64 `json:"issue,omitempty"`
+
+	// last4
+	Last4 float64 `json:"last4,omitempty"`
+
+	// name on card
+	NameOnCard string `json:"nameOnCard,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +46,34 @@ func (m *PaymentCard) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 PaymentCardAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		CardType string `json:"cardType,omitempty"`
+
+		ExpiryMonth float64 `json:"expiryMonth,omitempty"`
+
+		ExpiryYear float64 `json:"expiryYear,omitempty"`
+
+		Issue float64 `json:"issue,omitempty"`
+
+		Last4 float64 `json:"last4,omitempty"`
+
+		NameOnCard string `json:"nameOnCard,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.PaymentCardAllOf1 = aO1
+
+	m.CardType = dataAO1.CardType
+
+	m.ExpiryMonth = dataAO1.ExpiryMonth
+
+	m.ExpiryYear = dataAO1.ExpiryYear
+
+	m.Issue = dataAO1.Issue
+
+	m.Last4 = dataAO1.Last4
+
+	m.NameOnCard = dataAO1.NameOnCard
 
 	return nil
 }
@@ -49,11 +88,37 @@ func (m PaymentCard) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.PaymentCardAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		CardType string `json:"cardType,omitempty"`
+
+		ExpiryMonth float64 `json:"expiryMonth,omitempty"`
+
+		ExpiryYear float64 `json:"expiryYear,omitempty"`
+
+		Issue float64 `json:"issue,omitempty"`
+
+		Last4 float64 `json:"last4,omitempty"`
+
+		NameOnCard string `json:"nameOnCard,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.CardType = m.CardType
+
+	dataAO1.ExpiryMonth = m.ExpiryMonth
+
+	dataAO1.ExpiryYear = m.ExpiryYear
+
+	dataAO1.Issue = m.Issue
+
+	dataAO1.Last4 = m.Last4
+
+	dataAO1.NameOnCard = m.NameOnCard
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +129,6 @@ func (m *PaymentCard) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with PaymentCardAllOf1
-	if err := m.PaymentCardAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

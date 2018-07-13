@@ -75,6 +75,9 @@ type PostActionPayload struct {
 	// Your unique transaction ID for this event
 	TransactionValue float32 `json:"transactionValue,omitempty"`
 
+	// If an existing device exists for the visitor, prefer that over the user agent sent in this payload
+	UseExistingDeviceIfAvailable bool `json:"useExistingDeviceIfAvailable,omitempty"`
+
 	// User Agent of the visitors browser 'HTTP_USER_AGENT'
 	UserAgent string `json:"userAgent,omitempty"`
 

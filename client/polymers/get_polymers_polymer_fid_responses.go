@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetPolymersPolymerFidOK() *GetPolymersPolymerFidOK {
 Polymer Information
 */
 type GetPolymersPolymerFidOK struct {
-	Payload *models.GetPolymersPolymerFidOKBody
+	Payload *GetPolymersPolymerFidOKBody
 }
 
 func (o *GetPolymersPolymerFidOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetPolymersPolymerFidOK) Error() string {
 
 func (o *GetPolymersPolymerFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetPolymersPolymerFidOKBody)
+	o.Payload = new(GetPolymersPolymerFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetPolymersPolymerFidDefault) readResponse(response runtime.ClientRespo
 		return err
 	}
 
+	return nil
+}
+
+/*GetPolymersPolymerFidOKBody get polymers polymer fid o k body
+swagger:model GetPolymersPolymerFidOKBody
+*/
+type GetPolymersPolymerFidOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Entity `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetPolymersPolymerFidOKBody) UnmarshalJSON(raw []byte) error {
+	// GetPolymersPolymerFidOKBodyAO0
+	var getPolymersPolymerFidOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getPolymersPolymerFidOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getPolymersPolymerFidOKBodyAO0
+
+	// GetPolymersPolymerFidOKBodyAO1
+	var dataGetPolymersPolymerFidOKBodyAO1 struct {
+		Data *models.Entity `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetPolymersPolymerFidOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetPolymersPolymerFidOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetPolymersPolymerFidOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getPolymersPolymerFidOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getPolymersPolymerFidOKBodyAO0)
+
+	var dataGetPolymersPolymerFidOKBodyAO1 struct {
+		Data *models.Entity `json:"data,omitempty"`
+	}
+
+	dataGetPolymersPolymerFidOKBodyAO1.Data = o.Data
+
+	jsonDataGetPolymersPolymerFidOKBodyAO1, errGetPolymersPolymerFidOKBodyAO1 := swag.WriteJSON(dataGetPolymersPolymerFidOKBodyAO1)
+	if errGetPolymersPolymerFidOKBodyAO1 != nil {
+		return nil, errGetPolymersPolymerFidOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetPolymersPolymerFidOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get polymers polymer fid o k body
+func (o *GetPolymersPolymerFidOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetPolymersPolymerFidOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getPolymersPolymerFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetPolymersPolymerFidOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetPolymersPolymerFidOKBody) UnmarshalBinary(b []byte) error {
+	var res GetPolymersPolymerFidOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

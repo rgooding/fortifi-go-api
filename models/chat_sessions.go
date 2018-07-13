@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,7 +19,8 @@ import (
 type ChatSessions struct {
 	Pagination
 
-	ChatSessionsAllOf1
+	// chat sessions
+	ChatSessions []*ChatSession `json:"chatSessions"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +33,14 @@ func (m *ChatSessions) UnmarshalJSON(raw []byte) error {
 	m.Pagination = aO0
 
 	// AO1
-	var aO1 ChatSessionsAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		ChatSessions []*ChatSession `json:"chatSessions,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ChatSessionsAllOf1 = aO1
+
+	m.ChatSessions = dataAO1.ChatSessions
 
 	return nil
 }
@@ -49,11 +55,17 @@ func (m ChatSessions) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ChatSessionsAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		ChatSessions []*ChatSession `json:"chatSessions,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.ChatSessions = m.ChatSessions
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +78,39 @@ func (m *ChatSessions) Validate(formats strfmt.Registry) error {
 	if err := m.Pagination.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with ChatSessionsAllOf1
-	if err := m.ChatSessionsAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateChatSessions(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ChatSessions) validateChatSessions(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ChatSessions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ChatSessions); i++ {
+		if swag.IsZero(m.ChatSessions[i]) { // not required
+			continue
+		}
+
+		if m.ChatSessions[i] != nil {
+			if err := m.ChatSessions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("chatSessions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

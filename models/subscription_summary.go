@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SubscriptionSummary Generic Response
@@ -17,7 +18,32 @@ import (
 type SubscriptionSummary struct {
 	Entity
 
-	SubscriptionSummaryAllOf1
+	// auto charge
+	AutoCharge bool `json:"autoCharge,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Cycle string `json:"cycle,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	LastRenewed strfmt.DateTime `json:"lastRenewed,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
+
+	// product fid
+	ProductFid string `json:"productFid,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
+
+	// renewal price
+	RenewalPrice float32 `json:"renewalPrice,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +56,42 @@ func (m *SubscriptionSummary) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 SubscriptionSummaryAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		AutoCharge bool `json:"autoCharge,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		LastRenewed strfmt.DateTime `json:"lastRenewed,omitempty"`
+
+		PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
+
+		ProductFid string `json:"productFid,omitempty"`
+
+		RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
+
+		RenewalPrice float32 `json:"renewalPrice,omitempty"`
+
+		Status string `json:"status,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.SubscriptionSummaryAllOf1 = aO1
+
+	m.AutoCharge = dataAO1.AutoCharge
+
+	m.Cycle = dataAO1.Cycle
+
+	m.LastRenewed = dataAO1.LastRenewed
+
+	m.PaidUntil = dataAO1.PaidUntil
+
+	m.ProductFid = dataAO1.ProductFid
+
+	m.RenewalDate = dataAO1.RenewalDate
+
+	m.RenewalPrice = dataAO1.RenewalPrice
+
+	m.Status = dataAO1.Status
 
 	return nil
 }
@@ -49,11 +106,45 @@ func (m SubscriptionSummary) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.SubscriptionSummaryAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		AutoCharge bool `json:"autoCharge,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		LastRenewed strfmt.DateTime `json:"lastRenewed,omitempty"`
+
+		PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
+
+		ProductFid string `json:"productFid,omitempty"`
+
+		RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
+
+		RenewalPrice float32 `json:"renewalPrice,omitempty"`
+
+		Status string `json:"status,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.AutoCharge = m.AutoCharge
+
+	dataAO1.Cycle = m.Cycle
+
+	dataAO1.LastRenewed = m.LastRenewed
+
+	dataAO1.PaidUntil = m.PaidUntil
+
+	dataAO1.ProductFid = m.ProductFid
+
+	dataAO1.RenewalDate = m.RenewalDate
+
+	dataAO1.RenewalPrice = m.RenewalPrice
+
+	dataAO1.Status = m.Status
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +157,61 @@ func (m *SubscriptionSummary) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with SubscriptionSummaryAllOf1
-	if err := m.SubscriptionSummaryAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateLastRenewed(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaidUntil(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRenewalDate(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SubscriptionSummary) validateLastRenewed(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LastRenewed) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastRenewed", "body", "date-time", m.LastRenewed.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionSummary) validatePaidUntil(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaidUntil) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("paidUntil", "body", "date-time", m.PaidUntil.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SubscriptionSummary) validateRenewalDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.RenewalDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("renewalDate", "body", "date-time", m.RenewalDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

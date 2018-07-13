@@ -17,7 +17,11 @@ import (
 type ChatSession struct {
 	Entity
 
-	ChatSessionAllOf1
+	// time ended
+	TimeEnded int64 `json:"timeEnded,omitempty"`
+
+	// time started
+	TimeStarted int64 `json:"timeStarted,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +34,18 @@ func (m *ChatSession) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 ChatSessionAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		TimeEnded int64 `json:"timeEnded,omitempty"`
+
+		TimeStarted int64 `json:"timeStarted,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ChatSessionAllOf1 = aO1
+
+	m.TimeEnded = dataAO1.TimeEnded
+
+	m.TimeStarted = dataAO1.TimeStarted
 
 	return nil
 }
@@ -49,11 +60,21 @@ func (m ChatSession) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ChatSessionAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		TimeEnded int64 `json:"timeEnded,omitempty"`
+
+		TimeStarted int64 `json:"timeStarted,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.TimeEnded = m.TimeEnded
+
+	dataAO1.TimeStarted = m.TimeStarted
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +85,6 @@ func (m *ChatSession) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with ChatSessionAllOf1
-	if err := m.ChatSessionAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

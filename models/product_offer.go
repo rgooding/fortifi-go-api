@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ProductOffer Generic Response
@@ -17,7 +18,45 @@ import (
 type ProductOffer struct {
 	Entity
 
-	ProductOfferAllOf1
+	// apply fid
+	ApplyFid string `json:"applyFid,omitempty"`
+
+	// coupon code
+	CouponCode string `json:"couponCode,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Cycle string `json:"cycle,omitempty"`
+
+	// discount amount
+	DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+	// discount type
+	DiscountType DiscountType `json:"discountType,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	ExpiryTime strfmt.DateTime `json:"expiryTime,omitempty"`
+
+	// max usages
+	MaxUsages int32 `json:"maxUsages,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Period string `json:"period,omitempty"`
+
+	// restrictive
+	Restrictive bool `json:"restrictive,omitempty"`
+
+	// setup discount amount
+	SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
+
+	// setup discount type
+	SetupDiscountType DiscountType `json:"setupDiscountType,omitempty"`
+
+	// term
+	Term int32 `json:"term,omitempty"`
+
+	// term type
+	TermType CycleTermType `json:"termType,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +69,62 @@ func (m *ProductOffer) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 ProductOfferAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		ApplyFid string `json:"applyFid,omitempty"`
+
+		CouponCode string `json:"couponCode,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+		DiscountType DiscountType `json:"discountType,omitempty"`
+
+		ExpiryTime strfmt.DateTime `json:"expiryTime,omitempty"`
+
+		MaxUsages int32 `json:"maxUsages,omitempty"`
+
+		Period string `json:"period,omitempty"`
+
+		Restrictive bool `json:"restrictive,omitempty"`
+
+		SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
+
+		SetupDiscountType DiscountType `json:"setupDiscountType,omitempty"`
+
+		Term int32 `json:"term,omitempty"`
+
+		TermType CycleTermType `json:"termType,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ProductOfferAllOf1 = aO1
+
+	m.ApplyFid = dataAO1.ApplyFid
+
+	m.CouponCode = dataAO1.CouponCode
+
+	m.Cycle = dataAO1.Cycle
+
+	m.DiscountAmount = dataAO1.DiscountAmount
+
+	m.DiscountType = dataAO1.DiscountType
+
+	m.ExpiryTime = dataAO1.ExpiryTime
+
+	m.MaxUsages = dataAO1.MaxUsages
+
+	m.Period = dataAO1.Period
+
+	m.Restrictive = dataAO1.Restrictive
+
+	m.SetupDiscountAmount = dataAO1.SetupDiscountAmount
+
+	m.SetupDiscountType = dataAO1.SetupDiscountType
+
+	m.Term = dataAO1.Term
+
+	m.TermType = dataAO1.TermType
 
 	return nil
 }
@@ -49,11 +139,65 @@ func (m ProductOffer) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ProductOfferAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		ApplyFid string `json:"applyFid,omitempty"`
+
+		CouponCode string `json:"couponCode,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+		DiscountType DiscountType `json:"discountType,omitempty"`
+
+		ExpiryTime strfmt.DateTime `json:"expiryTime,omitempty"`
+
+		MaxUsages int32 `json:"maxUsages,omitempty"`
+
+		Period string `json:"period,omitempty"`
+
+		Restrictive bool `json:"restrictive,omitempty"`
+
+		SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
+
+		SetupDiscountType DiscountType `json:"setupDiscountType,omitempty"`
+
+		Term int32 `json:"term,omitempty"`
+
+		TermType CycleTermType `json:"termType,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.ApplyFid = m.ApplyFid
+
+	dataAO1.CouponCode = m.CouponCode
+
+	dataAO1.Cycle = m.Cycle
+
+	dataAO1.DiscountAmount = m.DiscountAmount
+
+	dataAO1.DiscountType = m.DiscountType
+
+	dataAO1.ExpiryTime = m.ExpiryTime
+
+	dataAO1.MaxUsages = m.MaxUsages
+
+	dataAO1.Period = m.Period
+
+	dataAO1.Restrictive = m.Restrictive
+
+	dataAO1.SetupDiscountAmount = m.SetupDiscountAmount
+
+	dataAO1.SetupDiscountType = m.SetupDiscountType
+
+	dataAO1.Term = m.Term
+
+	dataAO1.TermType = m.TermType
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +210,87 @@ func (m *ProductOffer) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with ProductOfferAllOf1
-	if err := m.ProductOfferAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateDiscountType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateExpiryTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSetupDiscountType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTermType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ProductOffer) validateDiscountType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DiscountType) { // not required
+		return nil
+	}
+
+	if err := m.DiscountType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("discountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProductOffer) validateExpiryTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ExpiryTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("expiryTime", "body", "date-time", m.ExpiryTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProductOffer) validateSetupDiscountType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.SetupDiscountType) { // not required
+		return nil
+	}
+
+	if err := m.SetupDiscountType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("setupDiscountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProductOffer) validateTermType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TermType) { // not required
+		return nil
+	}
+
+	if err := m.TermType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("termType")
+		}
+		return err
+	}
+
 	return nil
 }
 

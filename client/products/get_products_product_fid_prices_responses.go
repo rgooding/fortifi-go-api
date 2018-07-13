@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetProductsProductFidPricesOK() *GetProductsProductFidPricesOK {
 List of product prices
 */
 type GetProductsProductFidPricesOK struct {
-	Payload *models.GetProductsProductFidPricesOKBody
+	Payload *GetProductsProductFidPricesOKBody
 }
 
 func (o *GetProductsProductFidPricesOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetProductsProductFidPricesOK) Error() string {
 
 func (o *GetProductsProductFidPricesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetProductsProductFidPricesOKBody)
+	o.Payload = new(GetProductsProductFidPricesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetProductsProductFidPricesDefault) readResponse(response runtime.Clien
 		return err
 	}
 
+	return nil
+}
+
+/*GetProductsProductFidPricesOKBody get products product fid prices o k body
+swagger:model GetProductsProductFidPricesOKBody
+*/
+type GetProductsProductFidPricesOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.ProductPrices `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetProductsProductFidPricesOKBody) UnmarshalJSON(raw []byte) error {
+	// GetProductsProductFidPricesOKBodyAO0
+	var getProductsProductFidPricesOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getProductsProductFidPricesOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getProductsProductFidPricesOKBodyAO0
+
+	// GetProductsProductFidPricesOKBodyAO1
+	var dataGetProductsProductFidPricesOKBodyAO1 struct {
+		Data *models.ProductPrices `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetProductsProductFidPricesOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetProductsProductFidPricesOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetProductsProductFidPricesOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getProductsProductFidPricesOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getProductsProductFidPricesOKBodyAO0)
+
+	var dataGetProductsProductFidPricesOKBodyAO1 struct {
+		Data *models.ProductPrices `json:"data,omitempty"`
+	}
+
+	dataGetProductsProductFidPricesOKBodyAO1.Data = o.Data
+
+	jsonDataGetProductsProductFidPricesOKBodyAO1, errGetProductsProductFidPricesOKBodyAO1 := swag.WriteJSON(dataGetProductsProductFidPricesOKBodyAO1)
+	if errGetProductsProductFidPricesOKBodyAO1 != nil {
+		return nil, errGetProductsProductFidPricesOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetProductsProductFidPricesOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get products product fid prices o k body
+func (o *GetProductsProductFidPricesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetProductsProductFidPricesOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getProductsProductFidPricesOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetProductsProductFidPricesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetProductsProductFidPricesOKBody) UnmarshalBinary(b []byte) error {
+	var res GetProductsProductFidPricesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,10 +6,13 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Payment Payment
@@ -17,7 +20,64 @@ import (
 type Payment struct {
 	Fid
 
-	PaymentAllOf1
+	// amount
+	Amount float32 `json:"amount,omitempty"`
+
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// direction
+	Direction string `json:"direction,omitempty"`
+
+	// dispute fid
+	DisputeFid string `json:"disputeFid,omitempty"`
+
+	// fee
+	Fee float32 `json:"fee,omitempty"`
+
+	// fee currency
+	FeeCurrency string `json:"feeCurrency,omitempty"`
+
+	// fraud fid
+	FraudFid string `json:"fraudFid,omitempty"`
+
+	// invoice fid
+	InvoiceFid string `json:"invoiceFid,omitempty"`
+
+	// order fid
+	OrderFid string `json:"orderFid,omitempty"`
+
+	// processed
+	Processed bool `json:"processed,omitempty"`
+
+	// processed date
+	ProcessedDate int64 `json:"processedDate,omitempty"`
+
+	// statement descriptor
+	StatementDescriptor string `json:"statementDescriptor,omitempty"`
+
+	// status
+	// Enum: [pending paid refund-pending refunded partially-refunded chargeback chargeback-pending]
+	Status string `json:"status,omitempty"`
+
+	// status code
+	StatusCode string `json:"statusCode,omitempty"`
+
+	// status message
+	StatusMessage string `json:"statusMessage,omitempty"`
+
+	// sub gateway fid
+	SubGatewayFid string `json:"subGatewayFid,omitempty"`
+
+	// sub gateway transaction Id
+	SubGatewayTransactionID string `json:"subGatewayTransactionId,omitempty"`
+
+	// transaction Id
+	TransactionID string `json:"transactionId,omitempty"`
+
+	// type
+	// Enum: [affiliate invoice order unknown preauth]
+	Type string `json:"type,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +90,86 @@ func (m *Payment) UnmarshalJSON(raw []byte) error {
 	m.Fid = aO0
 
 	// AO1
-	var aO1 PaymentAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Amount float32 `json:"amount,omitempty"`
+
+		Currency string `json:"currency,omitempty"`
+
+		Direction string `json:"direction,omitempty"`
+
+		DisputeFid string `json:"disputeFid,omitempty"`
+
+		Fee float32 `json:"fee,omitempty"`
+
+		FeeCurrency string `json:"feeCurrency,omitempty"`
+
+		FraudFid string `json:"fraudFid,omitempty"`
+
+		InvoiceFid string `json:"invoiceFid,omitempty"`
+
+		OrderFid string `json:"orderFid,omitempty"`
+
+		Processed bool `json:"processed,omitempty"`
+
+		ProcessedDate int64 `json:"processedDate,omitempty"`
+
+		StatementDescriptor string `json:"statementDescriptor,omitempty"`
+
+		Status string `json:"status,omitempty"`
+
+		StatusCode string `json:"statusCode,omitempty"`
+
+		StatusMessage string `json:"statusMessage,omitempty"`
+
+		SubGatewayFid string `json:"subGatewayFid,omitempty"`
+
+		SubGatewayTransactionID string `json:"subGatewayTransactionId,omitempty"`
+
+		TransactionID string `json:"transactionId,omitempty"`
+
+		Type string `json:"type,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.PaymentAllOf1 = aO1
+
+	m.Amount = dataAO1.Amount
+
+	m.Currency = dataAO1.Currency
+
+	m.Direction = dataAO1.Direction
+
+	m.DisputeFid = dataAO1.DisputeFid
+
+	m.Fee = dataAO1.Fee
+
+	m.FeeCurrency = dataAO1.FeeCurrency
+
+	m.FraudFid = dataAO1.FraudFid
+
+	m.InvoiceFid = dataAO1.InvoiceFid
+
+	m.OrderFid = dataAO1.OrderFid
+
+	m.Processed = dataAO1.Processed
+
+	m.ProcessedDate = dataAO1.ProcessedDate
+
+	m.StatementDescriptor = dataAO1.StatementDescriptor
+
+	m.Status = dataAO1.Status
+
+	m.StatusCode = dataAO1.StatusCode
+
+	m.StatusMessage = dataAO1.StatusMessage
+
+	m.SubGatewayFid = dataAO1.SubGatewayFid
+
+	m.SubGatewayTransactionID = dataAO1.SubGatewayTransactionID
+
+	m.TransactionID = dataAO1.TransactionID
+
+	m.Type = dataAO1.Type
 
 	return nil
 }
@@ -49,11 +184,89 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.PaymentAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Amount float32 `json:"amount,omitempty"`
+
+		Currency string `json:"currency,omitempty"`
+
+		Direction string `json:"direction,omitempty"`
+
+		DisputeFid string `json:"disputeFid,omitempty"`
+
+		Fee float32 `json:"fee,omitempty"`
+
+		FeeCurrency string `json:"feeCurrency,omitempty"`
+
+		FraudFid string `json:"fraudFid,omitempty"`
+
+		InvoiceFid string `json:"invoiceFid,omitempty"`
+
+		OrderFid string `json:"orderFid,omitempty"`
+
+		Processed bool `json:"processed,omitempty"`
+
+		ProcessedDate int64 `json:"processedDate,omitempty"`
+
+		StatementDescriptor string `json:"statementDescriptor,omitempty"`
+
+		Status string `json:"status,omitempty"`
+
+		StatusCode string `json:"statusCode,omitempty"`
+
+		StatusMessage string `json:"statusMessage,omitempty"`
+
+		SubGatewayFid string `json:"subGatewayFid,omitempty"`
+
+		SubGatewayTransactionID string `json:"subGatewayTransactionId,omitempty"`
+
+		TransactionID string `json:"transactionId,omitempty"`
+
+		Type string `json:"type,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Amount = m.Amount
+
+	dataAO1.Currency = m.Currency
+
+	dataAO1.Direction = m.Direction
+
+	dataAO1.DisputeFid = m.DisputeFid
+
+	dataAO1.Fee = m.Fee
+
+	dataAO1.FeeCurrency = m.FeeCurrency
+
+	dataAO1.FraudFid = m.FraudFid
+
+	dataAO1.InvoiceFid = m.InvoiceFid
+
+	dataAO1.OrderFid = m.OrderFid
+
+	dataAO1.Processed = m.Processed
+
+	dataAO1.ProcessedDate = m.ProcessedDate
+
+	dataAO1.StatementDescriptor = m.StatementDescriptor
+
+	dataAO1.Status = m.Status
+
+	dataAO1.StatusCode = m.StatusCode
+
+	dataAO1.StatusMessage = m.StatusMessage
+
+	dataAO1.SubGatewayFid = m.SubGatewayFid
+
+	dataAO1.SubGatewayTransactionID = m.SubGatewayTransactionID
+
+	dataAO1.TransactionID = m.TransactionID
+
+	dataAO1.Type = m.Type
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +279,86 @@ func (m *Payment) Validate(formats strfmt.Registry) error {
 	if err := m.Fid.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with PaymentAllOf1
-	if err := m.PaymentAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var paymentTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["pending","paid","refund-pending","refunded","partially-refunded","chargeback","chargeback-pending"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		paymentTypeStatusPropEnum = append(paymentTypeStatusPropEnum, v)
+	}
+}
+
+// property enum
+func (m *Payment) validateStatusEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, paymentTypeStatusPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Payment) validateStatus(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var paymentTypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["affiliate","invoice","order","unknown","preauth"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		paymentTypeTypePropEnum = append(paymentTypeTypePropEnum, v)
+	}
+}
+
+// property enum
+func (m *Payment) validateTypeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, paymentTypeTypePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Payment) validateType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+		return err
+	}
+
 	return nil
 }
 

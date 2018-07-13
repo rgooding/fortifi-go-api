@@ -17,7 +17,29 @@ import (
 type ProductPrice struct {
 	Entity
 
-	ProductPriceAllOf1
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Cycle string `json:"cycle,omitempty"`
+
+	// cycle exact
+	CycleExact string `json:"cycleExact,omitempty"`
+
+	// cycle term
+	CycleTerm int32 `json:"cycleTerm,omitempty"`
+
+	// cycle type
+	CycleType CycleTermType `json:"cycleType,omitempty"`
+
+	// price
+	Price string `json:"price,omitempty"`
+
+	// product fid
+	ProductFid string `json:"productFid,omitempty"`
+
+	// setup fee
+	SetupFee string `json:"setupFee,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +52,42 @@ func (m *ProductPrice) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 ProductPriceAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Currency string `json:"currency,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		CycleExact string `json:"cycleExact,omitempty"`
+
+		CycleTerm int32 `json:"cycleTerm,omitempty"`
+
+		CycleType CycleTermType `json:"cycleType,omitempty"`
+
+		Price string `json:"price,omitempty"`
+
+		ProductFid string `json:"productFid,omitempty"`
+
+		SetupFee string `json:"setupFee,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ProductPriceAllOf1 = aO1
+
+	m.Currency = dataAO1.Currency
+
+	m.Cycle = dataAO1.Cycle
+
+	m.CycleExact = dataAO1.CycleExact
+
+	m.CycleTerm = dataAO1.CycleTerm
+
+	m.CycleType = dataAO1.CycleType
+
+	m.Price = dataAO1.Price
+
+	m.ProductFid = dataAO1.ProductFid
+
+	m.SetupFee = dataAO1.SetupFee
 
 	return nil
 }
@@ -49,11 +102,45 @@ func (m ProductPrice) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ProductPriceAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Currency string `json:"currency,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		CycleExact string `json:"cycleExact,omitempty"`
+
+		CycleTerm int32 `json:"cycleTerm,omitempty"`
+
+		CycleType CycleTermType `json:"cycleType,omitempty"`
+
+		Price string `json:"price,omitempty"`
+
+		ProductFid string `json:"productFid,omitempty"`
+
+		SetupFee string `json:"setupFee,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Currency = m.Currency
+
+	dataAO1.Cycle = m.Cycle
+
+	dataAO1.CycleExact = m.CycleExact
+
+	dataAO1.CycleTerm = m.CycleTerm
+
+	dataAO1.CycleType = m.CycleType
+
+	dataAO1.Price = m.Price
+
+	dataAO1.ProductFid = m.ProductFid
+
+	dataAO1.SetupFee = m.SetupFee
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +153,30 @@ func (m *ProductPrice) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with ProductPriceAllOf1
-	if err := m.ProductPriceAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateCycleType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ProductPrice) validateCycleType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CycleType) { // not required
+		return nil
+	}
+
+	if err := m.CycleType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cycleType")
+		}
+		return err
+	}
+
 	return nil
 }
 

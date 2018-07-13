@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetCustomersCustomerFidChatSessionsOK() *GetCustomersCustomerFidChatSess
 Chat sessions
 */
 type GetCustomersCustomerFidChatSessionsOK struct {
-	Payload *models.GetCustomersCustomerFidChatSessionsOKBody
+	Payload *GetCustomersCustomerFidChatSessionsOKBody
 }
 
 func (o *GetCustomersCustomerFidChatSessionsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetCustomersCustomerFidChatSessionsOK) Error() string {
 
 func (o *GetCustomersCustomerFidChatSessionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetCustomersCustomerFidChatSessionsOKBody)
+	o.Payload = new(GetCustomersCustomerFidChatSessionsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetCustomersCustomerFidChatSessionsDefault) readResponse(response runti
 		return err
 	}
 
+	return nil
+}
+
+/*GetCustomersCustomerFidChatSessionsOKBody get customers customer fid chat sessions o k body
+swagger:model GetCustomersCustomerFidChatSessionsOKBody
+*/
+type GetCustomersCustomerFidChatSessionsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.ChatSessions `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetCustomersCustomerFidChatSessionsOKBody) UnmarshalJSON(raw []byte) error {
+	// GetCustomersCustomerFidChatSessionsOKBodyAO0
+	var getCustomersCustomerFidChatSessionsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getCustomersCustomerFidChatSessionsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getCustomersCustomerFidChatSessionsOKBodyAO0
+
+	// GetCustomersCustomerFidChatSessionsOKBodyAO1
+	var dataGetCustomersCustomerFidChatSessionsOKBodyAO1 struct {
+		Data *models.ChatSessions `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetCustomersCustomerFidChatSessionsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetCustomersCustomerFidChatSessionsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetCustomersCustomerFidChatSessionsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getCustomersCustomerFidChatSessionsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getCustomersCustomerFidChatSessionsOKBodyAO0)
+
+	var dataGetCustomersCustomerFidChatSessionsOKBodyAO1 struct {
+		Data *models.ChatSessions `json:"data,omitempty"`
+	}
+
+	dataGetCustomersCustomerFidChatSessionsOKBodyAO1.Data = o.Data
+
+	jsonDataGetCustomersCustomerFidChatSessionsOKBodyAO1, errGetCustomersCustomerFidChatSessionsOKBodyAO1 := swag.WriteJSON(dataGetCustomersCustomerFidChatSessionsOKBodyAO1)
+	if errGetCustomersCustomerFidChatSessionsOKBodyAO1 != nil {
+		return nil, errGetCustomersCustomerFidChatSessionsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetCustomersCustomerFidChatSessionsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get customers customer fid chat sessions o k body
+func (o *GetCustomersCustomerFidChatSessionsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidChatSessionsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidChatSessionsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetCustomersCustomerFidChatSessionsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetCustomersCustomerFidChatSessionsOKBody) UnmarshalBinary(b []byte) error {
+	var res GetCustomersCustomerFidChatSessionsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetServiceAuthTokenOK() *GetServiceAuthTokenOK {
 Token
 */
 type GetServiceAuthTokenOK struct {
-	Payload *models.GetServiceAuthTokenOKBody
+	Payload *GetServiceAuthTokenOKBody
 }
 
 func (o *GetServiceAuthTokenOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetServiceAuthTokenOK) Error() string {
 
 func (o *GetServiceAuthTokenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetServiceAuthTokenOKBody)
+	o.Payload = new(GetServiceAuthTokenOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetServiceAuthTokenDefault) readResponse(response runtime.ClientRespons
 		return err
 	}
 
+	return nil
+}
+
+/*GetServiceAuthTokenOKBody get service auth token o k body
+swagger:model GetServiceAuthTokenOKBody
+*/
+type GetServiceAuthTokenOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.AuthToken `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetServiceAuthTokenOKBody) UnmarshalJSON(raw []byte) error {
+	// GetServiceAuthTokenOKBodyAO0
+	var getServiceAuthTokenOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getServiceAuthTokenOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getServiceAuthTokenOKBodyAO0
+
+	// GetServiceAuthTokenOKBodyAO1
+	var dataGetServiceAuthTokenOKBodyAO1 struct {
+		Data *models.AuthToken `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetServiceAuthTokenOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetServiceAuthTokenOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetServiceAuthTokenOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getServiceAuthTokenOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getServiceAuthTokenOKBodyAO0)
+
+	var dataGetServiceAuthTokenOKBodyAO1 struct {
+		Data *models.AuthToken `json:"data,omitempty"`
+	}
+
+	dataGetServiceAuthTokenOKBodyAO1.Data = o.Data
+
+	jsonDataGetServiceAuthTokenOKBodyAO1, errGetServiceAuthTokenOKBodyAO1 := swag.WriteJSON(dataGetServiceAuthTokenOKBodyAO1)
+	if errGetServiceAuthTokenOKBodyAO1 != nil {
+		return nil, errGetServiceAuthTokenOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetServiceAuthTokenOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get service auth token o k body
+func (o *GetServiceAuthTokenOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServiceAuthTokenOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getServiceAuthTokenOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetServiceAuthTokenOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetServiceAuthTokenOKBody) UnmarshalBinary(b []byte) error {
+	var res GetServiceAuthTokenOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

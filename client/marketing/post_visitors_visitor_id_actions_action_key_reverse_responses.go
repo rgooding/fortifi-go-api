@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPostVisitorsVisitorIDActionsActionKeyReverseOK() *PostVisitorsVisitorIDA
 Action Reversed
 */
 type PostVisitorsVisitorIDActionsActionKeyReverseOK struct {
-	Payload *models.PostVisitorsVisitorIDActionsActionKeyReverseOKBody
+	Payload *PostVisitorsVisitorIDActionsActionKeyReverseOKBody
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostVisitorsVisitorIDActionsActionKeyReverseOKBody)
+	o.Payload = new(PostVisitorsVisitorIDActionsActionKeyReverseOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) readResponse(respo
 		return err
 	}
 
+	return nil
+}
+
+/*PostVisitorsVisitorIDActionsActionKeyReverseOKBody post visitors visitor ID actions action key reverse o k body
+swagger:model PostVisitorsVisitorIDActionsActionKeyReverseOKBody
+*/
+type PostVisitorsVisitorIDActionsActionKeyReverseOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.VisitorReversalAction `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) UnmarshalJSON(raw []byte) error {
+	// PostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO0
+	var postVisitorsVisitorIDActionsActionKeyReverseOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &postVisitorsVisitorIDActionsActionKeyReverseOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = postVisitorsVisitorIDActionsActionKeyReverseOKBodyAO0
+
+	// PostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1
+	var dataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1 struct {
+		Data *models.VisitorReversalAction `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PostVisitorsVisitorIDActionsActionKeyReverseOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	postVisitorsVisitorIDActionsActionKeyReverseOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, postVisitorsVisitorIDActionsActionKeyReverseOKBodyAO0)
+
+	var dataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1 struct {
+		Data *models.VisitorReversalAction `json:"data,omitempty"`
+	}
+
+	dataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1.Data = o.Data
+
+	jsonDataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1, errPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1 := swag.WriteJSON(dataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1)
+	if errPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1 != nil {
+		return nil, errPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPostVisitorsVisitorIDActionsActionKeyReverseOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this post visitors visitor ID actions action key reverse o k body
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) UnmarshalBinary(b []byte) error {
+	var res PostVisitorsVisitorIDActionsActionKeyReverseOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

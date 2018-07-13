@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPutCustomersCustomerFidChargebacksChargebackFidOK() *PutCustomersCustome
 Chargeback Actioned
 */
 type PutCustomersCustomerFidChargebacksChargebackFidOK struct {
-	Payload *models.PutCustomersCustomerFidChargebacksChargebackFidOKBody
+	Payload *PutCustomersCustomerFidChargebacksChargebackFidOKBody
 }
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PutCustomersCustomerFidChargebacksChargebackFidOKBody)
+	o.Payload = new(PutCustomersCustomerFidChargebacksChargebackFidOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) readResponse(re
 		return err
 	}
 
+	return nil
+}
+
+/*PutCustomersCustomerFidChargebacksChargebackFidOKBody put customers customer fid chargebacks chargeback fid o k body
+swagger:model PutCustomersCustomerFidChargebacksChargebackFidOKBody
+*/
+type PutCustomersCustomerFidChargebacksChargebackFidOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.BoolMessage `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) UnmarshalJSON(raw []byte) error {
+	// PutCustomersCustomerFidChargebacksChargebackFidOKBodyAO0
+	var putCustomersCustomerFidChargebacksChargebackFidOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &putCustomersCustomerFidChargebacksChargebackFidOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = putCustomersCustomerFidChargebacksChargebackFidOKBodyAO0
+
+	// PutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1
+	var dataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1 struct {
+		Data *models.BoolMessage `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PutCustomersCustomerFidChargebacksChargebackFidOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	putCustomersCustomerFidChargebacksChargebackFidOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, putCustomersCustomerFidChargebacksChargebackFidOKBodyAO0)
+
+	var dataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1 struct {
+		Data *models.BoolMessage `json:"data,omitempty"`
+	}
+
+	dataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1.Data = o.Data
+
+	jsonDataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1, errPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1 := swag.WriteJSON(dataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1)
+	if errPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1 != nil {
+		return nil, errPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPutCustomersCustomerFidChargebacksChargebackFidOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this put customers customer fid chargebacks chargeback fid o k body
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) UnmarshalBinary(b []byte) error {
+	var res PutCustomersCustomerFidChargebacksChargebackFidOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

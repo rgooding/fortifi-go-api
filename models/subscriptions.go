@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,7 +19,8 @@ import (
 type Subscriptions struct {
 	Pagination
 
-	SubscriptionsAllOf1
+	// subscriptions
+	Subscriptions []*SubscriptionSummary `json:"subscriptions"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +33,14 @@ func (m *Subscriptions) UnmarshalJSON(raw []byte) error {
 	m.Pagination = aO0
 
 	// AO1
-	var aO1 SubscriptionsAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Subscriptions []*SubscriptionSummary `json:"subscriptions,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.SubscriptionsAllOf1 = aO1
+
+	m.Subscriptions = dataAO1.Subscriptions
 
 	return nil
 }
@@ -49,11 +55,17 @@ func (m Subscriptions) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.SubscriptionsAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Subscriptions []*SubscriptionSummary `json:"subscriptions,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Subscriptions = m.Subscriptions
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +78,39 @@ func (m *Subscriptions) Validate(formats strfmt.Registry) error {
 	if err := m.Pagination.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with SubscriptionsAllOf1
-	if err := m.SubscriptionsAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateSubscriptions(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Subscriptions) validateSubscriptions(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Subscriptions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Subscriptions); i++ {
+		if swag.IsZero(m.Subscriptions[i]) { // not required
+			continue
+		}
+
+		if m.Subscriptions[i] != nil {
+			if err := m.Subscriptions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subscriptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

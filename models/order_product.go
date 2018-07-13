@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OrderProduct Generic Response
@@ -17,7 +18,60 @@ import (
 type OrderProduct struct {
 	Entity
 
-	OrderProductAllOf1
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// Interval in ISO 8601 standard
+	Cycle string `json:"cycle,omitempty"`
+
+	// cycle exact
+	CycleExact string `json:"cycleExact,omitempty"`
+
+	// cycle term
+	CycleTerm int32 `json:"cycleTerm,omitempty"`
+
+	// cycle type
+	CycleType int32 `json:"cycleType,omitempty"`
+
+	// discount amount
+	DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+	// offer fid
+	OfferFid string `json:"offerFid,omitempty"`
+
+	// parent fid
+	ParentFid string `json:"parentFid,omitempty"`
+
+	// price
+	Price float32 `json:"price,omitempty"`
+
+	// price fid
+	PriceFid string `json:"priceFid,omitempty"`
+
+	// product fid
+	ProductFid string `json:"productFid,omitempty"`
+
+	// purchase fid
+	PurchaseFid string `json:"purchaseFid,omitempty"`
+
+	// quantity
+	Quantity int64 `json:"quantity,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
+
+	// setup discount amount
+	SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
+
+	// setup fee
+	SetupFee float32 `json:"setupFee,omitempty"`
+
+	// tax amount
+	TaxAmount float32 `json:"taxAmount,omitempty"`
+
+	// total amount
+	TotalAmount float32 `json:"totalAmount,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +84,82 @@ func (m *OrderProduct) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 OrderProductAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Currency string `json:"currency,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		CycleExact string `json:"cycleExact,omitempty"`
+
+		CycleTerm int32 `json:"cycleTerm,omitempty"`
+
+		CycleType int32 `json:"cycleType,omitempty"`
+
+		DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+		OfferFid string `json:"offerFid,omitempty"`
+
+		ParentFid string `json:"parentFid,omitempty"`
+
+		Price float32 `json:"price,omitempty"`
+
+		PriceFid string `json:"priceFid,omitempty"`
+
+		ProductFid string `json:"productFid,omitempty"`
+
+		PurchaseFid string `json:"purchaseFid,omitempty"`
+
+		Quantity int64 `json:"quantity,omitempty"`
+
+		RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
+
+		SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
+
+		SetupFee float32 `json:"setupFee,omitempty"`
+
+		TaxAmount float32 `json:"taxAmount,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.OrderProductAllOf1 = aO1
+
+	m.Currency = dataAO1.Currency
+
+	m.Cycle = dataAO1.Cycle
+
+	m.CycleExact = dataAO1.CycleExact
+
+	m.CycleTerm = dataAO1.CycleTerm
+
+	m.CycleType = dataAO1.CycleType
+
+	m.DiscountAmount = dataAO1.DiscountAmount
+
+	m.OfferFid = dataAO1.OfferFid
+
+	m.ParentFid = dataAO1.ParentFid
+
+	m.Price = dataAO1.Price
+
+	m.PriceFid = dataAO1.PriceFid
+
+	m.ProductFid = dataAO1.ProductFid
+
+	m.PurchaseFid = dataAO1.PurchaseFid
+
+	m.Quantity = dataAO1.Quantity
+
+	m.RenewalDate = dataAO1.RenewalDate
+
+	m.SetupDiscountAmount = dataAO1.SetupDiscountAmount
+
+	m.SetupFee = dataAO1.SetupFee
+
+	m.TaxAmount = dataAO1.TaxAmount
+
+	m.TotalAmount = dataAO1.TotalAmount
 
 	return nil
 }
@@ -49,11 +174,85 @@ func (m OrderProduct) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.OrderProductAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Currency string `json:"currency,omitempty"`
+
+		Cycle string `json:"cycle,omitempty"`
+
+		CycleExact string `json:"cycleExact,omitempty"`
+
+		CycleTerm int32 `json:"cycleTerm,omitempty"`
+
+		CycleType int32 `json:"cycleType,omitempty"`
+
+		DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+		OfferFid string `json:"offerFid,omitempty"`
+
+		ParentFid string `json:"parentFid,omitempty"`
+
+		Price float32 `json:"price,omitempty"`
+
+		PriceFid string `json:"priceFid,omitempty"`
+
+		ProductFid string `json:"productFid,omitempty"`
+
+		PurchaseFid string `json:"purchaseFid,omitempty"`
+
+		Quantity int64 `json:"quantity,omitempty"`
+
+		RenewalDate strfmt.DateTime `json:"renewalDate,omitempty"`
+
+		SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
+
+		SetupFee float32 `json:"setupFee,omitempty"`
+
+		TaxAmount float32 `json:"taxAmount,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Currency = m.Currency
+
+	dataAO1.Cycle = m.Cycle
+
+	dataAO1.CycleExact = m.CycleExact
+
+	dataAO1.CycleTerm = m.CycleTerm
+
+	dataAO1.CycleType = m.CycleType
+
+	dataAO1.DiscountAmount = m.DiscountAmount
+
+	dataAO1.OfferFid = m.OfferFid
+
+	dataAO1.ParentFid = m.ParentFid
+
+	dataAO1.Price = m.Price
+
+	dataAO1.PriceFid = m.PriceFid
+
+	dataAO1.ProductFid = m.ProductFid
+
+	dataAO1.PurchaseFid = m.PurchaseFid
+
+	dataAO1.Quantity = m.Quantity
+
+	dataAO1.RenewalDate = m.RenewalDate
+
+	dataAO1.SetupDiscountAmount = m.SetupDiscountAmount
+
+	dataAO1.SetupFee = m.SetupFee
+
+	dataAO1.TaxAmount = m.TaxAmount
+
+	dataAO1.TotalAmount = m.TotalAmount
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +265,27 @@ func (m *OrderProduct) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with OrderProductAllOf1
-	if err := m.OrderProductAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateRenewalDate(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *OrderProduct) validateRenewalDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.RenewalDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("renewalDate", "body", "date-time", m.RenewalDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

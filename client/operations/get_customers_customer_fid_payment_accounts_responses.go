@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetCustomersCustomerFidPaymentAccountsOK() *GetCustomersCustomerFidPayme
 List of payment accounts
 */
 type GetCustomersCustomerFidPaymentAccountsOK struct {
-	Payload *models.GetCustomersCustomerFidPaymentAccountsOKBody
+	Payload *GetCustomersCustomerFidPaymentAccountsOKBody
 }
 
 func (o *GetCustomersCustomerFidPaymentAccountsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetCustomersCustomerFidPaymentAccountsOK) Error() string {
 
 func (o *GetCustomersCustomerFidPaymentAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetCustomersCustomerFidPaymentAccountsOKBody)
+	o.Payload = new(GetCustomersCustomerFidPaymentAccountsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetCustomersCustomerFidPaymentAccountsDefault) readResponse(response ru
 		return err
 	}
 
+	return nil
+}
+
+/*GetCustomersCustomerFidPaymentAccountsOKBody get customers customer fid payment accounts o k body
+swagger:model GetCustomersCustomerFidPaymentAccountsOKBody
+*/
+type GetCustomersCustomerFidPaymentAccountsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.PaymentAccounts `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetCustomersCustomerFidPaymentAccountsOKBody) UnmarshalJSON(raw []byte) error {
+	// GetCustomersCustomerFidPaymentAccountsOKBodyAO0
+	var getCustomersCustomerFidPaymentAccountsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getCustomersCustomerFidPaymentAccountsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getCustomersCustomerFidPaymentAccountsOKBodyAO0
+
+	// GetCustomersCustomerFidPaymentAccountsOKBodyAO1
+	var dataGetCustomersCustomerFidPaymentAccountsOKBodyAO1 struct {
+		Data *models.PaymentAccounts `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetCustomersCustomerFidPaymentAccountsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetCustomersCustomerFidPaymentAccountsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetCustomersCustomerFidPaymentAccountsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getCustomersCustomerFidPaymentAccountsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getCustomersCustomerFidPaymentAccountsOKBodyAO0)
+
+	var dataGetCustomersCustomerFidPaymentAccountsOKBodyAO1 struct {
+		Data *models.PaymentAccounts `json:"data,omitempty"`
+	}
+
+	dataGetCustomersCustomerFidPaymentAccountsOKBodyAO1.Data = o.Data
+
+	jsonDataGetCustomersCustomerFidPaymentAccountsOKBodyAO1, errGetCustomersCustomerFidPaymentAccountsOKBodyAO1 := swag.WriteJSON(dataGetCustomersCustomerFidPaymentAccountsOKBodyAO1)
+	if errGetCustomersCustomerFidPaymentAccountsOKBodyAO1 != nil {
+		return nil, errGetCustomersCustomerFidPaymentAccountsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetCustomersCustomerFidPaymentAccountsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get customers customer fid payment accounts o k body
+func (o *GetCustomersCustomerFidPaymentAccountsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidPaymentAccountsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidPaymentAccountsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetCustomersCustomerFidPaymentAccountsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetCustomersCustomerFidPaymentAccountsOKBody) UnmarshalBinary(b []byte) error {
+	var res GetCustomersCustomerFidPaymentAccountsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

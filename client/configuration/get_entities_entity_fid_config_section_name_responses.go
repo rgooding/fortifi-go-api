@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetEntitiesEntityFidConfigSectionNameOK() *GetEntitiesEntityFidConfigSec
 List Of Config Items
 */
 type GetEntitiesEntityFidConfigSectionNameOK struct {
-	Payload *models.GetEntitiesEntityFidConfigSectionNameOKBody
+	Payload *GetEntitiesEntityFidConfigSectionNameOKBody
 }
 
 func (o *GetEntitiesEntityFidConfigSectionNameOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetEntitiesEntityFidConfigSectionNameOK) Error() string {
 
 func (o *GetEntitiesEntityFidConfigSectionNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetEntitiesEntityFidConfigSectionNameOKBody)
+	o.Payload = new(GetEntitiesEntityFidConfigSectionNameOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetEntitiesEntityFidConfigSectionNameDefault) readResponse(response run
 		return err
 	}
 
+	return nil
+}
+
+/*GetEntitiesEntityFidConfigSectionNameOKBody get entities entity fid config section name o k body
+swagger:model GetEntitiesEntityFidConfigSectionNameOKBody
+*/
+type GetEntitiesEntityFidConfigSectionNameOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.ConfigItems `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetEntitiesEntityFidConfigSectionNameOKBody) UnmarshalJSON(raw []byte) error {
+	// GetEntitiesEntityFidConfigSectionNameOKBodyAO0
+	var getEntitiesEntityFidConfigSectionNameOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getEntitiesEntityFidConfigSectionNameOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getEntitiesEntityFidConfigSectionNameOKBodyAO0
+
+	// GetEntitiesEntityFidConfigSectionNameOKBodyAO1
+	var dataGetEntitiesEntityFidConfigSectionNameOKBodyAO1 struct {
+		Data *models.ConfigItems `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetEntitiesEntityFidConfigSectionNameOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetEntitiesEntityFidConfigSectionNameOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetEntitiesEntityFidConfigSectionNameOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getEntitiesEntityFidConfigSectionNameOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getEntitiesEntityFidConfigSectionNameOKBodyAO0)
+
+	var dataGetEntitiesEntityFidConfigSectionNameOKBodyAO1 struct {
+		Data *models.ConfigItems `json:"data,omitempty"`
+	}
+
+	dataGetEntitiesEntityFidConfigSectionNameOKBodyAO1.Data = o.Data
+
+	jsonDataGetEntitiesEntityFidConfigSectionNameOKBodyAO1, errGetEntitiesEntityFidConfigSectionNameOKBodyAO1 := swag.WriteJSON(dataGetEntitiesEntityFidConfigSectionNameOKBodyAO1)
+	if errGetEntitiesEntityFidConfigSectionNameOKBodyAO1 != nil {
+		return nil, errGetEntitiesEntityFidConfigSectionNameOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetEntitiesEntityFidConfigSectionNameOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get entities entity fid config section name o k body
+func (o *GetEntitiesEntityFidConfigSectionNameOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetEntitiesEntityFidConfigSectionNameOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getEntitiesEntityFidConfigSectionNameOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetEntitiesEntityFidConfigSectionNameOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetEntitiesEntityFidConfigSectionNameOKBody) UnmarshalBinary(b []byte) error {
+	var res GetEntitiesEntityFidConfigSectionNameOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

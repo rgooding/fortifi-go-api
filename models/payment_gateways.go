@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,7 +19,8 @@ import (
 type PaymentGateways struct {
 	Pagination
 
-	PaymentGatewaysAllOf1
+	// gateways
+	Gateways []*PaymentGateway `json:"gateways"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +33,14 @@ func (m *PaymentGateways) UnmarshalJSON(raw []byte) error {
 	m.Pagination = aO0
 
 	// AO1
-	var aO1 PaymentGatewaysAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		Gateways []*PaymentGateway `json:"gateways,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.PaymentGatewaysAllOf1 = aO1
+
+	m.Gateways = dataAO1.Gateways
 
 	return nil
 }
@@ -49,11 +55,17 @@ func (m PaymentGateways) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.PaymentGatewaysAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		Gateways []*PaymentGateway `json:"gateways,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.Gateways = m.Gateways
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +78,39 @@ func (m *PaymentGateways) Validate(formats strfmt.Registry) error {
 	if err := m.Pagination.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with PaymentGatewaysAllOf1
-	if err := m.PaymentGatewaysAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateGateways(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PaymentGateways) validateGateways(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Gateways) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Gateways); i++ {
+		if swag.IsZero(m.Gateways[i]) { // not required
+			continue
+		}
+
+		if m.Gateways[i] != nil {
+			if err := m.Gateways[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gateways" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

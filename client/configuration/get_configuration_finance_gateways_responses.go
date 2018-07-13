@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetConfigurationFinanceGatewaysOK() *GetConfigurationFinanceGatewaysOK {
 List of payment gateways
 */
 type GetConfigurationFinanceGatewaysOK struct {
-	Payload *models.GetConfigurationFinanceGatewaysOKBody
+	Payload *GetConfigurationFinanceGatewaysOKBody
 }
 
 func (o *GetConfigurationFinanceGatewaysOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetConfigurationFinanceGatewaysOK) Error() string {
 
 func (o *GetConfigurationFinanceGatewaysOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetConfigurationFinanceGatewaysOKBody)
+	o.Payload = new(GetConfigurationFinanceGatewaysOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetConfigurationFinanceGatewaysDefault) readResponse(response runtime.C
 		return err
 	}
 
+	return nil
+}
+
+/*GetConfigurationFinanceGatewaysOKBody get configuration finance gateways o k body
+swagger:model GetConfigurationFinanceGatewaysOKBody
+*/
+type GetConfigurationFinanceGatewaysOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.PaymentGateways `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetConfigurationFinanceGatewaysOKBody) UnmarshalJSON(raw []byte) error {
+	// GetConfigurationFinanceGatewaysOKBodyAO0
+	var getConfigurationFinanceGatewaysOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getConfigurationFinanceGatewaysOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getConfigurationFinanceGatewaysOKBodyAO0
+
+	// GetConfigurationFinanceGatewaysOKBodyAO1
+	var dataGetConfigurationFinanceGatewaysOKBodyAO1 struct {
+		Data *models.PaymentGateways `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetConfigurationFinanceGatewaysOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetConfigurationFinanceGatewaysOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetConfigurationFinanceGatewaysOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getConfigurationFinanceGatewaysOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getConfigurationFinanceGatewaysOKBodyAO0)
+
+	var dataGetConfigurationFinanceGatewaysOKBodyAO1 struct {
+		Data *models.PaymentGateways `json:"data,omitempty"`
+	}
+
+	dataGetConfigurationFinanceGatewaysOKBodyAO1.Data = o.Data
+
+	jsonDataGetConfigurationFinanceGatewaysOKBodyAO1, errGetConfigurationFinanceGatewaysOKBodyAO1 := swag.WriteJSON(dataGetConfigurationFinanceGatewaysOKBodyAO1)
+	if errGetConfigurationFinanceGatewaysOKBodyAO1 != nil {
+		return nil, errGetConfigurationFinanceGatewaysOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetConfigurationFinanceGatewaysOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get configuration finance gateways o k body
+func (o *GetConfigurationFinanceGatewaysOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetConfigurationFinanceGatewaysOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getConfigurationFinanceGatewaysOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetConfigurationFinanceGatewaysOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetConfigurationFinanceGatewaysOKBody) UnmarshalBinary(b []byte) error {
+	var res GetConfigurationFinanceGatewaysOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

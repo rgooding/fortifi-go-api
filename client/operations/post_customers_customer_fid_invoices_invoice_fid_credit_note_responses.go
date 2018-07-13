@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK() *PostCustomersC
 Credit Note Added
 */
 type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK struct {
-	Payload *models.PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
+	Payload *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
 }
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string 
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody)
+	o.Payload = new(PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) readRespon
 		return err
 	}
 
+	return nil
+}
+
+/*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody post customers customer fid invoices invoice fid credit note o k body
+swagger:model PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
+*/
+type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.InvoiceCreditNote `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) UnmarshalJSON(raw []byte) error {
+	// PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO0
+	var postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO0
+
+	// PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1
+	var dataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1 struct {
+		Data *models.InvoiceCreditNote `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO0)
+
+	var dataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1 struct {
+		Data *models.InvoiceCreditNote `json:"data,omitempty"`
+	}
+
+	dataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1.Data = o.Data
+
+	jsonDataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1, errPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1 := swag.WriteJSON(dataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1)
+	if errPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1 != nil {
+		return nil, errPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this post customers customer fid invoices invoice fid credit note o k body
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) UnmarshalBinary(b []byte) error {
+	var res PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

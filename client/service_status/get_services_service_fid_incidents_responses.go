@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetServicesServiceFidIncidentsOK() *GetServicesServiceFidIncidentsOK {
 Service incidents
 */
 type GetServicesServiceFidIncidentsOK struct {
-	Payload *models.GetServicesServiceFidIncidentsOKBody
+	Payload *GetServicesServiceFidIncidentsOKBody
 }
 
 func (o *GetServicesServiceFidIncidentsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetServicesServiceFidIncidentsOK) Error() string {
 
 func (o *GetServicesServiceFidIncidentsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetServicesServiceFidIncidentsOKBody)
+	o.Payload = new(GetServicesServiceFidIncidentsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetServicesServiceFidIncidentsDefault) readResponse(response runtime.Cl
 		return err
 	}
 
+	return nil
+}
+
+/*GetServicesServiceFidIncidentsOKBody get services service fid incidents o k body
+swagger:model GetServicesServiceFidIncidentsOKBody
+*/
+type GetServicesServiceFidIncidentsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.ServiceIncidents `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetServicesServiceFidIncidentsOKBody) UnmarshalJSON(raw []byte) error {
+	// GetServicesServiceFidIncidentsOKBodyAO0
+	var getServicesServiceFidIncidentsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getServicesServiceFidIncidentsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getServicesServiceFidIncidentsOKBodyAO0
+
+	// GetServicesServiceFidIncidentsOKBodyAO1
+	var dataGetServicesServiceFidIncidentsOKBodyAO1 struct {
+		Data *models.ServiceIncidents `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetServicesServiceFidIncidentsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetServicesServiceFidIncidentsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetServicesServiceFidIncidentsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getServicesServiceFidIncidentsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getServicesServiceFidIncidentsOKBodyAO0)
+
+	var dataGetServicesServiceFidIncidentsOKBodyAO1 struct {
+		Data *models.ServiceIncidents `json:"data,omitempty"`
+	}
+
+	dataGetServicesServiceFidIncidentsOKBodyAO1.Data = o.Data
+
+	jsonDataGetServicesServiceFidIncidentsOKBodyAO1, errGetServicesServiceFidIncidentsOKBodyAO1 := swag.WriteJSON(dataGetServicesServiceFidIncidentsOKBodyAO1)
+	if errGetServicesServiceFidIncidentsOKBodyAO1 != nil {
+		return nil, errGetServicesServiceFidIncidentsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetServicesServiceFidIncidentsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get services service fid incidents o k body
+func (o *GetServicesServiceFidIncidentsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServicesServiceFidIncidentsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetServicesServiceFidIncidentsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetServicesServiceFidIncidentsOKBody) UnmarshalBinary(b []byte) error {
+	var res GetServicesServiceFidIncidentsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

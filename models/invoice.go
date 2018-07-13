@@ -6,10 +6,13 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Invoice Generic Response
@@ -17,7 +20,56 @@ import (
 type Invoice struct {
 	Entity
 
-	InvoiceAllOf1
+	// amount paid
+	AmountPaid float32 `json:"amountPaid,omitempty"`
+
+	// base amount
+	BaseAmount float32 `json:"baseAmount,omitempty"`
+
+	// credited amount
+	CreditedAmount float32 `json:"creditedAmount,omitempty"`
+
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// discount amount
+	DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	DueDate strfmt.DateTime `json:"dueDate,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
+
+	// invoice items
+	InvoiceItems []*InvoiceItem `json:"invoiceItems"`
+
+	// invoice number
+	InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
+
+	// invoice status
+	InvoiceStatus string `json:"invoiceStatus,omitempty"`
+
+	// outstanding amount
+	OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	PaymentDate strfmt.DateTime `json:"paymentDate,omitempty"`
+
+	// refund amount
+	RefundAmount float32 `json:"refundAmount,omitempty"`
+
+	// tax amount
+	TaxAmount float32 `json:"taxAmount,omitempty"`
+
+	// total amount
+	TotalAmount float32 `json:"totalAmount,omitempty"`
+
+	// total items
+	TotalItems int32 `json:"totalItems,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +82,74 @@ func (m *Invoice) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 InvoiceAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		AmountPaid float32 `json:"amountPaid,omitempty"`
+
+		BaseAmount float32 `json:"baseAmount,omitempty"`
+
+		CreditedAmount float32 `json:"creditedAmount,omitempty"`
+
+		Currency string `json:"currency,omitempty"`
+
+		DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+		DueDate strfmt.DateTime `json:"dueDate,omitempty"`
+
+		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
+
+		InvoiceItems []*InvoiceItem `json:"invoiceItems,omitempty"`
+
+		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
+
+		InvoiceStatus string `json:"invoiceStatus,omitempty"`
+
+		OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
+
+		PaymentDate strfmt.DateTime `json:"paymentDate,omitempty"`
+
+		RefundAmount float32 `json:"refundAmount,omitempty"`
+
+		TaxAmount float32 `json:"taxAmount,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
+
+		TotalItems int32 `json:"totalItems,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.InvoiceAllOf1 = aO1
+
+	m.AmountPaid = dataAO1.AmountPaid
+
+	m.BaseAmount = dataAO1.BaseAmount
+
+	m.CreditedAmount = dataAO1.CreditedAmount
+
+	m.Currency = dataAO1.Currency
+
+	m.DiscountAmount = dataAO1.DiscountAmount
+
+	m.DueDate = dataAO1.DueDate
+
+	m.InvoiceDate = dataAO1.InvoiceDate
+
+	m.InvoiceItems = dataAO1.InvoiceItems
+
+	m.InvoiceNumber = dataAO1.InvoiceNumber
+
+	m.InvoiceStatus = dataAO1.InvoiceStatus
+
+	m.OutstandingAmount = dataAO1.OutstandingAmount
+
+	m.PaymentDate = dataAO1.PaymentDate
+
+	m.RefundAmount = dataAO1.RefundAmount
+
+	m.TaxAmount = dataAO1.TaxAmount
+
+	m.TotalAmount = dataAO1.TotalAmount
+
+	m.TotalItems = dataAO1.TotalItems
 
 	return nil
 }
@@ -49,11 +164,77 @@ func (m Invoice) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.InvoiceAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		AmountPaid float32 `json:"amountPaid,omitempty"`
+
+		BaseAmount float32 `json:"baseAmount,omitempty"`
+
+		CreditedAmount float32 `json:"creditedAmount,omitempty"`
+
+		Currency string `json:"currency,omitempty"`
+
+		DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+		DueDate strfmt.DateTime `json:"dueDate,omitempty"`
+
+		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
+
+		InvoiceItems []*InvoiceItem `json:"invoiceItems,omitempty"`
+
+		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
+
+		InvoiceStatus string `json:"invoiceStatus,omitempty"`
+
+		OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
+
+		PaymentDate strfmt.DateTime `json:"paymentDate,omitempty"`
+
+		RefundAmount float32 `json:"refundAmount,omitempty"`
+
+		TaxAmount float32 `json:"taxAmount,omitempty"`
+
+		TotalAmount float32 `json:"totalAmount,omitempty"`
+
+		TotalItems int32 `json:"totalItems,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.AmountPaid = m.AmountPaid
+
+	dataAO1.BaseAmount = m.BaseAmount
+
+	dataAO1.CreditedAmount = m.CreditedAmount
+
+	dataAO1.Currency = m.Currency
+
+	dataAO1.DiscountAmount = m.DiscountAmount
+
+	dataAO1.DueDate = m.DueDate
+
+	dataAO1.InvoiceDate = m.InvoiceDate
+
+	dataAO1.InvoiceItems = m.InvoiceItems
+
+	dataAO1.InvoiceNumber = m.InvoiceNumber
+
+	dataAO1.InvoiceStatus = m.InvoiceStatus
+
+	dataAO1.OutstandingAmount = m.OutstandingAmount
+
+	dataAO1.PaymentDate = m.PaymentDate
+
+	dataAO1.RefundAmount = m.RefundAmount
+
+	dataAO1.TaxAmount = m.TaxAmount
+
+	dataAO1.TotalAmount = m.TotalAmount
+
+	dataAO1.TotalItems = m.TotalItems
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +247,90 @@ func (m *Invoice) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with InvoiceAllOf1
-	if err := m.InvoiceAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateDueDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInvoiceDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInvoiceItems(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaymentDate(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Invoice) validateDueDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DueDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dueDate", "body", "date-time", m.DueDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Invoice) validateInvoiceDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.InvoiceDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("invoiceDate", "body", "date-time", m.InvoiceDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Invoice) validateInvoiceItems(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.InvoiceItems) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.InvoiceItems); i++ {
+		if swag.IsZero(m.InvoiceItems[i]) { // not required
+			continue
+		}
+
+		if m.InvoiceItems[i] != nil {
+			if err := m.InvoiceItems[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("invoiceItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Invoice) validatePaymentDate(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaymentDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("paymentDate", "body", "date-time", m.PaymentDate.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPostCustomersOK() *PostCustomersOK {
 Customer Created
 */
 type PostCustomersOK struct {
-	Payload *models.PostCustomersOKBody
+	Payload *PostCustomersOKBody
 }
 
 func (o *PostCustomersOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PostCustomersOK) Error() string {
 
 func (o *PostCustomersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostCustomersOKBody)
+	o.Payload = new(PostCustomersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PostCustomersDefault) readResponse(response runtime.ClientResponse, con
 		return err
 	}
 
+	return nil
+}
+
+/*PostCustomersOKBody post customers o k body
+swagger:model PostCustomersOKBody
+*/
+type PostCustomersOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Customer `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PostCustomersOKBody) UnmarshalJSON(raw []byte) error {
+	// PostCustomersOKBodyAO0
+	var postCustomersOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &postCustomersOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = postCustomersOKBodyAO0
+
+	// PostCustomersOKBodyAO1
+	var dataPostCustomersOKBodyAO1 struct {
+		Data *models.Customer `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPostCustomersOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPostCustomersOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PostCustomersOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	postCustomersOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, postCustomersOKBodyAO0)
+
+	var dataPostCustomersOKBodyAO1 struct {
+		Data *models.Customer `json:"data,omitempty"`
+	}
+
+	dataPostCustomersOKBodyAO1.Data = o.Data
+
+	jsonDataPostCustomersOKBodyAO1, errPostCustomersOKBodyAO1 := swag.WriteJSON(dataPostCustomersOKBodyAO1)
+	if errPostCustomersOKBodyAO1 != nil {
+		return nil, errPostCustomersOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPostCustomersOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this post customers o k body
+func (o *PostCustomersOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostCustomersOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postCustomersOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PostCustomersOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PostCustomersOKBody) UnmarshalBinary(b []byte) error {
+	var res PostCustomersOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

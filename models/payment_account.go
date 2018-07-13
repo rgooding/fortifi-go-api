@@ -17,7 +17,14 @@ import (
 type PaymentAccount struct {
 	Entity
 
-	PaymentAccountAllOf1
+	// account type
+	AccountType PaymentAccountType `json:"accountType,omitempty"`
+
+	// payment method
+	PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
+
+	// payment mode
+	PaymentMode PaymentMode `json:"paymentMode,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +37,22 @@ func (m *PaymentAccount) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 PaymentAccountAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		AccountType PaymentAccountType `json:"accountType,omitempty"`
+
+		PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
+
+		PaymentMode PaymentMode `json:"paymentMode,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.PaymentAccountAllOf1 = aO1
+
+	m.AccountType = dataAO1.AccountType
+
+	m.PaymentMethod = dataAO1.PaymentMethod
+
+	m.PaymentMode = dataAO1.PaymentMode
 
 	return nil
 }
@@ -49,11 +67,25 @@ func (m PaymentAccount) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.PaymentAccountAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		AccountType PaymentAccountType `json:"accountType,omitempty"`
+
+		PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
+
+		PaymentMode PaymentMode `json:"paymentMode,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.AccountType = m.AccountType
+
+	dataAO1.PaymentMethod = m.PaymentMethod
+
+	dataAO1.PaymentMode = m.PaymentMode
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +98,70 @@ func (m *PaymentAccount) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with PaymentAccountAllOf1
-	if err := m.PaymentAccountAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateAccountType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaymentMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePaymentMode(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PaymentAccount) validateAccountType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AccountType) { // not required
+		return nil
+	}
+
+	if err := m.AccountType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentAccount) validatePaymentMethod(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaymentMethod) { // not required
+		return nil
+	}
+
+	if err := m.PaymentMethod.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("paymentMethod")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentAccount) validatePaymentMode(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.PaymentMode) { // not required
+		return nil
+	}
+
+	if err := m.PaymentMode.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("paymentMode")
+		}
+		return err
+	}
+
 	return nil
 }
 

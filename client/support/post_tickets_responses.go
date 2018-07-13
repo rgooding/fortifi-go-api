@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPostTicketsOK() *PostTicketsOK {
 Ticket Information
 */
 type PostTicketsOK struct {
-	Payload *models.PostTicketsOKBody
+	Payload *PostTicketsOKBody
 }
 
 func (o *PostTicketsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PostTicketsOK) Error() string {
 
 func (o *PostTicketsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostTicketsOKBody)
+	o.Payload = new(PostTicketsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PostTicketsDefault) readResponse(response runtime.ClientResponse, consu
 		return err
 	}
 
+	return nil
+}
+
+/*PostTicketsOKBody post tickets o k body
+swagger:model PostTicketsOKBody
+*/
+type PostTicketsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Ticket `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PostTicketsOKBody) UnmarshalJSON(raw []byte) error {
+	// PostTicketsOKBodyAO0
+	var postTicketsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &postTicketsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = postTicketsOKBodyAO0
+
+	// PostTicketsOKBodyAO1
+	var dataPostTicketsOKBodyAO1 struct {
+		Data *models.Ticket `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPostTicketsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPostTicketsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PostTicketsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	postTicketsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, postTicketsOKBodyAO0)
+
+	var dataPostTicketsOKBodyAO1 struct {
+		Data *models.Ticket `json:"data,omitempty"`
+	}
+
+	dataPostTicketsOKBodyAO1.Data = o.Data
+
+	jsonDataPostTicketsOKBodyAO1, errPostTicketsOKBodyAO1 := swag.WriteJSON(dataPostTicketsOKBodyAO1)
+	if errPostTicketsOKBodyAO1 != nil {
+		return nil, errPostTicketsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPostTicketsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this post tickets o k body
+func (o *PostTicketsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostTicketsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postTicketsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PostTicketsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PostTicketsOKBody) UnmarshalBinary(b []byte) error {
+	var res PostTicketsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

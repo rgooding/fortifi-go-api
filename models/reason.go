@@ -17,7 +17,11 @@ import (
 type Reason struct {
 	Entity
 
-	ReasonAllOf1
+	// FID for the reason group
+	GroupFid string `json:"groupFid,omitempty"`
+
+	// used count
+	UsedCount int64 `json:"usedCount,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +34,18 @@ func (m *Reason) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 ReasonAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		GroupFid string `json:"groupFid,omitempty"`
+
+		UsedCount int64 `json:"usedCount,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ReasonAllOf1 = aO1
+
+	m.GroupFid = dataAO1.GroupFid
+
+	m.UsedCount = dataAO1.UsedCount
 
 	return nil
 }
@@ -49,11 +60,21 @@ func (m Reason) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ReasonAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		GroupFid string `json:"groupFid,omitempty"`
+
+		UsedCount int64 `json:"usedCount,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.GroupFid = m.GroupFid
+
+	dataAO1.UsedCount = m.UsedCount
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +85,6 @@ func (m *Reason) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with ReasonAllOf1
-	if err := m.ReasonAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

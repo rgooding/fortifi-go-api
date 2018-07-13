@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPostCustomersCustomerFidSarOK() *PostCustomersCustomerFidSarOK {
 Subject Access Request
 */
 type PostCustomersCustomerFidSarOK struct {
-	Payload *models.PostCustomersCustomerFidSarOKBody
+	Payload *PostCustomersCustomerFidSarOKBody
 }
 
 func (o *PostCustomersCustomerFidSarOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PostCustomersCustomerFidSarOK) Error() string {
 
 func (o *PostCustomersCustomerFidSarOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostCustomersCustomerFidSarOKBody)
+	o.Payload = new(PostCustomersCustomerFidSarOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PostCustomersCustomerFidSarDefault) readResponse(response runtime.Clien
 		return err
 	}
 
+	return nil
+}
+
+/*PostCustomersCustomerFidSarOKBody post customers customer fid sar o k body
+swagger:model PostCustomersCustomerFidSarOKBody
+*/
+type PostCustomersCustomerFidSarOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.BoolMessage `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PostCustomersCustomerFidSarOKBody) UnmarshalJSON(raw []byte) error {
+	// PostCustomersCustomerFidSarOKBodyAO0
+	var postCustomersCustomerFidSarOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &postCustomersCustomerFidSarOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = postCustomersCustomerFidSarOKBodyAO0
+
+	// PostCustomersCustomerFidSarOKBodyAO1
+	var dataPostCustomersCustomerFidSarOKBodyAO1 struct {
+		Data *models.BoolMessage `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPostCustomersCustomerFidSarOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPostCustomersCustomerFidSarOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PostCustomersCustomerFidSarOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	postCustomersCustomerFidSarOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, postCustomersCustomerFidSarOKBodyAO0)
+
+	var dataPostCustomersCustomerFidSarOKBodyAO1 struct {
+		Data *models.BoolMessage `json:"data,omitempty"`
+	}
+
+	dataPostCustomersCustomerFidSarOKBodyAO1.Data = o.Data
+
+	jsonDataPostCustomersCustomerFidSarOKBodyAO1, errPostCustomersCustomerFidSarOKBodyAO1 := swag.WriteJSON(dataPostCustomersCustomerFidSarOKBodyAO1)
+	if errPostCustomersCustomerFidSarOKBodyAO1 != nil {
+		return nil, errPostCustomersCustomerFidSarOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPostCustomersCustomerFidSarOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this post customers customer fid sar o k body
+func (o *PostCustomersCustomerFidSarOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostCustomersCustomerFidSarOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postCustomersCustomerFidSarOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PostCustomersCustomerFidSarOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PostCustomersCustomerFidSarOKBody) UnmarshalBinary(b []byte) error {
+	var res PostCustomersCustomerFidSarOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

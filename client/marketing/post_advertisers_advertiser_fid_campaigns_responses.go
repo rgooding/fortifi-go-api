@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPostAdvertisersAdvertiserFidCampaignsOK() *PostAdvertisersAdvertiserFidC
 Campaign Created
 */
 type PostAdvertisersAdvertiserFidCampaignsOK struct {
-	Payload *models.PostAdvertisersAdvertiserFidCampaignsOKBody
+	Payload *PostAdvertisersAdvertiserFidCampaignsOKBody
 }
 
 func (o *PostAdvertisersAdvertiserFidCampaignsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PostAdvertisersAdvertiserFidCampaignsOK) Error() string {
 
 func (o *PostAdvertisersAdvertiserFidCampaignsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostAdvertisersAdvertiserFidCampaignsOKBody)
+	o.Payload = new(PostAdvertisersAdvertiserFidCampaignsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PostAdvertisersAdvertiserFidCampaignsDefault) readResponse(response run
 		return err
 	}
 
+	return nil
+}
+
+/*PostAdvertisersAdvertiserFidCampaignsOKBody post advertisers advertiser fid campaigns o k body
+swagger:model PostAdvertisersAdvertiserFidCampaignsOKBody
+*/
+type PostAdvertisersAdvertiserFidCampaignsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Fid `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PostAdvertisersAdvertiserFidCampaignsOKBody) UnmarshalJSON(raw []byte) error {
+	// PostAdvertisersAdvertiserFidCampaignsOKBodyAO0
+	var postAdvertisersAdvertiserFidCampaignsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &postAdvertisersAdvertiserFidCampaignsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = postAdvertisersAdvertiserFidCampaignsOKBodyAO0
+
+	// PostAdvertisersAdvertiserFidCampaignsOKBodyAO1
+	var dataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1 struct {
+		Data *models.Fid `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PostAdvertisersAdvertiserFidCampaignsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	postAdvertisersAdvertiserFidCampaignsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, postAdvertisersAdvertiserFidCampaignsOKBodyAO0)
+
+	var dataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1 struct {
+		Data *models.Fid `json:"data,omitempty"`
+	}
+
+	dataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1.Data = o.Data
+
+	jsonDataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1, errPostAdvertisersAdvertiserFidCampaignsOKBodyAO1 := swag.WriteJSON(dataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1)
+	if errPostAdvertisersAdvertiserFidCampaignsOKBodyAO1 != nil {
+		return nil, errPostAdvertisersAdvertiserFidCampaignsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPostAdvertisersAdvertiserFidCampaignsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this post advertisers advertiser fid campaigns o k body
+func (o *PostAdvertisersAdvertiserFidCampaignsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostAdvertisersAdvertiserFidCampaignsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postAdvertisersAdvertiserFidCampaignsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PostAdvertisersAdvertiserFidCampaignsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PostAdvertisersAdvertiserFidCampaignsOKBody) UnmarshalBinary(b []byte) error {
+	var res PostAdvertisersAdvertiserFidCampaignsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

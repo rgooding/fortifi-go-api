@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK() *PutCustom
 Subscription cancelled
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK struct {
-	Payload *models.PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody
+	Payload *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK) Error() string {
@@ -63,7 +65,7 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK) Error() st
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody)
+	o.Payload = new(PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelDefault) readR
 		return err
 	}
 
+	return nil
+}
+
+/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody put customers customer fid subscriptions subscription fid cancel o k body
+swagger:model PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody
+*/
+type PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Subscription `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody) UnmarshalJSON(raw []byte) error {
+	// PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO0
+	var putCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &putCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = putCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO0
+
+	// PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1
+	var dataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1 struct {
+		Data *models.Subscription `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	putCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, putCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO0)
+
+	var dataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1 struct {
+		Data *models.Subscription `json:"data,omitempty"`
+	}
+
+	dataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1.Data = o.Data
+
+	jsonDataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1, errPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1 := swag.WriteJSON(dataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1)
+	if errPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1 != nil {
+		return nil, errPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this put customers customer fid subscriptions subscription fid cancel o k body
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody) UnmarshalBinary(b []byte) error {
+	var res PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

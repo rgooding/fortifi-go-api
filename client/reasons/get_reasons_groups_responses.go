@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetReasonsGroupsOK() *GetReasonsGroupsOK {
 Reason groups
 */
 type GetReasonsGroupsOK struct {
-	Payload *models.GetReasonsGroupsOKBody
+	Payload *GetReasonsGroupsOKBody
 }
 
 func (o *GetReasonsGroupsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetReasonsGroupsOK) Error() string {
 
 func (o *GetReasonsGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetReasonsGroupsOKBody)
+	o.Payload = new(GetReasonsGroupsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetReasonsGroupsDefault) readResponse(response runtime.ClientResponse, 
 		return err
 	}
 
+	return nil
+}
+
+/*GetReasonsGroupsOKBody get reasons groups o k body
+swagger:model GetReasonsGroupsOKBody
+*/
+type GetReasonsGroupsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.ReasonGroups `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetReasonsGroupsOKBody) UnmarshalJSON(raw []byte) error {
+	// GetReasonsGroupsOKBodyAO0
+	var getReasonsGroupsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getReasonsGroupsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getReasonsGroupsOKBodyAO0
+
+	// GetReasonsGroupsOKBodyAO1
+	var dataGetReasonsGroupsOKBodyAO1 struct {
+		Data *models.ReasonGroups `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetReasonsGroupsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetReasonsGroupsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetReasonsGroupsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getReasonsGroupsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getReasonsGroupsOKBodyAO0)
+
+	var dataGetReasonsGroupsOKBodyAO1 struct {
+		Data *models.ReasonGroups `json:"data,omitempty"`
+	}
+
+	dataGetReasonsGroupsOKBodyAO1.Data = o.Data
+
+	jsonDataGetReasonsGroupsOKBodyAO1, errGetReasonsGroupsOKBodyAO1 := swag.WriteJSON(dataGetReasonsGroupsOKBodyAO1)
+	if errGetReasonsGroupsOKBodyAO1 != nil {
+		return nil, errGetReasonsGroupsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetReasonsGroupsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get reasons groups o k body
+func (o *GetReasonsGroupsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetReasonsGroupsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getReasonsGroupsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetReasonsGroupsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetReasonsGroupsOKBody) UnmarshalBinary(b []byte) error {
+	var res GetReasonsGroupsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

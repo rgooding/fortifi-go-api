@@ -17,7 +17,14 @@ import (
 type ReasonGroup struct {
 	Entity
 
-	ReasonGroupAllOf1
+	// built in
+	BuiltIn bool `json:"builtIn,omitempty"`
+
+	// reason count
+	ReasonCount int64 `json:"reasonCount,omitempty"`
+
+	// type
+	Type ReasonGroupType `json:"type,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +37,22 @@ func (m *ReasonGroup) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 ReasonGroupAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		BuiltIn bool `json:"builtIn,omitempty"`
+
+		ReasonCount int64 `json:"reasonCount,omitempty"`
+
+		Type ReasonGroupType `json:"type,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ReasonGroupAllOf1 = aO1
+
+	m.BuiltIn = dataAO1.BuiltIn
+
+	m.ReasonCount = dataAO1.ReasonCount
+
+	m.Type = dataAO1.Type
 
 	return nil
 }
@@ -49,11 +67,25 @@ func (m ReasonGroup) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ReasonGroupAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		BuiltIn bool `json:"builtIn,omitempty"`
+
+		ReasonCount int64 `json:"reasonCount,omitempty"`
+
+		Type ReasonGroupType `json:"type,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.BuiltIn = m.BuiltIn
+
+	dataAO1.ReasonCount = m.ReasonCount
+
+	dataAO1.Type = m.Type
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -66,14 +98,30 @@ func (m *ReasonGroup) Validate(formats strfmt.Registry) error {
 	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with ReasonGroupAllOf1
-	if err := m.ReasonGroupAllOf1.Validate(formats); err != nil {
+
+	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ReasonGroup) validateType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if err := m.Type.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		}
+		return err
+	}
+
 	return nil
 }
 

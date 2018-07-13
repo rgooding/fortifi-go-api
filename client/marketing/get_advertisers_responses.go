@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetAdvertisersOK() *GetAdvertisersOK {
 List of advertisers
 */
 type GetAdvertisersOK struct {
-	Payload *models.GetAdvertisersOKBody
+	Payload *GetAdvertisersOKBody
 }
 
 func (o *GetAdvertisersOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetAdvertisersOK) Error() string {
 
 func (o *GetAdvertisersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetAdvertisersOKBody)
+	o.Payload = new(GetAdvertisersOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetAdvertisersDefault) readResponse(response runtime.ClientResponse, co
 		return err
 	}
 
+	return nil
+}
+
+/*GetAdvertisersOKBody get advertisers o k body
+swagger:model GetAdvertisersOKBody
+*/
+type GetAdvertisersOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Advertisers `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetAdvertisersOKBody) UnmarshalJSON(raw []byte) error {
+	// GetAdvertisersOKBodyAO0
+	var getAdvertisersOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getAdvertisersOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getAdvertisersOKBodyAO0
+
+	// GetAdvertisersOKBodyAO1
+	var dataGetAdvertisersOKBodyAO1 struct {
+		Data *models.Advertisers `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetAdvertisersOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetAdvertisersOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetAdvertisersOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getAdvertisersOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getAdvertisersOKBodyAO0)
+
+	var dataGetAdvertisersOKBodyAO1 struct {
+		Data *models.Advertisers `json:"data,omitempty"`
+	}
+
+	dataGetAdvertisersOKBodyAO1.Data = o.Data
+
+	jsonDataGetAdvertisersOKBodyAO1, errGetAdvertisersOKBodyAO1 := swag.WriteJSON(dataGetAdvertisersOKBodyAO1)
+	if errGetAdvertisersOKBodyAO1 != nil {
+		return nil, errGetAdvertisersOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetAdvertisersOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get advertisers o k body
+func (o *GetAdvertisersOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetAdvertisersOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getAdvertisersOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetAdvertisersOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetAdvertisersOKBody) UnmarshalBinary(b []byte) error {
+	var res GetAdvertisersOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

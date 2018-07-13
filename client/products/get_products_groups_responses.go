@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetProductsGroupsOK() *GetProductsGroupsOK {
 Products groups
 */
 type GetProductsGroupsOK struct {
-	Payload *models.GetProductsGroupsOKBody
+	Payload *GetProductsGroupsOKBody
 }
 
 func (o *GetProductsGroupsOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetProductsGroupsOK) Error() string {
 
 func (o *GetProductsGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetProductsGroupsOKBody)
+	o.Payload = new(GetProductsGroupsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetProductsGroupsDefault) readResponse(response runtime.ClientResponse,
 		return err
 	}
 
+	return nil
+}
+
+/*GetProductsGroupsOKBody get products groups o k body
+swagger:model GetProductsGroupsOKBody
+*/
+type GetProductsGroupsOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.ProductGroups `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetProductsGroupsOKBody) UnmarshalJSON(raw []byte) error {
+	// GetProductsGroupsOKBodyAO0
+	var getProductsGroupsOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getProductsGroupsOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getProductsGroupsOKBodyAO0
+
+	// GetProductsGroupsOKBodyAO1
+	var dataGetProductsGroupsOKBodyAO1 struct {
+		Data *models.ProductGroups `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetProductsGroupsOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetProductsGroupsOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetProductsGroupsOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getProductsGroupsOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getProductsGroupsOKBodyAO0)
+
+	var dataGetProductsGroupsOKBodyAO1 struct {
+		Data *models.ProductGroups `json:"data,omitempty"`
+	}
+
+	dataGetProductsGroupsOKBodyAO1.Data = o.Data
+
+	jsonDataGetProductsGroupsOKBodyAO1, errGetProductsGroupsOKBodyAO1 := swag.WriteJSON(dataGetProductsGroupsOKBodyAO1)
+	if errGetProductsGroupsOKBodyAO1 != nil {
+		return nil, errGetProductsGroupsOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetProductsGroupsOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get products groups o k body
+func (o *GetProductsGroupsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetProductsGroupsOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getProductsGroupsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetProductsGroupsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetProductsGroupsOKBody) UnmarshalBinary(b []byte) error {
+	var res GetProductsGroupsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

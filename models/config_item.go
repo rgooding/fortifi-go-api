@@ -17,7 +17,17 @@ import (
 type ConfigItem struct {
 	Entity
 
-	ConfigItemAllOf1
+	// entity fid
+	EntityFid string `json:"entityFid,omitempty"`
+
+	// item name
+	ItemName string `json:"itemName,omitempty"`
+
+	// section name
+	SectionName string `json:"sectionName,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -30,11 +40,26 @@ func (m *ConfigItem) UnmarshalJSON(raw []byte) error {
 	m.Entity = aO0
 
 	// AO1
-	var aO1 ConfigItemAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
+	var dataAO1 struct {
+		EntityFid string `json:"entityFid,omitempty"`
+
+		ItemName string `json:"itemName,omitempty"`
+
+		SectionName string `json:"sectionName,omitempty"`
+
+		Value string `json:"value,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
-	m.ConfigItemAllOf1 = aO1
+
+	m.EntityFid = dataAO1.EntityFid
+
+	m.ItemName = dataAO1.ItemName
+
+	m.SectionName = dataAO1.SectionName
+
+	m.Value = dataAO1.Value
 
 	return nil
 }
@@ -49,11 +74,29 @@ func (m ConfigItem) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
-	aO1, err := swag.WriteJSON(m.ConfigItemAllOf1)
-	if err != nil {
-		return nil, err
+	var dataAO1 struct {
+		EntityFid string `json:"entityFid,omitempty"`
+
+		ItemName string `json:"itemName,omitempty"`
+
+		SectionName string `json:"sectionName,omitempty"`
+
+		Value string `json:"value,omitempty"`
 	}
-	_parts = append(_parts, aO1)
+
+	dataAO1.EntityFid = m.EntityFid
+
+	dataAO1.ItemName = m.ItemName
+
+	dataAO1.SectionName = m.SectionName
+
+	dataAO1.Value = m.Value
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
 
 	return swag.ConcatJSON(_parts...), nil
 }
@@ -64,10 +107,6 @@ func (m *ConfigItem) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with ConfigItemAllOf1
-	if err := m.ConfigItemAllOf1.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

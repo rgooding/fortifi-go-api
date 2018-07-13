@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -54,7 +56,7 @@ func NewGetPayPublicKeyOK() *GetPayPublicKeyOK {
 RSA Public Key
 */
 type GetPayPublicKeyOK struct {
-	Payload *models.GetPayPublicKeyOKBody
+	Payload *GetPayPublicKeyOKBody
 }
 
 func (o *GetPayPublicKeyOK) Error() string {
@@ -63,7 +65,7 @@ func (o *GetPayPublicKeyOK) Error() string {
 
 func (o *GetPayPublicKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetPayPublicKeyOKBody)
+	o.Payload = new(GetPayPublicKeyOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -108,5 +110,117 @@ func (o *GetPayPublicKeyDefault) readResponse(response runtime.ClientResponse, c
 		return err
 	}
 
+	return nil
+}
+
+/*GetPayPublicKeyOKBody get pay public key o k body
+swagger:model GetPayPublicKeyOKBody
+*/
+type GetPayPublicKeyOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.PubKey `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetPayPublicKeyOKBody) UnmarshalJSON(raw []byte) error {
+	// GetPayPublicKeyOKBodyAO0
+	var getPayPublicKeyOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getPayPublicKeyOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getPayPublicKeyOKBodyAO0
+
+	// GetPayPublicKeyOKBodyAO1
+	var dataGetPayPublicKeyOKBodyAO1 struct {
+		Data *models.PubKey `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetPayPublicKeyOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetPayPublicKeyOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetPayPublicKeyOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getPayPublicKeyOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getPayPublicKeyOKBodyAO0)
+
+	var dataGetPayPublicKeyOKBodyAO1 struct {
+		Data *models.PubKey `json:"data,omitempty"`
+	}
+
+	dataGetPayPublicKeyOKBodyAO1.Data = o.Data
+
+	jsonDataGetPayPublicKeyOKBodyAO1, errGetPayPublicKeyOKBodyAO1 := swag.WriteJSON(dataGetPayPublicKeyOKBodyAO1)
+	if errGetPayPublicKeyOKBodyAO1 != nil {
+		return nil, errGetPayPublicKeyOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetPayPublicKeyOKBodyAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get pay public key o k body
+func (o *GetPayPublicKeyOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetPayPublicKeyOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getPayPublicKeyOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetPayPublicKeyOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetPayPublicKeyOKBody) UnmarshalBinary(b []byte) error {
+	var res GetPayPublicKeyOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }
