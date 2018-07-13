@@ -114,8 +114,8 @@ func (f *Instance) getNewToken(transport *httptransport.Runtime) error {
 		return err
 	}
 
-	f.expiry = re.Payload.GetServiceAuthTokenOKBodyAllOf1.Data.Expiry
-	f.authToken = re.Payload.GetServiceAuthTokenOKBodyAllOf1.Data.Token
+	f.expiry = re.Payload.Data.Expiry
+	f.authToken = re.Payload.Data.Token
 	return nil
 }
 
