@@ -94,7 +94,7 @@ func (f *Instance) GetAPIInstance() (*client.Fortifi, error) {
 	transport.SetDebug(debugFortifiRequests)
 	err := f.getNewToken(transport)
 	if err != nil {
-		return nil, errors.New("Failed to authenticate with Fortifi")
+		return nil, fmt.Errorf("Failed to authenticate with Fortifi: %s", err.Error())
 	}
 
 	f.apiInstance = client.New(transport, strfmt.Default)
