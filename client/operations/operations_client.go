@@ -141,6 +141,35 @@ func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidT
 }
 
 /*
+GetIntegrationsVerifyUser verifies a user
+*/
+func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter) (*GetIntegrationsVerifyUserOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIntegrationsVerifyUserParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetIntegrationsVerifyUser",
+		Method:             "GET",
+		PathPattern:        "/integrations/verifyUser",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIntegrationsVerifyUserReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetIntegrationsVerifyUserOK), nil
+
+}
+
+/*
 GetPayCoinbase gets a new checkout ID
 */
 func (a *Client) GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error) {

@@ -45,6 +45,9 @@ type CreateCustomerPayload struct {
 	// First Name
 	FirstName string `json:"firstName,omitempty"`
 
+	// Language
+	Language string `json:"language,omitempty"`
+
 	// Last Name
 	LastName string `json:"lastName,omitempty"`
 
