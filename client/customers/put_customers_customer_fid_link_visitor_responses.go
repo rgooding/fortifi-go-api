@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidLinkVisitorReader is a Reader for the PutCustomersCustomerFidLinkVisitor structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidLinkVisitorReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidLinkVisitorReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidLinkVisitorOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidLinkVisitorDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidLinkVisitorDefault) Code() int {
 
 func (o *PutCustomersCustomerFidLinkVisitorDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/linkVisitor][%d] PutCustomersCustomerFidLinkVisitor default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidLinkVisitorDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidLinkVisitorDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

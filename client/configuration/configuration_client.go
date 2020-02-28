@@ -7,12 +7,11 @@ package configuration
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new configuration API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidConfigSectionNameOK, error)
+
+	GetConfigurationFinanceGateways(params *GetConfigurationFinanceGatewaysParams, authInfo runtime.ClientAuthInfoWriter) (*GetConfigurationFinanceGatewaysOK, error)
+
+	GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameOK, error)
+
+	GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error)
+
+	PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidConfigSectionNameOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-DeleteEntitiesEntityFidConfigSectionName removes a config section or property from an entity
+  DeleteEntitiesEntityFidConfigSectionName removes a config section or property from an entity
 */
 func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
@@ -49,12 +63,17 @@ func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntities
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteEntitiesEntityFidConfigSectionNameOK), nil
-
+	success, ok := result.(*DeleteEntitiesEntityFidConfigSectionNameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteEntitiesEntityFidConfigSectionNameDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetConfigurationFinanceGateways lists all the current gateways
+  GetConfigurationFinanceGateways lists all the current gateways
 */
 func (a *Client) GetConfigurationFinanceGateways(params *GetConfigurationFinanceGatewaysParams, authInfo runtime.ClientAuthInfoWriter) (*GetConfigurationFinanceGatewaysOK, error) {
 	// TODO: Validate the params before sending
@@ -78,12 +97,17 @@ func (a *Client) GetConfigurationFinanceGateways(params *GetConfigurationFinance
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetConfigurationFinanceGatewaysOK), nil
-
+	success, ok := result.(*GetConfigurationFinanceGatewaysOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetConfigurationFinanceGatewaysDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetEntitiesEntityFidConfigSectionName retrieves a config section
+  GetEntitiesEntityFidConfigSectionName retrieves a config section
 */
 func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
@@ -107,12 +131,17 @@ func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntity
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetEntitiesEntityFidConfigSectionNameOK), nil
-
+	success, ok := result.(*GetEntitiesEntityFidConfigSectionNameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetEntitiesEntityFidConfigSectionNameDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetEntitiesEntityFidConfigSectionNameItemsItemName retrieves a config item
+  GetEntitiesEntityFidConfigSectionNameItemsItemName retrieves a config item
 */
 func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error) {
 	// TODO: Validate the params before sending
@@ -136,12 +165,17 @@ func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetE
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK), nil
-
+	success, ok := result.(*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostEntitiesEntityFidConfigSectionName writes a config item
+  PostEntitiesEntityFidConfigSectionName writes a config item
 */
 func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
@@ -165,8 +199,13 @@ func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEnti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostEntitiesEntityFidConfigSectionNameOK), nil
-
+	success, ok := result.(*PostEntitiesEntityFidConfigSectionNameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostEntitiesEntityFidConfigSectionNameDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetEntitiesEntityFidPropertiesValuesPropertyNameReader is a Reader for the GetEntitiesEntityFidPropertiesValuesPropertyName structure.
@@ -26,14 +26,12 @@ type GetEntitiesEntityFidPropertiesValuesPropertyNameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetEntitiesEntityFidPropertiesValuesPropertyNameOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetEntitiesEntityFidPropertiesValuesPropertyNameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetEntitiesEntityFidPropertiesValuesPropertyNameOK struct {
 
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties/values/{propertyName}][%d] getEntitiesEntityFidPropertiesValuesPropertyNameOK  %+v", 200, o.Payload)
+}
+
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) GetPayload() *GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody {
+	return o.Payload
 }
 
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int {
 
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties/values/{propertyName}][%d] GetEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

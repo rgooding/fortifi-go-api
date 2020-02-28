@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetProductsGroupsProductGroupFidProductsReader is a Reader for the GetProductsGroupsProductGroupFidProducts structure.
@@ -26,14 +26,12 @@ type GetProductsGroupsProductGroupFidProductsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetProductsGroupsProductGroupFidProductsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetProductsGroupsProductGroupFidProductsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetProductsGroupsProductGroupFidProductsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetProductsGroupsProductGroupFidProductsOK struct {
 
 func (o *GetProductsGroupsProductGroupFidProductsOK) Error() string {
 	return fmt.Sprintf("[GET /products/groups/{productGroupFid}/products][%d] getProductsGroupsProductGroupFidProductsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetProductsGroupsProductGroupFidProductsOK) GetPayload() *GetProductsGroupsProductGroupFidProductsOKBody {
+	return o.Payload
 }
 
 func (o *GetProductsGroupsProductGroupFidProductsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetProductsGroupsProductGroupFidProductsDefault) Code() int {
 
 func (o *GetProductsGroupsProductGroupFidProductsDefault) Error() string {
 	return fmt.Sprintf("[GET /products/groups/{productGroupFid}/products][%d] GetProductsGroupsProductGroupFidProducts default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetProductsGroupsProductGroupFidProductsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetProductsGroupsProductGroupFidProductsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

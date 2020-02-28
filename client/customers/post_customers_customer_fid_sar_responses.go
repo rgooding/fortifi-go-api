@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostCustomersCustomerFidSarReader is a Reader for the PostCustomersCustomerFidSar structure.
@@ -26,14 +26,12 @@ type PostCustomersCustomerFidSarReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostCustomersCustomerFidSarReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostCustomersCustomerFidSarOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostCustomersCustomerFidSarDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostCustomersCustomerFidSarOK struct {
 
 func (o *PostCustomersCustomerFidSarOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/sar][%d] postCustomersCustomerFidSarOK  %+v", 200, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidSarOK) GetPayload() *PostCustomersCustomerFidSarOKBody {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidSarOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostCustomersCustomerFidSarDefault) Code() int {
 
 func (o *PostCustomersCustomerFidSarDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/sar][%d] PostCustomersCustomerFidSar default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidSarDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidSarDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

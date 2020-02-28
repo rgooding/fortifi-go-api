@@ -8,9 +8,8 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -23,14 +22,23 @@ const (
 	// CustomerAccountTypeUnknown captures enum value "unknown"
 	CustomerAccountTypeUnknown CustomerAccountType = "unknown"
 
+	// CustomerAccountTypeStudent captures enum value "student"
+	CustomerAccountTypeStudent CustomerAccountType = "student"
+
+	// CustomerAccountTypeCharity captures enum value "charity"
+	CustomerAccountTypeCharity CustomerAccountType = "charity"
+
 	// CustomerAccountTypeBusiness captures enum value "business"
 	CustomerAccountTypeBusiness CustomerAccountType = "business"
 
 	// CustomerAccountTypeResidential captures enum value "residential"
 	CustomerAccountTypeResidential CustomerAccountType = "residential"
 
-	// CustomerAccountTypeStudent captures enum value "student"
-	CustomerAccountTypeStudent CustomerAccountType = "student"
+	// CustomerAccountTypeEnterprise captures enum value "enterprise"
+	CustomerAccountTypeEnterprise CustomerAccountType = "enterprise"
+
+	// CustomerAccountTypeGroup captures enum value "group"
+	CustomerAccountTypeGroup CustomerAccountType = "group"
 )
 
 // for schema
@@ -38,7 +46,7 @@ var customerAccountTypeEnum []interface{}
 
 func init() {
 	var res []CustomerAccountType
-	if err := json.Unmarshal([]byte(`["unknown","business","residential","student"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["unknown","student","charity","business","residential","enterprise","group"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

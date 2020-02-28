@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // DeleteEntitiesEntityFidPropertiesFlagsPropertyNameReader is a Reader for the DeleteEntitiesEntityFidPropertiesFlagsPropertyName structure.
@@ -24,14 +24,12 @@ type DeleteEntitiesEntityFidPropertiesFlagsPropertyNameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewDeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Code() int {
 
 func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/properties/flags/{propertyName}][%d] DeleteEntitiesEntityFidPropertiesFlagsPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

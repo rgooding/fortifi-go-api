@@ -7,12 +7,11 @@ package licence
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new licence API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,15 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetLicenceCheckOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetLicenceCheck retrieves a licence
+  GetLicenceCheck retrieves a licence
 */
 func (a *Client) GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetLicenceCheckOK, error) {
 	// TODO: Validate the params before sending
@@ -49,8 +55,13 @@ func (a *Client) GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetLicenceCheckOK), nil
-
+	success, ok := result.(*GetLicenceCheckOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetLicenceCheckDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

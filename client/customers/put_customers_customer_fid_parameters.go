@@ -6,10 +6,9 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"net/http"
 	"time"
-
-	"context"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -67,6 +66,8 @@ type PutCustomersCustomerFidParams struct {
 
 	*/
 	CustomerFid string
+	/*DisplayName*/
+	DisplayName *string
 	/*FirstName*/
 	FirstName *string
 	/*LastName*/
@@ -121,6 +122,17 @@ func (o *PutCustomersCustomerFidParams) SetCustomerFid(customerFid string) {
 	o.CustomerFid = customerFid
 }
 
+// WithDisplayName adds the displayName to the put customers customer fid params
+func (o *PutCustomersCustomerFidParams) WithDisplayName(displayName *string) *PutCustomersCustomerFidParams {
+	o.SetDisplayName(displayName)
+	return o
+}
+
+// SetDisplayName adds the displayName to the put customers customer fid params
+func (o *PutCustomersCustomerFidParams) SetDisplayName(displayName *string) {
+	o.DisplayName = displayName
+}
+
 // WithFirstName adds the firstName to the put customers customer fid params
 func (o *PutCustomersCustomerFidParams) WithFirstName(firstName *string) *PutCustomersCustomerFidParams {
 	o.SetFirstName(firstName)
@@ -154,6 +166,22 @@ func (o *PutCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, 
 	// path param customerFid
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
+	}
+
+	if o.DisplayName != nil {
+
+		// form param displayName
+		var frDisplayName string
+		if o.DisplayName != nil {
+			frDisplayName = *o.DisplayName
+		}
+		fDisplayName := frDisplayName
+		if fDisplayName != "" {
+			if err := r.SetFormParam("displayName", fDisplayName); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.FirstName != nil {

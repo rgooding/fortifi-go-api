@@ -7,12 +7,11 @@ package operations
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new operations API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,124 +23,39 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-DeleteCustomersCustomerFidPaymentMethodsCardsCardFid delete customers customer fid payment methods cards card fid API
-*/
-func (a *Client) DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams()
-	}
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter) (*GetIntegrationsVerifyUserOK, error)
 
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "DeleteCustomersCustomerFidPaymentMethodsCardsCardFid",
-		Method:             "DELETE",
-		PathPattern:        "/customers/{customerFid}/paymentMethods/cards/{cardFid}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteCustomersCustomerFidPaymentMethodsCardsCardFidReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK), nil
+	GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error)
 
+	GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayPublicKeyOK, error)
+
+	PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAddressesOK, error)
+
+	PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidEmailsOK, error)
+
+	PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error)
+
+	PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPhonesOK, error)
+
+	PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidEventsOK, error)
+
+	GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter) (*GetBrandsOK, error)
+
+	GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter) (*GetMeOK, error)
+
+	GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrganisationOK, error)
+
+	GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetServiceAuthTokenOK, error)
+
+	GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter) (*GetVersionOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetCustomersCustomerFidPaymentAccounts lists customers payment accounts
-*/
-func (a *Client) GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCustomerFidPaymentAccountsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentAccountsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetCustomersCustomerFidPaymentAccountsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetCustomersCustomerFidPaymentAccounts",
-		Method:             "GET",
-		PathPattern:        "/customers/{customerFid}/paymentAccounts",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetCustomersCustomerFidPaymentAccountsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetCustomersCustomerFidPaymentAccountsOK), nil
-
-}
-
-/*
-GetCustomersCustomerFidPaymentMethodsCards lists customers card payment methods
-*/
-func (a *Client) GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsCardsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetCustomersCustomerFidPaymentMethodsCardsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetCustomersCustomerFidPaymentMethodsCards",
-		Method:             "GET",
-		PathPattern:        "/customers/{customerFid}/paymentMethods/cards",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetCustomersCustomerFidPaymentMethodsCardsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetCustomersCustomerFidPaymentMethodsCardsOK), nil
-
-}
-
-/*
-GetCustomersCustomerFidTickets gets support tickets for customer
-*/
-func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetCustomersCustomerFidTicketsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetCustomersCustomerFidTickets",
-		Method:             "GET",
-		PathPattern:        "/customers/{customerFid}/tickets",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetCustomersCustomerFidTicketsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetCustomersCustomerFidTicketsOK), nil
-
-}
-
-/*
-GetIntegrationsVerifyUser verifies a user
+  GetIntegrationsVerifyUser verifies a user
 */
 func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter) (*GetIntegrationsVerifyUserOK, error) {
 	// TODO: Validate the params before sending
@@ -165,12 +79,17 @@ func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetIntegrationsVerifyUserOK), nil
-
+	success, ok := result.(*GetIntegrationsVerifyUserOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetIntegrationsVerifyUserDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetPayCoinbase gets a new checkout ID
+  GetPayCoinbase gets a new checkout ID
 */
 func (a *Client) GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error) {
 	// TODO: Validate the params before sending
@@ -194,12 +113,17 @@ func (a *Client) GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetPayCoinbaseOK), nil
-
+	success, ok := result.(*GetPayCoinbaseOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPayCoinbaseDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetPayPublicKey gets the public key needed to encrypt a credit card number
+  GetPayPublicKey gets the public key needed to encrypt a credit card number
 */
 func (a *Client) GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayPublicKeyOK, error) {
 	// TODO: Validate the params before sending
@@ -223,12 +147,51 @@ func (a *Client) GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetPayPublicKeyOK), nil
-
+	success, ok := result.(*GetPayPublicKeyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPayPublicKeyDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostCustomersCustomerFidEmails adds an email address to a customer
+  PostCustomersCustomerFidAddresses adds an address to a customer
+*/
+func (a *Client) PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAddressesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostCustomersCustomerFidAddressesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PostCustomersCustomerFidAddresses",
+		Method:             "POST",
+		PathPattern:        "/customers/{customerFid}/addresses",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostCustomersCustomerFidAddressesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostCustomersCustomerFidAddressesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidAddressesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PostCustomersCustomerFidEmails adds an email address to a customer
 */
 func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidEmailsOK, error) {
 	// TODO: Validate the params before sending
@@ -252,12 +215,17 @@ func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFid
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostCustomersCustomerFidEmailsOK), nil
-
+	success, ok := result.(*PostCustomersCustomerFidEmailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidEmailsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostCustomersCustomerFidInvoicesInvoiceFidCreditNote adds a credit note to a customers invoice
+  PostCustomersCustomerFidInvoicesInvoiceFidCreditNote adds a credit note to a customers invoice
 */
 func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error) {
 	// TODO: Validate the params before sending
@@ -281,99 +249,17 @@ func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *Po
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK), nil
-
+	success, ok := result.(*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostCustomersCustomerFidPaymentMethodsCards adds a new card
-*/
-func (a *Client) PostCustomersCustomerFidPaymentMethodsCards(params *PostCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsCardsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostCustomersCustomerFidPaymentMethodsCardsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostCustomersCustomerFidPaymentMethodsCards",
-		Method:             "POST",
-		PathPattern:        "/customers/{customerFid}/paymentMethods/cards",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostCustomersCustomerFidPaymentMethodsCardsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PostCustomersCustomerFidPaymentMethodsCardsOK), nil
-
-}
-
-/*
-PostCustomersCustomerFidPaymentMethodsPaypalComplete completes a paypal agreement created with initialise
-*/
-func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostCustomersCustomerFidPaymentMethodsPaypalComplete",
-		Method:             "POST",
-		PathPattern:        "/customers/{customerFid}/paymentMethods/paypal/complete",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostCustomersCustomerFidPaymentMethodsPaypalCompleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK), nil
-
-}
-
-/*
-PostCustomersCustomerFidPaymentMethodsPaypalInitialise initialises a new paypal agreement for existing subscriptions
-*/
-func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostCustomersCustomerFidPaymentMethodsPaypalInitialise",
-		Method:             "POST",
-		PathPattern:        "/customers/{customerFid}/paymentMethods/paypal/initialise",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK), nil
-
-}
-
-/*
-PostCustomersCustomerFidPhones adds a phone number to a customer
+  PostCustomersCustomerFidPhones adds a phone number to a customer
 */
 func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPhonesOK, error) {
 	// TODO: Validate the params before sending
@@ -397,41 +283,17 @@ func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFid
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostCustomersCustomerFidPhonesOK), nil
-
+	success, ok := result.(*PostCustomersCustomerFidPhonesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidPhonesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostCustomersCustomerFidTickets creates a new support ticket
-*/
-func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostCustomersCustomerFidTicketsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostCustomersCustomerFidTickets",
-		Method:             "POST",
-		PathPattern:        "/customers/{customerFid}/tickets",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostCustomersCustomerFidTicketsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PostCustomersCustomerFidTicketsOK), nil
-
-}
-
-/*
-PostEntitiesEntityFidEvents triggers a new event
+  PostEntitiesEntityFidEvents triggers a new event
 */
 func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -455,101 +317,19 @@ func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEvents
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostEntitiesEntityFidEventsOK), nil
-
+	success, ok := result.(*PostEntitiesEntityFidEventsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostEntitiesEntityFidEventsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PutCustomersCustomerFidPaymentMethodsCardsCardFid updates a card
-*/
-func (a *Client) PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutCustomersCustomerFidPaymentMethodsCardsCardFidParams()
-	}
+  GetBrands yours brand
 
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutCustomersCustomerFidPaymentMethodsCardsCardFid",
-		Method:             "PUT",
-		PathPattern:        "/customers/{customerFid}/paymentMethods/cards/{cardFid}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutCustomersCustomerFidPaymentMethodsCardsCardFidReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK), nil
-
-}
-
-/*
-PutMessengerDeliveriesDeliveryFidSubscribe subscribes an email based on the delivery fid
-*/
-func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutMessengerDeliveriesDeliveryFidSubscribeParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutMessengerDeliveriesDeliveryFidSubscribe",
-		Method:             "PUT",
-		PathPattern:        "/messenger/deliveries/{deliveryFid}/subscribe",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutMessengerDeliveriesDeliveryFidSubscribeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PutMessengerDeliveriesDeliveryFidSubscribeOK), nil
-
-}
-
-/*
-PutMessengerDeliveriesDeliveryFidUnsubscribe unsubscribes an email based on the delivery fid
-*/
-func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutMessengerDeliveriesDeliveryFidUnsubscribe",
-		Method:             "PUT",
-		PathPattern:        "/messenger/deliveries/{deliveryFid}/unsubscribe",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutMessengerDeliveriesDeliveryFidUnsubscribeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PutMessengerDeliveriesDeliveryFidUnsubscribeOK), nil
-
-}
-
-/*
-GetBrands yours brand
-
-Retrieve a list of all the brands within your Fortifi account
+  Retrieve a list of all the brands within your Fortifi account
 
 */
 func (a *Client) GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter) (*GetBrandsOK, error) {
@@ -574,14 +354,19 @@ func (a *Client) GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthI
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetBrandsOK), nil
-
+	success, ok := result.(*GetBrandsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetBrandsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetMe currents user
+  GetMe currents user
 
-Retrieve information about the current connected user (you)
+  Retrieve information about the current connected user (you)
 
 */
 func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter) (*GetMeOK, error) {
@@ -606,14 +391,19 @@ func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWrite
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetMeOK), nil
-
+	success, ok := result.(*GetMeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetMeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetOrganisation currents organisation
+  GetOrganisation currents organisation
 
-Retrieve information about the current organisation
+  Retrieve information about the current organisation
 
 */
 func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrganisationOK, error) {
@@ -638,14 +428,19 @@ func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetOrganisationOK), nil
-
+	success, ok := result.(*GetOrganisationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetOrganisationDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetServiceAuthToken verifies service account get access token
+  GetServiceAuthToken verifies service account get access token
 
-User service account credentials to retrieve an API token
+  User service account credentials to retrieve an API token
 
 */
 func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetServiceAuthTokenOK, error) {
@@ -669,14 +464,19 @@ func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetSer
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetServiceAuthTokenOK), nil
-
+	success, ok := result.(*GetServiceAuthTokenOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetServiceAuthTokenDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetVersion currents version
+  GetVersion currents version
 
-Retrieve the current version of the Fortifi api
+  Retrieve the current version of the Fortifi api
 
 */
 func (a *Client) GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter) (*GetVersionOK, error) {
@@ -701,8 +501,13 @@ func (a *Client) GetVersion(params *GetVersionParams, authInfo runtime.ClientAut
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVersionOK), nil
-
+	success, ok := result.(*GetVersionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetVersionDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

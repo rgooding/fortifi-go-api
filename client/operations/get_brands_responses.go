@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetBrandsReader is a Reader for the GetBrands structure.
@@ -26,14 +26,12 @@ type GetBrandsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetBrandsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetBrandsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetBrandsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetBrandsOK struct {
 
 func (o *GetBrandsOK) Error() string {
 	return fmt.Sprintf("[GET /brands][%d] getBrandsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetBrandsOK) GetPayload() *GetBrandsOKBody {
+	return o.Payload
 }
 
 func (o *GetBrandsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetBrandsDefault) Code() int {
 
 func (o *GetBrandsDefault) Error() string {
 	return fmt.Sprintf("[GET /brands][%d] getBrands default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetBrandsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetBrandsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

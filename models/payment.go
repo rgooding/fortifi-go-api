@@ -8,9 +8,8 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -53,6 +52,12 @@ type Payment struct {
 	// processed date
 	ProcessedDate int64 `json:"processedDate,omitempty"`
 
+	// source account fid
+	SourceAccountFid string `json:"sourceAccountFid,omitempty"`
+
+	// source account type
+	SourceAccountType string `json:"sourceAccountType,omitempty"`
+
 	// statement descriptor
 	StatementDescriptor string `json:"statementDescriptor,omitempty"`
 
@@ -68,6 +73,9 @@ type Payment struct {
 
 	// sub gateway fid
 	SubGatewayFid string `json:"subGatewayFid,omitempty"`
+
+	// sub gateway name
+	SubGatewayName string `json:"subGatewayName,omitempty"`
 
 	// sub gateway transaction Id
 	SubGatewayTransactionID string `json:"subGatewayTransactionId,omitempty"`
@@ -113,6 +121,10 @@ func (m *Payment) UnmarshalJSON(raw []byte) error {
 
 		ProcessedDate int64 `json:"processedDate,omitempty"`
 
+		SourceAccountFid string `json:"sourceAccountFid,omitempty"`
+
+		SourceAccountType string `json:"sourceAccountType,omitempty"`
+
 		StatementDescriptor string `json:"statementDescriptor,omitempty"`
 
 		Status string `json:"status,omitempty"`
@@ -122,6 +134,8 @@ func (m *Payment) UnmarshalJSON(raw []byte) error {
 		StatusMessage string `json:"statusMessage,omitempty"`
 
 		SubGatewayFid string `json:"subGatewayFid,omitempty"`
+
+		SubGatewayName string `json:"subGatewayName,omitempty"`
 
 		SubGatewayTransactionID string `json:"subGatewayTransactionId,omitempty"`
 
@@ -155,6 +169,10 @@ func (m *Payment) UnmarshalJSON(raw []byte) error {
 
 	m.ProcessedDate = dataAO1.ProcessedDate
 
+	m.SourceAccountFid = dataAO1.SourceAccountFid
+
+	m.SourceAccountType = dataAO1.SourceAccountType
+
 	m.StatementDescriptor = dataAO1.StatementDescriptor
 
 	m.Status = dataAO1.Status
@@ -164,6 +182,8 @@ func (m *Payment) UnmarshalJSON(raw []byte) error {
 	m.StatusMessage = dataAO1.StatusMessage
 
 	m.SubGatewayFid = dataAO1.SubGatewayFid
+
+	m.SubGatewayName = dataAO1.SubGatewayName
 
 	m.SubGatewayTransactionID = dataAO1.SubGatewayTransactionID
 
@@ -207,6 +227,10 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 
 		ProcessedDate int64 `json:"processedDate,omitempty"`
 
+		SourceAccountFid string `json:"sourceAccountFid,omitempty"`
+
+		SourceAccountType string `json:"sourceAccountType,omitempty"`
+
 		StatementDescriptor string `json:"statementDescriptor,omitempty"`
 
 		Status string `json:"status,omitempty"`
@@ -216,6 +240,8 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 		StatusMessage string `json:"statusMessage,omitempty"`
 
 		SubGatewayFid string `json:"subGatewayFid,omitempty"`
+
+		SubGatewayName string `json:"subGatewayName,omitempty"`
 
 		SubGatewayTransactionID string `json:"subGatewayTransactionId,omitempty"`
 
@@ -246,6 +272,10 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 
 	dataAO1.ProcessedDate = m.ProcessedDate
 
+	dataAO1.SourceAccountFid = m.SourceAccountFid
+
+	dataAO1.SourceAccountType = m.SourceAccountType
+
 	dataAO1.StatementDescriptor = m.StatementDescriptor
 
 	dataAO1.Status = m.Status
@@ -255,6 +285,8 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 	dataAO1.StatusMessage = m.StatusMessage
 
 	dataAO1.SubGatewayFid = m.SubGatewayFid
+
+	dataAO1.SubGatewayName = m.SubGatewayName
 
 	dataAO1.SubGatewayTransactionID = m.SubGatewayTransactionID
 

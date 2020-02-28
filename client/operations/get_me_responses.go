@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetMeReader is a Reader for the GetMe structure.
@@ -26,14 +26,12 @@ type GetMeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetMeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetMeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetMeDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetMeOK struct {
 
 func (o *GetMeOK) Error() string {
 	return fmt.Sprintf("[GET /me][%d] getMeOK  %+v", 200, o.Payload)
+}
+
+func (o *GetMeOK) GetPayload() *GetMeOKBody {
+	return o.Payload
 }
 
 func (o *GetMeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetMeDefault) Code() int {
 
 func (o *GetMeDefault) Error() string {
 	return fmt.Sprintf("[GET /me][%d] getMe default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetMeDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetMeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutOrdersOrderFidConfirmCardReader is a Reader for the PutOrdersOrderFidConfirmCard structure.
@@ -26,14 +26,12 @@ type PutOrdersOrderFidConfirmCardReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutOrdersOrderFidConfirmCardReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutOrdersOrderFidConfirmCardOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutOrdersOrderFidConfirmCardDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutOrdersOrderFidConfirmCardOK struct {
 
 func (o *PutOrdersOrderFidConfirmCardOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] putOrdersOrderFidConfirmCardOK  %+v", 200, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmCardOK) GetPayload() *PutOrdersOrderFidConfirmCardOKBody {
+	return o.Payload
 }
 
 func (o *PutOrdersOrderFidConfirmCardOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutOrdersOrderFidConfirmCardDefault) Code() int {
 
 func (o *PutOrdersOrderFidConfirmCardDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] PutOrdersOrderFidConfirmCard default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmCardDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutOrdersOrderFidConfirmCardDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

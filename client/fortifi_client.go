@@ -6,15 +6,16 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/client/configuration"
 	"github.com/fortifi/go-api/client/contacts"
 	"github.com/fortifi/go-api/client/custom_properties"
 	"github.com/fortifi/go-api/client/customers"
+	"github.com/fortifi/go-api/client/entity"
 	"github.com/fortifi/go-api/client/licence"
 	"github.com/fortifi/go-api/client/marketing"
 	"github.com/fortifi/go-api/client/operations"
@@ -68,33 +69,20 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Fortifi {
 
 	cli := new(Fortifi)
 	cli.Transport = transport
-
 	cli.Configuration = configuration.New(transport, formats)
-
 	cli.Contacts = contacts.New(transport, formats)
-
 	cli.CustomProperties = custom_properties.New(transport, formats)
-
 	cli.Customers = customers.New(transport, formats)
-
+	cli.Entity = entity.New(transport, formats)
 	cli.Licence = licence.New(transport, formats)
-
 	cli.Marketing = marketing.New(transport, formats)
-
 	cli.Operations = operations.New(transport, formats)
-
 	cli.Orders = orders.New(transport, formats)
-
 	cli.Polymers = polymers.New(transport, formats)
-
 	cli.Products = products.New(transport, formats)
-
 	cli.Reasons = reasons.New(transport, formats)
-
 	cli.ServiceStatus = service_status.New(transport, formats)
-
 	cli.Support = support.New(transport, formats)
-
 	return cli
 }
 
@@ -139,31 +127,33 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // Fortifi is a client for fortifi
 type Fortifi struct {
-	Configuration *configuration.Client
+	Configuration configuration.ClientService
 
-	Contacts *contacts.Client
+	Contacts contacts.ClientService
 
-	CustomProperties *custom_properties.Client
+	CustomProperties custom_properties.ClientService
 
-	Customers *customers.Client
+	Customers customers.ClientService
 
-	Licence *licence.Client
+	Entity entity.ClientService
 
-	Marketing *marketing.Client
+	Licence licence.ClientService
 
-	Operations *operations.Client
+	Marketing marketing.ClientService
 
-	Orders *orders.Client
+	Operations operations.ClientService
 
-	Polymers *polymers.Client
+	Orders orders.ClientService
 
-	Products *products.Client
+	Polymers polymers.ClientService
 
-	Reasons *reasons.Client
+	Products products.ClientService
 
-	ServiceStatus *service_status.Client
+	Reasons reasons.ClientService
 
-	Support *support.Client
+	ServiceStatus service_status.ClientService
+
+	Support support.ClientService
 
 	Transport runtime.ClientTransport
 }
@@ -171,31 +161,18 @@ type Fortifi struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *Fortifi) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-
 	c.Configuration.SetTransport(transport)
-
 	c.Contacts.SetTransport(transport)
-
 	c.CustomProperties.SetTransport(transport)
-
 	c.Customers.SetTransport(transport)
-
+	c.Entity.SetTransport(transport)
 	c.Licence.SetTransport(transport)
-
 	c.Marketing.SetTransport(transport)
-
 	c.Operations.SetTransport(transport)
-
 	c.Orders.SetTransport(transport)
-
 	c.Polymers.SetTransport(transport)
-
 	c.Products.SetTransport(transport)
-
 	c.Reasons.SetTransport(transport)
-
 	c.ServiceStatus.SetTransport(transport)
-
 	c.Support.SetTransport(transport)
-
 }

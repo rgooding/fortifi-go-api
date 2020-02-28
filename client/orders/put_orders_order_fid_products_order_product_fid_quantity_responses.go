@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutOrdersOrderFidProductsOrderProductFidQuantityReader is a Reader for the PutOrdersOrderFidProductsOrderProductFidQuantity structure.
@@ -24,14 +24,12 @@ type PutOrdersOrderFidProductsOrderProductFidQuantityReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutOrdersOrderFidProductsOrderProductFidQuantityOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutOrdersOrderFidProductsOrderProductFidQuantityDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) Code() int {
 
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/quantity][%d] PutOrdersOrderFidProductsOrderProductFidQuantity default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

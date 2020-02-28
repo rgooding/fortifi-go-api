@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetServicesServiceFidIncidentsReader is a Reader for the GetServicesServiceFidIncidents structure.
@@ -26,14 +26,12 @@ type GetServicesServiceFidIncidentsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetServicesServiceFidIncidentsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetServicesServiceFidIncidentsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetServicesServiceFidIncidentsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetServicesServiceFidIncidentsOK struct {
 
 func (o *GetServicesServiceFidIncidentsOK) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] getServicesServiceFidIncidentsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetServicesServiceFidIncidentsOK) GetPayload() *GetServicesServiceFidIncidentsOKBody {
+	return o.Payload
 }
 
 func (o *GetServicesServiceFidIncidentsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetServicesServiceFidIncidentsDefault) Code() int {
 
 func (o *GetServicesServiceFidIncidentsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] GetServicesServiceFidIncidents default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetServicesServiceFidIncidentsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetServicesServiceFidIncidentsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

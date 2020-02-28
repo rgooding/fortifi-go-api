@@ -7,12 +7,11 @@ package polymers
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new polymers API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetPolymersPolymerFid(params *GetPolymersPolymerFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPolymersPolymerFidOK, error)
+
+	PostPolymers(params *PostPolymersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPolymersOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetPolymersPolymerFid reads a polymer
+  GetPolymersPolymerFid reads a polymer
 */
 func (a *Client) GetPolymersPolymerFid(params *GetPolymersPolymerFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPolymersPolymerFidOK, error) {
 	// TODO: Validate the params before sending
@@ -49,12 +57,17 @@ func (a *Client) GetPolymersPolymerFid(params *GetPolymersPolymerFidParams, auth
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetPolymersPolymerFidOK), nil
-
+	success, ok := result.(*GetPolymersPolymerFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPolymersPolymerFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostPolymers creates a new polymer
+  PostPolymers creates a new polymer
 */
 func (a *Client) PostPolymers(params *PostPolymersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPolymersOK, error) {
 	// TODO: Validate the params before sending
@@ -78,8 +91,13 @@ func (a *Client) PostPolymers(params *PostPolymersParams, authInfo runtime.Clien
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostPolymersOK), nil
-
+	success, ok := result.(*PostPolymersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostPolymersDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

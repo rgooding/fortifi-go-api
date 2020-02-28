@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceReader is a Reader for the PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice structure.
@@ -26,14 +26,12 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceReader
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK str
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK  %+v", 200, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDe
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

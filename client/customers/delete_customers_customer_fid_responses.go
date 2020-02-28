@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // DeleteCustomersCustomerFidReader is a Reader for the DeleteCustomersCustomerFid structure.
@@ -24,14 +24,12 @@ type DeleteCustomersCustomerFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteCustomersCustomerFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteCustomersCustomerFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewDeleteCustomersCustomerFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *DeleteCustomersCustomerFidDefault) Code() int {
 
 func (o *DeleteCustomersCustomerFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}][%d] DeleteCustomersCustomerFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *DeleteCustomersCustomerFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *DeleteCustomersCustomerFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

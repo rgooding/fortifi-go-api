@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // DeleteOrdersOrderFidProductsOrderProductFidReader is a Reader for the DeleteOrdersOrderFidProductsOrderProductFid structure.
@@ -24,14 +24,12 @@ type DeleteOrdersOrderFidProductsOrderProductFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteOrdersOrderFidProductsOrderProductFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteOrdersOrderFidProductsOrderProductFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewDeleteOrdersOrderFidProductsOrderProductFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) Code() int {
 
 func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /orders/{orderFid}/products/{orderProductFid}][%d] DeleteOrdersOrderFidProductsOrderProductFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

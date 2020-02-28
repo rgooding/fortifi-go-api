@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetServicesServiceFidIncidentsIncidentFidUpdatesReader is a Reader for the GetServicesServiceFidIncidentsIncidentFidUpdates structure.
@@ -26,14 +26,12 @@ type GetServicesServiceFidIncidentsIncidentFidUpdatesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetServicesServiceFidIncidentsIncidentFidUpdatesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetServicesServiceFidIncidentsIncidentFidUpdatesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetServicesServiceFidIncidentsIncidentFidUpdatesOK struct {
 
 func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesOK) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents/{incidentFid}/updates][%d] getServicesServiceFidIncidentsIncidentFidUpdatesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesOK) GetPayload() *GetServicesServiceFidIncidentsIncidentFidUpdatesOKBody {
+	return o.Payload
 }
 
 func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesDefault) Code() int {
 
 func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesDefault) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents/{incidentFid}/updates][%d] GetServicesServiceFidIncidentsIncidentFidUpdates default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

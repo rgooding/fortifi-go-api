@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutEntitiesEntityFidPropertiesFlagsPropertyNameReader is a Reader for the PutEntitiesEntityFidPropertiesFlagsPropertyName structure.
@@ -24,14 +24,12 @@ type PutEntitiesEntityFidPropertiesFlagsPropertyNameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutEntitiesEntityFidPropertiesFlagsPropertyNameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutEntitiesEntityFidPropertiesFlagsPropertyNameOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutEntitiesEntityFidPropertiesFlagsPropertyNameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Code() int {
 
 func (o *PutEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/flags/{propertyName}][%d] PutEntitiesEntityFidPropertiesFlagsPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutEntitiesEntityFidPropertiesFlagsPropertyNameDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutEntitiesEntityFidPropertiesFlagsPropertyNameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

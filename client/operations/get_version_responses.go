@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetVersionReader is a Reader for the GetVersion structure.
@@ -26,14 +26,12 @@ type GetVersionReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetVersionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetVersionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetVersionDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetVersionOK struct {
 
 func (o *GetVersionOK) Error() string {
 	return fmt.Sprintf("[GET /version][%d] getVersionOK  %+v", 200, o.Payload)
+}
+
+func (o *GetVersionOK) GetPayload() *GetVersionOKBody {
+	return o.Payload
 }
 
 func (o *GetVersionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetVersionDefault) Code() int {
 
 func (o *GetVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /version][%d] getVersion default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetVersionDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetVersionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

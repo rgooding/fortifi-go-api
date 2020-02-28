@@ -7,12 +7,11 @@ package reasons
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new reasons API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsOK, error)
+
+	GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsReasonGroupFidOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetReasonsGroups gets a list of all reason groups
+  GetReasonsGroups gets a list of all reason groups
 */
 func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -49,12 +57,17 @@ func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetReasonsGroupsOK), nil
-
+	success, ok := result.(*GetReasonsGroupsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetReasonsGroupsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetReasonsGroupsReasonGroupFid gets all the reasons for the reason group
+  GetReasonsGroupsReasonGroupFid gets all the reasons for the reason group
 */
 func (a *Client) GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsReasonGroupFidOK, error) {
 	// TODO: Validate the params before sending
@@ -78,8 +91,13 @@ func (a *Client) GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetReasonsGroupsReasonGroupFidOK), nil
-
+	success, ok := result.(*GetReasonsGroupsReasonGroupFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetReasonsGroupsReasonGroupFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

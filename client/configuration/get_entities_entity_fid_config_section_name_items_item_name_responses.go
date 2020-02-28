@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetEntitiesEntityFidConfigSectionNameItemsItemNameReader is a Reader for the GetEntitiesEntityFidConfigSectionNameItemsItemName structure.
@@ -26,14 +26,12 @@ type GetEntitiesEntityFidConfigSectionNameItemsItemNameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetEntitiesEntityFidConfigSectionNameItemsItemNameOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetEntitiesEntityFidConfigSectionNameItemsItemNameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetEntitiesEntityFidConfigSectionNameItemsItemNameOK struct {
 
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] getEntitiesEntityFidConfigSectionNameItemsItemNameOK  %+v", 200, o.Payload)
+}
+
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) GetPayload() *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody {
+	return o.Payload
 }
 
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) Code() int {
 
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] GetEntitiesEntityFidConfigSectionNameItemsItemName default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

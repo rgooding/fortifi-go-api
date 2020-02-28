@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetOrdersOrderFidFraudScanReader is a Reader for the GetOrdersOrderFidFraudScan structure.
@@ -26,14 +26,12 @@ type GetOrdersOrderFidFraudScanReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetOrdersOrderFidFraudScanReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetOrdersOrderFidFraudScanOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetOrdersOrderFidFraudScanDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetOrdersOrderFidFraudScanOK struct {
 
 func (o *GetOrdersOrderFidFraudScanOK) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}/fraudScan][%d] getOrdersOrderFidFraudScanOK  %+v", 200, o.Payload)
+}
+
+func (o *GetOrdersOrderFidFraudScanOK) GetPayload() *GetOrdersOrderFidFraudScanOKBody {
+	return o.Payload
 }
 
 func (o *GetOrdersOrderFidFraudScanOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetOrdersOrderFidFraudScanDefault) Code() int {
 
 func (o *GetOrdersOrderFidFraudScanDefault) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}/fraudScan][%d] GetOrdersOrderFidFraudScan default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetOrdersOrderFidFraudScanDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetOrdersOrderFidFraudScanDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

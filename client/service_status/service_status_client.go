@@ -7,12 +7,11 @@ package service_status
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new service status API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesOK, error)
+
+	GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsOK, error)
+
+	GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetServices retrieves all services
+  GetServices retrieves all services
 */
 func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -49,12 +59,17 @@ func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientA
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetServicesOK), nil
-
+	success, ok := result.(*GetServicesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetServicesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetServicesServiceFidIncidents retrieves incidents for service within timeframe
+  GetServicesServiceFidIncidents retrieves incidents for service within timeframe
 */
 func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsOK, error) {
 	// TODO: Validate the params before sending
@@ -78,12 +93,17 @@ func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidInc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetServicesServiceFidIncidentsOK), nil
-
+	success, ok := result.(*GetServicesServiceFidIncidentsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetServicesServiceFidIncidentsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetServicesServiceFidIncidentsIncidentFidUpdates retrieves incident updates for incident
+  GetServicesServiceFidIncidentsIncidentFidUpdates retrieves incident updates for incident
 */
 func (a *Client) GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error) {
 	// TODO: Validate the params before sending
@@ -107,8 +127,13 @@ func (a *Client) GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetSer
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetServicesServiceFidIncidentsIncidentFidUpdatesOK), nil
-
+	success, ok := result.(*GetServicesServiceFidIncidentsIncidentFidUpdatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetServicesServiceFidIncidentsIncidentFidUpdatesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

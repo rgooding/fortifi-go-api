@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionTypeReader is a Reader for the PutCustomersCustomerFidSubscriptionType structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidSubscriptionTypeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionTypeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionTypeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionTypeDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidSubscriptionTypeDefault) Code() int {
 
 func (o *PutCustomersCustomerFidSubscriptionTypeDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptionType][%d] PutCustomersCustomerFidSubscriptionType default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionTypeDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionTypeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

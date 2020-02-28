@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostEntitiesEntityFidEventsReader is a Reader for the PostEntitiesEntityFidEvents structure.
@@ -24,14 +24,12 @@ type PostEntitiesEntityFidEventsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostEntitiesEntityFidEventsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostEntitiesEntityFidEventsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostEntitiesEntityFidEventsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PostEntitiesEntityFidEventsDefault) Code() int {
 
 func (o *PostEntitiesEntityFidEventsDefault) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/events][%d] PostEntitiesEntityFidEvents default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostEntitiesEntityFidEventsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostEntitiesEntityFidEventsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

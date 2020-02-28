@@ -8,9 +8,8 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -37,7 +36,7 @@ func (m *InvoiceItem) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
-		SubItems []*InvoiceSubItem `json:"subItems,omitempty"`
+		SubItems []*InvoiceSubItem `json:"subItems"`
 
 		TotalAmount float32 `json:"totalAmount,omitempty"`
 	}
@@ -63,7 +62,7 @@ func (m InvoiceItem) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 
 	var dataAO1 struct {
-		SubItems []*InvoiceSubItem `json:"subItems,omitempty"`
+		SubItems []*InvoiceSubItem `json:"subItems"`
 
 		TotalAmount float32 `json:"totalAmount,omitempty"`
 	}

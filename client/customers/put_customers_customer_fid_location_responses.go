@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidLocationReader is a Reader for the PutCustomersCustomerFidLocation structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidLocationReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidLocationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidLocationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidLocationDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidLocationDefault) Code() int {
 
 func (o *PutCustomersCustomerFidLocationDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/location][%d] PutCustomersCustomerFidLocation default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidLocationDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidLocationDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetProductsProductFidPricesReader is a Reader for the GetProductsProductFidPrices structure.
@@ -26,14 +26,12 @@ type GetProductsProductFidPricesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetProductsProductFidPricesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetProductsProductFidPricesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetProductsProductFidPricesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetProductsProductFidPricesOK struct {
 
 func (o *GetProductsProductFidPricesOK) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/prices][%d] getProductsProductFidPricesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetProductsProductFidPricesOK) GetPayload() *GetProductsProductFidPricesOKBody {
+	return o.Payload
 }
 
 func (o *GetProductsProductFidPricesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetProductsProductFidPricesDefault) Code() int {
 
 func (o *GetProductsProductFidPricesDefault) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/prices][%d] GetProductsProductFidPrices default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetProductsProductFidPricesDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetProductsProductFidPricesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

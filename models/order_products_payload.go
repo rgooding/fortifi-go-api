@@ -8,9 +8,8 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -18,8 +17,14 @@ import (
 // swagger:model OrderProductsPayload
 type OrderProductsPayload struct {
 
+	// Products to add with display names
+	NamesProductPriceFids []*OrderProductDisplayNamePayload `json:"namesProductPriceFids"`
+
 	// Product price FIDs to add
 	ProductPriceFids []string `json:"productPriceFids"`
+
+	// Products to add with display names
+	Products []*OrderProductPayload `json:"products"`
 
 	// Products to add with specified quantity
 	QuantityProductPriceFids []*OrderProductQuantityPayload `json:"quantityProductPriceFids"`
@@ -29,6 +34,14 @@ type OrderProductsPayload struct {
 func (m *OrderProductsPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateNamesProductPriceFids(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProducts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateQuantityProductPriceFids(formats); err != nil {
 		res = append(res, err)
 	}
@@ -36,6 +49,56 @@ func (m *OrderProductsPayload) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *OrderProductsPayload) validateNamesProductPriceFids(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.NamesProductPriceFids) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NamesProductPriceFids); i++ {
+		if swag.IsZero(m.NamesProductPriceFids[i]) { // not required
+			continue
+		}
+
+		if m.NamesProductPriceFids[i] != nil {
+			if err := m.NamesProductPriceFids[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("namesProductPriceFids" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrderProductsPayload) validateProducts(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Products) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Products); i++ {
+		if swag.IsZero(m.Products[i]) { // not required
+			continue
+		}
+
+		if m.Products[i] != nil {
+			if err := m.Products[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

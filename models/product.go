@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -25,6 +24,9 @@ type Product struct {
 
 	// default price fid
 	DefaultPriceFid string `json:"defaultPriceFid,omitempty"`
+
+	// manager type
+	ManagerType string `json:"managerType,omitempty"`
 
 	// max quantity
 	MaxQuantity int64 `json:"maxQuantity,omitempty"`
@@ -65,6 +67,8 @@ func (m *Product) UnmarshalJSON(raw []byte) error {
 
 		DefaultPriceFid string `json:"defaultPriceFid,omitempty"`
 
+		ManagerType string `json:"managerType,omitempty"`
+
 		MaxQuantity int64 `json:"maxQuantity,omitempty"`
 
 		ParentFid string `json:"parentFid,omitempty"`
@@ -88,6 +92,8 @@ func (m *Product) UnmarshalJSON(raw []byte) error {
 	m.DefaultPrice = dataAO1.DefaultPrice
 
 	m.DefaultPriceFid = dataAO1.DefaultPriceFid
+
+	m.ManagerType = dataAO1.ManagerType
 
 	m.MaxQuantity = dataAO1.MaxQuantity
 
@@ -123,6 +129,8 @@ func (m Product) MarshalJSON() ([]byte, error) {
 
 		DefaultPriceFid string `json:"defaultPriceFid,omitempty"`
 
+		ManagerType string `json:"managerType,omitempty"`
+
 		MaxQuantity int64 `json:"maxQuantity,omitempty"`
 
 		ParentFid string `json:"parentFid,omitempty"`
@@ -143,6 +151,8 @@ func (m Product) MarshalJSON() ([]byte, error) {
 	dataAO1.DefaultPrice = m.DefaultPrice
 
 	dataAO1.DefaultPriceFid = m.DefaultPriceFid
+
+	dataAO1.ManagerType = m.ManagerType
 
 	dataAO1.MaxQuantity = m.MaxQuantity
 

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetCustomersCustomerFidPaymentsPaymentFidReader is a Reader for the GetCustomersCustomerFidPaymentsPaymentFid structure.
@@ -26,14 +26,12 @@ type GetCustomersCustomerFidPaymentsPaymentFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCustomersCustomerFidPaymentsPaymentFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCustomersCustomerFidPaymentsPaymentFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetCustomersCustomerFidPaymentsPaymentFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetCustomersCustomerFidPaymentsPaymentFidOK struct {
 
 func (o *GetCustomersCustomerFidPaymentsPaymentFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/payments/{paymentFid}][%d] getCustomersCustomerFidPaymentsPaymentFidOK  %+v", 200, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidPaymentsPaymentFidOK) GetPayload() *GetCustomersCustomerFidPaymentsPaymentFidOKBody {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidPaymentsPaymentFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetCustomersCustomerFidPaymentsPaymentFidDefault) Code() int {
 
 func (o *GetCustomersCustomerFidPaymentsPaymentFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/payments/{paymentFid}][%d] GetCustomersCustomerFidPaymentsPaymentFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidPaymentsPaymentFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidPaymentsPaymentFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

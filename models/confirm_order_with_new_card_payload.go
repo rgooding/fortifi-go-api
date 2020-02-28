@@ -7,7 +7,6 @@ package models
 
 import (
 	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/swag"
 )
 
@@ -56,6 +55,9 @@ type ConfirmOrderWithNewCardPayload struct {
 
 	// Expiration Year of the card
 	ExpiryYear int32 `json:"expiryYear,omitempty"`
+
+	// Is this card should be used as the primary card on the account
+	IsDefault bool `json:"isDefault,omitempty"`
 
 	// Issue number of the card
 	Issue int32 `json:"issue,omitempty"`

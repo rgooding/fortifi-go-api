@@ -8,9 +8,8 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -34,7 +33,7 @@ func (m *Advertisers) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
-		Advertisers []*Advertiser `json:"advertisers,omitempty"`
+		Advertisers []*Advertiser `json:"advertisers"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
@@ -56,7 +55,7 @@ func (m Advertisers) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 
 	var dataAO1 struct {
-		Advertisers []*Advertiser `json:"advertisers,omitempty"`
+		Advertisers []*Advertiser `json:"advertisers"`
 	}
 
 	dataAO1.Advertisers = m.Advertisers

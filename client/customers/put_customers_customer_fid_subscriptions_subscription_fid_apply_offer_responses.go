@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferReader is a Reader for the PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferReader struct 
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) C
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/applyOffer][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

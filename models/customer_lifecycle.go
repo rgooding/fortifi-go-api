@@ -8,9 +8,8 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
@@ -20,14 +19,41 @@ type CustomerLifecycle string
 
 const (
 
-	// CustomerLifecycleProspect captures enum value "prospect"
-	CustomerLifecycleProspect CustomerLifecycle = "prospect"
+	// CustomerLifecycleClosed captures enum value "closed"
+	CustomerLifecycleClosed CustomerLifecycle = "closed"
+
+	// CustomerLifecycleCold captures enum value "cold"
+	CustomerLifecycleCold CustomerLifecycle = "cold"
 
 	// CustomerLifecycleCustomer captures enum value "customer"
 	CustomerLifecycleCustomer CustomerLifecycle = "customer"
 
-	// CustomerLifecycleClosed captures enum value "closed"
-	CustomerLifecycleClosed CustomerLifecycle = "closed"
+	// CustomerLifecycleEvangelist captures enum value "evangelist"
+	CustomerLifecycleEvangelist CustomerLifecycle = "evangelist"
+
+	// CustomerLifecycleLead captures enum value "lead"
+	CustomerLifecycleLead CustomerLifecycle = "lead"
+
+	// CustomerLifecycleMql captures enum value "mql"
+	CustomerLifecycleMql CustomerLifecycle = "mql"
+
+	// CustomerLifecycleOpportunity captures enum value "opportunity"
+	CustomerLifecycleOpportunity CustomerLifecycle = "opportunity"
+
+	// CustomerLifecycleOther captures enum value "other"
+	CustomerLifecycleOther CustomerLifecycle = "other"
+
+	// CustomerLifecycleProspect captures enum value "prospect"
+	CustomerLifecycleProspect CustomerLifecycle = "prospect"
+
+	// CustomerLifecycleRecommended captures enum value "recommended"
+	CustomerLifecycleRecommended CustomerLifecycle = "recommended"
+
+	// CustomerLifecycleSQL captures enum value "sql"
+	CustomerLifecycleSQL CustomerLifecycle = "sql"
+
+	// CustomerLifecycleSubscriber captures enum value "subscriber"
+	CustomerLifecycleSubscriber CustomerLifecycle = "subscriber"
 )
 
 // for schema
@@ -35,7 +61,7 @@ var customerLifecycleEnum []interface{}
 
 func init() {
 	var res []CustomerLifecycle
-	if err := json.Unmarshal([]byte(`["prospect","customer","closed"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["closed","cold","customer","evangelist","lead","mql","opportunity","other","prospect","recommended","sql","subscriber"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

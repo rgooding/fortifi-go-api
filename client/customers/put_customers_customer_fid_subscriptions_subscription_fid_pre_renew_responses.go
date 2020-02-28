@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewReader is a Reader for the PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew structure.
@@ -26,14 +26,12 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK struct {
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/preRenew][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK  %+v", 200, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOKBody {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewDefault) Cod
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/preRenew][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

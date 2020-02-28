@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionReader is a Reader for the PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription structure.
@@ -26,14 +26,12 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionRea
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK 
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK  %+v", 200, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetConfigurationFinanceGatewaysReader is a Reader for the GetConfigurationFinanceGateways structure.
@@ -26,14 +26,12 @@ type GetConfigurationFinanceGatewaysReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetConfigurationFinanceGatewaysReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetConfigurationFinanceGatewaysOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetConfigurationFinanceGatewaysDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetConfigurationFinanceGatewaysOK struct {
 
 func (o *GetConfigurationFinanceGatewaysOK) Error() string {
 	return fmt.Sprintf("[GET /configuration/finance/gateways][%d] getConfigurationFinanceGatewaysOK  %+v", 200, o.Payload)
+}
+
+func (o *GetConfigurationFinanceGatewaysOK) GetPayload() *GetConfigurationFinanceGatewaysOKBody {
+	return o.Payload
 }
 
 func (o *GetConfigurationFinanceGatewaysOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetConfigurationFinanceGatewaysDefault) Code() int {
 
 func (o *GetConfigurationFinanceGatewaysDefault) Error() string {
 	return fmt.Sprintf("[GET /configuration/finance/gateways][%d] GetConfigurationFinanceGateways default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetConfigurationFinanceGatewaysDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetConfigurationFinanceGatewaysDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

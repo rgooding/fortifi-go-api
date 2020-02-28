@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetIntegrationsVerifyUserReader is a Reader for the GetIntegrationsVerifyUser structure.
@@ -26,14 +26,12 @@ type GetIntegrationsVerifyUserReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetIntegrationsVerifyUserReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetIntegrationsVerifyUserOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetIntegrationsVerifyUserDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -53,7 +51,7 @@ func NewGetIntegrationsVerifyUserOK() *GetIntegrationsVerifyUserOK {
 
 /*GetIntegrationsVerifyUserOK handles this case with default header values.
 
-List of payment gateways
+Integration User
 */
 type GetIntegrationsVerifyUserOK struct {
 	Payload *GetIntegrationsVerifyUserOKBody
@@ -61,6 +59,10 @@ type GetIntegrationsVerifyUserOK struct {
 
 func (o *GetIntegrationsVerifyUserOK) Error() string {
 	return fmt.Sprintf("[GET /integrations/verifyUser][%d] getIntegrationsVerifyUserOK  %+v", 200, o.Payload)
+}
+
+func (o *GetIntegrationsVerifyUserOK) GetPayload() *GetIntegrationsVerifyUserOKBody {
+	return o.Payload
 }
 
 func (o *GetIntegrationsVerifyUserOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetIntegrationsVerifyUserDefault) Code() int {
 
 func (o *GetIntegrationsVerifyUserDefault) Error() string {
 	return fmt.Sprintf("[GET /integrations/verifyUser][%d] GetIntegrationsVerifyUser default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetIntegrationsVerifyUserDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetIntegrationsVerifyUserDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

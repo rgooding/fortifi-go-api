@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutEntitiesEntityFidPropertiesReader is a Reader for the PutEntitiesEntityFidProperties structure.
@@ -24,14 +24,12 @@ type PutEntitiesEntityFidPropertiesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutEntitiesEntityFidPropertiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutEntitiesEntityFidPropertiesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutEntitiesEntityFidPropertiesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutEntitiesEntityFidPropertiesDefault) Code() int {
 
 func (o *PutEntitiesEntityFidPropertiesDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties][%d] PutEntitiesEntityFidProperties default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutEntitiesEntityFidPropertiesDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutEntitiesEntityFidPropertiesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

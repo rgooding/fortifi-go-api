@@ -16,7 +16,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetVisitorsVisitorIDPixelsReader is a Reader for the GetVisitorsVisitorIDPixels structure.
@@ -27,14 +27,12 @@ type GetVisitorsVisitorIDPixelsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetVisitorsVisitorIDPixelsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetVisitorsVisitorIDPixelsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetVisitorsVisitorIDPixelsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -62,6 +60,10 @@ type GetVisitorsVisitorIDPixelsOK struct {
 
 func (o *GetVisitorsVisitorIDPixelsOK) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] getVisitorsVisitorIdPixelsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetVisitorsVisitorIDPixelsOK) GetPayload() *GetVisitorsVisitorIDPixelsOKBody {
+	return o.Payload
 }
 
 func (o *GetVisitorsVisitorIDPixelsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -102,6 +104,10 @@ func (o *GetVisitorsVisitorIDPixelsDefault) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] GetVisitorsVisitorIDPixels default  %+v", o._statusCode, o.Payload)
 }
 
+func (o *GetVisitorsVisitorIDPixelsDefault) GetPayload() *models.Envelope {
+	return o.Payload
+}
+
 func (o *GetVisitorsVisitorIDPixelsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Envelope)
@@ -135,7 +141,7 @@ func (o *GetVisitorsVisitorIDPixelsOKBody) UnmarshalJSON(raw []byte) error {
 
 	// GetVisitorsVisitorIDPixelsOKBodyAO1
 	var dataGetVisitorsVisitorIDPixelsOKBodyAO1 struct {
-		Data []*models.AdvertiserPixel `json:"data,omitempty"`
+		Data []*models.AdvertiserPixel `json:"data"`
 	}
 	if err := swag.ReadJSON(raw, &dataGetVisitorsVisitorIDPixelsOKBodyAO1); err != nil {
 		return err
@@ -157,7 +163,7 @@ func (o GetVisitorsVisitorIDPixelsOKBody) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, getVisitorsVisitorIDPixelsOKBodyAO0)
 
 	var dataGetVisitorsVisitorIDPixelsOKBodyAO1 struct {
-		Data []*models.AdvertiserPixel `json:"data,omitempty"`
+		Data []*models.AdvertiserPixel `json:"data"`
 	}
 
 	dataGetVisitorsVisitorIDPixelsOKBodyAO1.Data = o.Data

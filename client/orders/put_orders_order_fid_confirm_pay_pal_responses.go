@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutOrdersOrderFidConfirmPayPalReader is a Reader for the PutOrdersOrderFidConfirmPayPal structure.
@@ -26,14 +26,12 @@ type PutOrdersOrderFidConfirmPayPalReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutOrdersOrderFidConfirmPayPalReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutOrdersOrderFidConfirmPayPalOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutOrdersOrderFidConfirmPayPalDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutOrdersOrderFidConfirmPayPalOK struct {
 
 func (o *PutOrdersOrderFidConfirmPayPalOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] putOrdersOrderFidConfirmPayPalOK  %+v", 200, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmPayPalOK) GetPayload() *PutOrdersOrderFidConfirmPayPalOKBody {
+	return o.Payload
 }
 
 func (o *PutOrdersOrderFidConfirmPayPalOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutOrdersOrderFidConfirmPayPalDefault) Code() int {
 
 func (o *PutOrdersOrderFidConfirmPayPalDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] PutOrdersOrderFidConfirmPayPal default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutOrdersOrderFidConfirmPayPalDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutOrdersOrderFidConfirmPayPalDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountReader is a Reader for the PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountReader 
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDef
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

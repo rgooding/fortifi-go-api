@@ -7,12 +7,11 @@ package contacts
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new contacts API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressConfirmOK, error)
+
+	PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressSubscribeOK, error)
+
+	PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressUnsubscribeOK, error)
+
+	PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error)
+
+	PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-PutContactsEmailsEmailAddressConfirm confirms email address
+  PutContactsEmailsEmailAddressConfirm confirms email address
 */
 func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressConfirmOK, error) {
 	// TODO: Validate the params before sending
@@ -49,12 +63,17 @@ func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsE
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutContactsEmailsEmailAddressConfirmOK), nil
-
+	success, ok := result.(*PutContactsEmailsEmailAddressConfirmOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutContactsEmailsEmailAddressConfirmDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PutContactsEmailsEmailAddressSubscribe subscribes an email address
+  PutContactsEmailsEmailAddressSubscribe subscribes an email address
 */
 func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressSubscribeOK, error) {
 	// TODO: Validate the params before sending
@@ -78,12 +97,17 @@ func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmail
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutContactsEmailsEmailAddressSubscribeOK), nil
-
+	success, ok := result.(*PutContactsEmailsEmailAddressSubscribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutContactsEmailsEmailAddressSubscribeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PutContactsEmailsEmailAddressUnsubscribe unsubscribes an email address
+  PutContactsEmailsEmailAddressUnsubscribe unsubscribes an email address
 */
 func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressUnsubscribeOK, error) {
 	// TODO: Validate the params before sending
@@ -107,8 +131,81 @@ func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEma
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutContactsEmailsEmailAddressUnsubscribeOK), nil
+	success, ok := result.(*PutContactsEmailsEmailAddressUnsubscribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutContactsEmailsEmailAddressUnsubscribeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
 
+/*
+  PutMessengerDeliveriesDeliveryFidSubscribe subscribes an email based on the delivery fid
+*/
+func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutMessengerDeliveriesDeliveryFidSubscribeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutMessengerDeliveriesDeliveryFidSubscribe",
+		Method:             "PUT",
+		PathPattern:        "/messenger/deliveries/{deliveryFid}/subscribe",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutMessengerDeliveriesDeliveryFidSubscribeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutMessengerDeliveriesDeliveryFidSubscribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutMessengerDeliveriesDeliveryFidSubscribeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PutMessengerDeliveriesDeliveryFidUnsubscribe unsubscribes an email based on the delivery fid
+*/
+func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutMessengerDeliveriesDeliveryFidUnsubscribe",
+		Method:             "PUT",
+		PathPattern:        "/messenger/deliveries/{deliveryFid}/unsubscribe",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutMessengerDeliveriesDeliveryFidUnsubscribeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutMessengerDeliveriesDeliveryFidUnsubscribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutMessengerDeliveriesDeliveryFidUnsubscribeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

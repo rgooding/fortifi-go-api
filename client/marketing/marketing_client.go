@@ -7,12 +7,11 @@ package marketing
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new marketing API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,35 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAdvertisersAdvertiserFidApprovedOK, error)
+
+	GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error)
+
+	GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error)
+
+	GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error)
+
+	GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDOK, error)
+
+	GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDPixelsOK, error)
+
+	PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersOK, error)
+
+	PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersAdvertiserFidCampaignsOK, error)
+
+	PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyOK, error)
+
+	PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error)
+
+	PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutAdvertisersAdvertiserFidApprovedOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-DeleteAdvertisersAdvertiserFidApproved removes approved status on an advertiser
+  DeleteAdvertisersAdvertiserFidApproved removes approved status on an advertiser
 */
 func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAdvertisersAdvertiserFidApprovedOK, error) {
 	// TODO: Validate the params before sending
@@ -49,12 +75,17 @@ func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertiser
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAdvertisersAdvertiserFidApprovedOK), nil
-
+	success, ok := result.(*DeleteAdvertisersAdvertiserFidApprovedOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteAdvertisersAdvertiserFidApprovedDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetAdvertisers lists advertisers
+  GetAdvertisers lists advertisers
 */
 func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error) {
 	// TODO: Validate the params before sending
@@ -78,12 +109,17 @@ func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAdvertisersOK), nil
-
+	success, ok := result.(*GetAdvertisersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetAdvertisersDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetAdvertisersAdvertiserFid retrieves an advertiser
+  GetAdvertisersAdvertiserFid retrieves an advertiser
 */
 func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error) {
 	// TODO: Validate the params before sending
@@ -107,12 +143,17 @@ func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFid
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAdvertisersAdvertiserFidOK), nil
-
+	success, ok := result.(*GetAdvertisersAdvertiserFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetAdvertisersAdvertiserFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid retrieves an advertiser campaign
+  GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid retrieves an advertiser campaign
 */
 func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error) {
 	// TODO: Validate the params before sending
@@ -136,14 +177,55 @@ func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(param
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK), nil
-
+	success, ok := result.(*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-GetVisitorsVisitorIDPixels retrieves pending pixels for this visitor
+  GetVisitorsVisitorID retrieves information about a visitor
 
-This call will release pixels from the pending queue on read
+  This call will return information related to how a visitor arrived
+*/
+func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVisitorsVisitorIDParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetVisitorsVisitorID",
+		Method:             "GET",
+		PathPattern:        "/visitors/{visitorId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVisitorsVisitorIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVisitorsVisitorIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetVisitorsVisitorIDDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetVisitorsVisitorIDPixels retrieves pending pixels for this visitor
+
+  This call will release pixels from the pending queue on read
 */
 func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDPixelsOK, error) {
 	// TODO: Validate the params before sending
@@ -167,12 +249,17 @@ func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVisitorsVisitorIDPixelsOK), nil
-
+	success, ok := result.(*GetVisitorsVisitorIDPixelsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetVisitorsVisitorIDPixelsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostAdvertisers creates a new advertiser
+  PostAdvertisers creates a new advertiser
 */
 func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersOK, error) {
 	// TODO: Validate the params before sending
@@ -196,12 +283,17 @@ func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostAdvertisersOK), nil
-
+	success, ok := result.(*PostAdvertisersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostAdvertisersDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostAdvertisersAdvertiserFidCampaigns creates a new advertiser campaign
+  PostAdvertisersAdvertiserFidCampaigns creates a new advertiser campaign
 */
 func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersAdvertiserFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
@@ -225,14 +317,19 @@ func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAd
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostAdvertisersAdvertiserFidCampaignsOK), nil
-
+	success, ok := result.(*PostAdvertisersAdvertiserFidCampaignsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostAdvertisersAdvertiserFidCampaignsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostVisitorsVisitorIDActionsActionKey tracks an action
+  PostVisitorsVisitorIDActionsActionKey tracks an action
 
-Track an action such as a lead or acquisition
+  Track an action such as a lead or acquisition
 
 */
 func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyOK, error) {
@@ -257,14 +354,19 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisit
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostVisitorsVisitorIDActionsActionKeyOK), nil
-
+	success, ok := result.(*PostVisitorsVisitorIDActionsActionKeyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostVisitorsVisitorIDActionsActionKeyDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PostVisitorsVisitorIDActionsActionKeyReverse reverses a previously tracked action
+  PostVisitorsVisitorIDActionsActionKeyReverse reverses a previously tracked action
 
-When an action has been reversed, e.g. cancelled, refunded
+  When an action has been reversed, e.g. cancelled, refunded
 
 */
 func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error) {
@@ -289,12 +391,17 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisito
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostVisitorsVisitorIDActionsActionKeyReverseOK), nil
-
+	success, ok := result.(*PostVisitorsVisitorIDActionsActionKeyReverseOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostVisitorsVisitorIDActionsActionKeyReverseDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-PutAdvertisersAdvertiserFidApproved sets approved status on an advertiser
+  PutAdvertisersAdvertiserFidApproved sets approved status on an advertiser
 */
 func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutAdvertisersAdvertiserFidApprovedOK, error) {
 	// TODO: Validate the params before sending
@@ -318,8 +425,13 @@ func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdver
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutAdvertisersAdvertiserFidApprovedOK), nil
-
+	success, ok := result.(*PutAdvertisersAdvertiserFidApprovedOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutAdvertisersAdvertiserFidApprovedDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

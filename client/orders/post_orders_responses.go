@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostOrdersReader is a Reader for the PostOrders structure.
@@ -26,14 +26,12 @@ type PostOrdersReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostOrdersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostOrdersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostOrdersDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostOrdersOK struct {
 
 func (o *PostOrdersOK) Error() string {
 	return fmt.Sprintf("[POST /orders][%d] postOrdersOK  %+v", 200, o.Payload)
+}
+
+func (o *PostOrdersOK) GetPayload() *PostOrdersOKBody {
+	return o.Payload
 }
 
 func (o *PostOrdersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -101,6 +103,10 @@ func (o *PostOrdersDefault) Error() string {
 	return fmt.Sprintf("[POST /orders][%d] PostOrders default  %+v", o._statusCode, o.Payload)
 }
 
+func (o *PostOrdersDefault) GetPayload() *models.Envelope {
+	return o.Payload
+}
+
 func (o *PostOrdersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Envelope)
@@ -120,7 +126,7 @@ type PostOrdersOKBody struct {
 	models.Envelope
 
 	// data
-	Data *models.Fid `json:"data,omitempty"`
+	Data *models.Order `json:"data,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -134,7 +140,7 @@ func (o *PostOrdersOKBody) UnmarshalJSON(raw []byte) error {
 
 	// PostOrdersOKBodyAO1
 	var dataPostOrdersOKBodyAO1 struct {
-		Data *models.Fid `json:"data,omitempty"`
+		Data *models.Order `json:"data,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataPostOrdersOKBodyAO1); err != nil {
 		return err
@@ -156,7 +162,7 @@ func (o PostOrdersOKBody) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, postOrdersOKBodyAO0)
 
 	var dataPostOrdersOKBodyAO1 struct {
-		Data *models.Fid `json:"data,omitempty"`
+		Data *models.Order `json:"data,omitempty"`
 	}
 
 	dataPostOrdersOKBodyAO1.Data = o.Data

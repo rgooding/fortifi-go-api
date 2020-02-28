@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutEntitiesEntityFidPropertiesValuesPropertyNameReader is a Reader for the PutEntitiesEntityFidPropertiesValuesPropertyName structure.
@@ -24,14 +24,12 @@ type PutEntitiesEntityFidPropertiesValuesPropertyNameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutEntitiesEntityFidPropertiesValuesPropertyNameOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutEntitiesEntityFidPropertiesValuesPropertyNameDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int {
 
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] PutEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

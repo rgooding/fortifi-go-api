@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetAdvertisersAdvertiserFidReader is a Reader for the GetAdvertisersAdvertiserFid structure.
@@ -26,14 +26,12 @@ type GetAdvertisersAdvertiserFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetAdvertisersAdvertiserFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetAdvertisersAdvertiserFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetAdvertisersAdvertiserFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetAdvertisersAdvertiserFidOK struct {
 
 func (o *GetAdvertisersAdvertiserFidOK) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}][%d] getAdvertisersAdvertiserFidOK  %+v", 200, o.Payload)
+}
+
+func (o *GetAdvertisersAdvertiserFidOK) GetPayload() *GetAdvertisersAdvertiserFidOKBody {
+	return o.Payload
 }
 
 func (o *GetAdvertisersAdvertiserFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetAdvertisersAdvertiserFidDefault) Code() int {
 
 func (o *GetAdvertisersAdvertiserFidDefault) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}][%d] GetAdvertisersAdvertiserFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetAdvertisersAdvertiserFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetAdvertisersAdvertiserFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

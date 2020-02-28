@@ -6,10 +6,9 @@ package contacts
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"net/http"
 	"time"
-
-	"context"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -77,6 +76,11 @@ type PutContactsEmailsEmailAddressUnsubscribeParams struct {
 
 	*/
 	GroupFid *string
+	/*UnsubscribeType
+	  Unsubscribe Level
+
+	*/
+	UnsubscribeType *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -149,6 +153,17 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeParams) SetGroupFid(groupFid *s
 	o.GroupFid = groupFid
 }
 
+// WithUnsubscribeType adds the unsubscribeType to the put contacts emails email address unsubscribe params
+func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WithUnsubscribeType(unsubscribeType *string) *PutContactsEmailsEmailAddressUnsubscribeParams {
+	o.SetUnsubscribeType(unsubscribeType)
+	return o
+}
+
+// SetUnsubscribeType adds the unsubscribeType to the put contacts emails email address unsubscribe params
+func (o *PutContactsEmailsEmailAddressUnsubscribeParams) SetUnsubscribeType(unsubscribeType *string) {
+	o.UnsubscribeType = unsubscribeType
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -188,6 +203,22 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WriteToRequest(r runtim
 		fGroupFid := frGroupFid
 		if fGroupFid != "" {
 			if err := r.SetFormParam("groupFid", fGroupFid); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.UnsubscribeType != nil {
+
+		// form param unsubscribeType
+		var frUnsubscribeType string
+		if o.UnsubscribeType != nil {
+			frUnsubscribeType = *o.UnsubscribeType
+		}
+		fUnsubscribeType := frUnsubscribeType
+		if fUnsubscribeType != "" {
+			if err := r.SetFormParam("unsubscribeType", fUnsubscribeType); err != nil {
 				return err
 			}
 		}

@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostCustomersCustomerFidEmailsReader is a Reader for the PostCustomersCustomerFidEmails structure.
@@ -24,14 +24,12 @@ type PostCustomersCustomerFidEmailsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostCustomersCustomerFidEmailsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostCustomersCustomerFidEmailsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostCustomersCustomerFidEmailsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PostCustomersCustomerFidEmailsDefault) Code() int {
 
 func (o *PostCustomersCustomerFidEmailsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/emails][%d] PostCustomersCustomerFidEmails default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidEmailsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidEmailsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

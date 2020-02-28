@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostOrdersOrderFidOffersReader is a Reader for the PostOrdersOrderFidOffers structure.
@@ -24,14 +24,12 @@ type PostOrdersOrderFidOffersReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostOrdersOrderFidOffersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostOrdersOrderFidOffersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostOrdersOrderFidOffersDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PostOrdersOrderFidOffersDefault) Code() int {
 
 func (o *PostOrdersOrderFidOffersDefault) Error() string {
 	return fmt.Sprintf("[POST /orders/{orderFid}/offers][%d] PostOrdersOrderFidOffers default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostOrdersOrderFidOffersDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostOrdersOrderFidOffersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

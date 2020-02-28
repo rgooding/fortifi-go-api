@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutContactsEmailsEmailAddressSubscribeReader is a Reader for the PutContactsEmailsEmailAddressSubscribe structure.
@@ -24,14 +24,12 @@ type PutContactsEmailsEmailAddressSubscribeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutContactsEmailsEmailAddressSubscribeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutContactsEmailsEmailAddressSubscribeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutContactsEmailsEmailAddressSubscribeDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutContactsEmailsEmailAddressSubscribeDefault) Code() int {
 
 func (o *PutContactsEmailsEmailAddressSubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/subscribe][%d] PutContactsEmailsEmailAddressSubscribe default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutContactsEmailsEmailAddressSubscribeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyReader is a Reader for the PutCustomersCustomerFidSubscriptionsSubscriptionFidModify structure.
@@ -26,14 +26,12 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidSubscriptionsSubscriptionFidModifyDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK struct {
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/modify][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK  %+v", 200, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOKBody {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyDefault) Code(
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/modify][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidModify default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

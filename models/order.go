@@ -6,16 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // Order Generic Response
 // swagger:model Order
 type Order struct {
-	Fid
+	Entity
 
 	// amount
 	Amount float32 `json:"amount,omitempty"`
@@ -49,6 +48,9 @@ type Order struct {
 
 	// discount type
 	DiscountType string `json:"discountType,omitempty"`
+
+	// external reference
+	ExternalReference string `json:"externalReference,omitempty"`
 
 	// fraud fid
 	FraudFid string `json:"fraudFid,omitempty"`
@@ -99,11 +101,11 @@ type Order struct {
 // UnmarshalJSON unmarshals this object from a JSON structure
 func (m *Order) UnmarshalJSON(raw []byte) error {
 	// AO0
-	var aO0 Fid
+	var aO0 Entity
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
-	m.Fid = aO0
+	m.Entity = aO0
 
 	// AO1
 	var dataAO1 struct {
@@ -128,6 +130,8 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 		DiscountAmount float32 `json:"discountAmount,omitempty"`
 
 		DiscountType string `json:"discountType,omitempty"`
+
+		ExternalReference string `json:"externalReference,omitempty"`
 
 		FraudFid string `json:"fraudFid,omitempty"`
 
@@ -185,6 +189,8 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 
 	m.DiscountType = dataAO1.DiscountType
 
+	m.ExternalReference = dataAO1.ExternalReference
+
 	m.FraudFid = dataAO1.FraudFid
 
 	m.InvoiceFid = dataAO1.InvoiceFid
@@ -222,7 +228,7 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 func (m Order) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
-	aO0, err := swag.WriteJSON(m.Fid)
+	aO0, err := swag.WriteJSON(m.Entity)
 	if err != nil {
 		return nil, err
 	}
@@ -250,6 +256,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 		DiscountAmount float32 `json:"discountAmount,omitempty"`
 
 		DiscountType string `json:"discountType,omitempty"`
+
+		ExternalReference string `json:"externalReference,omitempty"`
 
 		FraudFid string `json:"fraudFid,omitempty"`
 
@@ -304,6 +312,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 
 	dataAO1.DiscountType = m.DiscountType
 
+	dataAO1.ExternalReference = m.ExternalReference
+
 	dataAO1.FraudFid = m.FraudFid
 
 	dataAO1.InvoiceFid = m.InvoiceFid
@@ -347,8 +357,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 func (m *Order) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	// validation for a type composition with Fid
-	if err := m.Fid.Validate(formats); err != nil {
+	// validation for a type composition with Entity
+	if err := m.Entity.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 

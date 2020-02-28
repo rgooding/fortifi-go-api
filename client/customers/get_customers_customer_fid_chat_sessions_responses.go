@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetCustomersCustomerFidChatSessionsReader is a Reader for the GetCustomersCustomerFidChatSessions structure.
@@ -26,14 +26,12 @@ type GetCustomersCustomerFidChatSessionsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCustomersCustomerFidChatSessionsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCustomersCustomerFidChatSessionsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetCustomersCustomerFidChatSessionsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetCustomersCustomerFidChatSessionsOK struct {
 
 func (o *GetCustomersCustomerFidChatSessionsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/chatSessions][%d] getCustomersCustomerFidChatSessionsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidChatSessionsOK) GetPayload() *GetCustomersCustomerFidChatSessionsOKBody {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidChatSessionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetCustomersCustomerFidChatSessionsDefault) Code() int {
 
 func (o *GetCustomersCustomerFidChatSessionsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/chatSessions][%d] GetCustomersCustomerFidChatSessions default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidChatSessionsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidChatSessionsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

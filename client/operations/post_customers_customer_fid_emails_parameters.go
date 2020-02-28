@@ -6,14 +6,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"net/http"
 	"time"
-
-	"context"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -69,6 +69,8 @@ type PostCustomersCustomerFidEmailsParams struct {
 	CustomerFid string
 	/*EmailAddress*/
 	EmailAddress string
+	/*SetAsDefault*/
+	SetAsDefault *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -130,6 +132,17 @@ func (o *PostCustomersCustomerFidEmailsParams) SetEmailAddress(emailAddress stri
 	o.EmailAddress = emailAddress
 }
 
+// WithSetAsDefault adds the setAsDefault to the post customers customer fid emails params
+func (o *PostCustomersCustomerFidEmailsParams) WithSetAsDefault(setAsDefault *bool) *PostCustomersCustomerFidEmailsParams {
+	o.SetSetAsDefault(setAsDefault)
+	return o
+}
+
+// SetSetAsDefault adds the setAsDefault to the post customers customer fid emails params
+func (o *PostCustomersCustomerFidEmailsParams) SetSetAsDefault(setAsDefault *bool) {
+	o.SetAsDefault = setAsDefault
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostCustomersCustomerFidEmailsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -150,6 +163,22 @@ func (o *PostCustomersCustomerFidEmailsParams) WriteToRequest(r runtime.ClientRe
 		if err := r.SetFormParam("emailAddress", fEmailAddress); err != nil {
 			return err
 		}
+	}
+
+	if o.SetAsDefault != nil {
+
+		// form param setAsDefault
+		var frSetAsDefault bool
+		if o.SetAsDefault != nil {
+			frSetAsDefault = *o.SetAsDefault
+		}
+		fSetAsDefault := swag.FormatBool(frSetAsDefault)
+		if fSetAsDefault != "" {
+			if err := r.SetFormParam("setAsDefault", fSetAsDefault); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

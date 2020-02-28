@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -31,7 +30,7 @@ type OrderProduct struct {
 	CycleTerm int32 `json:"cycleTerm,omitempty"`
 
 	// cycle type
-	CycleType int32 `json:"cycleType,omitempty"`
+	CycleType CycleTermType `json:"cycleType,omitempty"`
 
 	// discount amount
 	DiscountAmount float32 `json:"discountAmount,omitempty"`
@@ -93,7 +92,7 @@ func (m *OrderProduct) UnmarshalJSON(raw []byte) error {
 
 		CycleTerm int32 `json:"cycleTerm,omitempty"`
 
-		CycleType int32 `json:"cycleType,omitempty"`
+		CycleType CycleTermType `json:"cycleType,omitempty"`
 
 		DiscountAmount float32 `json:"discountAmount,omitempty"`
 
@@ -183,7 +182,7 @@ func (m OrderProduct) MarshalJSON() ([]byte, error) {
 
 		CycleTerm int32 `json:"cycleTerm,omitempty"`
 
-		CycleType int32 `json:"cycleType,omitempty"`
+		CycleType CycleTermType `json:"cycleType,omitempty"`
 
 		DiscountAmount float32 `json:"discountAmount,omitempty"`
 
@@ -266,6 +265,10 @@ func (m *OrderProduct) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCycleType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRenewalDate(formats); err != nil {
 		res = append(res, err)
 	}
@@ -273,6 +276,22 @@ func (m *OrderProduct) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *OrderProduct) validateCycleType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CycleType) { // not required
+		return nil
+	}
+
+	if err := m.CycleType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cycleType")
+		}
+		return err
+	}
+
 	return nil
 }
 

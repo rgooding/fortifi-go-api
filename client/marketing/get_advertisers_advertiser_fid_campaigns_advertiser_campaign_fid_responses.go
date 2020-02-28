@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidReader is a Reader for the GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid structure.
@@ -26,14 +26,12 @@ type GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK struct {
 
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK  %+v", 200, o.Payload)
+}
+
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) GetPayload() *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody {
+	return o.Payload
 }
 
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) Code(
 
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

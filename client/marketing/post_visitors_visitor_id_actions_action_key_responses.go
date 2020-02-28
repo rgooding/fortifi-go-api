@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostVisitorsVisitorIDActionsActionKeyReader is a Reader for the PostVisitorsVisitorIDActionsActionKey structure.
@@ -26,14 +26,12 @@ type PostVisitorsVisitorIDActionsActionKeyReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostVisitorsVisitorIDActionsActionKeyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostVisitorsVisitorIDActionsActionKeyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostVisitorsVisitorIDActionsActionKeyDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostVisitorsVisitorIDActionsActionKeyOK struct {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyOK) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] postVisitorsVisitorIdActionsActionKeyOK  %+v", 200, o.Payload)
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) GetPayload() *PostVisitorsVisitorIDActionsActionKeyOKBody {
+	return o.Payload
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostVisitorsVisitorIDActionsActionKeyDefault) Code() int {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyDefault) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] PostVisitorsVisitorIDActionsActionKey default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

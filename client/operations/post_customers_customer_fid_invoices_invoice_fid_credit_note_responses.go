@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteReader is a Reader for the PostCustomersCustomerFidInvoicesInvoiceFidCreditNote structure.
@@ -26,14 +26,12 @@ type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK struct {
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK  %+v", 200, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) GetPayload() *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Code() int
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] PostCustomersCustomerFidInvoicesInvoiceFidCreditNote default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetReasonsGroupsReasonGroupFidReader is a Reader for the GetReasonsGroupsReasonGroupFid structure.
@@ -26,14 +26,12 @@ type GetReasonsGroupsReasonGroupFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetReasonsGroupsReasonGroupFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetReasonsGroupsReasonGroupFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetReasonsGroupsReasonGroupFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetReasonsGroupsReasonGroupFidOK struct {
 
 func (o *GetReasonsGroupsReasonGroupFidOK) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] getReasonsGroupsReasonGroupFidOK  %+v", 200, o.Payload)
+}
+
+func (o *GetReasonsGroupsReasonGroupFidOK) GetPayload() *GetReasonsGroupsReasonGroupFidOKBody {
+	return o.Payload
 }
 
 func (o *GetReasonsGroupsReasonGroupFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetReasonsGroupsReasonGroupFidDefault) Code() int {
 
 func (o *GetReasonsGroupsReasonGroupFidDefault) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] GetReasonsGroupsReasonGroupFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetReasonsGroupsReasonGroupFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetReasonsGroupsReasonGroupFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

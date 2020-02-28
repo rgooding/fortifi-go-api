@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostCustomersCustomerFidAnonymizeReader is a Reader for the PostCustomersCustomerFidAnonymize structure.
@@ -26,14 +26,12 @@ type PostCustomersCustomerFidAnonymizeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostCustomersCustomerFidAnonymizeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostCustomersCustomerFidAnonymizeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostCustomersCustomerFidAnonymizeDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostCustomersCustomerFidAnonymizeOK struct {
 
 func (o *PostCustomersCustomerFidAnonymizeOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/anonymize][%d] postCustomersCustomerFidAnonymizeOK  %+v", 200, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidAnonymizeOK) GetPayload() *PostCustomersCustomerFidAnonymizeOKBody {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidAnonymizeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostCustomersCustomerFidAnonymizeDefault) Code() int {
 
 func (o *PostCustomersCustomerFidAnonymizeDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/anonymize][%d] PostCustomersCustomerFidAnonymize default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidAnonymizeDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidAnonymizeDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,9 +6,10 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"strconv"
 
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -19,11 +20,23 @@ type CreateOrderPayload struct {
 	// FID of a valid Brand
 	BrandFid string `json:"brandFid,omitempty"`
 
+	// Charge ID provided by ChargeHive.com
+	ChargeID string `json:"chargeId,omitempty"`
+
 	// IP Address of the visitor
 	ClientIP string `json:"clientIp,omitempty"`
 
+	// Automatically confirm this order
+	Confirm *bool `json:"confirm,omitempty"`
+
 	// FID for the customer placing the order
 	CustomerFid string `json:"customerFid,omitempty"`
+
+	// Custom display name for this order
+	DisplayName string `json:"displayName,omitempty"`
+
+	// Reference for this order
+	ExternalReference string `json:"externalReference,omitempty"`
 
 	// Offer FIDs to apply to the order
 	OfferFids []string `json:"offerFids"`
@@ -33,6 +46,9 @@ type CreateOrderPayload struct {
 
 	// Product price FIDs to add
 	ProductPriceFids []string `json:"productPriceFids"`
+
+	// products
+	Products []*OrderProductPayload `json:"products"`
 
 	// type
 	Type CreateOrderType `json:"type,omitempty"`
@@ -45,6 +61,10 @@ type CreateOrderPayload struct {
 func (m *CreateOrderPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateProducts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -52,6 +72,31 @@ func (m *CreateOrderPayload) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateOrderPayload) validateProducts(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Products) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Products); i++ {
+		if swag.IsZero(m.Products[i]) { // not required
+			continue
+		}
+
+		if m.Products[i] != nil {
+			if err := m.Products[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

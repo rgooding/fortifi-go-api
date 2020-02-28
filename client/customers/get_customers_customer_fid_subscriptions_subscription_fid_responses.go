@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetCustomersCustomerFidSubscriptionsSubscriptionFidReader is a Reader for the GetCustomersCustomerFidSubscriptionsSubscriptionFid structure.
@@ -26,14 +26,12 @@ type GetCustomersCustomerFidSubscriptionsSubscriptionFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCustomersCustomerFidSubscriptionsSubscriptionFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetCustomersCustomerFidSubscriptionsSubscriptionFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetCustomersCustomerFidSubscriptionsSubscriptionFidOK struct {
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] getCustomersCustomerFidSubscriptionsSubscriptionFidOK  %+v", 200, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) GetPayload() *GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Code() int 
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] GetCustomersCustomerFidSubscriptionsSubscriptionFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

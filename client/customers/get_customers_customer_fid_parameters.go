@@ -6,14 +6,14 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"net/http"
 	"time"
-
-	"context"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -67,6 +67,8 @@ type GetCustomersCustomerFidParams struct {
 
 	*/
 	CustomerFid string
+	/*RetrieveBillingData*/
+	RetrieveBillingData *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -117,6 +119,17 @@ func (o *GetCustomersCustomerFidParams) SetCustomerFid(customerFid string) {
 	o.CustomerFid = customerFid
 }
 
+// WithRetrieveBillingData adds the retrieveBillingData to the get customers customer fid params
+func (o *GetCustomersCustomerFidParams) WithRetrieveBillingData(retrieveBillingData *bool) *GetCustomersCustomerFidParams {
+	o.SetRetrieveBillingData(retrieveBillingData)
+	return o
+}
+
+// SetRetrieveBillingData adds the retrieveBillingData to the get customers customer fid params
+func (o *GetCustomersCustomerFidParams) SetRetrieveBillingData(retrieveBillingData *bool) {
+	o.RetrieveBillingData = retrieveBillingData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -128,6 +141,22 @@ func (o *GetCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, 
 	// path param customerFid
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
+	}
+
+	if o.RetrieveBillingData != nil {
+
+		// query param retrieveBillingData
+		var qrRetrieveBillingData bool
+		if o.RetrieveBillingData != nil {
+			qrRetrieveBillingData = *o.RetrieveBillingData
+		}
+		qRetrieveBillingData := swag.FormatBool(qrRetrieveBillingData)
+		if qRetrieveBillingData != "" {
+			if err := r.SetQueryParam("retrieveBillingData", qRetrieveBillingData); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidInvoicesRetryReader is a Reader for the PutCustomersCustomerFidInvoicesRetry structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidInvoicesRetryReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidInvoicesRetryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidInvoicesRetryOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidInvoicesRetryDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidInvoicesRetryDefault) Code() int {
 
 func (o *PutCustomersCustomerFidInvoicesRetryDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/retry][%d] PutCustomersCustomerFidInvoicesRetry default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidInvoicesRetryDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

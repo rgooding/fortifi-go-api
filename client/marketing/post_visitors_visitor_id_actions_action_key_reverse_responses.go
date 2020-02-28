@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostVisitorsVisitorIDActionsActionKeyReverseReader is a Reader for the PostVisitorsVisitorIDActionsActionKeyReverse structure.
@@ -26,14 +26,12 @@ type PostVisitorsVisitorIDActionsActionKeyReverseReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostVisitorsVisitorIDActionsActionKeyReverseOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostVisitorsVisitorIDActionsActionKeyReverseDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostVisitorsVisitorIDActionsActionKeyReverseOK struct {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] postVisitorsVisitorIdActionsActionKeyReverseOK  %+v", 200, o.Payload)
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) GetPayload() *PostVisitorsVisitorIDActionsActionKeyReverseOKBody {
+	return o.Payload
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Code() int {
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] PostVisitorsVisitorIDActionsActionKeyReverse default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

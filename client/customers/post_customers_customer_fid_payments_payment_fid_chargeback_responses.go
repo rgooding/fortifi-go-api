@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostCustomersCustomerFidPaymentsPaymentFidChargebackReader is a Reader for the PostCustomersCustomerFidPaymentsPaymentFidChargeback structure.
@@ -26,14 +26,12 @@ type PostCustomersCustomerFidPaymentsPaymentFidChargebackReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostCustomersCustomerFidPaymentsPaymentFidChargebackOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostCustomersCustomerFidPaymentsPaymentFidChargebackDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostCustomersCustomerFidPaymentsPaymentFidChargebackOK struct {
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] postCustomersCustomerFidPaymentsPaymentFidChargebackOK  %+v", 200, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) GetPayload() *PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) Code() int
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] PostCustomersCustomerFidPaymentsPaymentFidChargeback default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

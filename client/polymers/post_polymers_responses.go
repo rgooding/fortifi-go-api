@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostPolymersReader is a Reader for the PostPolymers structure.
@@ -26,14 +26,12 @@ type PostPolymersReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostPolymersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostPolymersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostPolymersDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostPolymersOK struct {
 
 func (o *PostPolymersOK) Error() string {
 	return fmt.Sprintf("[POST /polymers][%d] postPolymersOK  %+v", 200, o.Payload)
+}
+
+func (o *PostPolymersOK) GetPayload() *PostPolymersOKBody {
+	return o.Payload
 }
 
 func (o *PostPolymersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostPolymersDefault) Code() int {
 
 func (o *PostPolymersDefault) Error() string {
 	return fmt.Sprintf("[POST /polymers][%d] PostPolymers default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostPolymersDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostPolymersDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

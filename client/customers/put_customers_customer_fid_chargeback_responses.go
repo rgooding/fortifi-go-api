@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidChargebackReader is a Reader for the PutCustomersCustomerFidChargeback structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidChargebackReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidChargebackReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidChargebackOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidChargebackDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidChargebackDefault) Code() int {
 
 func (o *PutCustomersCustomerFidChargebackDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargeback][%d] PutCustomersCustomerFidChargeback default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidChargebackDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidChargebackDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -17,8 +16,14 @@ import (
 type Customer struct {
 	Fid
 
+	// billing type
+	BillingType string `json:"billingType,omitempty"`
+
 	// company fid
 	CompanyFid string `json:"companyFid,omitempty"`
+
+	// company number
+	CompanyNumber string `json:"companyNumber,omitempty"`
 
 	// currency
 	Currency string `json:"currency,omitempty"`
@@ -32,6 +37,9 @@ type Customer struct {
 	// first name
 	FirstName string `json:"firstName,omitempty"`
 
+	// known IP
+	KnownIP string `json:"knownIP,omitempty"`
+
 	// last name
 	LastName string `json:"lastName,omitempty"`
 
@@ -40,6 +48,12 @@ type Customer struct {
 
 	// phone
 	Phone string `json:"phone,omitempty"`
+
+	// tax number
+	TaxNumber string `json:"taxNumber,omitempty"`
+
+	// timezone
+	Timezone string `json:"timezone,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -53,7 +67,11 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
+		BillingType string `json:"billingType,omitempty"`
+
 		CompanyFid string `json:"companyFid,omitempty"`
+
+		CompanyNumber string `json:"companyNumber,omitempty"`
 
 		Currency string `json:"currency,omitempty"`
 
@@ -63,17 +81,27 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 		FirstName string `json:"firstName,omitempty"`
 
+		KnownIP string `json:"knownIP,omitempty"`
+
 		LastName string `json:"lastName,omitempty"`
 
 		Name string `json:"name,omitempty"`
 
 		Phone string `json:"phone,omitempty"`
+
+		TaxNumber string `json:"taxNumber,omitempty"`
+
+		Timezone string `json:"timezone,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
 
+	m.BillingType = dataAO1.BillingType
+
 	m.CompanyFid = dataAO1.CompanyFid
+
+	m.CompanyNumber = dataAO1.CompanyNumber
 
 	m.Currency = dataAO1.Currency
 
@@ -83,11 +111,17 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 	m.FirstName = dataAO1.FirstName
 
+	m.KnownIP = dataAO1.KnownIP
+
 	m.LastName = dataAO1.LastName
 
 	m.Name = dataAO1.Name
 
 	m.Phone = dataAO1.Phone
+
+	m.TaxNumber = dataAO1.TaxNumber
+
+	m.Timezone = dataAO1.Timezone
 
 	return nil
 }
@@ -103,7 +137,11 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 
 	var dataAO1 struct {
+		BillingType string `json:"billingType,omitempty"`
+
 		CompanyFid string `json:"companyFid,omitempty"`
+
+		CompanyNumber string `json:"companyNumber,omitempty"`
 
 		Currency string `json:"currency,omitempty"`
 
@@ -113,14 +151,24 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 		FirstName string `json:"firstName,omitempty"`
 
+		KnownIP string `json:"knownIP,omitempty"`
+
 		LastName string `json:"lastName,omitempty"`
 
 		Name string `json:"name,omitempty"`
 
 		Phone string `json:"phone,omitempty"`
+
+		TaxNumber string `json:"taxNumber,omitempty"`
+
+		Timezone string `json:"timezone,omitempty"`
 	}
 
+	dataAO1.BillingType = m.BillingType
+
 	dataAO1.CompanyFid = m.CompanyFid
+
+	dataAO1.CompanyNumber = m.CompanyNumber
 
 	dataAO1.Currency = m.Currency
 
@@ -130,11 +178,17 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 	dataAO1.FirstName = m.FirstName
 
+	dataAO1.KnownIP = m.KnownIP
+
 	dataAO1.LastName = m.LastName
 
 	dataAO1.Name = m.Name
 
 	dataAO1.Phone = m.Phone
+
+	dataAO1.TaxNumber = m.TaxNumber
+
+	dataAO1.Timezone = m.Timezone
 
 	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
 	if errAO1 != nil {

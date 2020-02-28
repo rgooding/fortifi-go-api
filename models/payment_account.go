@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -16,6 +15,9 @@ import (
 // swagger:model PaymentAccount
 type PaymentAccount struct {
 	Entity
+
+	// account holder
+	AccountHolder string `json:"accountHolder,omitempty"`
 
 	// account type
 	AccountType PaymentAccountType `json:"accountType,omitempty"`
@@ -38,6 +40,8 @@ func (m *PaymentAccount) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
+		AccountHolder string `json:"accountHolder,omitempty"`
+
 		AccountType PaymentAccountType `json:"accountType,omitempty"`
 
 		PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
@@ -47,6 +51,8 @@ func (m *PaymentAccount) UnmarshalJSON(raw []byte) error {
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
+
+	m.AccountHolder = dataAO1.AccountHolder
 
 	m.AccountType = dataAO1.AccountType
 
@@ -68,12 +74,16 @@ func (m PaymentAccount) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 
 	var dataAO1 struct {
+		AccountHolder string `json:"accountHolder,omitempty"`
+
 		AccountType PaymentAccountType `json:"accountType,omitempty"`
 
 		PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
 
 		PaymentMode PaymentMode `json:"paymentMode,omitempty"`
 	}
+
+	dataAO1.AccountHolder = m.AccountHolder
 
 	dataAO1.AccountType = m.AccountType
 

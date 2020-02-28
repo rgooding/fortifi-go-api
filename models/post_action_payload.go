@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -41,7 +40,7 @@ type PostActionPayload struct {
 	Language string `json:"language,omitempty"`
 
 	// meta data
-	MetaData MetaData `json:"metaData"`
+	MetaData MetaData `json:"metaData,omitempty"`
 
 	// Payment method used on this transaction
 	PaymentMethod string `json:"paymentMethod,omitempty"`

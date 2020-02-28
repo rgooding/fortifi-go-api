@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
@@ -47,11 +46,11 @@ func (m *PaymentGateway) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
-		Brands []string `json:"brands,omitempty"`
+		Brands []string `json:"brands"`
 
-		CardTypes []string `json:"cardTypes,omitempty"`
+		CardTypes []string `json:"cardTypes"`
 
-		Currencies []string `json:"currencies,omitempty"`
+		Currencies []string `json:"currencies"`
 
 		Enabled bool `json:"enabled,omitempty"`
 
@@ -89,11 +88,11 @@ func (m PaymentGateway) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 
 	var dataAO1 struct {
-		Brands []string `json:"brands,omitempty"`
+		Brands []string `json:"brands"`
 
-		CardTypes []string `json:"cardTypes,omitempty"`
+		CardTypes []string `json:"cardTypes"`
 
-		Currencies []string `json:"currencies,omitempty"`
+		Currencies []string `json:"currencies"`
 
 		Enabled bool `json:"enabled,omitempty"`
 

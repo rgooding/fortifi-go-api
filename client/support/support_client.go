@@ -7,12 +7,11 @@ package support
 
 import (
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new support API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,8 +23,15 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostTicketsOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-PostTickets creates a support ticket
+  PostTickets creates a support ticket
 */
 func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostTicketsOK, error) {
 	// TODO: Validate the params before sending
@@ -49,8 +55,13 @@ func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientA
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostTicketsOK), nil
-
+	success, ok := result.(*PostTicketsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostTicketsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 // SetTransport changes the transport on the client

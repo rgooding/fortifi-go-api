@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetPayCoinbaseReader is a Reader for the GetPayCoinbase structure.
@@ -26,14 +26,12 @@ type GetPayCoinbaseReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetPayCoinbaseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetPayCoinbaseOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetPayCoinbaseDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetPayCoinbaseOK struct {
 
 func (o *GetPayCoinbaseOK) Error() string {
 	return fmt.Sprintf("[GET /pay/coinbase][%d] getPayCoinbaseOK  %+v", 200, o.Payload)
+}
+
+func (o *GetPayCoinbaseOK) GetPayload() *GetPayCoinbaseOKBody {
+	return o.Payload
 }
 
 func (o *GetPayCoinbaseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetPayCoinbaseDefault) Code() int {
 
 func (o *GetPayCoinbaseDefault) Error() string {
 	return fmt.Sprintf("[GET /pay/coinbase][%d] GetPayCoinbase default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetPayCoinbaseDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetPayCoinbaseDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

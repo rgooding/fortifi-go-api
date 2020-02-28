@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetPayPublicKeyReader is a Reader for the GetPayPublicKey structure.
@@ -26,14 +26,12 @@ type GetPayPublicKeyReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetPayPublicKeyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetPayPublicKeyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetPayPublicKeyDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetPayPublicKeyOK struct {
 
 func (o *GetPayPublicKeyOK) Error() string {
 	return fmt.Sprintf("[GET /pay/publicKey][%d] getPayPublicKeyOK  %+v", 200, o.Payload)
+}
+
+func (o *GetPayPublicKeyOK) GetPayload() *GetPayPublicKeyOKBody {
+	return o.Payload
 }
 
 func (o *GetPayPublicKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetPayPublicKeyDefault) Code() int {
 
 func (o *GetPayPublicKeyDefault) Error() string {
 	return fmt.Sprintf("[GET /pay/publicKey][%d] GetPayPublicKey default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetPayPublicKeyDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetPayPublicKeyDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

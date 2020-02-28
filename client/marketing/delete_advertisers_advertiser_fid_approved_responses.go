@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // DeleteAdvertisersAdvertiserFidApprovedReader is a Reader for the DeleteAdvertisersAdvertiserFidApproved structure.
@@ -24,14 +24,12 @@ type DeleteAdvertisersAdvertiserFidApprovedReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteAdvertisersAdvertiserFidApprovedReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteAdvertisersAdvertiserFidApprovedOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewDeleteAdvertisersAdvertiserFidApprovedDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) Code() int {
 
 func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[DELETE /advertisers/{advertiserFid}/approved][%d] DeleteAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

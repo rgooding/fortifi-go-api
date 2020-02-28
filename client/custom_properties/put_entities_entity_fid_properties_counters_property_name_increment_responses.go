@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementReader is a Reader for the PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement structure.
@@ -24,14 +24,12 @@ type PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) Cod
 
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/increment][%d] PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

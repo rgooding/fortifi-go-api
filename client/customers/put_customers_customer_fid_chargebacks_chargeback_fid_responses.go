@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidChargebacksChargebackFidReader is a Reader for the PutCustomersCustomerFidChargebacksChargebackFid structure.
@@ -26,14 +26,12 @@ type PutCustomersCustomerFidChargebacksChargebackFidReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidChargebacksChargebackFidReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidChargebacksChargebackFidOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidChargebacksChargebackFidDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PutCustomersCustomerFidChargebacksChargebackFidOK struct {
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] putCustomersCustomerFidChargebacksChargebackFidOK  %+v", 200, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) GetPayload() *PutCustomersCustomerFidChargebacksChargebackFidOKBody {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Code() int {
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] PutCustomersCustomerFidChargebacksChargebackFid default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

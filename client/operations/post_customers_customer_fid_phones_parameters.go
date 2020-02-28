@@ -6,14 +6,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"net/http"
 	"time"
-
-	"context"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -71,6 +71,8 @@ type PostCustomersCustomerFidPhonesParams struct {
 	DisplayName *string
 	/*PhoneNumber*/
 	PhoneNumber string
+	/*SetAsDefault*/
+	SetAsDefault *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -143,6 +145,17 @@ func (o *PostCustomersCustomerFidPhonesParams) SetPhoneNumber(phoneNumber string
 	o.PhoneNumber = phoneNumber
 }
 
+// WithSetAsDefault adds the setAsDefault to the post customers customer fid phones params
+func (o *PostCustomersCustomerFidPhonesParams) WithSetAsDefault(setAsDefault *bool) *PostCustomersCustomerFidPhonesParams {
+	o.SetSetAsDefault(setAsDefault)
+	return o
+}
+
+// SetSetAsDefault adds the setAsDefault to the post customers customer fid phones params
+func (o *PostCustomersCustomerFidPhonesParams) SetSetAsDefault(setAsDefault *bool) {
+	o.SetAsDefault = setAsDefault
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostCustomersCustomerFidPhonesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -179,6 +192,22 @@ func (o *PostCustomersCustomerFidPhonesParams) WriteToRequest(r runtime.ClientRe
 		if err := r.SetFormParam("phoneNumber", fPhoneNumber); err != nil {
 			return err
 		}
+	}
+
+	if o.SetAsDefault != nil {
+
+		// form param setAsDefault
+		var frSetAsDefault bool
+		if o.SetAsDefault != nil {
+			frSetAsDefault = *o.SetAsDefault
+		}
+		fSetAsDefault := swag.FormatBool(frSetAsDefault)
+		if fSetAsDefault != "" {
+			if err := r.SetFormParam("setAsDefault", fSetAsDefault); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

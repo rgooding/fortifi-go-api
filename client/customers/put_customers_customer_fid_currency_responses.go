@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PutCustomersCustomerFidCurrencyReader is a Reader for the PutCustomersCustomerFidCurrency structure.
@@ -24,14 +24,12 @@ type PutCustomersCustomerFidCurrencyReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutCustomersCustomerFidCurrencyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutCustomersCustomerFidCurrencyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPutCustomersCustomerFidCurrencyDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,6 +87,10 @@ func (o *PutCustomersCustomerFidCurrencyDefault) Code() int {
 
 func (o *PutCustomersCustomerFidCurrencyDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/currency][%d] PutCustomersCustomerFidCurrency default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PutCustomersCustomerFidCurrencyDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PutCustomersCustomerFidCurrencyDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetCustomersCustomerFidAddressesReader is a Reader for the GetCustomersCustomerFidAddresses structure.
@@ -24,14 +24,12 @@ type GetCustomersCustomerFidAddressesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCustomersCustomerFidAddressesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCustomersCustomerFidAddressesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetCustomersCustomerFidAddressesDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetCustomersCustomerFidAddressesOK struct {
 
 func (o *GetCustomersCustomerFidAddressesOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/addresses][%d] getCustomersCustomerFidAddressesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidAddressesOK) GetPayload() *models.Addresses {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidAddressesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -97,6 +99,10 @@ func (o *GetCustomersCustomerFidAddressesDefault) Code() int {
 
 func (o *GetCustomersCustomerFidAddressesDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/addresses][%d] GetCustomersCustomerFidAddresses default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetCustomersCustomerFidAddressesDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidAddressesDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

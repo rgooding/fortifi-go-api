@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // PostTicketsReader is a Reader for the PostTickets structure.
@@ -26,14 +26,12 @@ type PostTicketsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostTicketsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostTicketsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewPostTicketsDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type PostTicketsOK struct {
 
 func (o *PostTicketsOK) Error() string {
 	return fmt.Sprintf("[POST /tickets][%d] postTicketsOK  %+v", 200, o.Payload)
+}
+
+func (o *PostTicketsOK) GetPayload() *PostTicketsOKBody {
+	return o.Payload
 }
 
 func (o *PostTicketsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *PostTicketsDefault) Code() int {
 
 func (o *PostTicketsDefault) Error() string {
 	return fmt.Sprintf("[POST /tickets][%d] PostTickets default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *PostTicketsDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *PostTicketsDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -15,7 +15,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/fortifi/go-api/models"
+	"github.com/fortifi/go-api/models"
 )
 
 // GetServiceAuthTokenReader is a Reader for the GetServiceAuthToken structure.
@@ -26,14 +26,12 @@ type GetServiceAuthTokenReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetServiceAuthTokenReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetServiceAuthTokenOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		result := NewGetServiceAuthTokenDefault(response.Code())
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -61,6 +59,10 @@ type GetServiceAuthTokenOK struct {
 
 func (o *GetServiceAuthTokenOK) Error() string {
 	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthTokenOK  %+v", 200, o.Payload)
+}
+
+func (o *GetServiceAuthTokenOK) GetPayload() *GetServiceAuthTokenOKBody {
+	return o.Payload
 }
 
 func (o *GetServiceAuthTokenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -99,6 +101,10 @@ func (o *GetServiceAuthTokenDefault) Code() int {
 
 func (o *GetServiceAuthTokenDefault) Error() string {
 	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthToken default  %+v", o._statusCode, o.Payload)
+}
+
+func (o *GetServiceAuthTokenDefault) GetPayload() *models.Envelope {
+	return o.Payload
 }
 
 func (o *GetServiceAuthTokenDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

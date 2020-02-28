@@ -8,9 +8,8 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -97,7 +96,7 @@ func (m *Invoice) UnmarshalJSON(raw []byte) error {
 
 		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
-		InvoiceItems []*InvoiceItem `json:"invoiceItems,omitempty"`
+		InvoiceItems []*InvoiceItem `json:"invoiceItems"`
 
 		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
 
@@ -179,7 +178,7 @@ func (m Invoice) MarshalJSON() ([]byte, error) {
 
 		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
-		InvoiceItems []*InvoiceItem `json:"invoiceItems,omitempty"`
+		InvoiceItems []*InvoiceItem `json:"invoiceItems"`
 
 		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
 
