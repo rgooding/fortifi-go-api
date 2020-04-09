@@ -13,9 +13,9 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AvailabilityCheckPayload Product information to check availability
-// swagger:model AvailabilityCheckPayload
-type AvailabilityCheckPayload struct {
+// AvailabilityReservePayload Product information to reserve availability
+// swagger:model AvailabilityReservePayload
+type AvailabilityReservePayload struct {
 
 	// price fid
 	PriceFid string `json:"priceFid,omitempty"`
@@ -28,10 +28,13 @@ type AvailabilityCheckPayload struct {
 
 	// reserve key
 	ReserveKey string `json:"reserveKey,omitempty"`
+
+	// reserve Ttl
+	ReserveTTL int64 `json:"reserveTtl,omitempty"`
 }
 
-// Validate validates this availability check payload
-func (m *AvailabilityCheckPayload) Validate(formats strfmt.Registry) error {
+// Validate validates this availability reserve payload
+func (m *AvailabilityReservePayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateProperties(formats); err != nil {
@@ -44,7 +47,7 @@ func (m *AvailabilityCheckPayload) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *AvailabilityCheckPayload) validateProperties(formats strfmt.Registry) error {
+func (m *AvailabilityReservePayload) validateProperties(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Properties) { // not required
 		return nil
@@ -70,7 +73,7 @@ func (m *AvailabilityCheckPayload) validateProperties(formats strfmt.Registry) e
 }
 
 // MarshalBinary interface implementation
-func (m *AvailabilityCheckPayload) MarshalBinary() ([]byte, error) {
+func (m *AvailabilityReservePayload) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -78,8 +81,8 @@ func (m *AvailabilityCheckPayload) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *AvailabilityCheckPayload) UnmarshalBinary(b []byte) error {
-	var res AvailabilityCheckPayload
+func (m *AvailabilityReservePayload) UnmarshalBinary(b []byte) error {
+	var res AvailabilityReservePayload
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

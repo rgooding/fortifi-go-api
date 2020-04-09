@@ -41,6 +41,9 @@ type CreateOrderPayload struct {
 	// Offer FIDs to apply to the order
 	OfferFids []string `json:"offerFids"`
 
+	// Confirm this order only after this parent is completed
+	ParentOrderFid string `json:"parentOrderFid,omitempty"`
+
 	// FID for the payment account you wish to charge the customer through
 	PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 

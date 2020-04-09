@@ -37,6 +37,8 @@ type ClientService interface {
 
 	PostProductsProductFidAvailabilityCheck(params *PostProductsProductFidAvailabilityCheckParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityCheckOK, error)
 
+	PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityReserveOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -241,6 +243,40 @@ func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsPro
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PostProductsProductFidAvailabilityCheckDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PostProductsProductFidAvailabilityReserve reserves product
+*/
+func (a *Client) PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityReserveOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostProductsProductFidAvailabilityReserveParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PostProductsProductFidAvailabilityReserve",
+		Method:             "POST",
+		PathPattern:        "/products/{productFid}/availability/reserve",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostProductsProductFidAvailabilityReserveReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostProductsProductFidAvailabilityReserveOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostProductsProductFidAvailabilityReserveDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
