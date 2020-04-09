@@ -112,6 +112,12 @@ type Subscription struct {
 	// price fid
 	PriceFid string `json:"priceFid,omitempty"`
 
+	// product fid
+	ProductFid string `json:"productFid,omitempty"`
+
+	// product manager type
+	ProductManagerType string `json:"productManagerType,omitempty"`
+
 	// quantity
 	Quantity int32 `json:"quantity,omitempty"`
 
@@ -233,6 +239,10 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 
 		PriceFid string `json:"priceFid,omitempty"`
 
+		ProductFid string `json:"productFid,omitempty"`
+
+		ProductManagerType string `json:"productManagerType,omitempty"`
+
 		Quantity int32 `json:"quantity,omitempty"`
 
 		RenewDate strfmt.DateTime `json:"renewDate,omitempty"`
@@ -324,6 +334,10 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 	m.PaidUntil = dataAO1.PaidUntil
 
 	m.PriceFid = dataAO1.PriceFid
+
+	m.ProductFid = dataAO1.ProductFid
+
+	m.ProductManagerType = dataAO1.ProductManagerType
 
 	m.Quantity = dataAO1.Quantity
 
@@ -427,6 +441,10 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 
 		PriceFid string `json:"priceFid,omitempty"`
 
+		ProductFid string `json:"productFid,omitempty"`
+
+		ProductManagerType string `json:"productManagerType,omitempty"`
+
 		Quantity int32 `json:"quantity,omitempty"`
 
 		RenewDate strfmt.DateTime `json:"renewDate,omitempty"`
@@ -515,6 +533,10 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 	dataAO1.PaidUntil = m.PaidUntil
 
 	dataAO1.PriceFid = m.PriceFid
+
+	dataAO1.ProductFid = m.ProductFid
+
+	dataAO1.ProductManagerType = m.ProductManagerType
 
 	dataAO1.Quantity = m.Quantity
 
