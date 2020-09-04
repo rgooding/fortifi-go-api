@@ -6,9 +6,8 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	httptransport "github.com/go-openapi/runtime/client"
-
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/client/authentication"
@@ -31,7 +30,7 @@ import (
 	"github.com/fortifi/go-api/client/support"
 )
 
-// Default fortifi HTTP client.
+// Default fortifi API HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -46,14 +45,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new fortifi HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *Fortifi {
+// NewHTTPClient creates a new fortifi API HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *FortifiAPI {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new fortifi HTTP client,
+// NewHTTPClientWithConfig creates a new fortifi API HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Fortifi {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *FortifiAPI {
 	// ensure nullable parameters have default
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
@@ -64,14 +63,14 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *For
 	return New(transport, formats)
 }
 
-// New creates a new fortifi client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Fortifi {
+// New creates a new fortifi API client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *FortifiAPI {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
 	}
 
-	cli := new(Fortifi)
+	cli := new(FortifiAPI)
 	cli.Transport = transport
 	cli.Authentication = authentication.New(transport, formats)
 	cli.Brands = brands.New(transport, formats)
@@ -133,8 +132,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// Fortifi is a client for fortifi
-type Fortifi struct {
+// FortifiAPI is a client for fortifi API
+type FortifiAPI struct {
 	Authentication authentication.ClientService
 
 	Brands brands.ClientService
@@ -175,7 +174,7 @@ type Fortifi struct {
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *Fortifi) SetTransport(transport runtime.ClientTransport) {
+func (c *FortifiAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Authentication.SetTransport(transport)
 	c.Brands.SetTransport(transport)

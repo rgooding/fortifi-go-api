@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // PurchaseStatus Purchase Status
+//
 // swagger:model purchaseStatus
 type PurchaseStatus string
 
@@ -76,7 +77,7 @@ func init() {
 }
 
 func (m PurchaseStatus) validatePurchaseStatusEnum(path, location string, value PurchaseStatus) error {
-	if err := validate.Enum(path, location, value, purchaseStatusEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, purchaseStatusEnum, true); err != nil {
 		return err
 	}
 	return nil

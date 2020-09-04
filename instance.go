@@ -5,9 +5,10 @@ package api
 import (
 	"errors"
 	"fmt"
-	"github.com/fortifi/go-api/client/authentication"
 	"strings"
 	"time"
+
+	"github.com/fortifi/go-api/client/authentication"
 
 	"github.com/fortifi/go-api/client"
 	"github.com/fortifi/go-api/models"
@@ -37,7 +38,7 @@ type Instance struct {
 	authToken           string
 	user                string
 	key                 string
-	apiInstance         *client.Fortifi
+	apiInstance         *client.FortifiAPI
 	authenticator       *Authenticator
 	hostingProductGroup string
 	domainProductGroup  string
@@ -72,7 +73,7 @@ func (f *Instance) InitAPI() error {
 }
 
 // GetAPIInstance returns current instance of fortifi API
-func (f *Instance) GetAPIInstance() (*client.Fortifi, error) {
+func (f *Instance) GetAPIInstance() (*client.FortifiAPI, error) {
 	if f.apiInstance != nil && time.Now().Unix() < (f.expiry-expiryBuffer) {
 		return f.apiInstance, nil
 	}

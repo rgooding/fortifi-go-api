@@ -11,9 +11,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -160,7 +159,6 @@ func (o PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 		return nil, err
 	}
 	_parts = append(_parts, putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBodyAO0)
-
 	var dataPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBodyAO1 struct {
 		Data *models.Fid `json:"data,omitempty"`
 	}
@@ -172,7 +170,6 @@ func (o PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 		return nil, errPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBodyAO1
 	}
 	_parts = append(_parts, jsonDataPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBodyAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

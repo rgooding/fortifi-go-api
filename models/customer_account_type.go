@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // CustomerAccountType Account Type
+//
 // swagger:model customerAccountType
 type CustomerAccountType string
 
@@ -55,7 +56,7 @@ func init() {
 }
 
 func (m CustomerAccountType) validateCustomerAccountTypeEnum(path, location string, value CustomerAccountType) error {
-	if err := validate.Enum(path, location, value, customerAccountTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, customerAccountTypeEnum, true); err != nil {
 		return err
 	}
 	return nil

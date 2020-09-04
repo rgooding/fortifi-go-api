@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // PaymentMode Payment Mode
+//
 // swagger:model PaymentMode
 type PaymentMode string
 
@@ -40,7 +41,7 @@ func init() {
 }
 
 func (m PaymentMode) validatePaymentModeEnum(path, location string, value PaymentMode) error {
-	if err := validate.Enum(path, location, value, paymentModeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, paymentModeEnum, true); err != nil {
 		return err
 	}
 	return nil

@@ -11,9 +11,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -160,7 +159,6 @@ func (o GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) MarshalJSON() 
 		return nil, err
 	}
 	_parts = append(_parts, getEntitiesEntityFidConfigSectionNameItemsItemNameOKBodyAO0)
-
 	var dataGetEntitiesEntityFidConfigSectionNameItemsItemNameOKBodyAO1 struct {
 		Data *models.ConfigItem `json:"data,omitempty"`
 	}
@@ -172,7 +170,6 @@ func (o GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) MarshalJSON() 
 		return nil, errGetEntitiesEntityFidConfigSectionNameItemsItemNameOKBodyAO1
 	}
 	_parts = append(_parts, jsonDataGetEntitiesEntityFidConfigSectionNameItemsItemNameOKBodyAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

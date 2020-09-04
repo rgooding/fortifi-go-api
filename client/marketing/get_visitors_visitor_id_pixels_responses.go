@@ -12,9 +12,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -161,7 +160,6 @@ func (o GetVisitorsVisitorIDPixelsOKBody) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, getVisitorsVisitorIDPixelsOKBodyAO0)
-
 	var dataGetVisitorsVisitorIDPixelsOKBodyAO1 struct {
 		Data []*models.AdvertiserPixel `json:"data"`
 	}
@@ -173,7 +171,6 @@ func (o GetVisitorsVisitorIDPixelsOKBody) MarshalJSON() ([]byte, error) {
 		return nil, errGetVisitorsVisitorIDPixelsOKBodyAO1
 	}
 	_parts = append(_parts, jsonDataGetVisitorsVisitorIDPixelsOKBodyAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

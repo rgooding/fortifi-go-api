@@ -9,11 +9,12 @@ import (
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PropertyBulkSetPayload Set Many Properties
+//
 // swagger:model PropertyBulkSetPayload
 type PropertyBulkSetPayload struct {
 

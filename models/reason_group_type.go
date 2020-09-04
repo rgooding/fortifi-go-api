@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // ReasonGroupType Reason Group Type
+//
 // swagger:model reasonGroupType
 type ReasonGroupType string
 
@@ -46,7 +47,7 @@ func init() {
 }
 
 func (m ReasonGroupType) validateReasonGroupTypeEnum(path, location string, value ReasonGroupType) error {
-	if err := validate.Enum(path, location, value, reasonGroupTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, reasonGroupTypeEnum, true); err != nil {
 		return err
 	}
 	return nil

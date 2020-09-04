@@ -11,9 +11,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -160,7 +159,6 @@ func (o GetPublishersPublisherFidCampaignsPublisherCampaignFidOKBody) MarshalJSO
 		return nil, err
 	}
 	_parts = append(_parts, getPublishersPublisherFidCampaignsPublisherCampaignFidOKBodyAO0)
-
 	var dataGetPublishersPublisherFidCampaignsPublisherCampaignFidOKBodyAO1 struct {
 		Data *models.PublisherCampaign `json:"data,omitempty"`
 	}
@@ -172,7 +170,6 @@ func (o GetPublishersPublisherFidCampaignsPublisherCampaignFidOKBody) MarshalJSO
 		return nil, errGetPublishersPublisherFidCampaignsPublisherCampaignFidOKBodyAO1
 	}
 	_parts = append(_parts, jsonDataGetPublishersPublisherFidCampaignsPublisherCampaignFidOKBodyAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

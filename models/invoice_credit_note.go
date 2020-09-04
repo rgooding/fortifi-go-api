@@ -7,12 +7,13 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // InvoiceCreditNote Generic Response
+//
 // swagger:model InvoiceCreditNote
 type InvoiceCreditNote struct {
 	Entity
@@ -81,7 +82,6 @@ func (m InvoiceCreditNote) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		Amount float32 `json:"amount,omitempty"`
 
@@ -109,7 +109,6 @@ func (m InvoiceCreditNote) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

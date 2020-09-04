@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ServiceIncident Service Incident
+//
 // swagger:model ServiceIncident
 type ServiceIncident struct {
 	Entity
@@ -93,7 +94,6 @@ func (m ServiceIncident) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		DateCreated int64 `json:"dateCreated,omitempty"`
 
@@ -129,7 +129,6 @@ func (m ServiceIncident) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

@@ -9,11 +9,12 @@ import (
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ChatSessions List of chat sessions
+//
 // swagger:model ChatSessions
 type ChatSessions struct {
 	Pagination
@@ -53,7 +54,6 @@ func (m ChatSessions) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		ChatSessions []*ChatSession `json:"chatSessions"`
 	}
@@ -65,7 +65,6 @@ func (m ChatSessions) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

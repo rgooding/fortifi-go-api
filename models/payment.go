@@ -9,12 +9,13 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Payment Payment
+//
 // swagger:model Payment
 type Payment struct {
 	Fid
@@ -203,7 +204,6 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		Amount float32 `json:"amount,omitempty"`
 
@@ -299,7 +299,6 @@ func (m Payment) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 
@@ -340,7 +339,7 @@ func init() {
 
 // property enum
 func (m *Payment) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, paymentTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, paymentTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -374,7 +373,7 @@ func init() {
 
 // property enum
 func (m *Payment) validateTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, paymentTypeTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, paymentTypeTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

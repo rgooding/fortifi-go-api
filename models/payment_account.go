@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PaymentAccount Generic Response
+//
 // swagger:model PaymentAccount
 type PaymentAccount struct {
 	Entity
@@ -72,7 +73,6 @@ func (m PaymentAccount) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		AccountHolder string `json:"accountHolder,omitempty"`
 
@@ -96,7 +96,6 @@ func (m PaymentAccount) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

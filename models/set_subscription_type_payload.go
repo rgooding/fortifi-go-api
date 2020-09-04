@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // SetSubscriptionTypePayload Subscription Type
+//
 // swagger:model SetSubscriptionTypePayload
 type SetSubscriptionTypePayload struct {
 

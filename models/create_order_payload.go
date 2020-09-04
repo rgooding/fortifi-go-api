@@ -9,11 +9,12 @@ import (
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CreateOrderPayload create order payload
+//
 // swagger:model CreateOrderPayload
 type CreateOrderPayload struct {
 

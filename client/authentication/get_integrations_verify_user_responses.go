@@ -11,9 +11,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -160,7 +159,6 @@ func (o GetIntegrationsVerifyUserOKBody) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, getIntegrationsVerifyUserOKBodyAO0)
-
 	var dataGetIntegrationsVerifyUserOKBodyAO1 struct {
 		Data *models.IntegrationUser `json:"data,omitempty"`
 	}
@@ -172,7 +170,6 @@ func (o GetIntegrationsVerifyUserOKBody) MarshalJSON() ([]byte, error) {
 		return nil, errGetIntegrationsVerifyUserOKBodyAO1
 	}
 	_parts = append(_parts, jsonDataGetIntegrationsVerifyUserOKBodyAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

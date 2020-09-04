@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // AddOrderProductsPayload add order products payload
+//
 // swagger:model AddOrderProductsPayload
 type AddOrderProductsPayload struct {
 	OrderProductsPayload
@@ -38,7 +39,6 @@ func (m AddOrderProductsPayload) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

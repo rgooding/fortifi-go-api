@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // TicketReplyPayload ticket reply payload
+//
 // swagger:model TicketReplyPayload
 type TicketReplyPayload struct {
 

@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // PaymentServiceProcessor Payment Service Processor Type
+//
 // swagger:model PaymentServiceProcessor
 type PaymentServiceProcessor string
 
@@ -55,7 +56,7 @@ func init() {
 }
 
 func (m PaymentServiceProcessor) validatePaymentServiceProcessorEnum(path, location string, value PaymentServiceProcessor) error {
-	if err := validate.Enum(path, location, value, paymentServiceProcessorEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, paymentServiceProcessorEnum, true); err != nil {
 		return err
 	}
 	return nil

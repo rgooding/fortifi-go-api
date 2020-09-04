@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // TicketStatusPayload Set the ticket status
+//
 // swagger:model TicketStatusPayload
 type TicketStatusPayload struct {
 

@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // DiscountType Discount Type
+//
 // swagger:model discountType
 type DiscountType string
 
@@ -40,7 +41,7 @@ func init() {
 }
 
 func (m DiscountType) validateDiscountTypeEnum(path, location string, value DiscountType) error {
-	if err := validate.Enum(path, location, value, discountTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, discountTypeEnum, true); err != nil {
 		return err
 	}
 	return nil

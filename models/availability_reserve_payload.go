@@ -9,11 +9,12 @@ import (
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // AvailabilityReservePayload Product information to reserve availability
+//
 // swagger:model AvailabilityReservePayload
 type AvailabilityReservePayload struct {
 

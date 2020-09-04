@@ -11,9 +11,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -148,7 +147,6 @@ func (o PostCustomersCustomerFidContactsDefaultBody) MarshalJSON() ([]byte, erro
 		return nil, err
 	}
 	_parts = append(_parts, postCustomersCustomerFidContactsDefaultBodyAO0)
-
 	var dataPostCustomersCustomerFidContactsDefaultBodyAO1 struct {
 		Data *models.Fid `json:"data,omitempty"`
 	}
@@ -160,7 +158,6 @@ func (o PostCustomersCustomerFidContactsDefaultBody) MarshalJSON() ([]byte, erro
 		return nil, errPostCustomersCustomerFidContactsDefaultBodyAO1
 	}
 	_parts = append(_parts, jsonDataPostCustomersCustomerFidContactsDefaultBodyAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

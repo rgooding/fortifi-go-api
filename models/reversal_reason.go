@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // ReversalReason The reason for reversing the action
+//
 // swagger:model reversalReason
 type ReversalReason string
 
@@ -43,7 +44,7 @@ func init() {
 }
 
 func (m ReversalReason) validateReversalReasonEnum(path, location string, value ReversalReason) error {
-	if err := validate.Enum(path, location, value, reversalReasonEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, reversalReasonEnum, true); err != nil {
 		return err
 	}
 	return nil

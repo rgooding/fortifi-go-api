@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // PublisherType Publisher Type
+//
 // swagger:model PublisherType
 type PublisherType string
 
@@ -73,7 +74,7 @@ func init() {
 }
 
 func (m PublisherType) validatePublisherTypeEnum(path, location string, value PublisherType) error {
-	if err := validate.Enum(path, location, value, publisherTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, publisherTypeEnum, true); err != nil {
 		return err
 	}
 	return nil

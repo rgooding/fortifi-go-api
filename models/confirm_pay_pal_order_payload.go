@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ConfirmPayPalOrderPayload confirm pay pal order payload
+//
 // swagger:model ConfirmPayPalOrderPayload
 type ConfirmPayPalOrderPayload struct {
 	ConfirmOrderPayload
@@ -51,7 +52,6 @@ func (m ConfirmPayPalOrderPayload) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		Token string `json:"token,omitempty"`
 	}
@@ -63,7 +63,6 @@ func (m ConfirmPayPalOrderPayload) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

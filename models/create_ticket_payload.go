@@ -9,12 +9,13 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // CreateTicketPayload create ticket payload
+//
 // swagger:model CreateTicketPayload
 type CreateTicketPayload struct {
 
@@ -121,7 +122,7 @@ const (
 
 // prop value enum
 func (m *CreateTicketPayload) validateImpactEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, createTicketPayloadTypeImpactPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, createTicketPayloadTypeImpactPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -170,7 +171,7 @@ const (
 
 // prop value enum
 func (m *CreateTicketPayload) validateTicketTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, createTicketPayloadTypeTicketTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, createTicketPayloadTypeTicketTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -228,7 +229,7 @@ const (
 
 // prop value enum
 func (m *CreateTicketPayload) validateUrgencyEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, createTicketPayloadTypeUrgencyPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, createTicketPayloadTypeUrgencyPropEnum, true); err != nil {
 		return err
 	}
 	return nil

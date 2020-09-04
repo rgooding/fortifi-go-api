@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PublisherCampaign Publisher Campaign
+//
 // swagger:model PublisherCampaign
 type PublisherCampaign struct {
 	Entity
@@ -65,7 +66,6 @@ func (m PublisherCampaign) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		AffiliateFid string `json:"affiliateFid,omitempty"`
 
@@ -85,7 +85,6 @@ func (m PublisherCampaign) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

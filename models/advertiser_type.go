@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // AdvertiserType Advertiser Type
+//
 // swagger:model AdvertiserType
 type AdvertiserType string
 
@@ -73,7 +74,7 @@ func init() {
 }
 
 func (m AdvertiserType) validateAdvertiserTypeEnum(path, location string, value AdvertiserType) error {
-	if err := validate.Enum(path, location, value, advertiserTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, advertiserTypeEnum, true); err != nil {
 		return err
 	}
 	return nil

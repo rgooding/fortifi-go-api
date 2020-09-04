@@ -9,11 +9,12 @@ import (
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // AvailabilityCheckSuggestionResponse Suggestion for an availability check response
+//
 // swagger:model AvailabilityCheckSuggestionResponse
 type AvailabilityCheckSuggestionResponse struct {
 

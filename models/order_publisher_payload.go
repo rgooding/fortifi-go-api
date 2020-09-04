@@ -9,12 +9,13 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // OrderPublisherPayload order publisher payload
+//
 // swagger:model OrderPublisherPayload
 type OrderPublisherPayload struct {
 
@@ -84,7 +85,7 @@ const (
 
 // prop value enum
 func (m *OrderPublisherPayload) validateOnStateEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, orderPublisherPayloadTypeOnStatePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, orderPublisherPayloadTypeOnStatePropEnum, true); err != nil {
 		return err
 	}
 	return nil

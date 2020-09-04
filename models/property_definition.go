@@ -9,12 +9,13 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PropertyDefinition Definition of a property
+//
 // swagger:model PropertyDefinition
 type PropertyDefinition struct {
 	Entity
@@ -97,7 +98,6 @@ func (m PropertyDefinition) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		GroupFid string `json:"groupFid,omitempty"`
 
@@ -133,7 +133,6 @@ func (m PropertyDefinition) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 
@@ -170,7 +169,7 @@ func init() {
 
 // property enum
 func (m *PropertyDefinition) validateValidationTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, propertyDefinitionTypeValidationTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, propertyDefinitionTypeValidationTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

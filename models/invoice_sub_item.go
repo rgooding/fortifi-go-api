@@ -7,12 +7,13 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // InvoiceSubItem Generic Response
+//
 // swagger:model InvoiceSubItem
 type InvoiceSubItem struct {
 	Entity
@@ -89,7 +90,6 @@ func (m InvoiceSubItem) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		FromDate strfmt.DateTime `json:"fromDate,omitempty"`
 
@@ -121,7 +121,6 @@ func (m InvoiceSubItem) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

@@ -6,11 +6,12 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CalculateSubscriptionRefund Response from calculating a refund on a subscription
+//
 // swagger:model CalculateSubscriptionRefund
 type CalculateSubscriptionRefund struct {
 

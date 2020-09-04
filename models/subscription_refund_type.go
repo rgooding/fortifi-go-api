@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 )
 
 // SubscriptionRefundType Subscription Refund Type
+//
 // swagger:model SubscriptionRefundType
 type SubscriptionRefundType string
 
@@ -40,7 +41,7 @@ func init() {
 }
 
 func (m SubscriptionRefundType) validateSubscriptionRefundTypeEnum(path, location string, value SubscriptionRefundType) error {
-	if err := validate.Enum(path, location, value, subscriptionRefundTypeEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, subscriptionRefundTypeEnum, true); err != nil {
 		return err
 	}
 	return nil

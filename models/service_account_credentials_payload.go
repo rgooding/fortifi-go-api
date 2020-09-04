@@ -7,12 +7,13 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ServiceAccountCredentialsPayload Service credentials used to verify ownership of a user account
+//
 // swagger:model ServiceAccountCredentialsPayload
 type ServiceAccountCredentialsPayload struct {
 

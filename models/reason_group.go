@@ -7,11 +7,12 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ReasonGroup Reason Group
+//
 // swagger:model ReasonGroup
 type ReasonGroup struct {
 	Entity
@@ -65,7 +66,6 @@ func (m ReasonGroup) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		BuiltIn bool `json:"builtIn,omitempty"`
 
@@ -85,7 +85,6 @@ func (m ReasonGroup) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 

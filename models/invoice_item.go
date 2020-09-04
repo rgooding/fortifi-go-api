@@ -9,11 +9,12 @@ import (
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // InvoiceItem Generic Response
+//
 // swagger:model InvoiceItem
 type InvoiceItem struct {
 	Entity
@@ -60,7 +61,6 @@ func (m InvoiceItem) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-
 	var dataAO1 struct {
 		SubItems []*InvoiceSubItem `json:"subItems"`
 
@@ -76,7 +76,6 @@ func (m InvoiceItem) MarshalJSON() ([]byte, error) {
 		return nil, errAO1
 	}
 	_parts = append(_parts, jsonDataAO1)
-
 	return swag.ConcatJSON(_parts...), nil
 }
 
