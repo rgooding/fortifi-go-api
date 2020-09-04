@@ -5,6 +5,7 @@ package api
 import (
 	"errors"
 	"fmt"
+	"github.com/fortifi/go-api/client/authentication"
 	"strings"
 	"time"
 
@@ -102,7 +103,7 @@ func (f *Instance) GetAPIInstance() (*client.Fortifi, error) {
 
 func (f *Instance) getNewToken(transport *httptransport.Runtime) error {
 	c := client.New(transport, strfmt.Default)
-	p := Authentication.NewGetServiceAuthTokenParams()
+	p := authentication.NewGetServiceAuthTokenParams()
 	p.Payload = &models.ServiceAccountCredentialsPayload{
 		ID:  &f.user,
 		Key: &f.key,
