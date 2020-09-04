@@ -35,8 +35,6 @@ type ClientService interface {
 
 	PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error)
 
-	PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -207,40 +205,6 @@ func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessenger
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PutMessengerDeliveriesDeliveryFidSubscribeDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  PutMessengerDeliveriesDeliveryFidUnsubscribe unsubscribes an email based on the delivery fid
-*/
-func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutMessengerDeliveriesDeliveryFidUnsubscribe",
-		Method:             "PUT",
-		PathPattern:        "/messenger/deliveries/{deliveryFid}/unsubscribe",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutMessengerDeliveriesDeliveryFidUnsubscribeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PutMessengerDeliveriesDeliveryFidUnsubscribeOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*PutMessengerDeliveriesDeliveryFidUnsubscribeDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

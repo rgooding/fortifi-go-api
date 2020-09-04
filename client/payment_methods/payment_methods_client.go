@@ -25,47 +25,11 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetConfigurationFinanceGateways(params *GetConfigurationFinanceGatewaysParams, authInfo runtime.ClientAuthInfoWriter) (*GetConfigurationFinanceGatewaysOK, error)
-
 	GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error)
 
 	GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayPublicKeyOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  GetConfigurationFinanceGateways lists all the current gateways
-*/
-func (a *Client) GetConfigurationFinanceGateways(params *GetConfigurationFinanceGatewaysParams, authInfo runtime.ClientAuthInfoWriter) (*GetConfigurationFinanceGatewaysOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetConfigurationFinanceGatewaysParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetConfigurationFinanceGateways",
-		Method:             "GET",
-		PathPattern:        "/configuration/finance/gateways",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetConfigurationFinanceGatewaysReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetConfigurationFinanceGatewaysOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*GetConfigurationFinanceGatewaysDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*

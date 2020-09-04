@@ -14,12 +14,12 @@ import (
 	"github.com/fortifi/go-api/client/brands"
 	"github.com/fortifi/go-api/client/configuration"
 	"github.com/fortifi/go-api/client/contacts"
-	"github.com/fortifi/go-api/client/custom_properties"
 	"github.com/fortifi/go-api/client/customers"
 	"github.com/fortifi/go-api/client/deprecated"
 	"github.com/fortifi/go-api/client/entities"
 	"github.com/fortifi/go-api/client/licence"
 	"github.com/fortifi/go-api/client/marketing"
+	"github.com/fortifi/go-api/client/messenger"
 	"github.com/fortifi/go-api/client/orders"
 	"github.com/fortifi/go-api/client/payment_methods"
 	"github.com/fortifi/go-api/client/polymers"
@@ -76,12 +76,12 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FortifiAPI
 	cli.Brands = brands.New(transport, formats)
 	cli.Configuration = configuration.New(transport, formats)
 	cli.Contacts = contacts.New(transport, formats)
-	cli.CustomProperties = custom_properties.New(transport, formats)
 	cli.Customers = customers.New(transport, formats)
 	cli.Deprecated = deprecated.New(transport, formats)
 	cli.Entities = entities.New(transport, formats)
 	cli.Licence = licence.New(transport, formats)
 	cli.Marketing = marketing.New(transport, formats)
+	cli.Messenger = messenger.New(transport, formats)
 	cli.Orders = orders.New(transport, formats)
 	cli.PaymentMethods = payment_methods.New(transport, formats)
 	cli.Polymers = polymers.New(transport, formats)
@@ -142,8 +142,6 @@ type FortifiAPI struct {
 
 	Contacts contacts.ClientService
 
-	CustomProperties custom_properties.ClientService
-
 	Customers customers.ClientService
 
 	Deprecated deprecated.ClientService
@@ -153,6 +151,8 @@ type FortifiAPI struct {
 	Licence licence.ClientService
 
 	Marketing marketing.ClientService
+
+	Messenger messenger.ClientService
 
 	Orders orders.ClientService
 
@@ -180,12 +180,12 @@ func (c *FortifiAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Brands.SetTransport(transport)
 	c.Configuration.SetTransport(transport)
 	c.Contacts.SetTransport(transport)
-	c.CustomProperties.SetTransport(transport)
 	c.Customers.SetTransport(transport)
 	c.Deprecated.SetTransport(transport)
 	c.Entities.SetTransport(transport)
 	c.Licence.SetTransport(transport)
 	c.Marketing.SetTransport(transport)
+	c.Messenger.SetTransport(transport)
 	c.Orders.SetTransport(transport)
 	c.PaymentMethods.SetTransport(transport)
 	c.Polymers.SetTransport(transport)
