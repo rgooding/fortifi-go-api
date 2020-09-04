@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"github.com/go-openapi/errors"
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -14,12 +15,43 @@ import (
 // swagger:model TicketReplyPayload
 type TicketReplyPayload struct {
 
+	// attachments
+	Attachments []string `json:"attachments"`
+
+	// status
+	Status TicketStatus `json:"status,omitempty"`
+
 	// text body
 	TextBody string `json:"textBody,omitempty"`
 }
 
 // Validate validates this ticket reply payload
 func (m *TicketReplyPayload) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TicketReplyPayload) validateStatus(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	if err := m.Status.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		}
+		return err
+	}
+
 	return nil
 }
 

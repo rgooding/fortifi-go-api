@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CreateAdvertiserCampaignPayload Payload for creating an advertiser campaign
+// CreateAdvertiserCampaignPayload DEPRECATED
 // swagger:model CreateAdvertiserCampaignPayload
 type CreateAdvertiserCampaignPayload struct {
 

@@ -25,6 +25,8 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetContactsFindByReferenceContactReferenceOK, error)
+
 	PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressConfirmOK, error)
 
 	PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressSubscribeOK, error)
@@ -36,6 +38,40 @@ type ClientService interface {
 	PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetContactsFindByReferenceContactReference finds a person with a reference
+*/
+func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetContactsFindByReferenceContactReferenceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetContactsFindByReferenceContactReferenceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetContactsFindByReferenceContactReference",
+		Method:             "GET",
+		PathPattern:        "/contacts/findByReference/{contactReference}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetContactsFindByReferenceContactReferenceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetContactsFindByReferenceContactReferenceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetContactsFindByReferenceContactReferenceDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*

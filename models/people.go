@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// People Generic Response
+// People People list
 // swagger:model People
 type People struct {
 	Pagination

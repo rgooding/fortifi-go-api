@@ -34,8 +34,8 @@ type Ticket struct {
 	// customer fid
 	CustomerFid string `json:"customerFid,omitempty"`
 
-	// data created
-	DataCreated int64 `json:"dataCreated,omitempty"`
+	// date created
+	DateCreated int64 `json:"dateCreated,omitempty"`
 
 	// date modified
 	DateModified int64 `json:"dateModified,omitempty"`
@@ -139,7 +139,7 @@ func (m *Ticket) UnmarshalJSON(raw []byte) error {
 
 		CustomerFid string `json:"customerFid,omitempty"`
 
-		DataCreated int64 `json:"dataCreated,omitempty"`
+		DateCreated int64 `json:"dateCreated,omitempty"`
 
 		DateModified int64 `json:"dateModified,omitempty"`
 
@@ -209,7 +209,7 @@ func (m *Ticket) UnmarshalJSON(raw []byte) error {
 
 	m.CustomerFid = dataAO1.CustomerFid
 
-	m.DataCreated = dataAO1.DataCreated
+	m.DateCreated = dataAO1.DateCreated
 
 	m.DateModified = dataAO1.DateModified
 
@@ -289,7 +289,7 @@ func (m Ticket) MarshalJSON() ([]byte, error) {
 
 		CustomerFid string `json:"customerFid,omitempty"`
 
-		DataCreated int64 `json:"dataCreated,omitempty"`
+		DateCreated int64 `json:"dateCreated,omitempty"`
 
 		DateModified int64 `json:"dateModified,omitempty"`
 
@@ -356,7 +356,7 @@ func (m Ticket) MarshalJSON() ([]byte, error) {
 
 	dataAO1.CustomerFid = m.CustomerFid
 
-	dataAO1.DataCreated = m.DataCreated
+	dataAO1.DateCreated = m.DateCreated
 
 	dataAO1.DateModified = m.DateModified
 

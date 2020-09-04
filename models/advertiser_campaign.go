@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AdvertiserCampaign Campaign
+// AdvertiserCampaign DEPRECATED
 // swagger:model AdvertiserCampaign
 type AdvertiserCampaign struct {
 	Entity

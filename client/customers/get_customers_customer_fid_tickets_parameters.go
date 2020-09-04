@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -66,6 +67,16 @@ type GetCustomersCustomerFidTicketsParams struct {
 
 	*/
 	CustomerFid string
+	/*Limit
+	  Maximum number of records per page (default: 20)
+
+	*/
+	Limit *int64
+	/*Page
+	  Page number (default: 1)
+
+	*/
+	Page *int64
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,6 +127,28 @@ func (o *GetCustomersCustomerFidTicketsParams) SetCustomerFid(customerFid string
 	o.CustomerFid = customerFid
 }
 
+// WithLimit adds the limit to the get customers customer fid tickets params
+func (o *GetCustomersCustomerFidTicketsParams) WithLimit(limit *int64) *GetCustomersCustomerFidTicketsParams {
+	o.SetLimit(limit)
+	return o
+}
+
+// SetLimit adds the limit to the get customers customer fid tickets params
+func (o *GetCustomersCustomerFidTicketsParams) SetLimit(limit *int64) {
+	o.Limit = limit
+}
+
+// WithPage adds the page to the get customers customer fid tickets params
+func (o *GetCustomersCustomerFidTicketsParams) WithPage(page *int64) *GetCustomersCustomerFidTicketsParams {
+	o.SetPage(page)
+	return o
+}
+
+// SetPage adds the page to the get customers customer fid tickets params
+func (o *GetCustomersCustomerFidTicketsParams) SetPage(page *int64) {
+	o.Page = page
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetCustomersCustomerFidTicketsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -127,6 +160,38 @@ func (o *GetCustomersCustomerFidTicketsParams) WriteToRequest(r runtime.ClientRe
 	// path param customerFid
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
+	}
+
+	if o.Limit != nil {
+
+		// query param limit
+		var qrLimit int64
+		if o.Limit != nil {
+			qrLimit = *o.Limit
+		}
+		qLimit := swag.FormatInt64(qrLimit)
+		if qLimit != "" {
+			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Page != nil {
+
+		// query param page
+		var qrPage int64
+		if o.Page != nil {
+			qrPage = *o.Page
+		}
+		qPage := swag.FormatInt64(qrPage)
+		if qPage != "" {
+			if err := r.SetQueryParam("page", qPage); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

@@ -25,49 +25,59 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAdvertisersAdvertiserFidApprovedOK, error)
+	DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidOK, error)
 
-	GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error)
+	DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidApprovedOK, error)
 
-	GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error)
+	GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersOK, error)
 
-	GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error)
+	GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidOK, error)
+
+	GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsOK, error)
+
+	GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error)
 
 	GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDOK, error)
 
 	GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDPixelsOK, error)
 
-	PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersOK, error)
+	PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersOK, error)
 
-	PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersAdvertiserFidCampaignsOK, error)
+	PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersPublisherFidCampaignsOK, error)
 
 	PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyOK, error)
 
 	PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error)
 
-	PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutAdvertisersAdvertiserFidApprovedOK, error)
+	PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidApprovedOK, error)
+
+	PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidDisableOK, error)
+
+	PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidEnableOK, error)
+
+	PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidRestoreOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  DeleteAdvertisersAdvertiserFidApproved removes approved status on an advertiser
+  DeletePublishersPublisherFid deletes a publisher
 */
-func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAdvertisersAdvertiserFidApprovedOK, error) {
+func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteAdvertisersAdvertiserFidApprovedParams()
+		params = NewDeletePublishersPublisherFidParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "DeleteAdvertisersAdvertiserFidApproved",
+		ID:                 "DeletePublishersPublisherFid",
 		Method:             "DELETE",
-		PathPattern:        "/advertisers/{advertiserFid}/approved",
+		PathPattern:        "/publishers/{publisherFid}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteAdvertisersAdvertiserFidApprovedReader{formats: a.formats},
+		Reader:             &DeletePublishersPublisherFidReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -75,33 +85,33 @@ func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertiser
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteAdvertisersAdvertiserFidApprovedOK)
+	success, ok := result.(*DeletePublishersPublisherFidOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*DeleteAdvertisersAdvertiserFidApprovedDefault)
+	unexpectedSuccess := result.(*DeletePublishersPublisherFidDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-  GetAdvertisers lists advertisers
+  DeletePublishersPublisherFidApproved removes approved status on an publisher
 */
-func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error) {
+func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidApprovedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAdvertisersParams()
+		params = NewDeletePublishersPublisherFidApprovedParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetAdvertisers",
-		Method:             "GET",
-		PathPattern:        "/advertisers",
+		ID:                 "DeletePublishersPublisherFidApproved",
+		Method:             "DELETE",
+		PathPattern:        "/publishers/{publisherFid}/approved",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAdvertisersReader{formats: a.formats},
+		Reader:             &DeletePublishersPublisherFidApprovedReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -109,33 +119,33 @@ func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAdvertisersOK)
+	success, ok := result.(*DeletePublishersPublisherFidApprovedOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*GetAdvertisersDefault)
+	unexpectedSuccess := result.(*DeletePublishersPublisherFidApprovedDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-  GetAdvertisersAdvertiserFid retrieves an advertiser
+  GetPublishers lists publishers
 */
-func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error) {
+func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAdvertisersAdvertiserFidParams()
+		params = NewGetPublishersParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetAdvertisersAdvertiserFid",
+		ID:                 "GetPublishers",
 		Method:             "GET",
-		PathPattern:        "/advertisers/{advertiserFid}",
+		PathPattern:        "/publishers",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAdvertisersAdvertiserFidReader{formats: a.formats},
+		Reader:             &GetPublishersReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -143,33 +153,33 @@ func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFid
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAdvertisersAdvertiserFidOK)
+	success, ok := result.(*GetPublishersOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*GetAdvertisersAdvertiserFidDefault)
+	unexpectedSuccess := result.(*GetPublishersDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-  GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid retrieves an advertiser campaign
+  GetPublishersPublisherFid retrieves a publisher
 */
-func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error) {
+func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams()
+		params = NewGetPublishersPublisherFidParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid",
+		ID:                 "GetPublishersPublisherFid",
 		Method:             "GET",
-		PathPattern:        "/advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}",
+		PathPattern:        "/publishers/{publisherFid}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidReader{formats: a.formats},
+		Reader:             &GetPublishersPublisherFidReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -177,12 +187,80 @@ func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(param
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK)
+	success, ok := result.(*GetPublishersPublisherFidOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault)
+	unexpectedSuccess := result.(*GetPublishersPublisherFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetPublishersPublisherFidCampaigns lists campaigns
+*/
+func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPublishersPublisherFidCampaignsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetPublishersPublisherFidCampaigns",
+		Method:             "GET",
+		PathPattern:        "/publishers/{publisherFid}/campaigns",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPublishersPublisherFidCampaignsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPublishersPublisherFidCampaignsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPublishersPublisherFidCampaignsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetPublishersPublisherFidCampaignsPublisherCampaignFid retrieves a publisher campaign
+*/
+func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPublishersPublisherFidCampaignsPublisherCampaignFidParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetPublishersPublisherFidCampaignsPublisherCampaignFid",
+		Method:             "GET",
+		PathPattern:        "/publishers/{publisherFid}/campaigns/{publisherCampaignFid}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPublishersPublisherFidCampaignsPublisherCampaignFidReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPublishersPublisherFidCampaignsPublisherCampaignFidDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -259,23 +337,23 @@ func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsPa
 }
 
 /*
-  PostAdvertisers creates a new advertiser
+  PostPublishers creates a new publisher
 */
-func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersOK, error) {
+func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostAdvertisersParams()
+		params = NewPostPublishersParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostAdvertisers",
+		ID:                 "PostPublishers",
 		Method:             "POST",
-		PathPattern:        "/advertisers",
+		PathPattern:        "/publishers",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostAdvertisersReader{formats: a.formats},
+		Reader:             &PostPublishersReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -283,33 +361,33 @@ func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostAdvertisersOK)
+	success, ok := result.(*PostPublishersOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*PostAdvertisersDefault)
+	unexpectedSuccess := result.(*PostPublishersDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-  PostAdvertisersAdvertiserFidCampaigns creates a new advertiser campaign
+  PostPublishersPublisherFidCampaigns creates a new publisher campaign
 */
-func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersAdvertiserFidCampaignsOK, error) {
+func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersPublisherFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostAdvertisersAdvertiserFidCampaignsParams()
+		params = NewPostPublishersPublisherFidCampaignsParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostAdvertisersAdvertiserFidCampaigns",
+		ID:                 "PostPublishersPublisherFidCampaigns",
 		Method:             "POST",
-		PathPattern:        "/advertisers/{advertiserFid}/campaigns",
+		PathPattern:        "/publishers/{publisherFid}/campaigns",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostAdvertisersAdvertiserFidCampaignsReader{formats: a.formats},
+		Reader:             &PostPublishersPublisherFidCampaignsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -317,12 +395,12 @@ func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAd
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostAdvertisersAdvertiserFidCampaignsOK)
+	success, ok := result.(*PostPublishersPublisherFidCampaignsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*PostAdvertisersAdvertiserFidCampaignsDefault)
+	unexpectedSuccess := result.(*PostPublishersPublisherFidCampaignsDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -401,23 +479,23 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisito
 }
 
 /*
-  PutAdvertisersAdvertiserFidApproved sets approved status on an advertiser
+  PutPublishersPublisherFidApproved sets approved status on an publisher
 */
-func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutAdvertisersAdvertiserFidApprovedOK, error) {
+func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidApprovedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutAdvertisersAdvertiserFidApprovedParams()
+		params = NewPutPublishersPublisherFidApprovedParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutAdvertisersAdvertiserFidApproved",
+		ID:                 "PutPublishersPublisherFidApproved",
 		Method:             "PUT",
-		PathPattern:        "/advertisers/{advertiserFid}/approved",
+		PathPattern:        "/publishers/{publisherFid}/approved",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutAdvertisersAdvertiserFidApprovedReader{formats: a.formats},
+		Reader:             &PutPublishersPublisherFidApprovedReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -425,12 +503,114 @@ func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdver
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutAdvertisersAdvertiserFidApprovedOK)
+	success, ok := result.(*PutPublishersPublisherFidApprovedOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*PutAdvertisersAdvertiserFidApprovedDefault)
+	unexpectedSuccess := result.(*PutPublishersPublisherFidApprovedDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PutPublishersPublisherFidDisable disables a publisher
+*/
+func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidDisableOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutPublishersPublisherFidDisableParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutPublishersPublisherFidDisable",
+		Method:             "PUT",
+		PathPattern:        "/publishers/{publisherFid}/disable",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutPublishersPublisherFidDisableReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutPublishersPublisherFidDisableOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutPublishersPublisherFidDisableDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PutPublishersPublisherFidEnable enables a publisher
+*/
+func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidEnableOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutPublishersPublisherFidEnableParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutPublishersPublisherFidEnable",
+		Method:             "PUT",
+		PathPattern:        "/publishers/{publisherFid}/enable",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutPublishersPublisherFidEnableReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutPublishersPublisherFidEnableOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutPublishersPublisherFidEnableDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PutPublishersPublisherFidRestore restores a publisher
+*/
+func (a *Client) PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidRestoreOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutPublishersPublisherFidRestoreParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutPublishersPublisherFidRestore",
+		Method:             "PUT",
+		PathPattern:        "/publishers/{publisherFid}/restore",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutPublishersPublisherFidRestoreReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutPublishersPublisherFidRestoreOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutPublishersPublisherFidRestoreDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

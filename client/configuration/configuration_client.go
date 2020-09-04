@@ -27,8 +27,6 @@ type Client struct {
 type ClientService interface {
 	DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidConfigSectionNameOK, error)
 
-	GetConfigurationFinanceGateways(params *GetConfigurationFinanceGatewaysParams, authInfo runtime.ClientAuthInfoWriter) (*GetConfigurationFinanceGatewaysOK, error)
-
 	GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameOK, error)
 
 	GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error)
@@ -69,40 +67,6 @@ func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntities
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*DeleteEntitiesEntityFidConfigSectionNameDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  GetConfigurationFinanceGateways lists all the current gateways
-*/
-func (a *Client) GetConfigurationFinanceGateways(params *GetConfigurationFinanceGatewaysParams, authInfo runtime.ClientAuthInfoWriter) (*GetConfigurationFinanceGatewaysOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetConfigurationFinanceGatewaysParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetConfigurationFinanceGateways",
-		Method:             "GET",
-		PathPattern:        "/configuration/finance/gateways",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetConfigurationFinanceGatewaysReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetConfigurationFinanceGatewaysOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*GetConfigurationFinanceGatewaysDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

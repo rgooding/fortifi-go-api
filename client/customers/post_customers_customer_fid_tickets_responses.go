@@ -49,7 +49,7 @@ func NewPostCustomersCustomerFidTicketsOK() *PostCustomersCustomerFidTicketsOK {
 
 /*PostCustomersCustomerFidTicketsOK handles this case with default header values.
 
-Customer Currency Updated
+Ticket Created
 */
 type PostCustomersCustomerFidTicketsOK struct {
 }

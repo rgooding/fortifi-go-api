@@ -6,6 +6,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
+	"github.com/go-openapi/errors"
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -19,10 +22,47 @@ type AvailabilityCheckResponse struct {
 
 	// is available
 	IsAvailable bool `json:"isAvailable,omitempty"`
+
+	// suggestions
+	Suggestions []*AvailabilityCheckSuggestionResponse `json:"suggestions"`
 }
 
 // Validate validates this availability check response
 func (m *AvailabilityCheckResponse) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateSuggestions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AvailabilityCheckResponse) validateSuggestions(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Suggestions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Suggestions); i++ {
+		if swag.IsZero(m.Suggestions[i]) { // not required
+			continue
+		}
+
+		if m.Suggestions[i] != nil {
+			if err := m.Suggestions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("suggestions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

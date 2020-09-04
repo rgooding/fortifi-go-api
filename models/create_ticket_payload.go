@@ -6,13 +6,20 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
+	"github.com/go-openapi/errors"
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateTicketPayload create ticket payload
 // swagger:model CreateTicketPayload
 type CreateTicketPayload struct {
+
+	// attachments
+	Attachments []string `json:"attachments"`
 
 	// brand fid
 	BrandFid string `json:"brandFid,omitempty"`
@@ -38,6 +45,10 @@ type CreateTicketPayload struct {
 	// html body
 	HTMLBody string `json:"htmlBody,omitempty"`
 
+	// impact
+	// Enum: [none minor moderate significant extensive]
+	Impact string `json:"impact,omitempty"`
+
 	// queue fid
 	QueueFid string `json:"queueFid,omitempty"`
 
@@ -48,11 +59,192 @@ type CreateTicketPayload struct {
 	TextBody string `json:"textBody,omitempty"`
 
 	// ticket type
+	// Enum: [generic question problem incident]
 	TicketType string `json:"ticketType,omitempty"`
+
+	// urgency
+	// Enum: [triage low normal high urgent emergency critical]
+	Urgency string `json:"urgency,omitempty"`
 }
 
 // Validate validates this create ticket payload
 func (m *CreateTicketPayload) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateImpact(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTicketType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUrgency(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var createTicketPayloadTypeImpactPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["none","minor","moderate","significant","extensive"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createTicketPayloadTypeImpactPropEnum = append(createTicketPayloadTypeImpactPropEnum, v)
+	}
+}
+
+const (
+
+	// CreateTicketPayloadImpactNone captures enum value "none"
+	CreateTicketPayloadImpactNone string = "none"
+
+	// CreateTicketPayloadImpactMinor captures enum value "minor"
+	CreateTicketPayloadImpactMinor string = "minor"
+
+	// CreateTicketPayloadImpactModerate captures enum value "moderate"
+	CreateTicketPayloadImpactModerate string = "moderate"
+
+	// CreateTicketPayloadImpactSignificant captures enum value "significant"
+	CreateTicketPayloadImpactSignificant string = "significant"
+
+	// CreateTicketPayloadImpactExtensive captures enum value "extensive"
+	CreateTicketPayloadImpactExtensive string = "extensive"
+)
+
+// prop value enum
+func (m *CreateTicketPayload) validateImpactEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, createTicketPayloadTypeImpactPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateTicketPayload) validateImpact(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Impact) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateImpactEnum("impact", "body", m.Impact); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var createTicketPayloadTypeTicketTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["generic","question","problem","incident"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createTicketPayloadTypeTicketTypePropEnum = append(createTicketPayloadTypeTicketTypePropEnum, v)
+	}
+}
+
+const (
+
+	// CreateTicketPayloadTicketTypeGeneric captures enum value "generic"
+	CreateTicketPayloadTicketTypeGeneric string = "generic"
+
+	// CreateTicketPayloadTicketTypeQuestion captures enum value "question"
+	CreateTicketPayloadTicketTypeQuestion string = "question"
+
+	// CreateTicketPayloadTicketTypeProblem captures enum value "problem"
+	CreateTicketPayloadTicketTypeProblem string = "problem"
+
+	// CreateTicketPayloadTicketTypeIncident captures enum value "incident"
+	CreateTicketPayloadTicketTypeIncident string = "incident"
+)
+
+// prop value enum
+func (m *CreateTicketPayload) validateTicketTypeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, createTicketPayloadTypeTicketTypePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateTicketPayload) validateTicketType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.TicketType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTicketTypeEnum("ticketType", "body", m.TicketType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var createTicketPayloadTypeUrgencyPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["triage","low","normal","high","urgent","emergency","critical"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createTicketPayloadTypeUrgencyPropEnum = append(createTicketPayloadTypeUrgencyPropEnum, v)
+	}
+}
+
+const (
+
+	// CreateTicketPayloadUrgencyTriage captures enum value "triage"
+	CreateTicketPayloadUrgencyTriage string = "triage"
+
+	// CreateTicketPayloadUrgencyLow captures enum value "low"
+	CreateTicketPayloadUrgencyLow string = "low"
+
+	// CreateTicketPayloadUrgencyNormal captures enum value "normal"
+	CreateTicketPayloadUrgencyNormal string = "normal"
+
+	// CreateTicketPayloadUrgencyHigh captures enum value "high"
+	CreateTicketPayloadUrgencyHigh string = "high"
+
+	// CreateTicketPayloadUrgencyUrgent captures enum value "urgent"
+	CreateTicketPayloadUrgencyUrgent string = "urgent"
+
+	// CreateTicketPayloadUrgencyEmergency captures enum value "emergency"
+	CreateTicketPayloadUrgencyEmergency string = "emergency"
+
+	// CreateTicketPayloadUrgencyCritical captures enum value "critical"
+	CreateTicketPayloadUrgencyCritical string = "critical"
+)
+
+// prop value enum
+func (m *CreateTicketPayload) validateUrgencyEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, createTicketPayloadTypeUrgencyPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateTicketPayload) validateUrgency(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Urgency) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateUrgencyEnum("urgency", "body", m.Urgency); err != nil {
+		return err
+	}
+
 	return nil
 }
 

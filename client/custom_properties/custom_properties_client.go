@@ -29,19 +29,13 @@ type ClientService interface {
 
 	DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
 
-	DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
-
-	GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
-
-	PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesOK, error)
+	GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
 
 	PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK, error)
 
 	PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK, error)
 
 	PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
-
-	PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -115,57 +109,23 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *Dele
 }
 
 /*
-  DeleteEntitiesEntityFidPropertiesValuesPropertyName removes a value property from an entity
+  GetEntitiesEntityFidPropertiesFlagsPropertyName gets a flag property from an entity
 */
-func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
+func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteEntitiesEntityFidPropertiesValuesPropertyNameParams()
+		params = NewGetEntitiesEntityFidPropertiesFlagsPropertyNameParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "DeleteEntitiesEntityFidPropertiesValuesPropertyName",
-		Method:             "DELETE",
-		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteEntitiesEntityFidPropertiesValuesPropertyNameReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  GetEntitiesEntityFidPropertiesValuesPropertyName gets a property value from an entity
-*/
-func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetEntitiesEntityFidPropertiesValuesPropertyNameParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetEntitiesEntityFidPropertiesValuesPropertyName",
+		ID:                 "GetEntitiesEntityFidPropertiesFlagsPropertyName",
 		Method:             "GET",
-		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
+		PathPattern:        "/entities/{entityFid}/properties/flags/{propertyName}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetEntitiesEntityFidPropertiesValuesPropertyNameReader{formats: a.formats},
+		Reader:             &GetEntitiesEntityFidPropertiesFlagsPropertyNameReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -173,46 +133,12 @@ func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEnt
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetEntitiesEntityFidPropertiesValuesPropertyNameOK)
+	success, ok := result.(*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*GetEntitiesEntityFidPropertiesValuesPropertyNameDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  PutEntitiesEntityFidProperties writes multiple entity properties
-*/
-func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutEntitiesEntityFidPropertiesParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutEntitiesEntityFidProperties",
-		Method:             "PUT",
-		PathPattern:        "/entities/{entityFid}/properties",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutEntitiesEntityFidPropertiesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PutEntitiesEntityFidPropertiesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*PutEntitiesEntityFidPropertiesDefault)
+	unexpectedSuccess := result.(*GetEntitiesEntityFidPropertiesFlagsPropertyNameDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -315,40 +241,6 @@ func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEnti
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PutEntitiesEntityFidPropertiesFlagsPropertyNameDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  PutEntitiesEntityFidPropertiesValuesPropertyName writes an entity value property
-*/
-func (a *Client) PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutEntitiesEntityFidPropertiesValuesPropertyNameParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutEntitiesEntityFidPropertiesValuesPropertyName",
-		Method:             "PUT",
-		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutEntitiesEntityFidPropertiesValuesPropertyNameReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PutEntitiesEntityFidPropertiesValuesPropertyNameOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*PutEntitiesEntityFidPropertiesValuesPropertyNameDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

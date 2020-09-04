@@ -10,9 +10,12 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AttachmentURL AttachmentUrl
+// AttachmentURL Attachment URL
 // swagger:model AttachmentUrl
 type AttachmentURL struct {
+
+	// file
+	File string `json:"file,omitempty"`
 
 	// URL to upload attachment to
 	URL string `json:"url,omitempty"`

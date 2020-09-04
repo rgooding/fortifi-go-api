@@ -16,14 +16,67 @@ import (
 // Tickets Generic Response
 // swagger:model Tickets
 type Tickets struct {
+	Pagination
 
 	// tickets
 	Tickets []*Ticket `json:"tickets"`
 }
 
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (m *Tickets) UnmarshalJSON(raw []byte) error {
+	// AO0
+	var aO0 Pagination
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	m.Pagination = aO0
+
+	// AO1
+	var dataAO1 struct {
+		Tickets []*Ticket `json:"tickets"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
+		return err
+	}
+
+	m.Tickets = dataAO1.Tickets
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (m Tickets) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	aO0, err := swag.WriteJSON(m.Pagination)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+
+	var dataAO1 struct {
+		Tickets []*Ticket `json:"tickets"`
+	}
+
+	dataAO1.Tickets = m.Tickets
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
+
+	return swag.ConcatJSON(_parts...), nil
+}
+
 // Validate validates this tickets
 func (m *Tickets) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	// validation for a type composition with Pagination
+	if err := m.Pagination.Validate(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateTickets(formats); err != nil {
 		res = append(res, err)

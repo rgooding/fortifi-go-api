@@ -10,11 +10,14 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PropertyValue Reason
+// PropertyValue A value type property
 // swagger:model PropertyValue
 type PropertyValue struct {
 
-	// Property Value
+	// Property name
+	Key string `json:"key,omitempty"`
+
+	// Value property value
 	PropertyValue string `json:"propertyValue,omitempty"`
 }
 

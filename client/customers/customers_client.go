@@ -49,6 +49,8 @@ type ClientService interface {
 
 	GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersCustomerFidInvoicesInvoiceFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidOK, error)
 
+	GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK, error)
+
 	GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOrdersParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidOrdersOK, error)
 
 	GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCustomerFidPaymentAccountsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentAccountsOK, error)
@@ -69,21 +71,31 @@ type ClientService interface {
 
 	GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsOK, error)
 
+	GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK, error)
+
 	GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsOK, error)
 
 	GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCustomerFidTicketsTicketFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidOK, error)
 
 	GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsOK, error)
 
+	GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments(params *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK, error)
+
 	GetCustomersFindByReference(params *GetCustomersFindByReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersFindByReferenceOK, error)
 
 	PostCustomers(params *PostCustomersParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersOK, error)
+
+	PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAddressesOK, error)
 
 	PostCustomersCustomerFidAnonymize(params *PostCustomersCustomerFidAnonymizeParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAnonymizeOK, error)
 
 	PostCustomersCustomerFidContacts(params *PostCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidContactsOK, error)
 
+	PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidEmailsOK, error)
+
 	PostCustomersCustomerFidInteractions(params *PostCustomersCustomerFidInteractionsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInteractionsOK, error)
+
+	PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error)
 
 	PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidNoteOK, error)
 
@@ -94,6 +106,8 @@ type ClientService interface {
 	PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK, error)
 
 	PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentsPaymentFidChargebackOK, error)
+
+	PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPhonesOK, error)
 
 	PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSarParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidSarOK, error)
 
@@ -160,6 +174,8 @@ type ClientService interface {
 	PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK, error)
 
 	PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK, error)
 
 	PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK, error)
 
@@ -451,7 +467,7 @@ func (a *Client) GetCustomersCustomerFidChatSessions(params *GetCustomersCustome
 }
 
 /*
-  GetCustomersCustomerFidContacts lists contacts
+  GetCustomersCustomerFidContacts lists of people
 */
 func (a *Client) GetCustomersCustomerFidContacts(params *GetCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidContactsOK, error) {
 	// TODO: Validate the params before sending
@@ -583,6 +599,40 @@ func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersC
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetCustomersCustomerFidInvoicesInvoiceFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetCustomersCustomerFidInvoicesInvoiceFidDownload retreives a specific itemised invoice p d f
+*/
+func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidInvoicesInvoiceFidDownload",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/invoices/{invoiceFid}/download",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidInvoicesInvoiceFidDownloadReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -927,6 +977,40 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(
 }
 
 /*
+  GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods retreives the periods for a subscription
+*/
+func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/periods",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetCustomersCustomerFidTickets gets support tickets for customer
 */
 func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsOK, error) {
@@ -1029,6 +1113,40 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustome
 }
 
 /*
+  GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments gets attachments for a ticket post
+*/
+func (a *Client) GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments(params *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/tickets/{ticketFid}/posts/{ticketPostTimestamp}/attachments",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetCustomersFindByReference finds a customer by your reference
 */
 func (a *Client) GetCustomersFindByReference(params *GetCustomersFindByReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersFindByReferenceOK, error) {
@@ -1097,6 +1215,40 @@ func (a *Client) PostCustomers(params *PostCustomersParams, authInfo runtime.Cli
 }
 
 /*
+  PostCustomersCustomerFidAddresses adds an address to a customer
+*/
+func (a *Client) PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAddressesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostCustomersCustomerFidAddressesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PostCustomersCustomerFidAddresses",
+		Method:             "POST",
+		PathPattern:        "/customers/{customerFid}/addresses",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostCustomersCustomerFidAddressesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostCustomersCustomerFidAddressesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidAddressesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PostCustomersCustomerFidAnonymize anonymizes customer data
 
   Anonymize customer data
@@ -1147,7 +1299,7 @@ func (a *Client) PostCustomersCustomerFidContacts(params *PostCustomersCustomerF
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/contacts",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json", "multipart/form-data"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostCustomersCustomerFidContactsReader{formats: a.formats},
@@ -1164,6 +1316,40 @@ func (a *Client) PostCustomersCustomerFidContacts(params *PostCustomersCustomerF
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PostCustomersCustomerFidContactsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PostCustomersCustomerFidEmails adds an email address to a customer
+*/
+func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidEmailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostCustomersCustomerFidEmailsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PostCustomersCustomerFidEmails",
+		Method:             "POST",
+		PathPattern:        "/customers/{customerFid}/emails",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostCustomersCustomerFidEmailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostCustomersCustomerFidEmailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidEmailsDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -1198,6 +1384,40 @@ func (a *Client) PostCustomersCustomerFidInteractions(params *PostCustomersCusto
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PostCustomersCustomerFidInteractionsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PostCustomersCustomerFidInvoicesInvoiceFidCreditNote adds a credit note to a customers invoice
+*/
+func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PostCustomersCustomerFidInvoicesInvoiceFidCreditNote",
+		Method:             "POST",
+		PathPattern:        "/customers/{customerFid}/invoices/{invoiceFid}/creditNote",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
@@ -1372,6 +1592,40 @@ func (a *Client) PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *Po
 }
 
 /*
+  PostCustomersCustomerFidPhones adds a phone number to a customer
+*/
+func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPhonesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostCustomersCustomerFidPhonesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PostCustomersCustomerFidPhones",
+		Method:             "POST",
+		PathPattern:        "/customers/{customerFid}/phones",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostCustomersCustomerFidPhonesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostCustomersCustomerFidPhonesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidPhonesDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PostCustomersCustomerFidSar subjects access request
 
   Initiate a Subject Access Request.  A URL will be sent via a webhook (CustomerWHE::SUBJECT_ACCESS_REQUEST), once the archive is ready for download
@@ -1410,6 +1664,9 @@ func (a *Client) PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSar
 
 /*
   PostCustomersCustomerFidTickets creates a new support ticket
+
+  The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
+
 */
 func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsOK, error) {
 	// TODO: Validate the params before sending
@@ -1444,6 +1701,9 @@ func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFi
 
 /*
   PostCustomersCustomerFidTicketsTicketFidPosts posts a reply to a ticket
+
+  The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
+
 */
 func (a *Client) PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsTicketFidPostsOK, error) {
 	// TODO: Validate the params before sending
@@ -2493,6 +2753,40 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(param
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund refunds a subscription period
+*/
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

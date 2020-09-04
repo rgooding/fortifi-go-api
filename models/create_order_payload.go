@@ -47,11 +47,14 @@ type CreateOrderPayload struct {
 	// FID for the payment account you wish to charge the customer through
 	PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 
-	// Product price FIDs to add
+	// Add Products based on the price FIDs (For Products with multiple Prices, enter a specific Product Price Fid to add the product with that specified price)
 	ProductPriceFids []string `json:"productPriceFids"`
 
-	// products
+	// Add Products based on Product FIDs (For products with multiple Prices, this will  automatically select lowest price)
 	Products []*OrderProductPayload `json:"products"`
+
+	// publisher
+	Publisher *OrderPublisherPayload `json:"publisher,omitempty"`
 
 	// type
 	Type CreateOrderType `json:"type,omitempty"`
@@ -65,6 +68,10 @@ func (m *CreateOrderPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateProducts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePublisher(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -98,6 +105,24 @@ func (m *CreateOrderPayload) validateProducts(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CreateOrderPayload) validatePublisher(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Publisher) { // not required
+		return nil
+	}
+
+	if m.Publisher != nil {
+		if err := m.Publisher.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("publisher")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -19,7 +19,7 @@ type Subscriptions struct {
 	Pagination
 
 	// subscriptions
-	Subscriptions []*SubscriptionSummary `json:"subscriptions"`
+	Subscriptions []*Subscription `json:"subscriptions"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -33,7 +33,7 @@ func (m *Subscriptions) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
-		Subscriptions []*SubscriptionSummary `json:"subscriptions"`
+		Subscriptions []*Subscription `json:"subscriptions"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
@@ -55,7 +55,7 @@ func (m Subscriptions) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 
 	var dataAO1 struct {
-		Subscriptions []*SubscriptionSummary `json:"subscriptions"`
+		Subscriptions []*Subscription `json:"subscriptions"`
 	}
 
 	dataAO1.Subscriptions = m.Subscriptions

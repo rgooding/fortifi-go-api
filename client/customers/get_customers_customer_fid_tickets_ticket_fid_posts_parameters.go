@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -61,11 +62,21 @@ for the get customers customer fid tickets ticket fid posts operation typically 
 */
 type GetCustomersCustomerFidTicketsTicketFidPostsParams struct {
 
+	/*BeforeTimestamp
+	  Show posts before timestamp
+
+	*/
+	BeforeTimestamp *int64
 	/*CustomerFid
 	  Customer FID to use
 
 	*/
 	CustomerFid string
+	/*Limit
+	  Maximum number of records per page (default: 20, max: 100)
+
+	*/
+	Limit *int64
 	/*TicketFid
 	  Ticket FID to use
 
@@ -110,6 +121,17 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) SetHTTPClient(clien
 	o.HTTPClient = client
 }
 
+// WithBeforeTimestamp adds the beforeTimestamp to the get customers customer fid tickets ticket fid posts params
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WithBeforeTimestamp(beforeTimestamp *int64) *GetCustomersCustomerFidTicketsTicketFidPostsParams {
+	o.SetBeforeTimestamp(beforeTimestamp)
+	return o
+}
+
+// SetBeforeTimestamp adds the beforeTimestamp to the get customers customer fid tickets ticket fid posts params
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) SetBeforeTimestamp(beforeTimestamp *int64) {
+	o.BeforeTimestamp = beforeTimestamp
+}
+
 // WithCustomerFid adds the customerFid to the get customers customer fid tickets ticket fid posts params
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WithCustomerFid(customerFid string) *GetCustomersCustomerFidTicketsTicketFidPostsParams {
 	o.SetCustomerFid(customerFid)
@@ -119,6 +141,17 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WithCustomerFid(cus
 // SetCustomerFid adds the customerFid to the get customers customer fid tickets ticket fid posts params
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) SetCustomerFid(customerFid string) {
 	o.CustomerFid = customerFid
+}
+
+// WithLimit adds the limit to the get customers customer fid tickets ticket fid posts params
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WithLimit(limit *int64) *GetCustomersCustomerFidTicketsTicketFidPostsParams {
+	o.SetLimit(limit)
+	return o
+}
+
+// SetLimit adds the limit to the get customers customer fid tickets ticket fid posts params
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) SetLimit(limit *int64) {
+	o.Limit = limit
 }
 
 // WithTicketFid adds the ticketFid to the get customers customer fid tickets ticket fid posts params
@@ -140,9 +173,41 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WriteToRequest(r ru
 	}
 	var res []error
 
+	if o.BeforeTimestamp != nil {
+
+		// query param beforeTimestamp
+		var qrBeforeTimestamp int64
+		if o.BeforeTimestamp != nil {
+			qrBeforeTimestamp = *o.BeforeTimestamp
+		}
+		qBeforeTimestamp := swag.FormatInt64(qrBeforeTimestamp)
+		if qBeforeTimestamp != "" {
+			if err := r.SetQueryParam("beforeTimestamp", qBeforeTimestamp); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	// path param customerFid
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
+	}
+
+	if o.Limit != nil {
+
+		// query param limit
+		var qrLimit int64
+		if o.Limit != nil {
+			qrLimit = *o.Limit
+		}
+		qLimit := swag.FormatInt64(qrLimit)
+		if qLimit != "" {
+			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param ticketFid

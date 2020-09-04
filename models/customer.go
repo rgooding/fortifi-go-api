@@ -28,6 +28,9 @@ type Customer struct {
 	// currency
 	Currency string `json:"currency,omitempty"`
 
+	// display name
+	DisplayName string `json:"displayName,omitempty"`
+
 	// email
 	Email string `json:"email,omitempty"`
 
@@ -48,6 +51,9 @@ type Customer struct {
 
 	// phone
 	Phone string `json:"phone,omitempty"`
+
+	// phone number
+	PhoneNumber string `json:"phoneNumber,omitempty"`
 
 	// tax number
 	TaxNumber string `json:"taxNumber,omitempty"`
@@ -75,6 +81,8 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 		Currency string `json:"currency,omitempty"`
 
+		DisplayName string `json:"displayName,omitempty"`
+
 		Email string `json:"email,omitempty"`
 
 		ExternalReference string `json:"externalReference,omitempty"`
@@ -88,6 +96,8 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 		Name string `json:"name,omitempty"`
 
 		Phone string `json:"phone,omitempty"`
+
+		PhoneNumber string `json:"phoneNumber,omitempty"`
 
 		TaxNumber string `json:"taxNumber,omitempty"`
 
@@ -105,6 +115,8 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 	m.Currency = dataAO1.Currency
 
+	m.DisplayName = dataAO1.DisplayName
+
 	m.Email = dataAO1.Email
 
 	m.ExternalReference = dataAO1.ExternalReference
@@ -118,6 +130,8 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 	m.Name = dataAO1.Name
 
 	m.Phone = dataAO1.Phone
+
+	m.PhoneNumber = dataAO1.PhoneNumber
 
 	m.TaxNumber = dataAO1.TaxNumber
 
@@ -145,6 +159,8 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 		Currency string `json:"currency,omitempty"`
 
+		DisplayName string `json:"displayName,omitempty"`
+
 		Email string `json:"email,omitempty"`
 
 		ExternalReference string `json:"externalReference,omitempty"`
@@ -159,6 +175,8 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 		Phone string `json:"phone,omitempty"`
 
+		PhoneNumber string `json:"phoneNumber,omitempty"`
+
 		TaxNumber string `json:"taxNumber,omitempty"`
 
 		Timezone string `json:"timezone,omitempty"`
@@ -171,6 +189,8 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 	dataAO1.CompanyNumber = m.CompanyNumber
 
 	dataAO1.Currency = m.Currency
+
+	dataAO1.DisplayName = m.DisplayName
 
 	dataAO1.Email = m.Email
 
@@ -185,6 +205,8 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 	dataAO1.Name = m.Name
 
 	dataAO1.Phone = m.Phone
+
+	dataAO1.PhoneNumber = m.PhoneNumber
 
 	dataAO1.TaxNumber = m.TaxNumber
 

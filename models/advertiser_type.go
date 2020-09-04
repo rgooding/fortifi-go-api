@@ -14,7 +14,7 @@ import (
 )
 
 // AdvertiserType Advertiser Type
-// swagger:model advertiserType
+// swagger:model AdvertiserType
 type AdvertiserType string
 
 const (
@@ -27,6 +27,36 @@ const (
 
 	// AdvertiserTypeCustomer captures enum value "customer"
 	AdvertiserTypeCustomer AdvertiserType = "customer"
+
+	// AdvertiserTypeDisplay captures enum value "display"
+	AdvertiserTypeDisplay AdvertiserType = "display"
+
+	// AdvertiserTypePriorityAffiliate captures enum value "priority_affiliate"
+	AdvertiserTypePriorityAffiliate AdvertiserType = "priority_affiliate"
+
+	// AdvertiserTypeOffline captures enum value "offline"
+	AdvertiserTypeOffline AdvertiserType = "offline"
+
+	// AdvertiserTypePpc captures enum value "ppc"
+	AdvertiserTypePpc AdvertiserType = "ppc"
+
+	// AdvertiserTypeInternal captures enum value "internal"
+	AdvertiserTypeInternal AdvertiserType = "internal"
+
+	// AdvertiserTypeSearchEngine captures enum value "search_engine"
+	AdvertiserTypeSearchEngine AdvertiserType = "search_engine"
+
+	// AdvertiserTypeMobile captures enum value "mobile"
+	AdvertiserTypeMobile AdvertiserType = "mobile"
+
+	// AdvertiserTypeEmail captures enum value "email"
+	AdvertiserTypeEmail AdvertiserType = "email"
+
+	// AdvertiserTypeRetarget captures enum value "retarget"
+	AdvertiserTypeRetarget AdvertiserType = "retarget"
+
+	// AdvertiserTypeContent captures enum value "content"
+	AdvertiserTypeContent AdvertiserType = "content"
 )
 
 // for schema
@@ -34,7 +64,7 @@ var advertiserTypeEnum []interface{}
 
 func init() {
 	var res []AdvertiserType
-	if err := json.Unmarshal([]byte(`["affiliate","network","customer"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["affiliate","network","customer","display","priority_affiliate","offline","ppc","internal","search_engine","mobile","email","retarget","content"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

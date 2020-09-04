@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Person Generic Response
+// Person A person
 // swagger:model Person
 type Person struct {
 	Entity
@@ -27,6 +27,9 @@ type Person struct {
 
 	// default phone fid
 	DefaultPhoneFid string `json:"defaultPhoneFid,omitempty"`
+
+	// external reference
+	ExternalReference string `json:"externalReference,omitempty"`
 
 	// first name
 	FirstName string `json:"firstName,omitempty"`
@@ -72,6 +75,8 @@ func (m *Person) UnmarshalJSON(raw []byte) error {
 
 		DefaultPhoneFid string `json:"defaultPhoneFid,omitempty"`
 
+		ExternalReference string `json:"externalReference,omitempty"`
+
 		FirstName string `json:"firstName,omitempty"`
 
 		JobTitle string `json:"jobTitle,omitempty"`
@@ -99,6 +104,8 @@ func (m *Person) UnmarshalJSON(raw []byte) error {
 	m.DefaultEmailFid = dataAO1.DefaultEmailFid
 
 	m.DefaultPhoneFid = dataAO1.DefaultPhoneFid
+
+	m.ExternalReference = dataAO1.ExternalReference
 
 	m.FirstName = dataAO1.FirstName
 
@@ -138,6 +145,8 @@ func (m Person) MarshalJSON() ([]byte, error) {
 
 		DefaultPhoneFid string `json:"defaultPhoneFid,omitempty"`
 
+		ExternalReference string `json:"externalReference,omitempty"`
+
 		FirstName string `json:"firstName,omitempty"`
 
 		JobTitle string `json:"jobTitle,omitempty"`
@@ -162,6 +171,8 @@ func (m Person) MarshalJSON() ([]byte, error) {
 	dataAO1.DefaultEmailFid = m.DefaultEmailFid
 
 	dataAO1.DefaultPhoneFid = m.DefaultPhoneFid
+
+	dataAO1.ExternalReference = m.ExternalReference
 
 	dataAO1.FirstName = m.FirstName
 

@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -61,6 +62,8 @@ for the post customers customer fid tickets operation typically these are writte
 */
 type PostCustomersCustomerFidTicketsParams struct {
 
+	/*Attachments*/
+	Attachments []string
 	/*Content
 	  Content of the support ticket
 
@@ -128,6 +131,17 @@ func (o *PostCustomersCustomerFidTicketsParams) WithHTTPClient(client *http.Clie
 // SetHTTPClient adds the HTTPClient to the post customers customer fid tickets params
 func (o *PostCustomersCustomerFidTicketsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithAttachments adds the attachments to the post customers customer fid tickets params
+func (o *PostCustomersCustomerFidTicketsParams) WithAttachments(attachments []string) *PostCustomersCustomerFidTicketsParams {
+	o.SetAttachments(attachments)
+	return o
+}
+
+// SetAttachments adds the attachments to the post customers customer fid tickets params
+func (o *PostCustomersCustomerFidTicketsParams) SetAttachments(attachments []string) {
+	o.Attachments = attachments
 }
 
 // WithContent adds the content to the post customers customer fid tickets params
@@ -203,6 +217,14 @@ func (o *PostCustomersCustomerFidTicketsParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
+
+	valuesAttachments := o.Attachments
+
+	joinedAttachments := swag.JoinByFormat(valuesAttachments, "")
+	// form array param attachments
+	if err := r.SetFormParam("attachments", joinedAttachments...); err != nil {
+		return err
+	}
 
 	// form param content
 	frContent := o.Content

@@ -126,7 +126,7 @@ type GetCustomersCustomerFidContactsContactFidOKBody struct {
 	models.Envelope
 
 	// data
-	Data *models.CustomerContact `json:"data,omitempty"`
+	Data *models.Person `json:"data,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -140,7 +140,7 @@ func (o *GetCustomersCustomerFidContactsContactFidOKBody) UnmarshalJSON(raw []by
 
 	// GetCustomersCustomerFidContactsContactFidOKBodyAO1
 	var dataGetCustomersCustomerFidContactsContactFidOKBodyAO1 struct {
-		Data *models.CustomerContact `json:"data,omitempty"`
+		Data *models.Person `json:"data,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataGetCustomersCustomerFidContactsContactFidOKBodyAO1); err != nil {
 		return err
@@ -162,7 +162,7 @@ func (o GetCustomersCustomerFidContactsContactFidOKBody) MarshalJSON() ([]byte, 
 	_parts = append(_parts, getCustomersCustomerFidContactsContactFidOKBodyAO0)
 
 	var dataGetCustomersCustomerFidContactsContactFidOKBodyAO1 struct {
-		Data *models.CustomerContact `json:"data,omitempty"`
+		Data *models.Person `json:"data,omitempty"`
 	}
 
 	dataGetCustomersCustomerFidContactsContactFidOKBodyAO1.Data = o.Data

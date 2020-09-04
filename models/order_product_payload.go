@@ -27,6 +27,9 @@ type OrderProductPayload struct {
 	// display name
 	DisplayName string `json:"displayName,omitempty"`
 
+	// Offer FID to apply to product
+	OfferFid string `json:"offerFid,omitempty"`
+
 	// Product Parent FID or reference
 	Parent string `json:"parent,omitempty"`
 

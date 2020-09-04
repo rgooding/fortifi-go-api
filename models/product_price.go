@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ProductPrice Generic Response
+// ProductPrice Product Price
 // swagger:model ProductPrice
 type ProductPrice struct {
 	Entity
@@ -34,11 +34,17 @@ type ProductPrice struct {
 	// price
 	Price string `json:"price,omitempty"`
 
+	// price band fid
+	PriceBandFid string `json:"priceBandFid,omitempty"`
+
 	// product fid
 	ProductFid string `json:"productFid,omitempty"`
 
 	// setup fee
 	SetupFee string `json:"setupFee,omitempty"`
+
+	// sku fid
+	SkuFid string `json:"skuFid,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -64,9 +70,13 @@ func (m *ProductPrice) UnmarshalJSON(raw []byte) error {
 
 		Price string `json:"price,omitempty"`
 
+		PriceBandFid string `json:"priceBandFid,omitempty"`
+
 		ProductFid string `json:"productFid,omitempty"`
 
 		SetupFee string `json:"setupFee,omitempty"`
+
+		SkuFid string `json:"skuFid,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
@@ -84,9 +94,13 @@ func (m *ProductPrice) UnmarshalJSON(raw []byte) error {
 
 	m.Price = dataAO1.Price
 
+	m.PriceBandFid = dataAO1.PriceBandFid
+
 	m.ProductFid = dataAO1.ProductFid
 
 	m.SetupFee = dataAO1.SetupFee
+
+	m.SkuFid = dataAO1.SkuFid
 
 	return nil
 }
@@ -114,9 +128,13 @@ func (m ProductPrice) MarshalJSON() ([]byte, error) {
 
 		Price string `json:"price,omitempty"`
 
+		PriceBandFid string `json:"priceBandFid,omitempty"`
+
 		ProductFid string `json:"productFid,omitempty"`
 
 		SetupFee string `json:"setupFee,omitempty"`
+
+		SkuFid string `json:"skuFid,omitempty"`
 	}
 
 	dataAO1.Currency = m.Currency
@@ -131,9 +149,13 @@ func (m ProductPrice) MarshalJSON() ([]byte, error) {
 
 	dataAO1.Price = m.Price
 
+	dataAO1.PriceBandFid = m.PriceBandFid
+
 	dataAO1.ProductFid = m.ProductFid
 
 	dataAO1.SetupFee = m.SetupFee
+
+	dataAO1.SkuFid = m.SkuFid
 
 	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
 	if errAO1 != nil {

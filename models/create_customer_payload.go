@@ -32,6 +32,9 @@ type CreateCustomerPayload struct {
 	// IP Address of the visitor
 	ClientIP string `json:"clientIp,omitempty"`
 
+	// Company registration number (If customer is a company)
+	CompanyNumber string `json:"companyNumber,omitempty"`
+
 	// Currency
 	Currency string `json:"currency,omitempty"`
 
@@ -61,6 +64,9 @@ type CreateCustomerPayload struct {
 
 	// subscription type
 	SubscriptionType CustomerSubscriptionType `json:"subscriptionType,omitempty"`
+
+	// VAT number
+	TaxNumber string `json:"taxNumber,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time

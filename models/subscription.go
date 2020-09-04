@@ -78,6 +78,12 @@ type Subscription struct {
 	// Format: date-time
 	EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
+	// Unique External Identifier for this subscription
+	ExternalReference string `json:"externalReference,omitempty"`
+
+	// An identity for this subscription, this is a non unique identfier
+	Identity string `json:"identity,omitempty"`
+
 	// invoice fid
 	InvoiceFid string `json:"invoiceFid,omitempty"`
 
@@ -108,6 +114,9 @@ type Subscription struct {
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
 	PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
+
+	// parent fid
+	ParentFid string `json:"parentFid,omitempty"`
 
 	// price fid
 	PriceFid string `json:"priceFid,omitempty"`
@@ -140,12 +149,15 @@ type Subscription struct {
 	// should suspend
 	ShouldSuspend bool `json:"shouldSuspend,omitempty"`
 
+	// sku fid
+	SkuFid string `json:"skuFid,omitempty"`
+
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
 	StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
 	// status
-	Status string `json:"status,omitempty"`
+	Status PurchaseStatus `json:"status,omitempty"`
 
 	// suspend days
 	SuspendDays int32 `json:"suspendDays,omitempty"`
@@ -170,7 +182,7 @@ type Subscription struct {
 	// Format: date-time
 	TrialStartDate strfmt.DateTime `json:"trialStartDate,omitempty"`
 
-	// unique reference
+	// Licence Key / Membership Number
 	UniqueReference string `json:"uniqueReference,omitempty"`
 }
 
@@ -219,6 +231,10 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 
 		EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
+		ExternalReference string `json:"externalReference,omitempty"`
+
+		Identity string `json:"identity,omitempty"`
+
 		InvoiceFid string `json:"invoiceFid,omitempty"`
 
 		IsPaid bool `json:"isPaid,omitempty"`
@@ -236,6 +252,8 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 		PaidRenewals int32 `json:"paidRenewals,omitempty"`
 
 		PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
+
+		ParentFid string `json:"parentFid,omitempty"`
 
 		PriceFid string `json:"priceFid,omitempty"`
 
@@ -257,9 +275,11 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 
 		ShouldSuspend bool `json:"shouldSuspend,omitempty"`
 
+		SkuFid string `json:"skuFid,omitempty"`
+
 		StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
-		Status string `json:"status,omitempty"`
+		Status PurchaseStatus `json:"status,omitempty"`
 
 		SuspendDays int32 `json:"suspendDays,omitempty"`
 
@@ -315,6 +335,10 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 
 	m.EndDate = dataAO1.EndDate
 
+	m.ExternalReference = dataAO1.ExternalReference
+
+	m.Identity = dataAO1.Identity
+
 	m.InvoiceFid = dataAO1.InvoiceFid
 
 	m.IsPaid = dataAO1.IsPaid
@@ -332,6 +356,8 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 	m.PaidRenewals = dataAO1.PaidRenewals
 
 	m.PaidUntil = dataAO1.PaidUntil
+
+	m.ParentFid = dataAO1.ParentFid
 
 	m.PriceFid = dataAO1.PriceFid
 
@@ -352,6 +378,8 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 	m.ShouldCancel = dataAO1.ShouldCancel
 
 	m.ShouldSuspend = dataAO1.ShouldSuspend
+
+	m.SkuFid = dataAO1.SkuFid
 
 	m.StartDate = dataAO1.StartDate
 
@@ -421,6 +449,10 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 
 		EndDate strfmt.DateTime `json:"endDate,omitempty"`
 
+		ExternalReference string `json:"externalReference,omitempty"`
+
+		Identity string `json:"identity,omitempty"`
+
 		InvoiceFid string `json:"invoiceFid,omitempty"`
 
 		IsPaid bool `json:"isPaid,omitempty"`
@@ -438,6 +470,8 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 		PaidRenewals int32 `json:"paidRenewals,omitempty"`
 
 		PaidUntil strfmt.DateTime `json:"paidUntil,omitempty"`
+
+		ParentFid string `json:"parentFid,omitempty"`
 
 		PriceFid string `json:"priceFid,omitempty"`
 
@@ -459,9 +493,11 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 
 		ShouldSuspend bool `json:"shouldSuspend,omitempty"`
 
+		SkuFid string `json:"skuFid,omitempty"`
+
 		StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
-		Status string `json:"status,omitempty"`
+		Status PurchaseStatus `json:"status,omitempty"`
 
 		SuspendDays int32 `json:"suspendDays,omitempty"`
 
@@ -514,6 +550,10 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 
 	dataAO1.EndDate = m.EndDate
 
+	dataAO1.ExternalReference = m.ExternalReference
+
+	dataAO1.Identity = m.Identity
+
 	dataAO1.InvoiceFid = m.InvoiceFid
 
 	dataAO1.IsPaid = m.IsPaid
@@ -531,6 +571,8 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 	dataAO1.PaidRenewals = m.PaidRenewals
 
 	dataAO1.PaidUntil = m.PaidUntil
+
+	dataAO1.ParentFid = m.ParentFid
 
 	dataAO1.PriceFid = m.PriceFid
 
@@ -551,6 +593,8 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 	dataAO1.ShouldCancel = m.ShouldCancel
 
 	dataAO1.ShouldSuspend = m.ShouldSuspend
+
+	dataAO1.SkuFid = m.SkuFid
 
 	dataAO1.StartDate = m.StartDate
 
@@ -651,6 +695,10 @@ func (m *Subscription) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -870,6 +918,22 @@ func (m *Subscription) validateStartDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Subscription) validateStatus(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	if err := m.Status.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		}
 		return err
 	}
 

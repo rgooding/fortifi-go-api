@@ -91,6 +91,11 @@ type PutCustomersCustomerFidContactsContactFidParams struct {
 
 	*/
 	DefaultPhoneFid *string
+	/*ExternalReference
+	  External Reference
+
+	*/
+	ExternalReference *string
 	/*FirstName
 	  First Name
 
@@ -229,6 +234,17 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WithDefaultPhoneFid(de
 // SetDefaultPhoneFid adds the defaultPhoneFid to the put customers customer fid contacts contact fid params
 func (o *PutCustomersCustomerFidContactsContactFidParams) SetDefaultPhoneFid(defaultPhoneFid *string) {
 	o.DefaultPhoneFid = defaultPhoneFid
+}
+
+// WithExternalReference adds the externalReference to the put customers customer fid contacts contact fid params
+func (o *PutCustomersCustomerFidContactsContactFidParams) WithExternalReference(externalReference *string) *PutCustomersCustomerFidContactsContactFidParams {
+	o.SetExternalReference(externalReference)
+	return o
+}
+
+// SetExternalReference adds the externalReference to the put customers customer fid contacts contact fid params
+func (o *PutCustomersCustomerFidContactsContactFidParams) SetExternalReference(externalReference *string) {
+	o.ExternalReference = externalReference
 }
 
 // WithFirstName adds the firstName to the put customers customer fid contacts contact fid params
@@ -384,6 +400,22 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 		fDefaultPhoneFid := frDefaultPhoneFid
 		if fDefaultPhoneFid != "" {
 			if err := r.SetFormParam("defaultPhoneFid", fDefaultPhoneFid); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.ExternalReference != nil {
+
+		// form param externalReference
+		var frExternalReference string
+		if o.ExternalReference != nil {
+			frExternalReference = *o.ExternalReference
+		}
+		fExternalReference := frExternalReference
+		if fExternalReference != "" {
+			if err := r.SetFormParam("externalReference", fExternalReference); err != nil {
 				return err
 			}
 		}

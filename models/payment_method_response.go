@@ -20,9 +20,21 @@ type PaymentMethodResponse struct {
 	// account holder
 	AccountHolder string `json:"accountHolder,omitempty"`
 
+	// challenge count
+	ChallengeCount float64 `json:"challengeCount,omitempty"`
+
+	// decline count
+	DeclineCount float64 `json:"declineCount,omitempty"`
+
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
 	ExpiryDate strfmt.DateTime `json:"expiryDate,omitempty"`
+
+	// identify count
+	IdentifyCount float64 `json:"identifyCount,omitempty"`
+
+	// is primary
+	IsPrimary bool `json:"isPrimary,omitempty"`
 
 	// issue number
 	IssueNumber string `json:"issueNumber,omitempty"`
@@ -33,6 +45,22 @@ type PaymentMethodResponse struct {
 	// last4
 	Last4 string `json:"last4,omitempty"`
 
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	LastChallengeTime strfmt.DateTime `json:"lastChallengeTime,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	LastIdentifyTime strfmt.DateTime `json:"lastIdentifyTime,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	LastSuccessChallengeTime strfmt.DateTime `json:"lastSuccessChallengeTime,omitempty"`
+
+	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
+	// Format: date-time
+	LockExpiresAt strfmt.DateTime `json:"lockExpiresAt,omitempty"`
+
 	// method scheme
 	MethodScheme string `json:"methodScheme,omitempty"`
 
@@ -41,6 +69,15 @@ type PaymentMethodResponse struct {
 
 	// method type
 	MethodType string `json:"methodType,omitempty"`
+
+	// successful challenges
+	SuccessfulChallenges float64 `json:"successfulChallenges,omitempty"`
+
+	// successful transactions
+	SuccessfulTransactions float64 `json:"successfulTransactions,omitempty"`
+
+	// token Uuid
+	TokenUUID string `json:"tokenUuid,omitempty"`
 
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
@@ -60,7 +97,15 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 	var dataAO1 struct {
 		AccountHolder string `json:"accountHolder,omitempty"`
 
+		ChallengeCount float64 `json:"challengeCount,omitempty"`
+
+		DeclineCount float64 `json:"declineCount,omitempty"`
+
 		ExpiryDate strfmt.DateTime `json:"expiryDate,omitempty"`
+
+		IdentifyCount float64 `json:"identifyCount,omitempty"`
+
+		IsPrimary bool `json:"isPrimary,omitempty"`
 
 		IssueNumber string `json:"issueNumber,omitempty"`
 
@@ -68,11 +113,25 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 
 		Last4 string `json:"last4,omitempty"`
 
+		LastChallengeTime strfmt.DateTime `json:"lastChallengeTime,omitempty"`
+
+		LastIdentifyTime strfmt.DateTime `json:"lastIdentifyTime,omitempty"`
+
+		LastSuccessChallengeTime strfmt.DateTime `json:"lastSuccessChallengeTime,omitempty"`
+
+		LockExpiresAt strfmt.DateTime `json:"lockExpiresAt,omitempty"`
+
 		MethodScheme string `json:"methodScheme,omitempty"`
 
 		MethodSubType string `json:"methodSubType,omitempty"`
 
 		MethodType string `json:"methodType,omitempty"`
+
+		SuccessfulChallenges float64 `json:"successfulChallenges,omitempty"`
+
+		SuccessfulTransactions float64 `json:"successfulTransactions,omitempty"`
+
+		TokenUUID string `json:"tokenUuid,omitempty"`
 
 		ValidFromDate strfmt.DateTime `json:"validFromDate,omitempty"`
 	}
@@ -82,7 +141,15 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 
 	m.AccountHolder = dataAO1.AccountHolder
 
+	m.ChallengeCount = dataAO1.ChallengeCount
+
+	m.DeclineCount = dataAO1.DeclineCount
+
 	m.ExpiryDate = dataAO1.ExpiryDate
+
+	m.IdentifyCount = dataAO1.IdentifyCount
+
+	m.IsPrimary = dataAO1.IsPrimary
 
 	m.IssueNumber = dataAO1.IssueNumber
 
@@ -90,11 +157,25 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 
 	m.Last4 = dataAO1.Last4
 
+	m.LastChallengeTime = dataAO1.LastChallengeTime
+
+	m.LastIdentifyTime = dataAO1.LastIdentifyTime
+
+	m.LastSuccessChallengeTime = dataAO1.LastSuccessChallengeTime
+
+	m.LockExpiresAt = dataAO1.LockExpiresAt
+
 	m.MethodScheme = dataAO1.MethodScheme
 
 	m.MethodSubType = dataAO1.MethodSubType
 
 	m.MethodType = dataAO1.MethodType
+
+	m.SuccessfulChallenges = dataAO1.SuccessfulChallenges
+
+	m.SuccessfulTransactions = dataAO1.SuccessfulTransactions
+
+	m.TokenUUID = dataAO1.TokenUUID
 
 	m.ValidFromDate = dataAO1.ValidFromDate
 
@@ -114,7 +195,15 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 	var dataAO1 struct {
 		AccountHolder string `json:"accountHolder,omitempty"`
 
+		ChallengeCount float64 `json:"challengeCount,omitempty"`
+
+		DeclineCount float64 `json:"declineCount,omitempty"`
+
 		ExpiryDate strfmt.DateTime `json:"expiryDate,omitempty"`
+
+		IdentifyCount float64 `json:"identifyCount,omitempty"`
+
+		IsPrimary bool `json:"isPrimary,omitempty"`
 
 		IssueNumber string `json:"issueNumber,omitempty"`
 
@@ -122,18 +211,40 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 
 		Last4 string `json:"last4,omitempty"`
 
+		LastChallengeTime strfmt.DateTime `json:"lastChallengeTime,omitempty"`
+
+		LastIdentifyTime strfmt.DateTime `json:"lastIdentifyTime,omitempty"`
+
+		LastSuccessChallengeTime strfmt.DateTime `json:"lastSuccessChallengeTime,omitempty"`
+
+		LockExpiresAt strfmt.DateTime `json:"lockExpiresAt,omitempty"`
+
 		MethodScheme string `json:"methodScheme,omitempty"`
 
 		MethodSubType string `json:"methodSubType,omitempty"`
 
 		MethodType string `json:"methodType,omitempty"`
 
+		SuccessfulChallenges float64 `json:"successfulChallenges,omitempty"`
+
+		SuccessfulTransactions float64 `json:"successfulTransactions,omitempty"`
+
+		TokenUUID string `json:"tokenUuid,omitempty"`
+
 		ValidFromDate strfmt.DateTime `json:"validFromDate,omitempty"`
 	}
 
 	dataAO1.AccountHolder = m.AccountHolder
 
+	dataAO1.ChallengeCount = m.ChallengeCount
+
+	dataAO1.DeclineCount = m.DeclineCount
+
 	dataAO1.ExpiryDate = m.ExpiryDate
+
+	dataAO1.IdentifyCount = m.IdentifyCount
+
+	dataAO1.IsPrimary = m.IsPrimary
 
 	dataAO1.IssueNumber = m.IssueNumber
 
@@ -141,11 +252,25 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 
 	dataAO1.Last4 = m.Last4
 
+	dataAO1.LastChallengeTime = m.LastChallengeTime
+
+	dataAO1.LastIdentifyTime = m.LastIdentifyTime
+
+	dataAO1.LastSuccessChallengeTime = m.LastSuccessChallengeTime
+
+	dataAO1.LockExpiresAt = m.LockExpiresAt
+
 	dataAO1.MethodScheme = m.MethodScheme
 
 	dataAO1.MethodSubType = m.MethodSubType
 
 	dataAO1.MethodType = m.MethodType
+
+	dataAO1.SuccessfulChallenges = m.SuccessfulChallenges
+
+	dataAO1.SuccessfulTransactions = m.SuccessfulTransactions
+
+	dataAO1.TokenUUID = m.TokenUUID
 
 	dataAO1.ValidFromDate = m.ValidFromDate
 
@@ -171,6 +296,22 @@ func (m *PaymentMethodResponse) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLastChallengeTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLastIdentifyTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLastSuccessChallengeTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLockExpiresAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateValidFromDate(formats); err != nil {
 		res = append(res, err)
 	}
@@ -188,6 +329,58 @@ func (m *PaymentMethodResponse) validateExpiryDate(formats strfmt.Registry) erro
 	}
 
 	if err := validate.FormatOf("expiryDate", "body", "date-time", m.ExpiryDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentMethodResponse) validateLastChallengeTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LastChallengeTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastChallengeTime", "body", "date-time", m.LastChallengeTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentMethodResponse) validateLastIdentifyTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LastIdentifyTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastIdentifyTime", "body", "date-time", m.LastIdentifyTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentMethodResponse) validateLastSuccessChallengeTime(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LastSuccessChallengeTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastSuccessChallengeTime", "body", "date-time", m.LastSuccessChallengeTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentMethodResponse) validateLockExpiresAt(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.LockExpiresAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lockExpiresAt", "body", "date-time", m.LockExpiresAt.String(), formats); err != nil {
 		return err
 	}
 

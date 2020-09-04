@@ -27,11 +27,16 @@ type Client struct {
 type ClientService interface {
 	PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostTicketsOK, error)
 
+	PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter) (*PutTicketsTicketFidStatusOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
   PostTickets creates a support ticket
+
+  The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
+
 */
 func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostTicketsOK, error) {
 	// TODO: Validate the params before sending
@@ -61,6 +66,40 @@ func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientA
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PostTicketsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  PutTicketsTicketFidStatus sets the status of a ticket
+*/
+func (a *Client) PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter) (*PutTicketsTicketFidStatusOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutTicketsTicketFidStatusParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PutTicketsTicketFidStatus",
+		Method:             "PUT",
+		PathPattern:        "/tickets/{ticketFid}/status",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutTicketsTicketFidStatusReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutTicketsTicketFidStatusOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutTicketsTicketFidStatusDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

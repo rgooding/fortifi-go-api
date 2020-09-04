@@ -61,7 +61,10 @@ for the delete orders order fid offers offer fid operation typically these are w
 */
 type DeleteOrdersOrderFidOffersOfferFidParams struct {
 
-	/*OfferFid*/
+	/*OfferFid
+	  Offer FID or Coupon Code
+
+	*/
 	OfferFid string
 	/*OrderFid*/
 	OrderFid string
