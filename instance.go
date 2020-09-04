@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/fortifi/go-api/client"
-	"github.com/fortifi/go-api/client/operations"
 	"github.com/fortifi/go-api/models"
 
 	"github.com/go-openapi/runtime"
@@ -103,13 +102,13 @@ func (f *Instance) GetAPIInstance() (*client.Fortifi, error) {
 
 func (f *Instance) getNewToken(transport *httptransport.Runtime) error {
 	c := client.New(transport, strfmt.Default)
-	p := operations.NewGetServiceAuthTokenParams()
+	p := Authentication.NewGetServiceAuthTokenParams()
 	p.Payload = &models.ServiceAccountCredentialsPayload{
 		ID:  &f.user,
 		Key: &f.key,
 	}
 
-	re, err := c.Operations.GetServiceAuthToken(p)
+	re, err := c.Authentication.GetServiceAuthToken(p)
 	if err != nil {
 		return err
 	}
