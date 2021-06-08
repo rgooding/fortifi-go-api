@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidContactsContactFidOK() *PutCustomersCustomerFidCo
 	return &PutCustomersCustomerFidContactsContactFidOK{}
 }
 
-/*PutCustomersCustomerFidContactsContactFidOK handles this case with default header values.
+/* PutCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
 
 Contact Updated
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidContactsContactFidDefault(code int) *PutCustomers
 	}
 }
 
-/*PutCustomersCustomerFidContactsContactFidDefault handles this case with default header values.
+/* PutCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidContactsContactFidDefault) Code() int {
 func (o *PutCustomersCustomerFidContactsContactFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/contacts/{contactFid}][%d] PutCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidContactsContactFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

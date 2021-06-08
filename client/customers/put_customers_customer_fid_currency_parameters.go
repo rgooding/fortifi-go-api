@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidCurrencyParams creates a new PutCustomersCustomerFidCurrencyParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidCurrencyParams creates a new PutCustomersCustomerFidCurrencyParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidCurrencyParams() *PutCustomersCustomerFidCurrencyParams {
-	var ()
 	return &PutCustomersCustomerFidCurrencyParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidCurrencyParamsWithTimeout creates a new PutCustomersCustomerFidCurrencyParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidCurrencyParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidCurrencyParams {
-	var ()
 	return &PutCustomersCustomerFidCurrencyParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidCurrencyParamsWithContext creates a new PutCustomersCustomerFidCurrencyParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidCurrencyParamsWithContext(ctx context.Context) *PutCustomersCustomerFidCurrencyParams {
-	var ()
 	return &PutCustomersCustomerFidCurrencyParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidCurrencyParamsWithHTTPClient creates a new PutCustomersCustomerFidCurrencyParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidCurrencyParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidCurrencyParams {
-	var ()
 	return &PutCustomersCustomerFidCurrencyParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidCurrencyParams contains all the parameters to send to the API endpoint
-for the put customers customer fid currency operation typically these are written to a http.Request
+/* PutCustomersCustomerFidCurrencyParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid currency operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidCurrencyParams struct {
 
-	/*Currency
-	  Currency (ISO 4217, 3 Character Code)
+	/* Currency.
 
+	   Currency (ISO 4217, 3 Character Code)
 	*/
 	Currency string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid currency params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidCurrencyParams) WithDefaults() *PutCustomersCustomerFidCurrencyParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid currency params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidCurrencyParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid currency params

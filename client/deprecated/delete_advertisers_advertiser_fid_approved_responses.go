@@ -46,7 +46,7 @@ func NewDeleteAdvertisersAdvertiserFidApprovedOK() *DeleteAdvertisersAdvertiserF
 	return &DeleteAdvertisersAdvertiserFidApprovedOK{}
 }
 
-/*DeleteAdvertisersAdvertiserFidApprovedOK handles this case with default header values.
+/* DeleteAdvertisersAdvertiserFidApprovedOK describes a response with status code 200, with default header values.
 
 Advertiser no longer approved
 */
@@ -69,7 +69,7 @@ func NewDeleteAdvertisersAdvertiserFidApprovedDefault(code int) *DeleteAdvertise
 	}
 }
 
-/*DeleteAdvertisersAdvertiserFidApprovedDefault handles this case with default header values.
+/* DeleteAdvertisersAdvertiserFidApprovedDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) Code() int {
 func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[DELETE /advertisers/{advertiserFid}/approved][%d] DeleteAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

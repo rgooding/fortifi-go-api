@@ -46,7 +46,7 @@ func NewGetCustomersCustomerFidOrdersOK() *GetCustomersCustomerFidOrdersOK {
 	return &GetCustomersCustomerFidOrdersOK{}
 }
 
-/*GetCustomersCustomerFidOrdersOK handles this case with default header values.
+/* GetCustomersCustomerFidOrdersOK describes a response with status code 200, with default header values.
 
 Customer Orders
 */
@@ -57,7 +57,6 @@ type GetCustomersCustomerFidOrdersOK struct {
 func (o *GetCustomersCustomerFidOrdersOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/orders][%d] getCustomersCustomerFidOrdersOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidOrdersOK) GetPayload() *models.Orders {
 	return o.Payload
 }
@@ -81,7 +80,7 @@ func NewGetCustomersCustomerFidOrdersDefault(code int) *GetCustomersCustomerFidO
 	}
 }
 
-/*GetCustomersCustomerFidOrdersDefault handles this case with default header values.
+/* GetCustomersCustomerFidOrdersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -99,7 +98,6 @@ func (o *GetCustomersCustomerFidOrdersDefault) Code() int {
 func (o *GetCustomersCustomerFidOrdersDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/orders][%d] GetCustomersCustomerFidOrders default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidOrdersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

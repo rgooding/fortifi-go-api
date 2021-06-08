@@ -16,52 +16,66 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetMeParams creates a new GetMeParams object
-// with the default values initialized.
+// NewGetMeParams creates a new GetMeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetMeParams() *GetMeParams {
-
 	return &GetMeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetMeParamsWithTimeout creates a new GetMeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetMeParamsWithTimeout(timeout time.Duration) *GetMeParams {
-
 	return &GetMeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetMeParamsWithContext creates a new GetMeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetMeParamsWithContext(ctx context.Context) *GetMeParams {
-
 	return &GetMeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetMeParamsWithHTTPClient creates a new GetMeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetMeParamsWithHTTPClient(client *http.Client) *GetMeParams {
-
 	return &GetMeParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetMeParams contains all the parameters to send to the API endpoint
-for the get me operation typically these are written to a http.Request
+/* GetMeParams contains all the parameters to send to the API endpoint
+   for the get me operation.
+
+   Typically these are written to a http.Request.
 */
 type GetMeParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get me params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMeParams) WithDefaults() *GetMeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get me params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get me params

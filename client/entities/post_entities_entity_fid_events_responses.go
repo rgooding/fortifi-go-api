@@ -46,7 +46,7 @@ func NewPostEntitiesEntityFidEventsOK() *PostEntitiesEntityFidEventsOK {
 	return &PostEntitiesEntityFidEventsOK{}
 }
 
-/*PostEntitiesEntityFidEventsOK handles this case with default header values.
+/* PostEntitiesEntityFidEventsOK describes a response with status code 200, with default header values.
 
 Event Triggered
 */
@@ -69,7 +69,7 @@ func NewPostEntitiesEntityFidEventsDefault(code int) *PostEntitiesEntityFidEvent
 	}
 }
 
-/*PostEntitiesEntityFidEventsDefault handles this case with default header values.
+/* PostEntitiesEntityFidEventsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostEntitiesEntityFidEventsDefault) Code() int {
 func (o *PostEntitiesEntityFidEventsDefault) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/events][%d] PostEntitiesEntityFidEvents default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostEntitiesEntityFidEventsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

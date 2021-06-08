@@ -17,74 +17,93 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersCustomerFidTicketsTicketFidPostsParams creates a new GetCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidTicketsTicketFidPostsParams creates a new GetCustomersCustomerFidTicketsTicketFidPostsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsParams() *GetCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidPostsParamsWithTimeout creates a new GetCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidPostsParamsWithContext creates a new GetCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsParamsWithContext(ctx context.Context) *GetCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidPostsParamsWithHTTPClient creates a new GetCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidTicketsTicketFidPostsParams contains all the parameters to send to the API endpoint
-for the get customers customer fid tickets ticket fid posts operation typically these are written to a http.Request
+/* GetCustomersCustomerFidTicketsTicketFidPostsParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid tickets ticket fid posts operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidTicketsTicketFidPostsParams struct {
 
-	/*BeforeTimestamp
-	  Show posts before timestamp
+	/* BeforeTimestamp.
 
+	   Show posts before timestamp
+
+	   Format: int64
 	*/
 	BeforeTimestamp *int64
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Limit
-	  Maximum number of records per page (default: 20, max: 100)
 
+	/* Limit.
+
+	   Maximum number of records per page (default: 20, max: 100)
 	*/
 	Limit *int64
-	/*TicketFid
-	  Ticket FID to use
 
+	/* TicketFid.
+
+	   Ticket FID to use
 	*/
 	TicketFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid tickets ticket fid posts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WithDefaults() *GetCustomersCustomerFidTicketsTicketFidPostsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid tickets ticket fid posts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid tickets ticket fid posts params
@@ -176,16 +195,17 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WriteToRequest(r ru
 
 		// query param beforeTimestamp
 		var qrBeforeTimestamp int64
+
 		if o.BeforeTimestamp != nil {
 			qrBeforeTimestamp = *o.BeforeTimestamp
 		}
 		qBeforeTimestamp := swag.FormatInt64(qrBeforeTimestamp)
 		if qBeforeTimestamp != "" {
+
 			if err := r.SetQueryParam("beforeTimestamp", qBeforeTimestamp); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param customerFid
@@ -197,16 +217,17 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsParams) WriteToRequest(r ru
 
 		// query param limit
 		var qrLimit int64
+
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
+
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param ticketFid

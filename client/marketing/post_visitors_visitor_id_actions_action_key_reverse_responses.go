@@ -6,6 +6,7 @@ package marketing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostVisitorsVisitorIDActionsActionKeyReverseOK() *PostVisitorsVisitorIDA
 	return &PostVisitorsVisitorIDActionsActionKeyReverseOK{}
 }
 
-/*PostVisitorsVisitorIDActionsActionKeyReverseOK handles this case with default header values.
+/* PostVisitorsVisitorIDActionsActionKeyReverseOK describes a response with status code 200, with default header values.
 
 Action Reversed
 */
@@ -59,7 +60,6 @@ type PostVisitorsVisitorIDActionsActionKeyReverseOK struct {
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] postVisitorsVisitorIdActionsActionKeyReverseOK  %+v", 200, o.Payload)
 }
-
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) GetPayload() *PostVisitorsVisitorIDActionsActionKeyReverseOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostVisitorsVisitorIDActionsActionKeyReverseDefault(code int) *PostVisit
 	}
 }
 
-/*PostVisitorsVisitorIDActionsActionKeyReverseDefault handles this case with default header values.
+/* PostVisitorsVisitorIDActionsActionKeyReverseDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Code() int {
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] PostVisitorsVisitorIDActionsActionKeyReverse default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) validateData(format
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post visitors visitor ID actions action key reverse o k body based on the context it is used
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
 			}

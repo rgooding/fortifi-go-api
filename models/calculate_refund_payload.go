@@ -6,9 +6,12 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CalculateRefundPayload calculate refund payload
@@ -24,7 +27,7 @@ type CalculateRefundPayload struct {
 
 	// subscription refund type
 	// Required: true
-	SubscriptionRefundType SubscriptionRefundType `json:"subscriptionRefundType"`
+	SubscriptionRefundType *SubscriptionRefundType `json:"subscriptionRefundType"`
 
 	// with termination fee
 	WithTerminationFee bool `json:"withTerminationFee,omitempty"`
@@ -46,11 +49,49 @@ func (m *CalculateRefundPayload) Validate(formats strfmt.Registry) error {
 
 func (m *CalculateRefundPayload) validateSubscriptionRefundType(formats strfmt.Registry) error {
 
-	if err := m.SubscriptionRefundType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("subscriptionRefundType")
-		}
+	if err := validate.Required("subscriptionRefundType", "body", m.SubscriptionRefundType); err != nil {
 		return err
+	}
+
+	if err := validate.Required("subscriptionRefundType", "body", m.SubscriptionRefundType); err != nil {
+		return err
+	}
+
+	if m.SubscriptionRefundType != nil {
+		if err := m.SubscriptionRefundType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("subscriptionRefundType")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this calculate refund payload based on the context it is used
+func (m *CalculateRefundPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSubscriptionRefundType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CalculateRefundPayload) contextValidateSubscriptionRefundType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SubscriptionRefundType != nil {
+		if err := m.SubscriptionRefundType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("subscriptionRefundType")
+			}
+			return err
+		}
 	}
 
 	return nil

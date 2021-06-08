@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidChargebackOK() *PutCustomersCustomerFidChargeback
 	return &PutCustomersCustomerFidChargebackOK{}
 }
 
-/*PutCustomersCustomerFidChargebackOK handles this case with default header values.
+/* PutCustomersCustomerFidChargebackOK describes a response with status code 200, with default header values.
 
 Customer Marked
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidChargebackDefault(code int) *PutCustomersCustomer
 	}
 }
 
-/*PutCustomersCustomerFidChargebackDefault handles this case with default header values.
+/* PutCustomersCustomerFidChargebackDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidChargebackDefault) Code() int {
 func (o *PutCustomersCustomerFidChargebackDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargeback][%d] PutCustomersCustomerFidChargeback default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidChargebackDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

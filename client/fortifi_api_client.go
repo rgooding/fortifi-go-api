@@ -17,15 +17,20 @@ import (
 	"github.com/fortifi/go-api/client/customers"
 	"github.com/fortifi/go-api/client/deprecated"
 	"github.com/fortifi/go-api/client/entities"
+	"github.com/fortifi/go-api/client/finance"
 	"github.com/fortifi/go-api/client/licence"
 	"github.com/fortifi/go-api/client/marketing"
 	"github.com/fortifi/go-api/client/messenger"
+	"github.com/fortifi/go-api/client/operations"
 	"github.com/fortifi/go-api/client/orders"
 	"github.com/fortifi/go-api/client/payment_methods"
+	"github.com/fortifi/go-api/client/polymer"
 	"github.com/fortifi/go-api/client/polymers"
 	"github.com/fortifi/go-api/client/products"
 	"github.com/fortifi/go-api/client/properties"
 	"github.com/fortifi/go-api/client/reasons"
+	"github.com/fortifi/go-api/client/reservations"
+	"github.com/fortifi/go-api/client/reviews"
 	"github.com/fortifi/go-api/client/service_status"
 	"github.com/fortifi/go-api/client/support"
 )
@@ -79,15 +84,20 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FortifiAPI
 	cli.Customers = customers.New(transport, formats)
 	cli.Deprecated = deprecated.New(transport, formats)
 	cli.Entities = entities.New(transport, formats)
+	cli.Finance = finance.New(transport, formats)
 	cli.Licence = licence.New(transport, formats)
 	cli.Marketing = marketing.New(transport, formats)
 	cli.Messenger = messenger.New(transport, formats)
+	cli.Operations = operations.New(transport, formats)
 	cli.Orders = orders.New(transport, formats)
 	cli.PaymentMethods = payment_methods.New(transport, formats)
+	cli.Polymer = polymer.New(transport, formats)
 	cli.Polymers = polymers.New(transport, formats)
 	cli.Products = products.New(transport, formats)
 	cli.Properties = properties.New(transport, formats)
 	cli.Reasons = reasons.New(transport, formats)
+	cli.Reservations = reservations.New(transport, formats)
+	cli.Reviews = reviews.New(transport, formats)
 	cli.ServiceStatus = service_status.New(transport, formats)
 	cli.Support = support.New(transport, formats)
 	return cli
@@ -148,15 +158,21 @@ type FortifiAPI struct {
 
 	Entities entities.ClientService
 
+	Finance finance.ClientService
+
 	Licence licence.ClientService
 
 	Marketing marketing.ClientService
 
 	Messenger messenger.ClientService
 
+	Operations operations.ClientService
+
 	Orders orders.ClientService
 
 	PaymentMethods payment_methods.ClientService
+
+	Polymer polymer.ClientService
 
 	Polymers polymers.ClientService
 
@@ -165,6 +181,10 @@ type FortifiAPI struct {
 	Properties properties.ClientService
 
 	Reasons reasons.ClientService
+
+	Reservations reservations.ClientService
+
+	Reviews reviews.ClientService
 
 	ServiceStatus service_status.ClientService
 
@@ -183,15 +203,20 @@ func (c *FortifiAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Customers.SetTransport(transport)
 	c.Deprecated.SetTransport(transport)
 	c.Entities.SetTransport(transport)
+	c.Finance.SetTransport(transport)
 	c.Licence.SetTransport(transport)
 	c.Marketing.SetTransport(transport)
 	c.Messenger.SetTransport(transport)
+	c.Operations.SetTransport(transport)
 	c.Orders.SetTransport(transport)
 	c.PaymentMethods.SetTransport(transport)
+	c.Polymer.SetTransport(transport)
 	c.Polymers.SetTransport(transport)
 	c.Products.SetTransport(transport)
 	c.Properties.SetTransport(transport)
 	c.Reasons.SetTransport(transport)
+	c.Reservations.SetTransport(transport)
+	c.Reviews.SetTransport(transport)
 	c.ServiceStatus.SetTransport(transport)
 	c.Support.SetTransport(transport)
 }

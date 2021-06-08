@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -134,7 +136,6 @@ func (m *Licence) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateAutoCancelDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AutoCancelDate) { // not required
 		return nil
 	}
@@ -147,7 +148,6 @@ func (m *Licence) validateAutoCancelDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateAutoSuspendDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AutoSuspendDate) { // not required
 		return nil
 	}
@@ -160,7 +160,6 @@ func (m *Licence) validateAutoSuspendDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateCycleType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CycleType) { // not required
 		return nil
 	}
@@ -176,7 +175,6 @@ func (m *Licence) validateCycleType(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateDateCreated(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DateCreated) { // not required
 		return nil
 	}
@@ -189,7 +187,6 @@ func (m *Licence) validateDateCreated(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateEndDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.EndDate) { // not required
 		return nil
 	}
@@ -202,7 +199,6 @@ func (m *Licence) validateEndDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateLastRenewDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastRenewDate) { // not required
 		return nil
 	}
@@ -215,7 +211,6 @@ func (m *Licence) validateLastRenewDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateNextRenewDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.NextRenewDate) { // not required
 		return nil
 	}
@@ -228,7 +223,6 @@ func (m *Licence) validateNextRenewDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateRenewDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RenewDate) { // not required
 		return nil
 	}
@@ -241,7 +235,6 @@ func (m *Licence) validateRenewDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateStartDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.StartDate) { // not required
 		return nil
 	}
@@ -254,7 +247,6 @@ func (m *Licence) validateStartDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateTrialEndDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TrialEndDate) { // not required
 		return nil
 	}
@@ -267,12 +259,37 @@ func (m *Licence) validateTrialEndDate(formats strfmt.Registry) error {
 }
 
 func (m *Licence) validateTrialStartDate(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TrialStartDate) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("trialStartDate", "body", "date-time", m.TrialStartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this licence based on the context it is used
+func (m *Licence) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCycleType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Licence) contextValidateCycleType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.CycleType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cycleType")
+		}
 		return err
 	}
 

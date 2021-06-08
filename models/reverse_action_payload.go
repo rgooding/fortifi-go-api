@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -78,7 +80,6 @@ func (m *ReverseActionPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ReverseActionPayload) validateMetaData(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.MetaData) { // not required
 		return nil
 	}
@@ -94,7 +95,6 @@ func (m *ReverseActionPayload) validateMetaData(formats strfmt.Registry) error {
 }
 
 func (m *ReverseActionPayload) validateReason(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Reason) { // not required
 		return nil
 	}
@@ -110,12 +110,53 @@ func (m *ReverseActionPayload) validateReason(formats strfmt.Registry) error {
 }
 
 func (m *ReverseActionPayload) validateTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Time) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this reverse action payload based on the context it is used
+func (m *ReverseActionPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateMetaData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateReason(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ReverseActionPayload) contextValidateMetaData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.MetaData.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("metaData")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ReverseActionPayload) contextValidateReason(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Reason.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("reason")
+		}
 		return err
 	}
 

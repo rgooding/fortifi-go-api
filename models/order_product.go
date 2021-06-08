@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -35,6 +37,15 @@ type OrderProduct struct {
 
 	// discount amount
 	DiscountAmount float32 `json:"discountAmount,omitempty"`
+
+	// identity
+	Identity string `json:"identity,omitempty"`
+
+	// Custom initial term end date (Time in ISO 8601 standard e.g 2015-12-05T13:11:59Z)
+	InitialTermEndDate string `json:"initialTermEndDate,omitempty"`
+
+	// Custom initial term start date (Time in ISO 8601 standard e.g 2015-12-05T13:11:59Z)
+	InitialTermStartDate string `json:"initialTermStartDate,omitempty"`
 
 	// offer fid
 	OfferFid string `json:"offerFid,omitempty"`
@@ -67,6 +78,9 @@ type OrderProduct struct {
 	// setup fee
 	SetupFee float32 `json:"setupFee,omitempty"`
 
+	// sku fid
+	SkuFid string `json:"skuFid,omitempty"`
+
 	// tax amount
 	TaxAmount float32 `json:"taxAmount,omitempty"`
 
@@ -97,6 +111,12 @@ func (m *OrderProduct) UnmarshalJSON(raw []byte) error {
 
 		DiscountAmount float32 `json:"discountAmount,omitempty"`
 
+		Identity string `json:"identity,omitempty"`
+
+		InitialTermEndDate string `json:"initialTermEndDate,omitempty"`
+
+		InitialTermStartDate string `json:"initialTermStartDate,omitempty"`
+
 		OfferFid string `json:"offerFid,omitempty"`
 
 		ParentFid string `json:"parentFid,omitempty"`
@@ -116,6 +136,8 @@ func (m *OrderProduct) UnmarshalJSON(raw []byte) error {
 		SetupDiscountAmount float32 `json:"setupDiscountAmount,omitempty"`
 
 		SetupFee float32 `json:"setupFee,omitempty"`
+
+		SkuFid string `json:"skuFid,omitempty"`
 
 		TaxAmount float32 `json:"taxAmount,omitempty"`
 
@@ -137,6 +159,12 @@ func (m *OrderProduct) UnmarshalJSON(raw []byte) error {
 
 	m.DiscountAmount = dataAO1.DiscountAmount
 
+	m.Identity = dataAO1.Identity
+
+	m.InitialTermEndDate = dataAO1.InitialTermEndDate
+
+	m.InitialTermStartDate = dataAO1.InitialTermStartDate
+
 	m.OfferFid = dataAO1.OfferFid
 
 	m.ParentFid = dataAO1.ParentFid
@@ -156,6 +184,8 @@ func (m *OrderProduct) UnmarshalJSON(raw []byte) error {
 	m.SetupDiscountAmount = dataAO1.SetupDiscountAmount
 
 	m.SetupFee = dataAO1.SetupFee
+
+	m.SkuFid = dataAO1.SkuFid
 
 	m.TaxAmount = dataAO1.TaxAmount
 
@@ -186,6 +216,12 @@ func (m OrderProduct) MarshalJSON() ([]byte, error) {
 
 		DiscountAmount float32 `json:"discountAmount,omitempty"`
 
+		Identity string `json:"identity,omitempty"`
+
+		InitialTermEndDate string `json:"initialTermEndDate,omitempty"`
+
+		InitialTermStartDate string `json:"initialTermStartDate,omitempty"`
+
 		OfferFid string `json:"offerFid,omitempty"`
 
 		ParentFid string `json:"parentFid,omitempty"`
@@ -206,6 +242,8 @@ func (m OrderProduct) MarshalJSON() ([]byte, error) {
 
 		SetupFee float32 `json:"setupFee,omitempty"`
 
+		SkuFid string `json:"skuFid,omitempty"`
+
 		TaxAmount float32 `json:"taxAmount,omitempty"`
 
 		TotalAmount float32 `json:"totalAmount,omitempty"`
@@ -222,6 +260,12 @@ func (m OrderProduct) MarshalJSON() ([]byte, error) {
 	dataAO1.CycleType = m.CycleType
 
 	dataAO1.DiscountAmount = m.DiscountAmount
+
+	dataAO1.Identity = m.Identity
+
+	dataAO1.InitialTermEndDate = m.InitialTermEndDate
+
+	dataAO1.InitialTermStartDate = m.InitialTermStartDate
 
 	dataAO1.OfferFid = m.OfferFid
 
@@ -242,6 +286,8 @@ func (m OrderProduct) MarshalJSON() ([]byte, error) {
 	dataAO1.SetupDiscountAmount = m.SetupDiscountAmount
 
 	dataAO1.SetupFee = m.SetupFee
+
+	dataAO1.SkuFid = m.SkuFid
 
 	dataAO1.TaxAmount = m.TaxAmount
 
@@ -301,6 +347,37 @@ func (m *OrderProduct) validateRenewalDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("renewalDate", "body", "date-time", m.RenewalDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this order product based on the context it is used
+func (m *OrderProduct) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCycleType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrderProduct) contextValidateCycleType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.CycleType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cycleType")
+		}
 		return err
 	}
 

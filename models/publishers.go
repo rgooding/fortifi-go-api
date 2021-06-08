@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -100,6 +101,43 @@ func (m *Publishers) validatePublishers(formats strfmt.Registry) error {
 
 		if m.Publishers[i] != nil {
 			if err := m.Publishers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("publishers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this publishers based on the context it is used
+func (m *Publishers) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Pagination
+	if err := m.Pagination.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePublishers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Publishers) contextValidatePublishers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Publishers); i++ {
+
+		if m.Publishers[i] != nil {
+			if err := m.Publishers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("publishers" + "." + strconv.Itoa(i))
 				}

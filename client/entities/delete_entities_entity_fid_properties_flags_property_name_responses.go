@@ -46,7 +46,7 @@ func NewDeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK() *DeleteEntitiesEn
 	return &DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK{}
 }
 
-/*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK handles this case with default header values.
+/* DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK describes a response with status code 200, with default header values.
 
 Property Deleted
 */
@@ -69,7 +69,7 @@ func NewDeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault(code int) *Del
 	}
 }
 
-/*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault handles this case with default header values.
+/* DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Code() int {
 func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/properties/flags/{propertyName}][%d] DeleteEntitiesEntityFidPropertiesFlagsPropertyName default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

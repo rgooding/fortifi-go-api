@@ -6,6 +6,7 @@ package marketing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"strconv"
@@ -49,7 +50,7 @@ func NewGetVisitorsVisitorIDPixelsOK() *GetVisitorsVisitorIDPixelsOK {
 	return &GetVisitorsVisitorIDPixelsOK{}
 }
 
-/*GetVisitorsVisitorIDPixelsOK handles this case with default header values.
+/* GetVisitorsVisitorIDPixelsOK describes a response with status code 200, with default header values.
 
 Pixels
 */
@@ -60,7 +61,6 @@ type GetVisitorsVisitorIDPixelsOK struct {
 func (o *GetVisitorsVisitorIDPixelsOK) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] getVisitorsVisitorIdPixelsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVisitorsVisitorIDPixelsOK) GetPayload() *GetVisitorsVisitorIDPixelsOKBody {
 	return o.Payload
 }
@@ -84,7 +84,7 @@ func NewGetVisitorsVisitorIDPixelsDefault(code int) *GetVisitorsVisitorIDPixelsD
 	}
 }
 
-/*GetVisitorsVisitorIDPixelsDefault handles this case with default header values.
+/* GetVisitorsVisitorIDPixelsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -102,7 +102,6 @@ func (o *GetVisitorsVisitorIDPixelsDefault) Code() int {
 func (o *GetVisitorsVisitorIDPixelsDefault) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] GetVisitorsVisitorIDPixels default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetVisitorsVisitorIDPixelsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -206,6 +205,43 @@ func (o *GetVisitorsVisitorIDPixelsOKBody) validateData(formats strfmt.Registry)
 
 		if o.Data[i] != nil {
 			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("getVisitorsVisitorIdPixelsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get visitors visitor ID pixels o k body based on the context it is used
+func (o *GetVisitorsVisitorIDPixelsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetVisitorsVisitorIDPixelsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("getVisitorsVisitorIdPixelsOK" + "." + "data" + "." + strconv.Itoa(i))
 				}

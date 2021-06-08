@@ -23,59 +23,25 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error)
-
-	GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayPublicKeyOK, error)
+	GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPayPublicKeyOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetPayCoinbase gets a new checkout ID
-*/
-func (a *Client) GetPayCoinbase(params *GetPayCoinbaseParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayCoinbaseOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetPayCoinbaseParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetPayCoinbase",
-		Method:             "GET",
-		PathPattern:        "/pay/coinbase",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetPayCoinbaseReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetPayCoinbaseOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*GetPayCoinbaseDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
   GetPayPublicKey gets the public key needed to encrypt a credit card number
 */
-func (a *Client) GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter) (*GetPayPublicKeyOK, error) {
+func (a *Client) GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPayPublicKeyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPayPublicKeyParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPayPublicKey",
 		Method:             "GET",
 		PathPattern:        "/pay/publicKey",
@@ -87,7 +53,12 @@ func (a *Client) GetPayPublicKey(params *GetPayPublicKeyParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

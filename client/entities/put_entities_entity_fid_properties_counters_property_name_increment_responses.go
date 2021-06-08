@@ -46,7 +46,7 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK() *PutEnti
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK{}
 }
 
-/*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK handles this case with default header values.
+/* PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK describes a response with status code 200, with default header values.
 
 Counter Incremented
 */
@@ -69,7 +69,7 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault(code 
 	}
 }
 
-/*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault handles this case with default header values.
+/* PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) Cod
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/increment][%d] PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

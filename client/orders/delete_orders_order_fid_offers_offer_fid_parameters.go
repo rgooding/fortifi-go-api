@@ -16,61 +16,76 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteOrdersOrderFidOffersOfferFidParams creates a new DeleteOrdersOrderFidOffersOfferFidParams object
-// with the default values initialized.
+// NewDeleteOrdersOrderFidOffersOfferFidParams creates a new DeleteOrdersOrderFidOffersOfferFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteOrdersOrderFidOffersOfferFidParams() *DeleteOrdersOrderFidOffersOfferFidParams {
-	var ()
 	return &DeleteOrdersOrderFidOffersOfferFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteOrdersOrderFidOffersOfferFidParamsWithTimeout creates a new DeleteOrdersOrderFidOffersOfferFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteOrdersOrderFidOffersOfferFidParamsWithTimeout(timeout time.Duration) *DeleteOrdersOrderFidOffersOfferFidParams {
-	var ()
 	return &DeleteOrdersOrderFidOffersOfferFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteOrdersOrderFidOffersOfferFidParamsWithContext creates a new DeleteOrdersOrderFidOffersOfferFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteOrdersOrderFidOffersOfferFidParamsWithContext(ctx context.Context) *DeleteOrdersOrderFidOffersOfferFidParams {
-	var ()
 	return &DeleteOrdersOrderFidOffersOfferFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteOrdersOrderFidOffersOfferFidParamsWithHTTPClient creates a new DeleteOrdersOrderFidOffersOfferFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteOrdersOrderFidOffersOfferFidParamsWithHTTPClient(client *http.Client) *DeleteOrdersOrderFidOffersOfferFidParams {
-	var ()
 	return &DeleteOrdersOrderFidOffersOfferFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteOrdersOrderFidOffersOfferFidParams contains all the parameters to send to the API endpoint
-for the delete orders order fid offers offer fid operation typically these are written to a http.Request
+/* DeleteOrdersOrderFidOffersOfferFidParams contains all the parameters to send to the API endpoint
+   for the delete orders order fid offers offer fid operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteOrdersOrderFidOffersOfferFidParams struct {
 
-	/*OfferFid
-	  Offer FID or Coupon Code
+	/* OfferFid.
 
+	   Offer FID or Coupon Code
 	*/
 	OfferFid string
-	/*OrderFid*/
+
+	// OrderFid.
 	OrderFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete orders order fid offers offer fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteOrdersOrderFidOffersOfferFidParams) WithDefaults() *DeleteOrdersOrderFidOffersOfferFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete orders order fid offers offer fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteOrdersOrderFidOffersOfferFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete orders order fid offers offer fid params

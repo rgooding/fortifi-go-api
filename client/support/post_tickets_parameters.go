@@ -18,56 +18,70 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostTicketsParams creates a new PostTicketsParams object
-// with the default values initialized.
+// NewPostTicketsParams creates a new PostTicketsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostTicketsParams() *PostTicketsParams {
-	var ()
 	return &PostTicketsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostTicketsParamsWithTimeout creates a new PostTicketsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostTicketsParamsWithTimeout(timeout time.Duration) *PostTicketsParams {
-	var ()
 	return &PostTicketsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostTicketsParamsWithContext creates a new PostTicketsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostTicketsParamsWithContext(ctx context.Context) *PostTicketsParams {
-	var ()
 	return &PostTicketsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostTicketsParamsWithHTTPClient creates a new PostTicketsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostTicketsParamsWithHTTPClient(client *http.Client) *PostTicketsParams {
-	var ()
 	return &PostTicketsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostTicketsParams contains all the parameters to send to the API endpoint
-for the post tickets operation typically these are written to a http.Request
+/* PostTicketsParams contains all the parameters to send to the API endpoint
+   for the post tickets operation.
+
+   Typically these are written to a http.Request.
 */
 type PostTicketsParams struct {
 
-	/*Payload*/
+	// Payload.
 	Payload *models.CreateTicketPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post tickets params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostTicketsParams) WithDefaults() *PostTicketsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post tickets params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostTicketsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post tickets params
@@ -121,7 +135,6 @@ func (o *PostTicketsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

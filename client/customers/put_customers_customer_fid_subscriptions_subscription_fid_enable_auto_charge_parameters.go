@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid enable auto charge operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid enable auto charge operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid enable auto charge params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid enable auto charge params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid enable auto charge params

@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetIntegrationsVerifyUserParams creates a new GetIntegrationsVerifyUserParams object
-// with the default values initialized.
+// NewGetIntegrationsVerifyUserParams creates a new GetIntegrationsVerifyUserParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetIntegrationsVerifyUserParams() *GetIntegrationsVerifyUserParams {
-	var ()
 	return &GetIntegrationsVerifyUserParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetIntegrationsVerifyUserParamsWithTimeout creates a new GetIntegrationsVerifyUserParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetIntegrationsVerifyUserParamsWithTimeout(timeout time.Duration) *GetIntegrationsVerifyUserParams {
-	var ()
 	return &GetIntegrationsVerifyUserParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetIntegrationsVerifyUserParamsWithContext creates a new GetIntegrationsVerifyUserParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetIntegrationsVerifyUserParamsWithContext(ctx context.Context) *GetIntegrationsVerifyUserParams {
-	var ()
 	return &GetIntegrationsVerifyUserParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetIntegrationsVerifyUserParamsWithHTTPClient creates a new GetIntegrationsVerifyUserParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetIntegrationsVerifyUserParamsWithHTTPClient(client *http.Client) *GetIntegrationsVerifyUserParams {
-	var ()
 	return &GetIntegrationsVerifyUserParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetIntegrationsVerifyUserParams contains all the parameters to send to the API endpoint
-for the get integrations verify user operation typically these are written to a http.Request
+/* GetIntegrationsVerifyUserParams contains all the parameters to send to the API endpoint
+   for the get integrations verify user operation.
+
+   Typically these are written to a http.Request.
 */
 type GetIntegrationsVerifyUserParams struct {
 
-	/*RemoteIP
-	  IP of the user connecting
+	/* RemoteIP.
 
+	   IP of the user connecting
 	*/
 	RemoteIP string
-	/*VerifyKey
-	  Verify key found in ?fortifiverify=VERIFYKEY
 
+	/* VerifyKey.
+
+	   Verify key found in ?fortifiverify=VERIFYKEY
 	*/
 	VerifyKey string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get integrations verify user params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetIntegrationsVerifyUserParams) WithDefaults() *GetIntegrationsVerifyUserParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get integrations verify user params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetIntegrationsVerifyUserParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get integrations verify user params
@@ -143,6 +158,7 @@ func (o *GetIntegrationsVerifyUserParams) WriteToRequest(r runtime.ClientRequest
 	qrRemoteIP := o.RemoteIP
 	qRemoteIP := qrRemoteIP
 	if qRemoteIP != "" {
+
 		if err := r.SetQueryParam("remoteIp", qRemoteIP); err != nil {
 			return err
 		}
@@ -152,6 +168,7 @@ func (o *GetIntegrationsVerifyUserParams) WriteToRequest(r runtime.ClientRequest
 	qrVerifyKey := o.VerifyKey
 	qVerifyKey := qrVerifyKey
 	if qVerifyKey != "" {
+
 		if err := r.SetQueryParam("verifyKey", qVerifyKey); err != nil {
 			return err
 		}

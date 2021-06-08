@@ -17,56 +17,70 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetPropertiesParams creates a new GetPropertiesParams object
-// with the default values initialized.
+// NewGetPropertiesParams creates a new GetPropertiesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetPropertiesParams() *GetPropertiesParams {
-	var ()
 	return &GetPropertiesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetPropertiesParamsWithTimeout creates a new GetPropertiesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetPropertiesParamsWithTimeout(timeout time.Duration) *GetPropertiesParams {
-	var ()
 	return &GetPropertiesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetPropertiesParamsWithContext creates a new GetPropertiesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetPropertiesParamsWithContext(ctx context.Context) *GetPropertiesParams {
-	var ()
 	return &GetPropertiesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetPropertiesParamsWithHTTPClient creates a new GetPropertiesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetPropertiesParamsWithHTTPClient(client *http.Client) *GetPropertiesParams {
-	var ()
 	return &GetPropertiesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetPropertiesParams contains all the parameters to send to the API endpoint
-for the get properties operation typically these are written to a http.Request
+/* GetPropertiesParams contains all the parameters to send to the API endpoint
+   for the get properties operation.
+
+   Typically these are written to a http.Request.
 */
 type GetPropertiesParams struct {
 
-	/*BaseFids*/
+	// BaseFids.
 	BaseFids []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get properties params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPropertiesParams) WithDefaults() *GetPropertiesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get properties params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPropertiesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get properties params
@@ -121,16 +135,36 @@ func (o *GetPropertiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 	}
 	var res []error
 
-	valuesBaseFids := o.BaseFids
+	if o.BaseFids != nil {
 
-	joinedBaseFids := swag.JoinByFormat(valuesBaseFids, "")
-	// query array param baseFids
-	if err := r.SetQueryParam("baseFids", joinedBaseFids...); err != nil {
-		return err
+		// binding items for baseFids
+		joinedBaseFids := o.bindParamBaseFids(reg)
+
+		// query array param baseFids
+		if err := r.SetQueryParam("baseFids", joinedBaseFids...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetProperties binds the parameter baseFids
+func (o *GetPropertiesParams) bindParamBaseFids(formats strfmt.Registry) []string {
+	baseFidsIR := o.BaseFids
+
+	var baseFidsIC []string
+	for _, baseFidsIIR := range baseFidsIR { // explode []string
+
+		baseFidsIIV := baseFidsIIR // string as string
+		baseFidsIC = append(baseFidsIC, baseFidsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	baseFidsIS := swag.JoinByFormat(baseFidsIC, "")
+
+	return baseFidsIS
 }

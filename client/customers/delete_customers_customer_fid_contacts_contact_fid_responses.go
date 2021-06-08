@@ -46,7 +46,7 @@ func NewDeleteCustomersCustomerFidContactsContactFidOK() *DeleteCustomersCustome
 	return &DeleteCustomersCustomerFidContactsContactFidOK{}
 }
 
-/*DeleteCustomersCustomerFidContactsContactFidOK handles this case with default header values.
+/* DeleteCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
 
 Contact removed
 */
@@ -69,7 +69,7 @@ func NewDeleteCustomersCustomerFidContactsContactFidDefault(code int) *DeleteCus
 	}
 }
 
-/*DeleteCustomersCustomerFidContactsContactFidDefault handles this case with default header values.
+/* DeleteCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteCustomersCustomerFidContactsContactFidDefault) Code() int {
 func (o *DeleteCustomersCustomerFidContactsContactFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/contacts/{contactFid}][%d] DeleteCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteCustomersCustomerFidContactsContactFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

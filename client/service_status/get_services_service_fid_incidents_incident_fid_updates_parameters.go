@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetServicesServiceFidIncidentsIncidentFidUpdatesParams creates a new GetServicesServiceFidIncidentsIncidentFidUpdatesParams object
-// with the default values initialized.
+// NewGetServicesServiceFidIncidentsIncidentFidUpdatesParams creates a new GetServicesServiceFidIncidentsIncidentFidUpdatesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetServicesServiceFidIncidentsIncidentFidUpdatesParams() *GetServicesServiceFidIncidentsIncidentFidUpdatesParams {
-	var ()
 	return &GetServicesServiceFidIncidentsIncidentFidUpdatesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithTimeout creates a new GetServicesServiceFidIncidentsIncidentFidUpdatesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithTimeout(timeout time.Duration) *GetServicesServiceFidIncidentsIncidentFidUpdatesParams {
-	var ()
 	return &GetServicesServiceFidIncidentsIncidentFidUpdatesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithContext creates a new GetServicesServiceFidIncidentsIncidentFidUpdatesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithContext(ctx context.Context) *GetServicesServiceFidIncidentsIncidentFidUpdatesParams {
-	var ()
 	return &GetServicesServiceFidIncidentsIncidentFidUpdatesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithHTTPClient creates a new GetServicesServiceFidIncidentsIncidentFidUpdatesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithHTTPClient(client *http.Client) *GetServicesServiceFidIncidentsIncidentFidUpdatesParams {
-	var ()
 	return &GetServicesServiceFidIncidentsIncidentFidUpdatesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetServicesServiceFidIncidentsIncidentFidUpdatesParams contains all the parameters to send to the API endpoint
-for the get services service fid incidents incident fid updates operation typically these are written to a http.Request
+/* GetServicesServiceFidIncidentsIncidentFidUpdatesParams contains all the parameters to send to the API endpoint
+   for the get services service fid incidents incident fid updates operation.
+
+   Typically these are written to a http.Request.
 */
 type GetServicesServiceFidIncidentsIncidentFidUpdatesParams struct {
 
-	/*IncidentFid
-	  Incident FID to use
+	/* IncidentFid.
 
+	   Incident FID to use
 	*/
 	IncidentFid string
-	/*ServiceFid
-	  Service FID to use
 
+	/* ServiceFid.
+
+	   Service FID to use
 	*/
 	ServiceFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get services service fid incidents incident fid updates params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesParams) WithDefaults() *GetServicesServiceFidIncidentsIncidentFidUpdatesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get services service fid incidents incident fid updates params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServicesServiceFidIncidentsIncidentFidUpdatesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get services service fid incidents incident fid updates params

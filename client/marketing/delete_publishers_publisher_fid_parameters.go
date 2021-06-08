@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeletePublishersPublisherFidParams creates a new DeletePublishersPublisherFidParams object
-// with the default values initialized.
+// NewDeletePublishersPublisherFidParams creates a new DeletePublishersPublisherFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeletePublishersPublisherFidParams() *DeletePublishersPublisherFidParams {
-	var ()
 	return &DeletePublishersPublisherFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeletePublishersPublisherFidParamsWithTimeout creates a new DeletePublishersPublisherFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeletePublishersPublisherFidParamsWithTimeout(timeout time.Duration) *DeletePublishersPublisherFidParams {
-	var ()
 	return &DeletePublishersPublisherFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeletePublishersPublisherFidParamsWithContext creates a new DeletePublishersPublisherFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeletePublishersPublisherFidParamsWithContext(ctx context.Context) *DeletePublishersPublisherFidParams {
-	var ()
 	return &DeletePublishersPublisherFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeletePublishersPublisherFidParamsWithHTTPClient creates a new DeletePublishersPublisherFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeletePublishersPublisherFidParamsWithHTTPClient(client *http.Client) *DeletePublishersPublisherFidParams {
-	var ()
 	return &DeletePublishersPublisherFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeletePublishersPublisherFidParams contains all the parameters to send to the API endpoint
-for the delete publishers publisher fid operation typically these are written to a http.Request
+/* DeletePublishersPublisherFidParams contains all the parameters to send to the API endpoint
+   for the delete publishers publisher fid operation.
+
+   Typically these are written to a http.Request.
 */
 type DeletePublishersPublisherFidParams struct {
 
-	/*PublisherFid
-	  Publisher FID to use
+	/* PublisherFid.
 
+	   Publisher FID to use
 	*/
 	PublisherFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete publishers publisher fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeletePublishersPublisherFidParams) WithDefaults() *DeletePublishersPublisherFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete publishers publisher fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeletePublishersPublisherFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete publishers publisher fid params

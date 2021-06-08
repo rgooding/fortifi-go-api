@@ -6,6 +6,7 @@ package authentication
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetServiceAuthTokenOK() *GetServiceAuthTokenOK {
 	return &GetServiceAuthTokenOK{}
 }
 
-/*GetServiceAuthTokenOK handles this case with default header values.
+/* GetServiceAuthTokenOK describes a response with status code 200, with default header values.
 
 Token
 */
@@ -59,7 +60,6 @@ type GetServiceAuthTokenOK struct {
 func (o *GetServiceAuthTokenOK) Error() string {
 	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthTokenOK  %+v", 200, o.Payload)
 }
-
 func (o *GetServiceAuthTokenOK) GetPayload() *GetServiceAuthTokenOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetServiceAuthTokenDefault(code int) *GetServiceAuthTokenDefault {
 	}
 }
 
-/*GetServiceAuthTokenDefault handles this case with default header values.
+/* GetServiceAuthTokenDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetServiceAuthTokenDefault) Code() int {
 func (o *GetServiceAuthTokenDefault) Error() string {
 	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthToken default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetServiceAuthTokenDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetServiceAuthTokenOKBody) validateData(formats strfmt.Registry) error 
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getServiceAuthTokenOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get service auth token o k body based on the context it is used
+func (o *GetServiceAuthTokenOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServiceAuthTokenOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServiceAuthTokenOK" + "." + "data")
 			}

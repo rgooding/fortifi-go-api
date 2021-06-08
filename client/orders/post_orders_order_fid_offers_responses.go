@@ -46,7 +46,7 @@ func NewPostOrdersOrderFidOffersOK() *PostOrdersOrderFidOffersOK {
 	return &PostOrdersOrderFidOffersOK{}
 }
 
-/*PostOrdersOrderFidOffersOK handles this case with default header values.
+/* PostOrdersOrderFidOffersOK describes a response with status code 200, with default header values.
 
 Offer added to the order successfully
 */
@@ -69,7 +69,7 @@ func NewPostOrdersOrderFidOffersDefault(code int) *PostOrdersOrderFidOffersDefau
 	}
 }
 
-/*PostOrdersOrderFidOffersDefault handles this case with default header values.
+/* PostOrdersOrderFidOffersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostOrdersOrderFidOffersDefault) Code() int {
 func (o *PostOrdersOrderFidOffersDefault) Error() string {
 	return fmt.Sprintf("[POST /orders/{orderFid}/offers][%d] PostOrdersOrderFidOffers default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostOrdersOrderFidOffersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

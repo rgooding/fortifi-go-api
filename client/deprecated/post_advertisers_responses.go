@@ -6,6 +6,7 @@ package deprecated
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostAdvertisersOK() *PostAdvertisersOK {
 	return &PostAdvertisersOK{}
 }
 
-/*PostAdvertisersOK handles this case with default header values.
+/* PostAdvertisersOK describes a response with status code 200, with default header values.
 
 Advertiser Created
 */
@@ -59,7 +60,6 @@ type PostAdvertisersOK struct {
 func (o *PostAdvertisersOK) Error() string {
 	return fmt.Sprintf("[POST /advertisers][%d] postAdvertisersOK  %+v", 200, o.Payload)
 }
-
 func (o *PostAdvertisersOK) GetPayload() *PostAdvertisersOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostAdvertisersDefault(code int) *PostAdvertisersDefault {
 	}
 }
 
-/*PostAdvertisersDefault handles this case with default header values.
+/* PostAdvertisersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostAdvertisersDefault) Code() int {
 func (o *PostAdvertisersDefault) Error() string {
 	return fmt.Sprintf("[POST /advertisers][%d] PostAdvertisers default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostAdvertisersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostAdvertisersOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postAdvertisersOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post advertisers o k body based on the context it is used
+func (o *PostAdvertisersOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostAdvertisersOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postAdvertisersOK" + "." + "data")
 			}

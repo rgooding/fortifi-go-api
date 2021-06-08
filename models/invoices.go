@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -100,6 +101,43 @@ func (m *Invoices) validateInvoices(formats strfmt.Registry) error {
 
 		if m.Invoices[i] != nil {
 			if err := m.Invoices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("invoices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this invoices based on the context it is used
+func (m *Invoices) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Pagination
+	if err := m.Pagination.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateInvoices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Invoices) contextValidateInvoices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Invoices); i++ {
+
+		if m.Invoices[i] != nil {
+			if err := m.Invoices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("invoices" + "." + strconv.Itoa(i))
 				}

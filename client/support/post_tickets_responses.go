@@ -6,6 +6,7 @@ package support
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostTicketsOK() *PostTicketsOK {
 	return &PostTicketsOK{}
 }
 
-/*PostTicketsOK handles this case with default header values.
+/* PostTicketsOK describes a response with status code 200, with default header values.
 
 Ticket Information
 */
@@ -59,7 +60,6 @@ type PostTicketsOK struct {
 func (o *PostTicketsOK) Error() string {
 	return fmt.Sprintf("[POST /tickets][%d] postTicketsOK  %+v", 200, o.Payload)
 }
-
 func (o *PostTicketsOK) GetPayload() *PostTicketsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostTicketsDefault(code int) *PostTicketsDefault {
 	}
 }
 
-/*PostTicketsDefault handles this case with default header values.
+/* PostTicketsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostTicketsDefault) Code() int {
 func (o *PostTicketsDefault) Error() string {
 	return fmt.Sprintf("[POST /tickets][%d] PostTickets default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostTicketsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostTicketsOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postTicketsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post tickets o k body based on the context it is used
+func (o *PostTicketsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostTicketsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postTicketsOK" + "." + "data")
 			}

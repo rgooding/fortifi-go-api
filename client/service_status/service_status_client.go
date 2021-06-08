@@ -23,13 +23,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesOK, error)
+	GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesOK, error)
 
-	GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsOK, error)
+	GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesServiceFidIncidentsOK, error)
 
-	GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error)
+	GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -37,13 +40,12 @@ type ClientService interface {
 /*
   GetServices retrieves all services
 */
-func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesOK, error) {
+func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetServices",
 		Method:             "GET",
 		PathPattern:        "/services",
@@ -55,7 +57,12 @@ func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -71,13 +78,12 @@ func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientA
 /*
   GetServicesServiceFidIncidents retrieves incidents for service within timeframe
 */
-func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsOK, error) {
+func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesServiceFidIncidentsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesServiceFidIncidentsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetServicesServiceFidIncidents",
 		Method:             "GET",
 		PathPattern:        "/services/{serviceFid}/incidents",
@@ -89,7 +95,12 @@ func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidInc
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -105,13 +116,12 @@ func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidInc
 /*
   GetServicesServiceFidIncidentsIncidentFidUpdates retrieves incident updates for incident
 */
-func (a *Client) GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error) {
+func (a *Client) GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServicesServiceFidIncidentsIncidentFidUpdatesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetServicesServiceFidIncidentsIncidentFidUpdates",
 		Method:             "GET",
 		PathPattern:        "/services/{serviceFid}/incidents/{incidentFid}/updates",
@@ -123,7 +133,12 @@ func (a *Client) GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetSer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

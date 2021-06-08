@@ -23,11 +23,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostTicketsOK, error)
+	PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostTicketsOK, error)
 
-	PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter) (*PutTicketsTicketFidStatusOK, error)
+	PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutTicketsTicketFidStatusOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,13 +41,12 @@ type ClientService interface {
   The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
 
 */
-func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostTicketsOK, error) {
+func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostTicketsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostTicketsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostTickets",
 		Method:             "POST",
 		PathPattern:        "/tickets",
@@ -56,7 +58,12 @@ func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -72,13 +79,12 @@ func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientA
 /*
   PutTicketsTicketFidStatus sets the status of a ticket
 */
-func (a *Client) PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter) (*PutTicketsTicketFidStatusOK, error) {
+func (a *Client) PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutTicketsTicketFidStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutTicketsTicketFidStatusParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutTicketsTicketFidStatus",
 		Method:             "PUT",
 		PathPattern:        "/tickets/{ticketFid}/status",
@@ -90,7 +96,12 @@ func (a *Client) PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

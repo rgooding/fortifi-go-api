@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetPayPublicKeyParams creates a new GetPayPublicKeyParams object
-// with the default values initialized.
+// NewGetPayPublicKeyParams creates a new GetPayPublicKeyParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetPayPublicKeyParams() *GetPayPublicKeyParams {
-	var ()
 	return &GetPayPublicKeyParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetPayPublicKeyParamsWithTimeout creates a new GetPayPublicKeyParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetPayPublicKeyParamsWithTimeout(timeout time.Duration) *GetPayPublicKeyParams {
-	var ()
 	return &GetPayPublicKeyParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetPayPublicKeyParamsWithContext creates a new GetPayPublicKeyParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetPayPublicKeyParamsWithContext(ctx context.Context) *GetPayPublicKeyParams {
-	var ()
 	return &GetPayPublicKeyParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetPayPublicKeyParamsWithHTTPClient creates a new GetPayPublicKeyParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetPayPublicKeyParamsWithHTTPClient(client *http.Client) *GetPayPublicKeyParams {
-	var ()
 	return &GetPayPublicKeyParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetPayPublicKeyParams contains all the parameters to send to the API endpoint
-for the get pay public key operation typically these are written to a http.Request
+/* GetPayPublicKeyParams contains all the parameters to send to the API endpoint
+   for the get pay public key operation.
+
+   Typically these are written to a http.Request.
 */
 type GetPayPublicKeyParams struct {
 
-	/*Format
-	  Format for the generated key xml, raw, pkcs1 or pkcs8.
+	/* Format.
 
+	   Format for the generated key xml, raw, pkcs1 or pkcs8.
 	*/
 	Format *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get pay public key params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPayPublicKeyParams) WithDefaults() *GetPayPublicKeyParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get pay public key params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPayPublicKeyParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get pay public key params
@@ -127,16 +141,17 @@ func (o *GetPayPublicKeyParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 		// query param format
 		var qrFormat string
+
 		if o.Format != nil {
 			qrFormat = *o.Format
 		}
 		qFormat := qrFormat
 		if qFormat != "" {
+
 			if err := r.SetQueryParam("format", qFormat); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

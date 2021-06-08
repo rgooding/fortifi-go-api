@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteCustomersCustomerFidContactsContactFidParams creates a new DeleteCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized.
+// NewDeleteCustomersCustomerFidContactsContactFidParams creates a new DeleteCustomersCustomerFidContactsContactFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteCustomersCustomerFidContactsContactFidParams() *DeleteCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidContactsContactFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidContactsContactFidParamsWithTimeout creates a new DeleteCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteCustomersCustomerFidContactsContactFidParamsWithTimeout(timeout time.Duration) *DeleteCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidContactsContactFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidContactsContactFidParamsWithContext creates a new DeleteCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteCustomersCustomerFidContactsContactFidParamsWithContext(ctx context.Context) *DeleteCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidContactsContactFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteCustomersCustomerFidContactsContactFidParamsWithHTTPClient creates a new DeleteCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteCustomersCustomerFidContactsContactFidParamsWithHTTPClient(client *http.Client) *DeleteCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidContactsContactFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
-for the delete customers customer fid contacts contact fid operation typically these are written to a http.Request
+/* DeleteCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
+   for the delete customers customer fid contacts contact fid operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidContactsContactFidParams struct {
 
-	/*ContactFid
-	  Contact FID to use
+	/* ContactFid.
 
+	   Contact FID to use
 	*/
 	ContactFid string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete customers customer fid contacts contact fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidContactsContactFidParams) WithDefaults() *DeleteCustomersCustomerFidContactsContactFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete customers customer fid contacts contact fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidContactsContactFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete customers customer fid contacts contact fid params

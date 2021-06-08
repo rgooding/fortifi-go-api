@@ -16,56 +16,70 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetReasonsGroupsParams creates a new GetReasonsGroupsParams object
-// with the default values initialized.
+// NewGetReasonsGroupsParams creates a new GetReasonsGroupsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetReasonsGroupsParams() *GetReasonsGroupsParams {
-	var ()
 	return &GetReasonsGroupsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetReasonsGroupsParamsWithTimeout creates a new GetReasonsGroupsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetReasonsGroupsParamsWithTimeout(timeout time.Duration) *GetReasonsGroupsParams {
-	var ()
 	return &GetReasonsGroupsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetReasonsGroupsParamsWithContext creates a new GetReasonsGroupsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetReasonsGroupsParamsWithContext(ctx context.Context) *GetReasonsGroupsParams {
-	var ()
 	return &GetReasonsGroupsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetReasonsGroupsParamsWithHTTPClient creates a new GetReasonsGroupsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetReasonsGroupsParamsWithHTTPClient(client *http.Client) *GetReasonsGroupsParams {
-	var ()
 	return &GetReasonsGroupsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetReasonsGroupsParams contains all the parameters to send to the API endpoint
-for the get reasons groups operation typically these are written to a http.Request
+/* GetReasonsGroupsParams contains all the parameters to send to the API endpoint
+   for the get reasons groups operation.
+
+   Typically these are written to a http.Request.
 */
 type GetReasonsGroupsParams struct {
 
-	/*ReasonGroupType*/
+	// ReasonGroupType.
 	ReasonGroupType *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get reasons groups params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetReasonsGroupsParams) WithDefaults() *GetReasonsGroupsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get reasons groups params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetReasonsGroupsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get reasons groups params
@@ -124,16 +138,17 @@ func (o *GetReasonsGroupsParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// query param reasonGroupType
 		var qrReasonGroupType string
+
 		if o.ReasonGroupType != nil {
 			qrReasonGroupType = *o.ReasonGroupType
 		}
 		qReasonGroupType := qrReasonGroupType
 		if qReasonGroupType != "" {
+
 			if err := r.SetQueryParam("reasonGroupType", qReasonGroupType); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

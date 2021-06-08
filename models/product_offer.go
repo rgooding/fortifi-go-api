@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -283,6 +285,69 @@ func (m *ProductOffer) validateTermType(formats strfmt.Registry) error {
 	}
 
 	if err := m.TermType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("termType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this product offer based on the context it is used
+func (m *ProductOffer) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDiscountType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSetupDiscountType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTermType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProductOffer) contextValidateDiscountType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.DiscountType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("discountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProductOffer) contextValidateSetupDiscountType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.SetupDiscountType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("setupDiscountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProductOffer) contextValidateTermType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.TermType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("termType")
 		}

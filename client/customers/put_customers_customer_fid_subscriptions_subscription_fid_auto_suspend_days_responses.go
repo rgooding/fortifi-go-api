@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK() *
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK describes a response with status code 200, with default header values.
 
 Auto suspend days set
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefaul
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefau
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/autoSuspendDays][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

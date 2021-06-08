@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -39,6 +40,9 @@ type CreateOrderPayload struct {
 	// Reference for this order
 	ExternalReference string `json:"externalReference,omitempty"`
 
+	// Subscriptions to modify on this order
+	ModifySubscriptions []*OrderModifySubscriptionPayload `json:"modifySubscriptions"`
+
 	// Offer FIDs to apply to the order
 	OfferFids []string `json:"offerFids"`
 
@@ -57,6 +61,9 @@ type CreateOrderPayload struct {
 	// publisher
 	Publisher *OrderPublisherPayload `json:"publisher,omitempty"`
 
+	// If set to true, this will setup purchases before payment is received
+	SetupPurchaseBeforePayment bool `json:"setupPurchaseBeforePayment,omitempty"`
+
 	// type
 	Type CreateOrderType `json:"type,omitempty"`
 
@@ -67,6 +74,10 @@ type CreateOrderPayload struct {
 // Validate validates this create order payload
 func (m *CreateOrderPayload) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateModifySubscriptions(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateProducts(formats); err != nil {
 		res = append(res, err)
@@ -86,8 +97,31 @@ func (m *CreateOrderPayload) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *CreateOrderPayload) validateProducts(formats strfmt.Registry) error {
+func (m *CreateOrderPayload) validateModifySubscriptions(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModifySubscriptions) { // not required
+		return nil
+	}
 
+	for i := 0; i < len(m.ModifySubscriptions); i++ {
+		if swag.IsZero(m.ModifySubscriptions[i]) { // not required
+			continue
+		}
+
+		if m.ModifySubscriptions[i] != nil {
+			if err := m.ModifySubscriptions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CreateOrderPayload) validateProducts(formats strfmt.Registry) error {
 	if swag.IsZero(m.Products) { // not required
 		return nil
 	}
@@ -112,7 +146,6 @@ func (m *CreateOrderPayload) validateProducts(formats strfmt.Registry) error {
 }
 
 func (m *CreateOrderPayload) validatePublisher(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Publisher) { // not required
 		return nil
 	}
@@ -130,12 +163,99 @@ func (m *CreateOrderPayload) validatePublisher(formats strfmt.Registry) error {
 }
 
 func (m *CreateOrderPayload) validateType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
 
 	if err := m.Type.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create order payload based on the context it is used
+func (m *CreateOrderPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateModifySubscriptions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProducts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePublisher(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateOrderPayload) contextValidateModifySubscriptions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ModifySubscriptions); i++ {
+
+		if m.ModifySubscriptions[i] != nil {
+			if err := m.ModifySubscriptions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CreateOrderPayload) contextValidateProducts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Products); i++ {
+
+		if m.Products[i] != nil {
+			if err := m.Products[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CreateOrderPayload) contextValidatePublisher(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Publisher != nil {
+		if err := m.Publisher.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("publisher")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CreateOrderPayload) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Type.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
 		}

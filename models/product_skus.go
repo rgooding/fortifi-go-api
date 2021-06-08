@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -37,7 +38,6 @@ func (m *ProductSkus) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ProductSkus) validateSkus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Skus) { // not required
 		return nil
 	}
@@ -49,6 +49,38 @@ func (m *ProductSkus) validateSkus(formats strfmt.Registry) error {
 
 		if m.Skus[i] != nil {
 			if err := m.Skus[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("skus" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this product skus based on the context it is used
+func (m *ProductSkus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSkus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProductSkus) contextValidateSkus(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Skus); i++ {
+
+		if m.Skus[i] != nil {
+			if err := m.Skus[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("skus" + "." + strconv.Itoa(i))
 				}

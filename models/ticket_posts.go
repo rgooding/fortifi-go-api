@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -37,7 +38,6 @@ func (m *TicketPosts) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TicketPosts) validatePosts(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Posts) { // not required
 		return nil
 	}
@@ -49,6 +49,38 @@ func (m *TicketPosts) validatePosts(formats strfmt.Registry) error {
 
 		if m.Posts[i] != nil {
 			if err := m.Posts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("posts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this ticket posts based on the context it is used
+func (m *TicketPosts) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidatePosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TicketPosts) contextValidatePosts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Posts); i++ {
+
+		if m.Posts[i] != nil {
+			if err := m.Posts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("posts" + "." + strconv.Itoa(i))
 				}

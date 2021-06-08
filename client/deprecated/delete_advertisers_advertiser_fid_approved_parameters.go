@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteAdvertisersAdvertiserFidApprovedParams creates a new DeleteAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized.
+// NewDeleteAdvertisersAdvertiserFidApprovedParams creates a new DeleteAdvertisersAdvertiserFidApprovedParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteAdvertisersAdvertiserFidApprovedParams() *DeleteAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &DeleteAdvertisersAdvertiserFidApprovedParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteAdvertisersAdvertiserFidApprovedParamsWithTimeout creates a new DeleteAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteAdvertisersAdvertiserFidApprovedParamsWithTimeout(timeout time.Duration) *DeleteAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &DeleteAdvertisersAdvertiserFidApprovedParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteAdvertisersAdvertiserFidApprovedParamsWithContext creates a new DeleteAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteAdvertisersAdvertiserFidApprovedParamsWithContext(ctx context.Context) *DeleteAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &DeleteAdvertisersAdvertiserFidApprovedParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteAdvertisersAdvertiserFidApprovedParamsWithHTTPClient creates a new DeleteAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteAdvertisersAdvertiserFidApprovedParamsWithHTTPClient(client *http.Client) *DeleteAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &DeleteAdvertisersAdvertiserFidApprovedParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
-for the delete advertisers advertiser fid approved operation typically these are written to a http.Request
+/* DeleteAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
+   for the delete advertisers advertiser fid approved operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteAdvertisersAdvertiserFidApprovedParams struct {
 
-	/*AdvertiserFid
-	  Advertiser FID to use
+	/* AdvertiserFid.
 
+	   Advertiser FID to use
 	*/
 	AdvertiserFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete advertisers advertiser fid approved params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteAdvertisersAdvertiserFidApprovedParams) WithDefaults() *DeleteAdvertisersAdvertiserFidApprovedParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete advertisers advertiser fid approved params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteAdvertisersAdvertiserFidApprovedParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete advertisers advertiser fid approved params

@@ -46,7 +46,7 @@ func NewPutOrdersOrderFidProductsOrderProductFidQuantityOK() *PutOrdersOrderFidP
 	return &PutOrdersOrderFidProductsOrderProductFidQuantityOK{}
 }
 
-/*PutOrdersOrderFidProductsOrderProductFidQuantityOK handles this case with default header values.
+/* PutOrdersOrderFidProductsOrderProductFidQuantityOK describes a response with status code 200, with default header values.
 
 Quantity updated
 */
@@ -69,7 +69,7 @@ func NewPutOrdersOrderFidProductsOrderProductFidQuantityDefault(code int) *PutOr
 	}
 }
 
-/*PutOrdersOrderFidProductsOrderProductFidQuantityDefault handles this case with default header values.
+/* PutOrdersOrderFidProductsOrderProductFidQuantityDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) Code() int {
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/quantity][%d] PutOrdersOrderFidProductsOrderProductFidQuantity default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -30,6 +32,9 @@ type PaymentMethodResponse struct {
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
 	ExpiryDate strfmt.DateTime `json:"expiryDate,omitempty"`
+
+	// External payer reference
+	ExternalReference string `json:"externalReference,omitempty"`
 
 	// identify count
 	IdentifyCount float64 `json:"identifyCount,omitempty"`
@@ -104,6 +109,8 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 
 		ExpiryDate strfmt.DateTime `json:"expiryDate,omitempty"`
 
+		ExternalReference string `json:"externalReference,omitempty"`
+
 		IdentifyCount float64 `json:"identifyCount,omitempty"`
 
 		IsPrimary bool `json:"isPrimary,omitempty"`
@@ -147,6 +154,8 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 	m.DeclineCount = dataAO1.DeclineCount
 
 	m.ExpiryDate = dataAO1.ExpiryDate
+
+	m.ExternalReference = dataAO1.ExternalReference
 
 	m.IdentifyCount = dataAO1.IdentifyCount
 
@@ -201,6 +210,8 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 
 		ExpiryDate strfmt.DateTime `json:"expiryDate,omitempty"`
 
+		ExternalReference string `json:"externalReference,omitempty"`
+
 		IdentifyCount float64 `json:"identifyCount,omitempty"`
 
 		IsPrimary bool `json:"isPrimary,omitempty"`
@@ -241,6 +252,8 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 	dataAO1.DeclineCount = m.DeclineCount
 
 	dataAO1.ExpiryDate = m.ExpiryDate
+
+	dataAO1.ExternalReference = m.ExternalReference
 
 	dataAO1.IdentifyCount = m.IdentifyCount
 
@@ -396,6 +409,21 @@ func (m *PaymentMethodResponse) validateValidFromDate(formats strfmt.Registry) e
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validate this payment method response based on the context it is used
+func (m *PaymentMethodResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 

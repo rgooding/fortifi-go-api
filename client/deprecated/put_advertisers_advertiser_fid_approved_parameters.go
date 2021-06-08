@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutAdvertisersAdvertiserFidApprovedParams creates a new PutAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized.
+// NewPutAdvertisersAdvertiserFidApprovedParams creates a new PutAdvertisersAdvertiserFidApprovedParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutAdvertisersAdvertiserFidApprovedParams() *PutAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &PutAdvertisersAdvertiserFidApprovedParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutAdvertisersAdvertiserFidApprovedParamsWithTimeout creates a new PutAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutAdvertisersAdvertiserFidApprovedParamsWithTimeout(timeout time.Duration) *PutAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &PutAdvertisersAdvertiserFidApprovedParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutAdvertisersAdvertiserFidApprovedParamsWithContext creates a new PutAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutAdvertisersAdvertiserFidApprovedParamsWithContext(ctx context.Context) *PutAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &PutAdvertisersAdvertiserFidApprovedParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutAdvertisersAdvertiserFidApprovedParamsWithHTTPClient creates a new PutAdvertisersAdvertiserFidApprovedParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutAdvertisersAdvertiserFidApprovedParamsWithHTTPClient(client *http.Client) *PutAdvertisersAdvertiserFidApprovedParams {
-	var ()
 	return &PutAdvertisersAdvertiserFidApprovedParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
-for the put advertisers advertiser fid approved operation typically these are written to a http.Request
+/* PutAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
+   for the put advertisers advertiser fid approved operation.
+
+   Typically these are written to a http.Request.
 */
 type PutAdvertisersAdvertiserFidApprovedParams struct {
 
-	/*AdvertiserFid
-	  Advertiser FID to use
+	/* AdvertiserFid.
 
+	   Advertiser FID to use
 	*/
 	AdvertiserFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put advertisers advertiser fid approved params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutAdvertisersAdvertiserFidApprovedParams) WithDefaults() *PutAdvertisersAdvertiserFidApprovedParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put advertisers advertiser fid approved params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutAdvertisersAdvertiserFidApprovedParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put advertisers advertiser fid approved params

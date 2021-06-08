@@ -46,7 +46,7 @@ func NewPostCustomersCustomerFidEmailsOK() *PostCustomersCustomerFidEmailsOK {
 	return &PostCustomersCustomerFidEmailsOK{}
 }
 
-/*PostCustomersCustomerFidEmailsOK handles this case with default header values.
+/* PostCustomersCustomerFidEmailsOK describes a response with status code 200, with default header values.
 
 Email Added
 */
@@ -69,7 +69,7 @@ func NewPostCustomersCustomerFidEmailsDefault(code int) *PostCustomersCustomerFi
 	}
 }
 
-/*PostCustomersCustomerFidEmailsDefault handles this case with default header values.
+/* PostCustomersCustomerFidEmailsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostCustomersCustomerFidEmailsDefault) Code() int {
 func (o *PostCustomersCustomerFidEmailsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/emails][%d] PostCustomersCustomerFidEmails default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidEmailsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

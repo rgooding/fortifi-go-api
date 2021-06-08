@@ -6,12 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// Order Generic Response
+// Order An Order
 //
 // swagger:model Order
 type Order struct {
@@ -31,6 +35,9 @@ type Order struct {
 
 	// brand fid
 	BrandFid string `json:"brandFid,omitempty"`
+
+	// charge Id
+	ChargeID string `json:"chargeId,omitempty"`
 
 	// country
 	Country string `json:"country,omitempty"`
@@ -56,6 +63,21 @@ type Order struct {
 	// fraud fid
 	FraudFid string `json:"fraudFid,omitempty"`
 
+	// has addon
+	HasAddon bool `json:"hasAddon,omitempty"`
+
+	// has modify
+	HasModify bool `json:"hasModify,omitempty"`
+
+	// has product
+	HasProduct bool `json:"hasProduct,omitempty"`
+
+	// has subscription
+	HasSubscription bool `json:"hasSubscription,omitempty"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
 	// invoice fid
 	InvoiceFid string `json:"invoiceFid,omitempty"`
 
@@ -67,6 +89,10 @@ type Order struct {
 
 	// order hash
 	OrderHash string `json:"orderHash,omitempty"`
+
+	// order type
+	// Enum: [initial purchase cancel prerenew]
+	OrderType string `json:"orderType,omitempty"`
 
 	// payment account fid
 	PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
@@ -120,6 +146,8 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 
 		BrandFid string `json:"brandFid,omitempty"`
 
+		ChargeID string `json:"chargeId,omitempty"`
+
 		Country string `json:"country,omitempty"`
 
 		CouponCode string `json:"couponCode,omitempty"`
@@ -136,6 +164,16 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 
 		FraudFid string `json:"fraudFid,omitempty"`
 
+		HasAddon bool `json:"hasAddon,omitempty"`
+
+		HasModify bool `json:"hasModify,omitempty"`
+
+		HasProduct bool `json:"hasProduct,omitempty"`
+
+		HasSubscription bool `json:"hasSubscription,omitempty"`
+
+		ID string `json:"id,omitempty"`
+
 		InvoiceFid string `json:"invoiceFid,omitempty"`
 
 		LastPaymentFid string `json:"lastPaymentFid,omitempty"`
@@ -143,6 +181,8 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 		OfferFid string `json:"offerFid,omitempty"`
 
 		OrderHash string `json:"orderHash,omitempty"`
+
+		OrderType string `json:"orderType,omitempty"`
 
 		PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 
@@ -178,6 +218,8 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 
 	m.BrandFid = dataAO1.BrandFid
 
+	m.ChargeID = dataAO1.ChargeID
+
 	m.Country = dataAO1.Country
 
 	m.CouponCode = dataAO1.CouponCode
@@ -194,6 +236,16 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 
 	m.FraudFid = dataAO1.FraudFid
 
+	m.HasAddon = dataAO1.HasAddon
+
+	m.HasModify = dataAO1.HasModify
+
+	m.HasProduct = dataAO1.HasProduct
+
+	m.HasSubscription = dataAO1.HasSubscription
+
+	m.ID = dataAO1.ID
+
 	m.InvoiceFid = dataAO1.InvoiceFid
 
 	m.LastPaymentFid = dataAO1.LastPaymentFid
@@ -201,6 +253,8 @@ func (m *Order) UnmarshalJSON(raw []byte) error {
 	m.OfferFid = dataAO1.OfferFid
 
 	m.OrderHash = dataAO1.OrderHash
+
+	m.OrderType = dataAO1.OrderType
 
 	m.PaymentAccountFid = dataAO1.PaymentAccountFid
 
@@ -245,6 +299,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 
 		BrandFid string `json:"brandFid,omitempty"`
 
+		ChargeID string `json:"chargeId,omitempty"`
+
 		Country string `json:"country,omitempty"`
 
 		CouponCode string `json:"couponCode,omitempty"`
@@ -261,6 +317,16 @@ func (m Order) MarshalJSON() ([]byte, error) {
 
 		FraudFid string `json:"fraudFid,omitempty"`
 
+		HasAddon bool `json:"hasAddon,omitempty"`
+
+		HasModify bool `json:"hasModify,omitempty"`
+
+		HasProduct bool `json:"hasProduct,omitempty"`
+
+		HasSubscription bool `json:"hasSubscription,omitempty"`
+
+		ID string `json:"id,omitempty"`
+
 		InvoiceFid string `json:"invoiceFid,omitempty"`
 
 		LastPaymentFid string `json:"lastPaymentFid,omitempty"`
@@ -268,6 +334,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 		OfferFid string `json:"offerFid,omitempty"`
 
 		OrderHash string `json:"orderHash,omitempty"`
+
+		OrderType string `json:"orderType,omitempty"`
 
 		PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 
@@ -300,6 +368,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 
 	dataAO1.BrandFid = m.BrandFid
 
+	dataAO1.ChargeID = m.ChargeID
+
 	dataAO1.Country = m.Country
 
 	dataAO1.CouponCode = m.CouponCode
@@ -316,6 +386,16 @@ func (m Order) MarshalJSON() ([]byte, error) {
 
 	dataAO1.FraudFid = m.FraudFid
 
+	dataAO1.HasAddon = m.HasAddon
+
+	dataAO1.HasModify = m.HasModify
+
+	dataAO1.HasProduct = m.HasProduct
+
+	dataAO1.HasSubscription = m.HasSubscription
+
+	dataAO1.ID = m.ID
+
 	dataAO1.InvoiceFid = m.InvoiceFid
 
 	dataAO1.LastPaymentFid = m.LastPaymentFid
@@ -323,6 +403,8 @@ func (m Order) MarshalJSON() ([]byte, error) {
 	dataAO1.OfferFid = m.OfferFid
 
 	dataAO1.OrderHash = m.OrderHash
+
+	dataAO1.OrderType = m.OrderType
 
 	dataAO1.PaymentAccountFid = m.PaymentAccountFid
 
@@ -358,6 +440,59 @@ func (m *Order) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOrderType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var orderTypeOrderTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["initial","purchase","cancel","prerenew"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		orderTypeOrderTypePropEnum = append(orderTypeOrderTypePropEnum, v)
+	}
+}
+
+// property enum
+func (m *Order) validateOrderTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, orderTypeOrderTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Order) validateOrderType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.OrderType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateOrderTypeEnum("orderType", "body", m.OrderType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this order based on the context it is used
+func (m *Order) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 

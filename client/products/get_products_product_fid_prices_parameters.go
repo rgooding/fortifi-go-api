@@ -16,58 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetProductsProductFidPricesParams creates a new GetProductsProductFidPricesParams object
-// with the default values initialized.
+// NewGetProductsProductFidPricesParams creates a new GetProductsProductFidPricesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetProductsProductFidPricesParams() *GetProductsProductFidPricesParams {
-	var ()
 	return &GetProductsProductFidPricesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetProductsProductFidPricesParamsWithTimeout creates a new GetProductsProductFidPricesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetProductsProductFidPricesParamsWithTimeout(timeout time.Duration) *GetProductsProductFidPricesParams {
-	var ()
 	return &GetProductsProductFidPricesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetProductsProductFidPricesParamsWithContext creates a new GetProductsProductFidPricesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetProductsProductFidPricesParamsWithContext(ctx context.Context) *GetProductsProductFidPricesParams {
-	var ()
 	return &GetProductsProductFidPricesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetProductsProductFidPricesParamsWithHTTPClient creates a new GetProductsProductFidPricesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetProductsProductFidPricesParamsWithHTTPClient(client *http.Client) *GetProductsProductFidPricesParams {
-	var ()
 	return &GetProductsProductFidPricesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetProductsProductFidPricesParams contains all the parameters to send to the API endpoint
-for the get products product fid prices operation typically these are written to a http.Request
+/* GetProductsProductFidPricesParams contains all the parameters to send to the API endpoint
+   for the get products product fid prices operation.
+
+   Typically these are written to a http.Request.
 */
 type GetProductsProductFidPricesParams struct {
 
-	/*Currency*/
+	// Currency.
 	Currency *string
-	/*ProductFid*/
+
+	// ProductFid.
 	ProductFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get products product fid prices params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetProductsProductFidPricesParams) WithDefaults() *GetProductsProductFidPricesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get products product fid prices params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetProductsProductFidPricesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get products product fid prices params
@@ -146,7 +161,6 @@ func (o *GetProductsProductFidPricesParams) WriteToRequest(r runtime.ClientReque
 				return err
 			}
 		}
-
 	}
 
 	// path param productFid

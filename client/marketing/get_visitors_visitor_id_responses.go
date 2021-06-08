@@ -6,6 +6,7 @@ package marketing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetVisitorsVisitorIDOK() *GetVisitorsVisitorIDOK {
 	return &GetVisitorsVisitorIDOK{}
 }
 
-/*GetVisitorsVisitorIDOK handles this case with default header values.
+/* GetVisitorsVisitorIDOK describes a response with status code 200, with default header values.
 
 Pixels
 */
@@ -59,7 +60,6 @@ type GetVisitorsVisitorIDOK struct {
 func (o *GetVisitorsVisitorIDOK) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}][%d] getVisitorsVisitorIdOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVisitorsVisitorIDOK) GetPayload() *GetVisitorsVisitorIDOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetVisitorsVisitorIDDefault(code int) *GetVisitorsVisitorIDDefault {
 	}
 }
 
-/*GetVisitorsVisitorIDDefault handles this case with default header values.
+/* GetVisitorsVisitorIDDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetVisitorsVisitorIDDefault) Code() int {
 func (o *GetVisitorsVisitorIDDefault) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}][%d] GetVisitorsVisitorID default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetVisitorsVisitorIDDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetVisitorsVisitorIDOKBody) validateData(formats strfmt.Registry) error
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getVisitorsVisitorIdOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get visitors visitor ID o k body based on the context it is used
+func (o *GetVisitorsVisitorIDOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetVisitorsVisitorIDOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getVisitorsVisitorIdOK" + "." + "data")
 			}

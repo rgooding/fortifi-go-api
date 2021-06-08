@@ -46,7 +46,7 @@ func NewPutContactsEmailsEmailAddressUnsubscribeOK() *PutContactsEmailsEmailAddr
 	return &PutContactsEmailsEmailAddressUnsubscribeOK{}
 }
 
-/*PutContactsEmailsEmailAddressUnsubscribeOK handles this case with default header values.
+/* PutContactsEmailsEmailAddressUnsubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Unsubscribed
 */
@@ -69,7 +69,7 @@ func NewPutContactsEmailsEmailAddressUnsubscribeDefault(code int) *PutContactsEm
 	}
 }
 
-/*PutContactsEmailsEmailAddressUnsubscribeDefault handles this case with default header values.
+/* PutContactsEmailsEmailAddressUnsubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) Code() int {
 func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/unsubscribe][%d] PutContactsEmailsEmailAddressUnsubscribe default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

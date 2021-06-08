@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutContactsEmailsEmailAddressConfirmParams creates a new PutContactsEmailsEmailAddressConfirmParams object
-// with the default values initialized.
+// NewPutContactsEmailsEmailAddressConfirmParams creates a new PutContactsEmailsEmailAddressConfirmParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutContactsEmailsEmailAddressConfirmParams() *PutContactsEmailsEmailAddressConfirmParams {
-	var ()
 	return &PutContactsEmailsEmailAddressConfirmParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressConfirmParamsWithTimeout creates a new PutContactsEmailsEmailAddressConfirmParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutContactsEmailsEmailAddressConfirmParamsWithTimeout(timeout time.Duration) *PutContactsEmailsEmailAddressConfirmParams {
-	var ()
 	return &PutContactsEmailsEmailAddressConfirmParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressConfirmParamsWithContext creates a new PutContactsEmailsEmailAddressConfirmParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutContactsEmailsEmailAddressConfirmParamsWithContext(ctx context.Context) *PutContactsEmailsEmailAddressConfirmParams {
-	var ()
 	return &PutContactsEmailsEmailAddressConfirmParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressConfirmParamsWithHTTPClient creates a new PutContactsEmailsEmailAddressConfirmParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutContactsEmailsEmailAddressConfirmParamsWithHTTPClient(client *http.Client) *PutContactsEmailsEmailAddressConfirmParams {
-	var ()
 	return &PutContactsEmailsEmailAddressConfirmParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutContactsEmailsEmailAddressConfirmParams contains all the parameters to send to the API endpoint
-for the put contacts emails email address confirm operation typically these are written to a http.Request
+/* PutContactsEmailsEmailAddressConfirmParams contains all the parameters to send to the API endpoint
+   for the put contacts emails email address confirm operation.
+
+   Typically these are written to a http.Request.
 */
 type PutContactsEmailsEmailAddressConfirmParams struct {
 
-	/*EmailAddress
-	  Email Address
+	/* EmailAddress.
 
+	   Email Address
 	*/
 	EmailAddress string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put contacts emails email address confirm params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutContactsEmailsEmailAddressConfirmParams) WithDefaults() *PutContactsEmailsEmailAddressConfirmParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put contacts emails email address confirm params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutContactsEmailsEmailAddressConfirmParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put contacts emails email address confirm params

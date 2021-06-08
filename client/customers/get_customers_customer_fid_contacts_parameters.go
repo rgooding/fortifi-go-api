@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersCustomerFidContactsParams creates a new GetCustomersCustomerFidContactsParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidContactsParams creates a new GetCustomersCustomerFidContactsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidContactsParams() *GetCustomersCustomerFidContactsParams {
-	var ()
 	return &GetCustomersCustomerFidContactsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidContactsParamsWithTimeout creates a new GetCustomersCustomerFidContactsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidContactsParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidContactsParams {
-	var ()
 	return &GetCustomersCustomerFidContactsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidContactsParamsWithContext creates a new GetCustomersCustomerFidContactsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidContactsParamsWithContext(ctx context.Context) *GetCustomersCustomerFidContactsParams {
-	var ()
 	return &GetCustomersCustomerFidContactsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidContactsParamsWithHTTPClient creates a new GetCustomersCustomerFidContactsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidContactsParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidContactsParams {
-	var ()
 	return &GetCustomersCustomerFidContactsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidContactsParams contains all the parameters to send to the API endpoint
-for the get customers customer fid contacts operation typically these are written to a http.Request
+/* GetCustomersCustomerFidContactsParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid contacts operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidContactsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Limit
-	  Maximum number of records per page (default: 20)
 
+	/* Limit.
+
+	   Maximum number of records per page (default: 20)
 	*/
 	Limit *int64
-	/*Page
-	  Page number (default: 1)
 
+	/* Page.
+
+	   Page number (default: 1)
 	*/
 	Page *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid contacts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidContactsParams) WithDefaults() *GetCustomersCustomerFidContactsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid contacts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidContactsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid contacts params
@@ -165,32 +181,34 @@ func (o *GetCustomersCustomerFidContactsParams) WriteToRequest(r runtime.ClientR
 
 		// query param limit
 		var qrLimit int64
+
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
+
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Page != nil {
 
 		// query param page
 		var qrPage int64
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt64(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

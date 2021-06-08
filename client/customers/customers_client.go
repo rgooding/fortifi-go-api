@@ -23,173 +23,196 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteCustomersCustomerFid(params *DeleteCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidOK, error)
+	DeleteCustomersCustomerFid(params *DeleteCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidOK, error)
 
-	DeleteCustomersCustomerFidContactsContactFid(params *DeleteCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidContactsContactFidOK, error)
+	DeleteCustomersCustomerFidContactsContactFid(params *DeleteCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidContactsContactFidOK, error)
 
-	DeleteCustomersCustomerFidLoyal(params *DeleteCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidLoyalOK, error)
+	DeleteCustomersCustomerFidLoyal(params *DeleteCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidLoyalOK, error)
 
-	DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK, error)
+	DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK, error)
 
-	DeleteCustomersCustomerFidVip(params *DeleteCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidVipOK, error)
+	DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error)
 
-	GetCustomersCustomerFid(params *GetCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidOK, error)
+	DeleteCustomersCustomerFidVip(params *DeleteCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidVipOK, error)
 
-	GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidAddressesOK, error)
+	GetCustomersCustomerFid(params *GetCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidOK, error)
 
-	GetCustomersCustomerFidChatSessions(params *GetCustomersCustomerFidChatSessionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidChatSessionsOK, error)
+	GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidAddressesOK, error)
 
-	GetCustomersCustomerFidContacts(params *GetCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidContactsOK, error)
+	GetCustomersCustomerFidChatSessions(params *GetCustomersCustomerFidChatSessionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidChatSessionsOK, error)
 
-	GetCustomersCustomerFidContactsContactFid(params *GetCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidContactsContactFidOK, error)
+	GetCustomersCustomerFidContacts(params *GetCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidContactsOK, error)
 
-	GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFidInvoicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesOK, error)
+	GetCustomersCustomerFidContactsContactFid(params *GetCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidContactsContactFidOK, error)
 
-	GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersCustomerFidInvoicesInvoiceFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidOK, error)
+	GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFidInvoicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidInvoicesOK, error)
 
-	GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK, error)
+	GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersCustomerFidInvoicesInvoiceFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidInvoicesInvoiceFidOK, error)
 
-	GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOrdersParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidOrdersOK, error)
+	GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK, error)
 
-	GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCustomerFidPaymentAccountsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentAccountsOK, error)
+	GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOrdersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidOrdersOK, error)
 
-	GetCustomersCustomerFidPaymentAccountsPaymentAccountFid(params *GetCustomersCustomerFidPaymentAccountsPaymentAccountFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentAccountsPaymentAccountFidOK, error)
+	GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCustomerFidPaymentAccountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentAccountsOK, error)
 
-	GetCustomersCustomerFidPaymentMethods(params *GetCustomersCustomerFidPaymentMethodsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsOK, error)
+	GetCustomersCustomerFidPaymentAccountsPaymentAccountFid(params *GetCustomersCustomerFidPaymentAccountsPaymentAccountFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentAccountsPaymentAccountFidOK, error)
 
-	GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsCardsOK, error)
+	GetCustomersCustomerFidPaymentMethods(params *GetCustomersCustomerFidPaymentMethodsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentMethodsOK, error)
 
-	GetCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *GetCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error)
+	GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentMethodsCardsOK, error)
 
-	GetCustomersCustomerFidPaymentsPaymentFid(params *GetCustomersCustomerFidPaymentsPaymentFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentsPaymentFidOK, error)
+	GetCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *GetCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error)
 
-	GetCustomersCustomerFidSubscriptions(params *GetCustomersCustomerFidSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsOK, error)
+	GetCustomersCustomerFidPaymentsPaymentFid(params *GetCustomersCustomerFidPaymentsPaymentFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentsPaymentFidOK, error)
 
-	GetCustomersCustomerFidSubscriptionsSubscriptionFid(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidOK, error)
+	GetCustomersCustomerFidSubscriptions(params *GetCustomersCustomerFidSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsOK, error)
 
-	GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsOK, error)
+	GetCustomersCustomerFidSubscriptionsSubscriptionFid(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidOK, error)
 
-	GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK, error)
+	GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsOK, error)
 
-	GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsOK, error)
+	GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchOK, error)
 
-	GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCustomerFidTicketsTicketFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidOK, error)
+	GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasons(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK, error)
 
-	GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsOK, error)
+	GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK, error)
 
-	GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments(params *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK, error)
+	GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsOK, error)
 
-	GetCustomersFindByReference(params *GetCustomersFindByReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersFindByReferenceOK, error)
+	GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCustomerFidTicketsTicketFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsTicketFidOK, error)
 
-	PostCustomers(params *PostCustomersParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersOK, error)
+	GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsTicketFidPostsOK, error)
 
-	PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAddressesOK, error)
+	GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments(params *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK, error)
 
-	PostCustomersCustomerFidAnonymize(params *PostCustomersCustomerFidAnonymizeParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAnonymizeOK, error)
+	GetCustomersFindByEmail(params *GetCustomersFindByEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersFindByEmailOK, error)
 
-	PostCustomersCustomerFidContacts(params *PostCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidContactsOK, error)
+	GetCustomersFindByReference(params *GetCustomersFindByReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersFindByReferenceOK, error)
 
-	PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidEmailsOK, error)
+	PostCustomers(params *PostCustomersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersOK, error)
 
-	PostCustomersCustomerFidInteractions(params *PostCustomersCustomerFidInteractionsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInteractionsOK, error)
+	PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidAddressesOK, error)
 
-	PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error)
+	PostCustomersCustomerFidAnonymize(params *PostCustomersCustomerFidAnonymizeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidAnonymizeOK, error)
 
-	PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidNoteOK, error)
+	PostCustomersCustomerFidContacts(params *PostCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidContactsOK, error)
 
-	PostCustomersCustomerFidPaymentMethodsCards(params *PostCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsCardsOK, error)
+	PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidEmailsOK, error)
 
-	PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK, error)
+	PostCustomersCustomerFidInteractions(params *PostCustomersCustomerFidInteractionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidInteractionsOK, error)
 
-	PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK, error)
+	PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error)
 
-	PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentsPaymentFidChargebackOK, error)
+	PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidNoteOK, error)
 
-	PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPhonesOK, error)
+	PostCustomersCustomerFidPaymentMethodsCards(params *PostCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsCardsOK, error)
 
-	PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSarParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidSarOK, error)
+	PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK, error)
 
-	PostCustomersCustomerFidTickets(params *PostCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsOK, error)
+	PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK, error)
 
-	PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsTicketFidPostsOK, error)
+	PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentsPaymentFidChargebackOK, error)
 
-	PutCustomersCustomerFid(params *PutCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidOK, error)
+	PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPhonesOK, error)
 
-	PutCustomersCustomerFidAccountStatus(params *PutCustomersCustomerFidAccountStatusParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidAccountStatusOK, error)
+	PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSarParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidSarOK, error)
 
-	PutCustomersCustomerFidAccountType(params *PutCustomersCustomerFidAccountTypeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidAccountTypeOK, error)
+	PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlow(params *PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowOK, error)
 
-	PutCustomersCustomerFidBillingData(params *PutCustomersCustomerFidBillingDataParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidBillingDataOK, error)
+	PostCustomersCustomerFidTickets(params *PostCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidTicketsOK, error)
 
-	PutCustomersCustomerFidChargeback(params *PutCustomersCustomerFidChargebackParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidChargebackOK, error)
+	PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidTicketsTicketFidPostsOK, error)
 
-	PutCustomersCustomerFidChargebacksChargebackFid(params *PutCustomersCustomerFidChargebacksChargebackFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidChargebacksChargebackFidOK, error)
+	PutCustomersCustomerFid(params *PutCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidOK, error)
 
-	PutCustomersCustomerFidContactsContactFid(params *PutCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidContactsContactFidOK, error)
+	PutCustomersCustomerFidAccountStatus(params *PutCustomersCustomerFidAccountStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidAccountStatusOK, error)
 
-	PutCustomersCustomerFidCurrency(params *PutCustomersCustomerFidCurrencyParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidCurrencyOK, error)
+	PutCustomersCustomerFidAccountType(params *PutCustomersCustomerFidAccountTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidAccountTypeOK, error)
 
-	PutCustomersCustomerFidFraud(params *PutCustomersCustomerFidFraudParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidFraudOK, error)
+	PutCustomersCustomerFidBillingData(params *PutCustomersCustomerFidBillingDataParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidBillingDataOK, error)
 
-	PutCustomersCustomerFidInvoicesInvoiceFidRetry(params *PutCustomersCustomerFidInvoicesInvoiceFidRetryParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidInvoicesInvoiceFidRetryOK, error)
+	PutCustomersCustomerFidChargeback(params *PutCustomersCustomerFidChargebackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidChargebackOK, error)
 
-	PutCustomersCustomerFidInvoicesRetry(params *PutCustomersCustomerFidInvoicesRetryParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidInvoicesRetryOK, error)
+	PutCustomersCustomerFidChargebacksChargebackFid(params *PutCustomersCustomerFidChargebacksChargebackFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidChargebacksChargebackFidOK, error)
 
-	PutCustomersCustomerFidLifecycleStage(params *PutCustomersCustomerFidLifecycleStageParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLifecycleStageOK, error)
+	PutCustomersCustomerFidContactsContactFid(params *PutCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidContactsContactFidOK, error)
 
-	PutCustomersCustomerFidLinkVisitor(params *PutCustomersCustomerFidLinkVisitorParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLinkVisitorOK, error)
+	PutCustomersCustomerFidCurrency(params *PutCustomersCustomerFidCurrencyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidCurrencyOK, error)
 
-	PutCustomersCustomerFidLocation(params *PutCustomersCustomerFidLocationParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLocationOK, error)
+	PutCustomersCustomerFidExternalReference(params *PutCustomersCustomerFidExternalReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidExternalReferenceOK, error)
 
-	PutCustomersCustomerFidLoyal(params *PutCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLoyalOK, error)
+	PutCustomersCustomerFidFraud(params *PutCustomersCustomerFidFraudParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidFraudOK, error)
 
-	PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK, error)
+	PutCustomersCustomerFidInvoicesInvoiceFidRetry(params *PutCustomersCustomerFidInvoicesInvoiceFidRetryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidInvoicesInvoiceFidRetryOK, error)
 
-	PutCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error)
+	PutCustomersCustomerFidInvoicesRetry(params *PutCustomersCustomerFidInvoicesRetryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidInvoicesRetryOK, error)
 
-	PutCustomersCustomerFidPaymentsPaymentFidRefund(params *PutCustomersCustomerFidPaymentsPaymentFidRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentsPaymentFidRefundOK, error)
+	PutCustomersCustomerFidLifecycleStage(params *PutCustomersCustomerFidLifecycleStageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLifecycleStageOK, error)
 
-	PutCustomersCustomerFidPurchased(params *PutCustomersCustomerFidPurchasedParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPurchasedOK, error)
+	PutCustomersCustomerFidLinkVisitor(params *PutCustomersCustomerFidLinkVisitorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLinkVisitorOK, error)
 
-	PutCustomersCustomerFidQualified(params *PutCustomersCustomerFidQualifiedParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidQualifiedOK, error)
+	PutCustomersCustomerFidLocation(params *PutCustomersCustomerFidLocationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLocationOK, error)
 
-	PutCustomersCustomerFidSubscriptionType(params *PutCustomersCustomerFidSubscriptionTypeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionTypeOK, error)
+	PutCustomersCustomerFidLoyal(params *PutCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLoyalOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK, error)
+	PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK, error)
+	PutCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK, error)
+	PutCustomersCustomerFidPaymentsPaymentFidRefund(params *PutCustomersCustomerFidPaymentsPaymentFidRefundParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPaymentsPaymentFidRefundOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK, error)
+	PutCustomersCustomerFidPurchased(params *PutCustomersCustomerFidPurchasedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPurchasedOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK, error)
+	PutCustomersCustomerFidQualified(params *PutCustomersCustomerFidQualifiedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidQualifiedOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK, error)
+	PutCustomersCustomerFidSubscriptionType(params *PutCustomersCustomerFidSubscriptionTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionTypeOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFid(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK, error)
 
-	PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK, error)
 
-	PutCustomersCustomerFidVip(params *PutCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidVipOK, error)
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetry(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK, error)
+
+	PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK, error)
+
+	PutCustomersCustomerFidUpgradePaymentAccount(params *PutCustomersCustomerFidUpgradePaymentAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidUpgradePaymentAccountOK, error)
+
+	PutCustomersCustomerFidVip(params *PutCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidVipOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -197,13 +220,12 @@ type ClientService interface {
 /*
   DeleteCustomersCustomerFid archives a customer
 */
-func (a *Client) DeleteCustomersCustomerFid(params *DeleteCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidOK, error) {
+func (a *Client) DeleteCustomersCustomerFid(params *DeleteCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCustomersCustomerFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteCustomersCustomerFid",
 		Method:             "DELETE",
 		PathPattern:        "/customers/{customerFid}",
@@ -215,7 +237,12 @@ func (a *Client) DeleteCustomersCustomerFid(params *DeleteCustomersCustomerFidPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -231,13 +258,12 @@ func (a *Client) DeleteCustomersCustomerFid(params *DeleteCustomersCustomerFidPa
 /*
   DeleteCustomersCustomerFidContactsContactFid removes a contact
 */
-func (a *Client) DeleteCustomersCustomerFidContactsContactFid(params *DeleteCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidContactsContactFidOK, error) {
+func (a *Client) DeleteCustomersCustomerFidContactsContactFid(params *DeleteCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidContactsContactFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCustomersCustomerFidContactsContactFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteCustomersCustomerFidContactsContactFid",
 		Method:             "DELETE",
 		PathPattern:        "/customers/{customerFid}/contacts/{contactFid}",
@@ -249,7 +275,12 @@ func (a *Client) DeleteCustomersCustomerFidContactsContactFid(params *DeleteCust
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -265,13 +296,12 @@ func (a *Client) DeleteCustomersCustomerFidContactsContactFid(params *DeleteCust
 /*
   DeleteCustomersCustomerFidLoyal removes customer loyalty flag
 */
-func (a *Client) DeleteCustomersCustomerFidLoyal(params *DeleteCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidLoyalOK, error) {
+func (a *Client) DeleteCustomersCustomerFidLoyal(params *DeleteCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidLoyalOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCustomersCustomerFidLoyalParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteCustomersCustomerFidLoyal",
 		Method:             "DELETE",
 		PathPattern:        "/customers/{customerFid}/loyal",
@@ -283,7 +313,12 @@ func (a *Client) DeleteCustomersCustomerFidLoyal(params *DeleteCustomersCustomer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -299,13 +334,12 @@ func (a *Client) DeleteCustomersCustomerFidLoyal(params *DeleteCustomersCustomer
 /*
   DeleteCustomersCustomerFidPaymentMethodsCardsCardFid delete customers customer fid payment methods cards card fid API
 */
-func (a *Client) DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK, error) {
+func (a *Client) DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteCustomersCustomerFidPaymentMethodsCardsCardFid",
 		Method:             "DELETE",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/cards/{cardFid}",
@@ -317,7 +351,12 @@ func (a *Client) DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *De
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -331,15 +370,52 @@ func (a *Client) DeleteCustomersCustomerFidPaymentMethodsCardsCardFid(params *De
 }
 
 /*
+  DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFid archives a payment method
+*/
+func (a *Client) DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFid",
+		Method:             "DELETE",
+		PathPattern:        "/customers/{customerFid}/paymentMethods/{paymentMethodFid}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   DeleteCustomersCustomerFidVip removes customer v IP status
 */
-func (a *Client) DeleteCustomersCustomerFidVip(params *DeleteCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteCustomersCustomerFidVipOK, error) {
+func (a *Client) DeleteCustomersCustomerFidVip(params *DeleteCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomersCustomerFidVipOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCustomersCustomerFidVipParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteCustomersCustomerFidVip",
 		Method:             "DELETE",
 		PathPattern:        "/customers/{customerFid}/vip",
@@ -351,7 +427,12 @@ func (a *Client) DeleteCustomersCustomerFidVip(params *DeleteCustomersCustomerFi
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -367,13 +448,12 @@ func (a *Client) DeleteCustomersCustomerFidVip(params *DeleteCustomersCustomerFi
 /*
   GetCustomersCustomerFid retrieves a customer
 */
-func (a *Client) GetCustomersCustomerFid(params *GetCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidOK, error) {
+func (a *Client) GetCustomersCustomerFid(params *GetCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}",
@@ -385,7 +465,12 @@ func (a *Client) GetCustomersCustomerFid(params *GetCustomersCustomerFidParams, 
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -401,13 +486,12 @@ func (a *Client) GetCustomersCustomerFid(params *GetCustomersCustomerFidParams, 
 /*
   GetCustomersCustomerFidAddresses lists customers addresses
 */
-func (a *Client) GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidAddressesOK, error) {
+func (a *Client) GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidAddressesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidAddressesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidAddresses",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/addresses",
@@ -419,7 +503,12 @@ func (a *Client) GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFi
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -435,13 +524,12 @@ func (a *Client) GetCustomersCustomerFidAddresses(params *GetCustomersCustomerFi
 /*
   GetCustomersCustomerFidChatSessions retrieves chat sessions for customer
 */
-func (a *Client) GetCustomersCustomerFidChatSessions(params *GetCustomersCustomerFidChatSessionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidChatSessionsOK, error) {
+func (a *Client) GetCustomersCustomerFidChatSessions(params *GetCustomersCustomerFidChatSessionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidChatSessionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidChatSessionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidChatSessions",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/chatSessions",
@@ -453,7 +541,12 @@ func (a *Client) GetCustomersCustomerFidChatSessions(params *GetCustomersCustome
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -469,13 +562,12 @@ func (a *Client) GetCustomersCustomerFidChatSessions(params *GetCustomersCustome
 /*
   GetCustomersCustomerFidContacts lists of people
 */
-func (a *Client) GetCustomersCustomerFidContacts(params *GetCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidContactsOK, error) {
+func (a *Client) GetCustomersCustomerFidContacts(params *GetCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidContactsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidContactsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidContacts",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/contacts",
@@ -487,7 +579,12 @@ func (a *Client) GetCustomersCustomerFidContacts(params *GetCustomersCustomerFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -503,13 +600,12 @@ func (a *Client) GetCustomersCustomerFidContacts(params *GetCustomersCustomerFid
 /*
   GetCustomersCustomerFidContactsContactFid retrieves information about a contact
 */
-func (a *Client) GetCustomersCustomerFidContactsContactFid(params *GetCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidContactsContactFidOK, error) {
+func (a *Client) GetCustomersCustomerFidContactsContactFid(params *GetCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidContactsContactFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidContactsContactFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidContactsContactFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/contacts/{contactFid}",
@@ -521,7 +617,12 @@ func (a *Client) GetCustomersCustomerFidContactsContactFid(params *GetCustomersC
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -537,13 +638,12 @@ func (a *Client) GetCustomersCustomerFidContactsContactFid(params *GetCustomersC
 /*
   GetCustomersCustomerFidInvoices lists of invoice summaries for given customer
 */
-func (a *Client) GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFidInvoicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesOK, error) {
+func (a *Client) GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFidInvoicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidInvoicesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidInvoicesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidInvoices",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/invoices",
@@ -555,7 +655,12 @@ func (a *Client) GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -571,13 +676,12 @@ func (a *Client) GetCustomersCustomerFidInvoices(params *GetCustomersCustomerFid
 /*
   GetCustomersCustomerFidInvoicesInvoiceFid retreives a specific itemised invoice
 */
-func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersCustomerFidInvoicesInvoiceFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidOK, error) {
+func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersCustomerFidInvoicesInvoiceFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidInvoicesInvoiceFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidInvoicesInvoiceFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidInvoicesInvoiceFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/invoices/{invoiceFid}",
@@ -589,7 +693,12 @@ func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersC
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -605,13 +714,12 @@ func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFid(params *GetCustomersC
 /*
   GetCustomersCustomerFidInvoicesInvoiceFidDownload retreives a specific itemised invoice p d f
 */
-func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK, error) {
+func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidInvoicesInvoiceFidDownload",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/invoices/{invoiceFid}/download",
@@ -623,7 +731,12 @@ func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCu
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -639,13 +752,12 @@ func (a *Client) GetCustomersCustomerFidInvoicesInvoiceFidDownload(params *GetCu
 /*
   GetCustomersCustomerFidOrders lists customer orders
 */
-func (a *Client) GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOrdersParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidOrdersOK, error) {
+func (a *Client) GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOrdersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidOrdersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidOrdersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidOrders",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/orders",
@@ -657,7 +769,12 @@ func (a *Client) GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOr
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -673,13 +790,12 @@ func (a *Client) GetCustomersCustomerFidOrders(params *GetCustomersCustomerFidOr
 /*
   GetCustomersCustomerFidPaymentAccounts lists customers payment accounts
 */
-func (a *Client) GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCustomerFidPaymentAccountsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentAccountsOK, error) {
+func (a *Client) GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCustomerFidPaymentAccountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidPaymentAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidPaymentAccounts",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/paymentAccounts",
@@ -691,7 +807,12 @@ func (a *Client) GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCust
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -705,15 +826,14 @@ func (a *Client) GetCustomersCustomerFidPaymentAccounts(params *GetCustomersCust
 }
 
 /*
-  GetCustomersCustomerFidPaymentAccountsPaymentAccountFid get customers customer fid payment accounts payment account fid API
+  GetCustomersCustomerFidPaymentAccountsPaymentAccountFid retrieves payment account
 */
-func (a *Client) GetCustomersCustomerFidPaymentAccountsPaymentAccountFid(params *GetCustomersCustomerFidPaymentAccountsPaymentAccountFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentAccountsPaymentAccountFidOK, error) {
+func (a *Client) GetCustomersCustomerFidPaymentAccountsPaymentAccountFid(params *GetCustomersCustomerFidPaymentAccountsPaymentAccountFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentAccountsPaymentAccountFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidPaymentAccountsPaymentAccountFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidPaymentAccountsPaymentAccountFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/paymentAccounts/{paymentAccountFid}",
@@ -725,7 +845,12 @@ func (a *Client) GetCustomersCustomerFidPaymentAccountsPaymentAccountFid(params 
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -741,13 +866,12 @@ func (a *Client) GetCustomersCustomerFidPaymentAccountsPaymentAccountFid(params 
 /*
   GetCustomersCustomerFidPaymentMethods lists customers payment methods
 */
-func (a *Client) GetCustomersCustomerFidPaymentMethods(params *GetCustomersCustomerFidPaymentMethodsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsOK, error) {
+func (a *Client) GetCustomersCustomerFidPaymentMethods(params *GetCustomersCustomerFidPaymentMethodsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentMethodsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidPaymentMethodsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidPaymentMethods",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/paymentMethods",
@@ -759,7 +883,12 @@ func (a *Client) GetCustomersCustomerFidPaymentMethods(params *GetCustomersCusto
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -775,13 +904,12 @@ func (a *Client) GetCustomersCustomerFidPaymentMethods(params *GetCustomersCusto
 /*
   GetCustomersCustomerFidPaymentMethodsCards lists customers card payment methods
 */
-func (a *Client) GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsCardsOK, error) {
+func (a *Client) GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentMethodsCardsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidPaymentMethodsCardsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidPaymentMethodsCards",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/cards",
@@ -793,7 +921,12 @@ func (a *Client) GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomers
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -807,15 +940,14 @@ func (a *Client) GetCustomersCustomerFidPaymentMethodsCards(params *GetCustomers
 }
 
 /*
-  GetCustomersCustomerFidPaymentMethodsPaymentMethodFid get customers customer fid payment methods payment method fid API
+  GetCustomersCustomerFidPaymentMethodsPaymentMethodFid retrieves a payment method
 */
-func (a *Client) GetCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *GetCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error) {
+func (a *Client) GetCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *GetCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidPaymentMethodsPaymentMethodFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidPaymentMethodsPaymentMethodFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/{paymentMethodFid}",
@@ -827,7 +959,12 @@ func (a *Client) GetCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *G
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -843,13 +980,12 @@ func (a *Client) GetCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *G
 /*
   GetCustomersCustomerFidPaymentsPaymentFid retrieves a payment
 */
-func (a *Client) GetCustomersCustomerFidPaymentsPaymentFid(params *GetCustomersCustomerFidPaymentsPaymentFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidPaymentsPaymentFidOK, error) {
+func (a *Client) GetCustomersCustomerFidPaymentsPaymentFid(params *GetCustomersCustomerFidPaymentsPaymentFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidPaymentsPaymentFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidPaymentsPaymentFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidPaymentsPaymentFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/payments/{paymentFid}",
@@ -861,7 +997,12 @@ func (a *Client) GetCustomersCustomerFidPaymentsPaymentFid(params *GetCustomersC
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -877,13 +1018,12 @@ func (a *Client) GetCustomersCustomerFidPaymentsPaymentFid(params *GetCustomersC
 /*
   GetCustomersCustomerFidSubscriptions lists of subscription summaries for given customer
 */
-func (a *Client) GetCustomersCustomerFidSubscriptions(params *GetCustomersCustomerFidSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsOK, error) {
+func (a *Client) GetCustomersCustomerFidSubscriptions(params *GetCustomersCustomerFidSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidSubscriptionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidSubscriptions",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/subscriptions",
@@ -895,7 +1035,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptions(params *GetCustomersCustom
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -911,13 +1056,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptions(params *GetCustomersCustom
 /*
   GetCustomersCustomerFidSubscriptionsSubscriptionFid retreives a specific subscription
 */
-func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFid(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidOK, error) {
+func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFid(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidSubscriptionsSubscriptionFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidSubscriptionsSubscriptionFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}",
@@ -929,7 +1073,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFid(params *Get
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -945,13 +1094,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFid(params *Get
 /*
   GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations retreives a subscriptions resource allocations
 */
-func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsOK, error) {
+func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/allocations",
@@ -963,7 +1111,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -977,15 +1130,90 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocations(
 }
 
 /*
+  GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch retreives the state of a cancel flow
+*/
+func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/{flowSearch}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+  GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasons retreives the available cancellation reasons for a subscription
+*/
+func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasons(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasons",
+		Method:             "GET",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/reasons",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods retreives the periods for a subscription
 */
-func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK, error) {
+func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(params *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/periods",
@@ -997,7 +1225,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(para
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1013,13 +1246,12 @@ func (a *Client) GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods(para
 /*
   GetCustomersCustomerFidTickets gets support tickets for customer
 */
-func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsOK, error) {
+func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidTicketsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidTickets",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/tickets",
@@ -1031,7 +1263,12 @@ func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidT
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1047,13 +1284,12 @@ func (a *Client) GetCustomersCustomerFidTickets(params *GetCustomersCustomerFidT
 /*
   GetCustomersCustomerFidTicketsTicketFid retrieves a single ticket for a customer
 */
-func (a *Client) GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCustomerFidTicketsTicketFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidOK, error) {
+func (a *Client) GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCustomerFidTicketsTicketFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsTicketFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidTicketsTicketFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidTicketsTicketFid",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/tickets/{ticketFid}",
@@ -1065,7 +1301,12 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCus
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1081,13 +1322,12 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFid(params *GetCustomersCus
 /*
   GetCustomersCustomerFidTicketsTicketFidPosts retrieves ticket posts for a ticket
 */
-func (a *Client) GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsOK, error) {
+func (a *Client) GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsTicketFidPostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidTicketsTicketFidPostsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidTicketsTicketFidPosts",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/tickets/{ticketFid}/posts",
@@ -1099,7 +1339,12 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustome
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1115,13 +1360,12 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFidPosts(params *GetCustome
 /*
   GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments gets attachments for a ticket post
 */
-func (a *Client) GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments(params *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK, error) {
+func (a *Client) GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments(params *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments",
 		Method:             "GET",
 		PathPattern:        "/customers/{customerFid}/tickets/{ticketFid}/posts/{ticketPostTimestamp}/attachments",
@@ -1133,7 +1377,12 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestamp
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1147,15 +1396,52 @@ func (a *Client) GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestamp
 }
 
 /*
+  GetCustomersFindByEmail finds a customer by brand and email address
+*/
+func (a *Client) GetCustomersFindByEmail(params *GetCustomersFindByEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersFindByEmailOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomersFindByEmailParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetCustomersFindByEmail",
+		Method:             "GET",
+		PathPattern:        "/customers/findByEmail",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomersFindByEmailReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomersFindByEmailOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetCustomersFindByEmailDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetCustomersFindByReference finds a customer by your reference
 */
-func (a *Client) GetCustomersFindByReference(params *GetCustomersFindByReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetCustomersFindByReferenceOK, error) {
+func (a *Client) GetCustomersFindByReference(params *GetCustomersFindByReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCustomersFindByReferenceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCustomersFindByReferenceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetCustomersFindByReference",
 		Method:             "GET",
 		PathPattern:        "/customers/findByReference",
@@ -1167,7 +1453,12 @@ func (a *Client) GetCustomersFindByReference(params *GetCustomersFindByReference
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1183,13 +1474,12 @@ func (a *Client) GetCustomersFindByReference(params *GetCustomersFindByReference
 /*
   PostCustomers creates a new customer
 */
-func (a *Client) PostCustomers(params *PostCustomersParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersOK, error) {
+func (a *Client) PostCustomers(params *PostCustomersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomers",
 		Method:             "POST",
 		PathPattern:        "/customers",
@@ -1201,7 +1491,12 @@ func (a *Client) PostCustomers(params *PostCustomersParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1217,13 +1512,12 @@ func (a *Client) PostCustomers(params *PostCustomersParams, authInfo runtime.Cli
 /*
   PostCustomersCustomerFidAddresses adds an address to a customer
 */
-func (a *Client) PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAddressesOK, error) {
+func (a *Client) PostCustomersCustomerFidAddresses(params *PostCustomersCustomerFidAddressesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidAddressesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidAddressesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidAddresses",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/addresses",
@@ -1235,7 +1529,12 @@ func (a *Client) PostCustomersCustomerFidAddresses(params *PostCustomersCustomer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1254,13 +1553,12 @@ func (a *Client) PostCustomersCustomerFidAddresses(params *PostCustomersCustomer
   Anonymize customer data
 
 */
-func (a *Client) PostCustomersCustomerFidAnonymize(params *PostCustomersCustomerFidAnonymizeParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidAnonymizeOK, error) {
+func (a *Client) PostCustomersCustomerFidAnonymize(params *PostCustomersCustomerFidAnonymizeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidAnonymizeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidAnonymizeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidAnonymize",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/anonymize",
@@ -1272,7 +1570,12 @@ func (a *Client) PostCustomersCustomerFidAnonymize(params *PostCustomersCustomer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1288,13 +1591,12 @@ func (a *Client) PostCustomersCustomerFidAnonymize(params *PostCustomersCustomer
 /*
   PostCustomersCustomerFidContacts creates a new contact for a customer
 */
-func (a *Client) PostCustomersCustomerFidContacts(params *PostCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidContactsOK, error) {
+func (a *Client) PostCustomersCustomerFidContacts(params *PostCustomersCustomerFidContactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidContactsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidContactsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidContacts",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/contacts",
@@ -1306,7 +1608,12 @@ func (a *Client) PostCustomersCustomerFidContacts(params *PostCustomersCustomerF
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1322,13 +1629,12 @@ func (a *Client) PostCustomersCustomerFidContacts(params *PostCustomersCustomerF
 /*
   PostCustomersCustomerFidEmails adds an email address to a customer
 */
-func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidEmailsOK, error) {
+func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFidEmailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidEmailsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidEmailsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidEmails",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/emails",
@@ -1340,7 +1646,12 @@ func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1356,13 +1667,12 @@ func (a *Client) PostCustomersCustomerFidEmails(params *PostCustomersCustomerFid
 /*
   PostCustomersCustomerFidInteractions creates an interaction
 */
-func (a *Client) PostCustomersCustomerFidInteractions(params *PostCustomersCustomerFidInteractionsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInteractionsOK, error) {
+func (a *Client) PostCustomersCustomerFidInteractions(params *PostCustomersCustomerFidInteractionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidInteractionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidInteractionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidInteractions",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/interactions",
@@ -1374,7 +1684,12 @@ func (a *Client) PostCustomersCustomerFidInteractions(params *PostCustomersCusto
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1390,13 +1705,12 @@ func (a *Client) PostCustomersCustomerFidInteractions(params *PostCustomersCusto
 /*
   PostCustomersCustomerFidInvoicesInvoiceFidCreditNote adds a credit note to a customers invoice
 */
-func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error) {
+func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidInvoicesInvoiceFidCreditNote",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/invoices/{invoiceFid}/creditNote",
@@ -1408,7 +1722,12 @@ func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *Po
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1424,13 +1743,12 @@ func (a *Client) PostCustomersCustomerFidInvoicesInvoiceFidCreditNote(params *Po
 /*
   PostCustomersCustomerFidNote saves a note against a customer
 */
-func (a *Client) PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNoteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidNoteOK, error) {
+func (a *Client) PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidNoteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidNoteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidNote",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/note",
@@ -1442,7 +1760,12 @@ func (a *Client) PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1458,13 +1781,12 @@ func (a *Client) PostCustomersCustomerFidNote(params *PostCustomersCustomerFidNo
 /*
   PostCustomersCustomerFidPaymentMethodsCards adds a new card
 */
-func (a *Client) PostCustomersCustomerFidPaymentMethodsCards(params *PostCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsCardsOK, error) {
+func (a *Client) PostCustomersCustomerFidPaymentMethodsCards(params *PostCustomersCustomerFidPaymentMethodsCardsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsCardsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidPaymentMethodsCardsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidPaymentMethodsCards",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/cards",
@@ -1476,7 +1798,12 @@ func (a *Client) PostCustomersCustomerFidPaymentMethodsCards(params *PostCustome
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1492,13 +1819,12 @@ func (a *Client) PostCustomersCustomerFidPaymentMethodsCards(params *PostCustome
 /*
   PostCustomersCustomerFidPaymentMethodsPaypalComplete completes a paypal agreement created with initialise
 */
-func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK, error) {
+func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidPaymentMethodsPaypalComplete",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/paypal/complete",
@@ -1510,7 +1836,12 @@ func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *Po
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1526,13 +1857,12 @@ func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalComplete(params *Po
 /*
   PostCustomersCustomerFidPaymentMethodsPaypalInitialise initialises a new paypal agreement for existing subscriptions
 */
-func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK, error) {
+func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidPaymentMethodsPaypalInitialise",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/paypal/initialise",
@@ -1544,7 +1874,12 @@ func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1560,13 +1895,12 @@ func (a *Client) PostCustomersCustomerFidPaymentMethodsPaypalInitialise(params *
 /*
   PostCustomersCustomerFidPaymentsPaymentFidChargeback initiates a chargeback on a payment
 */
-func (a *Client) PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPaymentsPaymentFidChargebackOK, error) {
+func (a *Client) PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentsPaymentFidChargebackOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidPaymentsPaymentFidChargeback",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/payments/{paymentFid}/chargeback",
@@ -1578,7 +1912,12 @@ func (a *Client) PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *Po
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1594,13 +1933,12 @@ func (a *Client) PostCustomersCustomerFidPaymentsPaymentFidChargeback(params *Po
 /*
   PostCustomersCustomerFidPhones adds a phone number to a customer
 */
-func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidPhonesOK, error) {
+func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFidPhonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPhonesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidPhonesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidPhones",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/phones",
@@ -1612,7 +1950,12 @@ func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1631,13 +1974,12 @@ func (a *Client) PostCustomersCustomerFidPhones(params *PostCustomersCustomerFid
   Initiate a Subject Access Request.  A URL will be sent via a webhook (CustomerWHE::SUBJECT_ACCESS_REQUEST), once the archive is ready for download
 
 */
-func (a *Client) PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSarParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidSarOK, error) {
+func (a *Client) PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSarParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidSarOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidSarParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidSar",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/sar",
@@ -1649,7 +1991,12 @@ func (a *Client) PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSar
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1663,18 +2010,55 @@ func (a *Client) PostCustomersCustomerFidSar(params *PostCustomersCustomerFidSar
 }
 
 /*
+  PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlow starts a cancel flow and retrieve its state
+*/
+func (a *Client) PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlow(params *PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlow",
+		Method:             "POST",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PostCustomersCustomerFidTickets creates a new support ticket
 
   The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
 
 */
-func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsOK, error) {
+func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFidTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidTicketsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidTicketsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidTickets",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/tickets",
@@ -1686,7 +2070,12 @@ func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFi
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1705,13 +2094,12 @@ func (a *Client) PostCustomersCustomerFidTickets(params *PostCustomersCustomerFi
   The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
 
 */
-func (a *Client) PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter) (*PostCustomersCustomerFidTicketsTicketFidPostsOK, error) {
+func (a *Client) PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCustomersCustomerFidTicketsTicketFidPostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidTicketsTicketFidPostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostCustomersCustomerFidTicketsTicketFidPostsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostCustomersCustomerFidTicketsTicketFidPosts",
 		Method:             "POST",
 		PathPattern:        "/customers/{customerFid}/tickets/{ticketFid}/posts",
@@ -1723,7 +2111,12 @@ func (a *Client) PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCusto
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1739,13 +2132,12 @@ func (a *Client) PostCustomersCustomerFidTicketsTicketFidPosts(params *PostCusto
 /*
   PutCustomersCustomerFid updates a customer
 */
-func (a *Client) PutCustomersCustomerFid(params *PutCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidOK, error) {
+func (a *Client) PutCustomersCustomerFid(params *PutCustomersCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFid",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}",
@@ -1757,7 +2149,12 @@ func (a *Client) PutCustomersCustomerFid(params *PutCustomersCustomerFidParams, 
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1773,13 +2170,12 @@ func (a *Client) PutCustomersCustomerFid(params *PutCustomersCustomerFidParams, 
 /*
   PutCustomersCustomerFidAccountStatus updates a customers status
 */
-func (a *Client) PutCustomersCustomerFidAccountStatus(params *PutCustomersCustomerFidAccountStatusParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidAccountStatusOK, error) {
+func (a *Client) PutCustomersCustomerFidAccountStatus(params *PutCustomersCustomerFidAccountStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidAccountStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidAccountStatusParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidAccountStatus",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/accountStatus",
@@ -1791,7 +2187,12 @@ func (a *Client) PutCustomersCustomerFidAccountStatus(params *PutCustomersCustom
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1807,13 +2208,12 @@ func (a *Client) PutCustomersCustomerFidAccountStatus(params *PutCustomersCustom
 /*
   PutCustomersCustomerFidAccountType updates a customers status
 */
-func (a *Client) PutCustomersCustomerFidAccountType(params *PutCustomersCustomerFidAccountTypeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidAccountTypeOK, error) {
+func (a *Client) PutCustomersCustomerFidAccountType(params *PutCustomersCustomerFidAccountTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidAccountTypeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidAccountTypeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidAccountType",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/accountType",
@@ -1825,7 +2225,12 @@ func (a *Client) PutCustomersCustomerFidAccountType(params *PutCustomersCustomer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1841,13 +2246,12 @@ func (a *Client) PutCustomersCustomerFidAccountType(params *PutCustomersCustomer
 /*
   PutCustomersCustomerFidBillingData updates a customers billing data
 */
-func (a *Client) PutCustomersCustomerFidBillingData(params *PutCustomersCustomerFidBillingDataParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidBillingDataOK, error) {
+func (a *Client) PutCustomersCustomerFidBillingData(params *PutCustomersCustomerFidBillingDataParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidBillingDataOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidBillingDataParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidBillingData",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/billingData",
@@ -1859,7 +2263,12 @@ func (a *Client) PutCustomersCustomerFidBillingData(params *PutCustomersCustomer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1875,13 +2284,12 @@ func (a *Client) PutCustomersCustomerFidBillingData(params *PutCustomersCustomer
 /*
   PutCustomersCustomerFidChargeback marks customer as charged back this action cannot be undone
 */
-func (a *Client) PutCustomersCustomerFidChargeback(params *PutCustomersCustomerFidChargebackParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidChargebackOK, error) {
+func (a *Client) PutCustomersCustomerFidChargeback(params *PutCustomersCustomerFidChargebackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidChargebackOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidChargebackParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidChargeback",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/chargeback",
@@ -1893,7 +2301,12 @@ func (a *Client) PutCustomersCustomerFidChargeback(params *PutCustomersCustomerF
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1909,13 +2322,12 @@ func (a *Client) PutCustomersCustomerFidChargeback(params *PutCustomersCustomerF
 /*
   PutCustomersCustomerFidChargebacksChargebackFid actions a chargeback
 */
-func (a *Client) PutCustomersCustomerFidChargebacksChargebackFid(params *PutCustomersCustomerFidChargebacksChargebackFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidChargebacksChargebackFidOK, error) {
+func (a *Client) PutCustomersCustomerFidChargebacksChargebackFid(params *PutCustomersCustomerFidChargebacksChargebackFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidChargebacksChargebackFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidChargebacksChargebackFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidChargebacksChargebackFid",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/chargebacks/{chargebackFid}",
@@ -1927,7 +2339,12 @@ func (a *Client) PutCustomersCustomerFidChargebacksChargebackFid(params *PutCust
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1943,13 +2360,12 @@ func (a *Client) PutCustomersCustomerFidChargebacksChargebackFid(params *PutCust
 /*
   PutCustomersCustomerFidContactsContactFid updates a contacts information
 */
-func (a *Client) PutCustomersCustomerFidContactsContactFid(params *PutCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidContactsContactFidOK, error) {
+func (a *Client) PutCustomersCustomerFidContactsContactFid(params *PutCustomersCustomerFidContactsContactFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidContactsContactFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidContactsContactFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidContactsContactFid",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/contacts/{contactFid}",
@@ -1961,7 +2377,12 @@ func (a *Client) PutCustomersCustomerFidContactsContactFid(params *PutCustomersC
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1977,13 +2398,12 @@ func (a *Client) PutCustomersCustomerFidContactsContactFid(params *PutCustomersC
 /*
   PutCustomersCustomerFidCurrency sets customer currency
 */
-func (a *Client) PutCustomersCustomerFidCurrency(params *PutCustomersCustomerFidCurrencyParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidCurrencyOK, error) {
+func (a *Client) PutCustomersCustomerFidCurrency(params *PutCustomersCustomerFidCurrencyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidCurrencyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidCurrencyParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidCurrency",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/currency",
@@ -1995,7 +2415,12 @@ func (a *Client) PutCustomersCustomerFidCurrency(params *PutCustomersCustomerFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2009,15 +2434,52 @@ func (a *Client) PutCustomersCustomerFidCurrency(params *PutCustomersCustomerFid
 }
 
 /*
+  PutCustomersCustomerFidExternalReference updates a customers external reference
+*/
+func (a *Client) PutCustomersCustomerFidExternalReference(params *PutCustomersCustomerFidExternalReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidExternalReferenceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidExternalReferenceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidExternalReference",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/externalReference",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidExternalReferenceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutCustomersCustomerFidExternalReferenceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutCustomersCustomerFidExternalReferenceDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutCustomersCustomerFidFraud marks customer as fraudulent this action cannot be undone
 */
-func (a *Client) PutCustomersCustomerFidFraud(params *PutCustomersCustomerFidFraudParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidFraudOK, error) {
+func (a *Client) PutCustomersCustomerFidFraud(params *PutCustomersCustomerFidFraudParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidFraudOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidFraudParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidFraud",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/fraud",
@@ -2029,7 +2491,12 @@ func (a *Client) PutCustomersCustomerFidFraud(params *PutCustomersCustomerFidFra
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2045,13 +2512,12 @@ func (a *Client) PutCustomersCustomerFidFraud(params *PutCustomersCustomerFidFra
 /*
   PutCustomersCustomerFidInvoicesInvoiceFidRetry retries payment of invoice
 */
-func (a *Client) PutCustomersCustomerFidInvoicesInvoiceFidRetry(params *PutCustomersCustomerFidInvoicesInvoiceFidRetryParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidInvoicesInvoiceFidRetryOK, error) {
+func (a *Client) PutCustomersCustomerFidInvoicesInvoiceFidRetry(params *PutCustomersCustomerFidInvoicesInvoiceFidRetryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidInvoicesInvoiceFidRetryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidInvoicesInvoiceFidRetryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidInvoicesInvoiceFidRetry",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/invoices/{invoiceFid}/retry",
@@ -2063,7 +2529,12 @@ func (a *Client) PutCustomersCustomerFidInvoicesInvoiceFidRetry(params *PutCusto
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2079,13 +2550,12 @@ func (a *Client) PutCustomersCustomerFidInvoicesInvoiceFidRetry(params *PutCusto
 /*
   PutCustomersCustomerFidInvoicesRetry retries payment of all customer invoices which are in invoice
 */
-func (a *Client) PutCustomersCustomerFidInvoicesRetry(params *PutCustomersCustomerFidInvoicesRetryParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidInvoicesRetryOK, error) {
+func (a *Client) PutCustomersCustomerFidInvoicesRetry(params *PutCustomersCustomerFidInvoicesRetryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidInvoicesRetryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidInvoicesRetryParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidInvoicesRetry",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/invoices/retry",
@@ -2097,7 +2567,12 @@ func (a *Client) PutCustomersCustomerFidInvoicesRetry(params *PutCustomersCustom
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2113,13 +2588,12 @@ func (a *Client) PutCustomersCustomerFidInvoicesRetry(params *PutCustomersCustom
 /*
   PutCustomersCustomerFidLifecycleStage updates a customers lifecycle stage
 */
-func (a *Client) PutCustomersCustomerFidLifecycleStage(params *PutCustomersCustomerFidLifecycleStageParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLifecycleStageOK, error) {
+func (a *Client) PutCustomersCustomerFidLifecycleStage(params *PutCustomersCustomerFidLifecycleStageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLifecycleStageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidLifecycleStageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidLifecycleStage",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/lifecycleStage",
@@ -2131,7 +2605,12 @@ func (a *Client) PutCustomersCustomerFidLifecycleStage(params *PutCustomersCusto
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2147,13 +2626,12 @@ func (a *Client) PutCustomersCustomerFidLifecycleStage(params *PutCustomersCusto
 /*
   PutCustomersCustomerFidLinkVisitor links visitor to customer record
 */
-func (a *Client) PutCustomersCustomerFidLinkVisitor(params *PutCustomersCustomerFidLinkVisitorParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLinkVisitorOK, error) {
+func (a *Client) PutCustomersCustomerFidLinkVisitor(params *PutCustomersCustomerFidLinkVisitorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLinkVisitorOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidLinkVisitorParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidLinkVisitor",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/linkVisitor",
@@ -2165,7 +2643,12 @@ func (a *Client) PutCustomersCustomerFidLinkVisitor(params *PutCustomersCustomer
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2181,13 +2664,12 @@ func (a *Client) PutCustomersCustomerFidLinkVisitor(params *PutCustomersCustomer
 /*
   PutCustomersCustomerFidLocation updates a customers location
 */
-func (a *Client) PutCustomersCustomerFidLocation(params *PutCustomersCustomerFidLocationParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLocationOK, error) {
+func (a *Client) PutCustomersCustomerFidLocation(params *PutCustomersCustomerFidLocationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLocationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidLocationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidLocation",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/location",
@@ -2199,7 +2681,12 @@ func (a *Client) PutCustomersCustomerFidLocation(params *PutCustomersCustomerFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2215,13 +2702,12 @@ func (a *Client) PutCustomersCustomerFidLocation(params *PutCustomersCustomerFid
 /*
   PutCustomersCustomerFidLoyal sets customer loyalty flag
 */
-func (a *Client) PutCustomersCustomerFidLoyal(params *PutCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidLoyalOK, error) {
+func (a *Client) PutCustomersCustomerFidLoyal(params *PutCustomersCustomerFidLoyalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidLoyalOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidLoyalParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidLoyal",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/loyal",
@@ -2233,7 +2719,12 @@ func (a *Client) PutCustomersCustomerFidLoyal(params *PutCustomersCustomerFidLoy
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2249,13 +2740,12 @@ func (a *Client) PutCustomersCustomerFidLoyal(params *PutCustomersCustomerFidLoy
 /*
   PutCustomersCustomerFidPaymentMethodsCardsCardFid updates a card
 */
-func (a *Client) PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK, error) {
+func (a *Client) PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCustomersCustomerFidPaymentMethodsCardsCardFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidPaymentMethodsCardsCardFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidPaymentMethodsCardsCardFid",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/cards/{cardFid}",
@@ -2267,7 +2757,12 @@ func (a *Client) PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCu
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2281,15 +2776,14 @@ func (a *Client) PutCustomersCustomerFidPaymentMethodsCardsCardFid(params *PutCu
 }
 
 /*
-  PutCustomersCustomerFidPaymentMethodsPaymentMethodFid updates a card
+  PutCustomersCustomerFidPaymentMethodsPaymentMethodFid updates a payment method
 */
-func (a *Client) PutCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error) {
+func (a *Client) PutCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPaymentMethodsPaymentMethodFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidPaymentMethodsPaymentMethodFid",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/paymentMethods/{paymentMethodFid}",
@@ -2301,7 +2795,12 @@ func (a *Client) PutCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *P
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2317,13 +2816,12 @@ func (a *Client) PutCustomersCustomerFidPaymentMethodsPaymentMethodFid(params *P
 /*
   PutCustomersCustomerFidPaymentsPaymentFidRefund refunds a payment
 */
-func (a *Client) PutCustomersCustomerFidPaymentsPaymentFidRefund(params *PutCustomersCustomerFidPaymentsPaymentFidRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPaymentsPaymentFidRefundOK, error) {
+func (a *Client) PutCustomersCustomerFidPaymentsPaymentFidRefund(params *PutCustomersCustomerFidPaymentsPaymentFidRefundParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPaymentsPaymentFidRefundOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidPaymentsPaymentFidRefundParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidPaymentsPaymentFidRefund",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/payments/{paymentFid}/refund",
@@ -2335,7 +2833,12 @@ func (a *Client) PutCustomersCustomerFidPaymentsPaymentFidRefund(params *PutCust
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2351,13 +2854,12 @@ func (a *Client) PutCustomersCustomerFidPaymentsPaymentFidRefund(params *PutCust
 /*
   PutCustomersCustomerFidPurchased marks customer as purchased this action cannot be undone
 */
-func (a *Client) PutCustomersCustomerFidPurchased(params *PutCustomersCustomerFidPurchasedParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidPurchasedOK, error) {
+func (a *Client) PutCustomersCustomerFidPurchased(params *PutCustomersCustomerFidPurchasedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidPurchasedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidPurchasedParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidPurchased",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/purchased",
@@ -2369,7 +2871,12 @@ func (a *Client) PutCustomersCustomerFidPurchased(params *PutCustomersCustomerFi
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2385,13 +2892,12 @@ func (a *Client) PutCustomersCustomerFidPurchased(params *PutCustomersCustomerFi
 /*
   PutCustomersCustomerFidQualified marks customer as qualified this action cannot be undone
 */
-func (a *Client) PutCustomersCustomerFidQualified(params *PutCustomersCustomerFidQualifiedParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidQualifiedOK, error) {
+func (a *Client) PutCustomersCustomerFidQualified(params *PutCustomersCustomerFidQualifiedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidQualifiedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidQualifiedParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidQualified",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/qualified",
@@ -2403,7 +2909,12 @@ func (a *Client) PutCustomersCustomerFidQualified(params *PutCustomersCustomerFi
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2419,13 +2930,12 @@ func (a *Client) PutCustomersCustomerFidQualified(params *PutCustomersCustomerFi
 /*
   PutCustomersCustomerFidSubscriptionType updates a customers status
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionType(params *PutCustomersCustomerFidSubscriptionTypeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionTypeOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionType(params *PutCustomersCustomerFidSubscriptionTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionTypeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionTypeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionType",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptionType",
@@ -2437,7 +2947,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionType(params *PutCustomersCus
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2451,15 +2966,52 @@ func (a *Client) PutCustomersCustomerFidSubscriptionType(params *PutCustomersCus
 }
 
 /*
+  PutCustomersCustomerFidSubscriptionsSubscriptionFid updates a subscription
+*/
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFid(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFid",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidSubscriptionsSubscriptionFidReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer applies an offer to a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/applyOffer",
@@ -2471,7 +3023,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(p
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2487,13 +3044,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer(p
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays sets auto cancel days on a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/autoCancelDays",
@@ -2505,7 +3061,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2521,13 +3082,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDa
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays sets auto suspend days on a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/autoSuspendDays",
@@ -2539,7 +3099,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendD
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2555,13 +3120,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendD
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification calculates the changes before a modification to a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/calculateModification",
@@ -2573,7 +3137,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateMod
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2589,13 +3158,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateMod
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund calculates the result of a potential refund on a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/calculateRefund",
@@ -2607,7 +3175,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRef
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2623,13 +3196,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRef
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel cancels a subscripion returns subscription f ID
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/cancel",
@@ -2641,7 +3213,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel(param
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2655,15 +3232,52 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCancel(param
 }
 
 /*
+  PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch posts an action for a cancel flow and retrieve its latest state
+*/
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearch",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/{flowSearch}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowFlowSearchDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge disables auto charge on specific subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/disableAutoCharge",
@@ -2675,7 +3289,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoC
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2691,13 +3310,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoC
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge enables auto charge on specific subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/enableAutoCharge",
@@ -2709,7 +3327,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCh
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2725,13 +3348,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCh
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidModify modifies an existing subscription with a new price returns new open order to be completed
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidModify",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/modify",
@@ -2743,7 +3365,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(param
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2759,13 +3386,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidModify(param
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund refunds a subscription period
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund",
@@ -2777,7 +3403,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPerio
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2793,13 +3424,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPerio
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew pres renew an existing subscription with a different price returns new open order to be completed
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/preRenew",
@@ -2811,7 +3441,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(par
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2825,15 +3460,52 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenew(par
 }
 
 /*
+  PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetry retries the provisioning step
+*/
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetry(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetry",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/provisioning/retry",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode sets the renewal mode of a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/renewalMode",
@@ -2845,7 +3517,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode(
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2861,13 +3538,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode(
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDays sets advance days on a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDays(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDays",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/setAdvanceDays",
@@ -2879,7 +3555,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2895,13 +3576,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDa
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription sets parent subscription on a subscription
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription",
@@ -2913,7 +3593,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSub
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2929,13 +3614,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSub
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount sets payment account for subscription if changing a payment method from an automatic payment method such as pay pal recurring payments any other subscriptions paid with the same agreement will be set to default payment method and the agreement will be cancelled
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount",
@@ -2947,7 +3631,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAc
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2963,13 +3652,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAc
 /*
   PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice modifies an existing subscription with a new price which will be used for the next renewal
 */
-func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK, error) {
+func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice(params *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice",
@@ -2981,7 +3669,12 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2995,15 +3688,52 @@ func (a *Client) PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewa
 }
 
 /*
+  PutCustomersCustomerFidUpgradePaymentAccount upgrades customer from fortifi pay to chargehive
+*/
+func (a *Client) PutCustomersCustomerFidUpgradePaymentAccount(params *PutCustomersCustomerFidUpgradePaymentAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidUpgradePaymentAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutCustomersCustomerFidUpgradePaymentAccountParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutCustomersCustomerFidUpgradePaymentAccount",
+		Method:             "PUT",
+		PathPattern:        "/customers/{customerFid}/upgradePaymentAccount",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutCustomersCustomerFidUpgradePaymentAccountReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutCustomersCustomerFidUpgradePaymentAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutCustomersCustomerFidUpgradePaymentAccountDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutCustomersCustomerFidVip sets customer as v IP
 */
-func (a *Client) PutCustomersCustomerFidVip(params *PutCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter) (*PutCustomersCustomerFidVipOK, error) {
+func (a *Client) PutCustomersCustomerFidVip(params *PutCustomersCustomerFidVipParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutCustomersCustomerFidVipOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutCustomersCustomerFidVipParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutCustomersCustomerFidVip",
 		Method:             "PUT",
 		PathPattern:        "/customers/{customerFid}/vip",
@@ -3015,7 +3745,12 @@ func (a *Client) PutCustomersCustomerFidVip(params *PutCustomersCustomerFidVipPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

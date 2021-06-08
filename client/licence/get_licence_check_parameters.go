@@ -16,56 +16,70 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetLicenceCheckParams creates a new GetLicenceCheckParams object
-// with the default values initialized.
+// NewGetLicenceCheckParams creates a new GetLicenceCheckParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetLicenceCheckParams() *GetLicenceCheckParams {
-	var ()
 	return &GetLicenceCheckParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetLicenceCheckParamsWithTimeout creates a new GetLicenceCheckParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetLicenceCheckParamsWithTimeout(timeout time.Duration) *GetLicenceCheckParams {
-	var ()
 	return &GetLicenceCheckParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetLicenceCheckParamsWithContext creates a new GetLicenceCheckParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetLicenceCheckParamsWithContext(ctx context.Context) *GetLicenceCheckParams {
-	var ()
 	return &GetLicenceCheckParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetLicenceCheckParamsWithHTTPClient creates a new GetLicenceCheckParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetLicenceCheckParamsWithHTTPClient(client *http.Client) *GetLicenceCheckParams {
-	var ()
 	return &GetLicenceCheckParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetLicenceCheckParams contains all the parameters to send to the API endpoint
-for the get licence check operation typically these are written to a http.Request
+/* GetLicenceCheckParams contains all the parameters to send to the API endpoint
+   for the get licence check operation.
+
+   Typically these are written to a http.Request.
 */
 type GetLicenceCheckParams struct {
 
-	/*Key*/
+	// Key.
 	Key *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get licence check params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetLicenceCheckParams) WithDefaults() *GetLicenceCheckParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get licence check params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetLicenceCheckParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get licence check params
@@ -124,16 +138,17 @@ func (o *GetLicenceCheckParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 		// query param key
 		var qrKey string
+
 		if o.Key != nil {
 			qrKey = *o.Key
 		}
 		qKey := qrKey
 		if qKey != "" {
+
 			if err := r.SetQueryParam("key", qKey); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

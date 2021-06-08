@@ -52,7 +52,7 @@ func NewPutOrdersOrderFidSetChargeIDOK() *PutOrdersOrderFidSetChargeIDOK {
 	return &PutOrdersOrderFidSetChargeIDOK{}
 }
 
-/*PutOrdersOrderFidSetChargeIDOK handles this case with default header values.
+/* PutOrdersOrderFidSetChargeIDOK describes a response with status code 200, with default header values.
 
 Charge ID Accepted
 */
@@ -63,7 +63,6 @@ type PutOrdersOrderFidSetChargeIDOK struct {
 func (o *PutOrdersOrderFidSetChargeIDOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] putOrdersOrderFidSetChargeIdOK  %+v", 200, o.Payload)
 }
-
 func (o *PutOrdersOrderFidSetChargeIDOK) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -85,7 +84,7 @@ func NewPutOrdersOrderFidSetChargeIDBadRequest() *PutOrdersOrderFidSetChargeIDBa
 	return &PutOrdersOrderFidSetChargeIDBadRequest{}
 }
 
-/*PutOrdersOrderFidSetChargeIDBadRequest handles this case with default header values.
+/* PutOrdersOrderFidSetChargeIDBadRequest describes a response with status code 400, with default header values.
 
 Invalid Charge ID
 */
@@ -96,7 +95,6 @@ type PutOrdersOrderFidSetChargeIDBadRequest struct {
 func (o *PutOrdersOrderFidSetChargeIDBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] putOrdersOrderFidSetChargeIdBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *PutOrdersOrderFidSetChargeIDBadRequest) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -120,7 +118,7 @@ func NewPutOrdersOrderFidSetChargeIDDefault(code int) *PutOrdersOrderFidSetCharg
 	}
 }
 
-/*PutOrdersOrderFidSetChargeIDDefault handles this case with default header values.
+/* PutOrdersOrderFidSetChargeIDDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -138,7 +136,6 @@ func (o *PutOrdersOrderFidSetChargeIDDefault) Code() int {
 func (o *PutOrdersOrderFidSetChargeIDDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] PutOrdersOrderFidSetChargeID default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutOrdersOrderFidSetChargeIDDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

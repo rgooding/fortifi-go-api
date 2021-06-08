@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetCustomersCustomerFidContactsContactFidOK() *GetCustomersCustomerFidCo
 	return &GetCustomersCustomerFidContactsContactFidOK{}
 }
 
-/*GetCustomersCustomerFidContactsContactFidOK handles this case with default header values.
+/* GetCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
 
 Contact Info
 */
@@ -59,7 +60,6 @@ type GetCustomersCustomerFidContactsContactFidOK struct {
 func (o *GetCustomersCustomerFidContactsContactFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/contacts/{contactFid}][%d] getCustomersCustomerFidContactsContactFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidContactsContactFidOK) GetPayload() *GetCustomersCustomerFidContactsContactFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetCustomersCustomerFidContactsContactFidDefault(code int) *GetCustomers
 	}
 }
 
-/*GetCustomersCustomerFidContactsContactFidDefault handles this case with default header values.
+/* GetCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetCustomersCustomerFidContactsContactFidDefault) Code() int {
 func (o *GetCustomersCustomerFidContactsContactFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/contacts/{contactFid}][%d] GetCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidContactsContactFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetCustomersCustomerFidContactsContactFidOKBody) validateData(formats s
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidContactsContactFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get customers customer fid contacts contact fid o k body based on the context it is used
+func (o *GetCustomersCustomerFidContactsContactFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidContactsContactFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidContactsContactFidOK" + "." + "data")
 			}

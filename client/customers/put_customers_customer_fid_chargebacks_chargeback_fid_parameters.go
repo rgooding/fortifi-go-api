@@ -17,89 +17,109 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPutCustomersCustomerFidChargebacksChargebackFidParams creates a new PutCustomersCustomerFidChargebacksChargebackFidParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidChargebacksChargebackFidParams creates a new PutCustomersCustomerFidChargebacksChargebackFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidChargebacksChargebackFidParams() *PutCustomersCustomerFidChargebacksChargebackFidParams {
-	var ()
 	return &PutCustomersCustomerFidChargebacksChargebackFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidChargebacksChargebackFidParamsWithTimeout creates a new PutCustomersCustomerFidChargebacksChargebackFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidChargebacksChargebackFidParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidChargebacksChargebackFidParams {
-	var ()
 	return &PutCustomersCustomerFidChargebacksChargebackFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidChargebacksChargebackFidParamsWithContext creates a new PutCustomersCustomerFidChargebacksChargebackFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidChargebacksChargebackFidParamsWithContext(ctx context.Context) *PutCustomersCustomerFidChargebacksChargebackFidParams {
-	var ()
 	return &PutCustomersCustomerFidChargebacksChargebackFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidChargebacksChargebackFidParamsWithHTTPClient creates a new PutCustomersCustomerFidChargebacksChargebackFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidChargebacksChargebackFidParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidChargebacksChargebackFidParams {
-	var ()
 	return &PutCustomersCustomerFidChargebacksChargebackFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidChargebacksChargebackFidParams contains all the parameters to send to the API endpoint
-for the put customers customer fid chargebacks chargeback fid operation typically these are written to a http.Request
+/* PutCustomersCustomerFidChargebacksChargebackFidParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid chargebacks chargeback fid operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidChargebacksChargebackFidParams struct {
 
-	/*CaseNumber
-	  Case Number
+	/* CaseNumber.
 
+	   Case Number
 	*/
 	CaseNumber string
-	/*ChargebackFid
-	  Chargeback FID to use
 
+	/* ChargebackFid.
+
+	   Chargeback FID to use
 	*/
 	ChargebackFid string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Description
-	  Notes
 
+	/* Description.
+
+	   Notes
 	*/
 	Description *string
-	/*ReasonCode
-	  Chargeback Reason Code (see https://github.com/packaged/rwd/blob/master/src/Finance/Chargeback/ChargebackReasonHelper.php)
 
+	/* ReasonCode.
+
+	   Chargeback Reason Code (see https://github.com/packaged/rwd/blob/master/src/Finance/Chargeback/ChargebackReasonHelper.php)
 	*/
 	ReasonCode string
-	/*Refunded
-	  If this payment has been refunded by the alert
 
+	/* Refunded.
+
+	   If this payment has been refunded by the alert
 	*/
 	Refunded bool
-	/*State
-	  Current State
 
+	/* State.
+
+	   Current State
 	*/
 	State string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid chargebacks chargeback fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidChargebacksChargebackFidParams) WithDefaults() *PutCustomersCustomerFidChargebacksChargebackFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid chargebacks chargeback fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidChargebacksChargebackFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid chargebacks chargeback fid params
@@ -252,7 +272,6 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidParams) WriteToRequest(r
 				return err
 			}
 		}
-
 	}
 
 	// form param reasonCode

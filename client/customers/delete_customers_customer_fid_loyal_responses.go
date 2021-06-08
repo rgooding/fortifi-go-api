@@ -46,7 +46,7 @@ func NewDeleteCustomersCustomerFidLoyalOK() *DeleteCustomersCustomerFidLoyalOK {
 	return &DeleteCustomersCustomerFidLoyalOK{}
 }
 
-/*DeleteCustomersCustomerFidLoyalOK handles this case with default header values.
+/* DeleteCustomersCustomerFidLoyalOK describes a response with status code 200, with default header values.
 
 Customer No Longer Loyal
 */
@@ -69,7 +69,7 @@ func NewDeleteCustomersCustomerFidLoyalDefault(code int) *DeleteCustomersCustome
 	}
 }
 
-/*DeleteCustomersCustomerFidLoyalDefault handles this case with default header values.
+/* DeleteCustomersCustomerFidLoyalDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteCustomersCustomerFidLoyalDefault) Code() int {
 func (o *DeleteCustomersCustomerFidLoyalDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/loyal][%d] DeleteCustomersCustomerFidLoyal default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteCustomersCustomerFidLoyalDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -17,65 +17,82 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidPhonesParams creates a new PostCustomersCustomerFidPhonesParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidPhonesParams creates a new PostCustomersCustomerFidPhonesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidPhonesParams() *PostCustomersCustomerFidPhonesParams {
-	var ()
 	return &PostCustomersCustomerFidPhonesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPhonesParamsWithTimeout creates a new PostCustomersCustomerFidPhonesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidPhonesParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidPhonesParams {
-	var ()
 	return &PostCustomersCustomerFidPhonesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPhonesParamsWithContext creates a new PostCustomersCustomerFidPhonesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidPhonesParamsWithContext(ctx context.Context) *PostCustomersCustomerFidPhonesParams {
-	var ()
 	return &PostCustomersCustomerFidPhonesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidPhonesParamsWithHTTPClient creates a new PostCustomersCustomerFidPhonesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidPhonesParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidPhonesParams {
-	var ()
 	return &PostCustomersCustomerFidPhonesParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidPhonesParams contains all the parameters to send to the API endpoint
-for the post customers customer fid phones operation typically these are written to a http.Request
+/* PostCustomersCustomerFidPhonesParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid phones operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPhonesParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*DisplayName*/
+
+	// DisplayName.
 	DisplayName *string
-	/*PhoneNumber*/
+
+	// PhoneNumber.
 	PhoneNumber string
-	/*SetAsDefault*/
+
+	// SetAsDefault.
 	SetAsDefault *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid phones params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPhonesParams) WithDefaults() *PostCustomersCustomerFidPhonesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid phones params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPhonesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid phones params
@@ -181,7 +198,6 @@ func (o *PostCustomersCustomerFidPhonesParams) WriteToRequest(r runtime.ClientRe
 				return err
 			}
 		}
-
 	}
 
 	// form param phoneNumber
@@ -206,7 +222,6 @@ func (o *PostCustomersCustomerFidPhonesParams) WriteToRequest(r runtime.ClientRe
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

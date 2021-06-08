@@ -6,6 +6,7 @@ package brands
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetBrandsOK() *GetBrandsOK {
 	return &GetBrandsOK{}
 }
 
-/*GetBrandsOK handles this case with default header values.
+/* GetBrandsOK describes a response with status code 200, with default header values.
 
 Brand Information
 */
@@ -59,7 +60,6 @@ type GetBrandsOK struct {
 func (o *GetBrandsOK) Error() string {
 	return fmt.Sprintf("[GET /brands][%d] getBrandsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetBrandsOK) GetPayload() *GetBrandsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetBrandsDefault(code int) *GetBrandsDefault {
 	}
 }
 
-/*GetBrandsDefault handles this case with default header values.
+/* GetBrandsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetBrandsDefault) Code() int {
 func (o *GetBrandsDefault) Error() string {
 	return fmt.Sprintf("[GET /brands][%d] getBrands default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetBrandsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetBrandsOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getBrandsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get brands o k body based on the context it is used
+func (o *GetBrandsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetBrandsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getBrandsOK" + "." + "data")
 			}

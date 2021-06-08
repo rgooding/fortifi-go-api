@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -26,7 +28,7 @@ type InvoiceCreditNotePayload struct {
 
 	// credit amount type
 	// Required: true
-	CreditAmountType CreditAmountType `json:"creditAmountType"`
+	CreditAmountType *CreditAmountType `json:"creditAmountType"`
 
 	// Currency
 	Currency string `json:"currency,omitempty"`
@@ -70,11 +72,49 @@ func (m *InvoiceCreditNotePayload) validateAmount(formats strfmt.Registry) error
 
 func (m *InvoiceCreditNotePayload) validateCreditAmountType(formats strfmt.Registry) error {
 
-	if err := m.CreditAmountType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("creditAmountType")
-		}
+	if err := validate.Required("creditAmountType", "body", m.CreditAmountType); err != nil {
 		return err
+	}
+
+	if err := validate.Required("creditAmountType", "body", m.CreditAmountType); err != nil {
+		return err
+	}
+
+	if m.CreditAmountType != nil {
+		if err := m.CreditAmountType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("creditAmountType")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this invoice credit note payload based on the context it is used
+func (m *InvoiceCreditNotePayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreditAmountType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *InvoiceCreditNotePayload) contextValidateCreditAmountType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CreditAmountType != nil {
+		if err := m.CreditAmountType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("creditAmountType")
+			}
+			return err
+		}
 	}
 
 	return nil

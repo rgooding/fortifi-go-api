@@ -6,6 +6,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -15,14 +18,14 @@ import (
 // swagger:model CreatePolymerPayload
 type CreatePolymerPayload struct {
 
+	// data
+	Data MetaData `json:"data,omitempty"`
+
 	// Description for this polymer
 	Description string `json:"description,omitempty"`
 
 	// Display name for this polymer
 	Name string `json:"name,omitempty"`
-
-	// Fid for the parent of this polymer e.g. customerFid
-	ParentFid string `json:"parentFid,omitempty"`
 
 	// Code for polymer type
 	PolymerCode string `json:"polymerCode,omitempty"`
@@ -30,6 +33,56 @@ type CreatePolymerPayload struct {
 
 // Validate validates this create polymer payload
 func (m *CreatePolymerPayload) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreatePolymerPayload) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(m.Data) { // not required
+		return nil
+	}
+
+	if err := m.Data.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("data")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create polymer payload based on the context it is used
+func (m *CreatePolymerPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreatePolymerPayload) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Data.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("data")
+		}
+		return err
+	}
+
 	return nil
 }
 

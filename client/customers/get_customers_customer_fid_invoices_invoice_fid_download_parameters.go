@@ -16,66 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParams creates a new GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParams creates a new GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParams() *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithTimeout creates a new GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithContext creates a new GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithContext(ctx context.Context) *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithHTTPClient creates a new GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams contains all the parameters to send to the API endpoint
-for the get customers customer fid invoices invoice fid download operation typically these are written to a http.Request
+/* GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid invoices invoice fid download operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Filename*/
-	Filename *string
-	/*InvoiceFid
-	  Invoice Fid to use
 
+	// Filename.
+	Filename *string
+
+	/* InvoiceFid.
+
+	   Invoice Fid to use
 	*/
 	InvoiceFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid invoices invoice fid download params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams) WithDefaults() *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid invoices invoice fid download params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid invoices invoice fid download params
@@ -161,16 +177,17 @@ func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams) WriteToRequest
 
 		// query param filename
 		var qrFilename string
+
 		if o.Filename != nil {
 			qrFilename = *o.Filename
 		}
 		qFilename := qrFilename
 		if qFilename != "" {
+
 			if err := r.SetQueryParam("filename", qFilename); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param invoiceFid

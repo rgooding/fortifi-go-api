@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK describes a response with status code 200, with default header values.
 
 New payment method set
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefa
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDef
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

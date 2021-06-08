@@ -16,70 +16,88 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid renewal mode operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid renewal mode operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Note*/
-	Note *string
-	/*Reason*/
-	Reason *string
-	/*RenewalMode*/
-	RenewalMode string
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// Note.
+	Note *string
+
+	// Reason.
+	Reason *string
+
+	// RenewalMode.
+	RenewalMode string
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid renewal mode params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid renewal mode params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid renewal mode params
@@ -196,7 +214,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams) W
 				return err
 			}
 		}
-
 	}
 
 	if o.Reason != nil {
@@ -212,7 +229,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams) W
 				return err
 			}
 		}
-
 	}
 
 	// form param renewalMode

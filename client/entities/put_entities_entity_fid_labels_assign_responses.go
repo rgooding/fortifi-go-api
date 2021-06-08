@@ -46,7 +46,7 @@ func NewPutEntitiesEntityFidLabelsAssignOK() *PutEntitiesEntityFidLabelsAssignOK
 	return &PutEntitiesEntityFidLabelsAssignOK{}
 }
 
-/*PutEntitiesEntityFidLabelsAssignOK handles this case with default header values.
+/* PutEntitiesEntityFidLabelsAssignOK describes a response with status code 200, with default header values.
 
 Properties Saved
 */
@@ -69,7 +69,7 @@ func NewPutEntitiesEntityFidLabelsAssignDefault(code int) *PutEntitiesEntityFidL
 	}
 }
 
-/*PutEntitiesEntityFidLabelsAssignDefault handles this case with default header values.
+/* PutEntitiesEntityFidLabelsAssignDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutEntitiesEntityFidLabelsAssignDefault) Code() int {
 func (o *PutEntitiesEntityFidLabelsAssignDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/labels/assign][%d] PutEntitiesEntityFidLabelsAssign default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutEntitiesEntityFidLabelsAssignDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

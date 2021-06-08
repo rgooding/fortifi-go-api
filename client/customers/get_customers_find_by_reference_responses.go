@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetCustomersFindByReferenceOK() *GetCustomersFindByReferenceOK {
 	return &GetCustomersFindByReferenceOK{}
 }
 
-/*GetCustomersFindByReferenceOK handles this case with default header values.
+/* GetCustomersFindByReferenceOK describes a response with status code 200, with default header values.
 
 Located Customer
 */
@@ -59,7 +60,6 @@ type GetCustomersFindByReferenceOK struct {
 func (o *GetCustomersFindByReferenceOK) Error() string {
 	return fmt.Sprintf("[GET /customers/findByReference][%d] getCustomersFindByReferenceOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersFindByReferenceOK) GetPayload() *GetCustomersFindByReferenceOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetCustomersFindByReferenceDefault(code int) *GetCustomersFindByReferenc
 	}
 }
 
-/*GetCustomersFindByReferenceDefault handles this case with default header values.
+/* GetCustomersFindByReferenceDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetCustomersFindByReferenceDefault) Code() int {
 func (o *GetCustomersFindByReferenceDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/findByReference][%d] GetCustomersFindByReference default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersFindByReferenceDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetCustomersFindByReferenceOKBody) validateData(formats strfmt.Registry
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersFindByReferenceOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get customers find by reference o k body based on the context it is used
+func (o *GetCustomersFindByReferenceOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersFindByReferenceOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersFindByReferenceOK" + "." + "data")
 			}

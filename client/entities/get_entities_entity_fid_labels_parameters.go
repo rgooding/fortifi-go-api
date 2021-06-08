@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetEntitiesEntityFidLabelsParams creates a new GetEntitiesEntityFidLabelsParams object
-// with the default values initialized.
+// NewGetEntitiesEntityFidLabelsParams creates a new GetEntitiesEntityFidLabelsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetEntitiesEntityFidLabelsParams() *GetEntitiesEntityFidLabelsParams {
-	var ()
 	return &GetEntitiesEntityFidLabelsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetEntitiesEntityFidLabelsParamsWithTimeout creates a new GetEntitiesEntityFidLabelsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetEntitiesEntityFidLabelsParamsWithTimeout(timeout time.Duration) *GetEntitiesEntityFidLabelsParams {
-	var ()
 	return &GetEntitiesEntityFidLabelsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetEntitiesEntityFidLabelsParamsWithContext creates a new GetEntitiesEntityFidLabelsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetEntitiesEntityFidLabelsParamsWithContext(ctx context.Context) *GetEntitiesEntityFidLabelsParams {
-	var ()
 	return &GetEntitiesEntityFidLabelsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetEntitiesEntityFidLabelsParamsWithHTTPClient creates a new GetEntitiesEntityFidLabelsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetEntitiesEntityFidLabelsParamsWithHTTPClient(client *http.Client) *GetEntitiesEntityFidLabelsParams {
-	var ()
 	return &GetEntitiesEntityFidLabelsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetEntitiesEntityFidLabelsParams contains all the parameters to send to the API endpoint
-for the get entities entity fid labels operation typically these are written to a http.Request
+/* GetEntitiesEntityFidLabelsParams contains all the parameters to send to the API endpoint
+   for the get entities entity fid labels operation.
+
+   Typically these are written to a http.Request.
 */
 type GetEntitiesEntityFidLabelsParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get entities entity fid labels params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetEntitiesEntityFidLabelsParams) WithDefaults() *GetEntitiesEntityFidLabelsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get entities entity fid labels params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetEntitiesEntityFidLabelsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get entities entity fid labels params

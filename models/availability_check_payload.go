@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -46,7 +47,6 @@ func (m *AvailabilityCheckPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *AvailabilityCheckPayload) validateProperties(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Properties) { // not required
 		return nil
 	}
@@ -58,6 +58,38 @@ func (m *AvailabilityCheckPayload) validateProperties(formats strfmt.Registry) e
 
 		if m.Properties[i] != nil {
 			if err := m.Properties[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("properties" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this availability check payload based on the context it is used
+func (m *AvailabilityCheckPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AvailabilityCheckPayload) contextValidateProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Properties); i++ {
+
+		if m.Properties[i] != nil {
+			if err := m.Properties[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("properties" + "." + strconv.Itoa(i))
 				}

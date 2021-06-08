@@ -23,21 +23,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAdvertisersAdvertiserFidApprovedOK, error)
+	DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAdvertisersAdvertiserFidApprovedOK, error)
 
-	GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error)
+	GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersOK, error)
 
-	GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error)
+	GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersAdvertiserFidOK, error)
 
-	GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error)
+	GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error)
 
-	PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersOK, error)
+	PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostAdvertisersOK, error)
 
-	PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersAdvertiserFidCampaignsOK, error)
+	PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostAdvertisersAdvertiserFidCampaignsOK, error)
 
-	PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutAdvertisersAdvertiserFidApprovedOK, error)
+	PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutAdvertisersAdvertiserFidApprovedOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 /*
   DeleteAdvertisersAdvertiserFidApproved removes approved status on an advertiser
 */
-func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAdvertisersAdvertiserFidApprovedOK, error) {
+func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAdvertisersAdvertiserFidApprovedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAdvertisersAdvertiserFidApprovedParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteAdvertisersAdvertiserFidApproved",
 		Method:             "DELETE",
 		PathPattern:        "/advertisers/{advertiserFid}/approved",
@@ -63,7 +65,12 @@ func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertiser
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertiser
 /*
   GetAdvertisers lists advertisers
 */
-func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersOK, error) {
+func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAdvertisersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetAdvertisers",
 		Method:             "GET",
 		PathPattern:        "/advertisers",
@@ -97,7 +103,12 @@ func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.C
 /*
   GetAdvertisersAdvertiserFid retrieves an advertiser
 */
-func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidOK, error) {
+func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersAdvertiserFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAdvertisersAdvertiserFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetAdvertisersAdvertiserFid",
 		Method:             "GET",
 		PathPattern:        "/advertisers/{advertiserFid}",
@@ -131,7 +141,12 @@ func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -147,13 +162,12 @@ func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFid
 /*
   GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid retrieves an advertiser campaign
 */
-func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error) {
+func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid",
 		Method:             "GET",
 		PathPattern:        "/advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}",
@@ -165,7 +179,12 @@ func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(param
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -181,13 +200,12 @@ func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(param
 /*
   PostAdvertisers creates a new advertiser
 */
-func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersOK, error) {
+func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostAdvertisersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostAdvertisersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostAdvertisers",
 		Method:             "POST",
 		PathPattern:        "/advertisers",
@@ -199,7 +217,12 @@ func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -215,13 +238,12 @@ func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime
 /*
   PostAdvertisersAdvertiserFidCampaigns creates a new advertiser campaign
 */
-func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostAdvertisersAdvertiserFidCampaignsOK, error) {
+func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostAdvertisersAdvertiserFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostAdvertisersAdvertiserFidCampaignsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostAdvertisersAdvertiserFidCampaigns",
 		Method:             "POST",
 		PathPattern:        "/advertisers/{advertiserFid}/campaigns",
@@ -233,7 +255,12 @@ func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAd
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -249,13 +276,12 @@ func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAd
 /*
   PutAdvertisersAdvertiserFidApproved sets approved status on an advertiser
 */
-func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutAdvertisersAdvertiserFidApprovedOK, error) {
+func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutAdvertisersAdvertiserFidApprovedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutAdvertisersAdvertiserFidApprovedParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutAdvertisersAdvertiserFidApproved",
 		Method:             "PUT",
 		PathPattern:        "/advertisers/{advertiserFid}/approved",
@@ -267,7 +293,12 @@ func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdver
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetEntitiesEntityFidConfigSectionNameParams creates a new GetEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized.
+// NewGetEntitiesEntityFidConfigSectionNameParams creates a new GetEntitiesEntityFidConfigSectionNameParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetEntitiesEntityFidConfigSectionNameParams() *GetEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &GetEntitiesEntityFidConfigSectionNameParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetEntitiesEntityFidConfigSectionNameParamsWithTimeout creates a new GetEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetEntitiesEntityFidConfigSectionNameParamsWithTimeout(timeout time.Duration) *GetEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &GetEntitiesEntityFidConfigSectionNameParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetEntitiesEntityFidConfigSectionNameParamsWithContext creates a new GetEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetEntitiesEntityFidConfigSectionNameParamsWithContext(ctx context.Context) *GetEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &GetEntitiesEntityFidConfigSectionNameParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetEntitiesEntityFidConfigSectionNameParamsWithHTTPClient creates a new GetEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetEntitiesEntityFidConfigSectionNameParamsWithHTTPClient(client *http.Client) *GetEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &GetEntitiesEntityFidConfigSectionNameParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
-for the get entities entity fid config section name operation typically these are written to a http.Request
+/* GetEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
+   for the get entities entity fid config section name operation.
+
+   Typically these are written to a http.Request.
 */
 type GetEntitiesEntityFidConfigSectionNameParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*SectionName
-	  Section Name
 
+	/* SectionName.
+
+	   Section Name
 	*/
 	SectionName string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get entities entity fid config section name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetEntitiesEntityFidConfigSectionNameParams) WithDefaults() *GetEntitiesEntityFidConfigSectionNameParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get entities entity fid config section name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetEntitiesEntityFidConfigSectionNameParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get entities entity fid config section name params

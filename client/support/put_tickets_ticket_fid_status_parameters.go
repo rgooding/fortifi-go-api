@@ -18,61 +18,76 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutTicketsTicketFidStatusParams creates a new PutTicketsTicketFidStatusParams object
-// with the default values initialized.
+// NewPutTicketsTicketFidStatusParams creates a new PutTicketsTicketFidStatusParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutTicketsTicketFidStatusParams() *PutTicketsTicketFidStatusParams {
-	var ()
 	return &PutTicketsTicketFidStatusParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutTicketsTicketFidStatusParamsWithTimeout creates a new PutTicketsTicketFidStatusParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutTicketsTicketFidStatusParamsWithTimeout(timeout time.Duration) *PutTicketsTicketFidStatusParams {
-	var ()
 	return &PutTicketsTicketFidStatusParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutTicketsTicketFidStatusParamsWithContext creates a new PutTicketsTicketFidStatusParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutTicketsTicketFidStatusParamsWithContext(ctx context.Context) *PutTicketsTicketFidStatusParams {
-	var ()
 	return &PutTicketsTicketFidStatusParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutTicketsTicketFidStatusParamsWithHTTPClient creates a new PutTicketsTicketFidStatusParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutTicketsTicketFidStatusParamsWithHTTPClient(client *http.Client) *PutTicketsTicketFidStatusParams {
-	var ()
 	return &PutTicketsTicketFidStatusParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutTicketsTicketFidStatusParams contains all the parameters to send to the API endpoint
-for the put tickets ticket fid status operation typically these are written to a http.Request
+/* PutTicketsTicketFidStatusParams contains all the parameters to send to the API endpoint
+   for the put tickets ticket fid status operation.
+
+   Typically these are written to a http.Request.
 */
 type PutTicketsTicketFidStatusParams struct {
 
-	/*Payload*/
+	// Payload.
 	Payload *models.TicketStatusPayload
-	/*TicketFid
-	  Ticket FID to use
 
+	/* TicketFid.
+
+	   Ticket FID to use
 	*/
 	TicketFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put tickets ticket fid status params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutTicketsTicketFidStatusParams) WithDefaults() *PutTicketsTicketFidStatusParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put tickets ticket fid status params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutTicketsTicketFidStatusParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put tickets ticket fid status params
@@ -137,7 +152,6 @@ func (o *PutTicketsTicketFidStatusParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

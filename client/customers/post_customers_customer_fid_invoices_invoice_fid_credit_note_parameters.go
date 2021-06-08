@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams creates a new PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams creates a new PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams() *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams {
-	var ()
 	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithTimeout creates a new PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams {
-	var ()
 	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithContext creates a new PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithContext(ctx context.Context) *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams {
-	var ()
 	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithHTTPClient creates a new PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams {
-	var ()
 	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams contains all the parameters to send to the API endpoint
-for the post customers customer fid invoices invoice fid credit note operation typically these are written to a http.Request
+/* PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid invoices invoice fid credit note operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*InvoiceFid
-	  Invoice Fid to use
 
+	/* InvoiceFid.
+
+	   Invoice Fid to use
 	*/
 	InvoiceFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.InvoiceCreditNotePayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid invoices invoice fid credit note params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams) WithDefaults() *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid invoices invoice fid credit note params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid invoices invoice fid credit note params
@@ -163,7 +179,6 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams) WriteToRequ
 	if err := r.SetPathParam("invoiceFid", o.InvoiceFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

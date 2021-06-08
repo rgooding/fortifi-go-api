@@ -17,75 +17,94 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams creates a new PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams creates a new PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams() *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithTimeout creates a new PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithContext creates a new PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithContext(ctx context.Context) *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithHTTPClient creates a new PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams contains all the parameters to send to the API endpoint
-for the post customers customer fid payment methods paypal initialise operation typically these are written to a http.Request
+/* PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid payment methods paypal initialise operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams struct {
 
-	/*CancelURL*/
+	// CancelURL.
 	CancelURL string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*FailURL*/
-	FailURL string
-	/*PaymentServiceFid
-	  Payment Service FID to use
 
+	// FailURL.
+	FailURL string
+
+	/* PaymentServiceFid.
+
+	   Payment Service FID to use
 	*/
 	PaymentServiceFid string
-	/*SubscriptionFids
-	  Subscription FIDs
 
+	/* SubscriptionFids.
+
+	   Subscription FIDs
 	*/
 	SubscriptionFids []string
-	/*SuccessURL*/
+
+	// SuccessURL.
 	SuccessURL string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid payment methods paypal initialise params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams) WithDefaults() *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid payment methods paypal initialise params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid payment methods paypal initialise params
@@ -227,12 +246,15 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams) WriteToRe
 		}
 	}
 
-	valuesSubscriptionFids := o.SubscriptionFids
+	if o.SubscriptionFids != nil {
 
-	joinedSubscriptionFids := swag.JoinByFormat(valuesSubscriptionFids, "")
-	// form array param subscriptionFids
-	if err := r.SetFormParam("subscriptionFids", joinedSubscriptionFids...); err != nil {
-		return err
+		// binding items for subscriptionFids
+		joinedSubscriptionFids := o.bindParamSubscriptionFids(reg)
+
+		// form array param subscriptionFids
+		if err := r.SetFormParam("subscriptionFids", joinedSubscriptionFids...); err != nil {
+			return err
+		}
 	}
 
 	// form param successUrl
@@ -248,4 +270,21 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams) WriteToRe
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPostCustomersCustomerFidPaymentMethodsPaypalInitialise binds the parameter subscriptionFids
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams) bindParamSubscriptionFids(formats strfmt.Registry) []string {
+	subscriptionFidsIR := o.SubscriptionFids
+
+	var subscriptionFidsIC []string
+	for _, subscriptionFidsIIR := range subscriptionFidsIR { // explode []string
+
+		subscriptionFidsIIV := subscriptionFidsIIR // string as string
+		subscriptionFidsIC = append(subscriptionFidsIC, subscriptionFidsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	subscriptionFidsIS := swag.JoinByFormat(subscriptionFidsIC, "")
+
+	return subscriptionFidsIS
 }

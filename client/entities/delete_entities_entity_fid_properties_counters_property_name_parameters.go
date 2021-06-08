@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParams creates a new DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams object
-// with the default values initialized.
+// NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParams creates a new DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParams() *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithTimeout creates a new DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithTimeout(timeout time.Duration) *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithContext creates a new DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithContext(ctx context.Context) *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithHTTPClient creates a new DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithHTTPClient(client *http.Client) *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams contains all the parameters to send to the API endpoint
-for the delete entities entity fid properties counters property name operation typically these are written to a http.Request
+/* DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams contains all the parameters to send to the API endpoint
+   for the delete entities entity fid properties counters property name operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*PropertyName
-	  Property Name
 
+	/* PropertyName.
+
+	   Property Name
 	*/
 	PropertyName string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete entities entity fid properties counters property name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams) WithDefaults() *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete entities entity fid properties counters property name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete entities entity fid properties counters property name params

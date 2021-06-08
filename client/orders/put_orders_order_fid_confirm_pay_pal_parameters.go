@@ -18,58 +18,73 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutOrdersOrderFidConfirmPayPalParams creates a new PutOrdersOrderFidConfirmPayPalParams object
-// with the default values initialized.
+// NewPutOrdersOrderFidConfirmPayPalParams creates a new PutOrdersOrderFidConfirmPayPalParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutOrdersOrderFidConfirmPayPalParams() *PutOrdersOrderFidConfirmPayPalParams {
-	var ()
 	return &PutOrdersOrderFidConfirmPayPalParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutOrdersOrderFidConfirmPayPalParamsWithTimeout creates a new PutOrdersOrderFidConfirmPayPalParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutOrdersOrderFidConfirmPayPalParamsWithTimeout(timeout time.Duration) *PutOrdersOrderFidConfirmPayPalParams {
-	var ()
 	return &PutOrdersOrderFidConfirmPayPalParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutOrdersOrderFidConfirmPayPalParamsWithContext creates a new PutOrdersOrderFidConfirmPayPalParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutOrdersOrderFidConfirmPayPalParamsWithContext(ctx context.Context) *PutOrdersOrderFidConfirmPayPalParams {
-	var ()
 	return &PutOrdersOrderFidConfirmPayPalParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutOrdersOrderFidConfirmPayPalParamsWithHTTPClient creates a new PutOrdersOrderFidConfirmPayPalParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutOrdersOrderFidConfirmPayPalParamsWithHTTPClient(client *http.Client) *PutOrdersOrderFidConfirmPayPalParams {
-	var ()
 	return &PutOrdersOrderFidConfirmPayPalParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutOrdersOrderFidConfirmPayPalParams contains all the parameters to send to the API endpoint
-for the put orders order fid confirm pay pal operation typically these are written to a http.Request
+/* PutOrdersOrderFidConfirmPayPalParams contains all the parameters to send to the API endpoint
+   for the put orders order fid confirm pay pal operation.
+
+   Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidConfirmPayPalParams struct {
 
-	/*OrderFid*/
+	// OrderFid.
 	OrderFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.ConfirmPayPalOrderPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put orders order fid confirm pay pal params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidConfirmPayPalParams) WithDefaults() *PutOrdersOrderFidConfirmPayPalParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put orders order fid confirm pay pal params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidConfirmPayPalParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put orders order fid confirm pay pal params
@@ -139,7 +154,6 @@ func (o *PutOrdersOrderFidConfirmPayPalParams) WriteToRequest(r runtime.ClientRe
 	if err := r.SetPathParam("orderFid", o.OrderFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

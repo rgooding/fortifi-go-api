@@ -18,58 +18,73 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostProductsProductFidAvailabilityReserveParams creates a new PostProductsProductFidAvailabilityReserveParams object
-// with the default values initialized.
+// NewPostProductsProductFidAvailabilityReserveParams creates a new PostProductsProductFidAvailabilityReserveParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostProductsProductFidAvailabilityReserveParams() *PostProductsProductFidAvailabilityReserveParams {
-	var ()
 	return &PostProductsProductFidAvailabilityReserveParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostProductsProductFidAvailabilityReserveParamsWithTimeout creates a new PostProductsProductFidAvailabilityReserveParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostProductsProductFidAvailabilityReserveParamsWithTimeout(timeout time.Duration) *PostProductsProductFidAvailabilityReserveParams {
-	var ()
 	return &PostProductsProductFidAvailabilityReserveParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostProductsProductFidAvailabilityReserveParamsWithContext creates a new PostProductsProductFidAvailabilityReserveParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostProductsProductFidAvailabilityReserveParamsWithContext(ctx context.Context) *PostProductsProductFidAvailabilityReserveParams {
-	var ()
 	return &PostProductsProductFidAvailabilityReserveParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostProductsProductFidAvailabilityReserveParamsWithHTTPClient creates a new PostProductsProductFidAvailabilityReserveParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostProductsProductFidAvailabilityReserveParamsWithHTTPClient(client *http.Client) *PostProductsProductFidAvailabilityReserveParams {
-	var ()
 	return &PostProductsProductFidAvailabilityReserveParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostProductsProductFidAvailabilityReserveParams contains all the parameters to send to the API endpoint
-for the post products product fid availability reserve operation typically these are written to a http.Request
+/* PostProductsProductFidAvailabilityReserveParams contains all the parameters to send to the API endpoint
+   for the post products product fid availability reserve operation.
+
+   Typically these are written to a http.Request.
 */
 type PostProductsProductFidAvailabilityReserveParams struct {
 
-	/*Payload*/
+	// Payload.
 	Payload *models.AvailabilityReservePayload
-	/*ProductFid*/
+
+	// ProductFid.
 	ProductFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post products product fid availability reserve params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostProductsProductFidAvailabilityReserveParams) WithDefaults() *PostProductsProductFidAvailabilityReserveParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post products product fid availability reserve params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostProductsProductFidAvailabilityReserveParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post products product fid availability reserve params
@@ -134,7 +149,6 @@ func (o *PostProductsProductFidAvailabilityReserveParams) WriteToRequest(r runti
 		return err
 	}
 	var res []error
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

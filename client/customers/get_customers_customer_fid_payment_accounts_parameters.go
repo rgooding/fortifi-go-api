@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCustomersCustomerFidPaymentAccountsParams creates a new GetCustomersCustomerFidPaymentAccountsParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidPaymentAccountsParams creates a new GetCustomersCustomerFidPaymentAccountsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidPaymentAccountsParams() *GetCustomersCustomerFidPaymentAccountsParams {
-	var ()
 	return &GetCustomersCustomerFidPaymentAccountsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidPaymentAccountsParamsWithTimeout creates a new GetCustomersCustomerFidPaymentAccountsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidPaymentAccountsParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidPaymentAccountsParams {
-	var ()
 	return &GetCustomersCustomerFidPaymentAccountsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidPaymentAccountsParamsWithContext creates a new GetCustomersCustomerFidPaymentAccountsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidPaymentAccountsParamsWithContext(ctx context.Context) *GetCustomersCustomerFidPaymentAccountsParams {
-	var ()
 	return &GetCustomersCustomerFidPaymentAccountsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidPaymentAccountsParamsWithHTTPClient creates a new GetCustomersCustomerFidPaymentAccountsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidPaymentAccountsParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidPaymentAccountsParams {
-	var ()
 	return &GetCustomersCustomerFidPaymentAccountsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidPaymentAccountsParams contains all the parameters to send to the API endpoint
-for the get customers customer fid payment accounts operation typically these are written to a http.Request
+/* GetCustomersCustomerFidPaymentAccountsParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid payment accounts operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidPaymentAccountsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid payment accounts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidPaymentAccountsParams) WithDefaults() *GetCustomersCustomerFidPaymentAccountsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid payment accounts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidPaymentAccountsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid payment accounts params

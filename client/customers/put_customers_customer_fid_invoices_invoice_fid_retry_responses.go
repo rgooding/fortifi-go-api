@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidInvoicesInvoiceFidRetryOK() *PutCustomersCustomer
 	return &PutCustomersCustomerFidInvoicesInvoiceFidRetryOK{}
 }
 
-/*PutCustomersCustomerFidInvoicesInvoiceFidRetryOK handles this case with default header values.
+/* PutCustomersCustomerFidInvoicesInvoiceFidRetryOK describes a response with status code 200, with default header values.
 
 Invoice set to retry payment
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidInvoicesInvoiceFidRetryDefault(code int) *PutCust
 	}
 }
 
-/*PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault handles this case with default header values.
+/* PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) Code() int {
 func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/{invoiceFid}/retry][%d] PutCustomersCustomerFidInvoicesInvoiceFidRetry default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

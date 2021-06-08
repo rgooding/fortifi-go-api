@@ -16,52 +16,66 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetServicesParams creates a new GetServicesParams object
-// with the default values initialized.
+// NewGetServicesParams creates a new GetServicesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetServicesParams() *GetServicesParams {
-
 	return &GetServicesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetServicesParamsWithTimeout creates a new GetServicesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetServicesParamsWithTimeout(timeout time.Duration) *GetServicesParams {
-
 	return &GetServicesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetServicesParamsWithContext creates a new GetServicesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetServicesParamsWithContext(ctx context.Context) *GetServicesParams {
-
 	return &GetServicesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetServicesParamsWithHTTPClient creates a new GetServicesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetServicesParamsWithHTTPClient(client *http.Client) *GetServicesParams {
-
 	return &GetServicesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetServicesParams contains all the parameters to send to the API endpoint
-for the get services operation typically these are written to a http.Request
+/* GetServicesParams contains all the parameters to send to the API endpoint
+   for the get services operation.
+
+   Typically these are written to a http.Request.
 */
 type GetServicesParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get services params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServicesParams) WithDefaults() *GetServicesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get services params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServicesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get services params

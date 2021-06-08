@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -100,6 +101,43 @@ func (m *PaymentGateways) validateGateways(formats strfmt.Registry) error {
 
 		if m.Gateways[i] != nil {
 			if err := m.Gateways[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gateways" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this payment gateways based on the context it is used
+func (m *PaymentGateways) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Pagination
+	if err := m.Pagination.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGateways(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PaymentGateways) contextValidateGateways(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Gateways); i++ {
+
+		if m.Gateways[i] != nil {
+			if err := m.Gateways[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("gateways" + "." + strconv.Itoa(i))
 				}

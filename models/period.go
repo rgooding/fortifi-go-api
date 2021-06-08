@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -25,6 +27,9 @@ type Period struct {
 
 	// outstanding amount
 	OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
+
+	// payment fid
+	PaymentFid string `json:"paymentFid,omitempty"`
 
 	// period end
 	PeriodEnd int64 `json:"periodEnd,omitempty"`
@@ -68,6 +73,8 @@ func (m *Period) UnmarshalJSON(raw []byte) error {
 
 		OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
 
+		PaymentFid string `json:"paymentFid,omitempty"`
+
 		PeriodEnd int64 `json:"periodEnd,omitempty"`
 
 		PeriodFid string `json:"periodFid,omitempty"`
@@ -93,6 +100,8 @@ func (m *Period) UnmarshalJSON(raw []byte) error {
 	m.CreditedAmount = dataAO1.CreditedAmount
 
 	m.OutstandingAmount = dataAO1.OutstandingAmount
+
+	m.PaymentFid = dataAO1.PaymentFid
 
 	m.PeriodEnd = dataAO1.PeriodEnd
 
@@ -129,6 +138,8 @@ func (m Period) MarshalJSON() ([]byte, error) {
 
 		OutstandingAmount float32 `json:"outstandingAmount,omitempty"`
 
+		PaymentFid string `json:"paymentFid,omitempty"`
+
 		PeriodEnd int64 `json:"periodEnd,omitempty"`
 
 		PeriodFid string `json:"periodFid,omitempty"`
@@ -151,6 +162,8 @@ func (m Period) MarshalJSON() ([]byte, error) {
 	dataAO1.CreditedAmount = m.CreditedAmount
 
 	dataAO1.OutstandingAmount = m.OutstandingAmount
+
+	dataAO1.PaymentFid = m.PaymentFid
 
 	dataAO1.PeriodEnd = m.PeriodEnd
 
@@ -182,6 +195,21 @@ func (m *Period) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with Entity
 	if err := m.Entity.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validate this period based on the context it is used
+func (m *Period) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -16,6 +18,9 @@ import (
 // swagger:model ConfirmOrderPayload
 type ConfirmOrderPayload struct {
 
+	// If set to true, we will not pre-auth the order
+	NoPreAuth *bool `json:"noPreAuth,omitempty"`
+
 	// FID for the payment account you wish to charge the customer through
 	PaymentAccountFid string `json:"paymentAccountFid,omitempty"`
 
@@ -24,6 +29,9 @@ type ConfirmOrderPayload struct {
 
 	// payment service processor
 	PaymentServiceProcessor PaymentServiceProcessor `json:"paymentServiceProcessor,omitempty"`
+
+	// If set to true, this will setup purchases before payment is received
+	SetupPurchaseBeforePayment bool `json:"setupPurchaseBeforePayment,omitempty"`
 }
 
 // Validate validates this confirm order payload
@@ -41,12 +49,37 @@ func (m *ConfirmOrderPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ConfirmOrderPayload) validatePaymentServiceProcessor(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.PaymentServiceProcessor) { // not required
 		return nil
 	}
 
 	if err := m.PaymentServiceProcessor.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("paymentServiceProcessor")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this confirm order payload based on the context it is used
+func (m *ConfirmOrderPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidatePaymentServiceProcessor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ConfirmOrderPayload) contextValidatePaymentServiceProcessor(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.PaymentServiceProcessor.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentServiceProcessor")
 		}

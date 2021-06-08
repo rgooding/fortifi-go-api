@@ -17,69 +17,87 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams creates a new GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams creates a new GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams() *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParamsWithTimeout creates a new GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParamsWithContext creates a new GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParamsWithContext(ctx context.Context) *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParamsWithHTTPClient creates a new GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams contains all the parameters to send to the API endpoint
-for the get customers customer fid tickets ticket fid posts ticket post timestamp attachments operation typically these are written to a http.Request
+/* GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid tickets ticket fid posts ticket post timestamp attachments operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*TicketFid
-	  Ticket FID to use
 
+	/* TicketFid.
+
+	   Ticket FID to use
 	*/
 	TicketFid string
-	/*TicketPostTimestamp
-	  Ticket Post Timestamp
 
+	/* TicketPostTimestamp.
+
+	   Ticket Post Timestamp
+
+	   Format: int64
 	*/
 	TicketPostTimestamp int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid tickets ticket fid posts ticket post timestamp attachments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams) WithDefaults() *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid tickets ticket fid posts ticket post timestamp attachments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid tickets ticket fid posts ticket post timestamp attachments params

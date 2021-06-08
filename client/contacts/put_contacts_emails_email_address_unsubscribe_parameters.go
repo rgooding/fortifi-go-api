@@ -16,74 +16,91 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutContactsEmailsEmailAddressUnsubscribeParams creates a new PutContactsEmailsEmailAddressUnsubscribeParams object
-// with the default values initialized.
+// NewPutContactsEmailsEmailAddressUnsubscribeParams creates a new PutContactsEmailsEmailAddressUnsubscribeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutContactsEmailsEmailAddressUnsubscribeParams() *PutContactsEmailsEmailAddressUnsubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressUnsubscribeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressUnsubscribeParamsWithTimeout creates a new PutContactsEmailsEmailAddressUnsubscribeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutContactsEmailsEmailAddressUnsubscribeParamsWithTimeout(timeout time.Duration) *PutContactsEmailsEmailAddressUnsubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressUnsubscribeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressUnsubscribeParamsWithContext creates a new PutContactsEmailsEmailAddressUnsubscribeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutContactsEmailsEmailAddressUnsubscribeParamsWithContext(ctx context.Context) *PutContactsEmailsEmailAddressUnsubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressUnsubscribeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressUnsubscribeParamsWithHTTPClient creates a new PutContactsEmailsEmailAddressUnsubscribeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutContactsEmailsEmailAddressUnsubscribeParamsWithHTTPClient(client *http.Client) *PutContactsEmailsEmailAddressUnsubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressUnsubscribeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutContactsEmailsEmailAddressUnsubscribeParams contains all the parameters to send to the API endpoint
-for the put contacts emails email address unsubscribe operation typically these are written to a http.Request
+/* PutContactsEmailsEmailAddressUnsubscribeParams contains all the parameters to send to the API endpoint
+   for the put contacts emails email address unsubscribe operation.
+
+   Typically these are written to a http.Request.
 */
 type PutContactsEmailsEmailAddressUnsubscribeParams struct {
 
-	/*BrandFid
-	  Brand to unsubscribe the email address from
+	/* BrandFid.
 
+	   Brand to unsubscribe the email address from
 	*/
 	BrandFid *string
-	/*EmailAddress
-	  Email Address
 
+	/* EmailAddress.
+
+	   Email Address
 	*/
 	EmailAddress string
-	/*GroupFid
-	  Group to unsubscribe the email address from
 
+	/* GroupFid.
+
+	   Group to unsubscribe the email address from
 	*/
 	GroupFid *string
-	/*UnsubscribeType
-	  Unsubscribe Level
 
+	/* UnsubscribeType.
+
+	   Unsubscribe Level
 	*/
 	UnsubscribeType *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put contacts emails email address unsubscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WithDefaults() *PutContactsEmailsEmailAddressUnsubscribeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put contacts emails email address unsubscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutContactsEmailsEmailAddressUnsubscribeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put contacts emails email address unsubscribe params
@@ -184,7 +201,6 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WriteToRequest(r runtim
 				return err
 			}
 		}
-
 	}
 
 	// path param emailAddress
@@ -205,7 +221,6 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WriteToRequest(r runtim
 				return err
 			}
 		}
-
 	}
 
 	if o.UnsubscribeType != nil {
@@ -221,7 +236,6 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeParams) WriteToRequest(r runtim
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

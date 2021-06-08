@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPostCustomersCustomerFidSarParams creates a new PostCustomersCustomerFidSarParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidSarParams creates a new PostCustomersCustomerFidSarParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidSarParams() *PostCustomersCustomerFidSarParams {
-	var ()
 	return &PostCustomersCustomerFidSarParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidSarParamsWithTimeout creates a new PostCustomersCustomerFidSarParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidSarParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidSarParams {
-	var ()
 	return &PostCustomersCustomerFidSarParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidSarParamsWithContext creates a new PostCustomersCustomerFidSarParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidSarParamsWithContext(ctx context.Context) *PostCustomersCustomerFidSarParams {
-	var ()
 	return &PostCustomersCustomerFidSarParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidSarParamsWithHTTPClient creates a new PostCustomersCustomerFidSarParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidSarParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidSarParams {
-	var ()
 	return &PostCustomersCustomerFidSarParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidSarParams contains all the parameters to send to the API endpoint
-for the post customers customer fid sar operation typically these are written to a http.Request
+/* PostCustomersCustomerFidSarParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid sar operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidSarParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid sar params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidSarParams) WithDefaults() *PostCustomersCustomerFidSarParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid sar params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidSarParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid sar params

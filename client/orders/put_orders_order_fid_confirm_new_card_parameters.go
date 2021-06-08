@@ -18,58 +18,73 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutOrdersOrderFidConfirmNewCardParams creates a new PutOrdersOrderFidConfirmNewCardParams object
-// with the default values initialized.
+// NewPutOrdersOrderFidConfirmNewCardParams creates a new PutOrdersOrderFidConfirmNewCardParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutOrdersOrderFidConfirmNewCardParams() *PutOrdersOrderFidConfirmNewCardParams {
-	var ()
 	return &PutOrdersOrderFidConfirmNewCardParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutOrdersOrderFidConfirmNewCardParamsWithTimeout creates a new PutOrdersOrderFidConfirmNewCardParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutOrdersOrderFidConfirmNewCardParamsWithTimeout(timeout time.Duration) *PutOrdersOrderFidConfirmNewCardParams {
-	var ()
 	return &PutOrdersOrderFidConfirmNewCardParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutOrdersOrderFidConfirmNewCardParamsWithContext creates a new PutOrdersOrderFidConfirmNewCardParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutOrdersOrderFidConfirmNewCardParamsWithContext(ctx context.Context) *PutOrdersOrderFidConfirmNewCardParams {
-	var ()
 	return &PutOrdersOrderFidConfirmNewCardParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutOrdersOrderFidConfirmNewCardParamsWithHTTPClient creates a new PutOrdersOrderFidConfirmNewCardParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutOrdersOrderFidConfirmNewCardParamsWithHTTPClient(client *http.Client) *PutOrdersOrderFidConfirmNewCardParams {
-	var ()
 	return &PutOrdersOrderFidConfirmNewCardParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutOrdersOrderFidConfirmNewCardParams contains all the parameters to send to the API endpoint
-for the put orders order fid confirm new card operation typically these are written to a http.Request
+/* PutOrdersOrderFidConfirmNewCardParams contains all the parameters to send to the API endpoint
+   for the put orders order fid confirm new card operation.
+
+   Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidConfirmNewCardParams struct {
 
-	/*OrderFid*/
+	// OrderFid.
 	OrderFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.ConfirmOrderWithNewCardPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put orders order fid confirm new card params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidConfirmNewCardParams) WithDefaults() *PutOrdersOrderFidConfirmNewCardParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put orders order fid confirm new card params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidConfirmNewCardParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put orders order fid confirm new card params
@@ -139,7 +154,6 @@ func (o *PutOrdersOrderFidConfirmNewCardParams) WriteToRequest(r runtime.ClientR
 	if err := r.SetPathParam("orderFid", o.OrderFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

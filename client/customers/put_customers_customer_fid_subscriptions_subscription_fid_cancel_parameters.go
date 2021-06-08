@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid cancel operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid cancel operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
-	Payload *models.SubscriptionCancelPayload
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// Payload.
+	Payload *models.SubscriptionCancelPayload
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid cancel params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid cancel params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid cancel params
@@ -158,7 +174,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams) WriteT
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -112,7 +114,6 @@ func (m *CreateCustomerPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CreateCustomerPayload) validateAccountStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AccountStatus) { // not required
 		return nil
 	}
@@ -128,7 +129,6 @@ func (m *CreateCustomerPayload) validateAccountStatus(formats strfmt.Registry) e
 }
 
 func (m *CreateCustomerPayload) validateAccountType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AccountType) { // not required
 		return nil
 	}
@@ -153,7 +153,6 @@ func (m *CreateCustomerPayload) validateBrandFid(formats strfmt.Registry) error 
 }
 
 func (m *CreateCustomerPayload) validateLifecycle(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Lifecycle) { // not required
 		return nil
 	}
@@ -169,7 +168,6 @@ func (m *CreateCustomerPayload) validateLifecycle(formats strfmt.Registry) error
 }
 
 func (m *CreateCustomerPayload) validateSubscriptionType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SubscriptionType) { // not required
 		return nil
 	}
@@ -185,12 +183,85 @@ func (m *CreateCustomerPayload) validateSubscriptionType(formats strfmt.Registry
 }
 
 func (m *CreateCustomerPayload) validateTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Time) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create customer payload based on the context it is used
+func (m *CreateCustomerPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAccountStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAccountType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLifecycle(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSubscriptionType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateCustomerPayload) contextValidateAccountStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.AccountStatus.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accountStatus")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateCustomerPayload) contextValidateAccountType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.AccountType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateCustomerPayload) contextValidateLifecycle(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Lifecycle.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("lifecycle")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateCustomerPayload) contextValidateSubscriptionType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.SubscriptionType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("subscriptionType")
+		}
 		return err
 	}
 

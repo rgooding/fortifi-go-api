@@ -46,7 +46,7 @@ func NewDeleteEntitiesEntityFidConfigSectionNameOK() *DeleteEntitiesEntityFidCon
 	return &DeleteEntitiesEntityFidConfigSectionNameOK{}
 }
 
-/*DeleteEntitiesEntityFidConfigSectionNameOK handles this case with default header values.
+/* DeleteEntitiesEntityFidConfigSectionNameOK describes a response with status code 200, with default header values.
 
 Config Item Deleted
 */
@@ -69,7 +69,7 @@ func NewDeleteEntitiesEntityFidConfigSectionNameDefault(code int) *DeleteEntitie
 	}
 }
 
-/*DeleteEntitiesEntityFidConfigSectionNameDefault handles this case with default header values.
+/* DeleteEntitiesEntityFidConfigSectionNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) Code() int {
 func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) Error() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/config/{sectionName}][%d] DeleteEntitiesEntityFidConfigSectionName default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

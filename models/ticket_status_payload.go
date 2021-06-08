@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -35,12 +37,37 @@ func (m *TicketStatusPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TicketStatusPayload) validateTicketStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TicketStatus) { // not required
 		return nil
 	}
 
 	if err := m.TicketStatus.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("ticketStatus")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this ticket status payload based on the context it is used
+func (m *TicketStatusPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTicketStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TicketStatusPayload) contextValidateTicketStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.TicketStatus.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("ticketStatus")
 		}

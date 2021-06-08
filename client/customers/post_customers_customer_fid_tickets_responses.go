@@ -46,7 +46,7 @@ func NewPostCustomersCustomerFidTicketsOK() *PostCustomersCustomerFidTicketsOK {
 	return &PostCustomersCustomerFidTicketsOK{}
 }
 
-/*PostCustomersCustomerFidTicketsOK handles this case with default header values.
+/* PostCustomersCustomerFidTicketsOK describes a response with status code 200, with default header values.
 
 Ticket Created
 */
@@ -69,7 +69,7 @@ func NewPostCustomersCustomerFidTicketsDefault(code int) *PostCustomersCustomerF
 	}
 }
 
-/*PostCustomersCustomerFidTicketsDefault handles this case with default header values.
+/* PostCustomersCustomerFidTicketsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostCustomersCustomerFidTicketsDefault) Code() int {
 func (o *PostCustomersCustomerFidTicketsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/tickets][%d] PostCustomersCustomerFidTickets default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidTicketsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -6,6 +6,7 @@ package authentication
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetVersionOK() *GetVersionOK {
 	return &GetVersionOK{}
 }
 
-/*GetVersionOK handles this case with default header values.
+/* GetVersionOK describes a response with status code 200, with default header values.
 
 Version
 */
@@ -59,7 +60,6 @@ type GetVersionOK struct {
 func (o *GetVersionOK) Error() string {
 	return fmt.Sprintf("[GET /version][%d] getVersionOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVersionOK) GetPayload() *GetVersionOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetVersionDefault(code int) *GetVersionDefault {
 	}
 }
 
-/*GetVersionDefault handles this case with default header values.
+/* GetVersionDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetVersionDefault) Code() int {
 func (o *GetVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /version][%d] getVersion default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetVersionDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -179,6 +178,21 @@ func (o *GetVersionOKBody) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with models.Envelope
 	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validate this get version o k body based on the context it is used
+func (o *GetVersionOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 

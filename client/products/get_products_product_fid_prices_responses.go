@@ -6,6 +6,7 @@ package products
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetProductsProductFidPricesOK() *GetProductsProductFidPricesOK {
 	return &GetProductsProductFidPricesOK{}
 }
 
-/*GetProductsProductFidPricesOK handles this case with default header values.
+/* GetProductsProductFidPricesOK describes a response with status code 200, with default header values.
 
 List of product prices
 */
@@ -59,7 +60,6 @@ type GetProductsProductFidPricesOK struct {
 func (o *GetProductsProductFidPricesOK) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/prices][%d] getProductsProductFidPricesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetProductsProductFidPricesOK) GetPayload() *GetProductsProductFidPricesOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetProductsProductFidPricesDefault(code int) *GetProductsProductFidPrice
 	}
 }
 
-/*GetProductsProductFidPricesDefault handles this case with default header values.
+/* GetProductsProductFidPricesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetProductsProductFidPricesDefault) Code() int {
 func (o *GetProductsProductFidPricesDefault) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/prices][%d] GetProductsProductFidPrices default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetProductsProductFidPricesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetProductsProductFidPricesOKBody) validateData(formats strfmt.Registry
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getProductsProductFidPricesOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get products product fid prices o k body based on the context it is used
+func (o *GetProductsProductFidPricesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetProductsProductFidPricesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsProductFidPricesOK" + "." + "data")
 			}

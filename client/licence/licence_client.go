@@ -23,9 +23,12 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetLicenceCheckOK, error)
+	GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicenceCheckOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -33,13 +36,12 @@ type ClientService interface {
 /*
   GetLicenceCheck retrieves a licence
 */
-func (a *Client) GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter) (*GetLicenceCheckOK, error) {
+func (a *Client) GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicenceCheckOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLicenceCheckParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetLicenceCheck",
 		Method:             "GET",
 		PathPattern:        "/licence/check",
@@ -51,7 +53,12 @@ func (a *Client) GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -17,86 +17,106 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidTicketsParams creates a new PostCustomersCustomerFidTicketsParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidTicketsParams creates a new PostCustomersCustomerFidTicketsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidTicketsParams() *PostCustomersCustomerFidTicketsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidTicketsParamsWithTimeout creates a new PostCustomersCustomerFidTicketsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidTicketsParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidTicketsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidTicketsParamsWithContext creates a new PostCustomersCustomerFidTicketsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidTicketsParamsWithContext(ctx context.Context) *PostCustomersCustomerFidTicketsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidTicketsParamsWithHTTPClient creates a new PostCustomersCustomerFidTicketsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidTicketsParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidTicketsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidTicketsParams contains all the parameters to send to the API endpoint
-for the post customers customer fid tickets operation typically these are written to a http.Request
+/* PostCustomersCustomerFidTicketsParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid tickets operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidTicketsParams struct {
 
-	/*Attachments*/
+	// Attachments.
 	Attachments []string
-	/*Content
-	  Content of the support ticket
 
+	/* Content.
+
+	   Content of the support ticket
 	*/
 	Content string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*DepartmentFid
-	  Department FID
 
+	/* DepartmentFid.
+
+	   Department FID
 	*/
 	DepartmentFid *string
-	/*Recipient
-	  Receiver email address e.g. support@yourdomain.com
 
+	/* Recipient.
+
+	   Receiver email address e.g. support@yourdomain.com
 	*/
 	Recipient string
-	/*Sender
-	  Sender email address e.g. user@customer.com
 
+	/* Sender.
+
+	   Sender email address e.g. user@customer.com
 	*/
 	Sender string
-	/*Subject
-	  Subject of the support ticket
 
+	/* Subject.
+
+	   Subject of the support ticket
 	*/
 	Subject string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid tickets params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidTicketsParams) WithDefaults() *PostCustomersCustomerFidTicketsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid tickets params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidTicketsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid tickets params
@@ -217,12 +237,15 @@ func (o *PostCustomersCustomerFidTicketsParams) WriteToRequest(r runtime.ClientR
 	}
 	var res []error
 
-	valuesAttachments := o.Attachments
+	if o.Attachments != nil {
 
-	joinedAttachments := swag.JoinByFormat(valuesAttachments, "")
-	// form array param attachments
-	if err := r.SetFormParam("attachments", joinedAttachments...); err != nil {
-		return err
+		// binding items for attachments
+		joinedAttachments := o.bindParamAttachments(reg)
+
+		// form array param attachments
+		if err := r.SetFormParam("attachments", joinedAttachments...); err != nil {
+			return err
+		}
 	}
 
 	// form param content
@@ -252,7 +275,6 @@ func (o *PostCustomersCustomerFidTicketsParams) WriteToRequest(r runtime.ClientR
 				return err
 			}
 		}
-
 	}
 
 	// form param recipient
@@ -286,4 +308,21 @@ func (o *PostCustomersCustomerFidTicketsParams) WriteToRequest(r runtime.ClientR
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPostCustomersCustomerFidTickets binds the parameter attachments
+func (o *PostCustomersCustomerFidTicketsParams) bindParamAttachments(formats strfmt.Registry) []string {
+	attachmentsIR := o.Attachments
+
+	var attachmentsIC []string
+	for _, attachmentsIIR := range attachmentsIR { // explode []string
+
+		attachmentsIIV := attachmentsIIR // string as string
+		attachmentsIC = append(attachmentsIC, attachmentsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	attachmentsIS := swag.JoinByFormat(attachmentsIC, "")
+
+	return attachmentsIS
 }

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -94,6 +96,21 @@ func (m *VerifyOrderPayload) Validate(formats strfmt.Registry) error {
 
 	// validation for a type composition with ConfirmOrderPayload
 	if err := m.ConfirmOrderPayload.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validate this verify order payload based on the context it is used
+func (m *VerifyOrderPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with ConfirmOrderPayload
+	if err := m.ConfirmOrderPayload.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 

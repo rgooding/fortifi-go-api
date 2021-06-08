@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteCustomersCustomerFidLoyalParams creates a new DeleteCustomersCustomerFidLoyalParams object
-// with the default values initialized.
+// NewDeleteCustomersCustomerFidLoyalParams creates a new DeleteCustomersCustomerFidLoyalParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteCustomersCustomerFidLoyalParams() *DeleteCustomersCustomerFidLoyalParams {
-	var ()
 	return &DeleteCustomersCustomerFidLoyalParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidLoyalParamsWithTimeout creates a new DeleteCustomersCustomerFidLoyalParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteCustomersCustomerFidLoyalParamsWithTimeout(timeout time.Duration) *DeleteCustomersCustomerFidLoyalParams {
-	var ()
 	return &DeleteCustomersCustomerFidLoyalParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidLoyalParamsWithContext creates a new DeleteCustomersCustomerFidLoyalParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteCustomersCustomerFidLoyalParamsWithContext(ctx context.Context) *DeleteCustomersCustomerFidLoyalParams {
-	var ()
 	return &DeleteCustomersCustomerFidLoyalParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteCustomersCustomerFidLoyalParamsWithHTTPClient creates a new DeleteCustomersCustomerFidLoyalParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteCustomersCustomerFidLoyalParamsWithHTTPClient(client *http.Client) *DeleteCustomersCustomerFidLoyalParams {
-	var ()
 	return &DeleteCustomersCustomerFidLoyalParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteCustomersCustomerFidLoyalParams contains all the parameters to send to the API endpoint
-for the delete customers customer fid loyal operation typically these are written to a http.Request
+/* DeleteCustomersCustomerFidLoyalParams contains all the parameters to send to the API endpoint
+   for the delete customers customer fid loyal operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidLoyalParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete customers customer fid loyal params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidLoyalParams) WithDefaults() *DeleteCustomersCustomerFidLoyalParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete customers customer fid loyal params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidLoyalParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete customers customer fid loyal params

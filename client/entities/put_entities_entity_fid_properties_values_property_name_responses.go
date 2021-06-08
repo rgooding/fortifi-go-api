@@ -46,7 +46,7 @@ func NewPutEntitiesEntityFidPropertiesValuesPropertyNameOK() *PutEntitiesEntityF
 	return &PutEntitiesEntityFidPropertiesValuesPropertyNameOK{}
 }
 
-/*PutEntitiesEntityFidPropertiesValuesPropertyNameOK handles this case with default header values.
+/* PutEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
 
 Property Saved
 */
@@ -69,7 +69,7 @@ func NewPutEntitiesEntityFidPropertiesValuesPropertyNameDefault(code int) *PutEn
 	}
 }
 
-/*PutEntitiesEntityFidPropertiesValuesPropertyNameDefault handles this case with default header values.
+/* PutEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int {
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] PutEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

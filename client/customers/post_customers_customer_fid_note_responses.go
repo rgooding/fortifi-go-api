@@ -46,7 +46,7 @@ func NewPostCustomersCustomerFidNoteOK() *PostCustomersCustomerFidNoteOK {
 	return &PostCustomersCustomerFidNoteOK{}
 }
 
-/*PostCustomersCustomerFidNoteOK handles this case with default header values.
+/* PostCustomersCustomerFidNoteOK describes a response with status code 200, with default header values.
 
 Customer note saved
 */
@@ -69,7 +69,7 @@ func NewPostCustomersCustomerFidNoteDefault(code int) *PostCustomersCustomerFidN
 	}
 }
 
-/*PostCustomersCustomerFidNoteDefault handles this case with default header values.
+/* PostCustomersCustomerFidNoteDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostCustomersCustomerFidNoteDefault) Code() int {
 func (o *PostCustomersCustomerFidNoteDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/note][%d] PostCustomersCustomerFidNote default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidNoteDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

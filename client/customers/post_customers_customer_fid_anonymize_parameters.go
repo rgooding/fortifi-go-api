@@ -17,75 +17,97 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidAnonymizeParams creates a new PostCustomersCustomerFidAnonymizeParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidAnonymizeParams creates a new PostCustomersCustomerFidAnonymizeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidAnonymizeParams() *PostCustomersCustomerFidAnonymizeParams {
-	var ()
 	return &PostCustomersCustomerFidAnonymizeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidAnonymizeParamsWithTimeout creates a new PostCustomersCustomerFidAnonymizeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidAnonymizeParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidAnonymizeParams {
-	var ()
 	return &PostCustomersCustomerFidAnonymizeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidAnonymizeParamsWithContext creates a new PostCustomersCustomerFidAnonymizeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidAnonymizeParamsWithContext(ctx context.Context) *PostCustomersCustomerFidAnonymizeParams {
-	var ()
 	return &PostCustomersCustomerFidAnonymizeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidAnonymizeParamsWithHTTPClient creates a new PostCustomersCustomerFidAnonymizeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidAnonymizeParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidAnonymizeParams {
-	var ()
 	return &PostCustomersCustomerFidAnonymizeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidAnonymizeParams contains all the parameters to send to the API endpoint
-for the post customers customer fid anonymize operation typically these are written to a http.Request
+/* PostCustomersCustomerFidAnonymizeParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid anonymize operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidAnonymizeParams struct {
 
-	/*Addresses*/
+	// Addresses.
 	Addresses *bool
-	/*Chats*/
-	Chats *bool
-	/*Customer*/
-	Customer *bool
-	/*CustomerFid
-	  Customer FID to use
 
+	// Chats.
+	Chats *bool
+
+	// Customer.
+	Customer *bool
+
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Emails*/
+
+	// Emails.
 	Emails *bool
-	/*Orders*/
+
+	// Orders.
 	Orders *bool
-	/*PaymentAccounts*/
+
+	// PaymentAccounts.
 	PaymentAccounts *bool
-	/*Phones*/
+
+	// Phones.
 	Phones *bool
-	/*Tickets*/
+
+	// Tickets.
 	Tickets *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid anonymize params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidAnonymizeParams) WithDefaults() *PostCustomersCustomerFidAnonymizeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid anonymize params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidAnonymizeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid anonymize params
@@ -241,7 +263,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if o.Chats != nil {
@@ -257,7 +278,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if o.Customer != nil {
@@ -273,7 +293,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	// path param customerFid
@@ -294,7 +313,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if o.Orders != nil {
@@ -310,7 +328,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if o.PaymentAccounts != nil {
@@ -326,7 +343,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if o.Phones != nil {
@@ -342,7 +358,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if o.Tickets != nil {
@@ -358,7 +373,6 @@ func (o *PostCustomersCustomerFidAnonymizeParams) WriteToRequest(r runtime.Clien
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

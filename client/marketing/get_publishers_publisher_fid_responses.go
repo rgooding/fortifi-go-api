@@ -6,6 +6,7 @@ package marketing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetPublishersPublisherFidOK() *GetPublishersPublisherFidOK {
 	return &GetPublishersPublisherFidOK{}
 }
 
-/*GetPublishersPublisherFidOK handles this case with default header values.
+/* GetPublishersPublisherFidOK describes a response with status code 200, with default header values.
 
 Loaded Publisher
 */
@@ -59,7 +60,6 @@ type GetPublishersPublisherFidOK struct {
 func (o *GetPublishersPublisherFidOK) Error() string {
 	return fmt.Sprintf("[GET /publishers/{publisherFid}][%d] getPublishersPublisherFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetPublishersPublisherFidOK) GetPayload() *GetPublishersPublisherFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetPublishersPublisherFidDefault(code int) *GetPublishersPublisherFidDef
 	}
 }
 
-/*GetPublishersPublisherFidDefault handles this case with default header values.
+/* GetPublishersPublisherFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetPublishersPublisherFidDefault) Code() int {
 func (o *GetPublishersPublisherFidDefault) Error() string {
 	return fmt.Sprintf("[GET /publishers/{publisherFid}][%d] GetPublishersPublisherFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetPublishersPublisherFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetPublishersPublisherFidOKBody) validateData(formats strfmt.Registry) 
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getPublishersPublisherFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get publishers publisher fid o k body based on the context it is used
+func (o *GetPublishersPublisherFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetPublishersPublisherFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPublishersPublisherFidOK" + "." + "data")
 			}

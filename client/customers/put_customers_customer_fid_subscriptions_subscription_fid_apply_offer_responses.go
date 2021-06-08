@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK() *PutCu
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferOK describes a response with status code 200, with default header values.
 
 Offer applied
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault(cod
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) C
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/applyOffer][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOffer default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidApplyOfferDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

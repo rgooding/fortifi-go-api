@@ -17,63 +17,79 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidEmailsParams creates a new PostCustomersCustomerFidEmailsParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidEmailsParams creates a new PostCustomersCustomerFidEmailsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidEmailsParams() *PostCustomersCustomerFidEmailsParams {
-	var ()
 	return &PostCustomersCustomerFidEmailsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidEmailsParamsWithTimeout creates a new PostCustomersCustomerFidEmailsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidEmailsParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidEmailsParams {
-	var ()
 	return &PostCustomersCustomerFidEmailsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidEmailsParamsWithContext creates a new PostCustomersCustomerFidEmailsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidEmailsParamsWithContext(ctx context.Context) *PostCustomersCustomerFidEmailsParams {
-	var ()
 	return &PostCustomersCustomerFidEmailsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidEmailsParamsWithHTTPClient creates a new PostCustomersCustomerFidEmailsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidEmailsParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidEmailsParams {
-	var ()
 	return &PostCustomersCustomerFidEmailsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidEmailsParams contains all the parameters to send to the API endpoint
-for the post customers customer fid emails operation typically these are written to a http.Request
+/* PostCustomersCustomerFidEmailsParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid emails operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidEmailsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*EmailAddress*/
+
+	// EmailAddress.
 	EmailAddress string
-	/*SetAsDefault*/
+
+	// SetAsDefault.
 	SetAsDefault *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid emails params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidEmailsParams) WithDefaults() *PostCustomersCustomerFidEmailsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid emails params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidEmailsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid emails params
@@ -177,7 +193,6 @@ func (o *PostCustomersCustomerFidEmailsParams) WriteToRequest(r runtime.ClientRe
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

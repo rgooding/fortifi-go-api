@@ -46,7 +46,7 @@ func NewGetCustomersCustomerFidInvoicesInvoiceFidOK() *GetCustomersCustomerFidIn
 	return &GetCustomersCustomerFidInvoicesInvoiceFidOK{}
 }
 
-/*GetCustomersCustomerFidInvoicesInvoiceFidOK handles this case with default header values.
+/* GetCustomersCustomerFidInvoicesInvoiceFidOK describes a response with status code 200, with default header values.
 
 Loaded invoice
 */
@@ -57,7 +57,6 @@ type GetCustomersCustomerFidInvoicesInvoiceFidOK struct {
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}][%d] getCustomersCustomerFidInvoicesInvoiceFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidOK) GetPayload() *models.Invoice {
 	return o.Payload
 }
@@ -81,7 +80,7 @@ func NewGetCustomersCustomerFidInvoicesInvoiceFidDefault(code int) *GetCustomers
 	}
 }
 
-/*GetCustomersCustomerFidInvoicesInvoiceFidDefault handles this case with default header values.
+/* GetCustomersCustomerFidInvoicesInvoiceFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -99,7 +98,6 @@ func (o *GetCustomersCustomerFidInvoicesInvoiceFidDefault) Code() int {
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}][%d] GetCustomersCustomerFidInvoicesInvoiceFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

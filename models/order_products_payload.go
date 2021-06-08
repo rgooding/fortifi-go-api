@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -17,6 +18,9 @@ import (
 //
 // swagger:model OrderProductsPayload
 type OrderProductsPayload struct {
+
+	// Subscriptions to modify on this order
+	ModifySubscriptions []*OrderModifySubscriptionPayload `json:"modifySubscriptions"`
 
 	// Products to add with display names
 	NamesProductPriceFids []*OrderProductDisplayNamePayload `json:"namesProductPriceFids"`
@@ -34,6 +38,10 @@ type OrderProductsPayload struct {
 // Validate validates this order products payload
 func (m *OrderProductsPayload) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateModifySubscriptions(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateNamesProductPriceFids(formats); err != nil {
 		res = append(res, err)
@@ -53,8 +61,31 @@ func (m *OrderProductsPayload) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *OrderProductsPayload) validateNamesProductPriceFids(formats strfmt.Registry) error {
+func (m *OrderProductsPayload) validateModifySubscriptions(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModifySubscriptions) { // not required
+		return nil
+	}
 
+	for i := 0; i < len(m.ModifySubscriptions); i++ {
+		if swag.IsZero(m.ModifySubscriptions[i]) { // not required
+			continue
+		}
+
+		if m.ModifySubscriptions[i] != nil {
+			if err := m.ModifySubscriptions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrderProductsPayload) validateNamesProductPriceFids(formats strfmt.Registry) error {
 	if swag.IsZero(m.NamesProductPriceFids) { // not required
 		return nil
 	}
@@ -79,7 +110,6 @@ func (m *OrderProductsPayload) validateNamesProductPriceFids(formats strfmt.Regi
 }
 
 func (m *OrderProductsPayload) validateProducts(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Products) { // not required
 		return nil
 	}
@@ -104,7 +134,6 @@ func (m *OrderProductsPayload) validateProducts(formats strfmt.Registry) error {
 }
 
 func (m *OrderProductsPayload) validateQuantityProductPriceFids(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.QuantityProductPriceFids) { // not required
 		return nil
 	}
@@ -116,6 +145,104 @@ func (m *OrderProductsPayload) validateQuantityProductPriceFids(formats strfmt.R
 
 		if m.QuantityProductPriceFids[i] != nil {
 			if err := m.QuantityProductPriceFids[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("quantityProductPriceFids" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this order products payload based on the context it is used
+func (m *OrderProductsPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateModifySubscriptions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNamesProductPriceFids(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProducts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateQuantityProductPriceFids(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrderProductsPayload) contextValidateModifySubscriptions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ModifySubscriptions); i++ {
+
+		if m.ModifySubscriptions[i] != nil {
+			if err := m.ModifySubscriptions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrderProductsPayload) contextValidateNamesProductPriceFids(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NamesProductPriceFids); i++ {
+
+		if m.NamesProductPriceFids[i] != nil {
+			if err := m.NamesProductPriceFids[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("namesProductPriceFids" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrderProductsPayload) contextValidateProducts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Products); i++ {
+
+		if m.Products[i] != nil {
+			if err := m.Products[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrderProductsPayload) contextValidateQuantityProductPriceFids(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.QuantityProductPriceFids); i++ {
+
+		if m.QuantityProductPriceFids[i] != nil {
+			if err := m.QuantityProductPriceFids[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("quantityProductPriceFids" + "." + strconv.Itoa(i))
 				}

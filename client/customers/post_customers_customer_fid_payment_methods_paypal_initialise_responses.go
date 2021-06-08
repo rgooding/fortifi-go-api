@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK() *PostCustomer
 	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK{}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK handles this case with default header values.
+/* PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK describes a response with status code 200, with default header values.
 
 Redirect instructions
 */
@@ -59,7 +60,6 @@ type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK struct {
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK  %+v", 200, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) GetPayload() *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault(code int) 
 	}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault handles this case with default header values.
+/* PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) Code() i
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] PostCustomersCustomerFidPaymentMethodsPaypalInitialise default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody) validateD
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post customers customer fid payment methods paypal initialise o k body based on the context it is used
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK" + "." + "data")
 			}

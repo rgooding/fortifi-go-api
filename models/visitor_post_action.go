@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -64,7 +65,6 @@ func (m *VisitorPostAction) Validate(formats strfmt.Registry) error {
 }
 
 func (m *VisitorPostAction) validatePixels(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Pixels) { // not required
 		return nil
 	}
@@ -76,6 +76,38 @@ func (m *VisitorPostAction) validatePixels(formats strfmt.Registry) error {
 
 		if m.Pixels[i] != nil {
 			if err := m.Pixels[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("pixels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this visitor post action based on the context it is used
+func (m *VisitorPostAction) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidatePixels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VisitorPostAction) contextValidatePixels(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Pixels); i++ {
+
+		if m.Pixels[i] != nil {
+			if err := m.Pixels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("pixels" + "." + strconv.Itoa(i))
 				}

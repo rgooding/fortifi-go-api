@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutPublishersPublisherFidDisableParams creates a new PutPublishersPublisherFidDisableParams object
-// with the default values initialized.
+// NewPutPublishersPublisherFidDisableParams creates a new PutPublishersPublisherFidDisableParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutPublishersPublisherFidDisableParams() *PutPublishersPublisherFidDisableParams {
-	var ()
 	return &PutPublishersPublisherFidDisableParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutPublishersPublisherFidDisableParamsWithTimeout creates a new PutPublishersPublisherFidDisableParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutPublishersPublisherFidDisableParamsWithTimeout(timeout time.Duration) *PutPublishersPublisherFidDisableParams {
-	var ()
 	return &PutPublishersPublisherFidDisableParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutPublishersPublisherFidDisableParamsWithContext creates a new PutPublishersPublisherFidDisableParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutPublishersPublisherFidDisableParamsWithContext(ctx context.Context) *PutPublishersPublisherFidDisableParams {
-	var ()
 	return &PutPublishersPublisherFidDisableParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutPublishersPublisherFidDisableParamsWithHTTPClient creates a new PutPublishersPublisherFidDisableParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutPublishersPublisherFidDisableParamsWithHTTPClient(client *http.Client) *PutPublishersPublisherFidDisableParams {
-	var ()
 	return &PutPublishersPublisherFidDisableParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutPublishersPublisherFidDisableParams contains all the parameters to send to the API endpoint
-for the put publishers publisher fid disable operation typically these are written to a http.Request
+/* PutPublishersPublisherFidDisableParams contains all the parameters to send to the API endpoint
+   for the put publishers publisher fid disable operation.
+
+   Typically these are written to a http.Request.
 */
 type PutPublishersPublisherFidDisableParams struct {
 
-	/*PublisherFid
-	  Publisher FID to use
+	/* PublisherFid.
 
+	   Publisher FID to use
 	*/
 	PublisherFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put publishers publisher fid disable params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutPublishersPublisherFidDisableParams) WithDefaults() *PutPublishersPublisherFidDisableParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put publishers publisher fid disable params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutPublishersPublisherFidDisableParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put publishers publisher fid disable params

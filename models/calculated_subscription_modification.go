@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -27,6 +29,9 @@ type CalculatedSubscriptionModification struct {
 	// next renewal amount
 	NextRenewalAmount float32 `json:"nextRenewalAmount,omitempty"`
 
+	// next renewal date
+	NextRenewalDate int64 `json:"nextRenewalDate,omitempty"`
+
 	// next renewal discount
 	NextRenewalDiscount float32 `json:"nextRenewalDiscount,omitempty"`
 
@@ -45,6 +50,11 @@ type CalculatedSubscriptionModification struct {
 
 // Validate validates this calculated subscription modification
 func (m *CalculatedSubscriptionModification) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this calculated subscription modification based on context it is used
+func (m *CalculatedSubscriptionModification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

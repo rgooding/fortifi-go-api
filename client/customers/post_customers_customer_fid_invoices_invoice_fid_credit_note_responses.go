@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK() *PostCustomersC
 	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK{}
 }
 
-/*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK handles this case with default header values.
+/* PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK describes a response with status code 200, with default header values.
 
 Credit Note Added
 */
@@ -59,7 +60,6 @@ type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK struct {
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK  %+v", 200, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) GetPayload() *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault(code int) *P
 	}
 }
 
-/*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault handles this case with default header values.
+/* PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Code() int
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] PostCustomersCustomerFidInvoicesInvoiceFidCreditNote default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) validateDat
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post customers customer fid invoices invoice fid credit note o k body based on the context it is used
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
 			}

@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersCustomerFidChatSessionsParams creates a new GetCustomersCustomerFidChatSessionsParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidChatSessionsParams creates a new GetCustomersCustomerFidChatSessionsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidChatSessionsParams() *GetCustomersCustomerFidChatSessionsParams {
-	var ()
 	return &GetCustomersCustomerFidChatSessionsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidChatSessionsParamsWithTimeout creates a new GetCustomersCustomerFidChatSessionsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidChatSessionsParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidChatSessionsParams {
-	var ()
 	return &GetCustomersCustomerFidChatSessionsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidChatSessionsParamsWithContext creates a new GetCustomersCustomerFidChatSessionsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidChatSessionsParamsWithContext(ctx context.Context) *GetCustomersCustomerFidChatSessionsParams {
-	var ()
 	return &GetCustomersCustomerFidChatSessionsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidChatSessionsParamsWithHTTPClient creates a new GetCustomersCustomerFidChatSessionsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidChatSessionsParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidChatSessionsParams {
-	var ()
 	return &GetCustomersCustomerFidChatSessionsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidChatSessionsParams contains all the parameters to send to the API endpoint
-for the get customers customer fid chat sessions operation typically these are written to a http.Request
+/* GetCustomersCustomerFidChatSessionsParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid chat sessions operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidChatSessionsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Limit
-	  Maximum number of records per page (default: 20)
 
+	/* Limit.
+
+	   Maximum number of records per page (default: 20)
 	*/
 	Limit *int64
-	/*Page
-	  Page number (default: 1)
 
+	/* Page.
+
+	   Page number (default: 1)
 	*/
 	Page *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid chat sessions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidChatSessionsParams) WithDefaults() *GetCustomersCustomerFidChatSessionsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid chat sessions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidChatSessionsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid chat sessions params
@@ -165,32 +181,34 @@ func (o *GetCustomersCustomerFidChatSessionsParams) WriteToRequest(r runtime.Cli
 
 		// query param limit
 		var qrLimit int64
+
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
+
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Page != nil {
 
 		// query param page
 		var qrPage int64
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt64(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

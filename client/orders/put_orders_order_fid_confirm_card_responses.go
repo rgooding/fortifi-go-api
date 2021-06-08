@@ -6,6 +6,7 @@ package orders
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPutOrdersOrderFidConfirmCardOK() *PutOrdersOrderFidConfirmCardOK {
 	return &PutOrdersOrderFidConfirmCardOK{}
 }
 
-/*PutOrdersOrderFidConfirmCardOK handles this case with default header values.
+/* PutOrdersOrderFidConfirmCardOK describes a response with status code 200, with default header values.
 
 Order confirmed and payment authroized
 */
@@ -59,7 +60,6 @@ type PutOrdersOrderFidConfirmCardOK struct {
 func (o *PutOrdersOrderFidConfirmCardOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] putOrdersOrderFidConfirmCardOK  %+v", 200, o.Payload)
 }
-
 func (o *PutOrdersOrderFidConfirmCardOK) GetPayload() *PutOrdersOrderFidConfirmCardOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPutOrdersOrderFidConfirmCardDefault(code int) *PutOrdersOrderFidConfirmC
 	}
 }
 
-/*PutOrdersOrderFidConfirmCardDefault handles this case with default header values.
+/* PutOrdersOrderFidConfirmCardDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PutOrdersOrderFidConfirmCardDefault) Code() int {
 func (o *PutOrdersOrderFidConfirmCardDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] PutOrdersOrderFidConfirmCard default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutOrdersOrderFidConfirmCardDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PutOrdersOrderFidConfirmCardOKBody) validateData(formats strfmt.Registr
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putOrdersOrderFidConfirmCardOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this put orders order fid confirm card o k body based on the context it is used
+func (o *PutOrdersOrderFidConfirmCardOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutOrdersOrderFidConfirmCardOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidConfirmCardOK" + "." + "data")
 			}

@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionTypeOK() *PutCustomersCustomerFidSubs
 	return &PutCustomersCustomerFidSubscriptionTypeOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionTypeOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionTypeOK describes a response with status code 200, with default header values.
 
 Customer Status Updated
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionTypeDefault(code int) *PutCustomersCu
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionTypeDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionTypeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionTypeDefault) Code() int {
 func (o *PutCustomersCustomerFidSubscriptionTypeDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptionType][%d] PutCustomersCustomerFidSubscriptionType default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionTypeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

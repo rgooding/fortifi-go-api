@@ -18,58 +18,73 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutOrdersOrderFidProductsParams creates a new PutOrdersOrderFidProductsParams object
-// with the default values initialized.
+// NewPutOrdersOrderFidProductsParams creates a new PutOrdersOrderFidProductsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutOrdersOrderFidProductsParams() *PutOrdersOrderFidProductsParams {
-	var ()
 	return &PutOrdersOrderFidProductsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutOrdersOrderFidProductsParamsWithTimeout creates a new PutOrdersOrderFidProductsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutOrdersOrderFidProductsParamsWithTimeout(timeout time.Duration) *PutOrdersOrderFidProductsParams {
-	var ()
 	return &PutOrdersOrderFidProductsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutOrdersOrderFidProductsParamsWithContext creates a new PutOrdersOrderFidProductsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutOrdersOrderFidProductsParamsWithContext(ctx context.Context) *PutOrdersOrderFidProductsParams {
-	var ()
 	return &PutOrdersOrderFidProductsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutOrdersOrderFidProductsParamsWithHTTPClient creates a new PutOrdersOrderFidProductsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutOrdersOrderFidProductsParamsWithHTTPClient(client *http.Client) *PutOrdersOrderFidProductsParams {
-	var ()
 	return &PutOrdersOrderFidProductsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutOrdersOrderFidProductsParams contains all the parameters to send to the API endpoint
-for the put orders order fid products operation typically these are written to a http.Request
+/* PutOrdersOrderFidProductsParams contains all the parameters to send to the API endpoint
+   for the put orders order fid products operation.
+
+   Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidProductsParams struct {
 
-	/*OrderFid*/
+	// OrderFid.
 	OrderFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.OrderProductsPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put orders order fid products params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidProductsParams) WithDefaults() *PutOrdersOrderFidProductsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put orders order fid products params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidProductsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put orders order fid products params
@@ -139,7 +154,6 @@ func (o *PutOrdersOrderFidProductsParams) WriteToRequest(r runtime.ClientRequest
 	if err := r.SetPathParam("orderFid", o.OrderFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

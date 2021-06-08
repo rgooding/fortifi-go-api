@@ -18,62 +18,63 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostVisitorsVisitorIDActionsActionKeyReverseParams creates a new PostVisitorsVisitorIDActionsActionKeyReverseParams object
-// with the default values initialized.
+// NewPostVisitorsVisitorIDActionsActionKeyReverseParams creates a new PostVisitorsVisitorIDActionsActionKeyReverseParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostVisitorsVisitorIDActionsActionKeyReverseParams() *PostVisitorsVisitorIDActionsActionKeyReverseParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyReverseParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostVisitorsVisitorIDActionsActionKeyReverseParamsWithTimeout creates a new PostVisitorsVisitorIDActionsActionKeyReverseParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostVisitorsVisitorIDActionsActionKeyReverseParamsWithTimeout(timeout time.Duration) *PostVisitorsVisitorIDActionsActionKeyReverseParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyReverseParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostVisitorsVisitorIDActionsActionKeyReverseParamsWithContext creates a new PostVisitorsVisitorIDActionsActionKeyReverseParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostVisitorsVisitorIDActionsActionKeyReverseParamsWithContext(ctx context.Context) *PostVisitorsVisitorIDActionsActionKeyReverseParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyReverseParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostVisitorsVisitorIDActionsActionKeyReverseParamsWithHTTPClient creates a new PostVisitorsVisitorIDActionsActionKeyReverseParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostVisitorsVisitorIDActionsActionKeyReverseParamsWithHTTPClient(client *http.Client) *PostVisitorsVisitorIDActionsActionKeyReverseParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyReverseParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostVisitorsVisitorIDActionsActionKeyReverseParams contains all the parameters to send to the API endpoint
-for the post visitors visitor ID actions action key reverse operation typically these are written to a http.Request
+/* PostVisitorsVisitorIDActionsActionKeyReverseParams contains all the parameters to send to the API endpoint
+   for the post visitors visitor ID actions action key reverse operation.
+
+   Typically these are written to a http.Request.
 */
 type PostVisitorsVisitorIDActionsActionKeyReverseParams struct {
 
-	/*ActionKey
-	  Action key of the action to reverse e.g. lead
+	/* ActionKey.
 
+	   Action key of the action to reverse e.g. lead
 	*/
 	ActionKey string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.ReverseActionPayload
-	/*VisitorID
-	  'Visitor ID from the cookie.
+
+	/* VisitorID.
+
+	     'Visitor ID from the cookie.
 	If providing a pre-linked external reference, should be set to 'byref'.
 	If no visitor ID is known, client IP should be provided and visitorId should be set to 'unknown''
-
 
 	*/
 	VisitorID string
@@ -81,6 +82,21 @@ type PostVisitorsVisitorIDActionsActionKeyReverseParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post visitors visitor ID actions action key reverse params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseParams) WithDefaults() *PostVisitorsVisitorIDActionsActionKeyReverseParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post visitors visitor ID actions action key reverse params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post visitors visitor ID actions action key reverse params
@@ -161,7 +177,6 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseParams) WriteToRequest(r ru
 	if err := r.SetPathParam("actionKey", o.ActionKey); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams creates a new PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams object
-// with the default values initialized.
+// NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams creates a new PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams() *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParamsWithTimeout creates a new PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParamsWithTimeout(timeout time.Duration) *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParamsWithContext creates a new PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParamsWithContext(ctx context.Context) *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParamsWithHTTPClient creates a new PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParamsWithHTTPClient(client *http.Client) *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams contains all the parameters to send to the API endpoint
-for the put entities entity fid properties counters property name increment operation typically these are written to a http.Request
+/* PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams contains all the parameters to send to the API endpoint
+   for the put entities entity fid properties counters property name increment operation.
+
+   Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*Payload*/
-	Payload *models.PropertyCounterPayload
-	/*PropertyName
-	  Property Name
 
+	// Payload.
+	Payload *models.PropertyCounterPayload
+
+	/* PropertyName.
+
+	   Property Name
 	*/
 	PropertyName string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put entities entity fid properties counters property name increment params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams) WithDefaults() *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put entities entity fid properties counters property name increment params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put entities entity fid properties counters property name increment params
@@ -158,7 +174,6 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams) Writ
 	if err := r.SetPathParam("entityFid", o.EntityFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

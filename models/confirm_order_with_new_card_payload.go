@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -69,6 +71,9 @@ type ConfirmOrderWithNewCardPayload struct {
 	// FID for the payment service you wish to charge the customer through
 	PaymentServiceFid string `json:"paymentServiceFid,omitempty"`
 
+	// If set to true, this will setup purchases before payment is received
+	SetupPurchaseBeforePayment bool `json:"setupPurchaseBeforePayment,omitempty"`
+
 	// Start Month of the card
 	StartMonth int32 `json:"startMonth,omitempty"`
 
@@ -78,6 +83,11 @@ type ConfirmOrderWithNewCardPayload struct {
 
 // Validate validates this confirm order with new card payload
 func (m *ConfirmOrderWithNewCardPayload) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this confirm order with new card payload based on context it is used
+func (m *ConfirmOrderWithNewCardPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

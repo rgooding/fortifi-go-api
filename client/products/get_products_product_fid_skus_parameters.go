@@ -16,56 +16,70 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetProductsProductFidSkusParams creates a new GetProductsProductFidSkusParams object
-// with the default values initialized.
+// NewGetProductsProductFidSkusParams creates a new GetProductsProductFidSkusParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetProductsProductFidSkusParams() *GetProductsProductFidSkusParams {
-	var ()
 	return &GetProductsProductFidSkusParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetProductsProductFidSkusParamsWithTimeout creates a new GetProductsProductFidSkusParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetProductsProductFidSkusParamsWithTimeout(timeout time.Duration) *GetProductsProductFidSkusParams {
-	var ()
 	return &GetProductsProductFidSkusParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetProductsProductFidSkusParamsWithContext creates a new GetProductsProductFidSkusParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetProductsProductFidSkusParamsWithContext(ctx context.Context) *GetProductsProductFidSkusParams {
-	var ()
 	return &GetProductsProductFidSkusParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetProductsProductFidSkusParamsWithHTTPClient creates a new GetProductsProductFidSkusParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetProductsProductFidSkusParamsWithHTTPClient(client *http.Client) *GetProductsProductFidSkusParams {
-	var ()
 	return &GetProductsProductFidSkusParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetProductsProductFidSkusParams contains all the parameters to send to the API endpoint
-for the get products product fid skus operation typically these are written to a http.Request
+/* GetProductsProductFidSkusParams contains all the parameters to send to the API endpoint
+   for the get products product fid skus operation.
+
+   Typically these are written to a http.Request.
 */
 type GetProductsProductFidSkusParams struct {
 
-	/*ProductFid*/
+	// ProductFid.
 	ProductFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get products product fid skus params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetProductsProductFidSkusParams) WithDefaults() *GetProductsProductFidSkusParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get products product fid skus params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetProductsProductFidSkusParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get products product fid skus params

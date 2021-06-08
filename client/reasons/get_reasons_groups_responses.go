@@ -6,6 +6,7 @@ package reasons
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetReasonsGroupsOK() *GetReasonsGroupsOK {
 	return &GetReasonsGroupsOK{}
 }
 
-/*GetReasonsGroupsOK handles this case with default header values.
+/* GetReasonsGroupsOK describes a response with status code 200, with default header values.
 
 Reason groups
 */
@@ -59,7 +60,6 @@ type GetReasonsGroupsOK struct {
 func (o *GetReasonsGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups][%d] getReasonsGroupsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetReasonsGroupsOK) GetPayload() *GetReasonsGroupsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetReasonsGroupsDefault(code int) *GetReasonsGroupsDefault {
 	}
 }
 
-/*GetReasonsGroupsDefault handles this case with default header values.
+/* GetReasonsGroupsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetReasonsGroupsDefault) Code() int {
 func (o *GetReasonsGroupsDefault) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups][%d] GetReasonsGroups default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetReasonsGroupsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetReasonsGroupsOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getReasonsGroupsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get reasons groups o k body based on the context it is used
+func (o *GetReasonsGroupsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetReasonsGroupsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReasonsGroupsOK" + "." + "data")
 			}

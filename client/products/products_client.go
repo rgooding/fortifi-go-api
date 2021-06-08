@@ -23,23 +23,28 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetProducts(params *GetProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsOK, error)
+	GetProducts(params *GetProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsOK, error)
 
-	GetProductsGroups(params *GetProductsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsGroupsOK, error)
+	GetProductsGroups(params *GetProductsGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsGroupsOK, error)
 
-	GetProductsGroupsProductGroupFidProducts(params *GetProductsGroupsProductGroupFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsGroupsProductGroupFidProductsOK, error)
+	GetProductsGroupsProductGroupFidProducts(params *GetProductsGroupsProductGroupFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsGroupsProductGroupFidProductsOK, error)
 
-	GetProductsOffers(params *GetProductsOffersParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsOffersOK, error)
+	GetProductsOffers(params *GetProductsOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsOffersOK, error)
 
-	GetProductsProductFidPrices(params *GetProductsProductFidPricesParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsProductFidPricesOK, error)
+	GetProductsProductFidPricebands(params *GetProductsProductFidPricebandsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidPricebandsOK, error)
 
-	GetProductsProductFidSkus(params *GetProductsProductFidSkusParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsProductFidSkusOK, error)
+	GetProductsProductFidPrices(params *GetProductsProductFidPricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidPricesOK, error)
 
-	PostProductsProductFidAvailabilityCheck(params *PostProductsProductFidAvailabilityCheckParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityCheckOK, error)
+	GetProductsProductFidSkus(params *GetProductsProductFidSkusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidSkusOK, error)
 
-	PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityReserveOK, error)
+	PostProductsProductFidAvailabilityCheck(params *PostProductsProductFidAvailabilityCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostProductsProductFidAvailabilityCheckOK, error)
+
+	PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostProductsProductFidAvailabilityReserveOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -47,13 +52,12 @@ type ClientService interface {
 /*
   GetProducts lists all products
 */
-func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsOK, error) {
+func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProducts",
 		Method:             "GET",
 		PathPattern:        "/products",
@@ -65,7 +69,12 @@ func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientA
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +90,12 @@ func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientA
 /*
   GetProductsGroups gets a list of all product groups
 */
-func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsGroupsOK, error) {
+func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductsGroupsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProductsGroups",
 		Method:             "GET",
 		PathPattern:        "/products/groups",
@@ -99,7 +107,12 @@ func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +128,12 @@ func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo run
 /*
   GetProductsGroupsProductGroupFidProducts gets a list of products belonging to the group
 */
-func (a *Client) GetProductsGroupsProductGroupFidProducts(params *GetProductsGroupsProductGroupFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsGroupsProductGroupFidProductsOK, error) {
+func (a *Client) GetProductsGroupsProductGroupFidProducts(params *GetProductsGroupsProductGroupFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsGroupsProductGroupFidProductsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductsGroupsProductGroupFidProductsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProductsGroupsProductGroupFidProducts",
 		Method:             "GET",
 		PathPattern:        "/products/groups/{productGroupFid}/products",
@@ -133,7 +145,12 @@ func (a *Client) GetProductsGroupsProductGroupFidProducts(params *GetProductsGro
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -149,13 +166,12 @@ func (a *Client) GetProductsGroupsProductGroupFidProducts(params *GetProductsGro
 /*
   GetProductsOffers retrieves all offers
 */
-func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsOffersOK, error) {
+func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsOffersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductsOffersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProductsOffers",
 		Method:             "GET",
 		PathPattern:        "/products/offers",
@@ -167,7 +183,12 @@ func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -181,15 +202,52 @@ func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo run
 }
 
 /*
+  GetProductsProductFidPricebands retrieves product price bands
+*/
+func (a *Client) GetProductsProductFidPricebands(params *GetProductsProductFidPricebandsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidPricebandsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetProductsProductFidPricebandsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetProductsProductFidPricebands",
+		Method:             "GET",
+		PathPattern:        "/products/{productFid}/pricebands",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetProductsProductFidPricebandsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetProductsProductFidPricebandsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetProductsProductFidPricebandsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetProductsProductFidPrices retrieves product prices
 */
-func (a *Client) GetProductsProductFidPrices(params *GetProductsProductFidPricesParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsProductFidPricesOK, error) {
+func (a *Client) GetProductsProductFidPrices(params *GetProductsProductFidPricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidPricesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductsProductFidPricesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProductsProductFidPrices",
 		Method:             "GET",
 		PathPattern:        "/products/{productFid}/prices",
@@ -201,7 +259,12 @@ func (a *Client) GetProductsProductFidPrices(params *GetProductsProductFidPrices
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -217,13 +280,12 @@ func (a *Client) GetProductsProductFidPrices(params *GetProductsProductFidPrices
 /*
   GetProductsProductFidSkus retrieves product s k us
 */
-func (a *Client) GetProductsProductFidSkus(params *GetProductsProductFidSkusParams, authInfo runtime.ClientAuthInfoWriter) (*GetProductsProductFidSkusOK, error) {
+func (a *Client) GetProductsProductFidSkus(params *GetProductsProductFidSkusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidSkusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProductsProductFidSkusParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProductsProductFidSkus",
 		Method:             "GET",
 		PathPattern:        "/products/{productFid}/skus",
@@ -235,7 +297,12 @@ func (a *Client) GetProductsProductFidSkus(params *GetProductsProductFidSkusPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -251,13 +318,12 @@ func (a *Client) GetProductsProductFidSkus(params *GetProductsProductFidSkusPara
 /*
   PostProductsProductFidAvailabilityCheck checks product availability
 */
-func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsProductFidAvailabilityCheckParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityCheckOK, error) {
+func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsProductFidAvailabilityCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostProductsProductFidAvailabilityCheckOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostProductsProductFidAvailabilityCheckParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostProductsProductFidAvailabilityCheck",
 		Method:             "POST",
 		PathPattern:        "/products/{productFid}/availability/check",
@@ -269,7 +335,12 @@ func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsPro
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -285,13 +356,12 @@ func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsPro
 /*
   PostProductsProductFidAvailabilityReserve reserves product
 */
-func (a *Client) PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter) (*PostProductsProductFidAvailabilityReserveOK, error) {
+func (a *Client) PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostProductsProductFidAvailabilityReserveOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostProductsProductFidAvailabilityReserveParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostProductsProductFidAvailabilityReserve",
 		Method:             "POST",
 		PathPattern:        "/products/{productFid}/availability/reserve",
@@ -303,7 +373,12 @@ func (a *Client) PostProductsProductFidAvailabilityReserve(params *PostProductsP
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

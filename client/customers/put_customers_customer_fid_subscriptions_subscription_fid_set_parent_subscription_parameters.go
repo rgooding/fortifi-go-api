@@ -16,66 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid set parent subscription operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid set parent subscription operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*ParentSubscriptionFid*/
-	ParentSubscriptionFid string
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// ParentSubscriptionFid.
+	ParentSubscriptionFid string
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid set parent subscription params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid set parent subscription params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid set parent subscription params

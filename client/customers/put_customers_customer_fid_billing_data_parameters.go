@@ -16,67 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidBillingDataParams creates a new PutCustomersCustomerFidBillingDataParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidBillingDataParams creates a new PutCustomersCustomerFidBillingDataParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidBillingDataParams() *PutCustomersCustomerFidBillingDataParams {
-	var ()
 	return &PutCustomersCustomerFidBillingDataParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidBillingDataParamsWithTimeout creates a new PutCustomersCustomerFidBillingDataParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidBillingDataParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidBillingDataParams {
-	var ()
 	return &PutCustomersCustomerFidBillingDataParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidBillingDataParamsWithContext creates a new PutCustomersCustomerFidBillingDataParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidBillingDataParamsWithContext(ctx context.Context) *PutCustomersCustomerFidBillingDataParams {
-	var ()
 	return &PutCustomersCustomerFidBillingDataParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidBillingDataParamsWithHTTPClient creates a new PutCustomersCustomerFidBillingDataParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidBillingDataParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidBillingDataParams {
-	var ()
 	return &PutCustomersCustomerFidBillingDataParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidBillingDataParams contains all the parameters to send to the API endpoint
-for the put customers customer fid billing data operation typically these are written to a http.Request
+/* PutCustomersCustomerFidBillingDataParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid billing data operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidBillingDataParams struct {
 
-	/*BillingType*/
+	// BillingType.
 	BillingType *string
-	/*CompanyNumber*/
-	CompanyNumber *string
-	/*CustomerFid
-	  Customer FID to use
 
+	// CompanyNumber.
+	CompanyNumber *string
+
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*KnownIP*/
+
+	// KnownIP.
 	KnownIP *string
-	/*TaxNumber*/
+
+	// TaxNumber.
 	TaxNumber *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid billing data params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidBillingDataParams) WithDefaults() *PutCustomersCustomerFidBillingDataParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid billing data params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidBillingDataParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid billing data params
@@ -188,7 +206,6 @@ func (o *PutCustomersCustomerFidBillingDataParams) WriteToRequest(r runtime.Clie
 				return err
 			}
 		}
-
 	}
 
 	if o.CompanyNumber != nil {
@@ -204,7 +221,6 @@ func (o *PutCustomersCustomerFidBillingDataParams) WriteToRequest(r runtime.Clie
 				return err
 			}
 		}
-
 	}
 
 	// path param customerFid
@@ -225,7 +241,6 @@ func (o *PutCustomersCustomerFidBillingDataParams) WriteToRequest(r runtime.Clie
 				return err
 			}
 		}
-
 	}
 
 	if o.TaxNumber != nil {
@@ -241,7 +256,6 @@ func (o *PutCustomersCustomerFidBillingDataParams) WriteToRequest(r runtime.Clie
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

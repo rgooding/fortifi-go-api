@@ -46,7 +46,7 @@ func NewPutMessengerDeliveriesDeliveryFidUnsubscribeOK() *PutMessengerDeliveries
 	return &PutMessengerDeliveriesDeliveryFidUnsubscribeOK{}
 }
 
-/*PutMessengerDeliveriesDeliveryFidUnsubscribeOK handles this case with default header values.
+/* PutMessengerDeliveriesDeliveryFidUnsubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Unsubscribed
 */
@@ -69,7 +69,7 @@ func NewPutMessengerDeliveriesDeliveryFidUnsubscribeDefault(code int) *PutMessen
 	}
 }
 
-/*PutMessengerDeliveriesDeliveryFidUnsubscribeDefault handles this case with default header values.
+/* PutMessengerDeliveriesDeliveryFidUnsubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeDefault) Code() int {
 func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /messenger/deliveries/{deliveryFid}/unsubscribe][%d] PutMessengerDeliveriesDeliveryFidUnsubscribe default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

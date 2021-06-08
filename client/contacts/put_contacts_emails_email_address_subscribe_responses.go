@@ -46,7 +46,7 @@ func NewPutContactsEmailsEmailAddressSubscribeOK() *PutContactsEmailsEmailAddres
 	return &PutContactsEmailsEmailAddressSubscribeOK{}
 }
 
-/*PutContactsEmailsEmailAddressSubscribeOK handles this case with default header values.
+/* PutContactsEmailsEmailAddressSubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Subscribed
 */
@@ -69,7 +69,7 @@ func NewPutContactsEmailsEmailAddressSubscribeDefault(code int) *PutContactsEmai
 	}
 }
 
-/*PutContactsEmailsEmailAddressSubscribeDefault handles this case with default header values.
+/* PutContactsEmailsEmailAddressSubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutContactsEmailsEmailAddressSubscribeDefault) Code() int {
 func (o *PutContactsEmailsEmailAddressSubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/subscribe][%d] PutContactsEmailsEmailAddressSubscribe default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutContactsEmailsEmailAddressSubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -17,114 +17,145 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParams creates a new PostCustomersCustomerFidPaymentsPaymentFidChargebackParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParams creates a new PostCustomersCustomerFidPaymentsPaymentFidChargebackParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParams() *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentsPaymentFidChargebackParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithTimeout creates a new PostCustomersCustomerFidPaymentsPaymentFidChargebackParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentsPaymentFidChargebackParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithContext creates a new PostCustomersCustomerFidPaymentsPaymentFidChargebackParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithContext(ctx context.Context) *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentsPaymentFidChargebackParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithHTTPClient creates a new PostCustomersCustomerFidPaymentsPaymentFidChargebackParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentsPaymentFidChargebackParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidPaymentsPaymentFidChargebackParams contains all the parameters to send to the API endpoint
-for the post customers customer fid payments payment fid chargeback operation typically these are written to a http.Request
+/* PostCustomersCustomerFidPaymentsPaymentFidChargebackParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid payments payment fid chargeback operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPaymentsPaymentFidChargebackParams struct {
 
-	/*Amount
-	  Disputed Amount
+	/* Amount.
 
+	   Disputed Amount
+
+	   Format: float
 	*/
 	Amount float32
-	/*CaseNumber
-	  Case Number
 
+	/* CaseNumber.
+
+	   Case Number
 	*/
 	CaseNumber string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*DateSubmitted
-	  Date the chargeback was received (Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z)
 
+	/* DateSubmitted.
+
+	   Date the chargeback was received (Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z)
+
+	   Format: date-time
 	*/
 	DateSubmitted strfmt.DateTime
-	/*Description
-	  Notes
 
+	/* Description.
+
+	   Notes
 	*/
 	Description *string
-	/*FeeAmount
-	  Fee Amount
 
+	/* FeeAmount.
+
+	   Fee Amount
+
+	   Format: float
 	*/
 	FeeAmount *float32
-	/*FeeCurrency
-	  3 Character Currency code for the fee
 
+	/* FeeCurrency.
+
+	   3 Character Currency code for the fee
 	*/
 	FeeCurrency *string
-	/*PaymentFid
-	  Payment FID to use
 
+	/* PaymentFid.
+
+	   Payment FID to use
 	*/
 	PaymentFid string
-	/*ReasonCode
-	  Chargeback Reason Code (see https://github.com/packaged/rwd/blob/master/src/Finance/Chargeback/ChargebackReasonHelper.php)
 
+	/* ReasonCode.
+
+	   Chargeback Reason Code (see https://github.com/packaged/rwd/blob/master/src/Finance/Chargeback/ChargebackReasonHelper.php)
 	*/
 	ReasonCode string
-	/*Refunded
-	  If this payment has been refunded by the alert
 
+	/* Refunded.
+
+	   If this payment has been refunded by the alert
 	*/
 	Refunded bool
-	/*Source
-	  Source of the alert, or gateway for everything else
 
+	/* Source.
+
+	   Source of the alert, or gateway for everything else
 	*/
 	Source string
-	/*State
-	  Current State
 
+	/* State.
+
+	   Current State
 	*/
 	State string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid payments payment fid chargeback params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WithDefaults() *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid payments payment fid chargeback params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid payments payment fid chargeback params
@@ -345,7 +376,6 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WriteToRequ
 				return err
 			}
 		}
-
 	}
 
 	if o.FeeAmount != nil {
@@ -361,7 +391,6 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WriteToRequ
 				return err
 			}
 		}
-
 	}
 
 	if o.FeeCurrency != nil {
@@ -377,7 +406,6 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackParams) WriteToRequ
 				return err
 			}
 		}
-
 	}
 
 	// path param paymentFid

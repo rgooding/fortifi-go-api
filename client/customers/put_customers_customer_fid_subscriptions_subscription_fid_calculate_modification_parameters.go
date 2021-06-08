@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid calculate modification operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid calculate modification operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
-	Payload *models.ModifySubscriptionPayload
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// Payload.
+	Payload *models.ModifySubscriptionPayload
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid calculate modification params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid calculate modification params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid calculate modification params
@@ -158,7 +174,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificatio
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

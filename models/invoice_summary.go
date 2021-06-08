@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -40,6 +42,9 @@ type InvoiceSummary struct {
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
 	InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
+
+	// invoice name
+	InvoiceName string `json:"invoiceName,omitempty"`
 
 	// invoice number
 	InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
@@ -89,6 +94,8 @@ func (m *InvoiceSummary) UnmarshalJSON(raw []byte) error {
 
 		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
+		InvoiceName string `json:"invoiceName,omitempty"`
+
 		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
 
 		InvoiceStatus string `json:"invoiceStatus,omitempty"`
@@ -120,6 +127,8 @@ func (m *InvoiceSummary) UnmarshalJSON(raw []byte) error {
 	m.DueDate = dataAO1.DueDate
 
 	m.InvoiceDate = dataAO1.InvoiceDate
+
+	m.InvoiceName = dataAO1.InvoiceName
 
 	m.InvoiceNumber = dataAO1.InvoiceNumber
 
@@ -162,6 +171,8 @@ func (m InvoiceSummary) MarshalJSON() ([]byte, error) {
 
 		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
+		InvoiceName string `json:"invoiceName,omitempty"`
+
 		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
 
 		InvoiceStatus string `json:"invoiceStatus,omitempty"`
@@ -190,6 +201,8 @@ func (m InvoiceSummary) MarshalJSON() ([]byte, error) {
 	dataAO1.DueDate = m.DueDate
 
 	dataAO1.InvoiceDate = m.InvoiceDate
+
+	dataAO1.InvoiceName = m.InvoiceName
 
 	dataAO1.InvoiceNumber = m.InvoiceNumber
 
@@ -276,6 +289,21 @@ func (m *InvoiceSummary) validatePaymentDate(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validate this invoice summary based on the context it is used
+func (m *InvoiceSummary) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 

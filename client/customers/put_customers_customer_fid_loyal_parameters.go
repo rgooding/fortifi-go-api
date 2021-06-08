@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidLoyalParams creates a new PutCustomersCustomerFidLoyalParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidLoyalParams creates a new PutCustomersCustomerFidLoyalParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidLoyalParams() *PutCustomersCustomerFidLoyalParams {
-	var ()
 	return &PutCustomersCustomerFidLoyalParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidLoyalParamsWithTimeout creates a new PutCustomersCustomerFidLoyalParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidLoyalParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidLoyalParams {
-	var ()
 	return &PutCustomersCustomerFidLoyalParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidLoyalParamsWithContext creates a new PutCustomersCustomerFidLoyalParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidLoyalParamsWithContext(ctx context.Context) *PutCustomersCustomerFidLoyalParams {
-	var ()
 	return &PutCustomersCustomerFidLoyalParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidLoyalParamsWithHTTPClient creates a new PutCustomersCustomerFidLoyalParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidLoyalParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidLoyalParams {
-	var ()
 	return &PutCustomersCustomerFidLoyalParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidLoyalParams contains all the parameters to send to the API endpoint
-for the put customers customer fid loyal operation typically these are written to a http.Request
+/* PutCustomersCustomerFidLoyalParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid loyal operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidLoyalParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid loyal params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidLoyalParams) WithDefaults() *PutCustomersCustomerFidLoyalParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid loyal params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidLoyalParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid loyal params

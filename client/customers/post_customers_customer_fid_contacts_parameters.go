@@ -18,61 +18,76 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostCustomersCustomerFidContactsParams creates a new PostCustomersCustomerFidContactsParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidContactsParams creates a new PostCustomersCustomerFidContactsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidContactsParams() *PostCustomersCustomerFidContactsParams {
-	var ()
 	return &PostCustomersCustomerFidContactsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidContactsParamsWithTimeout creates a new PostCustomersCustomerFidContactsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidContactsParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidContactsParams {
-	var ()
 	return &PostCustomersCustomerFidContactsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidContactsParamsWithContext creates a new PostCustomersCustomerFidContactsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidContactsParamsWithContext(ctx context.Context) *PostCustomersCustomerFidContactsParams {
-	var ()
 	return &PostCustomersCustomerFidContactsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidContactsParamsWithHTTPClient creates a new PostCustomersCustomerFidContactsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidContactsParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidContactsParams {
-	var ()
 	return &PostCustomersCustomerFidContactsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidContactsParams contains all the parameters to send to the API endpoint
-for the post customers customer fid contacts operation typically these are written to a http.Request
+/* PostCustomersCustomerFidContactsParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid contacts operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidContactsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.CreateCustomerContactPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid contacts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidContactsParams) WithDefaults() *PostCustomersCustomerFidContactsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid contacts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidContactsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid contacts params
@@ -142,7 +157,6 @@ func (o *PostCustomersCustomerFidContactsParams) WriteToRequest(r runtime.Client
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

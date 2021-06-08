@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCustomersCustomerFidAddressesParams creates a new GetCustomersCustomerFidAddressesParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidAddressesParams creates a new GetCustomersCustomerFidAddressesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidAddressesParams() *GetCustomersCustomerFidAddressesParams {
-	var ()
 	return &GetCustomersCustomerFidAddressesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidAddressesParamsWithTimeout creates a new GetCustomersCustomerFidAddressesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidAddressesParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidAddressesParams {
-	var ()
 	return &GetCustomersCustomerFidAddressesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidAddressesParamsWithContext creates a new GetCustomersCustomerFidAddressesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidAddressesParamsWithContext(ctx context.Context) *GetCustomersCustomerFidAddressesParams {
-	var ()
 	return &GetCustomersCustomerFidAddressesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidAddressesParamsWithHTTPClient creates a new GetCustomersCustomerFidAddressesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidAddressesParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidAddressesParams {
-	var ()
 	return &GetCustomersCustomerFidAddressesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidAddressesParams contains all the parameters to send to the API endpoint
-for the get customers customer fid addresses operation typically these are written to a http.Request
+/* GetCustomersCustomerFidAddressesParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid addresses operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidAddressesParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid addresses params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidAddressesParams) WithDefaults() *GetCustomersCustomerFidAddressesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid addresses params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidAddressesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid addresses params

@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidOK() *GetCustomersCus
 	return &GetCustomersCustomerFidSubscriptionsSubscriptionFidOK{}
 }
 
-/*GetCustomersCustomerFidSubscriptionsSubscriptionFidOK handles this case with default header values.
+/* GetCustomersCustomerFidSubscriptionsSubscriptionFidOK describes a response with status code 200, with default header values.
 
 Loaded subscription
 */
@@ -59,7 +60,6 @@ type GetCustomersCustomerFidSubscriptionsSubscriptionFidOK struct {
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] getCustomersCustomerFidSubscriptionsSubscriptionFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOK) GetPayload() *GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidDefault(code int) *Ge
 	}
 }
 
-/*GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault handles this case with default header values.
+/* GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Code() int 
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] GetCustomersCustomerFidSubscriptionsSubscriptionFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody) validateData
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get customers customer fid subscriptions subscription fid o k body based on the context it is used
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidOK" + "." + "data")
 			}

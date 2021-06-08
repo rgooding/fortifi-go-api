@@ -17,66 +17,84 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid set advance days operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid set advance days operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Days*/
-	Days int32
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// Days.
+	//
+	// Format: int32
+	Days int32
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid set advance days params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid set advance days params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid set advance days params

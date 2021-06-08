@@ -16,65 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidParams creates a new PutCustomersCustomerFidParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidParams creates a new PutCustomersCustomerFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidParams() *PutCustomersCustomerFidParams {
-	var ()
 	return &PutCustomersCustomerFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidParamsWithTimeout creates a new PutCustomersCustomerFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidParams {
-	var ()
 	return &PutCustomersCustomerFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidParamsWithContext creates a new PutCustomersCustomerFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidParamsWithContext(ctx context.Context) *PutCustomersCustomerFidParams {
-	var ()
 	return &PutCustomersCustomerFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidParamsWithHTTPClient creates a new PutCustomersCustomerFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidParams {
-	var ()
 	return &PutCustomersCustomerFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidParams contains all the parameters to send to the API endpoint
-for the put customers customer fid operation typically these are written to a http.Request
+/* PutCustomersCustomerFidParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*DisplayName*/
+
+	// DisplayName.
 	DisplayName *string
-	/*FirstName*/
+
+	// FirstName.
 	FirstName *string
-	/*LastName*/
+
+	// LastName.
 	LastName *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidParams) WithDefaults() *PutCustomersCustomerFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid params
@@ -180,7 +197,6 @@ func (o *PutCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, 
 				return err
 			}
 		}
-
 	}
 
 	if o.FirstName != nil {
@@ -196,7 +212,6 @@ func (o *PutCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, 
 				return err
 			}
 		}
-
 	}
 
 	if o.LastName != nil {
@@ -212,7 +227,6 @@ func (o *PutCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, 
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

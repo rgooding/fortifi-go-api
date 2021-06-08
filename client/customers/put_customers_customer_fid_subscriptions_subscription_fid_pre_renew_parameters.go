@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid pre renew operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid pre renew operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*PriceFid
-	  Price FID
 
+	/* PriceFid.
+
+	   Price FID
 	*/
 	PriceFid string
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid pre renew params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid pre renew params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPreRenewParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid pre renew params

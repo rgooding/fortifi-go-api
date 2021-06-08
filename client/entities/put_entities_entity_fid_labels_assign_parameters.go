@@ -16,63 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutEntitiesEntityFidLabelsAssignParams creates a new PutEntitiesEntityFidLabelsAssignParams object
-// with the default values initialized.
+// NewPutEntitiesEntityFidLabelsAssignParams creates a new PutEntitiesEntityFidLabelsAssignParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutEntitiesEntityFidLabelsAssignParams() *PutEntitiesEntityFidLabelsAssignParams {
-	var ()
 	return &PutEntitiesEntityFidLabelsAssignParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutEntitiesEntityFidLabelsAssignParamsWithTimeout creates a new PutEntitiesEntityFidLabelsAssignParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutEntitiesEntityFidLabelsAssignParamsWithTimeout(timeout time.Duration) *PutEntitiesEntityFidLabelsAssignParams {
-	var ()
 	return &PutEntitiesEntityFidLabelsAssignParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutEntitiesEntityFidLabelsAssignParamsWithContext creates a new PutEntitiesEntityFidLabelsAssignParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutEntitiesEntityFidLabelsAssignParamsWithContext(ctx context.Context) *PutEntitiesEntityFidLabelsAssignParams {
-	var ()
 	return &PutEntitiesEntityFidLabelsAssignParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutEntitiesEntityFidLabelsAssignParamsWithHTTPClient creates a new PutEntitiesEntityFidLabelsAssignParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutEntitiesEntityFidLabelsAssignParamsWithHTTPClient(client *http.Client) *PutEntitiesEntityFidLabelsAssignParams {
-	var ()
 	return &PutEntitiesEntityFidLabelsAssignParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutEntitiesEntityFidLabelsAssignParams contains all the parameters to send to the API endpoint
-for the put entities entity fid labels assign operation typically these are written to a http.Request
+/* PutEntitiesEntityFidLabelsAssignParams contains all the parameters to send to the API endpoint
+   for the put entities entity fid labels assign operation.
+
+   Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidLabelsAssignParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*Label*/
+
+	// Label.
 	Label *string
-	/*Value*/
+
+	// Value.
 	Value *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put entities entity fid labels assign params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutEntitiesEntityFidLabelsAssignParams) WithDefaults() *PutEntitiesEntityFidLabelsAssignParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put entities entity fid labels assign params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutEntitiesEntityFidLabelsAssignParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put entities entity fid labels assign params
@@ -167,7 +183,6 @@ func (o *PutEntitiesEntityFidLabelsAssignParams) WriteToRequest(r runtime.Client
 				return err
 			}
 		}
-
 	}
 
 	if o.Value != nil {
@@ -183,7 +198,6 @@ func (o *PutEntitiesEntityFidLabelsAssignParams) WriteToRequest(r runtime.Client
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

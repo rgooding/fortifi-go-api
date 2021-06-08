@@ -6,6 +6,7 @@ package service_status
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetServicesServiceFidIncidentsOK() *GetServicesServiceFidIncidentsOK {
 	return &GetServicesServiceFidIncidentsOK{}
 }
 
-/*GetServicesServiceFidIncidentsOK handles this case with default header values.
+/* GetServicesServiceFidIncidentsOK describes a response with status code 200, with default header values.
 
 Service incidents
 */
@@ -59,7 +60,6 @@ type GetServicesServiceFidIncidentsOK struct {
 func (o *GetServicesServiceFidIncidentsOK) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] getServicesServiceFidIncidentsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetServicesServiceFidIncidentsOK) GetPayload() *GetServicesServiceFidIncidentsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetServicesServiceFidIncidentsDefault(code int) *GetServicesServiceFidIn
 	}
 }
 
-/*GetServicesServiceFidIncidentsDefault handles this case with default header values.
+/* GetServicesServiceFidIncidentsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetServicesServiceFidIncidentsDefault) Code() int {
 func (o *GetServicesServiceFidIncidentsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] GetServicesServiceFidIncidents default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetServicesServiceFidIncidentsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetServicesServiceFidIncidentsOKBody) validateData(formats strfmt.Regis
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get services service fid incidents o k body based on the context it is used
+func (o *GetServicesServiceFidIncidentsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServicesServiceFidIncidentsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
 			}

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -28,6 +30,15 @@ type OrderProductPayload struct {
 	// display name
 	DisplayName string `json:"displayName,omitempty"`
 
+	// identity
+	Identity string `json:"identity,omitempty"`
+
+	// Custom initial term end date (Time in ISO 8601 standard e.g 2015-12-05T13:11:59Z)
+	InitialTermEndDate string `json:"initialTermEndDate,omitempty"`
+
+	// Custom initial term start date (Time in ISO 8601 standard e.g 2015-12-05T13:11:59Z)
+	InitialTermStartDate string `json:"initialTermStartDate,omitempty"`
+
 	// Offer FID to apply to product
 	OfferFid string `json:"offerFid,omitempty"`
 
@@ -45,6 +56,12 @@ type OrderProductPayload struct {
 
 	// quantity
 	Quantity int64 `json:"quantity,omitempty"`
+
+	// reservation app
+	ReservationApp string `json:"reservationApp,omitempty"`
+
+	// reservation key
+	ReservationKey string `json:"reservationKey,omitempty"`
 
 	// Product SKU
 	Sku string `json:"sku,omitempty"`
@@ -72,7 +89,6 @@ func (m *OrderProductPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *OrderProductPayload) validateCycleType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CycleType) { // not required
 		return nil
 	}
@@ -88,13 +104,56 @@ func (m *OrderProductPayload) validateCycleType(formats strfmt.Registry) error {
 }
 
 func (m *OrderProductPayload) validateProperties(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Properties) { // not required
 		return nil
 	}
 
 	if m.Properties != nil {
 		if err := m.Properties.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("properties")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this order product payload based on the context it is used
+func (m *OrderProductPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCycleType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrderProductPayload) contextValidateCycleType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.CycleType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cycleType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *OrderProductPayload) contextValidateProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Properties != nil {
+		if err := m.Properties.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("properties")
 			}

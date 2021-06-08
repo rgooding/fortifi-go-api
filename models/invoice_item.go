@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -18,6 +19,9 @@ import (
 // swagger:model InvoiceItem
 type InvoiceItem struct {
 	Entity
+
+	// product fid
+	ProductFid string `json:"productFid,omitempty"`
 
 	// sub items
 	SubItems []*InvoiceSubItem `json:"subItems"`
@@ -37,6 +41,8 @@ func (m *InvoiceItem) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
+		ProductFid string `json:"productFid,omitempty"`
+
 		SubItems []*InvoiceSubItem `json:"subItems"`
 
 		TotalAmount float32 `json:"totalAmount,omitempty"`
@@ -44,6 +50,8 @@ func (m *InvoiceItem) UnmarshalJSON(raw []byte) error {
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
+
+	m.ProductFid = dataAO1.ProductFid
 
 	m.SubItems = dataAO1.SubItems
 
@@ -62,10 +70,14 @@ func (m InvoiceItem) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 	var dataAO1 struct {
+		ProductFid string `json:"productFid,omitempty"`
+
 		SubItems []*InvoiceSubItem `json:"subItems"`
 
 		TotalAmount float32 `json:"totalAmount,omitempty"`
 	}
+
+	dataAO1.ProductFid = m.ProductFid
 
 	dataAO1.SubItems = m.SubItems
 
@@ -111,6 +123,43 @@ func (m *InvoiceItem) validateSubItems(formats strfmt.Registry) error {
 
 		if m.SubItems[i] != nil {
 			if err := m.SubItems[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this invoice item based on the context it is used
+func (m *InvoiceItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSubItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *InvoiceItem) contextValidateSubItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SubItems); i++ {
+
+		if m.SubItems[i] != nil {
+			if err := m.SubItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subItems" + "." + strconv.Itoa(i))
 				}

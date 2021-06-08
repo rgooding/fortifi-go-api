@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK() *PutC
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeOK describes a response with status code 200, with default header values.
 
 Renewal mode set
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeDefault(co
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeDefault) 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/renewalMode][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalMode default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -46,7 +46,7 @@ func NewPostEntitiesEntityFidConfigSectionNameOK() *PostEntitiesEntityFidConfigS
 	return &PostEntitiesEntityFidConfigSectionNameOK{}
 }
 
-/*PostEntitiesEntityFidConfigSectionNameOK handles this case with default header values.
+/* PostEntitiesEntityFidConfigSectionNameOK describes a response with status code 200, with default header values.
 
 Config Item Saved
 */
@@ -69,7 +69,7 @@ func NewPostEntitiesEntityFidConfigSectionNameDefault(code int) *PostEntitiesEnt
 	}
 }
 
-/*PostEntitiesEntityFidConfigSectionNameDefault handles this case with default header values.
+/* PostEntitiesEntityFidConfigSectionNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostEntitiesEntityFidConfigSectionNameDefault) Code() int {
 func (o *PostEntitiesEntityFidConfigSectionNameDefault) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/config/{sectionName}][%d] PostEntitiesEntityFidConfigSectionName default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostEntitiesEntityFidConfigSectionNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

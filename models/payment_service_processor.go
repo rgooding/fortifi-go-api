@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -17,6 +18,11 @@ import (
 //
 // swagger:model PaymentServiceProcessor
 type PaymentServiceProcessor string
+
+func NewPaymentServiceProcessor(value PaymentServiceProcessor) *PaymentServiceProcessor {
+	v := value
+	return &v
+}
 
 const (
 
@@ -37,9 +43,6 @@ const (
 
 	// PaymentServiceProcessorFortifipay captures enum value "fortifipay"
 	PaymentServiceProcessorFortifipay PaymentServiceProcessor = "fortifipay"
-
-	// PaymentServiceProcessorCoinbase captures enum value "coinbase"
-	PaymentServiceProcessorCoinbase PaymentServiceProcessor = "coinbase"
 )
 
 // for schema
@@ -47,7 +50,7 @@ var paymentServiceProcessorEnum []interface{}
 
 func init() {
 	var res []PaymentServiceProcessor
-	if err := json.Unmarshal([]byte(`["paypal","wire","blackhole","cheque","prepayment","fortifipay","coinbase"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["paypal","wire","blackhole","cheque","prepayment","fortifipay"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -74,5 +77,10 @@ func (m PaymentServiceProcessor) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this payment service processor based on context it is used
+func (m PaymentServiceProcessor) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

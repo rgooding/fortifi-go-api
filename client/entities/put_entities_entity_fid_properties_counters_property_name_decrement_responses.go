@@ -46,7 +46,7 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK() *PutEnti
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK{}
 }
 
-/*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK handles this case with default header values.
+/* PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK describes a response with status code 200, with default header values.
 
 Counter Decremented
 */
@@ -69,7 +69,7 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault(code 
 	}
 }
 
-/*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault handles this case with default header values.
+/* PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) Cod
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/decrement][%d] PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

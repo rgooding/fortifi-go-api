@@ -6,6 +6,7 @@ package entities
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetEntitiesEntityFidPropertiesFlagsPropertyNameOK() *GetEntitiesEntityFi
 	return &GetEntitiesEntityFidPropertiesFlagsPropertyNameOK{}
 }
 
-/*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK handles this case with default header values.
+/* GetEntitiesEntityFidPropertiesFlagsPropertyNameOK describes a response with status code 200, with default header values.
 
 Flag Value
 */
@@ -59,7 +60,6 @@ type GetEntitiesEntityFidPropertiesFlagsPropertyNameOK struct {
 func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties/flags/{propertyName}][%d] getEntitiesEntityFidPropertiesFlagsPropertyNameOK  %+v", 200, o.Payload)
 }
-
 func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameOK) GetPayload() *GetEntitiesEntityFidPropertiesFlagsPropertyNameOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetEntitiesEntityFidPropertiesFlagsPropertyNameDefault(code int) *GetEnt
 	}
 }
 
-/*GetEntitiesEntityFidPropertiesFlagsPropertyNameDefault handles this case with default header values.
+/* GetEntitiesEntityFidPropertiesFlagsPropertyNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Code() int {
 func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties/flags/{propertyName}][%d] GetEntitiesEntityFidPropertiesFlagsPropertyName default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameOKBody) validateData(for
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getEntitiesEntityFidPropertiesFlagsPropertyNameOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get entities entity fid properties flags property name o k body based on the context it is used
+func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetEntitiesEntityFidPropertiesFlagsPropertyNameOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidPropertiesFlagsPropertyNameOK" + "." + "data")
 			}

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -27,6 +29,9 @@ type PaymentMethodUpdatePayload struct {
 	// Issue number
 	Issue int32 `json:"issue,omitempty"`
 
+	// Set this as the primary payment method
+	SetPrimary bool `json:"setPrimary,omitempty"`
+
 	// Valid from month
 	ValidMonth int32 `json:"validMonth,omitempty"`
 
@@ -36,6 +41,11 @@ type PaymentMethodUpdatePayload struct {
 
 // Validate validates this payment method update payload
 func (m *PaymentMethodUpdatePayload) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment method update payload based on context it is used
+func (m *PaymentMethodUpdatePayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

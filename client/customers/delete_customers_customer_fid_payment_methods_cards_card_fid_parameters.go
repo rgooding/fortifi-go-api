@@ -16,61 +16,76 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams creates a new DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams object
-// with the default values initialized.
+// NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams creates a new DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams() *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithTimeout creates a new DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithTimeout(timeout time.Duration) *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithContext creates a new DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithContext(ctx context.Context) *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithHTTPClient creates a new DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithHTTPClient(client *http.Client) *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams {
-	var ()
 	return &DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams contains all the parameters to send to the API endpoint
-for the delete customers customer fid payment methods cards card fid operation typically these are written to a http.Request
+/* DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams contains all the parameters to send to the API endpoint
+   for the delete customers customer fid payment methods cards card fid operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams struct {
 
-	/*CardFid*/
+	// CardFid.
 	CardFid string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete customers customer fid payment methods cards card fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams) WithDefaults() *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete customers customer fid payment methods cards card fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete customers customer fid payment methods cards card fid params

@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidLinkVisitorOK() *PutCustomersCustomerFidLinkVisit
 	return &PutCustomersCustomerFidLinkVisitorOK{}
 }
 
-/*PutCustomersCustomerFidLinkVisitorOK handles this case with default header values.
+/* PutCustomersCustomerFidLinkVisitorOK describes a response with status code 200, with default header values.
 
 Visitor ID linked to customer
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidLinkVisitorDefault(code int) *PutCustomersCustome
 	}
 }
 
-/*PutCustomersCustomerFidLinkVisitorDefault handles this case with default header values.
+/* PutCustomersCustomerFidLinkVisitorDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidLinkVisitorDefault) Code() int {
 func (o *PutCustomersCustomerFidLinkVisitorDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/linkVisitor][%d] PutCustomersCustomerFidLinkVisitor default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidLinkVisitorDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

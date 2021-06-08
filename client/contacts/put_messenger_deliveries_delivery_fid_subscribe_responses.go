@@ -46,7 +46,7 @@ func NewPutMessengerDeliveriesDeliveryFidSubscribeOK() *PutMessengerDeliveriesDe
 	return &PutMessengerDeliveriesDeliveryFidSubscribeOK{}
 }
 
-/*PutMessengerDeliveriesDeliveryFidSubscribeOK handles this case with default header values.
+/* PutMessengerDeliveriesDeliveryFidSubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Subscribed
 */
@@ -69,7 +69,7 @@ func NewPutMessengerDeliveriesDeliveryFidSubscribeDefault(code int) *PutMessenge
 	}
 }
 
-/*PutMessengerDeliveriesDeliveryFidSubscribeDefault handles this case with default header values.
+/* PutMessengerDeliveriesDeliveryFidSubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) Code() int {
 func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /messenger/deliveries/{deliveryFid}/subscribe][%d] PutMessengerDeliveriesDeliveryFidSubscribe default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

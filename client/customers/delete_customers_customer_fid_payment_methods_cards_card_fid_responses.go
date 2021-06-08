@@ -46,7 +46,7 @@ func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK() *DeleteCustomer
 	return &DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK{}
 }
 
-/*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK handles this case with default header values.
+/* DeleteCustomersCustomerFidPaymentMethodsCardsCardFidOK describes a response with status code 200, with default header values.
 
 Card Removed
 */
@@ -69,7 +69,7 @@ func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidDefault(code int) *D
 	}
 }
 
-/*DeleteCustomersCustomerFidPaymentMethodsCardsCardFidDefault handles this case with default header values.
+/* DeleteCustomersCustomerFidPaymentMethodsCardsCardFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidDefault) Code() int
 func (o *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/paymentMethods/cards/{cardFid}][%d] DeleteCustomersCustomerFidPaymentMethodsCardsCardFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteCustomersCustomerFidPaymentMethodsCardsCardFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

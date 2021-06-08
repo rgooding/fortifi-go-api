@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams creates a new PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams creates a new PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams() *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams {
-	var ()
 	return &PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParamsWithTimeout creates a new PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams {
-	var ()
 	return &PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParamsWithContext creates a new PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParamsWithContext(ctx context.Context) *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams {
-	var ()
 	return &PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParamsWithHTTPClient creates a new PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidPaymentMethodsPaymentMethodFidParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams {
-	var ()
 	return &PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams contains all the parameters to send to the API endpoint
-for the put customers customer fid payment methods payment method fid operation typically these are written to a http.Request
+/* PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid payment methods payment method fid operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
-	Payload *models.PaymentMethodUpdatePayload
-	/*PaymentMethodFid
-	  Payment Method FID to use
 
+	// Payload.
+	Payload *models.PaymentMethodUpdatePayload
+
+	/* PaymentMethodFid.
+
+	   Payment Method FID to use
 	*/
 	PaymentMethodFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid payment methods payment method fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams) WithDefaults() *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid payment methods payment method fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid payment methods payment method fid params
@@ -158,7 +174,6 @@ func (o *PutCustomersCustomerFidPaymentMethodsPaymentMethodFidParams) WriteToReq
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

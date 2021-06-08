@@ -6,6 +6,7 @@ package orders
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetOrdersOrderFidOK() *GetOrdersOrderFidOK {
 	return &GetOrdersOrderFidOK{}
 }
 
-/*GetOrdersOrderFidOK handles this case with default header values.
+/* GetOrdersOrderFidOK describes a response with status code 200, with default header values.
 
 Order retrieved
 */
@@ -59,7 +60,6 @@ type GetOrdersOrderFidOK struct {
 func (o *GetOrdersOrderFidOK) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}][%d] getOrdersOrderFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetOrdersOrderFidOK) GetPayload() *GetOrdersOrderFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetOrdersOrderFidDefault(code int) *GetOrdersOrderFidDefault {
 	}
 }
 
-/*GetOrdersOrderFidDefault handles this case with default header values.
+/* GetOrdersOrderFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetOrdersOrderFidDefault) Code() int {
 func (o *GetOrdersOrderFidDefault) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}][%d] GetOrdersOrderFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetOrdersOrderFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetOrdersOrderFidOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getOrdersOrderFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get orders order fid o k body based on the context it is used
+func (o *GetOrdersOrderFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetOrdersOrderFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrdersOrderFidOK" + "." + "data")
 			}

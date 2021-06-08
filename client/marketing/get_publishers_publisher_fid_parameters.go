@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetPublishersPublisherFidParams creates a new GetPublishersPublisherFidParams object
-// with the default values initialized.
+// NewGetPublishersPublisherFidParams creates a new GetPublishersPublisherFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetPublishersPublisherFidParams() *GetPublishersPublisherFidParams {
-	var ()
 	return &GetPublishersPublisherFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetPublishersPublisherFidParamsWithTimeout creates a new GetPublishersPublisherFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetPublishersPublisherFidParamsWithTimeout(timeout time.Duration) *GetPublishersPublisherFidParams {
-	var ()
 	return &GetPublishersPublisherFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetPublishersPublisherFidParamsWithContext creates a new GetPublishersPublisherFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetPublishersPublisherFidParamsWithContext(ctx context.Context) *GetPublishersPublisherFidParams {
-	var ()
 	return &GetPublishersPublisherFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetPublishersPublisherFidParamsWithHTTPClient creates a new GetPublishersPublisherFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetPublishersPublisherFidParamsWithHTTPClient(client *http.Client) *GetPublishersPublisherFidParams {
-	var ()
 	return &GetPublishersPublisherFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetPublishersPublisherFidParams contains all the parameters to send to the API endpoint
-for the get publishers publisher fid operation typically these are written to a http.Request
+/* GetPublishersPublisherFidParams contains all the parameters to send to the API endpoint
+   for the get publishers publisher fid operation.
+
+   Typically these are written to a http.Request.
 */
 type GetPublishersPublisherFidParams struct {
 
-	/*PublisherFid
-	  Publisher FID to use
+	/* PublisherFid.
 
+	   Publisher FID to use
 	*/
 	PublisherFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get publishers publisher fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPublishersPublisherFidParams) WithDefaults() *GetPublishersPublisherFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get publishers publisher fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPublishersPublisherFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get publishers publisher fid params

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -60,7 +62,7 @@ type Publisher struct {
 	Suspended string `json:"suspended,omitempty"`
 
 	// type
-	Type string `json:"type,omitempty"`
+	Type PublisherType `json:"type,omitempty"`
 
 	// website
 	Website string `json:"website,omitempty"`
@@ -105,7 +107,7 @@ func (m *Publisher) UnmarshalJSON(raw []byte) error {
 
 		Suspended string `json:"suspended,omitempty"`
 
-		Type string `json:"type,omitempty"`
+		Type PublisherType `json:"type,omitempty"`
 
 		Website string `json:"website,omitempty"`
 	}
@@ -186,7 +188,7 @@ func (m Publisher) MarshalJSON() ([]byte, error) {
 
 		Suspended string `json:"suspended,omitempty"`
 
-		Type string `json:"type,omitempty"`
+		Type PublisherType `json:"type,omitempty"`
 
 		Website string `json:"website,omitempty"`
 	}
@@ -240,9 +242,60 @@ func (m *Publisher) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Publisher) validateType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if err := m.Type.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this publisher based on the context it is used
+func (m *Publisher) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Publisher) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Type.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		}
+		return err
+	}
+
 	return nil
 }
 

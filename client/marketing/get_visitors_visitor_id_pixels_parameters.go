@@ -16,55 +16,54 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetVisitorsVisitorIDPixelsParams creates a new GetVisitorsVisitorIDPixelsParams object
-// with the default values initialized.
+// NewGetVisitorsVisitorIDPixelsParams creates a new GetVisitorsVisitorIDPixelsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetVisitorsVisitorIDPixelsParams() *GetVisitorsVisitorIDPixelsParams {
-	var ()
 	return &GetVisitorsVisitorIDPixelsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetVisitorsVisitorIDPixelsParamsWithTimeout creates a new GetVisitorsVisitorIDPixelsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetVisitorsVisitorIDPixelsParamsWithTimeout(timeout time.Duration) *GetVisitorsVisitorIDPixelsParams {
-	var ()
 	return &GetVisitorsVisitorIDPixelsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetVisitorsVisitorIDPixelsParamsWithContext creates a new GetVisitorsVisitorIDPixelsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetVisitorsVisitorIDPixelsParamsWithContext(ctx context.Context) *GetVisitorsVisitorIDPixelsParams {
-	var ()
 	return &GetVisitorsVisitorIDPixelsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetVisitorsVisitorIDPixelsParamsWithHTTPClient creates a new GetVisitorsVisitorIDPixelsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetVisitorsVisitorIDPixelsParamsWithHTTPClient(client *http.Client) *GetVisitorsVisitorIDPixelsParams {
-	var ()
 	return &GetVisitorsVisitorIDPixelsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetVisitorsVisitorIDPixelsParams contains all the parameters to send to the API endpoint
-for the get visitors visitor ID pixels operation typically these are written to a http.Request
+/* GetVisitorsVisitorIDPixelsParams contains all the parameters to send to the API endpoint
+   for the get visitors visitor ID pixels operation.
+
+   Typically these are written to a http.Request.
 */
 type GetVisitorsVisitorIDPixelsParams struct {
 
-	/*VisitorID
-	  'Visitor ID from the cookie.
+	/* VisitorID.
+
+	     'Visitor ID from the cookie.
 	If providing a pre-linked external reference, should be set to 'byref'.
 	If no visitor ID is known, client IP should be provided and visitorId should be set to 'unknown''
-
 
 	*/
 	VisitorID string
@@ -72,6 +71,21 @@ type GetVisitorsVisitorIDPixelsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get visitors visitor ID pixels params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVisitorsVisitorIDPixelsParams) WithDefaults() *GetVisitorsVisitorIDPixelsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get visitors visitor ID pixels params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVisitorsVisitorIDPixelsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get visitors visitor ID pixels params

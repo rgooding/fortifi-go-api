@@ -16,66 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteEntitiesEntityFidConfigSectionNameParams creates a new DeleteEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized.
+// NewDeleteEntitiesEntityFidConfigSectionNameParams creates a new DeleteEntitiesEntityFidConfigSectionNameParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteEntitiesEntityFidConfigSectionNameParams() *DeleteEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidConfigSectionNameParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteEntitiesEntityFidConfigSectionNameParamsWithTimeout creates a new DeleteEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteEntitiesEntityFidConfigSectionNameParamsWithTimeout(timeout time.Duration) *DeleteEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidConfigSectionNameParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteEntitiesEntityFidConfigSectionNameParamsWithContext creates a new DeleteEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteEntitiesEntityFidConfigSectionNameParamsWithContext(ctx context.Context) *DeleteEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidConfigSectionNameParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteEntitiesEntityFidConfigSectionNameParamsWithHTTPClient creates a new DeleteEntitiesEntityFidConfigSectionNameParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteEntitiesEntityFidConfigSectionNameParamsWithHTTPClient(client *http.Client) *DeleteEntitiesEntityFidConfigSectionNameParams {
-	var ()
 	return &DeleteEntitiesEntityFidConfigSectionNameParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
-for the delete entities entity fid config section name operation typically these are written to a http.Request
+/* DeleteEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
+   for the delete entities entity fid config section name operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteEntitiesEntityFidConfigSectionNameParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*ItemName*/
-	ItemName *string
-	/*SectionName
-	  Section Name
 
+	// ItemName.
+	ItemName *string
+
+	/* SectionName.
+
+	   Section Name
 	*/
 	SectionName string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete entities entity fid config section name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteEntitiesEntityFidConfigSectionNameParams) WithDefaults() *DeleteEntitiesEntityFidConfigSectionNameParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete entities entity fid config section name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteEntitiesEntityFidConfigSectionNameParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete entities entity fid config section name params
@@ -170,7 +186,6 @@ func (o *DeleteEntitiesEntityFidConfigSectionNameParams) WriteToRequest(r runtim
 				return err
 			}
 		}
-
 	}
 
 	// path param sectionName

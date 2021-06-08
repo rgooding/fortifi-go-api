@@ -6,6 +6,7 @@ package products
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetProductsGroupsOK() *GetProductsGroupsOK {
 	return &GetProductsGroupsOK{}
 }
 
-/*GetProductsGroupsOK handles this case with default header values.
+/* GetProductsGroupsOK describes a response with status code 200, with default header values.
 
 Products groups
 */
@@ -59,7 +60,6 @@ type GetProductsGroupsOK struct {
 func (o *GetProductsGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /products/groups][%d] getProductsGroupsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetProductsGroupsOK) GetPayload() *GetProductsGroupsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetProductsGroupsDefault(code int) *GetProductsGroupsDefault {
 	}
 }
 
-/*GetProductsGroupsDefault handles this case with default header values.
+/* GetProductsGroupsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetProductsGroupsDefault) Code() int {
 func (o *GetProductsGroupsDefault) Error() string {
 	return fmt.Sprintf("[GET /products/groups][%d] GetProductsGroups default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetProductsGroupsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetProductsGroupsOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getProductsGroupsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get products groups o k body based on the context it is used
+func (o *GetProductsGroupsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetProductsGroupsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsGroupsOK" + "." + "data")
 			}

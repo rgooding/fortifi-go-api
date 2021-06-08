@@ -16,56 +16,70 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutOrdersOrderFidCancelParams creates a new PutOrdersOrderFidCancelParams object
-// with the default values initialized.
+// NewPutOrdersOrderFidCancelParams creates a new PutOrdersOrderFidCancelParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutOrdersOrderFidCancelParams() *PutOrdersOrderFidCancelParams {
-	var ()
 	return &PutOrdersOrderFidCancelParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutOrdersOrderFidCancelParamsWithTimeout creates a new PutOrdersOrderFidCancelParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutOrdersOrderFidCancelParamsWithTimeout(timeout time.Duration) *PutOrdersOrderFidCancelParams {
-	var ()
 	return &PutOrdersOrderFidCancelParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutOrdersOrderFidCancelParamsWithContext creates a new PutOrdersOrderFidCancelParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutOrdersOrderFidCancelParamsWithContext(ctx context.Context) *PutOrdersOrderFidCancelParams {
-	var ()
 	return &PutOrdersOrderFidCancelParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutOrdersOrderFidCancelParamsWithHTTPClient creates a new PutOrdersOrderFidCancelParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutOrdersOrderFidCancelParamsWithHTTPClient(client *http.Client) *PutOrdersOrderFidCancelParams {
-	var ()
 	return &PutOrdersOrderFidCancelParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutOrdersOrderFidCancelParams contains all the parameters to send to the API endpoint
-for the put orders order fid cancel operation typically these are written to a http.Request
+/* PutOrdersOrderFidCancelParams contains all the parameters to send to the API endpoint
+   for the put orders order fid cancel operation.
+
+   Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidCancelParams struct {
 
-	/*OrderFid*/
+	// OrderFid.
 	OrderFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put orders order fid cancel params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidCancelParams) WithDefaults() *PutOrdersOrderFidCancelParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put orders order fid cancel params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutOrdersOrderFidCancelParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put orders order fid cancel params

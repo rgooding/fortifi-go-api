@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK() 
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeOK describes a response with status code 200, with default header values.
 
 Auto charge enabled
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeDefau
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeDefa
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/enableAutoCharge][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoCharge default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidEnableAutoChargeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

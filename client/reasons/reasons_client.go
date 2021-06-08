@@ -23,11 +23,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsOK, error)
+	GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReasonsGroupsOK, error)
 
-	GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsReasonGroupFidOK, error)
+	GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReasonsGroupsReasonGroupFidOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -35,13 +38,12 @@ type ClientService interface {
 /*
   GetReasonsGroups gets a list of all reason groups
 */
-func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsOK, error) {
+func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReasonsGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReasonsGroupsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetReasonsGroups",
 		Method:             "GET",
 		PathPattern:        "/reasons/groups",
@@ -53,7 +55,12 @@ func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -69,13 +76,12 @@ func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runti
 /*
   GetReasonsGroupsReasonGroupFid gets all the reasons for the reason group
 */
-func (a *Client) GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetReasonsGroupsReasonGroupFidOK, error) {
+func (a *Client) GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReasonsGroupsReasonGroupFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReasonsGroupsReasonGroupFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetReasonsGroupsReasonGroupFid",
 		Method:             "GET",
 		PathPattern:        "/reasons/groups/{reasonGroupFid}",
@@ -87,7 +93,12 @@ func (a *Client) GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGr
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

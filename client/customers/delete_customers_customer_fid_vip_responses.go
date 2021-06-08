@@ -46,7 +46,7 @@ func NewDeleteCustomersCustomerFidVipOK() *DeleteCustomersCustomerFidVipOK {
 	return &DeleteCustomersCustomerFidVipOK{}
 }
 
-/*DeleteCustomersCustomerFidVipOK handles this case with default header values.
+/* DeleteCustomersCustomerFidVipOK describes a response with status code 200, with default header values.
 
 Customer No Longer VIP
 */
@@ -69,7 +69,7 @@ func NewDeleteCustomersCustomerFidVipDefault(code int) *DeleteCustomersCustomerF
 	}
 }
 
-/*DeleteCustomersCustomerFidVipDefault handles this case with default header values.
+/* DeleteCustomersCustomerFidVipDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteCustomersCustomerFidVipDefault) Code() int {
 func (o *DeleteCustomersCustomerFidVipDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/vip][%d] DeleteCustomersCustomerFidVip default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteCustomersCustomerFidVipDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

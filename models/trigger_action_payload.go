@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -16,6 +18,9 @@ import (
 //
 // swagger:model TriggerActionPayload
 type TriggerActionPayload struct {
+
+	// action
+	Action *MessengerActionPayload `json:"action,omitempty"`
 
 	// Your alias for the event to be triggered
 	Alias string `json:"alias,omitempty"`
@@ -35,6 +40,10 @@ type TriggerActionPayload struct {
 func (m *TriggerActionPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAction(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMetaData(formats); err != nil {
 		res = append(res, err)
 	}
@@ -49,8 +58,24 @@ func (m *TriggerActionPayload) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *TriggerActionPayload) validateMetaData(formats strfmt.Registry) error {
+func (m *TriggerActionPayload) validateAction(formats strfmt.Registry) error {
+	if swag.IsZero(m.Action) { // not required
+		return nil
+	}
 
+	if m.Action != nil {
+		if err := m.Action.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("action")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TriggerActionPayload) validateMetaData(formats strfmt.Registry) error {
 	if swag.IsZero(m.MetaData) { // not required
 		return nil
 	}
@@ -66,12 +91,55 @@ func (m *TriggerActionPayload) validateMetaData(formats strfmt.Registry) error {
 }
 
 func (m *TriggerActionPayload) validateTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Time) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this trigger action payload based on the context it is used
+func (m *TriggerActionPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAction(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetaData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TriggerActionPayload) contextValidateAction(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Action != nil {
+		if err := m.Action.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("action")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TriggerActionPayload) contextValidateMetaData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.MetaData.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("metaData")
+		}
 		return err
 	}
 

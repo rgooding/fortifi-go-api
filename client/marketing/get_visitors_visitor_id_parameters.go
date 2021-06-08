@@ -16,55 +16,54 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetVisitorsVisitorIDParams creates a new GetVisitorsVisitorIDParams object
-// with the default values initialized.
+// NewGetVisitorsVisitorIDParams creates a new GetVisitorsVisitorIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetVisitorsVisitorIDParams() *GetVisitorsVisitorIDParams {
-	var ()
 	return &GetVisitorsVisitorIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetVisitorsVisitorIDParamsWithTimeout creates a new GetVisitorsVisitorIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetVisitorsVisitorIDParamsWithTimeout(timeout time.Duration) *GetVisitorsVisitorIDParams {
-	var ()
 	return &GetVisitorsVisitorIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetVisitorsVisitorIDParamsWithContext creates a new GetVisitorsVisitorIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetVisitorsVisitorIDParamsWithContext(ctx context.Context) *GetVisitorsVisitorIDParams {
-	var ()
 	return &GetVisitorsVisitorIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetVisitorsVisitorIDParamsWithHTTPClient creates a new GetVisitorsVisitorIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetVisitorsVisitorIDParamsWithHTTPClient(client *http.Client) *GetVisitorsVisitorIDParams {
-	var ()
 	return &GetVisitorsVisitorIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetVisitorsVisitorIDParams contains all the parameters to send to the API endpoint
-for the get visitors visitor ID operation typically these are written to a http.Request
+/* GetVisitorsVisitorIDParams contains all the parameters to send to the API endpoint
+   for the get visitors visitor ID operation.
+
+   Typically these are written to a http.Request.
 */
 type GetVisitorsVisitorIDParams struct {
 
-	/*VisitorID
-	  'Visitor ID from the cookie.
+	/* VisitorID.
+
+	     'Visitor ID from the cookie.
 	If providing a pre-linked external reference, should be set to 'byref'.
 	If no visitor ID is known, client IP should be provided and visitorId should be set to 'unknown''
-
 
 	*/
 	VisitorID string
@@ -72,6 +71,21 @@ type GetVisitorsVisitorIDParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get visitors visitor ID params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVisitorsVisitorIDParams) WithDefaults() *GetVisitorsVisitorIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get visitors visitor ID params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVisitorsVisitorIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get visitors visitor ID params

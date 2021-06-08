@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -20,12 +22,15 @@ type ModifySubscriptionPayload struct {
 	// mode
 	Mode ModifySubscriptionMode `json:"mode,omitempty"`
 
-	// Price FID to modify subscription with
+	// Offer FID to apply to the modify order item
 	OfferFid string `json:"offerFid,omitempty"`
 
 	// Price FID to modify subscription with
 	// Required: true
 	PriceFid *string `json:"priceFid"`
+
+	// SKU or SkuFid to modify subscription with
+	Sku string `json:"sku,omitempty"`
 }
 
 // Validate validates this modify subscription payload
@@ -47,7 +52,6 @@ func (m *ModifySubscriptionPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ModifySubscriptionPayload) validateMode(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Mode) { // not required
 		return nil
 	}
@@ -65,6 +69,32 @@ func (m *ModifySubscriptionPayload) validateMode(formats strfmt.Registry) error 
 func (m *ModifySubscriptionPayload) validatePriceFid(formats strfmt.Registry) error {
 
 	if err := validate.Required("priceFid", "body", m.PriceFid); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this modify subscription payload based on the context it is used
+func (m *ModifySubscriptionPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateMode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ModifySubscriptionPayload) contextValidateMode(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Mode.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("mode")
+		}
 		return err
 	}
 

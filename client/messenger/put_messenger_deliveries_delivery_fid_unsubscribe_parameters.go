@@ -16,79 +16,97 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams creates a new PutMessengerDeliveriesDeliveryFidUnsubscribeParams object
-// with the default values initialized.
+// NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams creates a new PutMessengerDeliveriesDeliveryFidUnsubscribeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams() *PutMessengerDeliveriesDeliveryFidUnsubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidUnsubscribeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutMessengerDeliveriesDeliveryFidUnsubscribeParamsWithTimeout creates a new PutMessengerDeliveriesDeliveryFidUnsubscribeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutMessengerDeliveriesDeliveryFidUnsubscribeParamsWithTimeout(timeout time.Duration) *PutMessengerDeliveriesDeliveryFidUnsubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidUnsubscribeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutMessengerDeliveriesDeliveryFidUnsubscribeParamsWithContext creates a new PutMessengerDeliveriesDeliveryFidUnsubscribeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutMessengerDeliveriesDeliveryFidUnsubscribeParamsWithContext(ctx context.Context) *PutMessengerDeliveriesDeliveryFidUnsubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidUnsubscribeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutMessengerDeliveriesDeliveryFidUnsubscribeParamsWithHTTPClient creates a new PutMessengerDeliveriesDeliveryFidUnsubscribeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutMessengerDeliveriesDeliveryFidUnsubscribeParamsWithHTTPClient(client *http.Client) *PutMessengerDeliveriesDeliveryFidUnsubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidUnsubscribeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutMessengerDeliveriesDeliveryFidUnsubscribeParams contains all the parameters to send to the API endpoint
-for the put messenger deliveries delivery fid unsubscribe operation typically these are written to a http.Request
+/* PutMessengerDeliveriesDeliveryFidUnsubscribeParams contains all the parameters to send to the API endpoint
+   for the put messenger deliveries delivery fid unsubscribe operation.
+
+   Typically these are written to a http.Request.
 */
 type PutMessengerDeliveriesDeliveryFidUnsubscribeParams struct {
 
-	/*ClientIP
-	  IP Address of the visitor
+	/* ClientIP.
 
+	   IP Address of the visitor
 	*/
 	ClientIP *string
-	/*DeliveryFid
-	  Delivery FID
 
+	/* DeliveryFid.
+
+	   Delivery FID
 	*/
 	DeliveryFid string
-	/*Encoding
-	  Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
 
+	/* Encoding.
+
+	   Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
 	*/
 	Encoding *string
-	/*Language
-	  Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 
+	/* Language.
+
+	   Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 	*/
 	Language *string
-	/*UserAgent
-	  User Agent of the visitors browser 'HTTP_USER_AGENT'
 
+	/* UserAgent.
+
+	   User Agent of the visitors browser 'HTTP_USER_AGENT'
 	*/
 	UserAgent *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put messenger deliveries delivery fid unsubscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeParams) WithDefaults() *PutMessengerDeliveriesDeliveryFidUnsubscribeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put messenger deliveries delivery fid unsubscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put messenger deliveries delivery fid unsubscribe params
@@ -200,7 +218,6 @@ func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeParams) WriteToRequest(r ru
 				return err
 			}
 		}
-
 	}
 
 	// path param deliveryFid
@@ -221,7 +238,6 @@ func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeParams) WriteToRequest(r ru
 				return err
 			}
 		}
-
 	}
 
 	if o.Language != nil {
@@ -237,7 +253,6 @@ func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeParams) WriteToRequest(r ru
 				return err
 			}
 		}
-
 	}
 
 	if o.UserAgent != nil {
@@ -253,7 +268,6 @@ func (o *PutMessengerDeliveriesDeliveryFidUnsubscribeParams) WriteToRequest(r ru
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

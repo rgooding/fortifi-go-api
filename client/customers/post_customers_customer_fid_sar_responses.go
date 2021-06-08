@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostCustomersCustomerFidSarOK() *PostCustomersCustomerFidSarOK {
 	return &PostCustomersCustomerFidSarOK{}
 }
 
-/*PostCustomersCustomerFidSarOK handles this case with default header values.
+/* PostCustomersCustomerFidSarOK describes a response with status code 200, with default header values.
 
 Subject Access Request
 */
@@ -59,7 +60,6 @@ type PostCustomersCustomerFidSarOK struct {
 func (o *PostCustomersCustomerFidSarOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/sar][%d] postCustomersCustomerFidSarOK  %+v", 200, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidSarOK) GetPayload() *PostCustomersCustomerFidSarOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostCustomersCustomerFidSarDefault(code int) *PostCustomersCustomerFidSa
 	}
 }
 
-/*PostCustomersCustomerFidSarDefault handles this case with default header values.
+/* PostCustomersCustomerFidSarDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostCustomersCustomerFidSarDefault) Code() int {
 func (o *PostCustomersCustomerFidSarDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/sar][%d] PostCustomersCustomerFidSar default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidSarDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostCustomersCustomerFidSarOKBody) validateData(formats strfmt.Registry
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postCustomersCustomerFidSarOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post customers customer fid sar o k body based on the context it is used
+func (o *PostCustomersCustomerFidSarOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostCustomersCustomerFidSarOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidSarOK" + "." + "data")
 			}

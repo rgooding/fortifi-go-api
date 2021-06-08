@@ -23,9 +23,12 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter) (*GetBrandsOK, error)
+	GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrandsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -36,13 +39,12 @@ type ClientService interface {
   Retrieve a list of all the brands within your Fortifi account
 
 */
-func (a *Client) GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter) (*GetBrandsOK, error) {
+func (a *Client) GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrandsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBrandsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBrands",
 		Method:             "GET",
 		PathPattern:        "/brands",
@@ -54,7 +56,12 @@ func (a *Client) GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthI
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostCustomersCustomerFidTicketsTicketFidPostsParams creates a new PostCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidTicketsTicketFidPostsParams creates a new PostCustomersCustomerFidTicketsTicketFidPostsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidTicketsTicketFidPostsParams() *PostCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsTicketFidPostsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithTimeout creates a new PostCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsTicketFidPostsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithContext creates a new PostCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithContext(ctx context.Context) *PostCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsTicketFidPostsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithHTTPClient creates a new PostCustomersCustomerFidTicketsTicketFidPostsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidTicketsTicketFidPostsParams {
-	var ()
 	return &PostCustomersCustomerFidTicketsTicketFidPostsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidTicketsTicketFidPostsParams contains all the parameters to send to the API endpoint
-for the post customers customer fid tickets ticket fid posts operation typically these are written to a http.Request
+/* PostCustomersCustomerFidTicketsTicketFidPostsParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid tickets ticket fid posts operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidTicketsTicketFidPostsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
-	Payload *models.TicketReplyPayload
-	/*TicketFid
-	  Ticket FID to use
 
+	// Payload.
+	Payload *models.TicketReplyPayload
+
+	/* TicketFid.
+
+	   Ticket FID to use
 	*/
 	TicketFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid tickets ticket fid posts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsParams) WithDefaults() *PostCustomersCustomerFidTicketsTicketFidPostsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid tickets ticket fid posts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid tickets ticket fid posts params
@@ -158,7 +174,6 @@ func (o *PostCustomersCustomerFidTicketsTicketFidPostsParams) WriteToRequest(r r
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

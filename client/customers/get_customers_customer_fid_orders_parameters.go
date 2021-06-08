@@ -16,65 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCustomersCustomerFidOrdersParams creates a new GetCustomersCustomerFidOrdersParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidOrdersParams creates a new GetCustomersCustomerFidOrdersParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidOrdersParams() *GetCustomersCustomerFidOrdersParams {
-	var ()
 	return &GetCustomersCustomerFidOrdersParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidOrdersParamsWithTimeout creates a new GetCustomersCustomerFidOrdersParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidOrdersParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidOrdersParams {
-	var ()
 	return &GetCustomersCustomerFidOrdersParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidOrdersParamsWithContext creates a new GetCustomersCustomerFidOrdersParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidOrdersParamsWithContext(ctx context.Context) *GetCustomersCustomerFidOrdersParams {
-	var ()
 	return &GetCustomersCustomerFidOrdersParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidOrdersParamsWithHTTPClient creates a new GetCustomersCustomerFidOrdersParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidOrdersParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidOrdersParams {
-	var ()
 	return &GetCustomersCustomerFidOrdersParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidOrdersParams contains all the parameters to send to the API endpoint
-for the get customers customer fid orders operation typically these are written to a http.Request
+/* GetCustomersCustomerFidOrdersParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid orders operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidOrdersParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*ExternalReference*/
+
+	// ExternalReference.
 	ExternalReference *string
-	/*Filter*/
+
+	// Filter.
 	Filter *string
-	/*State*/
+
+	// State.
 	State *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid orders params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidOrdersParams) WithDefaults() *GetCustomersCustomerFidOrdersParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid orders params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidOrdersParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid orders params
@@ -171,48 +188,51 @@ func (o *GetCustomersCustomerFidOrdersParams) WriteToRequest(r runtime.ClientReq
 
 		// query param externalReference
 		var qrExternalReference string
+
 		if o.ExternalReference != nil {
 			qrExternalReference = *o.ExternalReference
 		}
 		qExternalReference := qrExternalReference
 		if qExternalReference != "" {
+
 			if err := r.SetQueryParam("externalReference", qExternalReference); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Filter != nil {
 
 		// query param filter
 		var qrFilter string
+
 		if o.Filter != nil {
 			qrFilter = *o.Filter
 		}
 		qFilter := qrFilter
 		if qFilter != "" {
+
 			if err := r.SetQueryParam("filter", qFilter); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.State != nil {
 
 		// query param state
 		var qrState string
+
 		if o.State != nil {
 			qrState = *o.State
 		}
 		qState := qrState
 		if qState != "" {
+
 			if err := r.SetQueryParam("state", qState); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

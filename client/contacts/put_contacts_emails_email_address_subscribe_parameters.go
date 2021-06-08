@@ -17,99 +17,121 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPutContactsEmailsEmailAddressSubscribeParams creates a new PutContactsEmailsEmailAddressSubscribeParams object
-// with the default values initialized.
+// NewPutContactsEmailsEmailAddressSubscribeParams creates a new PutContactsEmailsEmailAddressSubscribeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutContactsEmailsEmailAddressSubscribeParams() *PutContactsEmailsEmailAddressSubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressSubscribeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressSubscribeParamsWithTimeout creates a new PutContactsEmailsEmailAddressSubscribeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutContactsEmailsEmailAddressSubscribeParamsWithTimeout(timeout time.Duration) *PutContactsEmailsEmailAddressSubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressSubscribeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressSubscribeParamsWithContext creates a new PutContactsEmailsEmailAddressSubscribeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutContactsEmailsEmailAddressSubscribeParamsWithContext(ctx context.Context) *PutContactsEmailsEmailAddressSubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressSubscribeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutContactsEmailsEmailAddressSubscribeParamsWithHTTPClient creates a new PutContactsEmailsEmailAddressSubscribeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutContactsEmailsEmailAddressSubscribeParamsWithHTTPClient(client *http.Client) *PutContactsEmailsEmailAddressSubscribeParams {
-	var ()
 	return &PutContactsEmailsEmailAddressSubscribeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutContactsEmailsEmailAddressSubscribeParams contains all the parameters to send to the API endpoint
-for the put contacts emails email address subscribe operation typically these are written to a http.Request
+/* PutContactsEmailsEmailAddressSubscribeParams contains all the parameters to send to the API endpoint
+   for the put contacts emails email address subscribe operation.
+
+   Typically these are written to a http.Request.
 */
 type PutContactsEmailsEmailAddressSubscribeParams struct {
 
-	/*BrandFid
-	  Brand to subscribe the email address from
+	/* BrandFid.
 
+	   Brand to subscribe the email address from
 	*/
 	BrandFid *string
-	/*ClientIP
-	  IP Address of the visitor
 
+	/* ClientIP.
+
+	   IP Address of the visitor
 	*/
 	ClientIP *string
-	/*EmailAddress
-	  Email Address
 
+	/* EmailAddress.
+
+	   Email Address
 	*/
 	EmailAddress string
-	/*Encoding
-	  Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
 
+	/* Encoding.
+
+	   Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
 	*/
 	Encoding *string
-	/*GroupFid
-	  Group to unsubscribe the email address from
 
+	/* GroupFid.
+
+	   Group to unsubscribe the email address from
 	*/
 	GroupFid *string
-	/*Language
-	  Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 
+	/* Language.
+
+	   Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 	*/
 	Language *string
-	/*OptInData
-	  Additional data to store against opt-in
 
+	/* OptInData.
+
+	   Additional data to store against opt-in
 	*/
 	OptInData []string
-	/*OptInStatus
-	  Status of customer email opt-in
 
+	/* OptInStatus.
+
+	   Status of customer email opt-in
 	*/
 	OptInStatus *string
-	/*UserAgent
-	  User Agent of the visitors browser 'HTTP_USER_AGENT'
 
+	/* UserAgent.
+
+	   User Agent of the visitors browser 'HTTP_USER_AGENT'
 	*/
 	UserAgent *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put contacts emails email address subscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutContactsEmailsEmailAddressSubscribeParams) WithDefaults() *PutContactsEmailsEmailAddressSubscribeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put contacts emails email address subscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutContactsEmailsEmailAddressSubscribeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put contacts emails email address subscribe params
@@ -265,7 +287,6 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
 	if o.ClientIP != nil {
@@ -281,7 +302,6 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
 	// path param emailAddress
@@ -302,7 +322,6 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
 	if o.GroupFid != nil {
@@ -318,7 +337,6 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
 	if o.Language != nil {
@@ -334,15 +352,17 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
-	valuesOptInData := o.OptInData
+	if o.OptInData != nil {
 
-	joinedOptInData := swag.JoinByFormat(valuesOptInData, "")
-	// form array param optInData
-	if err := r.SetFormParam("optInData", joinedOptInData...); err != nil {
-		return err
+		// binding items for optInData
+		joinedOptInData := o.bindParamOptInData(reg)
+
+		// form array param optInData
+		if err := r.SetFormParam("optInData", joinedOptInData...); err != nil {
+			return err
+		}
 	}
 
 	if o.OptInStatus != nil {
@@ -358,7 +378,6 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
 	if o.UserAgent != nil {
@@ -374,11 +393,27 @@ func (o *PutContactsEmailsEmailAddressSubscribeParams) WriteToRequest(r runtime.
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPutContactsEmailsEmailAddressSubscribe binds the parameter optInData
+func (o *PutContactsEmailsEmailAddressSubscribeParams) bindParamOptInData(formats strfmt.Registry) []string {
+	optInDataIR := o.OptInData
+
+	var optInDataIC []string
+	for _, optInDataIIR := range optInDataIR { // explode []string
+
+		optInDataIIV := optInDataIIR // string as string
+		optInDataIC = append(optInDataIC, optInDataIIV)
+	}
+
+	// items.CollectionFormat: ""
+	optInDataIS := swag.JoinByFormat(optInDataIC, "")
+
+	return optInDataIS
 }

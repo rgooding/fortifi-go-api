@@ -46,7 +46,7 @@ func NewPutAdvertisersAdvertiserFidApprovedOK() *PutAdvertisersAdvertiserFidAppr
 	return &PutAdvertisersAdvertiserFidApprovedOK{}
 }
 
-/*PutAdvertisersAdvertiserFidApprovedOK handles this case with default header values.
+/* PutAdvertisersAdvertiserFidApprovedOK describes a response with status code 200, with default header values.
 
 Approved Advertiser
 */
@@ -69,7 +69,7 @@ func NewPutAdvertisersAdvertiserFidApprovedDefault(code int) *PutAdvertisersAdve
 	}
 }
 
-/*PutAdvertisersAdvertiserFidApprovedDefault handles this case with default header values.
+/* PutAdvertisersAdvertiserFidApprovedDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutAdvertisersAdvertiserFidApprovedDefault) Code() int {
 func (o *PutAdvertisersAdvertiserFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[PUT /advertisers/{advertiserFid}/approved][%d] PutAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutAdvertisersAdvertiserFidApprovedDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

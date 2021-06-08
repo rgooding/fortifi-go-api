@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,9 @@ type Invoice struct {
 	// base amount
 	BaseAmount float32 `json:"baseAmount,omitempty"`
 
+	// charge Id
+	ChargeID string `json:"chargeId,omitempty"`
+
 	// credited amount
 	CreditedAmount float32 `json:"creditedAmount,omitempty"`
 
@@ -45,6 +49,9 @@ type Invoice struct {
 
 	// invoice items
 	InvoiceItems []*InvoiceItem `json:"invoiceItems"`
+
+	// invoice name
+	InvoiceName string `json:"invoiceName,omitempty"`
 
 	// invoice number
 	InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
@@ -87,6 +94,8 @@ func (m *Invoice) UnmarshalJSON(raw []byte) error {
 
 		BaseAmount float32 `json:"baseAmount,omitempty"`
 
+		ChargeID string `json:"chargeId,omitempty"`
+
 		CreditedAmount float32 `json:"creditedAmount,omitempty"`
 
 		Currency string `json:"currency,omitempty"`
@@ -98,6 +107,8 @@ func (m *Invoice) UnmarshalJSON(raw []byte) error {
 		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
 		InvoiceItems []*InvoiceItem `json:"invoiceItems"`
+
+		InvoiceName string `json:"invoiceName,omitempty"`
 
 		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
 
@@ -123,6 +134,8 @@ func (m *Invoice) UnmarshalJSON(raw []byte) error {
 
 	m.BaseAmount = dataAO1.BaseAmount
 
+	m.ChargeID = dataAO1.ChargeID
+
 	m.CreditedAmount = dataAO1.CreditedAmount
 
 	m.Currency = dataAO1.Currency
@@ -134,6 +147,8 @@ func (m *Invoice) UnmarshalJSON(raw []byte) error {
 	m.InvoiceDate = dataAO1.InvoiceDate
 
 	m.InvoiceItems = dataAO1.InvoiceItems
+
+	m.InvoiceName = dataAO1.InvoiceName
 
 	m.InvoiceNumber = dataAO1.InvoiceNumber
 
@@ -168,6 +183,8 @@ func (m Invoice) MarshalJSON() ([]byte, error) {
 
 		BaseAmount float32 `json:"baseAmount,omitempty"`
 
+		ChargeID string `json:"chargeId,omitempty"`
+
 		CreditedAmount float32 `json:"creditedAmount,omitempty"`
 
 		Currency string `json:"currency,omitempty"`
@@ -179,6 +196,8 @@ func (m Invoice) MarshalJSON() ([]byte, error) {
 		InvoiceDate strfmt.DateTime `json:"invoiceDate,omitempty"`
 
 		InvoiceItems []*InvoiceItem `json:"invoiceItems"`
+
+		InvoiceName string `json:"invoiceName,omitempty"`
 
 		InvoiceNumber int32 `json:"invoiceNumber,omitempty"`
 
@@ -201,6 +220,8 @@ func (m Invoice) MarshalJSON() ([]byte, error) {
 
 	dataAO1.BaseAmount = m.BaseAmount
 
+	dataAO1.ChargeID = m.ChargeID
+
 	dataAO1.CreditedAmount = m.CreditedAmount
 
 	dataAO1.Currency = m.Currency
@@ -212,6 +233,8 @@ func (m Invoice) MarshalJSON() ([]byte, error) {
 	dataAO1.InvoiceDate = m.InvoiceDate
 
 	dataAO1.InvoiceItems = m.InvoiceItems
+
+	dataAO1.InvoiceName = m.InvoiceName
 
 	dataAO1.InvoiceNumber = m.InvoiceNumber
 
@@ -327,6 +350,43 @@ func (m *Invoice) validatePaymentDate(formats strfmt.Registry) error {
 
 	if err := validate.FormatOf("paymentDate", "body", "date-time", m.PaymentDate.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this invoice based on the context it is used
+func (m *Invoice) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateInvoiceItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Invoice) contextValidateInvoiceItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.InvoiceItems); i++ {
+
+		if m.InvoiceItems[i] != nil {
+			if err := m.InvoiceItems[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("invoiceItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

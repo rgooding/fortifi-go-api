@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCustomersCustomerFidInvoicesInvoiceFidParams creates a new GetCustomersCustomerFidInvoicesInvoiceFidParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidInvoicesInvoiceFidParams creates a new GetCustomersCustomerFidInvoicesInvoiceFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidParams() *GetCustomersCustomerFidInvoicesInvoiceFidParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidInvoicesInvoiceFidParamsWithTimeout creates a new GetCustomersCustomerFidInvoicesInvoiceFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidInvoicesInvoiceFidParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidInvoicesInvoiceFidParamsWithContext creates a new GetCustomersCustomerFidInvoicesInvoiceFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidParamsWithContext(ctx context.Context) *GetCustomersCustomerFidInvoicesInvoiceFidParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidInvoicesInvoiceFidParamsWithHTTPClient creates a new GetCustomersCustomerFidInvoicesInvoiceFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidInvoicesInvoiceFidParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidInvoicesInvoiceFidParams {
-	var ()
 	return &GetCustomersCustomerFidInvoicesInvoiceFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidInvoicesInvoiceFidParams contains all the parameters to send to the API endpoint
-for the get customers customer fid invoices invoice fid operation typically these are written to a http.Request
+/* GetCustomersCustomerFidInvoicesInvoiceFidParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid invoices invoice fid operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidInvoicesInvoiceFidParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*InvoiceFid
-	  Invoice Fid to use
 
+	/* InvoiceFid.
+
+	   Invoice Fid to use
 	*/
 	InvoiceFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid invoices invoice fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidParams) WithDefaults() *GetCustomersCustomerFidInvoicesInvoiceFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid invoices invoice fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid invoices invoice fid params

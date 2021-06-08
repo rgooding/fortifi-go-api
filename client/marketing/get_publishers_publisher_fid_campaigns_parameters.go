@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetPublishersPublisherFidCampaignsParams creates a new GetPublishersPublisherFidCampaignsParams object
-// with the default values initialized.
+// NewGetPublishersPublisherFidCampaignsParams creates a new GetPublishersPublisherFidCampaignsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetPublishersPublisherFidCampaignsParams() *GetPublishersPublisherFidCampaignsParams {
-	var ()
 	return &GetPublishersPublisherFidCampaignsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetPublishersPublisherFidCampaignsParamsWithTimeout creates a new GetPublishersPublisherFidCampaignsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetPublishersPublisherFidCampaignsParamsWithTimeout(timeout time.Duration) *GetPublishersPublisherFidCampaignsParams {
-	var ()
 	return &GetPublishersPublisherFidCampaignsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetPublishersPublisherFidCampaignsParamsWithContext creates a new GetPublishersPublisherFidCampaignsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetPublishersPublisherFidCampaignsParamsWithContext(ctx context.Context) *GetPublishersPublisherFidCampaignsParams {
-	var ()
 	return &GetPublishersPublisherFidCampaignsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetPublishersPublisherFidCampaignsParamsWithHTTPClient creates a new GetPublishersPublisherFidCampaignsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetPublishersPublisherFidCampaignsParamsWithHTTPClient(client *http.Client) *GetPublishersPublisherFidCampaignsParams {
-	var ()
 	return &GetPublishersPublisherFidCampaignsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetPublishersPublisherFidCampaignsParams contains all the parameters to send to the API endpoint
-for the get publishers publisher fid campaigns operation typically these are written to a http.Request
+/* GetPublishersPublisherFidCampaignsParams contains all the parameters to send to the API endpoint
+   for the get publishers publisher fid campaigns operation.
+
+   Typically these are written to a http.Request.
 */
 type GetPublishersPublisherFidCampaignsParams struct {
 
-	/*Limit
-	  Maximum number of records per page (default: 20)
+	/* Limit.
 
+	   Maximum number of records per page (default: 20)
 	*/
 	Limit *int64
-	/*Page
-	  Page number (default: 1)
 
+	/* Page.
+
+	   Page number (default: 1)
 	*/
 	Page *int64
-	/*PublisherFid
-	  Publisher FID to use
 
+	/* PublisherFid.
+
+	   Publisher FID to use
 	*/
 	PublisherFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get publishers publisher fid campaigns params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPublishersPublisherFidCampaignsParams) WithDefaults() *GetPublishersPublisherFidCampaignsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get publishers publisher fid campaigns params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPublishersPublisherFidCampaignsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get publishers publisher fid campaigns params
@@ -160,32 +176,34 @@ func (o *GetPublishersPublisherFidCampaignsParams) WriteToRequest(r runtime.Clie
 
 		// query param limit
 		var qrLimit int64
+
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
+
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Page != nil {
 
 		// query param page
 		var qrPage int64
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt64(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param publisherFid

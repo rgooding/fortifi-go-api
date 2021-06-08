@@ -16,63 +16,83 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetServicesServiceFidIncidentsParams creates a new GetServicesServiceFidIncidentsParams object
-// with the default values initialized.
+// NewGetServicesServiceFidIncidentsParams creates a new GetServicesServiceFidIncidentsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetServicesServiceFidIncidentsParams() *GetServicesServiceFidIncidentsParams {
-	var ()
 	return &GetServicesServiceFidIncidentsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetServicesServiceFidIncidentsParamsWithTimeout creates a new GetServicesServiceFidIncidentsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetServicesServiceFidIncidentsParamsWithTimeout(timeout time.Duration) *GetServicesServiceFidIncidentsParams {
-	var ()
 	return &GetServicesServiceFidIncidentsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetServicesServiceFidIncidentsParamsWithContext creates a new GetServicesServiceFidIncidentsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetServicesServiceFidIncidentsParamsWithContext(ctx context.Context) *GetServicesServiceFidIncidentsParams {
-	var ()
 	return &GetServicesServiceFidIncidentsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetServicesServiceFidIncidentsParamsWithHTTPClient creates a new GetServicesServiceFidIncidentsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetServicesServiceFidIncidentsParamsWithHTTPClient(client *http.Client) *GetServicesServiceFidIncidentsParams {
-	var ()
 	return &GetServicesServiceFidIncidentsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetServicesServiceFidIncidentsParams contains all the parameters to send to the API endpoint
-for the get services service fid incidents operation typically these are written to a http.Request
+/* GetServicesServiceFidIncidentsParams contains all the parameters to send to the API endpoint
+   for the get services service fid incidents operation.
+
+   Typically these are written to a http.Request.
 */
 type GetServicesServiceFidIncidentsParams struct {
 
-	/*EndDate*/
+	// EndDate.
+	//
+	// Format: date-time
 	EndDate *strfmt.DateTime
-	/*ServiceFid
-	  Service FID to use
 
+	/* ServiceFid.
+
+	   Service FID to use
 	*/
 	ServiceFid string
-	/*StartDate*/
+
+	// StartDate.
+	//
+	// Format: date-time
 	StartDate *strfmt.DateTime
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get services service fid incidents params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServicesServiceFidIncidentsParams) WithDefaults() *GetServicesServiceFidIncidentsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get services service fid incidents params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetServicesServiceFidIncidentsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get services service fid incidents params
@@ -153,16 +173,17 @@ func (o *GetServicesServiceFidIncidentsParams) WriteToRequest(r runtime.ClientRe
 
 		// query param endDate
 		var qrEndDate strfmt.DateTime
+
 		if o.EndDate != nil {
 			qrEndDate = *o.EndDate
 		}
 		qEndDate := qrEndDate.String()
 		if qEndDate != "" {
+
 			if err := r.SetQueryParam("endDate", qEndDate); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param serviceFid
@@ -174,16 +195,17 @@ func (o *GetServicesServiceFidIncidentsParams) WriteToRequest(r runtime.ClientRe
 
 		// query param startDate
 		var qrStartDate strfmt.DateTime
+
 		if o.StartDate != nil {
 			qrStartDate = *o.StartDate
 		}
 		qStartDate := qrStartDate.String()
 		if qStartDate != "" {
+
 			if err := r.SetQueryParam("startDate", qStartDate); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

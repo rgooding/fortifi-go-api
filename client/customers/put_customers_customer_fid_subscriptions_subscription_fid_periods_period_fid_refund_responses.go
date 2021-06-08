@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefun
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK describes a response with status code 200, with default header values.
 
 Refund Actioned
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefun
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefu
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

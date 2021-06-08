@@ -16,61 +16,76 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidLifecycleStageParams creates a new PutCustomersCustomerFidLifecycleStageParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidLifecycleStageParams creates a new PutCustomersCustomerFidLifecycleStageParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidLifecycleStageParams() *PutCustomersCustomerFidLifecycleStageParams {
-	var ()
 	return &PutCustomersCustomerFidLifecycleStageParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidLifecycleStageParamsWithTimeout creates a new PutCustomersCustomerFidLifecycleStageParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidLifecycleStageParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidLifecycleStageParams {
-	var ()
 	return &PutCustomersCustomerFidLifecycleStageParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidLifecycleStageParamsWithContext creates a new PutCustomersCustomerFidLifecycleStageParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidLifecycleStageParamsWithContext(ctx context.Context) *PutCustomersCustomerFidLifecycleStageParams {
-	var ()
 	return &PutCustomersCustomerFidLifecycleStageParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidLifecycleStageParamsWithHTTPClient creates a new PutCustomersCustomerFidLifecycleStageParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidLifecycleStageParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidLifecycleStageParams {
-	var ()
 	return &PutCustomersCustomerFidLifecycleStageParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidLifecycleStageParams contains all the parameters to send to the API endpoint
-for the put customers customer fid lifecycle stage operation typically these are written to a http.Request
+/* PutCustomersCustomerFidLifecycleStageParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid lifecycle stage operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidLifecycleStageParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*CustomerLifecycle*/
+
+	// CustomerLifecycle.
 	CustomerLifecycle string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid lifecycle stage params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidLifecycleStageParams) WithDefaults() *PutCustomersCustomerFidLifecycleStageParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid lifecycle stage params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidLifecycleStageParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid lifecycle stage params

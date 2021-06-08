@@ -6,6 +6,7 @@ package reasons
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetReasonsGroupsReasonGroupFidOK() *GetReasonsGroupsReasonGroupFidOK {
 	return &GetReasonsGroupsReasonGroupFidOK{}
 }
 
-/*GetReasonsGroupsReasonGroupFidOK handles this case with default header values.
+/* GetReasonsGroupsReasonGroupFidOK describes a response with status code 200, with default header values.
 
 Reason Group retrieved
 */
@@ -59,7 +60,6 @@ type GetReasonsGroupsReasonGroupFidOK struct {
 func (o *GetReasonsGroupsReasonGroupFidOK) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] getReasonsGroupsReasonGroupFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetReasonsGroupsReasonGroupFidOK) GetPayload() *GetReasonsGroupsReasonGroupFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetReasonsGroupsReasonGroupFidDefault(code int) *GetReasonsGroupsReasonG
 	}
 }
 
-/*GetReasonsGroupsReasonGroupFidDefault handles this case with default header values.
+/* GetReasonsGroupsReasonGroupFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetReasonsGroupsReasonGroupFidDefault) Code() int {
 func (o *GetReasonsGroupsReasonGroupFidDefault) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] GetReasonsGroupsReasonGroupFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetReasonsGroupsReasonGroupFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetReasonsGroupsReasonGroupFidOKBody) validateData(formats strfmt.Regis
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getReasonsGroupsReasonGroupFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get reasons groups reason group fid o k body based on the context it is used
+func (o *GetReasonsGroupsReasonGroupFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetReasonsGroupsReasonGroupFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReasonsGroupsReasonGroupFidOK" + "." + "data")
 			}

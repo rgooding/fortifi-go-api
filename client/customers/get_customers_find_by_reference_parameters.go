@@ -17,61 +17,76 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersFindByReferenceParams creates a new GetCustomersFindByReferenceParams object
-// with the default values initialized.
+// NewGetCustomersFindByReferenceParams creates a new GetCustomersFindByReferenceParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersFindByReferenceParams() *GetCustomersFindByReferenceParams {
-	var ()
 	return &GetCustomersFindByReferenceParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersFindByReferenceParamsWithTimeout creates a new GetCustomersFindByReferenceParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersFindByReferenceParamsWithTimeout(timeout time.Duration) *GetCustomersFindByReferenceParams {
-	var ()
 	return &GetCustomersFindByReferenceParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersFindByReferenceParamsWithContext creates a new GetCustomersFindByReferenceParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersFindByReferenceParamsWithContext(ctx context.Context) *GetCustomersFindByReferenceParams {
-	var ()
 	return &GetCustomersFindByReferenceParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersFindByReferenceParamsWithHTTPClient creates a new GetCustomersFindByReferenceParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersFindByReferenceParamsWithHTTPClient(client *http.Client) *GetCustomersFindByReferenceParams {
-	var ()
 	return &GetCustomersFindByReferenceParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersFindByReferenceParams contains all the parameters to send to the API endpoint
-for the get customers find by reference operation typically these are written to a http.Request
+/* GetCustomersFindByReferenceParams contains all the parameters to send to the API endpoint
+   for the get customers find by reference operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersFindByReferenceParams struct {
 
-	/*Reference
-	  Your reference for the customer
+	/* Reference.
 
+	   Your reference for the customer
 	*/
 	Reference *string
-	/*RetrieveBillingData*/
+
+	// RetrieveBillingData.
 	RetrieveBillingData *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers find by reference params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersFindByReferenceParams) WithDefaults() *GetCustomersFindByReferenceParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers find by reference params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersFindByReferenceParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers find by reference params
@@ -141,32 +156,34 @@ func (o *GetCustomersFindByReferenceParams) WriteToRequest(r runtime.ClientReque
 
 		// query param reference
 		var qrReference string
+
 		if o.Reference != nil {
 			qrReference = *o.Reference
 		}
 		qReference := qrReference
 		if qReference != "" {
+
 			if err := r.SetQueryParam("reference", qReference); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.RetrieveBillingData != nil {
 
 		// query param retrieveBillingData
 		var qrRetrieveBillingData bool
+
 		if o.RetrieveBillingData != nil {
 			qrRetrieveBillingData = *o.RetrieveBillingData
 		}
 		qRetrieveBillingData := swag.FormatBool(qrRetrieveBillingData)
 		if qRetrieveBillingData != "" {
+
 			if err := r.SetQueryParam("retrieveBillingData", qRetrieveBillingData); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

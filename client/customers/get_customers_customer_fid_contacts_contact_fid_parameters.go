@@ -14,66 +14,100 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersCustomerFidContactsContactFidParams creates a new GetCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidContactsContactFidParams creates a new GetCustomersCustomerFidContactsContactFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidContactsContactFidParams() *GetCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &GetCustomersCustomerFidContactsContactFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidContactsContactFidParamsWithTimeout creates a new GetCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidContactsContactFidParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &GetCustomersCustomerFidContactsContactFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidContactsContactFidParamsWithContext creates a new GetCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidContactsContactFidParamsWithContext(ctx context.Context) *GetCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &GetCustomersCustomerFidContactsContactFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidContactsContactFidParamsWithHTTPClient creates a new GetCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidContactsContactFidParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &GetCustomersCustomerFidContactsContactFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
-for the get customers customer fid contacts contact fid operation typically these are written to a http.Request
+/* GetCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid contacts contact fid operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidContactsContactFidParams struct {
 
-	/*ContactFid
-	  Contact FID to use
+	/* AllAddresses.
 
+	   Load all addresses
+	*/
+	AllAddresses *bool
+
+	/* AllEmails.
+
+	   Load all emails
+	*/
+	AllEmails *bool
+
+	/* AllPhones.
+
+	   Load all phones
+	*/
+	AllPhones *bool
+
+	/* ContactFid.
+
+	   Contact FID to use
 	*/
 	ContactFid string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid contacts contact fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidContactsContactFidParams) WithDefaults() *GetCustomersCustomerFidContactsContactFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid contacts contact fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidContactsContactFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid contacts contact fid params
@@ -109,6 +143,39 @@ func (o *GetCustomersCustomerFidContactsContactFidParams) SetHTTPClient(client *
 	o.HTTPClient = client
 }
 
+// WithAllAddresses adds the allAddresses to the get customers customer fid contacts contact fid params
+func (o *GetCustomersCustomerFidContactsContactFidParams) WithAllAddresses(allAddresses *bool) *GetCustomersCustomerFidContactsContactFidParams {
+	o.SetAllAddresses(allAddresses)
+	return o
+}
+
+// SetAllAddresses adds the allAddresses to the get customers customer fid contacts contact fid params
+func (o *GetCustomersCustomerFidContactsContactFidParams) SetAllAddresses(allAddresses *bool) {
+	o.AllAddresses = allAddresses
+}
+
+// WithAllEmails adds the allEmails to the get customers customer fid contacts contact fid params
+func (o *GetCustomersCustomerFidContactsContactFidParams) WithAllEmails(allEmails *bool) *GetCustomersCustomerFidContactsContactFidParams {
+	o.SetAllEmails(allEmails)
+	return o
+}
+
+// SetAllEmails adds the allEmails to the get customers customer fid contacts contact fid params
+func (o *GetCustomersCustomerFidContactsContactFidParams) SetAllEmails(allEmails *bool) {
+	o.AllEmails = allEmails
+}
+
+// WithAllPhones adds the allPhones to the get customers customer fid contacts contact fid params
+func (o *GetCustomersCustomerFidContactsContactFidParams) WithAllPhones(allPhones *bool) *GetCustomersCustomerFidContactsContactFidParams {
+	o.SetAllPhones(allPhones)
+	return o
+}
+
+// SetAllPhones adds the allPhones to the get customers customer fid contacts contact fid params
+func (o *GetCustomersCustomerFidContactsContactFidParams) SetAllPhones(allPhones *bool) {
+	o.AllPhones = allPhones
+}
+
 // WithContactFid adds the contactFid to the get customers customer fid contacts contact fid params
 func (o *GetCustomersCustomerFidContactsContactFidParams) WithContactFid(contactFid string) *GetCustomersCustomerFidContactsContactFidParams {
 	o.SetContactFid(contactFid)
@@ -138,6 +205,57 @@ func (o *GetCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 		return err
 	}
 	var res []error
+
+	if o.AllAddresses != nil {
+
+		// query param allAddresses
+		var qrAllAddresses bool
+
+		if o.AllAddresses != nil {
+			qrAllAddresses = *o.AllAddresses
+		}
+		qAllAddresses := swag.FormatBool(qrAllAddresses)
+		if qAllAddresses != "" {
+
+			if err := r.SetQueryParam("allAddresses", qAllAddresses); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.AllEmails != nil {
+
+		// query param allEmails
+		var qrAllEmails bool
+
+		if o.AllEmails != nil {
+			qrAllEmails = *o.AllEmails
+		}
+		qAllEmails := swag.FormatBool(qrAllEmails)
+		if qAllEmails != "" {
+
+			if err := r.SetQueryParam("allEmails", qAllEmails); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.AllPhones != nil {
+
+		// query param allPhones
+		var qrAllPhones bool
+
+		if o.AllPhones != nil {
+			qrAllPhones = *o.AllPhones
+		}
+		qAllPhones := swag.FormatBool(qrAllPhones)
+		if qAllPhones != "" {
+
+			if err := r.SetQueryParam("allPhones", qAllPhones); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param contactFid
 	if err := r.SetPathParam("contactFid", o.ContactFid); err != nil {

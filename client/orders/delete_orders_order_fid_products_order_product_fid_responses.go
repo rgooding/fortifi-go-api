@@ -46,7 +46,7 @@ func NewDeleteOrdersOrderFidProductsOrderProductFidOK() *DeleteOrdersOrderFidPro
 	return &DeleteOrdersOrderFidProductsOrderProductFidOK{}
 }
 
-/*DeleteOrdersOrderFidProductsOrderProductFidOK handles this case with default header values.
+/* DeleteOrdersOrderFidProductsOrderProductFidOK describes a response with status code 200, with default header values.
 
 Product removed from the order successfully
 */
@@ -69,7 +69,7 @@ func NewDeleteOrdersOrderFidProductsOrderProductFidDefault(code int) *DeleteOrde
 	}
 }
 
-/*DeleteOrdersOrderFidProductsOrderProductFidDefault handles this case with default header values.
+/* DeleteOrdersOrderFidProductsOrderProductFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) Code() int {
 func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /orders/{orderFid}/products/{orderProductFid}][%d] DeleteOrdersOrderFidProductsOrderProductFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteOrdersOrderFidProductsOrderProductFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

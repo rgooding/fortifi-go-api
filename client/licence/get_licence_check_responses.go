@@ -6,6 +6,7 @@ package licence
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetLicenceCheckOK() *GetLicenceCheckOK {
 	return &GetLicenceCheckOK{}
 }
 
-/*GetLicenceCheckOK handles this case with default header values.
+/* GetLicenceCheckOK describes a response with status code 200, with default header values.
 
 Licence Information
 */
@@ -59,7 +60,6 @@ type GetLicenceCheckOK struct {
 func (o *GetLicenceCheckOK) Error() string {
 	return fmt.Sprintf("[GET /licence/check][%d] getLicenceCheckOK  %+v", 200, o.Payload)
 }
-
 func (o *GetLicenceCheckOK) GetPayload() *GetLicenceCheckOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetLicenceCheckDefault(code int) *GetLicenceCheckDefault {
 	}
 }
 
-/*GetLicenceCheckDefault handles this case with default header values.
+/* GetLicenceCheckDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetLicenceCheckDefault) Code() int {
 func (o *GetLicenceCheckDefault) Error() string {
 	return fmt.Sprintf("[GET /licence/check][%d] GetLicenceCheck default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetLicenceCheckDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetLicenceCheckOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getLicenceCheckOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get licence check o k body based on the context it is used
+func (o *GetLicenceCheckOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetLicenceCheckOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getLicenceCheckOK" + "." + "data")
 			}

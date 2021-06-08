@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -21,12 +23,20 @@ type FinalizeOrderPayload struct {
 	// Payment Method ID
 	MethodID string `json:"methodId,omitempty"`
 
+	// If set to true, this will setup purchases before payment is received
+	SetupPurchaseBeforePayment bool `json:"setupPurchaseBeforePayment,omitempty"`
+
 	// Transaction ID which authorized this order
 	TransactionID string `json:"transactionId,omitempty"`
 }
 
 // Validate validates this finalize order payload
 func (m *FinalizeOrderPayload) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this finalize order payload based on context it is used
+func (m *FinalizeOrderPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

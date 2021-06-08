@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidLoyalOK() *PutCustomersCustomerFidLoyalOK {
 	return &PutCustomersCustomerFidLoyalOK{}
 }
 
-/*PutCustomersCustomerFidLoyalOK handles this case with default header values.
+/* PutCustomersCustomerFidLoyalOK describes a response with status code 200, with default header values.
 
 Customer Loyalty Acknowledged
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidLoyalDefault(code int) *PutCustomersCustomerFidLo
 	}
 }
 
-/*PutCustomersCustomerFidLoyalDefault handles this case with default header values.
+/* PutCustomersCustomerFidLoyalDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidLoyalDefault) Code() int {
 func (o *PutCustomersCustomerFidLoyalDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/loyal][%d] PutCustomersCustomerFidLoyal default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidLoyalDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

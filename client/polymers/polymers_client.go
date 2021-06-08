@@ -23,80 +23,91 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetPolymersPolymerFid(params *GetPolymersPolymerFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPolymersPolymerFidOK, error)
+	GetPolymersParentFidPolymerFid(params *GetPolymersParentFidPolymerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPolymersParentFidPolymerFidOK, error)
 
-	PostPolymers(params *PostPolymersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPolymersOK, error)
+	PostPolymersParentFid(params *PostPolymersParentFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPolymersParentFidOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetPolymersPolymerFid reads a polymer
+  GetPolymersParentFidPolymerFid reads a polymer
 */
-func (a *Client) GetPolymersPolymerFid(params *GetPolymersPolymerFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPolymersPolymerFidOK, error) {
+func (a *Client) GetPolymersParentFidPolymerFid(params *GetPolymersParentFidPolymerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPolymersParentFidPolymerFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPolymersPolymerFidParams()
+		params = NewGetPolymersParentFidPolymerFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetPolymersPolymerFid",
+	op := &runtime.ClientOperation{
+		ID:                 "GetPolymersParentFidPolymerFid",
 		Method:             "GET",
-		PathPattern:        "/polymers/{polymerFid}",
+		PathPattern:        "/polymers/{parentFid}/{polymerFid}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPolymersPolymerFidReader{formats: a.formats},
+		Reader:             &GetPolymersParentFidPolymerFidReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPolymersPolymerFidOK)
+	success, ok := result.(*GetPolymersParentFidPolymerFidOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*GetPolymersPolymerFidDefault)
+	unexpectedSuccess := result.(*GetPolymersParentFidPolymerFidDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 
 /*
-  PostPolymers creates a new polymer
+  PostPolymersParentFid creates a new polymer
 */
-func (a *Client) PostPolymers(params *PostPolymersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPolymersOK, error) {
+func (a *Client) PostPolymersParentFid(params *PostPolymersParentFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPolymersParentFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostPolymersParams()
+		params = NewPostPolymersParentFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PostPolymers",
+	op := &runtime.ClientOperation{
+		ID:                 "PostPolymersParentFid",
 		Method:             "POST",
-		PathPattern:        "/polymers",
+		PathPattern:        "/polymers/{parentFid}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostPolymersReader{formats: a.formats},
+		Reader:             &PostPolymersParentFidReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostPolymersOK)
+	success, ok := result.(*PostPolymersParentFidOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
-	unexpectedSuccess := result.(*PostPolymersDefault)
+	unexpectedSuccess := result.(*PostPolymersParentFidDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

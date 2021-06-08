@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetEntitiesEntityFidPropertiesValuesPropertyNameParams creates a new GetEntitiesEntityFidPropertiesValuesPropertyNameParams object
-// with the default values initialized.
+// NewGetEntitiesEntityFidPropertiesValuesPropertyNameParams creates a new GetEntitiesEntityFidPropertiesValuesPropertyNameParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetEntitiesEntityFidPropertiesValuesPropertyNameParams() *GetEntitiesEntityFidPropertiesValuesPropertyNameParams {
-	var ()
 	return &GetEntitiesEntityFidPropertiesValuesPropertyNameParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetEntitiesEntityFidPropertiesValuesPropertyNameParamsWithTimeout creates a new GetEntitiesEntityFidPropertiesValuesPropertyNameParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetEntitiesEntityFidPropertiesValuesPropertyNameParamsWithTimeout(timeout time.Duration) *GetEntitiesEntityFidPropertiesValuesPropertyNameParams {
-	var ()
 	return &GetEntitiesEntityFidPropertiesValuesPropertyNameParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetEntitiesEntityFidPropertiesValuesPropertyNameParamsWithContext creates a new GetEntitiesEntityFidPropertiesValuesPropertyNameParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetEntitiesEntityFidPropertiesValuesPropertyNameParamsWithContext(ctx context.Context) *GetEntitiesEntityFidPropertiesValuesPropertyNameParams {
-	var ()
 	return &GetEntitiesEntityFidPropertiesValuesPropertyNameParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetEntitiesEntityFidPropertiesValuesPropertyNameParamsWithHTTPClient creates a new GetEntitiesEntityFidPropertiesValuesPropertyNameParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetEntitiesEntityFidPropertiesValuesPropertyNameParamsWithHTTPClient(client *http.Client) *GetEntitiesEntityFidPropertiesValuesPropertyNameParams {
-	var ()
 	return &GetEntitiesEntityFidPropertiesValuesPropertyNameParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetEntitiesEntityFidPropertiesValuesPropertyNameParams contains all the parameters to send to the API endpoint
-for the get entities entity fid properties values property name operation typically these are written to a http.Request
+/* GetEntitiesEntityFidPropertiesValuesPropertyNameParams contains all the parameters to send to the API endpoint
+   for the get entities entity fid properties values property name operation.
+
+   Typically these are written to a http.Request.
 */
 type GetEntitiesEntityFidPropertiesValuesPropertyNameParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*PropertyName
-	  Property Name
 
+	/* PropertyName.
+
+	   Property Name
 	*/
 	PropertyName string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get entities entity fid properties values property name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameParams) WithDefaults() *GetEntitiesEntityFidPropertiesValuesPropertyNameParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get entities entity fid properties values property name params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get entities entity fid properties values property name params

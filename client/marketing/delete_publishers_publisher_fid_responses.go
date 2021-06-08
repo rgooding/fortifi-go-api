@@ -46,7 +46,7 @@ func NewDeletePublishersPublisherFidOK() *DeletePublishersPublisherFidOK {
 	return &DeletePublishersPublisherFidOK{}
 }
 
-/*DeletePublishersPublisherFidOK handles this case with default header values.
+/* DeletePublishersPublisherFidOK describes a response with status code 200, with default header values.
 
 Publisher Deleted
 */
@@ -69,7 +69,7 @@ func NewDeletePublishersPublisherFidDefault(code int) *DeletePublishersPublisher
 	}
 }
 
-/*DeletePublishersPublisherFidDefault handles this case with default header values.
+/* DeletePublishersPublisherFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeletePublishersPublisherFidDefault) Code() int {
 func (o *DeletePublishersPublisherFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /publishers/{publisherFid}][%d] DeletePublishersPublisherFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeletePublishersPublisherFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -18,56 +18,70 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostUploadUploadURLParams creates a new PostUploadUploadURLParams object
-// with the default values initialized.
+// NewPostUploadUploadURLParams creates a new PostUploadUploadURLParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostUploadUploadURLParams() *PostUploadUploadURLParams {
-	var ()
 	return &PostUploadUploadURLParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostUploadUploadURLParamsWithTimeout creates a new PostUploadUploadURLParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostUploadUploadURLParamsWithTimeout(timeout time.Duration) *PostUploadUploadURLParams {
-	var ()
 	return &PostUploadUploadURLParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostUploadUploadURLParamsWithContext creates a new PostUploadUploadURLParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostUploadUploadURLParamsWithContext(ctx context.Context) *PostUploadUploadURLParams {
-	var ()
 	return &PostUploadUploadURLParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostUploadUploadURLParamsWithHTTPClient creates a new PostUploadUploadURLParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostUploadUploadURLParamsWithHTTPClient(client *http.Client) *PostUploadUploadURLParams {
-	var ()
 	return &PostUploadUploadURLParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostUploadUploadURLParams contains all the parameters to send to the API endpoint
-for the post upload upload URL operation typically these are written to a http.Request
+/* PostUploadUploadURLParams contains all the parameters to send to the API endpoint
+   for the post upload upload URL operation.
+
+   Typically these are written to a http.Request.
 */
 type PostUploadUploadURLParams struct {
 
-	/*Payload*/
+	// Payload.
 	Payload *models.RequestUploadURLPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post upload upload URL params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostUploadUploadURLParams) WithDefaults() *PostUploadUploadURLParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post upload upload URL params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostUploadUploadURLParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post upload upload URL params
@@ -121,7 +135,6 @@ func (o *PostUploadUploadURLParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

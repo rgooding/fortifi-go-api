@@ -17,64 +17,79 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetAdvertisersParams creates a new GetAdvertisersParams object
-// with the default values initialized.
+// NewGetAdvertisersParams creates a new GetAdvertisersParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetAdvertisersParams() *GetAdvertisersParams {
-	var ()
 	return &GetAdvertisersParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAdvertisersParamsWithTimeout creates a new GetAdvertisersParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetAdvertisersParamsWithTimeout(timeout time.Duration) *GetAdvertisersParams {
-	var ()
 	return &GetAdvertisersParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetAdvertisersParamsWithContext creates a new GetAdvertisersParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetAdvertisersParamsWithContext(ctx context.Context) *GetAdvertisersParams {
-	var ()
 	return &GetAdvertisersParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetAdvertisersParamsWithHTTPClient creates a new GetAdvertisersParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetAdvertisersParamsWithHTTPClient(client *http.Client) *GetAdvertisersParams {
-	var ()
 	return &GetAdvertisersParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetAdvertisersParams contains all the parameters to send to the API endpoint
-for the get advertisers operation typically these are written to a http.Request
+/* GetAdvertisersParams contains all the parameters to send to the API endpoint
+   for the get advertisers operation.
+
+   Typically these are written to a http.Request.
 */
 type GetAdvertisersParams struct {
 
-	/*Limit
-	  Maximum number of records per page (default: 20)
+	/* Limit.
 
+	   Maximum number of records per page (default: 20)
 	*/
 	Limit *int64
-	/*Page
-	  Page number (default: 1)
 
+	/* Page.
+
+	   Page number (default: 1)
 	*/
 	Page *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get advertisers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAdvertisersParams) WithDefaults() *GetAdvertisersParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get advertisers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAdvertisersParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get advertisers params
@@ -144,32 +159,34 @@ func (o *GetAdvertisersParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 
 		// query param limit
 		var qrLimit int64
+
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
+
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Page != nil {
 
 		// query param page
 		var qrPage int64
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt64(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

@@ -18,58 +18,73 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostOrdersOrderFidProductsParams creates a new PostOrdersOrderFidProductsParams object
-// with the default values initialized.
+// NewPostOrdersOrderFidProductsParams creates a new PostOrdersOrderFidProductsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostOrdersOrderFidProductsParams() *PostOrdersOrderFidProductsParams {
-	var ()
 	return &PostOrdersOrderFidProductsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostOrdersOrderFidProductsParamsWithTimeout creates a new PostOrdersOrderFidProductsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostOrdersOrderFidProductsParamsWithTimeout(timeout time.Duration) *PostOrdersOrderFidProductsParams {
-	var ()
 	return &PostOrdersOrderFidProductsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostOrdersOrderFidProductsParamsWithContext creates a new PostOrdersOrderFidProductsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostOrdersOrderFidProductsParamsWithContext(ctx context.Context) *PostOrdersOrderFidProductsParams {
-	var ()
 	return &PostOrdersOrderFidProductsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostOrdersOrderFidProductsParamsWithHTTPClient creates a new PostOrdersOrderFidProductsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostOrdersOrderFidProductsParamsWithHTTPClient(client *http.Client) *PostOrdersOrderFidProductsParams {
-	var ()
 	return &PostOrdersOrderFidProductsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostOrdersOrderFidProductsParams contains all the parameters to send to the API endpoint
-for the post orders order fid products operation typically these are written to a http.Request
+/* PostOrdersOrderFidProductsParams contains all the parameters to send to the API endpoint
+   for the post orders order fid products operation.
+
+   Typically these are written to a http.Request.
 */
 type PostOrdersOrderFidProductsParams struct {
 
-	/*OrderFid*/
+	// OrderFid.
 	OrderFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.AddOrderProductsPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post orders order fid products params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostOrdersOrderFidProductsParams) WithDefaults() *PostOrdersOrderFidProductsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post orders order fid products params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostOrdersOrderFidProductsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post orders order fid products params
@@ -139,7 +154,6 @@ func (o *PostOrdersOrderFidProductsParams) WriteToRequest(r runtime.ClientReques
 	if err := r.SetPathParam("orderFid", o.OrderFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

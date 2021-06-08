@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK describes a response with status code 200, with default header values.
 
 Calculated result of modification
 */
@@ -59,7 +60,6 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/calculateModification][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK  %+v", 200, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificatio
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/calculateModification][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificatio
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this put customers customer fid subscriptions subscription fid calculate modification o k body based on the context it is used
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationOK" + "." + "data")
 			}

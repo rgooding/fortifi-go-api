@@ -18,61 +18,76 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutEntitiesEntityFidPropertiesParams creates a new PutEntitiesEntityFidPropertiesParams object
-// with the default values initialized.
+// NewPutEntitiesEntityFidPropertiesParams creates a new PutEntitiesEntityFidPropertiesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutEntitiesEntityFidPropertiesParams() *PutEntitiesEntityFidPropertiesParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutEntitiesEntityFidPropertiesParamsWithTimeout creates a new PutEntitiesEntityFidPropertiesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutEntitiesEntityFidPropertiesParamsWithTimeout(timeout time.Duration) *PutEntitiesEntityFidPropertiesParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutEntitiesEntityFidPropertiesParamsWithContext creates a new PutEntitiesEntityFidPropertiesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutEntitiesEntityFidPropertiesParamsWithContext(ctx context.Context) *PutEntitiesEntityFidPropertiesParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutEntitiesEntityFidPropertiesParamsWithHTTPClient creates a new PutEntitiesEntityFidPropertiesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutEntitiesEntityFidPropertiesParamsWithHTTPClient(client *http.Client) *PutEntitiesEntityFidPropertiesParams {
-	var ()
 	return &PutEntitiesEntityFidPropertiesParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutEntitiesEntityFidPropertiesParams contains all the parameters to send to the API endpoint
-for the put entities entity fid properties operation typically these are written to a http.Request
+/* PutEntitiesEntityFidPropertiesParams contains all the parameters to send to the API endpoint
+   for the put entities entity fid properties operation.
+
+   Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidPropertiesParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.PropertyBulkSetPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put entities entity fid properties params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutEntitiesEntityFidPropertiesParams) WithDefaults() *PutEntitiesEntityFidPropertiesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put entities entity fid properties params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutEntitiesEntityFidPropertiesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put entities entity fid properties params
@@ -142,7 +157,6 @@ func (o *PutEntitiesEntityFidPropertiesParams) WriteToRequest(r runtime.ClientRe
 	if err := r.SetPathParam("entityFid", o.EntityFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

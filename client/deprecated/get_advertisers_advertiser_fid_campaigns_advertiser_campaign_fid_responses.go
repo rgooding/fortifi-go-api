@@ -6,6 +6,7 @@ package deprecated
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK() *GetAdvert
 	return &GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK{}
 }
 
-/*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK handles this case with default header values.
+/* GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK describes a response with status code 200, with default header values.
 
 Loaded Campaign
 */
@@ -59,7 +60,6 @@ type GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK struct {
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK  %+v", 200, o.Payload)
 }
-
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) GetPayload() *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault(code in
 	}
 }
 
-/*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault handles this case with default header values.
+/* GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) Code(
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody) valida
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get advertisers advertiser fid campaigns advertiser campaign fid o k body based on the context it is used
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK" + "." + "data")
 			}

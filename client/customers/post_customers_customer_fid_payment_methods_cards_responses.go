@@ -46,7 +46,7 @@ func NewPostCustomersCustomerFidPaymentMethodsCardsOK() *PostCustomersCustomerFi
 	return &PostCustomersCustomerFidPaymentMethodsCardsOK{}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsCardsOK handles this case with default header values.
+/* PostCustomersCustomerFidPaymentMethodsCardsOK describes a response with status code 200, with default header values.
 
 Credit card added to the customers account
 */
@@ -57,7 +57,6 @@ type PostCustomersCustomerFidPaymentMethodsCardsOK struct {
 func (o *PostCustomersCustomerFidPaymentMethodsCardsOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/cards][%d] postCustomersCustomerFidPaymentMethodsCardsOK  %+v", 200, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidPaymentMethodsCardsOK) GetPayload() *models.Fid {
 	return o.Payload
 }
@@ -81,7 +80,7 @@ func NewPostCustomersCustomerFidPaymentMethodsCardsDefault(code int) *PostCustom
 	}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsCardsDefault handles this case with default header values.
+/* PostCustomersCustomerFidPaymentMethodsCardsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -99,7 +98,6 @@ func (o *PostCustomersCustomerFidPaymentMethodsCardsDefault) Code() int {
 func (o *PostCustomersCustomerFidPaymentMethodsCardsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/cards][%d] PostCustomersCustomerFidPaymentMethodsCards default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidPaymentMethodsCardsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

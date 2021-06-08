@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPutCustomersCustomerFidChargebacksChargebackFidOK() *PutCustomersCustome
 	return &PutCustomersCustomerFidChargebacksChargebackFidOK{}
 }
 
-/*PutCustomersCustomerFidChargebacksChargebackFidOK handles this case with default header values.
+/* PutCustomersCustomerFidChargebacksChargebackFidOK describes a response with status code 200, with default header values.
 
 Chargeback Actioned
 */
@@ -59,7 +60,6 @@ type PutCustomersCustomerFidChargebacksChargebackFidOK struct {
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] putCustomersCustomerFidChargebacksChargebackFidOK  %+v", 200, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) GetPayload() *PutCustomersCustomerFidChargebacksChargebackFidOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPutCustomersCustomerFidChargebacksChargebackFidDefault(code int) *PutCus
 	}
 }
 
-/*PutCustomersCustomerFidChargebacksChargebackFidDefault handles this case with default header values.
+/* PutCustomersCustomerFidChargebacksChargebackFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Code() int {
 func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] PutCustomersCustomerFidChargebacksChargebackFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) validateData(for
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this put customers customer fid chargebacks chargeback fid o k body based on the context it is used
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
 			}

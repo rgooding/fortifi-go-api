@@ -23,41 +23,52 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFidOffersOfferFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteOrdersOrderFidOffersOfferFidOK, error)
+	DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFidOffersOfferFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrdersOrderFidOffersOfferFidOK, error)
 
-	DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrdersOrderFidProductsOrderProductFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteOrdersOrderFidProductsOrderProductFidOK, error)
+	DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrdersOrderFidProductsOrderProductFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrdersOrderFidProductsOrderProductFidOK, error)
 
-	GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidOK, error)
+	GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidOK, error)
 
-	GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidFraudScanOK, error)
+	GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidFraudScanOK, error)
 
-	GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidProductsOK, error)
+	GetOrdersOrderFidItems(params *GetOrdersOrderFidItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidItemsOK, error)
 
-	PostOrders(params *PostOrdersParams, authInfo runtime.ClientAuthInfoWriter) (*PostOrdersOK, error)
+	GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidProductsOK, error)
 
-	PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams, authInfo runtime.ClientAuthInfoWriter) (*PostOrdersOrderFidOffersOK, error)
+	PostOrders(params *PostOrdersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOK, error)
 
-	PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*PostOrdersOrderFidProductsOK, error)
+	PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOrderFidOffersOK, error)
 
-	PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidCancelOK, error)
+	PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOrderFidProductsOK, error)
 
-	PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmCardOK, error)
+	PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidCancelOK, error)
 
-	PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfirmNewCardParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmNewCardOK, error)
+	PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmCardOK, error)
 
-	PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirmPayPalParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmPayPalOK, error)
+	PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfirmNewCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmNewCardOK, error)
 
-	PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizeParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidFinalizeOK, error)
+	PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirmPayPalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmPayPalOK, error)
 
-	PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidProductsOK, error)
+	PutOrdersOrderFidExternalReference(params *PutOrdersOrderFidExternalReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidExternalReferenceOK, error)
 
-	PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrdersOrderFidProductsOrderProductFidQuantityParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidProductsOrderProductFidQuantityOK, error)
+	PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidFinalizeOK, error)
 
-	PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetChargeIDParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidSetChargeIDOK, error)
+	PutOrdersOrderFidItemsProductFidOrderItemFid(params *PutOrdersOrderFidItemsProductFidOrderItemFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidItemsProductFidOrderItemFidOK, error)
 
-	PutOrdersOrderFidVerify(params *PutOrdersOrderFidVerifyParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidVerifyOK, error)
+	PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOK, error)
+
+	PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrdersOrderFidProductsOrderProductFidQuantityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOrderProductFidQuantityOK, error)
+
+	PutOrdersOrderFidProductsOrderProductFidSetInitialTerm(params *PutOrdersOrderFidProductsOrderProductFidSetInitialTermParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK, error)
+
+	PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetChargeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidSetChargeIDOK, error)
+
+	PutOrdersOrderFidVerify(params *PutOrdersOrderFidVerifyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidVerifyOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -65,13 +76,12 @@ type ClientService interface {
 /*
   DeleteOrdersOrderFidOffersOfferFid removes an offer from an order
 */
-func (a *Client) DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFidOffersOfferFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteOrdersOrderFidOffersOfferFidOK, error) {
+func (a *Client) DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFidOffersOfferFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrdersOrderFidOffersOfferFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteOrdersOrderFidOffersOfferFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteOrdersOrderFidOffersOfferFid",
 		Method:             "DELETE",
 		PathPattern:        "/orders/{orderFid}/offers/{offerFid}",
@@ -83,7 +93,12 @@ func (a *Client) DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFid
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -99,13 +114,12 @@ func (a *Client) DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFid
 /*
   DeleteOrdersOrderFidProductsOrderProductFid removes a product from an order
 */
-func (a *Client) DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrdersOrderFidProductsOrderProductFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteOrdersOrderFidProductsOrderProductFidOK, error) {
+func (a *Client) DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrdersOrderFidProductsOrderProductFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrdersOrderFidProductsOrderProductFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteOrdersOrderFidProductsOrderProductFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteOrdersOrderFidProductsOrderProductFid",
 		Method:             "DELETE",
 		PathPattern:        "/orders/{orderFid}/products/{orderProductFid}",
@@ -117,7 +131,12 @@ func (a *Client) DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrder
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -133,13 +152,12 @@ func (a *Client) DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrder
 /*
   GetOrdersOrderFid retrieves an order
 */
-func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidOK, error) {
+func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrdersOrderFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetOrdersOrderFid",
 		Method:             "GET",
 		PathPattern:        "/orders/{orderFid}",
@@ -151,7 +169,12 @@ func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo run
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -167,13 +190,12 @@ func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo run
 /*
   GetOrdersOrderFidFraudScan retrieves fraud scan
 */
-func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidFraudScanOK, error) {
+func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidFraudScanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrdersOrderFidFraudScanParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetOrdersOrderFidFraudScan",
 		Method:             "GET",
 		PathPattern:        "/orders/{orderFid}/fraudScan",
@@ -185,7 +207,12 @@ func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -199,15 +226,52 @@ func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanPa
 }
 
 /*
+  GetOrdersOrderFidItems lists an orders items
+*/
+func (a *Client) GetOrdersOrderFidItems(params *GetOrdersOrderFidItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidItemsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetOrdersOrderFidItemsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetOrdersOrderFidItems",
+		Method:             "GET",
+		PathPattern:        "/orders/{orderFid}/items",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetOrdersOrderFidItemsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetOrdersOrderFidItemsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetOrdersOrderFidItemsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   GetOrdersOrderFidProducts retrieves order products
 */
-func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrdersOrderFidProductsOK, error) {
+func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidProductsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrdersOrderFidProductsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetOrdersOrderFidProducts",
 		Method:             "GET",
 		PathPattern:        "/orders/{orderFid}/products",
@@ -219,7 +283,12 @@ func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -235,13 +304,12 @@ func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsPara
 /*
   PostOrders creates a new order
 */
-func (a *Client) PostOrders(params *PostOrdersParams, authInfo runtime.ClientAuthInfoWriter) (*PostOrdersOK, error) {
+func (a *Client) PostOrders(params *PostOrdersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostOrdersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostOrders",
 		Method:             "POST",
 		PathPattern:        "/orders",
@@ -253,7 +321,12 @@ func (a *Client) PostOrders(params *PostOrdersParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -269,13 +342,12 @@ func (a *Client) PostOrders(params *PostOrdersParams, authInfo runtime.ClientAut
 /*
   PostOrdersOrderFidOffers adds an offer to an order
 */
-func (a *Client) PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams, authInfo runtime.ClientAuthInfoWriter) (*PostOrdersOrderFidOffersOK, error) {
+func (a *Client) PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOrderFidOffersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostOrdersOrderFidOffersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostOrdersOrderFidOffers",
 		Method:             "POST",
 		PathPattern:        "/orders/{orderFid}/offers",
@@ -287,7 +359,12 @@ func (a *Client) PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -303,13 +380,12 @@ func (a *Client) PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams
 /*
   PostOrdersOrderFidProducts adds a product to an order
 */
-func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*PostOrdersOrderFidProductsOK, error) {
+func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOrderFidProductsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostOrdersOrderFidProductsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostOrdersOrderFidProducts",
 		Method:             "POST",
 		PathPattern:        "/orders/{orderFid}/products",
@@ -321,7 +397,12 @@ func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -337,13 +418,12 @@ func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsPa
 /*
   PutOrdersOrderFidCancel cancels an order
 */
-func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidCancelOK, error) {
+func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidCancelOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidCancelParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidCancel",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/cancel",
@@ -355,7 +435,12 @@ func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, 
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -371,13 +456,12 @@ func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, 
 /*
   PutOrdersOrderFidConfirmCard confirms an order authorize the payment
 */
-func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmCardOK, error) {
+func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmCardOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidConfirmCardParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidConfirmCard",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/confirmCard",
@@ -389,7 +473,12 @@ func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -405,13 +494,12 @@ func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCa
 /*
   PutOrdersOrderFidConfirmNewCard confirms an order with a new card authorize the payment
 */
-func (a *Client) PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfirmNewCardParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmNewCardOK, error) {
+func (a *Client) PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfirmNewCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmNewCardOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidConfirmNewCardParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidConfirmNewCard",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/confirmNewCard",
@@ -423,7 +511,12 @@ func (a *Client) PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfir
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -439,13 +532,12 @@ func (a *Client) PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfir
 /*
   PutOrdersOrderFidConfirmPayPal confirms an order authorize the payment
 */
-func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirmPayPalParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidConfirmPayPalOK, error) {
+func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirmPayPalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmPayPalOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidConfirmPayPalParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidConfirmPayPal",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/confirmPayPal",
@@ -457,7 +549,12 @@ func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirm
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -471,15 +568,52 @@ func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirm
 }
 
 /*
+  PutOrdersOrderFidExternalReference sets the external reference on an order
+*/
+func (a *Client) PutOrdersOrderFidExternalReference(params *PutOrdersOrderFidExternalReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidExternalReferenceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutOrdersOrderFidExternalReferenceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutOrdersOrderFidExternalReference",
+		Method:             "PUT",
+		PathPattern:        "/orders/{orderFid}/externalReference",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutOrdersOrderFidExternalReferenceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutOrdersOrderFidExternalReferenceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutOrdersOrderFidExternalReferenceDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutOrdersOrderFidFinalize marks an order as finalized
 */
-func (a *Client) PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizeParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidFinalizeOK, error) {
+func (a *Client) PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidFinalizeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidFinalizeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidFinalize",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/finalize",
@@ -491,7 +625,12 @@ func (a *Client) PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizePara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -505,15 +644,52 @@ func (a *Client) PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizePara
 }
 
 /*
+  PutOrdersOrderFidItemsProductFidOrderItemFid updates an order item
+*/
+func (a *Client) PutOrdersOrderFidItemsProductFidOrderItemFid(params *PutOrdersOrderFidItemsProductFidOrderItemFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidItemsProductFidOrderItemFidOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutOrdersOrderFidItemsProductFidOrderItemFidParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutOrdersOrderFidItemsProductFidOrderItemFid",
+		Method:             "PUT",
+		PathPattern:        "/orders/{orderFid}/items/{productFid}/{orderItemFid}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutOrdersOrderFidItemsProductFidOrderItemFidReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutOrdersOrderFidItemsProductFidOrderItemFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutOrdersOrderFidItemsProductFidOrderItemFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutOrdersOrderFidProducts sets the products on an order
 */
-func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidProductsOK, error) {
+func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidProductsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidProducts",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/products",
@@ -525,7 +701,12 @@ func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -541,13 +722,12 @@ func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsPara
 /*
   PutOrdersOrderFidProductsOrderProductFidQuantity sets the quantity of a product on an order
 */
-func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrdersOrderFidProductsOrderProductFidQuantityParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidProductsOrderProductFidQuantityOK, error) {
+func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrdersOrderFidProductsOrderProductFidQuantityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOrderProductFidQuantityOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidProductsOrderProductFidQuantityParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidProductsOrderProductFidQuantity",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/products/{orderProductFid}/quantity",
@@ -559,7 +739,12 @@ func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrd
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -573,15 +758,52 @@ func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrd
 }
 
 /*
+  PutOrdersOrderFidProductsOrderProductFidSetInitialTerm sets the initial term of a product on an order
+*/
+func (a *Client) PutOrdersOrderFidProductsOrderProductFidSetInitialTerm(params *PutOrdersOrderFidProductsOrderProductFidSetInitialTermParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutOrdersOrderFidProductsOrderProductFidSetInitialTermParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutOrdersOrderFidProductsOrderProductFidSetInitialTerm",
+		Method:             "PUT",
+		PathPattern:        "/orders/{orderFid}/products/{orderProductFid}/setInitialTerm",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutOrdersOrderFidProductsOrderProductFidSetInitialTermReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
   PutOrdersOrderFidSetChargeID sets a charge hive com charge ID on an order
 */
-func (a *Client) PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetChargeIDParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidSetChargeIDOK, error) {
+func (a *Client) PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetChargeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidSetChargeIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidSetChargeIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidSetChargeID",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/setChargeId",
@@ -593,7 +815,12 @@ func (a *Client) PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetCharge
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -609,13 +836,12 @@ func (a *Client) PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetCharge
 /*
   PutOrdersOrderFidVerify verifies an order returning any security urls
 */
-func (a *Client) PutOrdersOrderFidVerify(params *PutOrdersOrderFidVerifyParams, authInfo runtime.ClientAuthInfoWriter) (*PutOrdersOrderFidVerifyOK, error) {
+func (a *Client) PutOrdersOrderFidVerify(params *PutOrdersOrderFidVerifyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidVerifyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutOrdersOrderFidVerifyParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutOrdersOrderFidVerify",
 		Method:             "PUT",
 		PathPattern:        "/orders/{orderFid}/verify",
@@ -627,7 +853,12 @@ func (a *Client) PutOrdersOrderFidVerify(params *PutOrdersOrderFidVerifyParams, 
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -153,6 +155,9 @@ type Subscription struct {
 	// sku fid
 	SkuFid string `json:"skuFid,omitempty"`
 
+	// The FID of the object that created this subscription (most commonly, order fid)
+	SourceFid string `json:"sourceFid,omitempty"`
+
 	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
 	// Format: date-time
 	StartDate strfmt.DateTime `json:"startDate,omitempty"`
@@ -278,6 +283,8 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 
 		SkuFid string `json:"skuFid,omitempty"`
 
+		SourceFid string `json:"sourceFid,omitempty"`
+
 		StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
 		Status PurchaseStatus `json:"status,omitempty"`
@@ -381,6 +388,8 @@ func (m *Subscription) UnmarshalJSON(raw []byte) error {
 	m.ShouldSuspend = dataAO1.ShouldSuspend
 
 	m.SkuFid = dataAO1.SkuFid
+
+	m.SourceFid = dataAO1.SourceFid
 
 	m.StartDate = dataAO1.StartDate
 
@@ -495,6 +504,8 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 
 		SkuFid string `json:"skuFid,omitempty"`
 
+		SourceFid string `json:"sourceFid,omitempty"`
+
 		StartDate strfmt.DateTime `json:"startDate,omitempty"`
 
 		Status PurchaseStatus `json:"status,omitempty"`
@@ -595,6 +606,8 @@ func (m Subscription) MarshalJSON() ([]byte, error) {
 	dataAO1.ShouldSuspend = m.ShouldSuspend
 
 	dataAO1.SkuFid = m.SkuFid
+
+	dataAO1.SourceFid = m.SourceFid
 
 	dataAO1.StartDate = m.StartDate
 
@@ -959,6 +972,37 @@ func (m *Subscription) validateTrialStartDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("trialStartDate", "body", "date-time", m.TrialStartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this subscription based on the context it is used
+func (m *Subscription) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Subscription) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Status.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		}
 		return err
 	}
 

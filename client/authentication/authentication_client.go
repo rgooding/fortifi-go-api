@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter) (*GetIntegrationsVerifyUserOK, error)
+	GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIntegrationsVerifyUserOK, error)
 
-	GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter) (*GetMeOK, error)
+	GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeOK, error)
 
-	GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrganisationOK, error)
+	GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganisationOK, error)
 
-	GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetServiceAuthTokenOK, error)
+	GetServiceAuthToken(params *GetServiceAuthTokenParams, opts ...ClientOption) (*GetServiceAuthTokenOK, error)
 
-	GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter) (*GetVersionOK, error)
+	GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVersionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 /*
   GetIntegrationsVerifyUser verifies a user
 */
-func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter) (*GetIntegrationsVerifyUserOK, error) {
+func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIntegrationsVerifyUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIntegrationsVerifyUserParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetIntegrationsVerifyUser",
 		Method:             "GET",
 		PathPattern:        "/integrations/verifyUser",
@@ -59,7 +61,12 @@ func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -78,13 +85,12 @@ func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserPara
   Retrieve information about the current connected user (you)
 
 */
-func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter) (*GetMeOK, error) {
+func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMe",
 		Method:             "GET",
 		PathPattern:        "/me",
@@ -96,7 +102,12 @@ func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWrite
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +126,12 @@ func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWrite
   Retrieve information about the current organisation
 
 */
-func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter) (*GetOrganisationOK, error) {
+func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganisationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrganisationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getOrganisation",
 		Method:             "GET",
 		PathPattern:        "/organisation",
@@ -133,7 +143,12 @@ func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -152,13 +167,12 @@ func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime
   User service account credentials to retrieve an API token
 
 */
-func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetServiceAuthTokenOK, error) {
+func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams, opts ...ClientOption) (*GetServiceAuthTokenOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetServiceAuthTokenParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getServiceAuthToken",
 		Method:             "POST",
 		PathPattern:        "/svcauth/verify",
@@ -169,7 +183,12 @@ func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetSer
 		Reader:             &GetServiceAuthTokenReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -188,13 +207,12 @@ func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams) (*GetSer
   Retrieve the current version of the Fortifi api
 
 */
-func (a *Client) GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter) (*GetVersionOK, error) {
+func (a *Client) GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVersionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVersionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVersion",
 		Method:             "GET",
 		PathPattern:        "/version",
@@ -206,7 +224,12 @@ func (a *Client) GetVersion(params *GetVersionParams, authInfo runtime.ClientAut
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

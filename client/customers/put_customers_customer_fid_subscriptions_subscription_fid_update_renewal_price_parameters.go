@@ -16,66 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid update renewal price operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid update renewal price operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*PriceFid*/
-	PriceFid string
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// PriceFid.
+	PriceFid string
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid update renewal price params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid update renewal price params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid update renewal price params

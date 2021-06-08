@@ -46,7 +46,7 @@ func NewDeletePublishersPublisherFidApprovedOK() *DeletePublishersPublisherFidAp
 	return &DeletePublishersPublisherFidApprovedOK{}
 }
 
-/*DeletePublishersPublisherFidApprovedOK handles this case with default header values.
+/* DeletePublishersPublisherFidApprovedOK describes a response with status code 200, with default header values.
 
 Publisher no longer approved
 */
@@ -69,7 +69,7 @@ func NewDeletePublishersPublisherFidApprovedDefault(code int) *DeletePublishersP
 	}
 }
 
-/*DeletePublishersPublisherFidApprovedDefault handles this case with default header values.
+/* DeletePublishersPublisherFidApprovedDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeletePublishersPublisherFidApprovedDefault) Code() int {
 func (o *DeletePublishersPublisherFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[DELETE /publishers/{publisherFid}/approved][%d] DeletePublishersPublisherFidApproved default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeletePublishersPublisherFidApprovedDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

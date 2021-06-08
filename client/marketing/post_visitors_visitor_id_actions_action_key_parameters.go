@@ -18,62 +18,63 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostVisitorsVisitorIDActionsActionKeyParams creates a new PostVisitorsVisitorIDActionsActionKeyParams object
-// with the default values initialized.
+// NewPostVisitorsVisitorIDActionsActionKeyParams creates a new PostVisitorsVisitorIDActionsActionKeyParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostVisitorsVisitorIDActionsActionKeyParams() *PostVisitorsVisitorIDActionsActionKeyParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostVisitorsVisitorIDActionsActionKeyParamsWithTimeout creates a new PostVisitorsVisitorIDActionsActionKeyParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostVisitorsVisitorIDActionsActionKeyParamsWithTimeout(timeout time.Duration) *PostVisitorsVisitorIDActionsActionKeyParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostVisitorsVisitorIDActionsActionKeyParamsWithContext creates a new PostVisitorsVisitorIDActionsActionKeyParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostVisitorsVisitorIDActionsActionKeyParamsWithContext(ctx context.Context) *PostVisitorsVisitorIDActionsActionKeyParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostVisitorsVisitorIDActionsActionKeyParamsWithHTTPClient creates a new PostVisitorsVisitorIDActionsActionKeyParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostVisitorsVisitorIDActionsActionKeyParamsWithHTTPClient(client *http.Client) *PostVisitorsVisitorIDActionsActionKeyParams {
-	var ()
 	return &PostVisitorsVisitorIDActionsActionKeyParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostVisitorsVisitorIDActionsActionKeyParams contains all the parameters to send to the API endpoint
-for the post visitors visitor ID actions action key operation typically these are written to a http.Request
+/* PostVisitorsVisitorIDActionsActionKeyParams contains all the parameters to send to the API endpoint
+   for the post visitors visitor ID actions action key operation.
+
+   Typically these are written to a http.Request.
 */
 type PostVisitorsVisitorIDActionsActionKeyParams struct {
 
-	/*ActionKey
-	  Action key of the action to track e.g. lead
+	/* ActionKey.
 
+	   Action key of the action to track e.g. lead
 	*/
 	ActionKey string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.PostActionPayload
-	/*VisitorID
-	  'Visitor ID from the cookie.
+
+	/* VisitorID.
+
+	     'Visitor ID from the cookie.
 	If providing a pre-linked external reference, should be set to 'byref'.
 	If no visitor ID is known, client IP should be provided and visitorId should be set to 'unknown''
-
 
 	*/
 	VisitorID string
@@ -81,6 +82,21 @@ type PostVisitorsVisitorIDActionsActionKeyParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post visitors visitor ID actions action key params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostVisitorsVisitorIDActionsActionKeyParams) WithDefaults() *PostVisitorsVisitorIDActionsActionKeyParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post visitors visitor ID actions action key params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostVisitorsVisitorIDActionsActionKeyParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post visitors visitor ID actions action key params
@@ -161,7 +177,6 @@ func (o *PostVisitorsVisitorIDActionsActionKeyParams) WriteToRequest(r runtime.C
 	if err := r.SetPathParam("actionKey", o.ActionKey); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -22,6 +24,9 @@ type PaymentAccount struct {
 
 	// account type
 	AccountType PaymentAccountType `json:"accountType,omitempty"`
+
+	// is primary
+	IsPrimary bool `json:"isPrimary,omitempty"`
 
 	// payment method
 	PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
@@ -45,6 +50,8 @@ func (m *PaymentAccount) UnmarshalJSON(raw []byte) error {
 
 		AccountType PaymentAccountType `json:"accountType,omitempty"`
 
+		IsPrimary bool `json:"isPrimary,omitempty"`
+
 		PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
 
 		PaymentMode PaymentMode `json:"paymentMode,omitempty"`
@@ -56,6 +63,8 @@ func (m *PaymentAccount) UnmarshalJSON(raw []byte) error {
 	m.AccountHolder = dataAO1.AccountHolder
 
 	m.AccountType = dataAO1.AccountType
+
+	m.IsPrimary = dataAO1.IsPrimary
 
 	m.PaymentMethod = dataAO1.PaymentMethod
 
@@ -78,6 +87,8 @@ func (m PaymentAccount) MarshalJSON() ([]byte, error) {
 
 		AccountType PaymentAccountType `json:"accountType,omitempty"`
 
+		IsPrimary bool `json:"isPrimary,omitempty"`
+
 		PaymentMethod PaymentMethod `json:"paymentMethod,omitempty"`
 
 		PaymentMode PaymentMode `json:"paymentMode,omitempty"`
@@ -86,6 +97,8 @@ func (m PaymentAccount) MarshalJSON() ([]byte, error) {
 	dataAO1.AccountHolder = m.AccountHolder
 
 	dataAO1.AccountType = m.AccountType
+
+	dataAO1.IsPrimary = m.IsPrimary
 
 	dataAO1.PaymentMethod = m.PaymentMethod
 
@@ -165,6 +178,69 @@ func (m *PaymentAccount) validatePaymentMode(formats strfmt.Registry) error {
 	}
 
 	if err := m.PaymentMode.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("paymentMode")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this payment account based on the context it is used
+func (m *PaymentAccount) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Entity
+	if err := m.Entity.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAccountType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePaymentMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePaymentMode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PaymentAccount) contextValidateAccountType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.AccountType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentAccount) contextValidatePaymentMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.PaymentMethod.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("paymentMethod")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *PaymentAccount) contextValidatePaymentMode(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.PaymentMode.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMode")
 		}

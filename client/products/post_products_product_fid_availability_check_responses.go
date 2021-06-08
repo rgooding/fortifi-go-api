@@ -6,6 +6,7 @@ package products
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostProductsProductFidAvailabilityCheckOK() *PostProductsProductFidAvail
 	return &PostProductsProductFidAvailabilityCheckOK{}
 }
 
-/*PostProductsProductFidAvailabilityCheckOK handles this case with default header values.
+/* PostProductsProductFidAvailabilityCheckOK describes a response with status code 200, with default header values.
 
 Result of availability check
 */
@@ -59,7 +60,6 @@ type PostProductsProductFidAvailabilityCheckOK struct {
 func (o *PostProductsProductFidAvailabilityCheckOK) Error() string {
 	return fmt.Sprintf("[POST /products/{productFid}/availability/check][%d] postProductsProductFidAvailabilityCheckOK  %+v", 200, o.Payload)
 }
-
 func (o *PostProductsProductFidAvailabilityCheckOK) GetPayload() *PostProductsProductFidAvailabilityCheckOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostProductsProductFidAvailabilityCheckDefault(code int) *PostProductsPr
 	}
 }
 
-/*PostProductsProductFidAvailabilityCheckDefault handles this case with default header values.
+/* PostProductsProductFidAvailabilityCheckDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostProductsProductFidAvailabilityCheckDefault) Code() int {
 func (o *PostProductsProductFidAvailabilityCheckDefault) Error() string {
 	return fmt.Sprintf("[POST /products/{productFid}/availability/check][%d] PostProductsProductFidAvailabilityCheck default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostProductsProductFidAvailabilityCheckDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostProductsProductFidAvailabilityCheckOKBody) validateData(formats str
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postProductsProductFidAvailabilityCheckOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post products product fid availability check o k body based on the context it is used
+func (o *PostProductsProductFidAvailabilityCheckOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostProductsProductFidAvailabilityCheckOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postProductsProductFidAvailabilityCheckOK" + "." + "data")
 			}

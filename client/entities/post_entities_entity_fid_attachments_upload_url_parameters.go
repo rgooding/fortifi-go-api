@@ -18,61 +18,76 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostEntitiesEntityFidAttachmentsUploadURLParams creates a new PostEntitiesEntityFidAttachmentsUploadURLParams object
-// with the default values initialized.
+// NewPostEntitiesEntityFidAttachmentsUploadURLParams creates a new PostEntitiesEntityFidAttachmentsUploadURLParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostEntitiesEntityFidAttachmentsUploadURLParams() *PostEntitiesEntityFidAttachmentsUploadURLParams {
-	var ()
 	return &PostEntitiesEntityFidAttachmentsUploadURLParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithTimeout creates a new PostEntitiesEntityFidAttachmentsUploadURLParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithTimeout(timeout time.Duration) *PostEntitiesEntityFidAttachmentsUploadURLParams {
-	var ()
 	return &PostEntitiesEntityFidAttachmentsUploadURLParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithContext creates a new PostEntitiesEntityFidAttachmentsUploadURLParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithContext(ctx context.Context) *PostEntitiesEntityFidAttachmentsUploadURLParams {
-	var ()
 	return &PostEntitiesEntityFidAttachmentsUploadURLParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithHTTPClient creates a new PostEntitiesEntityFidAttachmentsUploadURLParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithHTTPClient(client *http.Client) *PostEntitiesEntityFidAttachmentsUploadURLParams {
-	var ()
 	return &PostEntitiesEntityFidAttachmentsUploadURLParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostEntitiesEntityFidAttachmentsUploadURLParams contains all the parameters to send to the API endpoint
-for the post entities entity fid attachments upload URL operation typically these are written to a http.Request
+/* PostEntitiesEntityFidAttachmentsUploadURLParams contains all the parameters to send to the API endpoint
+   for the post entities entity fid attachments upload URL operation.
+
+   Typically these are written to a http.Request.
 */
 type PostEntitiesEntityFidAttachmentsUploadURLParams struct {
 
-	/*EntityFid
-	  Entity FID to use
+	/* EntityFid.
 
+	   Entity FID to use
 	*/
 	EntityFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.RequestUploadURLPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post entities entity fid attachments upload URL params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostEntitiesEntityFidAttachmentsUploadURLParams) WithDefaults() *PostEntitiesEntityFidAttachmentsUploadURLParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post entities entity fid attachments upload URL params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostEntitiesEntityFidAttachmentsUploadURLParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post entities entity fid attachments upload URL params
@@ -142,7 +157,6 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLParams) WriteToRequest(r runti
 	if err := r.SetPathParam("entityFid", o.EntityFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

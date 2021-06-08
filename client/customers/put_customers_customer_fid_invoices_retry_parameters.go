@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidInvoicesRetryParams creates a new PutCustomersCustomerFidInvoicesRetryParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidInvoicesRetryParams creates a new PutCustomersCustomerFidInvoicesRetryParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidInvoicesRetryParams() *PutCustomersCustomerFidInvoicesRetryParams {
-	var ()
 	return &PutCustomersCustomerFidInvoicesRetryParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidInvoicesRetryParamsWithTimeout creates a new PutCustomersCustomerFidInvoicesRetryParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidInvoicesRetryParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidInvoicesRetryParams {
-	var ()
 	return &PutCustomersCustomerFidInvoicesRetryParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidInvoicesRetryParamsWithContext creates a new PutCustomersCustomerFidInvoicesRetryParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidInvoicesRetryParamsWithContext(ctx context.Context) *PutCustomersCustomerFidInvoicesRetryParams {
-	var ()
 	return &PutCustomersCustomerFidInvoicesRetryParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidInvoicesRetryParamsWithHTTPClient creates a new PutCustomersCustomerFidInvoicesRetryParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidInvoicesRetryParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidInvoicesRetryParams {
-	var ()
 	return &PutCustomersCustomerFidInvoicesRetryParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidInvoicesRetryParams contains all the parameters to send to the API endpoint
-for the put customers customer fid invoices retry operation typically these are written to a http.Request
+/* PutCustomersCustomerFidInvoicesRetryParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid invoices retry operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidInvoicesRetryParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid invoices retry params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidInvoicesRetryParams) WithDefaults() *PutCustomersCustomerFidInvoicesRetryParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid invoices retry params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidInvoicesRetryParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid invoices retry params

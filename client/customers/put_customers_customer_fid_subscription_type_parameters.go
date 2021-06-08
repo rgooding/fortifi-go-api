@@ -18,61 +18,76 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutCustomersCustomerFidSubscriptionTypeParams creates a new PutCustomersCustomerFidSubscriptionTypeParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionTypeParams creates a new PutCustomersCustomerFidSubscriptionTypeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionTypeParams() *PutCustomersCustomerFidSubscriptionTypeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionTypeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionTypeParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionTypeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionTypeParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionTypeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionTypeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionTypeParamsWithContext creates a new PutCustomersCustomerFidSubscriptionTypeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionTypeParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionTypeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionTypeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionTypeParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionTypeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionTypeParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionTypeParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionTypeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionTypeParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscription type operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionTypeParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscription type operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionTypeParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
+
+	// Payload.
 	Payload *models.SetSubscriptionTypePayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscription type params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionTypeParams) WithDefaults() *PutCustomersCustomerFidSubscriptionTypeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscription type params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionTypeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscription type params
@@ -142,7 +157,6 @@ func (o *PutCustomersCustomerFidSubscriptionTypeParams) WriteToRequest(r runtime
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

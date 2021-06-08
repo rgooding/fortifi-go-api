@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutPublishersPublisherFidRestoreParams creates a new PutPublishersPublisherFidRestoreParams object
-// with the default values initialized.
+// NewPutPublishersPublisherFidRestoreParams creates a new PutPublishersPublisherFidRestoreParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutPublishersPublisherFidRestoreParams() *PutPublishersPublisherFidRestoreParams {
-	var ()
 	return &PutPublishersPublisherFidRestoreParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutPublishersPublisherFidRestoreParamsWithTimeout creates a new PutPublishersPublisherFidRestoreParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutPublishersPublisherFidRestoreParamsWithTimeout(timeout time.Duration) *PutPublishersPublisherFidRestoreParams {
-	var ()
 	return &PutPublishersPublisherFidRestoreParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutPublishersPublisherFidRestoreParamsWithContext creates a new PutPublishersPublisherFidRestoreParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutPublishersPublisherFidRestoreParamsWithContext(ctx context.Context) *PutPublishersPublisherFidRestoreParams {
-	var ()
 	return &PutPublishersPublisherFidRestoreParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutPublishersPublisherFidRestoreParamsWithHTTPClient creates a new PutPublishersPublisherFidRestoreParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutPublishersPublisherFidRestoreParamsWithHTTPClient(client *http.Client) *PutPublishersPublisherFidRestoreParams {
-	var ()
 	return &PutPublishersPublisherFidRestoreParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutPublishersPublisherFidRestoreParams contains all the parameters to send to the API endpoint
-for the put publishers publisher fid restore operation typically these are written to a http.Request
+/* PutPublishersPublisherFidRestoreParams contains all the parameters to send to the API endpoint
+   for the put publishers publisher fid restore operation.
+
+   Typically these are written to a http.Request.
 */
 type PutPublishersPublisherFidRestoreParams struct {
 
-	/*PublisherFid
-	  Publisher FID to use
+	/* PublisherFid.
 
+	   Publisher FID to use
 	*/
 	PublisherFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put publishers publisher fid restore params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutPublishersPublisherFidRestoreParams) WithDefaults() *PutPublishersPublisherFidRestoreParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put publishers publisher fid restore params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutPublishersPublisherFidRestoreParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put publishers publisher fid restore params

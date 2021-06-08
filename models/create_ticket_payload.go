@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -129,7 +130,6 @@ func (m *CreateTicketPayload) validateImpactEnum(path, location string, value st
 }
 
 func (m *CreateTicketPayload) validateImpact(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Impact) { // not required
 		return nil
 	}
@@ -178,7 +178,6 @@ func (m *CreateTicketPayload) validateTicketTypeEnum(path, location string, valu
 }
 
 func (m *CreateTicketPayload) validateTicketType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TicketType) { // not required
 		return nil
 	}
@@ -236,7 +235,6 @@ func (m *CreateTicketPayload) validateUrgencyEnum(path, location string, value s
 }
 
 func (m *CreateTicketPayload) validateUrgency(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Urgency) { // not required
 		return nil
 	}
@@ -246,6 +244,11 @@ func (m *CreateTicketPayload) validateUrgency(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this create ticket payload based on context it is used
+func (m *CreateTicketPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

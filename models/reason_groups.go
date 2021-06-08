@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -37,7 +38,6 @@ func (m *ReasonGroups) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ReasonGroups) validateReasonGroups(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ReasonGroups) { // not required
 		return nil
 	}
@@ -49,6 +49,38 @@ func (m *ReasonGroups) validateReasonGroups(formats strfmt.Registry) error {
 
 		if m.ReasonGroups[i] != nil {
 			if err := m.ReasonGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("reasonGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this reason groups based on the context it is used
+func (m *ReasonGroups) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateReasonGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ReasonGroups) contextValidateReasonGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ReasonGroups); i++ {
+
+		if m.ReasonGroups[i] != nil {
+			if err := m.ReasonGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reasonGroups" + "." + strconv.Itoa(i))
 				}

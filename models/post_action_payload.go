@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -36,6 +38,9 @@ type PostActionPayload struct {
 
 	// External (to Fortifi) Reference for this visitor e.g. a user ID
 	ExternalReference string `json:"externalReference,omitempty"`
+
+	// Specify a failover visitor ID to prevent organic traffic (Recommended to leave empty)
+	FailoverVisitorID string `json:"failoverVisitorId,omitempty"`
 
 	// Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 	Language string `json:"language,omitempty"`
@@ -117,7 +122,6 @@ func (m *PostActionPayload) validateBrandFid(formats strfmt.Registry) error {
 }
 
 func (m *PostActionPayload) validateMetaData(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.MetaData) { // not required
 		return nil
 	}
@@ -133,12 +137,37 @@ func (m *PostActionPayload) validateMetaData(formats strfmt.Registry) error {
 }
 
 func (m *PostActionPayload) validateTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Time) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post action payload based on the context it is used
+func (m *PostActionPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateMetaData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostActionPayload) contextValidateMetaData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.MetaData.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("metaData")
+		}
 		return err
 	}
 

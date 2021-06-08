@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetAdvertisersAdvertiserFidParams creates a new GetAdvertisersAdvertiserFidParams object
-// with the default values initialized.
+// NewGetAdvertisersAdvertiserFidParams creates a new GetAdvertisersAdvertiserFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetAdvertisersAdvertiserFidParams() *GetAdvertisersAdvertiserFidParams {
-	var ()
 	return &GetAdvertisersAdvertiserFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAdvertisersAdvertiserFidParamsWithTimeout creates a new GetAdvertisersAdvertiserFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetAdvertisersAdvertiserFidParamsWithTimeout(timeout time.Duration) *GetAdvertisersAdvertiserFidParams {
-	var ()
 	return &GetAdvertisersAdvertiserFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetAdvertisersAdvertiserFidParamsWithContext creates a new GetAdvertisersAdvertiserFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetAdvertisersAdvertiserFidParamsWithContext(ctx context.Context) *GetAdvertisersAdvertiserFidParams {
-	var ()
 	return &GetAdvertisersAdvertiserFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetAdvertisersAdvertiserFidParamsWithHTTPClient creates a new GetAdvertisersAdvertiserFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetAdvertisersAdvertiserFidParamsWithHTTPClient(client *http.Client) *GetAdvertisersAdvertiserFidParams {
-	var ()
 	return &GetAdvertisersAdvertiserFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetAdvertisersAdvertiserFidParams contains all the parameters to send to the API endpoint
-for the get advertisers advertiser fid operation typically these are written to a http.Request
+/* GetAdvertisersAdvertiserFidParams contains all the parameters to send to the API endpoint
+   for the get advertisers advertiser fid operation.
+
+   Typically these are written to a http.Request.
 */
 type GetAdvertisersAdvertiserFidParams struct {
 
-	/*AdvertiserFid
-	  Advertiser FID to use
+	/* AdvertiserFid.
 
+	   Advertiser FID to use
 	*/
 	AdvertiserFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get advertisers advertiser fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAdvertisersAdvertiserFidParams) WithDefaults() *GetAdvertisersAdvertiserFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get advertisers advertiser fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAdvertisersAdvertiserFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get advertisers advertiser fid params

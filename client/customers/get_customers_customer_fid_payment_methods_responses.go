@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetCustomersCustomerFidPaymentMethodsOK() *GetCustomersCustomerFidPaymen
 	return &GetCustomersCustomerFidPaymentMethodsOK{}
 }
 
-/*GetCustomersCustomerFidPaymentMethodsOK handles this case with default header values.
+/* GetCustomersCustomerFidPaymentMethodsOK describes a response with status code 200, with default header values.
 
 List of payment methods
 */
@@ -59,7 +60,6 @@ type GetCustomersCustomerFidPaymentMethodsOK struct {
 func (o *GetCustomersCustomerFidPaymentMethodsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/paymentMethods][%d] getCustomersCustomerFidPaymentMethodsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidPaymentMethodsOK) GetPayload() *GetCustomersCustomerFidPaymentMethodsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetCustomersCustomerFidPaymentMethodsDefault(code int) *GetCustomersCust
 	}
 }
 
-/*GetCustomersCustomerFidPaymentMethodsDefault handles this case with default header values.
+/* GetCustomersCustomerFidPaymentMethodsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetCustomersCustomerFidPaymentMethodsDefault) Code() int {
 func (o *GetCustomersCustomerFidPaymentMethodsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/paymentMethods][%d] GetCustomersCustomerFidPaymentMethods default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidPaymentMethodsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetCustomersCustomerFidPaymentMethodsOKBody) validateData(formats strfm
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidPaymentMethodsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get customers customer fid payment methods o k body based on the context it is used
+func (o *GetCustomersCustomerFidPaymentMethodsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidPaymentMethodsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidPaymentMethodsOK" + "." + "data")
 			}

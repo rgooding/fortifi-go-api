@@ -6,6 +6,7 @@ package service_status
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetServicesOK() *GetServicesOK {
 	return &GetServicesOK{}
 }
 
-/*GetServicesOK handles this case with default header values.
+/* GetServicesOK describes a response with status code 200, with default header values.
 
 Service listing
 */
@@ -59,7 +60,6 @@ type GetServicesOK struct {
 func (o *GetServicesOK) Error() string {
 	return fmt.Sprintf("[GET /services][%d] getServicesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetServicesOK) GetPayload() *GetServicesOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetServicesDefault(code int) *GetServicesDefault {
 	}
 }
 
-/*GetServicesDefault handles this case with default header values.
+/* GetServicesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetServicesDefault) Code() int {
 func (o *GetServicesDefault) Error() string {
 	return fmt.Sprintf("[GET /services][%d] GetServices default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetServicesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetServicesOKBody) validateData(formats strfmt.Registry) error {
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getServicesOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get services o k body based on the context it is used
+func (o *GetServicesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetServicesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServicesOK" + "." + "data")
 			}

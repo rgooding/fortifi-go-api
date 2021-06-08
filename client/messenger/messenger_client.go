@@ -23,9 +23,12 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error)
+	PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -33,13 +36,12 @@ type ClientService interface {
 /*
   PutMessengerDeliveriesDeliveryFidUnsubscribe unsubscribes an email based on the delivery fid
 */
-func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error) {
+func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutMessengerDeliveriesDeliveryFidUnsubscribeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutMessengerDeliveriesDeliveryFidUnsubscribe",
 		Method:             "PUT",
 		PathPattern:        "/messenger/deliveries/{deliveryFid}/unsubscribe",
@@ -51,7 +53,12 @@ func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMesseng
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

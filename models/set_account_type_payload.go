@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -35,12 +37,37 @@ func (m *SetAccountTypePayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SetAccountTypePayload) validateAccountType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AccountType) { // not required
 		return nil
 	}
 
 	if err := m.AccountType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accountType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this set account type payload based on the context it is used
+func (m *SetAccountTypePayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAccountType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SetAccountTypePayload) contextValidateAccountType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.AccountType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accountType")
 		}

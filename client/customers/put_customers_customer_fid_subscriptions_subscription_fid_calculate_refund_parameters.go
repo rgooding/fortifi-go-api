@@ -18,66 +18,82 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid calculate refund operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid calculate refund operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Payload*/
-	Payload *models.CalculateRefundPayload
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// Payload.
+	Payload *models.CalculateRefundPayload
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid calculate refund params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid calculate refund params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid calculate refund params
@@ -158,7 +174,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundParam
 	if err := r.SetPathParam("customerFid", o.CustomerFid); err != nil {
 		return err
 	}
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

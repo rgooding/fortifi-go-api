@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteCustomersCustomerFidVipParams creates a new DeleteCustomersCustomerFidVipParams object
-// with the default values initialized.
+// NewDeleteCustomersCustomerFidVipParams creates a new DeleteCustomersCustomerFidVipParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteCustomersCustomerFidVipParams() *DeleteCustomersCustomerFidVipParams {
-	var ()
 	return &DeleteCustomersCustomerFidVipParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidVipParamsWithTimeout creates a new DeleteCustomersCustomerFidVipParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteCustomersCustomerFidVipParamsWithTimeout(timeout time.Duration) *DeleteCustomersCustomerFidVipParams {
-	var ()
 	return &DeleteCustomersCustomerFidVipParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteCustomersCustomerFidVipParamsWithContext creates a new DeleteCustomersCustomerFidVipParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteCustomersCustomerFidVipParamsWithContext(ctx context.Context) *DeleteCustomersCustomerFidVipParams {
-	var ()
 	return &DeleteCustomersCustomerFidVipParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteCustomersCustomerFidVipParamsWithHTTPClient creates a new DeleteCustomersCustomerFidVipParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteCustomersCustomerFidVipParamsWithHTTPClient(client *http.Client) *DeleteCustomersCustomerFidVipParams {
-	var ()
 	return &DeleteCustomersCustomerFidVipParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteCustomersCustomerFidVipParams contains all the parameters to send to the API endpoint
-for the delete customers customer fid vip operation typically these are written to a http.Request
+/* DeleteCustomersCustomerFidVipParams contains all the parameters to send to the API endpoint
+   for the delete customers customer fid vip operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidVipParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete customers customer fid vip params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidVipParams) WithDefaults() *DeleteCustomersCustomerFidVipParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete customers customer fid vip params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteCustomersCustomerFidVipParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete customers customer fid vip params

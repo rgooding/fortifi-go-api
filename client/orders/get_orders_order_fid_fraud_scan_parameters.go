@@ -16,56 +16,70 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetOrdersOrderFidFraudScanParams creates a new GetOrdersOrderFidFraudScanParams object
-// with the default values initialized.
+// NewGetOrdersOrderFidFraudScanParams creates a new GetOrdersOrderFidFraudScanParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetOrdersOrderFidFraudScanParams() *GetOrdersOrderFidFraudScanParams {
-	var ()
 	return &GetOrdersOrderFidFraudScanParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetOrdersOrderFidFraudScanParamsWithTimeout creates a new GetOrdersOrderFidFraudScanParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetOrdersOrderFidFraudScanParamsWithTimeout(timeout time.Duration) *GetOrdersOrderFidFraudScanParams {
-	var ()
 	return &GetOrdersOrderFidFraudScanParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetOrdersOrderFidFraudScanParamsWithContext creates a new GetOrdersOrderFidFraudScanParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetOrdersOrderFidFraudScanParamsWithContext(ctx context.Context) *GetOrdersOrderFidFraudScanParams {
-	var ()
 	return &GetOrdersOrderFidFraudScanParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetOrdersOrderFidFraudScanParamsWithHTTPClient creates a new GetOrdersOrderFidFraudScanParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetOrdersOrderFidFraudScanParamsWithHTTPClient(client *http.Client) *GetOrdersOrderFidFraudScanParams {
-	var ()
 	return &GetOrdersOrderFidFraudScanParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetOrdersOrderFidFraudScanParams contains all the parameters to send to the API endpoint
-for the get orders order fid fraud scan operation typically these are written to a http.Request
+/* GetOrdersOrderFidFraudScanParams contains all the parameters to send to the API endpoint
+   for the get orders order fid fraud scan operation.
+
+   Typically these are written to a http.Request.
 */
 type GetOrdersOrderFidFraudScanParams struct {
 
-	/*OrderFid*/
+	// OrderFid.
 	OrderFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get orders order fid fraud scan params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetOrdersOrderFidFraudScanParams) WithDefaults() *GetOrdersOrderFidFraudScanParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get orders order fid fraud scan params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetOrdersOrderFidFraudScanParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get orders order fid fraud scan params

@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidPaymentMethodsCardsCardFidOK() *PutCustomersCusto
 	return &PutCustomersCustomerFidPaymentMethodsCardsCardFidOK{}
 }
 
-/*PutCustomersCustomerFidPaymentMethodsCardsCardFidOK handles this case with default header values.
+/* PutCustomersCustomerFidPaymentMethodsCardsCardFidOK describes a response with status code 200, with default header values.
 
 Card Updated
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidPaymentMethodsCardsCardFidDefault(code int) *PutC
 	}
 }
 
-/*PutCustomersCustomerFidPaymentMethodsCardsCardFidDefault handles this case with default header values.
+/* PutCustomersCustomerFidPaymentMethodsCardsCardFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidPaymentMethodsCardsCardFidDefault) Code() int {
 func (o *PutCustomersCustomerFidPaymentMethodsCardsCardFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/paymentMethods/cards/{cardFid}][%d] PutCustomersCustomerFidPaymentMethodsCardsCardFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidPaymentMethodsCardsCardFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

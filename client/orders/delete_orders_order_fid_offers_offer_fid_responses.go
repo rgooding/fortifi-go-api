@@ -46,7 +46,7 @@ func NewDeleteOrdersOrderFidOffersOfferFidOK() *DeleteOrdersOrderFidOffersOfferF
 	return &DeleteOrdersOrderFidOffersOfferFidOK{}
 }
 
-/*DeleteOrdersOrderFidOffersOfferFidOK handles this case with default header values.
+/* DeleteOrdersOrderFidOffersOfferFidOK describes a response with status code 200, with default header values.
 
 Offer removed from the order successfully
 */
@@ -69,7 +69,7 @@ func NewDeleteOrdersOrderFidOffersOfferFidDefault(code int) *DeleteOrdersOrderFi
 	}
 }
 
-/*DeleteOrdersOrderFidOffersOfferFidDefault handles this case with default header values.
+/* DeleteOrdersOrderFidOffersOfferFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *DeleteOrdersOrderFidOffersOfferFidDefault) Code() int {
 func (o *DeleteOrdersOrderFidOffersOfferFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /orders/{orderFid}/offers/{offerFid}][%d] DeleteOrdersOrderFidOffersOfferFid default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *DeleteOrdersOrderFidOffersOfferFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

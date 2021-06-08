@@ -23,47 +23,50 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidConfigSectionNameOK, error)
+	DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidConfigSectionNameOK, error)
 
-	DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesCountersPropertyNameOK, error)
+	DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesCountersPropertyNameOK, error)
 
-	DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
+	DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
 
-	DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
+	DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
 
-	GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameOK, error)
+	GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidConfigSectionNameOK, error)
 
-	GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error)
+	GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error)
 
-	GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidLabelsOK, error)
+	GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidLabelsOK, error)
 
-	GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesOK, error)
+	GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesOK, error)
 
-	GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
+	GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
 
-	GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
+	GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
 
-	PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesEntityFidAttachmentsUploadURLParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidAttachmentsUploadURLOK, error)
+	PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesEntityFidAttachmentsUploadURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidAttachmentsUploadURLOK, error)
 
-	PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidConfigSectionNameOK, error)
+	PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidConfigSectionNameOK, error)
 
-	PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidEventsOK, error)
+	PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidEventsOK, error)
 
-	PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo runtime.ClientAuthInfoWriter) (*PostUploadUploadURLOK, error)
+	PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostUploadUploadURLOK, error)
 
-	PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLabelsAssignParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidLabelsAssignOK, error)
+	PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLabelsAssignParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidLabelsAssignOK, error)
 
-	PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesOK, error)
+	PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesOK, error)
 
-	PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK, error)
+	PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK, error)
 
-	PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK, error)
+	PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK, error)
 
-	PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
+	PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesFlagsPropertyNameOK, error)
 
-	PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
+	PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -71,13 +74,12 @@ type ClientService interface {
 /*
   DeleteEntitiesEntityFidConfigSectionName removes a config section or property from an entity
 */
-func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidConfigSectionNameOK, error) {
+func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteEntitiesEntityFidConfigSectionNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteEntitiesEntityFidConfigSectionName",
 		Method:             "DELETE",
 		PathPattern:        "/entities/{entityFid}/config/{sectionName}",
@@ -89,7 +91,12 @@ func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntities
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -105,13 +112,12 @@ func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntities
 /*
   DeleteEntitiesEntityFidPropertiesCountersPropertyName removes a counter from an entity
 */
-func (a *Client) DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesCountersPropertyNameOK, error) {
+func (a *Client) DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesCountersPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteEntitiesEntityFidPropertiesCountersPropertyName",
 		Method:             "DELETE",
 		PathPattern:        "/entities/{entityFid}/properties/counters/{propertyName}",
@@ -123,7 +129,12 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *D
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -139,13 +150,12 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *D
 /*
   DeleteEntitiesEntityFidPropertiesFlagsPropertyName removes a flag from an entity
 */
-func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
+func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteEntitiesEntityFidPropertiesFlagsPropertyName",
 		Method:             "DELETE",
 		PathPattern:        "/entities/{entityFid}/properties/flags/{propertyName}",
@@ -157,7 +167,12 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *Dele
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -173,13 +188,12 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *Dele
 /*
   DeleteEntitiesEntityFidPropertiesValuesPropertyName removes a value property from an entity
 */
-func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
+func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteEntitiesEntityFidPropertiesValuesPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeleteEntitiesEntityFidPropertiesValuesPropertyName",
 		Method:             "DELETE",
 		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
@@ -191,7 +205,12 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *Del
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -207,13 +226,12 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *Del
 /*
   GetEntitiesEntityFidConfigSectionName retrieves a config section
 */
-func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameOK, error) {
+func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitiesEntityFidConfigSectionNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetEntitiesEntityFidConfigSectionName",
 		Method:             "GET",
 		PathPattern:        "/entities/{entityFid}/config/{sectionName}",
@@ -225,7 +243,12 @@ func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntity
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -241,13 +264,12 @@ func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntity
 /*
   GetEntitiesEntityFidConfigSectionNameItemsItemName retrieves a config item
 */
-func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error) {
+func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitiesEntityFidConfigSectionNameItemsItemNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetEntitiesEntityFidConfigSectionNameItemsItemName",
 		Method:             "GET",
 		PathPattern:        "/entities/{entityFid}/config/{sectionName}/items/{itemName}",
@@ -259,7 +281,12 @@ func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetE
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -275,13 +302,12 @@ func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetE
 /*
   GetEntitiesEntityFidLabels gets all labels for an entity
 */
-func (a *Client) GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidLabelsOK, error) {
+func (a *Client) GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidLabelsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitiesEntityFidLabelsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetEntitiesEntityFidLabels",
 		Method:             "GET",
 		PathPattern:        "/entities/{entityFid}/labels",
@@ -293,7 +319,12 @@ func (a *Client) GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -309,13 +340,12 @@ func (a *Client) GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsPa
 /*
   GetEntitiesEntityFidProperties gets all properties for an entity
 */
-func (a *Client) GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesOK, error) {
+func (a *Client) GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitiesEntityFidPropertiesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetEntitiesEntityFidProperties",
 		Method:             "GET",
 		PathPattern:        "/entities/{entityFid}/properties",
@@ -327,7 +357,12 @@ func (a *Client) GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidProp
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -343,13 +378,12 @@ func (a *Client) GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidProp
 /*
   GetEntitiesEntityFidPropertiesFlagsPropertyName gets a flag property from an entity
 */
-func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
+func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitiesEntityFidPropertiesFlagsPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetEntitiesEntityFidPropertiesFlagsPropertyName",
 		Method:             "GET",
 		PathPattern:        "/entities/{entityFid}/properties/flags/{propertyName}",
@@ -361,7 +395,12 @@ func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEnti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -377,13 +416,12 @@ func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEnti
 /*
   GetEntitiesEntityFidPropertiesValuesPropertyName gets a property value from an entity
 */
-func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
+func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitiesEntityFidPropertiesValuesPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetEntitiesEntityFidPropertiesValuesPropertyName",
 		Method:             "GET",
 		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
@@ -395,7 +433,12 @@ func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEnt
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -411,13 +454,12 @@ func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEnt
 /*
   PostEntitiesEntityFidAttachmentsUploadURL creates an upload url
 */
-func (a *Client) PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesEntityFidAttachmentsUploadURLParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidAttachmentsUploadURLOK, error) {
+func (a *Client) PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesEntityFidAttachmentsUploadURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidAttachmentsUploadURLOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostEntitiesEntityFidAttachmentsUploadURLParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostEntitiesEntityFidAttachmentsUploadURL",
 		Method:             "POST",
 		PathPattern:        "/entities/{entityFid}/attachments/uploadUrl",
@@ -429,7 +471,12 @@ func (a *Client) PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesE
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -445,13 +492,12 @@ func (a *Client) PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesE
 /*
   PostEntitiesEntityFidConfigSectionName writes a config item
 */
-func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidConfigSectionNameOK, error) {
+func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostEntitiesEntityFidConfigSectionNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostEntitiesEntityFidConfigSectionName",
 		Method:             "POST",
 		PathPattern:        "/entities/{entityFid}/config/{sectionName}",
@@ -463,7 +509,12 @@ func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEnti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -479,13 +530,12 @@ func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEnti
 /*
   PostEntitiesEntityFidEvents triggers a new event
 */
-func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter) (*PostEntitiesEntityFidEventsOK, error) {
+func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidEventsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostEntitiesEntityFidEventsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostEntitiesEntityFidEvents",
 		Method:             "POST",
 		PathPattern:        "/entities/{entityFid}/events",
@@ -497,7 +547,12 @@ func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEvents
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -516,13 +571,12 @@ func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEvents
   This call will give you a URL to PUT files to and a unique filename. You can upload files to the URL like this: ```curl -X PUT -d @filename -H 'content-type: text/plain' 'url'```
 
 */
-func (a *Client) PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo runtime.ClientAuthInfoWriter) (*PostUploadUploadURLOK, error) {
+func (a *Client) PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostUploadUploadURLOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostUploadUploadURLParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostUploadUploadURL",
 		Method:             "POST",
 		PathPattern:        "/upload/uploadUrl",
@@ -534,7 +588,12 @@ func (a *Client) PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -550,13 +609,12 @@ func (a *Client) PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo
 /*
   PutEntitiesEntityFidLabelsAssign assigns label to entity
 */
-func (a *Client) PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLabelsAssignParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidLabelsAssignOK, error) {
+func (a *Client) PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLabelsAssignParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidLabelsAssignOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutEntitiesEntityFidLabelsAssignParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutEntitiesEntityFidLabelsAssign",
 		Method:             "PUT",
 		PathPattern:        "/entities/{entityFid}/labels/assign",
@@ -568,7 +626,12 @@ func (a *Client) PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -584,13 +647,12 @@ func (a *Client) PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLa
 /*
   PutEntitiesEntityFidProperties writes multiple entity properties
 */
-func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesOK, error) {
+func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutEntitiesEntityFidPropertiesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutEntitiesEntityFidProperties",
 		Method:             "PUT",
 		PathPattern:        "/entities/{entityFid}/properties",
@@ -602,7 +664,12 @@ func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidProp
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -618,13 +685,12 @@ func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidProp
 /*
   PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement decrements an entity counter
 */
-func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK, error) {
+func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement",
 		Method:             "PUT",
 		PathPattern:        "/entities/{entityFid}/properties/counters/{propertyName}/decrement",
@@ -636,7 +702,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(par
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -652,13 +723,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(par
 /*
   PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement increments an entity counter
 */
-func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK, error) {
+func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement",
 		Method:             "PUT",
 		PathPattern:        "/entities/{entityFid}/properties/counters/{propertyName}/increment",
@@ -670,7 +740,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(par
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -686,13 +761,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(par
 /*
   PutEntitiesEntityFidPropertiesFlagsPropertyName writes an entity flag
 */
-func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
+func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutEntitiesEntityFidPropertiesFlagsPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutEntitiesEntityFidPropertiesFlagsPropertyName",
 		Method:             "PUT",
 		PathPattern:        "/entities/{entityFid}/properties/flags/{propertyName}",
@@ -704,7 +778,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEnti
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -720,13 +799,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEnti
 /*
   PutEntitiesEntityFidPropertiesValuesPropertyName writes an entity value property
 */
-func (a *Client) PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
+func (a *Client) PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutEntitiesEntityFidPropertiesValuesPropertyNameParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutEntitiesEntityFidPropertiesValuesPropertyName",
 		Method:             "PUT",
 		PathPattern:        "/entities/{entityFid}/properties/values/{propertyName}",
@@ -738,7 +816,12 @@ func (a *Client) PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEnt
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

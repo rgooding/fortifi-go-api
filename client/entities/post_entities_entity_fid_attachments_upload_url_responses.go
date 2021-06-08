@@ -6,6 +6,7 @@ package entities
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostEntitiesEntityFidAttachmentsUploadURLOK() *PostEntitiesEntityFidAtta
 	return &PostEntitiesEntityFidAttachmentsUploadURLOK{}
 }
 
-/*PostEntitiesEntityFidAttachmentsUploadURLOK handles this case with default header values.
+/* PostEntitiesEntityFidAttachmentsUploadURLOK describes a response with status code 200, with default header values.
 
 Attachment upload URL
 */
@@ -59,7 +60,6 @@ type PostEntitiesEntityFidAttachmentsUploadURLOK struct {
 func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/attachments/uploadUrl][%d] postEntitiesEntityFidAttachmentsUploadUrlOK  %+v", 200, o.Payload)
 }
-
 func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) GetPayload() *PostEntitiesEntityFidAttachmentsUploadURLOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostEntitiesEntityFidAttachmentsUploadURLDefault(code int) *PostEntities
 	}
 }
 
-/*PostEntitiesEntityFidAttachmentsUploadURLDefault handles this case with default header values.
+/* PostEntitiesEntityFidAttachmentsUploadURLDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) Code() int {
 func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/attachments/uploadUrl][%d] PostEntitiesEntityFidAttachmentsUploadURL default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLOKBody) validateData(formats s
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postEntitiesEntityFidAttachmentsUploadUrlOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post entities entity fid attachments upload URL o k body based on the context it is used
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postEntitiesEntityFidAttachmentsUploadUrlOK" + "." + "data")
 			}

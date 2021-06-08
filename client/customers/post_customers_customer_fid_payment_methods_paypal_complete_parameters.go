@@ -17,71 +17,88 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParams creates a new PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParams creates a new PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParams() *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithTimeout creates a new PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithContext creates a new PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithContext(ctx context.Context) *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithHTTPClient creates a new PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams {
-	var ()
 	return &PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams contains all the parameters to send to the API endpoint
-for the post customers customer fid payment methods paypal complete operation typically these are written to a http.Request
+/* PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid payment methods paypal complete operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*PaymentServiceFid
-	  Payment Service FID to use
 
+	/* PaymentServiceFid.
+
+	   Payment Service FID to use
 	*/
 	PaymentServiceFid string
-	/*SubscriptionFids
-	  Subscription FIDs
 
+	/* SubscriptionFids.
+
+	   Subscription FIDs
 	*/
 	SubscriptionFids []string
-	/*Token*/
+
+	// Token.
 	Token string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid payment methods paypal complete params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams) WithDefaults() *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid payment methods paypal complete params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid payment methods paypal complete params
@@ -183,12 +200,15 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams) WriteToRequ
 		}
 	}
 
-	valuesSubscriptionFids := o.SubscriptionFids
+	if o.SubscriptionFids != nil {
 
-	joinedSubscriptionFids := swag.JoinByFormat(valuesSubscriptionFids, "")
-	// form array param subscriptionFids
-	if err := r.SetFormParam("subscriptionFids", joinedSubscriptionFids...); err != nil {
-		return err
+		// binding items for subscriptionFids
+		joinedSubscriptionFids := o.bindParamSubscriptionFids(reg)
+
+		// form array param subscriptionFids
+		if err := r.SetFormParam("subscriptionFids", joinedSubscriptionFids...); err != nil {
+			return err
+		}
 	}
 
 	// form param token
@@ -204,4 +224,21 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams) WriteToRequ
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPostCustomersCustomerFidPaymentMethodsPaypalComplete binds the parameter subscriptionFids
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams) bindParamSubscriptionFids(formats strfmt.Registry) []string {
+	subscriptionFidsIR := o.SubscriptionFids
+
+	var subscriptionFidsIC []string
+	for _, subscriptionFidsIIR := range subscriptionFidsIR { // explode []string
+
+		subscriptionFidsIIV := subscriptionFidsIIR // string as string
+		subscriptionFidsIC = append(subscriptionFidsIC, subscriptionFidsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	subscriptionFidsIS := swag.JoinByFormat(subscriptionFidsIC, "")
+
+	return subscriptionFidsIS
 }

@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCustomersCustomerFidTicketsTicketFidParams creates a new GetCustomersCustomerFidTicketsTicketFidParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidTicketsTicketFidParams creates a new GetCustomersCustomerFidTicketsTicketFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidTicketsTicketFidParams() *GetCustomersCustomerFidTicketsTicketFidParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidParamsWithTimeout creates a new GetCustomersCustomerFidTicketsTicketFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidTicketsTicketFidParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidTicketsTicketFidParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidParamsWithContext creates a new GetCustomersCustomerFidTicketsTicketFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidTicketsTicketFidParamsWithContext(ctx context.Context) *GetCustomersCustomerFidTicketsTicketFidParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidTicketsTicketFidParamsWithHTTPClient creates a new GetCustomersCustomerFidTicketsTicketFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidTicketsTicketFidParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidTicketsTicketFidParams {
-	var ()
 	return &GetCustomersCustomerFidTicketsTicketFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidTicketsTicketFidParams contains all the parameters to send to the API endpoint
-for the get customers customer fid tickets ticket fid operation typically these are written to a http.Request
+/* GetCustomersCustomerFidTicketsTicketFidParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid tickets ticket fid operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidTicketsTicketFidParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*TicketFid
-	  Ticket FID to use
 
+	/* TicketFid.
+
+	   Ticket FID to use
 	*/
 	TicketFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid tickets ticket fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidTicketsTicketFidParams) WithDefaults() *GetCustomersCustomerFidTicketsTicketFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid tickets ticket fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidTicketsTicketFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid tickets ticket fid params

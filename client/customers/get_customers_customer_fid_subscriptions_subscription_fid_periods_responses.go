@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK() *GetCusto
 	return &GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK{}
 }
 
-/*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK handles this case with default header values.
+/* GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK describes a response with status code 200, with default header values.
 
 A purchase period
 */
@@ -59,7 +60,6 @@ type GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK struct {
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}/periods][%d] getCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK) GetPayload() *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault(code i
 	}
 }
 
-/*GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault handles this case with default header values.
+/* GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault) Code
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}/periods][%d] GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriods default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOKBody) valid
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get customers customer fid subscriptions subscription fid periods o k body based on the context it is used
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsOK" + "." + "data")
 			}

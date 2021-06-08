@@ -17,64 +17,79 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetPublishersParams creates a new GetPublishersParams object
-// with the default values initialized.
+// NewGetPublishersParams creates a new GetPublishersParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetPublishersParams() *GetPublishersParams {
-	var ()
 	return &GetPublishersParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetPublishersParamsWithTimeout creates a new GetPublishersParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetPublishersParamsWithTimeout(timeout time.Duration) *GetPublishersParams {
-	var ()
 	return &GetPublishersParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetPublishersParamsWithContext creates a new GetPublishersParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetPublishersParamsWithContext(ctx context.Context) *GetPublishersParams {
-	var ()
 	return &GetPublishersParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetPublishersParamsWithHTTPClient creates a new GetPublishersParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetPublishersParamsWithHTTPClient(client *http.Client) *GetPublishersParams {
-	var ()
 	return &GetPublishersParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetPublishersParams contains all the parameters to send to the API endpoint
-for the get publishers operation typically these are written to a http.Request
+/* GetPublishersParams contains all the parameters to send to the API endpoint
+   for the get publishers operation.
+
+   Typically these are written to a http.Request.
 */
 type GetPublishersParams struct {
 
-	/*Limit
-	  Maximum number of records per page (default: 20)
+	/* Limit.
 
+	   Maximum number of records per page (default: 20)
 	*/
 	Limit *int64
-	/*Page
-	  Page number (default: 1)
 
+	/* Page.
+
+	   Page number (default: 1)
 	*/
 	Page *int64
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get publishers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPublishersParams) WithDefaults() *GetPublishersParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get publishers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPublishersParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get publishers params
@@ -144,32 +159,34 @@ func (o *GetPublishersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param limit
 		var qrLimit int64
+
 		if o.Limit != nil {
 			qrLimit = *o.Limit
 		}
 		qLimit := swag.FormatInt64(qrLimit)
 		if qLimit != "" {
+
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Page != nil {
 
 		// query param page
 		var qrPage int64
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt64(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

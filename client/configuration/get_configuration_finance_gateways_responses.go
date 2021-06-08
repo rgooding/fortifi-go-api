@@ -6,6 +6,7 @@ package configuration
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetConfigurationFinanceGatewaysOK() *GetConfigurationFinanceGatewaysOK {
 	return &GetConfigurationFinanceGatewaysOK{}
 }
 
-/*GetConfigurationFinanceGatewaysOK handles this case with default header values.
+/* GetConfigurationFinanceGatewaysOK describes a response with status code 200, with default header values.
 
 List of payment gateways
 */
@@ -59,7 +60,6 @@ type GetConfigurationFinanceGatewaysOK struct {
 func (o *GetConfigurationFinanceGatewaysOK) Error() string {
 	return fmt.Sprintf("[GET /configuration/finance/gateways][%d] getConfigurationFinanceGatewaysOK  %+v", 200, o.Payload)
 }
-
 func (o *GetConfigurationFinanceGatewaysOK) GetPayload() *GetConfigurationFinanceGatewaysOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetConfigurationFinanceGatewaysDefault(code int) *GetConfigurationFinanc
 	}
 }
 
-/*GetConfigurationFinanceGatewaysDefault handles this case with default header values.
+/* GetConfigurationFinanceGatewaysDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetConfigurationFinanceGatewaysDefault) Code() int {
 func (o *GetConfigurationFinanceGatewaysDefault) Error() string {
 	return fmt.Sprintf("[GET /configuration/finance/gateways][%d] GetConfigurationFinanceGateways default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetConfigurationFinanceGatewaysDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetConfigurationFinanceGatewaysOKBody) validateData(formats strfmt.Regi
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getConfigurationFinanceGatewaysOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get configuration finance gateways o k body based on the context it is used
+func (o *GetConfigurationFinanceGatewaysOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetConfigurationFinanceGatewaysOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getConfigurationFinanceGatewaysOK" + "." + "data")
 			}

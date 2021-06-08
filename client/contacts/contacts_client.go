@@ -23,17 +23,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetContactsFindByReferenceContactReferenceOK, error)
+	GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContactsFindByReferenceContactReferenceOK, error)
 
-	PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressConfirmOK, error)
+	PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressConfirmOK, error)
 
-	PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressSubscribeOK, error)
+	PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressSubscribeOK, error)
 
-	PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressUnsubscribeOK, error)
+	PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressUnsubscribeOK, error)
 
-	PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error)
+	PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 /*
   GetContactsFindByReferenceContactReference finds a person with a reference
 */
-func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter) (*GetContactsFindByReferenceContactReferenceOK, error) {
+func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContactsFindByReferenceContactReferenceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetContactsFindByReferenceContactReferenceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetContactsFindByReferenceContactReference",
 		Method:             "GET",
 		PathPattern:        "/contacts/findByReference/{contactReference}",
@@ -59,7 +61,12 @@ func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsF
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsF
 /*
   PutContactsEmailsEmailAddressConfirm confirms email address
 */
-func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressConfirmOK, error) {
+func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressConfirmOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutContactsEmailsEmailAddressConfirmParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutContactsEmailsEmailAddressConfirm",
 		Method:             "PUT",
 		PathPattern:        "/contacts/emails/{emailAddress}/confirm",
@@ -93,7 +99,12 @@ func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsE
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -109,13 +120,12 @@ func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsE
 /*
   PutContactsEmailsEmailAddressSubscribe subscribes an email address
 */
-func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressSubscribeOK, error) {
+func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressSubscribeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutContactsEmailsEmailAddressSubscribeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutContactsEmailsEmailAddressSubscribe",
 		Method:             "PUT",
 		PathPattern:        "/contacts/emails/{emailAddress}/subscribe",
@@ -127,7 +137,12 @@ func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmail
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -143,13 +158,12 @@ func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmail
 /*
   PutContactsEmailsEmailAddressUnsubscribe unsubscribes an email address
 */
-func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutContactsEmailsEmailAddressUnsubscribeOK, error) {
+func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressUnsubscribeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutContactsEmailsEmailAddressUnsubscribeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutContactsEmailsEmailAddressUnsubscribe",
 		Method:             "PUT",
 		PathPattern:        "/contacts/emails/{emailAddress}/unsubscribe",
@@ -161,7 +175,12 @@ func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEma
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -177,13 +196,12 @@ func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEma
 /*
   PutMessengerDeliveriesDeliveryFidSubscribe subscribes an email based on the delivery fid
 */
-func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error) {
+func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutMessengerDeliveriesDeliveryFidSubscribeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutMessengerDeliveriesDeliveryFidSubscribe",
 		Method:             "PUT",
 		PathPattern:        "/messenger/deliveries/{deliveryFid}/subscribe",
@@ -195,7 +213,12 @@ func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessenger
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

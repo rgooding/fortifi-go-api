@@ -46,7 +46,7 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteOK() *PostCustomersC
 	return &PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK{}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK handles this case with default header values.
+/* PostCustomersCustomerFidPaymentMethodsPaypalCompleteOK describes a response with status code 200, with default header values.
 
 Successfully created agreement
 */
@@ -69,7 +69,7 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteDefault(code int) *P
 	}
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalCompleteDefault handles this case with default header values.
+/* PostCustomersCustomerFidPaymentMethodsPaypalCompleteDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteDefault) Code() int
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/complete][%d] PostCustomersCustomerFidPaymentMethodsPaypalComplete default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalCompleteDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

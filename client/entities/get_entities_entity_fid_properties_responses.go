@@ -6,6 +6,7 @@ package entities
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetEntitiesEntityFidPropertiesOK() *GetEntitiesEntityFidPropertiesOK {
 	return &GetEntitiesEntityFidPropertiesOK{}
 }
 
-/*GetEntitiesEntityFidPropertiesOK handles this case with default header values.
+/* GetEntitiesEntityFidPropertiesOK describes a response with status code 200, with default header values.
 
 Entity Properties
 */
@@ -59,7 +60,6 @@ type GetEntitiesEntityFidPropertiesOK struct {
 func (o *GetEntitiesEntityFidPropertiesOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties][%d] getEntitiesEntityFidPropertiesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetEntitiesEntityFidPropertiesOK) GetPayload() *GetEntitiesEntityFidPropertiesOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetEntitiesEntityFidPropertiesDefault(code int) *GetEntitiesEntityFidPro
 	}
 }
 
-/*GetEntitiesEntityFidPropertiesDefault handles this case with default header values.
+/* GetEntitiesEntityFidPropertiesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetEntitiesEntityFidPropertiesDefault) Code() int {
 func (o *GetEntitiesEntityFidPropertiesDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties][%d] GetEntitiesEntityFidProperties default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetEntitiesEntityFidPropertiesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetEntitiesEntityFidPropertiesOKBody) validateData(formats strfmt.Regis
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getEntitiesEntityFidPropertiesOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get entities entity fid properties o k body based on the context it is used
+func (o *GetEntitiesEntityFidPropertiesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetEntitiesEntityFidPropertiesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidPropertiesOK" + "." + "data")
 			}

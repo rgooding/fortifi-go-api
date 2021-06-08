@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -78,6 +80,11 @@ type CardDataPayload struct {
 
 // Validate validates this card data payload
 func (m *CardDataPayload) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this card data payload based on context it is used
+func (m *CardDataPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

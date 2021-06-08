@@ -17,66 +17,84 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid auto suspend days operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid auto suspend days operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*Days*/
-	Days int32
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// Days.
+	//
+	// Format: int32
+	Days int32
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid auto suspend days params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid auto suspend days params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid auto suspend days params

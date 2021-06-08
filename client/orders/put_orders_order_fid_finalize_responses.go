@@ -46,7 +46,7 @@ func NewPutOrdersOrderFidFinalizeOK() *PutOrdersOrderFidFinalizeOK {
 	return &PutOrdersOrderFidFinalizeOK{}
 }
 
-/*PutOrdersOrderFidFinalizeOK handles this case with default header values.
+/* PutOrdersOrderFidFinalizeOK describes a response with status code 200, with default header values.
 
 Order Finalized
 */
@@ -69,7 +69,7 @@ func NewPutOrdersOrderFidFinalizeDefault(code int) *PutOrdersOrderFidFinalizeDef
 	}
 }
 
-/*PutOrdersOrderFidFinalizeDefault handles this case with default header values.
+/* PutOrdersOrderFidFinalizeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutOrdersOrderFidFinalizeDefault) Code() int {
 func (o *PutOrdersOrderFidFinalizeDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/finalize][%d] PutOrdersOrderFidFinalize default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutOrdersOrderFidFinalizeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

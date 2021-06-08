@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -17,6 +18,11 @@ import (
 //
 // swagger:model cycleTermType
 type CycleTermType string
+
+func NewCycleTermType(value CycleTermType) *CycleTermType {
+	v := value
+	return &v
+}
 
 const (
 
@@ -71,5 +77,10 @@ func (m CycleTermType) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this cycle term type based on context it is used
+func (m CycleTermType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

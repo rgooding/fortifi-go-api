@@ -23,39 +23,42 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidOK, error)
+	DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePublishersPublisherFidOK, error)
 
-	DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidApprovedOK, error)
+	DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePublishersPublisherFidApprovedOK, error)
 
-	GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersOK, error)
+	GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersOK, error)
 
-	GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidOK, error)
+	GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidOK, error)
 
-	GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsOK, error)
+	GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidCampaignsOK, error)
 
-	GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error)
+	GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error)
 
-	GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDOK, error)
+	GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVisitorsVisitorIDOK, error)
 
-	GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDPixelsOK, error)
+	GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVisitorsVisitorIDPixelsOK, error)
 
-	PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersOK, error)
+	PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersOK, error)
 
-	PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersPublisherFidCampaignsOK, error)
+	PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersPublisherFidCampaignsOK, error)
 
-	PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyOK, error)
+	PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostVisitorsVisitorIDActionsActionKeyOK, error)
 
-	PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error)
+	PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error)
 
-	PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidApprovedOK, error)
+	PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidApprovedOK, error)
 
-	PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidDisableOK, error)
+	PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidDisableOK, error)
 
-	PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidEnableOK, error)
+	PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidEnableOK, error)
 
-	PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidRestoreOK, error)
+	PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidRestoreOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -63,13 +66,12 @@ type ClientService interface {
 /*
   DeletePublishersPublisherFid deletes a publisher
 */
-func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidOK, error) {
+func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePublishersPublisherFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeletePublishersPublisherFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeletePublishersPublisherFid",
 		Method:             "DELETE",
 		PathPattern:        "/publishers/{publisherFid}",
@@ -81,7 +83,12 @@ func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherF
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -97,13 +104,12 @@ func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherF
 /*
   DeletePublishersPublisherFidApproved removes approved status on an publisher
 */
-func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*DeletePublishersPublisherFidApprovedOK, error) {
+func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePublishersPublisherFidApprovedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeletePublishersPublisherFidApprovedParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "DeletePublishersPublisherFidApproved",
 		Method:             "DELETE",
 		PathPattern:        "/publishers/{publisherFid}/approved",
@@ -115,7 +121,12 @@ func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPu
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -131,13 +142,12 @@ func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPu
 /*
   GetPublishers lists publishers
 */
-func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersOK, error) {
+func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPublishersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPublishers",
 		Method:             "GET",
 		PathPattern:        "/publishers",
@@ -149,7 +159,12 @@ func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -165,13 +180,12 @@ func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.Cli
 /*
   GetPublishersPublisherFid retrieves a publisher
 */
-func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidOK, error) {
+func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPublishersPublisherFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPublishersPublisherFid",
 		Method:             "GET",
 		PathPattern:        "/publishers/{publisherFid}",
@@ -183,7 +197,12 @@ func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidPara
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -199,13 +218,12 @@ func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidPara
 /*
   GetPublishersPublisherFidCampaigns lists campaigns
 */
-func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsOK, error) {
+func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPublishersPublisherFidCampaignsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPublishersPublisherFidCampaigns",
 		Method:             "GET",
 		PathPattern:        "/publishers/{publisherFid}/campaigns",
@@ -217,7 +235,12 @@ func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublish
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -233,13 +256,12 @@ func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublish
 /*
   GetPublishersPublisherFidCampaignsPublisherCampaignFid retrieves a publisher campaign
 */
-func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error) {
+func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPublishersPublisherFidCampaignsPublisherCampaignFidParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetPublishersPublisherFidCampaignsPublisherCampaignFid",
 		Method:             "GET",
 		PathPattern:        "/publishers/{publisherFid}/campaigns/{publisherCampaignFid}",
@@ -251,7 +273,12 @@ func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -269,13 +296,12 @@ func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *
 
   This call will return information related to how a visitor arrived
 */
-func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDOK, error) {
+func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVisitorsVisitorIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVisitorsVisitorIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetVisitorsVisitorID",
 		Method:             "GET",
 		PathPattern:        "/visitors/{visitorId}",
@@ -287,7 +313,12 @@ func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authIn
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -305,13 +336,12 @@ func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authIn
 
   This call will release pixels from the pending queue on read
 */
-func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter) (*GetVisitorsVisitorIDPixelsOK, error) {
+func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVisitorsVisitorIDPixelsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVisitorsVisitorIDPixelsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetVisitorsVisitorIDPixels",
 		Method:             "GET",
 		PathPattern:        "/visitors/{visitorId}/pixels",
@@ -323,7 +353,12 @@ func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsPa
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -339,13 +374,12 @@ func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsPa
 /*
   PostPublishers creates a new publisher
 */
-func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersOK, error) {
+func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostPublishersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostPublishers",
 		Method:             "POST",
 		PathPattern:        "/publishers",
@@ -357,7 +391,12 @@ func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.C
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -373,13 +412,12 @@ func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.C
 /*
   PostPublishersPublisherFidCampaigns creates a new publisher campaign
 */
-func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter) (*PostPublishersPublisherFidCampaignsOK, error) {
+func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersPublisherFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostPublishersPublisherFidCampaignsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostPublishersPublisherFidCampaigns",
 		Method:             "POST",
 		PathPattern:        "/publishers/{publisherFid}/campaigns",
@@ -391,7 +429,12 @@ func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPubli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -410,13 +453,12 @@ func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPubli
   Track an action such as a lead or acquisition
 
 */
-func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyOK, error) {
+func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostVisitorsVisitorIDActionsActionKeyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostVisitorsVisitorIDActionsActionKeyParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostVisitorsVisitorIDActionsActionKey",
 		Method:             "POST",
 		PathPattern:        "/visitors/{visitorId}/actions/{actionKey}",
@@ -428,7 +470,12 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisit
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -447,13 +494,12 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisit
   When an action has been reversed, e.g. cancelled, refunded
 
 */
-func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error) {
+func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostVisitorsVisitorIDActionsActionKeyReverseParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PostVisitorsVisitorIDActionsActionKeyReverse",
 		Method:             "POST",
 		PathPattern:        "/visitors/{visitorId}/actions/{actionKey}/reverse",
@@ -465,7 +511,12 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisito
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -481,13 +532,12 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisito
 /*
   PutPublishersPublisherFidApproved sets approved status on an publisher
 */
-func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidApprovedOK, error) {
+func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidApprovedOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutPublishersPublisherFidApprovedParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutPublishersPublisherFidApproved",
 		Method:             "PUT",
 		PathPattern:        "/publishers/{publisherFid}/approved",
@@ -499,7 +549,12 @@ func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublishe
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -515,13 +570,12 @@ func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublishe
 /*
   PutPublishersPublisherFidDisable disables a publisher
 */
-func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidDisableOK, error) {
+func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidDisableOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutPublishersPublisherFidDisableParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutPublishersPublisherFidDisable",
 		Method:             "PUT",
 		PathPattern:        "/publishers/{publisherFid}/disable",
@@ -533,7 +587,12 @@ func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisher
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -549,13 +608,12 @@ func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisher
 /*
   PutPublishersPublisherFidEnable enables a publisher
 */
-func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidEnableOK, error) {
+func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidEnableOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutPublishersPublisherFidEnableParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutPublishersPublisherFidEnable",
 		Method:             "PUT",
 		PathPattern:        "/publishers/{publisherFid}/enable",
@@ -567,7 +625,12 @@ func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherF
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -583,13 +646,12 @@ func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherF
 /*
   PutPublishersPublisherFidRestore restores a publisher
 */
-func (a *Client) PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter) (*PutPublishersPublisherFidRestoreOK, error) {
+func (a *Client) PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidRestoreOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutPublishersPublisherFidRestoreParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PutPublishersPublisherFidRestore",
 		Method:             "PUT",
 		PathPattern:        "/publishers/{publisherFid}/restore",
@@ -601,7 +663,12 @@ func (a *Client) PutPublishersPublisherFidRestore(params *PutPublishersPublisher
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

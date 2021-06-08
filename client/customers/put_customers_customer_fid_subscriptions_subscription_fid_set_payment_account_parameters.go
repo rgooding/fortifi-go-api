@@ -16,66 +16,82 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParamsWithTimeout creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParamsWithContext creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParamsWithContext(ctx context.Context) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParamsWithHTTPClient creates a new PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams {
-	var ()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams contains all the parameters to send to the API endpoint
-for the put customers customer fid subscriptions subscription fid set payment account operation typically these are written to a http.Request
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid subscriptions subscription fid set payment account operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*PaymentAccountFid*/
-	PaymentAccountFid *string
-	/*SubscriptionFid
-	  Subscription FID to use
 
+	// PaymentAccountFid.
+	PaymentAccountFid *string
+
+	/* SubscriptionFid.
+
+	   Subscription FID to use
 	*/
 	SubscriptionFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid subscriptions subscription fid set payment account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams) WithDefaults() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid subscriptions subscription fid set payment account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid subscriptions subscription fid set payment account params
@@ -170,7 +186,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountPar
 				return err
 			}
 		}
-
 	}
 
 	// path param subscriptionFid

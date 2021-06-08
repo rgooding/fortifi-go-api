@@ -46,7 +46,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK() *P
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysOK describes a response with status code 200, with default header values.
 
 Auto cancel days set
 */
@@ -69,7 +69,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysDefault
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysDefaul
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/autoCancelDays][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDays default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoCancelDaysDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

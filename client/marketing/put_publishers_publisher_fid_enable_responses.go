@@ -46,7 +46,7 @@ func NewPutPublishersPublisherFidEnableOK() *PutPublishersPublisherFidEnableOK {
 	return &PutPublishersPublisherFidEnableOK{}
 }
 
-/*PutPublishersPublisherFidEnableOK handles this case with default header values.
+/* PutPublishersPublisherFidEnableOK describes a response with status code 200, with default header values.
 
 Publisher enabled
 */
@@ -69,7 +69,7 @@ func NewPutPublishersPublisherFidEnableDefault(code int) *PutPublishersPublisher
 	}
 }
 
-/*PutPublishersPublisherFidEnableDefault handles this case with default header values.
+/* PutPublishersPublisherFidEnableDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PutPublishersPublisherFidEnableDefault) Code() int {
 func (o *PutPublishersPublisherFidEnableDefault) Error() string {
 	return fmt.Sprintf("[PUT /publishers/{publisherFid}/enable][%d] PutPublishersPublisherFidEnable default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutPublishersPublisherFidEnableDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -58,7 +59,6 @@ func (m *PropertyBulkSetPayload) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PropertyBulkSetPayload) validateDecrementCounters(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DecrementCounters) { // not required
 		return nil
 	}
@@ -83,7 +83,6 @@ func (m *PropertyBulkSetPayload) validateDecrementCounters(formats strfmt.Regist
 }
 
 func (m *PropertyBulkSetPayload) validateFlags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Flags) { // not required
 		return nil
 	}
@@ -108,7 +107,6 @@ func (m *PropertyBulkSetPayload) validateFlags(formats strfmt.Registry) error {
 }
 
 func (m *PropertyBulkSetPayload) validateIncrementCounters(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.IncrementCounters) { // not required
 		return nil
 	}
@@ -133,7 +131,6 @@ func (m *PropertyBulkSetPayload) validateIncrementCounters(formats strfmt.Regist
 }
 
 func (m *PropertyBulkSetPayload) validateValues(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Values) { // not required
 		return nil
 	}
@@ -145,6 +142,104 @@ func (m *PropertyBulkSetPayload) validateValues(formats strfmt.Registry) error {
 
 		if m.Values[i] != nil {
 			if err := m.Values[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("values" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this property bulk set payload based on the context it is used
+func (m *PropertyBulkSetPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDecrementCounters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFlags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIncrementCounters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) contextValidateDecrementCounters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DecrementCounters); i++ {
+
+		if m.DecrementCounters[i] != nil {
+			if err := m.DecrementCounters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("decrementCounters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) contextValidateFlags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Flags); i++ {
+
+		if m.Flags[i] != nil {
+			if err := m.Flags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) contextValidateIncrementCounters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IncrementCounters); i++ {
+
+		if m.IncrementCounters[i] != nil {
+			if err := m.IncrementCounters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incrementCounters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyBulkSetPayload) contextValidateValues(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Values); i++ {
+
+		if m.Values[i] != nil {
+			if err := m.Values[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("values" + "." + strconv.Itoa(i))
 				}

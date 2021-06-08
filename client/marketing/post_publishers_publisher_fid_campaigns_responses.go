@@ -6,6 +6,7 @@ package marketing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPostPublishersPublisherFidCampaignsOK() *PostPublishersPublisherFidCampa
 	return &PostPublishersPublisherFidCampaignsOK{}
 }
 
-/*PostPublishersPublisherFidCampaignsOK handles this case with default header values.
+/* PostPublishersPublisherFidCampaignsOK describes a response with status code 200, with default header values.
 
 Campaign Created
 */
@@ -59,7 +60,6 @@ type PostPublishersPublisherFidCampaignsOK struct {
 func (o *PostPublishersPublisherFidCampaignsOK) Error() string {
 	return fmt.Sprintf("[POST /publishers/{publisherFid}/campaigns][%d] postPublishersPublisherFidCampaignsOK  %+v", 200, o.Payload)
 }
-
 func (o *PostPublishersPublisherFidCampaignsOK) GetPayload() *PostPublishersPublisherFidCampaignsOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPostPublishersPublisherFidCampaignsDefault(code int) *PostPublishersPubl
 	}
 }
 
-/*PostPublishersPublisherFidCampaignsDefault handles this case with default header values.
+/* PostPublishersPublisherFidCampaignsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PostPublishersPublisherFidCampaignsDefault) Code() int {
 func (o *PostPublishersPublisherFidCampaignsDefault) Error() string {
 	return fmt.Sprintf("[POST /publishers/{publisherFid}/campaigns][%d] PostPublishersPublisherFidCampaigns default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostPublishersPublisherFidCampaignsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PostPublishersPublisherFidCampaignsOKBody) validateData(formats strfmt.
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("postPublishersPublisherFidCampaignsOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post publishers publisher fid campaigns o k body based on the context it is used
+func (o *PostPublishersPublisherFidCampaignsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PostPublishersPublisherFidCampaignsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postPublishersPublisherFidCampaignsOK" + "." + "data")
 			}

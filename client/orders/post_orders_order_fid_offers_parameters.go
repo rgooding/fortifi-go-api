@@ -17,64 +17,82 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPostOrdersOrderFidOffersParams creates a new PostOrdersOrderFidOffersParams object
-// with the default values initialized.
+// NewPostOrdersOrderFidOffersParams creates a new PostOrdersOrderFidOffersParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostOrdersOrderFidOffersParams() *PostOrdersOrderFidOffersParams {
-	var ()
 	return &PostOrdersOrderFidOffersParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostOrdersOrderFidOffersParamsWithTimeout creates a new PostOrdersOrderFidOffersParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostOrdersOrderFidOffersParamsWithTimeout(timeout time.Duration) *PostOrdersOrderFidOffersParams {
-	var ()
 	return &PostOrdersOrderFidOffersParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostOrdersOrderFidOffersParamsWithContext creates a new PostOrdersOrderFidOffersParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostOrdersOrderFidOffersParamsWithContext(ctx context.Context) *PostOrdersOrderFidOffersParams {
-	var ()
 	return &PostOrdersOrderFidOffersParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostOrdersOrderFidOffersParamsWithHTTPClient creates a new PostOrdersOrderFidOffersParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostOrdersOrderFidOffersParamsWithHTTPClient(client *http.Client) *PostOrdersOrderFidOffersParams {
-	var ()
 	return &PostOrdersOrderFidOffersParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostOrdersOrderFidOffersParams contains all the parameters to send to the API endpoint
-for the post orders order fid offers operation typically these are written to a http.Request
+/* PostOrdersOrderFidOffersParams contains all the parameters to send to the API endpoint
+   for the post orders order fid offers operation.
+
+   Typically these are written to a http.Request.
 */
 type PostOrdersOrderFidOffersParams struct {
 
-	/*OfferFid*/
+	// OfferFid.
 	OfferFid string
-	/*OrderFid*/
+
+	// OrderFid.
 	OrderFid string
-	/*OrderItemFid*/
+
+	// OrderItemFid.
 	OrderItemFid *string
-	/*ProductFid*/
+
+	// ProductFid.
 	ProductFid *string
-	/*Replace*/
+
+	// Replace.
 	Replace *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post orders order fid offers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostOrdersOrderFidOffersParams) WithDefaults() *PostOrdersOrderFidOffersParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post orders order fid offers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostOrdersOrderFidOffersParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post orders order fid offers params
@@ -200,7 +218,6 @@ func (o *PostOrdersOrderFidOffersParams) WriteToRequest(r runtime.ClientRequest,
 				return err
 			}
 		}
-
 	}
 
 	if o.ProductFid != nil {
@@ -216,7 +233,6 @@ func (o *PostOrdersOrderFidOffersParams) WriteToRequest(r runtime.ClientRequest,
 				return err
 			}
 		}
-
 	}
 
 	if o.Replace != nil {
@@ -232,7 +248,6 @@ func (o *PostOrdersOrderFidOffersParams) WriteToRequest(r runtime.ClientRequest,
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

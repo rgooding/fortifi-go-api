@@ -16,124 +16,151 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutCustomersCustomerFidContactsContactFidParams creates a new PutCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized.
+// NewPutCustomersCustomerFidContactsContactFidParams creates a new PutCustomersCustomerFidContactsContactFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutCustomersCustomerFidContactsContactFidParams() *PutCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &PutCustomersCustomerFidContactsContactFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutCustomersCustomerFidContactsContactFidParamsWithTimeout creates a new PutCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutCustomersCustomerFidContactsContactFidParamsWithTimeout(timeout time.Duration) *PutCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &PutCustomersCustomerFidContactsContactFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutCustomersCustomerFidContactsContactFidParamsWithContext creates a new PutCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutCustomersCustomerFidContactsContactFidParamsWithContext(ctx context.Context) *PutCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &PutCustomersCustomerFidContactsContactFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutCustomersCustomerFidContactsContactFidParamsWithHTTPClient creates a new PutCustomersCustomerFidContactsContactFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutCustomersCustomerFidContactsContactFidParamsWithHTTPClient(client *http.Client) *PutCustomersCustomerFidContactsContactFidParams {
-	var ()
 	return &PutCustomersCustomerFidContactsContactFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
-for the put customers customer fid contacts contact fid operation typically these are written to a http.Request
+/* PutCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
+   for the put customers customer fid contacts contact fid operation.
+
+   Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidContactsContactFidParams struct {
 
-	/*Birthday
-	  Birthday
+	/* Birthday.
 
+	   Birthday
 	*/
 	Birthday *string
-	/*ContactFid
-	  Contact FID to use
 
+	/* ContactFid.
+
+	   Contact FID to use
 	*/
 	ContactFid string
-	/*CustomerFid
-	  Customer FID to use
 
+	/* CustomerFid.
+
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*DefaultAddressFid
-	  Default Address FID
 
+	/* DefaultAddressFid.
+
+	   Default Address FID
 	*/
 	DefaultAddressFid *string
-	/*DefaultEmailFid
-	  Default Email FID
 
+	/* DefaultEmailFid.
+
+	   Default Email FID
 	*/
 	DefaultEmailFid *string
-	/*DefaultPhoneFid
-	  Default Phone FID
 
+	/* DefaultPhoneFid.
+
+	   Default Phone FID
 	*/
 	DefaultPhoneFid *string
-	/*ExternalReference
-	  External Reference
 
+	/* ExternalReference.
+
+	   External Reference
 	*/
 	ExternalReference *string
-	/*FirstName
-	  First Name
 
+	/* FirstName.
+
+	   First Name
 	*/
 	FirstName *string
-	/*JobTitle
-	  Job Title
 
+	/* JobTitle.
+
+	   Job Title
 	*/
 	JobTitle *string
-	/*LastName
-	  Last Name
 
+	/* LastName.
+
+	   Last Name
 	*/
 	LastName *string
-	/*MiddleNames
-	  Middle Names
 
+	/* MiddleNames.
+
+	   Middle Names
 	*/
 	MiddleNames *string
-	/*Nickname
-	  Nickname
 
+	/* Nickname.
+
+	   Nickname
 	*/
 	Nickname *string
-	/*Prefix
-	  Prefix
 
+	/* Prefix.
+
+	   Prefix
 	*/
 	Prefix *string
-	/*Suffix
-	  Suffix
 
+	/* Suffix.
+
+	   Suffix
 	*/
 	Suffix *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put customers customer fid contacts contact fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidContactsContactFidParams) WithDefaults() *PutCustomersCustomerFidContactsContactFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put customers customer fid contacts contact fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutCustomersCustomerFidContactsContactFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put customers customer fid contacts contact fid params
@@ -344,7 +371,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	// path param contactFid
@@ -370,7 +396,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.DefaultEmailFid != nil {
@@ -386,7 +411,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.DefaultPhoneFid != nil {
@@ -402,7 +426,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.ExternalReference != nil {
@@ -418,7 +441,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.FirstName != nil {
@@ -434,7 +456,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.JobTitle != nil {
@@ -450,7 +471,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.LastName != nil {
@@ -466,7 +486,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.MiddleNames != nil {
@@ -482,7 +501,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.Nickname != nil {
@@ -498,7 +516,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.Prefix != nil {
@@ -514,7 +531,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if o.Suffix != nil {
@@ -530,7 +546,6 @@ func (o *PutCustomersCustomerFidContactsContactFidParams) WriteToRequest(r runti
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

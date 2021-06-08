@@ -6,6 +6,7 @@ package entities
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewGetEntitiesEntityFidConfigSectionNameItemsItemNameOK() *GetEntitiesEntit
 	return &GetEntitiesEntityFidConfigSectionNameItemsItemNameOK{}
 }
 
-/*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK handles this case with default header values.
+/* GetEntitiesEntityFidConfigSectionNameItemsItemNameOK describes a response with status code 200, with default header values.
 
 Config Item
 */
@@ -59,7 +60,6 @@ type GetEntitiesEntityFidConfigSectionNameItemsItemNameOK struct {
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] getEntitiesEntityFidConfigSectionNameItemsItemNameOK  %+v", 200, o.Payload)
 }
-
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) GetPayload() *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewGetEntitiesEntityFidConfigSectionNameItemsItemNameDefault(code int) *Get
 	}
 }
 
-/*GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault handles this case with default header values.
+/* GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) Code() int {
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] GetEntitiesEntityFidConfigSectionNameItemsItemName default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) validateData(
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getEntitiesEntityFidConfigSectionNameItemsItemNameOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get entities entity fid config section name items item name o k body based on the context it is used
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidConfigSectionNameItemsItemNameOK" + "." + "data")
 			}

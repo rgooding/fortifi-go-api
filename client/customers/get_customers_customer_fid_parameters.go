@@ -17,61 +17,76 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCustomersCustomerFidParams creates a new GetCustomersCustomerFidParams object
-// with the default values initialized.
+// NewGetCustomersCustomerFidParams creates a new GetCustomersCustomerFidParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCustomersCustomerFidParams() *GetCustomersCustomerFidParams {
-	var ()
 	return &GetCustomersCustomerFidParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCustomersCustomerFidParamsWithTimeout creates a new GetCustomersCustomerFidParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCustomersCustomerFidParamsWithTimeout(timeout time.Duration) *GetCustomersCustomerFidParams {
-	var ()
 	return &GetCustomersCustomerFidParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCustomersCustomerFidParamsWithContext creates a new GetCustomersCustomerFidParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCustomersCustomerFidParamsWithContext(ctx context.Context) *GetCustomersCustomerFidParams {
-	var ()
 	return &GetCustomersCustomerFidParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCustomersCustomerFidParamsWithHTTPClient creates a new GetCustomersCustomerFidParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCustomersCustomerFidParamsWithHTTPClient(client *http.Client) *GetCustomersCustomerFidParams {
-	var ()
 	return &GetCustomersCustomerFidParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCustomersCustomerFidParams contains all the parameters to send to the API endpoint
-for the get customers customer fid operation typically these are written to a http.Request
+/* GetCustomersCustomerFidParams contains all the parameters to send to the API endpoint
+   for the get customers customer fid operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*RetrieveBillingData*/
+
+	// RetrieveBillingData.
 	RetrieveBillingData *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get customers customer fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidParams) WithDefaults() *GetCustomersCustomerFidParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get customers customer fid params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCustomersCustomerFidParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get customers customer fid params
@@ -146,16 +161,17 @@ func (o *GetCustomersCustomerFidParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param retrieveBillingData
 		var qrRetrieveBillingData bool
+
 		if o.RetrieveBillingData != nil {
 			qrRetrieveBillingData = *o.RetrieveBillingData
 		}
 		qRetrieveBillingData := swag.FormatBool(qrRetrieveBillingData)
 		if qRetrieveBillingData != "" {
+
 			if err := r.SetQueryParam("retrieveBillingData", qRetrieveBillingData); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

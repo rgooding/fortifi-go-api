@@ -23,9 +23,12 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetProperties(params *GetPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*GetPropertiesOK, error)
+	GetProperties(params *GetPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPropertiesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -33,13 +36,12 @@ type ClientService interface {
 /*
   GetProperties gets defined properties
 */
-func (a *Client) GetProperties(params *GetPropertiesParams, authInfo runtime.ClientAuthInfoWriter) (*GetPropertiesOK, error) {
+func (a *Client) GetProperties(params *GetPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPropertiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPropertiesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "GetProperties",
 		Method:             "GET",
 		PathPattern:        "/properties",
@@ -51,7 +53,12 @@ func (a *Client) GetProperties(params *GetPropertiesParams, authInfo runtime.Cli
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

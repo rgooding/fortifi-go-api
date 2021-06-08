@@ -6,6 +6,7 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
@@ -48,7 +49,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK{}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK describes a response with status code 200, with default header values.
 
 Parent subscription set
 */
@@ -59,7 +60,6 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK 
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK  %+v", 200, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody {
 	return o.Payload
 }
@@ -83,7 +83,7 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 	}
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault handles this case with default header values.
+/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -101,7 +101,6 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -200,6 +199,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 
 	if o.Data != nil {
 		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this put customers customer fid subscriptions subscription fid set parent subscription o k body based on the context it is used
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK" + "." + "data")
 			}

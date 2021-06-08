@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPostCustomersCustomerFidInteractionsParams creates a new PostCustomersCustomerFidInteractionsParams object
-// with the default values initialized.
+// NewPostCustomersCustomerFidInteractionsParams creates a new PostCustomersCustomerFidInteractionsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostCustomersCustomerFidInteractionsParams() *PostCustomersCustomerFidInteractionsParams {
-	var ()
 	return &PostCustomersCustomerFidInteractionsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostCustomersCustomerFidInteractionsParamsWithTimeout creates a new PostCustomersCustomerFidInteractionsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostCustomersCustomerFidInteractionsParamsWithTimeout(timeout time.Duration) *PostCustomersCustomerFidInteractionsParams {
-	var ()
 	return &PostCustomersCustomerFidInteractionsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostCustomersCustomerFidInteractionsParamsWithContext creates a new PostCustomersCustomerFidInteractionsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostCustomersCustomerFidInteractionsParamsWithContext(ctx context.Context) *PostCustomersCustomerFidInteractionsParams {
-	var ()
 	return &PostCustomersCustomerFidInteractionsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostCustomersCustomerFidInteractionsParamsWithHTTPClient creates a new PostCustomersCustomerFidInteractionsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostCustomersCustomerFidInteractionsParamsWithHTTPClient(client *http.Client) *PostCustomersCustomerFidInteractionsParams {
-	var ()
 	return &PostCustomersCustomerFidInteractionsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostCustomersCustomerFidInteractionsParams contains all the parameters to send to the API endpoint
-for the post customers customer fid interactions operation typically these are written to a http.Request
+/* PostCustomersCustomerFidInteractionsParams contains all the parameters to send to the API endpoint
+   for the post customers customer fid interactions operation.
+
+   Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidInteractionsParams struct {
 
-	/*CustomerFid
-	  Customer FID to use
+	/* CustomerFid.
 
+	   Customer FID to use
 	*/
 	CustomerFid string
-	/*InteractionType
-	  Interaction Type
 
+	/* InteractionType.
+
+	   Interaction Type
 	*/
 	InteractionType string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post customers customer fid interactions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidInteractionsParams) WithDefaults() *PostCustomersCustomerFidInteractionsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post customers customer fid interactions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostCustomersCustomerFidInteractionsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post customers customer fid interactions params

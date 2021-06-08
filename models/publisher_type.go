@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -15,8 +16,13 @@ import (
 
 // PublisherType Publisher Type
 //
-// swagger:model PublisherType
+// swagger:model publisherType
 type PublisherType string
+
+func NewPublisherType(value PublisherType) *PublisherType {
+	v := value
+	return &v
+}
 
 const (
 
@@ -92,5 +98,10 @@ func (m PublisherType) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// ContextValidate validates this publisher type based on context it is used
+func (m PublisherType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }

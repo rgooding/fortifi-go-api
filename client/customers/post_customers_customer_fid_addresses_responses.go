@@ -46,7 +46,7 @@ func NewPostCustomersCustomerFidAddressesOK() *PostCustomersCustomerFidAddresses
 	return &PostCustomersCustomerFidAddressesOK{}
 }
 
-/*PostCustomersCustomerFidAddressesOK handles this case with default header values.
+/* PostCustomersCustomerFidAddressesOK describes a response with status code 200, with default header values.
 
 Address Added
 */
@@ -69,7 +69,7 @@ func NewPostCustomersCustomerFidAddressesDefault(code int) *PostCustomersCustome
 	}
 }
 
-/*PostCustomersCustomerFidAddressesDefault handles this case with default header values.
+/* PostCustomersCustomerFidAddressesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,7 +87,6 @@ func (o *PostCustomersCustomerFidAddressesDefault) Code() int {
 func (o *PostCustomersCustomerFidAddressesDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/addresses][%d] PostCustomersCustomerFidAddresses default  %+v", o._statusCode, o.Payload)
 }
-
 func (o *PostCustomersCustomerFidAddressesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

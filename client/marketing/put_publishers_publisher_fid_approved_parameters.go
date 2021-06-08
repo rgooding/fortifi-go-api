@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPutPublishersPublisherFidApprovedParams creates a new PutPublishersPublisherFidApprovedParams object
-// with the default values initialized.
+// NewPutPublishersPublisherFidApprovedParams creates a new PutPublishersPublisherFidApprovedParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutPublishersPublisherFidApprovedParams() *PutPublishersPublisherFidApprovedParams {
-	var ()
 	return &PutPublishersPublisherFidApprovedParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutPublishersPublisherFidApprovedParamsWithTimeout creates a new PutPublishersPublisherFidApprovedParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutPublishersPublisherFidApprovedParamsWithTimeout(timeout time.Duration) *PutPublishersPublisherFidApprovedParams {
-	var ()
 	return &PutPublishersPublisherFidApprovedParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutPublishersPublisherFidApprovedParamsWithContext creates a new PutPublishersPublisherFidApprovedParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutPublishersPublisherFidApprovedParamsWithContext(ctx context.Context) *PutPublishersPublisherFidApprovedParams {
-	var ()
 	return &PutPublishersPublisherFidApprovedParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutPublishersPublisherFidApprovedParamsWithHTTPClient creates a new PutPublishersPublisherFidApprovedParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutPublishersPublisherFidApprovedParamsWithHTTPClient(client *http.Client) *PutPublishersPublisherFidApprovedParams {
-	var ()
 	return &PutPublishersPublisherFidApprovedParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutPublishersPublisherFidApprovedParams contains all the parameters to send to the API endpoint
-for the put publishers publisher fid approved operation typically these are written to a http.Request
+/* PutPublishersPublisherFidApprovedParams contains all the parameters to send to the API endpoint
+   for the put publishers publisher fid approved operation.
+
+   Typically these are written to a http.Request.
 */
 type PutPublishersPublisherFidApprovedParams struct {
 
-	/*PublisherFid
-	  Publisher FID to use
+	/* PublisherFid.
 
+	   Publisher FID to use
 	*/
 	PublisherFid string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put publishers publisher fid approved params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutPublishersPublisherFidApprovedParams) WithDefaults() *PutPublishersPublisherFidApprovedParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put publishers publisher fid approved params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutPublishersPublisherFidApprovedParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put publishers publisher fid approved params

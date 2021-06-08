@@ -18,56 +18,70 @@ import (
 	"github.com/fortifi/go-api/models"
 )
 
-// NewPostAdvertisersParams creates a new PostAdvertisersParams object
-// with the default values initialized.
+// NewPostAdvertisersParams creates a new PostAdvertisersParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostAdvertisersParams() *PostAdvertisersParams {
-	var ()
 	return &PostAdvertisersParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostAdvertisersParamsWithTimeout creates a new PostAdvertisersParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostAdvertisersParamsWithTimeout(timeout time.Duration) *PostAdvertisersParams {
-	var ()
 	return &PostAdvertisersParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostAdvertisersParamsWithContext creates a new PostAdvertisersParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostAdvertisersParamsWithContext(ctx context.Context) *PostAdvertisersParams {
-	var ()
 	return &PostAdvertisersParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostAdvertisersParamsWithHTTPClient creates a new PostAdvertisersParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostAdvertisersParamsWithHTTPClient(client *http.Client) *PostAdvertisersParams {
-	var ()
 	return &PostAdvertisersParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostAdvertisersParams contains all the parameters to send to the API endpoint
-for the post advertisers operation typically these are written to a http.Request
+/* PostAdvertisersParams contains all the parameters to send to the API endpoint
+   for the post advertisers operation.
+
+   Typically these are written to a http.Request.
 */
 type PostAdvertisersParams struct {
 
-	/*Payload*/
+	// Payload.
 	Payload *models.CreateAdvertiserPayload
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post advertisers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostAdvertisersParams) WithDefaults() *PostAdvertisersParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post advertisers params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostAdvertisersParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post advertisers params
@@ -121,7 +135,6 @@ func (o *PostAdvertisersParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-
 	if o.Payload != nil {
 		if err := r.SetBodyParam(o.Payload); err != nil {
 			return err

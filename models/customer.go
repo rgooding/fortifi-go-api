@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -40,6 +42,12 @@ type Customer struct {
 
 	// first name
 	FirstName string `json:"firstName,omitempty"`
+
+	// flags
+	Flags *CustomerFlags `json:"flags,omitempty"`
+
+	// id
+	ID string `json:"id,omitempty"`
 
 	// known IP
 	KnownIP string `json:"knownIP,omitempty"`
@@ -90,6 +98,10 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 		FirstName string `json:"firstName,omitempty"`
 
+		Flags *CustomerFlags `json:"flags,omitempty"`
+
+		ID string `json:"id,omitempty"`
+
 		KnownIP string `json:"knownIP,omitempty"`
 
 		LastName string `json:"lastName,omitempty"`
@@ -123,6 +135,10 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 	m.ExternalReference = dataAO1.ExternalReference
 
 	m.FirstName = dataAO1.FirstName
+
+	m.Flags = dataAO1.Flags
+
+	m.ID = dataAO1.ID
 
 	m.KnownIP = dataAO1.KnownIP
 
@@ -167,6 +183,10 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 		FirstName string `json:"firstName,omitempty"`
 
+		Flags *CustomerFlags `json:"flags,omitempty"`
+
+		ID string `json:"id,omitempty"`
+
 		KnownIP string `json:"knownIP,omitempty"`
 
 		LastName string `json:"lastName,omitempty"`
@@ -197,6 +217,10 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 	dataAO1.ExternalReference = m.ExternalReference
 
 	dataAO1.FirstName = m.FirstName
+
+	dataAO1.Flags = m.Flags
+
+	dataAO1.ID = m.ID
 
 	dataAO1.KnownIP = m.KnownIP
 
@@ -229,9 +253,64 @@ func (m *Customer) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFlags(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Customer) validateFlags(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Flags) { // not required
+		return nil
+	}
+
+	if m.Flags != nil {
+		if err := m.Flags.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("flags")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this customer based on the context it is used
+func (m *Customer) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with Fid
+	if err := m.Fid.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFlags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Customer) contextValidateFlags(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Flags != nil {
+		if err := m.Flags.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("flags")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

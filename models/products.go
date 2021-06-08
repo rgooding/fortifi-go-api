@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -37,7 +38,6 @@ func (m *Products) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Products) validateProducts(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Products) { // not required
 		return nil
 	}
@@ -49,6 +49,38 @@ func (m *Products) validateProducts(formats strfmt.Registry) error {
 
 		if m.Products[i] != nil {
 			if err := m.Products[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this products based on the context it is used
+func (m *Products) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProducts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Products) contextValidateProducts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Products); i++ {
+
+		if m.Products[i] != nil {
+			if err := m.Products[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("products" + "." + strconv.Itoa(i))
 				}

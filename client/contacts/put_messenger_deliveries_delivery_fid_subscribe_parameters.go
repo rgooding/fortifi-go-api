@@ -17,89 +17,109 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewPutMessengerDeliveriesDeliveryFidSubscribeParams creates a new PutMessengerDeliveriesDeliveryFidSubscribeParams object
-// with the default values initialized.
+// NewPutMessengerDeliveriesDeliveryFidSubscribeParams creates a new PutMessengerDeliveriesDeliveryFidSubscribeParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutMessengerDeliveriesDeliveryFidSubscribeParams() *PutMessengerDeliveriesDeliveryFidSubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidSubscribeParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithTimeout creates a new PutMessengerDeliveriesDeliveryFidSubscribeParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithTimeout(timeout time.Duration) *PutMessengerDeliveriesDeliveryFidSubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidSubscribeParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithContext creates a new PutMessengerDeliveriesDeliveryFidSubscribeParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithContext(ctx context.Context) *PutMessengerDeliveriesDeliveryFidSubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidSubscribeParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithHTTPClient creates a new PutMessengerDeliveriesDeliveryFidSubscribeParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithHTTPClient(client *http.Client) *PutMessengerDeliveriesDeliveryFidSubscribeParams {
-	var ()
 	return &PutMessengerDeliveriesDeliveryFidSubscribeParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutMessengerDeliveriesDeliveryFidSubscribeParams contains all the parameters to send to the API endpoint
-for the put messenger deliveries delivery fid subscribe operation typically these are written to a http.Request
+/* PutMessengerDeliveriesDeliveryFidSubscribeParams contains all the parameters to send to the API endpoint
+   for the put messenger deliveries delivery fid subscribe operation.
+
+   Typically these are written to a http.Request.
 */
 type PutMessengerDeliveriesDeliveryFidSubscribeParams struct {
 
-	/*ClientIP
-	  IP Address of the visitor
+	/* ClientIP.
 
+	   IP Address of the visitor
 	*/
 	ClientIP *string
-	/*DeliveryFid
-	  Delivery FID
 
+	/* DeliveryFid.
+
+	   Delivery FID
 	*/
 	DeliveryFid string
-	/*Encoding
-	  Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
 
+	/* Encoding.
+
+	   Encoding from the visitors browser 'HTTP_ACCEPT_ENCODING'
 	*/
 	Encoding *string
-	/*Language
-	  Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 
+	/* Language.
+
+	   Language from visitors browser 'HTTP_ACCEPT_LANGUAGE'
 	*/
 	Language *string
-	/*OptInData
-	  Additional data to store against opt-in
 
+	/* OptInData.
+
+	   Additional data to store against opt-in
 	*/
 	OptInData []string
-	/*OptInStatus
-	  Status of customer email opt-in
 
+	/* OptInStatus.
+
+	   Status of customer email opt-in
 	*/
 	OptInStatus *string
-	/*UserAgent
-	  User Agent of the visitors browser 'HTTP_USER_AGENT'
 
+	/* UserAgent.
+
+	   User Agent of the visitors browser 'HTTP_USER_AGENT'
 	*/
 	UserAgent *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put messenger deliveries delivery fid subscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) WithDefaults() *PutMessengerDeliveriesDeliveryFidSubscribeParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put messenger deliveries delivery fid subscribe params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put messenger deliveries delivery fid subscribe params
@@ -233,7 +253,6 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) WriteToRequest(r runt
 				return err
 			}
 		}
-
 	}
 
 	// path param deliveryFid
@@ -254,7 +273,6 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) WriteToRequest(r runt
 				return err
 			}
 		}
-
 	}
 
 	if o.Language != nil {
@@ -270,15 +288,17 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) WriteToRequest(r runt
 				return err
 			}
 		}
-
 	}
 
-	valuesOptInData := o.OptInData
+	if o.OptInData != nil {
 
-	joinedOptInData := swag.JoinByFormat(valuesOptInData, "")
-	// form array param optInData
-	if err := r.SetFormParam("optInData", joinedOptInData...); err != nil {
-		return err
+		// binding items for optInData
+		joinedOptInData := o.bindParamOptInData(reg)
+
+		// form array param optInData
+		if err := r.SetFormParam("optInData", joinedOptInData...); err != nil {
+			return err
+		}
 	}
 
 	if o.OptInStatus != nil {
@@ -294,7 +314,6 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) WriteToRequest(r runt
 				return err
 			}
 		}
-
 	}
 
 	if o.UserAgent != nil {
@@ -310,11 +329,27 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) WriteToRequest(r runt
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPutMessengerDeliveriesDeliveryFidSubscribe binds the parameter optInData
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeParams) bindParamOptInData(formats strfmt.Registry) []string {
+	optInDataIR := o.OptInData
+
+	var optInDataIC []string
+	for _, optInDataIIR := range optInDataIR { // explode []string
+
+		optInDataIIV := optInDataIIR // string as string
+		optInDataIC = append(optInDataIC, optInDataIIV)
+	}
+
+	// items.CollectionFormat: ""
+	optInDataIS := swag.JoinByFormat(optInDataIC, "")
+
+	return optInDataIS
 }
