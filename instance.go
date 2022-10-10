@@ -5,6 +5,7 @@ package api
 import (
 	"errors"
 	"fmt"
+	"net/http"
 	"strings"
 	"time"
 
@@ -63,6 +64,12 @@ func NewInstance(orgFid, user, key string) (Instance, error) {
 func (a *Authenticator) AuthenticateRequest(req runtime.ClientRequest, reg strfmt.Registry) error {
 	req.SetHeaderParam(fortifiOrgHeader, a.organisationFID)
 	req.SetHeaderParam(fortifiAuthHeader, fmt.Sprintf(fortifiBearerTokenSchema, a.authtoken))
+	return nil
+}
+
+func (a *Authenticator) AuthenticateStdRequest(req http.Request) error {
+	req.Header.Set(fortifiOrgHeader, a.organisationFID)
+	req.Header.Set(fortifiAuthHeader, fmt.Sprintf(fortifiBearerTokenSchema, a.authtoken))
 	return nil
 }
 
