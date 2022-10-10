@@ -49,7 +49,8 @@ func NewPostReviewOK() *PostReviewOK {
 	return &PostReviewOK{}
 }
 
-/* PostReviewOK describes a response with status code 200, with default header values.
+/*
+PostReviewOK describes a response with status code 200, with default header values.
 
 Review created
 */
@@ -57,9 +58,39 @@ type PostReviewOK struct {
 	Payload *PostReviewOKBody
 }
 
+// IsSuccess returns true when this post review o k response has a 2xx status code
+func (o *PostReviewOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post review o k response has a 3xx status code
+func (o *PostReviewOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post review o k response has a 4xx status code
+func (o *PostReviewOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post review o k response has a 5xx status code
+func (o *PostReviewOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post review o k response a status code equal to that given
+func (o *PostReviewOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostReviewOK) Error() string {
 	return fmt.Sprintf("[POST /review][%d] postReviewOK  %+v", 200, o.Payload)
 }
+
+func (o *PostReviewOK) String() string {
+	return fmt.Sprintf("[POST /review][%d] postReviewOK  %+v", 200, o.Payload)
+}
+
 func (o *PostReviewOK) GetPayload() *PostReviewOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostReviewDefault(code int) *PostReviewDefault {
 	}
 }
 
-/* PostReviewDefault describes a response with status code -1, with default header values.
+/*
+PostReviewDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostReviewDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post review default response has a 2xx status code
+func (o *PostReviewDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post review default response has a 3xx status code
+func (o *PostReviewDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post review default response has a 4xx status code
+func (o *PostReviewDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post review default response has a 5xx status code
+func (o *PostReviewDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post review default response a status code equal to that given
+func (o *PostReviewDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostReviewDefault) Error() string {
 	return fmt.Sprintf("[POST /review][%d] PostReview default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostReviewDefault) String() string {
+	return fmt.Sprintf("[POST /review][%d] PostReview default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostReviewDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostReviewDefault) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-/*PostReviewOKBody post review o k body
+/*
+PostReviewOKBody post review o k body
 swagger:model PostReviewOKBody
 */
 type PostReviewOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostReviewOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postReviewOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postReviewOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostReviewOKBody) contextValidateData(ctx context.Context, formats strf
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postReviewOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postReviewOK" + "." + "data")
 			}
 			return err
 		}

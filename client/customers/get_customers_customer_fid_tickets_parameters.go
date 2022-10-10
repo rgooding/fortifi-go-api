@@ -53,10 +53,12 @@ func NewGetCustomersCustomerFidTicketsParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetCustomersCustomerFidTicketsParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid tickets operation.
+/*
+GetCustomersCustomerFidTicketsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid tickets operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidTicketsParams struct {
 

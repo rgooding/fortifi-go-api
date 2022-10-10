@@ -49,7 +49,8 @@ func NewPutCustomersCustomerFidChargebacksChargebackFidOK() *PutCustomersCustome
 	return &PutCustomersCustomerFidChargebacksChargebackFidOK{}
 }
 
-/* PutCustomersCustomerFidChargebacksChargebackFidOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidChargebacksChargebackFidOK describes a response with status code 200, with default header values.
 
 Chargeback Actioned
 */
@@ -57,9 +58,39 @@ type PutCustomersCustomerFidChargebacksChargebackFidOK struct {
 	Payload *PutCustomersCustomerFidChargebacksChargebackFidOKBody
 }
 
+// IsSuccess returns true when this put customers customer fid chargebacks chargeback fid o k response has a 2xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid chargebacks chargeback fid o k response has a 3xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid chargebacks chargeback fid o k response has a 4xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid chargebacks chargeback fid o k response has a 5xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid chargebacks chargeback fid o k response a status code equal to that given
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] putCustomersCustomerFidChargebacksChargebackFidOK  %+v", 200, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] putCustomersCustomerFidChargebacksChargebackFidOK  %+v", 200, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidChargebacksChargebackFidOK) GetPayload() *PutCustomersCustomerFidChargebacksChargebackFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutCustomersCustomerFidChargebacksChargebackFidDefault(code int) *PutCus
 	}
 }
 
-/* PutCustomersCustomerFidChargebacksChargebackFidDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidChargebacksChargebackFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid chargebacks chargeback fid default response has a 2xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid chargebacks chargeback fid default response has a 3xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid chargebacks chargeback fid default response has a 4xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid chargebacks chargeback fid default response has a 5xx status code
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid chargebacks chargeback fid default response a status code equal to that given
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] PutCustomersCustomerFidChargebacksChargebackFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/chargebacks/{chargebackFid}][%d] PutCustomersCustomerFidChargebacksChargebackFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidDefault) readResponse(re
 	return nil
 }
 
-/*PutCustomersCustomerFidChargebacksChargebackFidOKBody put customers customer fid chargebacks chargeback fid o k body
+/*
+PutCustomersCustomerFidChargebacksChargebackFidOKBody put customers customer fid chargebacks chargeback fid o k body
 swagger:model PutCustomersCustomerFidChargebacksChargebackFidOKBody
 */
 type PutCustomersCustomerFidChargebacksChargebackFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) validateData(for
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutCustomersCustomerFidChargebacksChargebackFidOKBody) contextValidateD
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidChargebacksChargebackFidOK" + "." + "data")
 			}
 			return err
 		}

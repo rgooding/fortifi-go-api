@@ -50,7 +50,8 @@ func NewGetVisitorsVisitorIDPixelsOK() *GetVisitorsVisitorIDPixelsOK {
 	return &GetVisitorsVisitorIDPixelsOK{}
 }
 
-/* GetVisitorsVisitorIDPixelsOK describes a response with status code 200, with default header values.
+/*
+GetVisitorsVisitorIDPixelsOK describes a response with status code 200, with default header values.
 
 Pixels
 */
@@ -58,9 +59,39 @@ type GetVisitorsVisitorIDPixelsOK struct {
 	Payload *GetVisitorsVisitorIDPixelsOKBody
 }
 
+// IsSuccess returns true when this get visitors visitor Id pixels o k response has a 2xx status code
+func (o *GetVisitorsVisitorIDPixelsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get visitors visitor Id pixels o k response has a 3xx status code
+func (o *GetVisitorsVisitorIDPixelsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get visitors visitor Id pixels o k response has a 4xx status code
+func (o *GetVisitorsVisitorIDPixelsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get visitors visitor Id pixels o k response has a 5xx status code
+func (o *GetVisitorsVisitorIDPixelsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get visitors visitor Id pixels o k response a status code equal to that given
+func (o *GetVisitorsVisitorIDPixelsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVisitorsVisitorIDPixelsOK) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] getVisitorsVisitorIdPixelsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVisitorsVisitorIDPixelsOK) String() string {
+	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] getVisitorsVisitorIdPixelsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVisitorsVisitorIDPixelsOK) GetPayload() *GetVisitorsVisitorIDPixelsOKBody {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewGetVisitorsVisitorIDPixelsDefault(code int) *GetVisitorsVisitorIDPixelsD
 	}
 }
 
-/* GetVisitorsVisitorIDPixelsDefault describes a response with status code -1, with default header values.
+/*
+GetVisitorsVisitorIDPixelsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -99,9 +131,39 @@ func (o *GetVisitorsVisitorIDPixelsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get visitors visitor ID pixels default response has a 2xx status code
+func (o *GetVisitorsVisitorIDPixelsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get visitors visitor ID pixels default response has a 3xx status code
+func (o *GetVisitorsVisitorIDPixelsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get visitors visitor ID pixels default response has a 4xx status code
+func (o *GetVisitorsVisitorIDPixelsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get visitors visitor ID pixels default response has a 5xx status code
+func (o *GetVisitorsVisitorIDPixelsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get visitors visitor ID pixels default response a status code equal to that given
+func (o *GetVisitorsVisitorIDPixelsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetVisitorsVisitorIDPixelsDefault) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] GetVisitorsVisitorIDPixels default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetVisitorsVisitorIDPixelsDefault) String() string {
+	return fmt.Sprintf("[GET /visitors/{visitorId}/pixels][%d] GetVisitorsVisitorIDPixels default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetVisitorsVisitorIDPixelsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -118,7 +180,8 @@ func (o *GetVisitorsVisitorIDPixelsDefault) readResponse(response runtime.Client
 	return nil
 }
 
-/*GetVisitorsVisitorIDPixelsOKBody get visitors visitor ID pixels o k body
+/*
+GetVisitorsVisitorIDPixelsOKBody get visitors visitor ID pixels o k body
 swagger:model GetVisitorsVisitorIDPixelsOKBody
 */
 type GetVisitorsVisitorIDPixelsOKBody struct {
@@ -207,6 +270,8 @@ func (o *GetVisitorsVisitorIDPixelsOKBody) validateData(formats strfmt.Registry)
 			if err := o.Data[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("getVisitorsVisitorIdPixelsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("getVisitorsVisitorIdPixelsOK" + "." + "data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -244,6 +309,8 @@ func (o *GetVisitorsVisitorIDPixelsOKBody) contextValidateData(ctx context.Conte
 			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("getVisitorsVisitorIdPixelsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("getVisitorsVisitorIdPixelsOK" + "." + "data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

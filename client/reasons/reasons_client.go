@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetReasonsGroups gets a list of all reason groups
+GetReasonsGroups gets a list of all reason groups
 */
 func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReasonsGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -74,7 +74,7 @@ func (a *Client) GetReasonsGroups(params *GetReasonsGroupsParams, authInfo runti
 }
 
 /*
-  GetReasonsGroupsReasonGroupFid gets all the reasons for the reason group
+GetReasonsGroupsReasonGroupFid gets all the reasons for the reason group
 */
 func (a *Client) GetReasonsGroupsReasonGroupFid(params *GetReasonsGroupsReasonGroupFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReasonsGroupsReasonGroupFidOK, error) {
 	// TODO: Validate the params before sending

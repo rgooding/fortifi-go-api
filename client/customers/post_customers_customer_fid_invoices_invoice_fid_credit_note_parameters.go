@@ -54,10 +54,12 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParamsWithHTTPClient
 	}
 }
 
-/* PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid invoices invoice fid credit note operation.
+/*
+PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid invoices invoice fid credit note operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteParams struct {
 

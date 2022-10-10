@@ -20,8 +20,12 @@ import (
 type CycleTermType string
 
 func NewCycleTermType(value CycleTermType) *CycleTermType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated CycleTermType.
+func (m CycleTermType) Pointer() *CycleTermType {
+	return &m
 }
 
 const (

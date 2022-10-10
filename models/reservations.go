@@ -51,6 +51,8 @@ func (m *Reservations) validateReservations(formats strfmt.Registry) error {
 			if err := m.Reservations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reservations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("reservations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *Reservations) contextValidateReservations(ctx context.Context, formats 
 			if err := m.Reservations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reservations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("reservations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

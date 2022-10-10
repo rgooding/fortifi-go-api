@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackOK() *PostCustomersC
 	return &PostCustomersCustomerFidPaymentsPaymentFidChargebackOK{}
 }
 
-/* PostCustomersCustomerFidPaymentsPaymentFidChargebackOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidPaymentsPaymentFidChargebackOK describes a response with status code 200, with default header values.
 
 Chargeback Opened
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidPaymentsPaymentFidChargebackOK struct {
 	Payload *PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid payments payment fid chargeback o k response has a 2xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid payments payment fid chargeback o k response has a 3xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid payments payment fid chargeback o k response has a 4xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid payments payment fid chargeback o k response has a 5xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid payments payment fid chargeback o k response a status code equal to that given
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] postCustomersCustomerFidPaymentsPaymentFidChargebackOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] postCustomersCustomerFidPaymentsPaymentFidChargebackOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOK) GetPayload() *PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackDefault(code int) *P
 	}
 }
 
-/* PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) Code() int
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid payments payment fid chargeback default response has a 2xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid payments payment fid chargeback default response has a 3xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid payments payment fid chargeback default response has a 4xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid payments payment fid chargeback default response has a 5xx status code
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid payments payment fid chargeback default response a status code equal to that given
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] PostCustomersCustomerFidPaymentsPaymentFidChargeback default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/payments/{paymentFid}/chargeback][%d] PostCustomersCustomerFidPaymentsPaymentFidChargeback default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackDefault) readRespon
 	return nil
 }
 
-/*PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody post customers customer fid payments payment fid chargeback o k body
+/*
+PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody post customers customer fid payments payment fid chargeback o k body
 swagger:model PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody
 */
 type PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody) validateDat
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentsPaymentFidChargebackOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidPaymentsPaymentFidChargebackOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidPaymentsPaymentFidChargebackOKBody) contextVali
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentsPaymentFidChargebackOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidPaymentsPaymentFidChargebackOK" + "." + "data")
 			}
 			return err
 		}

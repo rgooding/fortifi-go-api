@@ -52,10 +52,12 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParamsWithHTTP
 	}
 }
 
-/* GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid subscriptions subscription fid periods operation.
+/*
+GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid subscriptions subscription fid periods operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsParams struct {
 

@@ -34,7 +34,7 @@ type ClientService interface {
 }
 
 /*
-  GetPolymersListCodeParentFid lists polymers by type
+GetPolymersListCodeParentFid lists polymers by type
 */
 func (a *Client) GetPolymersListCodeParentFid(params *GetPolymersListCodeParentFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPolymersListCodeParentFidOK, error) {
 	// TODO: Validate the params before sending

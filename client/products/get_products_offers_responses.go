@@ -49,7 +49,8 @@ func NewGetProductsOffersOK() *GetProductsOffersOK {
 	return &GetProductsOffersOK{}
 }
 
-/* GetProductsOffersOK describes a response with status code 200, with default header values.
+/*
+GetProductsOffersOK describes a response with status code 200, with default header values.
 
 Available Offers
 */
@@ -57,9 +58,39 @@ type GetProductsOffersOK struct {
 	Payload *GetProductsOffersOKBody
 }
 
+// IsSuccess returns true when this get products offers o k response has a 2xx status code
+func (o *GetProductsOffersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get products offers o k response has a 3xx status code
+func (o *GetProductsOffersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get products offers o k response has a 4xx status code
+func (o *GetProductsOffersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get products offers o k response has a 5xx status code
+func (o *GetProductsOffersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get products offers o k response a status code equal to that given
+func (o *GetProductsOffersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProductsOffersOK) Error() string {
 	return fmt.Sprintf("[GET /products/offers][%d] getProductsOffersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProductsOffersOK) String() string {
+	return fmt.Sprintf("[GET /products/offers][%d] getProductsOffersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProductsOffersOK) GetPayload() *GetProductsOffersOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetProductsOffersDefault(code int) *GetProductsOffersDefault {
 	}
 }
 
-/* GetProductsOffersDefault describes a response with status code -1, with default header values.
+/*
+GetProductsOffersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetProductsOffersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get products offers default response has a 2xx status code
+func (o *GetProductsOffersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get products offers default response has a 3xx status code
+func (o *GetProductsOffersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get products offers default response has a 4xx status code
+func (o *GetProductsOffersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get products offers default response has a 5xx status code
+func (o *GetProductsOffersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get products offers default response a status code equal to that given
+func (o *GetProductsOffersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetProductsOffersDefault) Error() string {
 	return fmt.Sprintf("[GET /products/offers][%d] GetProductsOffers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetProductsOffersDefault) String() string {
+	return fmt.Sprintf("[GET /products/offers][%d] GetProductsOffers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetProductsOffersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetProductsOffersDefault) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-/*GetProductsOffersOKBody get products offers o k body
+/*
+GetProductsOffersOKBody get products offers o k body
 swagger:model GetProductsOffersOKBody
 */
 type GetProductsOffersOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetProductsOffersOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsOffersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsOffersOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetProductsOffersOKBody) contextValidateData(ctx context.Context, forma
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsOffersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsOffersOK" + "." + "data")
 			}
 			return err
 		}

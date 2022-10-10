@@ -46,14 +46,44 @@ func NewDeleteEntitiesEntityFidConfigSectionNameOK() *DeleteEntitiesEntityFidCon
 	return &DeleteEntitiesEntityFidConfigSectionNameOK{}
 }
 
-/* DeleteEntitiesEntityFidConfigSectionNameOK describes a response with status code 200, with default header values.
+/*
+DeleteEntitiesEntityFidConfigSectionNameOK describes a response with status code 200, with default header values.
 
 Config Item Deleted
 */
 type DeleteEntitiesEntityFidConfigSectionNameOK struct {
 }
 
+// IsSuccess returns true when this delete entities entity fid config section name o k response has a 2xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete entities entity fid config section name o k response has a 3xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete entities entity fid config section name o k response has a 4xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete entities entity fid config section name o k response has a 5xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete entities entity fid config section name o k response a status code equal to that given
+func (o *DeleteEntitiesEntityFidConfigSectionNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteEntitiesEntityFidConfigSectionNameOK) Error() string {
+	return fmt.Sprintf("[DELETE /entities/{entityFid}/config/{sectionName}][%d] deleteEntitiesEntityFidConfigSectionNameOK ", 200)
+}
+
+func (o *DeleteEntitiesEntityFidConfigSectionNameOK) String() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/config/{sectionName}][%d] deleteEntitiesEntityFidConfigSectionNameOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteEntitiesEntityFidConfigSectionNameDefault(code int) *DeleteEntitie
 	}
 }
 
-/* DeleteEntitiesEntityFidConfigSectionNameDefault describes a response with status code -1, with default header values.
+/*
+DeleteEntitiesEntityFidConfigSectionNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete entities entity fid config section name default response has a 2xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete entities entity fid config section name default response has a 3xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete entities entity fid config section name default response has a 4xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete entities entity fid config section name default response has a 5xx status code
+func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete entities entity fid config section name default response a status code equal to that given
+func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) Error() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/config/{sectionName}][%d] DeleteEntitiesEntityFidConfigSectionName default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) String() string {
+	return fmt.Sprintf("[DELETE /entities/{entityFid}/config/{sectionName}][%d] DeleteEntitiesEntityFidConfigSectionName default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteEntitiesEntityFidConfigSectionNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

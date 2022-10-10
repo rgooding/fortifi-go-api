@@ -49,7 +49,8 @@ func NewGetFinancePaymentsOK() *GetFinancePaymentsOK {
 	return &GetFinancePaymentsOK{}
 }
 
-/* GetFinancePaymentsOK describes a response with status code 200, with default header values.
+/*
+GetFinancePaymentsOK describes a response with status code 200, with default header values.
 
 Transactions
 */
@@ -57,9 +58,39 @@ type GetFinancePaymentsOK struct {
 	Payload *GetFinancePaymentsOKBody
 }
 
+// IsSuccess returns true when this get finance payments o k response has a 2xx status code
+func (o *GetFinancePaymentsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get finance payments o k response has a 3xx status code
+func (o *GetFinancePaymentsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get finance payments o k response has a 4xx status code
+func (o *GetFinancePaymentsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get finance payments o k response has a 5xx status code
+func (o *GetFinancePaymentsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get finance payments o k response a status code equal to that given
+func (o *GetFinancePaymentsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFinancePaymentsOK) Error() string {
 	return fmt.Sprintf("[GET /finance/payments][%d] getFinancePaymentsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFinancePaymentsOK) String() string {
+	return fmt.Sprintf("[GET /finance/payments][%d] getFinancePaymentsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFinancePaymentsOK) GetPayload() *GetFinancePaymentsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetFinancePaymentsDefault(code int) *GetFinancePaymentsDefault {
 	}
 }
 
-/* GetFinancePaymentsDefault describes a response with status code -1, with default header values.
+/*
+GetFinancePaymentsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetFinancePaymentsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get finance payments default response has a 2xx status code
+func (o *GetFinancePaymentsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get finance payments default response has a 3xx status code
+func (o *GetFinancePaymentsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get finance payments default response has a 4xx status code
+func (o *GetFinancePaymentsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get finance payments default response has a 5xx status code
+func (o *GetFinancePaymentsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get finance payments default response a status code equal to that given
+func (o *GetFinancePaymentsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetFinancePaymentsDefault) Error() string {
 	return fmt.Sprintf("[GET /finance/payments][%d] GetFinancePayments default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetFinancePaymentsDefault) String() string {
+	return fmt.Sprintf("[GET /finance/payments][%d] GetFinancePayments default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetFinancePaymentsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetFinancePaymentsDefault) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-/*GetFinancePaymentsOKBody get finance payments o k body
+/*
+GetFinancePaymentsOKBody get finance payments o k body
 swagger:model GetFinancePaymentsOKBody
 */
 type GetFinancePaymentsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetFinancePaymentsOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getFinancePaymentsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getFinancePaymentsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetFinancePaymentsOKBody) contextValidateData(ctx context.Context, form
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getFinancePaymentsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getFinancePaymentsOK" + "." + "data")
 			}
 			return err
 		}

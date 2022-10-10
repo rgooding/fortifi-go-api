@@ -52,10 +52,12 @@ func NewGetOrdersOrderFidItemsParamsWithHTTPClient(client *http.Client) *GetOrde
 	}
 }
 
-/* GetOrdersOrderFidItemsParams contains all the parameters to send to the API endpoint
-   for the get orders order fid items operation.
+/*
+GetOrdersOrderFidItemsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get orders order fid items operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOrdersOrderFidItemsParams struct {
 

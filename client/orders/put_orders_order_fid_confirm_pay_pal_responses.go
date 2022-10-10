@@ -49,7 +49,8 @@ func NewPutOrdersOrderFidConfirmPayPalOK() *PutOrdersOrderFidConfirmPayPalOK {
 	return &PutOrdersOrderFidConfirmPayPalOK{}
 }
 
-/* PutOrdersOrderFidConfirmPayPalOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidConfirmPayPalOK describes a response with status code 200, with default header values.
 
 Order confirmed and payment authroized
 */
@@ -57,9 +58,39 @@ type PutOrdersOrderFidConfirmPayPalOK struct {
 	Payload *PutOrdersOrderFidConfirmPayPalOKBody
 }
 
+// IsSuccess returns true when this put orders order fid confirm pay pal o k response has a 2xx status code
+func (o *PutOrdersOrderFidConfirmPayPalOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid confirm pay pal o k response has a 3xx status code
+func (o *PutOrdersOrderFidConfirmPayPalOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid confirm pay pal o k response has a 4xx status code
+func (o *PutOrdersOrderFidConfirmPayPalOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid confirm pay pal o k response has a 5xx status code
+func (o *PutOrdersOrderFidConfirmPayPalOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid confirm pay pal o k response a status code equal to that given
+func (o *PutOrdersOrderFidConfirmPayPalOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidConfirmPayPalOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] putOrdersOrderFidConfirmPayPalOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidConfirmPayPalOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] putOrdersOrderFidConfirmPayPalOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidConfirmPayPalOK) GetPayload() *PutOrdersOrderFidConfirmPayPalOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutOrdersOrderFidConfirmPayPalDefault(code int) *PutOrdersOrderFidConfir
 	}
 }
 
-/* PutOrdersOrderFidConfirmPayPalDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidConfirmPayPalDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutOrdersOrderFidConfirmPayPalDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid confirm pay pal default response has a 2xx status code
+func (o *PutOrdersOrderFidConfirmPayPalDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid confirm pay pal default response has a 3xx status code
+func (o *PutOrdersOrderFidConfirmPayPalDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid confirm pay pal default response has a 4xx status code
+func (o *PutOrdersOrderFidConfirmPayPalDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid confirm pay pal default response has a 5xx status code
+func (o *PutOrdersOrderFidConfirmPayPalDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid confirm pay pal default response a status code equal to that given
+func (o *PutOrdersOrderFidConfirmPayPalDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidConfirmPayPalDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] PutOrdersOrderFidConfirmPayPal default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidConfirmPayPalDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmPayPal][%d] PutOrdersOrderFidConfirmPayPal default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidConfirmPayPalDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutOrdersOrderFidConfirmPayPalDefault) readResponse(response runtime.Cl
 	return nil
 }
 
-/*PutOrdersOrderFidConfirmPayPalOKBody put orders order fid confirm pay pal o k body
+/*
+PutOrdersOrderFidConfirmPayPalOKBody put orders order fid confirm pay pal o k body
 swagger:model PutOrdersOrderFidConfirmPayPalOKBody
 */
 type PutOrdersOrderFidConfirmPayPalOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutOrdersOrderFidConfirmPayPalOKBody) validateData(formats strfmt.Regis
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidConfirmPayPalOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidConfirmPayPalOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutOrdersOrderFidConfirmPayPalOKBody) contextValidateData(ctx context.C
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidConfirmPayPalOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidConfirmPayPalOK" + "." + "data")
 			}
 			return err
 		}

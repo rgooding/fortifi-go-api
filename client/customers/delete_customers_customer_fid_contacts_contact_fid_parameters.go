@@ -52,10 +52,12 @@ func NewDeleteCustomersCustomerFidContactsContactFidParamsWithHTTPClient(client 
 	}
 }
 
-/* DeleteCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
-   for the delete customers customer fid contacts contact fid operation.
+/*
+DeleteCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete customers customer fid contacts contact fid operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidContactsContactFidParams struct {
 

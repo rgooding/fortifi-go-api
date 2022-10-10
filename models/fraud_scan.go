@@ -66,6 +66,8 @@ func (m *FraudScan) validateMetaDataItems(formats strfmt.Registry) error {
 			if err := m.MetaDataItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("metaDataItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("metaDataItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -98,6 +100,8 @@ func (m *FraudScan) contextValidateMetaDataItems(ctx context.Context, formats st
 			if err := m.MetaDataItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("metaDataItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("metaDataItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

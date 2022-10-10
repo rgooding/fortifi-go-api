@@ -20,8 +20,12 @@ import (
 type TicketStatus string
 
 func NewTicketStatus(value TicketStatus) *TicketStatus {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated TicketStatus.
+func (m TicketStatus) Pointer() *TicketStatus {
+	return &m
 }
 
 const (

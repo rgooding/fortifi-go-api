@@ -54,10 +54,12 @@ func NewPostProductsProductFidAvailabilityCheckParamsWithHTTPClient(client *http
 	}
 }
 
-/* PostProductsProductFidAvailabilityCheckParams contains all the parameters to send to the API endpoint
-   for the post products product fid availability check operation.
+/*
+PostProductsProductFidAvailabilityCheckParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post products product fid availability check operation.
+
+	Typically these are written to a http.Request.
 */
 type PostProductsProductFidAvailabilityCheckParams struct {
 

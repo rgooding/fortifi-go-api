@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetCustomersCustomerFidOrdersParams creates a new GetCustomersCustomerFidOrdersParams object,
@@ -52,10 +53,12 @@ func NewGetCustomersCustomerFidOrdersParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetCustomersCustomerFidOrdersParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid orders operation.
+/*
+GetCustomersCustomerFidOrdersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid orders operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidOrdersParams struct {
 
@@ -70,6 +73,9 @@ type GetCustomersCustomerFidOrdersParams struct {
 
 	// Filter.
 	Filter *string
+
+	// IsLikeExternalReference.
+	IsLikeExternalReference *bool
 
 	// State.
 	State *string
@@ -160,6 +166,17 @@ func (o *GetCustomersCustomerFidOrdersParams) SetFilter(filter *string) {
 	o.Filter = filter
 }
 
+// WithIsLikeExternalReference adds the isLikeExternalReference to the get customers customer fid orders params
+func (o *GetCustomersCustomerFidOrdersParams) WithIsLikeExternalReference(isLikeExternalReference *bool) *GetCustomersCustomerFidOrdersParams {
+	o.SetIsLikeExternalReference(isLikeExternalReference)
+	return o
+}
+
+// SetIsLikeExternalReference adds the isLikeExternalReference to the get customers customer fid orders params
+func (o *GetCustomersCustomerFidOrdersParams) SetIsLikeExternalReference(isLikeExternalReference *bool) {
+	o.IsLikeExternalReference = isLikeExternalReference
+}
+
 // WithState adds the state to the get customers customer fid orders params
 func (o *GetCustomersCustomerFidOrdersParams) WithState(state *string) *GetCustomersCustomerFidOrdersParams {
 	o.SetState(state)
@@ -213,6 +230,23 @@ func (o *GetCustomersCustomerFidOrdersParams) WriteToRequest(r runtime.ClientReq
 		if qFilter != "" {
 
 			if err := r.SetQueryParam("filter", qFilter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IsLikeExternalReference != nil {
+
+		// query param isLikeExternalReference
+		var qrIsLikeExternalReference bool
+
+		if o.IsLikeExternalReference != nil {
+			qrIsLikeExternalReference = *o.IsLikeExternalReference
+		}
+		qIsLikeExternalReference := swag.FormatBool(qrIsLikeExternalReference)
+		if qIsLikeExternalReference != "" {
+
+			if err := r.SetQueryParam("isLikeExternalReference", qIsLikeExternalReference); err != nil {
 				return err
 			}
 		}

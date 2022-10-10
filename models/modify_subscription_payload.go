@@ -19,6 +19,9 @@ import (
 // swagger:model ModifySubscriptionPayload
 type ModifySubscriptionPayload struct {
 
+	// Description of the modify subscription
+	Description string `json:"description,omitempty"`
+
 	// mode
 	Mode ModifySubscriptionMode `json:"mode,omitempty"`
 
@@ -59,6 +62,8 @@ func (m *ModifySubscriptionPayload) validateMode(formats strfmt.Registry) error 
 	if err := m.Mode.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("mode")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("mode")
 		}
 		return err
 	}
@@ -94,6 +99,8 @@ func (m *ModifySubscriptionPayload) contextValidateMode(ctx context.Context, for
 	if err := m.Mode.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("mode")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("mode")
 		}
 		return err
 	}

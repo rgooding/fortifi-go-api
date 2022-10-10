@@ -20,8 +20,12 @@ import (
 type PaymentServiceProcessor string
 
 func NewPaymentServiceProcessor(value PaymentServiceProcessor) *PaymentServiceProcessor {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated PaymentServiceProcessor.
+func (m PaymentServiceProcessor) Pointer() *PaymentServiceProcessor {
+	return &m
 }
 
 const (

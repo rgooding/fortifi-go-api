@@ -54,10 +54,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModification
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid calculate modification operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid calculate modification operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateModificationParams struct {
 

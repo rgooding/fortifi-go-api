@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK() *
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK describes a response with status code 200, with default header values.
 
 Auto suspend days set
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid auto suspend days o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid auto suspend days o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid auto suspend days o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid auto suspend days o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid auto suspend days o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/autoSuspendDays][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/autoSuspendDays][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefaul
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefau
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid auto suspend days default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid auto suspend days default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid auto suspend days default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid auto suspend days default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid auto suspend days default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/autoSuspendDays][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/autoSuspendDays][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDays default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

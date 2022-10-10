@@ -51,6 +51,8 @@ func (m *IncidentUpdates) validateIncidentUpdates(formats strfmt.Registry) error
 			if err := m.IncidentUpdates[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incidentUpdates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incidentUpdates" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *IncidentUpdates) contextValidateIncidentUpdates(ctx context.Context, fo
 			if err := m.IncidentUpdates[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incidentUpdates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incidentUpdates" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

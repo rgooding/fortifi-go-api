@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidTicketsTicketFidOK() *GetCustomersCustomerFidTick
 	return &GetCustomersCustomerFidTicketsTicketFidOK{}
 }
 
-/* GetCustomersCustomerFidTicketsTicketFidOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidTicketsTicketFidOK describes a response with status code 200, with default header values.
 
 Ticket Data
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidTicketsTicketFidOK struct {
 	Payload *GetCustomersCustomerFidTicketsTicketFidOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid tickets ticket fid o k response has a 2xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid tickets ticket fid o k response has a 3xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid tickets ticket fid o k response has a 4xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid tickets ticket fid o k response has a 5xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid tickets ticket fid o k response a status code equal to that given
+func (o *GetCustomersCustomerFidTicketsTicketFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}][%d] getCustomersCustomerFidTicketsTicketFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidTicketsTicketFidOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}][%d] getCustomersCustomerFidTicketsTicketFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidOK) GetPayload() *GetCustomersCustomerFidTicketsTicketFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidTicketsTicketFidDefault(code int) *GetCustomersCu
 	}
 }
 
-/* GetCustomersCustomerFidTicketsTicketFidDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidTicketsTicketFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidTicketsTicketFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid tickets ticket fid default response has a 2xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid tickets ticket fid default response has a 3xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid tickets ticket fid default response has a 4xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid tickets ticket fid default response has a 5xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid tickets ticket fid default response a status code equal to that given
+func (o *GetCustomersCustomerFidTicketsTicketFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}][%d] GetCustomersCustomerFidTicketsTicketFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidTicketsTicketFidDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}][%d] GetCustomersCustomerFidTicketsTicketFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidDefault) readResponse(response r
 	return nil
 }
 
-/*GetCustomersCustomerFidTicketsTicketFidOKBody get customers customer fid tickets ticket fid o k body
+/*
+GetCustomersCustomerFidTicketsTicketFidOKBody get customers customer fid tickets ticket fid o k body
 swagger:model GetCustomersCustomerFidTicketsTicketFidOKBody
 */
 type GetCustomersCustomerFidTicketsTicketFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidOKBody) validateData(formats str
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidTicketsTicketFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidTicketsTicketFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidOKBody) contextValidateData(ctx 
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidTicketsTicketFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidTicketsTicketFidOK" + "." + "data")
 			}
 			return err
 		}

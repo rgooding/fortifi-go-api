@@ -52,10 +52,12 @@ func NewDeleteEntitiesEntityFidPropertiesCountersPropertyNameParamsWithHTTPClien
 	}
 }
 
-/* DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams contains all the parameters to send to the API endpoint
-   for the delete entities entity fid properties counters property name operation.
+/*
+DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete entities entity fid properties counters property name operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams struct {
 

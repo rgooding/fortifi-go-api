@@ -34,7 +34,7 @@ type ClientService interface {
 }
 
 /*
-  GetLicenceCheck retrieves a licence
+GetLicenceCheck retrieves a licence
 */
 func (a *Client) GetLicenceCheck(params *GetLicenceCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicenceCheckOK, error) {
 	// TODO: Validate the params before sending

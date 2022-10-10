@@ -54,10 +54,12 @@ func NewPostCustomersCustomerFidTicketsTicketFidPostsParamsWithHTTPClient(client
 	}
 }
 
-/* PostCustomersCustomerFidTicketsTicketFidPostsParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid tickets ticket fid posts operation.
+/*
+PostCustomersCustomerFidTicketsTicketFidPostsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid tickets ticket fid posts operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidTicketsTicketFidPostsParams struct {
 

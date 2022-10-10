@@ -52,10 +52,12 @@ func NewGetContactsFindByReferenceContactReferenceParamsWithHTTPClient(client *h
 	}
 }
 
-/* GetContactsFindByReferenceContactReferenceParams contains all the parameters to send to the API endpoint
-   for the get contacts find by reference contact reference operation.
+/*
+GetContactsFindByReferenceContactReferenceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get contacts find by reference contact reference operation.
+
+	Typically these are written to a http.Request.
 */
 type GetContactsFindByReferenceContactReferenceParams struct {
 

@@ -46,14 +46,44 @@ func NewPutOrdersOrderFidProductsOrderProductFidSetInitialTermOK() *PutOrdersOrd
 	return &PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK{}
 }
 
-/* PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK describes a response with status code 200, with default header values.
 
 Initial term updated
 */
 type PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK struct {
 }
 
+// IsSuccess returns true when this put orders order fid products order product fid set initial term o k response has a 2xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid products order product fid set initial term o k response has a 3xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid products order product fid set initial term o k response has a 4xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid products order product fid set initial term o k response has a 5xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid products order product fid set initial term o k response a status code equal to that given
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) Error() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/setInitialTerm][%d] putOrdersOrderFidProductsOrderProductFidSetInitialTermOK ", 200)
+}
+
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK) String() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/setInitialTerm][%d] putOrdersOrderFidProductsOrderProductFidSetInitialTermOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault(code int) 
 	}
 }
 
-/* PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) Code() i
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid products order product fid set initial term default response has a 2xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid products order product fid set initial term default response has a 3xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid products order product fid set initial term default response has a 4xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid products order product fid set initial term default response has a 5xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid products order product fid set initial term default response a status code equal to that given
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/setInitialTerm][%d] PutOrdersOrderFidProductsOrderProductFidSetInitialTerm default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/setInitialTerm][%d] PutOrdersOrderFidProductsOrderProductFidSetInitialTerm default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidProductsOrderProductFidSetInitialTermDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

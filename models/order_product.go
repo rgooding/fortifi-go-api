@@ -333,6 +333,8 @@ func (m *OrderProduct) validateCycleType(formats strfmt.Registry) error {
 	if err := m.CycleType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cycleType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cycleType")
 		}
 		return err
 	}
@@ -377,6 +379,8 @@ func (m *OrderProduct) contextValidateCycleType(ctx context.Context, formats str
 	if err := m.CycleType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cycleType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cycleType")
 		}
 		return err
 	}

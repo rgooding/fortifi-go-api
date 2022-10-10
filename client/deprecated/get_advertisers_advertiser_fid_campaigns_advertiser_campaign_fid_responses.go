@@ -49,7 +49,8 @@ func NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK() *GetAdvert
 	return &GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK{}
 }
 
-/* GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK describes a response with status code 200, with default header values.
+/*
+GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK describes a response with status code 200, with default header values.
 
 Loaded Campaign
 */
@@ -57,9 +58,39 @@ type GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK struct {
 	Payload *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody
 }
 
+// IsSuccess returns true when this get advertisers advertiser fid campaigns advertiser campaign fid o k response has a 2xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get advertisers advertiser fid campaigns advertiser campaign fid o k response has a 3xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get advertisers advertiser fid campaigns advertiser campaign fid o k response has a 4xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get advertisers advertiser fid campaigns advertiser campaign fid o k response has a 5xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get advertisers advertiser fid campaigns advertiser campaign fid o k response a status code equal to that given
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) String() string {
+	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK) GetPayload() *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault(code in
 	}
 }
 
-/* GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault describes a response with status code -1, with default header values.
+/*
+GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) Code(
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get advertisers advertiser fid campaigns advertiser campaign fid default response has a 2xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get advertisers advertiser fid campaigns advertiser campaign fid default response has a 3xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get advertisers advertiser fid campaigns advertiser campaign fid default response has a 4xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get advertisers advertiser fid campaigns advertiser campaign fid default response has a 5xx status code
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get advertisers advertiser fid campaigns advertiser campaign fid default response a status code equal to that given
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) String() string {
+	return fmt.Sprintf("[GET /advertisers/{advertiserFid}/campaigns/{advertiserCampaignFid}][%d] GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidDefault) readR
 	return nil
 }
 
-/*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody get advertisers advertiser fid campaigns advertiser campaign fid o k body
+/*
+GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody get advertisers advertiser fid campaigns advertiser campaign fid o k body
 swagger:model GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody
 */
 type GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody) valida
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOKBody) contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK" + "." + "data")
 			}
 			return err
 		}

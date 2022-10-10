@@ -53,10 +53,12 @@ func NewPostCustomersCustomerFidPaymentsPaymentFidChargebackParamsWithHTTPClient
 	}
 }
 
-/* PostCustomersCustomerFidPaymentsPaymentFidChargebackParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid payments payment fid chargeback operation.
+/*
+PostCustomersCustomerFidPaymentsPaymentFidChargebackParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid payments payment fid chargeback operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPaymentsPaymentFidChargebackParams struct {
 

@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidInvoicesRetryParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* PutCustomersCustomerFidInvoicesRetryParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid invoices retry operation.
+/*
+PutCustomersCustomerFidInvoicesRetryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid invoices retry operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidInvoicesRetryParams struct {
 

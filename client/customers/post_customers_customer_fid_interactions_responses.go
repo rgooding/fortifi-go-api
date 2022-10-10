@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidInteractionsOK() *PostCustomersCustomerFidIntera
 	return &PostCustomersCustomerFidInteractionsOK{}
 }
 
-/* PostCustomersCustomerFidInteractionsOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidInteractionsOK describes a response with status code 200, with default header values.
 
 Create Interaction Response
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidInteractionsOK struct {
 	Payload *PostCustomersCustomerFidInteractionsOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid interactions o k response has a 2xx status code
+func (o *PostCustomersCustomerFidInteractionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid interactions o k response has a 3xx status code
+func (o *PostCustomersCustomerFidInteractionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid interactions o k response has a 4xx status code
+func (o *PostCustomersCustomerFidInteractionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid interactions o k response has a 5xx status code
+func (o *PostCustomersCustomerFidInteractionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid interactions o k response a status code equal to that given
+func (o *PostCustomersCustomerFidInteractionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidInteractionsOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/interactions][%d] postCustomersCustomerFidInteractionsOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidInteractionsOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/interactions][%d] postCustomersCustomerFidInteractionsOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidInteractionsOK) GetPayload() *PostCustomersCustomerFidInteractionsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidInteractionsDefault(code int) *PostCustomersCust
 	}
 }
 
-/* PostCustomersCustomerFidInteractionsDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidInteractionsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidInteractionsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid interactions default response has a 2xx status code
+func (o *PostCustomersCustomerFidInteractionsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid interactions default response has a 3xx status code
+func (o *PostCustomersCustomerFidInteractionsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid interactions default response has a 4xx status code
+func (o *PostCustomersCustomerFidInteractionsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid interactions default response has a 5xx status code
+func (o *PostCustomersCustomerFidInteractionsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid interactions default response a status code equal to that given
+func (o *PostCustomersCustomerFidInteractionsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidInteractionsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/interactions][%d] PostCustomersCustomerFidInteractions default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidInteractionsDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/interactions][%d] PostCustomersCustomerFidInteractions default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidInteractionsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidInteractionsDefault) readResponse(response runt
 	return nil
 }
 
-/*PostCustomersCustomerFidInteractionsOKBody post customers customer fid interactions o k body
+/*
+PostCustomersCustomerFidInteractionsOKBody post customers customer fid interactions o k body
 swagger:model PostCustomersCustomerFidInteractionsOKBody
 */
 type PostCustomersCustomerFidInteractionsOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidInteractionsOKBody) validateData(formats strfmt
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidInteractionsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidInteractionsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidInteractionsOKBody) contextValidateData(ctx con
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidInteractionsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidInteractionsOK" + "." + "data")
 			}
 			return err
 		}

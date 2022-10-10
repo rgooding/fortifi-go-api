@@ -49,7 +49,8 @@ func NewPostUploadUploadURLOK() *PostUploadUploadURLOK {
 	return &PostUploadUploadURLOK{}
 }
 
-/* PostUploadUploadURLOK describes a response with status code 200, with default header values.
+/*
+PostUploadUploadURLOK describes a response with status code 200, with default header values.
 
 Attachment upload URL
 */
@@ -57,9 +58,39 @@ type PostUploadUploadURLOK struct {
 	Payload *PostUploadUploadURLOKBody
 }
 
+// IsSuccess returns true when this post upload upload Url o k response has a 2xx status code
+func (o *PostUploadUploadURLOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post upload upload Url o k response has a 3xx status code
+func (o *PostUploadUploadURLOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post upload upload Url o k response has a 4xx status code
+func (o *PostUploadUploadURLOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post upload upload Url o k response has a 5xx status code
+func (o *PostUploadUploadURLOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post upload upload Url o k response a status code equal to that given
+func (o *PostUploadUploadURLOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostUploadUploadURLOK) Error() string {
 	return fmt.Sprintf("[POST /upload/uploadUrl][%d] postUploadUploadUrlOK  %+v", 200, o.Payload)
 }
+
+func (o *PostUploadUploadURLOK) String() string {
+	return fmt.Sprintf("[POST /upload/uploadUrl][%d] postUploadUploadUrlOK  %+v", 200, o.Payload)
+}
+
 func (o *PostUploadUploadURLOK) GetPayload() *PostUploadUploadURLOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostUploadUploadURLDefault(code int) *PostUploadUploadURLDefault {
 	}
 }
 
-/* PostUploadUploadURLDefault describes a response with status code -1, with default header values.
+/*
+PostUploadUploadURLDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostUploadUploadURLDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post upload upload URL default response has a 2xx status code
+func (o *PostUploadUploadURLDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post upload upload URL default response has a 3xx status code
+func (o *PostUploadUploadURLDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post upload upload URL default response has a 4xx status code
+func (o *PostUploadUploadURLDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post upload upload URL default response has a 5xx status code
+func (o *PostUploadUploadURLDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post upload upload URL default response a status code equal to that given
+func (o *PostUploadUploadURLDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostUploadUploadURLDefault) Error() string {
 	return fmt.Sprintf("[POST /upload/uploadUrl][%d] PostUploadUploadURL default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostUploadUploadURLDefault) String() string {
+	return fmt.Sprintf("[POST /upload/uploadUrl][%d] PostUploadUploadURL default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostUploadUploadURLDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostUploadUploadURLDefault) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-/*PostUploadUploadURLOKBody post upload upload URL o k body
+/*
+PostUploadUploadURLOKBody post upload upload URL o k body
 swagger:model PostUploadUploadURLOKBody
 */
 type PostUploadUploadURLOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostUploadUploadURLOKBody) validateData(formats strfmt.Registry) error 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postUploadUploadUrlOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postUploadUploadUrlOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostUploadUploadURLOKBody) contextValidateData(ctx context.Context, for
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postUploadUploadUrlOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postUploadUploadUrlOK" + "." + "data")
 			}
 			return err
 		}

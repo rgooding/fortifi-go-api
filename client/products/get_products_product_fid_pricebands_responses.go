@@ -49,7 +49,8 @@ func NewGetProductsProductFidPricebandsOK() *GetProductsProductFidPricebandsOK {
 	return &GetProductsProductFidPricebandsOK{}
 }
 
-/* GetProductsProductFidPricebandsOK describes a response with status code 200, with default header values.
+/*
+GetProductsProductFidPricebandsOK describes a response with status code 200, with default header values.
 
 List of product price bands
 */
@@ -57,9 +58,39 @@ type GetProductsProductFidPricebandsOK struct {
 	Payload *GetProductsProductFidPricebandsOKBody
 }
 
+// IsSuccess returns true when this get products product fid pricebands o k response has a 2xx status code
+func (o *GetProductsProductFidPricebandsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get products product fid pricebands o k response has a 3xx status code
+func (o *GetProductsProductFidPricebandsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get products product fid pricebands o k response has a 4xx status code
+func (o *GetProductsProductFidPricebandsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get products product fid pricebands o k response has a 5xx status code
+func (o *GetProductsProductFidPricebandsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get products product fid pricebands o k response a status code equal to that given
+func (o *GetProductsProductFidPricebandsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProductsProductFidPricebandsOK) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/pricebands][%d] getProductsProductFidPricebandsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProductsProductFidPricebandsOK) String() string {
+	return fmt.Sprintf("[GET /products/{productFid}/pricebands][%d] getProductsProductFidPricebandsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProductsProductFidPricebandsOK) GetPayload() *GetProductsProductFidPricebandsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetProductsProductFidPricebandsDefault(code int) *GetProductsProductFidP
 	}
 }
 
-/* GetProductsProductFidPricebandsDefault describes a response with status code -1, with default header values.
+/*
+GetProductsProductFidPricebandsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetProductsProductFidPricebandsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get products product fid pricebands default response has a 2xx status code
+func (o *GetProductsProductFidPricebandsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get products product fid pricebands default response has a 3xx status code
+func (o *GetProductsProductFidPricebandsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get products product fid pricebands default response has a 4xx status code
+func (o *GetProductsProductFidPricebandsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get products product fid pricebands default response has a 5xx status code
+func (o *GetProductsProductFidPricebandsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get products product fid pricebands default response a status code equal to that given
+func (o *GetProductsProductFidPricebandsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetProductsProductFidPricebandsDefault) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/pricebands][%d] GetProductsProductFidPricebands default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetProductsProductFidPricebandsDefault) String() string {
+	return fmt.Sprintf("[GET /products/{productFid}/pricebands][%d] GetProductsProductFidPricebands default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetProductsProductFidPricebandsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetProductsProductFidPricebandsDefault) readResponse(response runtime.C
 	return nil
 }
 
-/*GetProductsProductFidPricebandsOKBody get products product fid pricebands o k body
+/*
+GetProductsProductFidPricebandsOKBody get products product fid pricebands o k body
 swagger:model GetProductsProductFidPricebandsOKBody
 */
 type GetProductsProductFidPricebandsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetProductsProductFidPricebandsOKBody) validateData(formats strfmt.Regi
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsProductFidPricebandsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsProductFidPricebandsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetProductsProductFidPricebandsOKBody) contextValidateData(ctx context.
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsProductFidPricebandsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsProductFidPricebandsOK" + "." + "data")
 			}
 			return err
 		}

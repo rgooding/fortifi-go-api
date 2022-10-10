@@ -46,14 +46,44 @@ func NewPutMessengerDeliveriesDeliveryFidSubscribeOK() *PutMessengerDeliveriesDe
 	return &PutMessengerDeliveriesDeliveryFidSubscribeOK{}
 }
 
-/* PutMessengerDeliveriesDeliveryFidSubscribeOK describes a response with status code 200, with default header values.
+/*
+PutMessengerDeliveriesDeliveryFidSubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Subscribed
 */
 type PutMessengerDeliveriesDeliveryFidSubscribeOK struct {
 }
 
+// IsSuccess returns true when this put messenger deliveries delivery fid subscribe o k response has a 2xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put messenger deliveries delivery fid subscribe o k response has a 3xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put messenger deliveries delivery fid subscribe o k response has a 4xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put messenger deliveries delivery fid subscribe o k response has a 5xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put messenger deliveries delivery fid subscribe o k response a status code equal to that given
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) Error() string {
+	return fmt.Sprintf("[PUT /messenger/deliveries/{deliveryFid}/subscribe][%d] putMessengerDeliveriesDeliveryFidSubscribeOK ", 200)
+}
+
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeOK) String() string {
 	return fmt.Sprintf("[PUT /messenger/deliveries/{deliveryFid}/subscribe][%d] putMessengerDeliveriesDeliveryFidSubscribeOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutMessengerDeliveriesDeliveryFidSubscribeDefault(code int) *PutMessenge
 	}
 }
 
-/* PutMessengerDeliveriesDeliveryFidSubscribeDefault describes a response with status code -1, with default header values.
+/*
+PutMessengerDeliveriesDeliveryFidSubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put messenger deliveries delivery fid subscribe default response has a 2xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put messenger deliveries delivery fid subscribe default response has a 3xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put messenger deliveries delivery fid subscribe default response has a 4xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put messenger deliveries delivery fid subscribe default response has a 5xx status code
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put messenger deliveries delivery fid subscribe default response a status code equal to that given
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /messenger/deliveries/{deliveryFid}/subscribe][%d] PutMessengerDeliveriesDeliveryFidSubscribe default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) String() string {
+	return fmt.Sprintf("[PUT /messenger/deliveries/{deliveryFid}/subscribe][%d] PutMessengerDeliveriesDeliveryFidSubscribe default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutMessengerDeliveriesDeliveryFidSubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

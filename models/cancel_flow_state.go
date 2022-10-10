@@ -184,6 +184,8 @@ func (m *CancelFlowState) validateChoices(formats strfmt.Registry) error {
 			if err := m.Choices[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("choices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("choices" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -204,6 +206,8 @@ func (m *CancelFlowState) validateStepData(formats strfmt.Registry) error {
 		if err := m.StepData.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stepData")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stepData")
 			}
 			return err
 		}
@@ -243,6 +247,8 @@ func (m *CancelFlowState) contextValidateChoices(ctx context.Context, formats st
 			if err := m.Choices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("choices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("choices" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -259,6 +265,8 @@ func (m *CancelFlowState) contextValidateStepData(ctx context.Context, formats s
 		if err := m.StepData.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stepData")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stepData")
 			}
 			return err
 		}

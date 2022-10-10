@@ -64,7 +64,7 @@ type ClientService interface {
 }
 
 /*
-  DeletePublishersPublisherFid deletes a publisher
+DeletePublishersPublisherFid deletes a publisher
 */
 func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePublishersPublisherFidOK, error) {
 	// TODO: Validate the params before sending
@@ -102,7 +102,7 @@ func (a *Client) DeletePublishersPublisherFid(params *DeletePublishersPublisherF
 }
 
 /*
-  DeletePublishersPublisherFidApproved removes approved status on an publisher
+DeletePublishersPublisherFidApproved removes approved status on an publisher
 */
 func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePublishersPublisherFidApprovedOK, error) {
 	// TODO: Validate the params before sending
@@ -140,7 +140,7 @@ func (a *Client) DeletePublishersPublisherFidApproved(params *DeletePublishersPu
 }
 
 /*
-  GetPublishers lists publishers
+GetPublishers lists publishers
 */
 func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersOK, error) {
 	// TODO: Validate the params before sending
@@ -178,7 +178,7 @@ func (a *Client) GetPublishers(params *GetPublishersParams, authInfo runtime.Cli
 }
 
 /*
-  GetPublishersPublisherFid retrieves a publisher
+GetPublishersPublisherFid retrieves a publisher
 */
 func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidOK, error) {
 	// TODO: Validate the params before sending
@@ -216,7 +216,7 @@ func (a *Client) GetPublishersPublisherFid(params *GetPublishersPublisherFidPara
 }
 
 /*
-  GetPublishersPublisherFidCampaigns lists campaigns
+GetPublishersPublisherFidCampaigns lists campaigns
 */
 func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
@@ -254,7 +254,7 @@ func (a *Client) GetPublishersPublisherFidCampaigns(params *GetPublishersPublish
 }
 
 /*
-  GetPublishersPublisherFidCampaignsPublisherCampaignFid retrieves a publisher campaign
+GetPublishersPublisherFidCampaignsPublisherCampaignFid retrieves a publisher campaign
 */
 func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *GetPublishersPublisherFidCampaignsPublisherCampaignFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidCampaignsPublisherCampaignFidOK, error) {
 	// TODO: Validate the params before sending
@@ -292,9 +292,9 @@ func (a *Client) GetPublishersPublisherFidCampaignsPublisherCampaignFid(params *
 }
 
 /*
-  GetVisitorsVisitorID retrieves information about a visitor
+GetVisitorsVisitorID retrieves information about a visitor
 
-  This call will return information related to how a visitor arrived
+This call will return information related to how a visitor arrived
 */
 func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVisitorsVisitorIDOK, error) {
 	// TODO: Validate the params before sending
@@ -332,9 +332,9 @@ func (a *Client) GetVisitorsVisitorID(params *GetVisitorsVisitorIDParams, authIn
 }
 
 /*
-  GetVisitorsVisitorIDPixels retrieves pending pixels for this visitor
+GetVisitorsVisitorIDPixels retrieves pending pixels for this visitor
 
-  This call will release pixels from the pending queue on read
+This call will release pixels from the pending queue on read
 */
 func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVisitorsVisitorIDPixelsOK, error) {
 	// TODO: Validate the params before sending
@@ -372,7 +372,7 @@ func (a *Client) GetVisitorsVisitorIDPixels(params *GetVisitorsVisitorIDPixelsPa
 }
 
 /*
-  PostPublishers creates a new publisher
+PostPublishers creates a new publisher
 */
 func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersOK, error) {
 	// TODO: Validate the params before sending
@@ -410,7 +410,7 @@ func (a *Client) PostPublishers(params *PostPublishersParams, authInfo runtime.C
 }
 
 /*
-  PostPublishersPublisherFidCampaigns creates a new publisher campaign
+PostPublishersPublisherFidCampaigns creates a new publisher campaign
 */
 func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPublisherFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersPublisherFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
@@ -448,10 +448,9 @@ func (a *Client) PostPublishersPublisherFidCampaigns(params *PostPublishersPubli
 }
 
 /*
-  PostVisitorsVisitorIDActionsActionKey tracks an action
+PostVisitorsVisitorIDActionsActionKey tracks an action
 
-  Track an action such as a lead or acquisition
-
+Track an action such as a lead or acquisition
 */
 func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisitorIDActionsActionKeyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostVisitorsVisitorIDActionsActionKeyOK, error) {
 	// TODO: Validate the params before sending
@@ -489,10 +488,9 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKey(params *PostVisitorsVisit
 }
 
 /*
-  PostVisitorsVisitorIDActionsActionKeyReverse reverses a previously tracked action
+PostVisitorsVisitorIDActionsActionKeyReverse reverses a previously tracked action
 
-  When an action has been reversed, e.g. cancelled, refunded
-
+When an action has been reversed, e.g. cancelled, refunded
 */
 func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisitorsVisitorIDActionsActionKeyReverseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostVisitorsVisitorIDActionsActionKeyReverseOK, error) {
 	// TODO: Validate the params before sending
@@ -530,7 +528,7 @@ func (a *Client) PostVisitorsVisitorIDActionsActionKeyReverse(params *PostVisito
 }
 
 /*
-  PutPublishersPublisherFidApproved sets approved status on an publisher
+PutPublishersPublisherFidApproved sets approved status on an publisher
 */
 func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublisherFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidApprovedOK, error) {
 	// TODO: Validate the params before sending
@@ -568,7 +566,7 @@ func (a *Client) PutPublishersPublisherFidApproved(params *PutPublishersPublishe
 }
 
 /*
-  PutPublishersPublisherFidDisable disables a publisher
+PutPublishersPublisherFidDisable disables a publisher
 */
 func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisherFidDisableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidDisableOK, error) {
 	// TODO: Validate the params before sending
@@ -606,7 +604,7 @@ func (a *Client) PutPublishersPublisherFidDisable(params *PutPublishersPublisher
 }
 
 /*
-  PutPublishersPublisherFidEnable enables a publisher
+PutPublishersPublisherFidEnable enables a publisher
 */
 func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherFidEnableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidEnableOK, error) {
 	// TODO: Validate the params before sending
@@ -644,7 +642,7 @@ func (a *Client) PutPublishersPublisherFidEnable(params *PutPublishersPublisherF
 }
 
 /*
-  PutPublishersPublisherFidRestore restores a publisher
+PutPublishersPublisherFidRestore restores a publisher
 */
 func (a *Client) PutPublishersPublisherFidRestore(params *PutPublishersPublisherFidRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutPublishersPublisherFidRestoreOK, error) {
 	// TODO: Validate the params before sending

@@ -103,6 +103,8 @@ func (m *Advertisers) validateAdvertisers(formats strfmt.Registry) error {
 			if err := m.Advertisers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("advertisers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("advertisers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *Advertisers) contextValidateAdvertisers(ctx context.Context, formats st
 			if err := m.Advertisers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("advertisers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("advertisers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

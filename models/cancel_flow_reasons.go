@@ -51,6 +51,8 @@ func (m *CancelFlowReasons) validateReasons(formats strfmt.Registry) error {
 			if err := m.Reasons[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reasons" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("reasons" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *CancelFlowReasons) contextValidateReasons(ctx context.Context, formats 
 			if err := m.Reasons[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reasons" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("reasons" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

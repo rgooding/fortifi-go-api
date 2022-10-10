@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidInvoicesInvoiceFidRetryOK() *PutCustomersCustomer
 	return &PutCustomersCustomerFidInvoicesInvoiceFidRetryOK{}
 }
 
-/* PutCustomersCustomerFidInvoicesInvoiceFidRetryOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidInvoicesInvoiceFidRetryOK describes a response with status code 200, with default header values.
 
 Invoice set to retry payment
 */
 type PutCustomersCustomerFidInvoicesInvoiceFidRetryOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid invoices invoice fid retry o k response has a 2xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid invoices invoice fid retry o k response has a 3xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid invoices invoice fid retry o k response has a 4xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid invoices invoice fid retry o k response has a 5xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid invoices invoice fid retry o k response a status code equal to that given
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/{invoiceFid}/retry][%d] putCustomersCustomerFidInvoicesInvoiceFidRetryOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/{invoiceFid}/retry][%d] putCustomersCustomerFidInvoicesInvoiceFidRetryOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidInvoicesInvoiceFidRetryDefault(code int) *PutCust
 	}
 }
 
-/* PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid invoices invoice fid retry default response has a 2xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid invoices invoice fid retry default response has a 3xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid invoices invoice fid retry default response has a 4xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid invoices invoice fid retry default response has a 5xx status code
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid invoices invoice fid retry default response a status code equal to that given
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/{invoiceFid}/retry][%d] PutCustomersCustomerFidInvoicesInvoiceFidRetry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/{invoiceFid}/retry][%d] PutCustomersCustomerFidInvoicesInvoiceFidRetry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidInvoicesInvoiceFidRetryDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

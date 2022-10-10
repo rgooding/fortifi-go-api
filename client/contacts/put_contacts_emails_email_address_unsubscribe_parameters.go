@@ -52,10 +52,12 @@ func NewPutContactsEmailsEmailAddressUnsubscribeParamsWithHTTPClient(client *htt
 	}
 }
 
-/* PutContactsEmailsEmailAddressUnsubscribeParams contains all the parameters to send to the API endpoint
-   for the put contacts emails email address unsubscribe operation.
+/*
+PutContactsEmailsEmailAddressUnsubscribeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put contacts emails email address unsubscribe operation.
+
+	Typically these are written to a http.Request.
 */
 type PutContactsEmailsEmailAddressUnsubscribeParams struct {
 

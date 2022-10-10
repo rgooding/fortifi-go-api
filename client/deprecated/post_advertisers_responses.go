@@ -49,7 +49,8 @@ func NewPostAdvertisersOK() *PostAdvertisersOK {
 	return &PostAdvertisersOK{}
 }
 
-/* PostAdvertisersOK describes a response with status code 200, with default header values.
+/*
+PostAdvertisersOK describes a response with status code 200, with default header values.
 
 Advertiser Created
 */
@@ -57,9 +58,39 @@ type PostAdvertisersOK struct {
 	Payload *PostAdvertisersOKBody
 }
 
+// IsSuccess returns true when this post advertisers o k response has a 2xx status code
+func (o *PostAdvertisersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post advertisers o k response has a 3xx status code
+func (o *PostAdvertisersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post advertisers o k response has a 4xx status code
+func (o *PostAdvertisersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post advertisers o k response has a 5xx status code
+func (o *PostAdvertisersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post advertisers o k response a status code equal to that given
+func (o *PostAdvertisersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostAdvertisersOK) Error() string {
 	return fmt.Sprintf("[POST /advertisers][%d] postAdvertisersOK  %+v", 200, o.Payload)
 }
+
+func (o *PostAdvertisersOK) String() string {
+	return fmt.Sprintf("[POST /advertisers][%d] postAdvertisersOK  %+v", 200, o.Payload)
+}
+
 func (o *PostAdvertisersOK) GetPayload() *PostAdvertisersOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostAdvertisersDefault(code int) *PostAdvertisersDefault {
 	}
 }
 
-/* PostAdvertisersDefault describes a response with status code -1, with default header values.
+/*
+PostAdvertisersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostAdvertisersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post advertisers default response has a 2xx status code
+func (o *PostAdvertisersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post advertisers default response has a 3xx status code
+func (o *PostAdvertisersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post advertisers default response has a 4xx status code
+func (o *PostAdvertisersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post advertisers default response has a 5xx status code
+func (o *PostAdvertisersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post advertisers default response a status code equal to that given
+func (o *PostAdvertisersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostAdvertisersDefault) Error() string {
 	return fmt.Sprintf("[POST /advertisers][%d] PostAdvertisers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostAdvertisersDefault) String() string {
+	return fmt.Sprintf("[POST /advertisers][%d] PostAdvertisers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostAdvertisersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostAdvertisersDefault) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-/*PostAdvertisersOKBody post advertisers o k body
+/*
+PostAdvertisersOKBody post advertisers o k body
 swagger:model PostAdvertisersOKBody
 */
 type PostAdvertisersOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostAdvertisersOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postAdvertisersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postAdvertisersOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostAdvertisersOKBody) contextValidateData(ctx context.Context, formats
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postAdvertisersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postAdvertisersOK" + "." + "data")
 			}
 			return err
 		}

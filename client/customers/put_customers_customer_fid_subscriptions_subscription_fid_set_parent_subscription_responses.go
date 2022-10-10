@@ -49,7 +49,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK describes a response with status code 200, with default header values.
 
 Parent subscription set
 */
@@ -57,9 +58,39 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK 
 	Payload *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid set parent subscription o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid set parent subscription o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid set parent subscription o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid set parent subscription o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid set parent subscription o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK  %+v", 200, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK  %+v", 200, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid set parent subscription default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid set parent subscription default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid set parent subscription default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid set parent subscription default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid set parent subscription default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setParentSubscription][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 	return nil
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody put customers customer fid subscriptions subscription fid set parent subscription o k body
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody put customers customer fid subscriptions subscription fid set parent subscription o k body
 swagger:model PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptio
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionOK" + "." + "data")
 			}
 			return err
 		}

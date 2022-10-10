@@ -129,6 +129,8 @@ func (m *PostActionPayload) validateMetaData(formats strfmt.Registry) error {
 	if err := m.MetaData.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("metaData")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("metaData")
 		}
 		return err
 	}
@@ -167,6 +169,8 @@ func (m *PostActionPayload) contextValidateMetaData(ctx context.Context, formats
 	if err := m.MetaData.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("metaData")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("metaData")
 		}
 		return err
 	}

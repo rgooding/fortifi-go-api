@@ -46,14 +46,44 @@ func NewDeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK() *DeleteCust
 	return &DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK{}
 }
 
-/* DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK describes a response with status code 200, with default header values.
+/*
+DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK describes a response with status code 200, with default header values.
 
 Payment Method Archived
 */
 type DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK struct {
 }
 
+// IsSuccess returns true when this delete customers customer fid payment methods payment method fid o k response has a 2xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete customers customer fid payment methods payment method fid o k response has a 3xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete customers customer fid payment methods payment method fid o k response has a 4xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete customers customer fid payment methods payment method fid o k response has a 5xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete customers customer fid payment methods payment method fid o k response a status code equal to that given
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) Error() string {
+	return fmt.Sprintf("[DELETE /customers/{customerFid}/paymentMethods/{paymentMethodFid}][%d] deleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK ", 200)
+}
+
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK) String() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/paymentMethods/{paymentMethodFid}][%d] deleteCustomersCustomerFidPaymentMethodsPaymentMethodFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault(code int
 	}
 }
 
-/* DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault describes a response with status code -1, with default header values.
+/*
+DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) Code()
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete customers customer fid payment methods payment method fid default response has a 2xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete customers customer fid payment methods payment method fid default response has a 3xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete customers customer fid payment methods payment method fid default response has a 4xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete customers customer fid payment methods payment method fid default response has a 5xx status code
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete customers customer fid payment methods payment method fid default response a status code equal to that given
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/paymentMethods/{paymentMethodFid}][%d] DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) String() string {
+	return fmt.Sprintf("[DELETE /customers/{customerFid}/paymentMethods/{paymentMethodFid}][%d] DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteCustomersCustomerFidPaymentMethodsPaymentMethodFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

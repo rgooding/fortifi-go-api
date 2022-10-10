@@ -52,10 +52,12 @@ func NewDeleteCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithHTTPClient
 	}
 }
 
-/* DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams contains all the parameters to send to the API endpoint
-   for the delete customers customer fid payment methods cards card fid operation.
+/*
+DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete customers customer fid payment methods cards card fid operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidPaymentMethodsCardsCardFidParams struct {
 

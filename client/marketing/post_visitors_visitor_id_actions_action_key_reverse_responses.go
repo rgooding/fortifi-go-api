@@ -49,7 +49,8 @@ func NewPostVisitorsVisitorIDActionsActionKeyReverseOK() *PostVisitorsVisitorIDA
 	return &PostVisitorsVisitorIDActionsActionKeyReverseOK{}
 }
 
-/* PostVisitorsVisitorIDActionsActionKeyReverseOK describes a response with status code 200, with default header values.
+/*
+PostVisitorsVisitorIDActionsActionKeyReverseOK describes a response with status code 200, with default header values.
 
 Action Reversed
 */
@@ -57,9 +58,39 @@ type PostVisitorsVisitorIDActionsActionKeyReverseOK struct {
 	Payload *PostVisitorsVisitorIDActionsActionKeyReverseOKBody
 }
 
+// IsSuccess returns true when this post visitors visitor Id actions action key reverse o k response has a 2xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post visitors visitor Id actions action key reverse o k response has a 3xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post visitors visitor Id actions action key reverse o k response has a 4xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post visitors visitor Id actions action key reverse o k response has a 5xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post visitors visitor Id actions action key reverse o k response a status code equal to that given
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] postVisitorsVisitorIdActionsActionKeyReverseOK  %+v", 200, o.Payload)
 }
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) String() string {
+	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] postVisitorsVisitorIdActionsActionKeyReverseOK  %+v", 200, o.Payload)
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseOK) GetPayload() *PostVisitorsVisitorIDActionsActionKeyReverseOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostVisitorsVisitorIDActionsActionKeyReverseDefault(code int) *PostVisit
 	}
 }
 
-/* PostVisitorsVisitorIDActionsActionKeyReverseDefault describes a response with status code -1, with default header values.
+/*
+PostVisitorsVisitorIDActionsActionKeyReverseDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post visitors visitor ID actions action key reverse default response has a 2xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post visitors visitor ID actions action key reverse default response has a 3xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post visitors visitor ID actions action key reverse default response has a 4xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post visitors visitor ID actions action key reverse default response has a 5xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post visitors visitor ID actions action key reverse default response a status code equal to that given
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] PostVisitorsVisitorIDActionsActionKeyReverse default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) String() string {
+	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}/reverse][%d] PostVisitorsVisitorIDActionsActionKeyReverse default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseDefault) readResponse(respo
 	return nil
 }
 
-/*PostVisitorsVisitorIDActionsActionKeyReverseOKBody post visitors visitor ID actions action key reverse o k body
+/*
+PostVisitorsVisitorIDActionsActionKeyReverseOKBody post visitors visitor ID actions action key reverse o k body
 swagger:model PostVisitorsVisitorIDActionsActionKeyReverseOKBody
 */
 type PostVisitorsVisitorIDActionsActionKeyReverseOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) validateData(format
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostVisitorsVisitorIDActionsActionKeyReverseOKBody) contextValidateData
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postVisitorsVisitorIdActionsActionKeyReverseOK" + "." + "data")
 			}
 			return err
 		}

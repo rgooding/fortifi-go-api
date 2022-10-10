@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryPara
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid provisioning retry operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid provisioning retry operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryParams struct {
 

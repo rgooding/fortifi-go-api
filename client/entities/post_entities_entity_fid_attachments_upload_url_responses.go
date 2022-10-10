@@ -49,7 +49,8 @@ func NewPostEntitiesEntityFidAttachmentsUploadURLOK() *PostEntitiesEntityFidAtta
 	return &PostEntitiesEntityFidAttachmentsUploadURLOK{}
 }
 
-/* PostEntitiesEntityFidAttachmentsUploadURLOK describes a response with status code 200, with default header values.
+/*
+PostEntitiesEntityFidAttachmentsUploadURLOK describes a response with status code 200, with default header values.
 
 Attachment upload URL
 */
@@ -57,9 +58,39 @@ type PostEntitiesEntityFidAttachmentsUploadURLOK struct {
 	Payload *PostEntitiesEntityFidAttachmentsUploadURLOKBody
 }
 
+// IsSuccess returns true when this post entities entity fid attachments upload Url o k response has a 2xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post entities entity fid attachments upload Url o k response has a 3xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post entities entity fid attachments upload Url o k response has a 4xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post entities entity fid attachments upload Url o k response has a 5xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post entities entity fid attachments upload Url o k response a status code equal to that given
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/attachments/uploadUrl][%d] postEntitiesEntityFidAttachmentsUploadUrlOK  %+v", 200, o.Payload)
 }
+
+func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) String() string {
+	return fmt.Sprintf("[POST /entities/{entityFid}/attachments/uploadUrl][%d] postEntitiesEntityFidAttachmentsUploadUrlOK  %+v", 200, o.Payload)
+}
+
 func (o *PostEntitiesEntityFidAttachmentsUploadURLOK) GetPayload() *PostEntitiesEntityFidAttachmentsUploadURLOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostEntitiesEntityFidAttachmentsUploadURLDefault(code int) *PostEntities
 	}
 }
 
-/* PostEntitiesEntityFidAttachmentsUploadURLDefault describes a response with status code -1, with default header values.
+/*
+PostEntitiesEntityFidAttachmentsUploadURLDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post entities entity fid attachments upload URL default response has a 2xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post entities entity fid attachments upload URL default response has a 3xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post entities entity fid attachments upload URL default response has a 4xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post entities entity fid attachments upload URL default response has a 5xx status code
+func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post entities entity fid attachments upload URL default response a status code equal to that given
+func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/attachments/uploadUrl][%d] PostEntitiesEntityFidAttachmentsUploadURL default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) String() string {
+	return fmt.Sprintf("[POST /entities/{entityFid}/attachments/uploadUrl][%d] PostEntitiesEntityFidAttachmentsUploadURL default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLDefault) readResponse(response
 	return nil
 }
 
-/*PostEntitiesEntityFidAttachmentsUploadURLOKBody post entities entity fid attachments upload URL o k body
+/*
+PostEntitiesEntityFidAttachmentsUploadURLOKBody post entities entity fid attachments upload URL o k body
 swagger:model PostEntitiesEntityFidAttachmentsUploadURLOKBody
 */
 type PostEntitiesEntityFidAttachmentsUploadURLOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLOKBody) validateData(formats s
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postEntitiesEntityFidAttachmentsUploadUrlOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postEntitiesEntityFidAttachmentsUploadUrlOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostEntitiesEntityFidAttachmentsUploadURLOKBody) contextValidateData(ct
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postEntitiesEntityFidAttachmentsUploadUrlOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postEntitiesEntityFidAttachmentsUploadUrlOK" + "." + "data")
 			}
 			return err
 		}

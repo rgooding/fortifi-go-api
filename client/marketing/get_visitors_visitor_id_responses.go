@@ -49,7 +49,8 @@ func NewGetVisitorsVisitorIDOK() *GetVisitorsVisitorIDOK {
 	return &GetVisitorsVisitorIDOK{}
 }
 
-/* GetVisitorsVisitorIDOK describes a response with status code 200, with default header values.
+/*
+GetVisitorsVisitorIDOK describes a response with status code 200, with default header values.
 
 Pixels
 */
@@ -57,9 +58,39 @@ type GetVisitorsVisitorIDOK struct {
 	Payload *GetVisitorsVisitorIDOKBody
 }
 
+// IsSuccess returns true when this get visitors visitor Id o k response has a 2xx status code
+func (o *GetVisitorsVisitorIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get visitors visitor Id o k response has a 3xx status code
+func (o *GetVisitorsVisitorIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get visitors visitor Id o k response has a 4xx status code
+func (o *GetVisitorsVisitorIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get visitors visitor Id o k response has a 5xx status code
+func (o *GetVisitorsVisitorIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get visitors visitor Id o k response a status code equal to that given
+func (o *GetVisitorsVisitorIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVisitorsVisitorIDOK) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}][%d] getVisitorsVisitorIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVisitorsVisitorIDOK) String() string {
+	return fmt.Sprintf("[GET /visitors/{visitorId}][%d] getVisitorsVisitorIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVisitorsVisitorIDOK) GetPayload() *GetVisitorsVisitorIDOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetVisitorsVisitorIDDefault(code int) *GetVisitorsVisitorIDDefault {
 	}
 }
 
-/* GetVisitorsVisitorIDDefault describes a response with status code -1, with default header values.
+/*
+GetVisitorsVisitorIDDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetVisitorsVisitorIDDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get visitors visitor ID default response has a 2xx status code
+func (o *GetVisitorsVisitorIDDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get visitors visitor ID default response has a 3xx status code
+func (o *GetVisitorsVisitorIDDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get visitors visitor ID default response has a 4xx status code
+func (o *GetVisitorsVisitorIDDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get visitors visitor ID default response has a 5xx status code
+func (o *GetVisitorsVisitorIDDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get visitors visitor ID default response a status code equal to that given
+func (o *GetVisitorsVisitorIDDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetVisitorsVisitorIDDefault) Error() string {
 	return fmt.Sprintf("[GET /visitors/{visitorId}][%d] GetVisitorsVisitorID default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetVisitorsVisitorIDDefault) String() string {
+	return fmt.Sprintf("[GET /visitors/{visitorId}][%d] GetVisitorsVisitorID default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetVisitorsVisitorIDDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetVisitorsVisitorIDDefault) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-/*GetVisitorsVisitorIDOKBody get visitors visitor ID o k body
+/*
+GetVisitorsVisitorIDOKBody get visitors visitor ID o k body
 swagger:model GetVisitorsVisitorIDOKBody
 */
 type GetVisitorsVisitorIDOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetVisitorsVisitorIDOKBody) validateData(formats strfmt.Registry) error
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getVisitorsVisitorIdOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getVisitorsVisitorIdOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetVisitorsVisitorIDOKBody) contextValidateData(ctx context.Context, fo
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getVisitorsVisitorIdOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getVisitorsVisitorIdOK" + "." + "data")
 			}
 			return err
 		}

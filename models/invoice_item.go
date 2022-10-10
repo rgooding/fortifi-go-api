@@ -125,6 +125,8 @@ func (m *InvoiceItem) validateSubItems(formats strfmt.Registry) error {
 			if err := m.SubItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -162,6 +164,8 @@ func (m *InvoiceItem) contextValidateSubItems(ctx context.Context, formats strfm
 			if err := m.SubItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

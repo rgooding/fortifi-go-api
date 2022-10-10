@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidTicketsTicketFidPostsOK() *GetCustomersCustomerFi
 	return &GetCustomersCustomerFidTicketsTicketFidPostsOK{}
 }
 
-/* GetCustomersCustomerFidTicketsTicketFidPostsOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidTicketsTicketFidPostsOK describes a response with status code 200, with default header values.
 
 Ticket Data
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidTicketsTicketFidPostsOK struct {
 	Payload *GetCustomersCustomerFidTicketsTicketFidPostsOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid tickets ticket fid posts o k response has a 2xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid tickets ticket fid posts o k response has a 3xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid tickets ticket fid posts o k response has a 4xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid tickets ticket fid posts o k response has a 5xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid tickets ticket fid posts o k response a status code equal to that given
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts][%d] getCustomersCustomerFidTicketsTicketFidPostsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts][%d] getCustomersCustomerFidTicketsTicketFidPostsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsOK) GetPayload() *GetCustomersCustomerFidTicketsTicketFidPostsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidTicketsTicketFidPostsDefault(code int) *GetCustom
 	}
 }
 
-/* GetCustomersCustomerFidTicketsTicketFidPostsDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidTicketsTicketFidPostsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid tickets ticket fid posts default response has a 2xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid tickets ticket fid posts default response has a 3xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid tickets ticket fid posts default response has a 4xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid tickets ticket fid posts default response has a 5xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid tickets ticket fid posts default response a status code equal to that given
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts][%d] GetCustomersCustomerFidTicketsTicketFidPosts default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts][%d] GetCustomersCustomerFidTicketsTicketFidPosts default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsDefault) readResponse(respo
 	return nil
 }
 
-/*GetCustomersCustomerFidTicketsTicketFidPostsOKBody get customers customer fid tickets ticket fid posts o k body
+/*
+GetCustomersCustomerFidTicketsTicketFidPostsOKBody get customers customer fid tickets ticket fid posts o k body
 swagger:model GetCustomersCustomerFidTicketsTicketFidPostsOKBody
 */
 type GetCustomersCustomerFidTicketsTicketFidPostsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsOKBody) validateData(format
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsOKBody) contextValidateData
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
 			}
 			return err
 		}

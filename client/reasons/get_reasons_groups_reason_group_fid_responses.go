@@ -49,7 +49,8 @@ func NewGetReasonsGroupsReasonGroupFidOK() *GetReasonsGroupsReasonGroupFidOK {
 	return &GetReasonsGroupsReasonGroupFidOK{}
 }
 
-/* GetReasonsGroupsReasonGroupFidOK describes a response with status code 200, with default header values.
+/*
+GetReasonsGroupsReasonGroupFidOK describes a response with status code 200, with default header values.
 
 Reason Group retrieved
 */
@@ -57,9 +58,39 @@ type GetReasonsGroupsReasonGroupFidOK struct {
 	Payload *GetReasonsGroupsReasonGroupFidOKBody
 }
 
+// IsSuccess returns true when this get reasons groups reason group fid o k response has a 2xx status code
+func (o *GetReasonsGroupsReasonGroupFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get reasons groups reason group fid o k response has a 3xx status code
+func (o *GetReasonsGroupsReasonGroupFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reasons groups reason group fid o k response has a 4xx status code
+func (o *GetReasonsGroupsReasonGroupFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get reasons groups reason group fid o k response has a 5xx status code
+func (o *GetReasonsGroupsReasonGroupFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reasons groups reason group fid o k response a status code equal to that given
+func (o *GetReasonsGroupsReasonGroupFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetReasonsGroupsReasonGroupFidOK) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] getReasonsGroupsReasonGroupFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReasonsGroupsReasonGroupFidOK) String() string {
+	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] getReasonsGroupsReasonGroupFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReasonsGroupsReasonGroupFidOK) GetPayload() *GetReasonsGroupsReasonGroupFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetReasonsGroupsReasonGroupFidDefault(code int) *GetReasonsGroupsReasonG
 	}
 }
 
-/* GetReasonsGroupsReasonGroupFidDefault describes a response with status code -1, with default header values.
+/*
+GetReasonsGroupsReasonGroupFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetReasonsGroupsReasonGroupFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get reasons groups reason group fid default response has a 2xx status code
+func (o *GetReasonsGroupsReasonGroupFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get reasons groups reason group fid default response has a 3xx status code
+func (o *GetReasonsGroupsReasonGroupFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get reasons groups reason group fid default response has a 4xx status code
+func (o *GetReasonsGroupsReasonGroupFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get reasons groups reason group fid default response has a 5xx status code
+func (o *GetReasonsGroupsReasonGroupFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get reasons groups reason group fid default response a status code equal to that given
+func (o *GetReasonsGroupsReasonGroupFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetReasonsGroupsReasonGroupFidDefault) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] GetReasonsGroupsReasonGroupFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetReasonsGroupsReasonGroupFidDefault) String() string {
+	return fmt.Sprintf("[GET /reasons/groups/{reasonGroupFid}][%d] GetReasonsGroupsReasonGroupFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetReasonsGroupsReasonGroupFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetReasonsGroupsReasonGroupFidDefault) readResponse(response runtime.Cl
 	return nil
 }
 
-/*GetReasonsGroupsReasonGroupFidOKBody get reasons groups reason group fid o k body
+/*
+GetReasonsGroupsReasonGroupFidOKBody get reasons groups reason group fid o k body
 swagger:model GetReasonsGroupsReasonGroupFidOKBody
 */
 type GetReasonsGroupsReasonGroupFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetReasonsGroupsReasonGroupFidOKBody) validateData(formats strfmt.Regis
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReasonsGroupsReasonGroupFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getReasonsGroupsReasonGroupFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetReasonsGroupsReasonGroupFidOKBody) contextValidateData(ctx context.C
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReasonsGroupsReasonGroupFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getReasonsGroupsReasonGroupFidOK" + "." + "data")
 			}
 			return err
 		}

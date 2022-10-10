@@ -52,10 +52,12 @@ func NewGetCustomersCustomerFidPaymentMethodsCardsParamsWithHTTPClient(client *h
 	}
 }
 
-/* GetCustomersCustomerFidPaymentMethodsCardsParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid payment methods cards operation.
+/*
+GetCustomersCustomerFidPaymentMethodsCardsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid payment methods cards operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidPaymentMethodsCardsParams struct {
 

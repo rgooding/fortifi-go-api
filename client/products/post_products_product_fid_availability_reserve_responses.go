@@ -49,7 +49,8 @@ func NewPostProductsProductFidAvailabilityReserveOK() *PostProductsProductFidAva
 	return &PostProductsProductFidAvailabilityReserveOK{}
 }
 
-/* PostProductsProductFidAvailabilityReserveOK describes a response with status code 200, with default header values.
+/*
+PostProductsProductFidAvailabilityReserveOK describes a response with status code 200, with default header values.
 
 Result of reservation
 */
@@ -57,9 +58,39 @@ type PostProductsProductFidAvailabilityReserveOK struct {
 	Payload *PostProductsProductFidAvailabilityReserveOKBody
 }
 
+// IsSuccess returns true when this post products product fid availability reserve o k response has a 2xx status code
+func (o *PostProductsProductFidAvailabilityReserveOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post products product fid availability reserve o k response has a 3xx status code
+func (o *PostProductsProductFidAvailabilityReserveOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post products product fid availability reserve o k response has a 4xx status code
+func (o *PostProductsProductFidAvailabilityReserveOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post products product fid availability reserve o k response has a 5xx status code
+func (o *PostProductsProductFidAvailabilityReserveOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post products product fid availability reserve o k response a status code equal to that given
+func (o *PostProductsProductFidAvailabilityReserveOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostProductsProductFidAvailabilityReserveOK) Error() string {
 	return fmt.Sprintf("[POST /products/{productFid}/availability/reserve][%d] postProductsProductFidAvailabilityReserveOK  %+v", 200, o.Payload)
 }
+
+func (o *PostProductsProductFidAvailabilityReserveOK) String() string {
+	return fmt.Sprintf("[POST /products/{productFid}/availability/reserve][%d] postProductsProductFidAvailabilityReserveOK  %+v", 200, o.Payload)
+}
+
 func (o *PostProductsProductFidAvailabilityReserveOK) GetPayload() *PostProductsProductFidAvailabilityReserveOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostProductsProductFidAvailabilityReserveDefault(code int) *PostProducts
 	}
 }
 
-/* PostProductsProductFidAvailabilityReserveDefault describes a response with status code -1, with default header values.
+/*
+PostProductsProductFidAvailabilityReserveDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostProductsProductFidAvailabilityReserveDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post products product fid availability reserve default response has a 2xx status code
+func (o *PostProductsProductFidAvailabilityReserveDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post products product fid availability reserve default response has a 3xx status code
+func (o *PostProductsProductFidAvailabilityReserveDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post products product fid availability reserve default response has a 4xx status code
+func (o *PostProductsProductFidAvailabilityReserveDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post products product fid availability reserve default response has a 5xx status code
+func (o *PostProductsProductFidAvailabilityReserveDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post products product fid availability reserve default response a status code equal to that given
+func (o *PostProductsProductFidAvailabilityReserveDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostProductsProductFidAvailabilityReserveDefault) Error() string {
 	return fmt.Sprintf("[POST /products/{productFid}/availability/reserve][%d] PostProductsProductFidAvailabilityReserve default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostProductsProductFidAvailabilityReserveDefault) String() string {
+	return fmt.Sprintf("[POST /products/{productFid}/availability/reserve][%d] PostProductsProductFidAvailabilityReserve default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostProductsProductFidAvailabilityReserveDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostProductsProductFidAvailabilityReserveDefault) readResponse(response
 	return nil
 }
 
-/*PostProductsProductFidAvailabilityReserveOKBody post products product fid availability reserve o k body
+/*
+PostProductsProductFidAvailabilityReserveOKBody post products product fid availability reserve o k body
 swagger:model PostProductsProductFidAvailabilityReserveOKBody
 */
 type PostProductsProductFidAvailabilityReserveOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostProductsProductFidAvailabilityReserveOKBody) validateData(formats s
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postProductsProductFidAvailabilityReserveOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postProductsProductFidAvailabilityReserveOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostProductsProductFidAvailabilityReserveOKBody) contextValidateData(ct
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postProductsProductFidAvailabilityReserveOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postProductsProductFidAvailabilityReserveOK" + "." + "data")
 			}
 			return err
 		}

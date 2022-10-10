@@ -46,14 +46,44 @@ func NewPutOrdersOrderFidFinalizeOK() *PutOrdersOrderFidFinalizeOK {
 	return &PutOrdersOrderFidFinalizeOK{}
 }
 
-/* PutOrdersOrderFidFinalizeOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidFinalizeOK describes a response with status code 200, with default header values.
 
 Order Finalized
 */
 type PutOrdersOrderFidFinalizeOK struct {
 }
 
+// IsSuccess returns true when this put orders order fid finalize o k response has a 2xx status code
+func (o *PutOrdersOrderFidFinalizeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid finalize o k response has a 3xx status code
+func (o *PutOrdersOrderFidFinalizeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid finalize o k response has a 4xx status code
+func (o *PutOrdersOrderFidFinalizeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid finalize o k response has a 5xx status code
+func (o *PutOrdersOrderFidFinalizeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid finalize o k response a status code equal to that given
+func (o *PutOrdersOrderFidFinalizeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidFinalizeOK) Error() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/finalize][%d] putOrdersOrderFidFinalizeOK ", 200)
+}
+
+func (o *PutOrdersOrderFidFinalizeOK) String() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/finalize][%d] putOrdersOrderFidFinalizeOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutOrdersOrderFidFinalizeDefault(code int) *PutOrdersOrderFidFinalizeDef
 	}
 }
 
-/* PutOrdersOrderFidFinalizeDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidFinalizeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutOrdersOrderFidFinalizeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid finalize default response has a 2xx status code
+func (o *PutOrdersOrderFidFinalizeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid finalize default response has a 3xx status code
+func (o *PutOrdersOrderFidFinalizeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid finalize default response has a 4xx status code
+func (o *PutOrdersOrderFidFinalizeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid finalize default response has a 5xx status code
+func (o *PutOrdersOrderFidFinalizeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid finalize default response a status code equal to that given
+func (o *PutOrdersOrderFidFinalizeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidFinalizeDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/finalize][%d] PutOrdersOrderFidFinalize default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidFinalizeDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/finalize][%d] PutOrdersOrderFidFinalize default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidFinalizeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

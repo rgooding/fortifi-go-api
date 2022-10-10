@@ -53,10 +53,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParamsW
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid set advance days operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid set advance days operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetAdvanceDaysParams struct {
 

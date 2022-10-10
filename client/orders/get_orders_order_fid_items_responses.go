@@ -49,7 +49,8 @@ func NewGetOrdersOrderFidItemsOK() *GetOrdersOrderFidItemsOK {
 	return &GetOrdersOrderFidItemsOK{}
 }
 
-/* GetOrdersOrderFidItemsOK describes a response with status code 200, with default header values.
+/*
+GetOrdersOrderFidItemsOK describes a response with status code 200, with default header values.
 
 List of order items
 */
@@ -57,9 +58,39 @@ type GetOrdersOrderFidItemsOK struct {
 	Payload *GetOrdersOrderFidItemsOKBody
 }
 
+// IsSuccess returns true when this get orders order fid items o k response has a 2xx status code
+func (o *GetOrdersOrderFidItemsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get orders order fid items o k response has a 3xx status code
+func (o *GetOrdersOrderFidItemsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get orders order fid items o k response has a 4xx status code
+func (o *GetOrdersOrderFidItemsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get orders order fid items o k response has a 5xx status code
+func (o *GetOrdersOrderFidItemsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get orders order fid items o k response a status code equal to that given
+func (o *GetOrdersOrderFidItemsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOrdersOrderFidItemsOK) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}/items][%d] getOrdersOrderFidItemsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOrdersOrderFidItemsOK) String() string {
+	return fmt.Sprintf("[GET /orders/{orderFid}/items][%d] getOrdersOrderFidItemsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOrdersOrderFidItemsOK) GetPayload() *GetOrdersOrderFidItemsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetOrdersOrderFidItemsDefault(code int) *GetOrdersOrderFidItemsDefault {
 	}
 }
 
-/* GetOrdersOrderFidItemsDefault describes a response with status code -1, with default header values.
+/*
+GetOrdersOrderFidItemsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetOrdersOrderFidItemsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get orders order fid items default response has a 2xx status code
+func (o *GetOrdersOrderFidItemsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get orders order fid items default response has a 3xx status code
+func (o *GetOrdersOrderFidItemsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get orders order fid items default response has a 4xx status code
+func (o *GetOrdersOrderFidItemsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get orders order fid items default response has a 5xx status code
+func (o *GetOrdersOrderFidItemsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get orders order fid items default response a status code equal to that given
+func (o *GetOrdersOrderFidItemsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOrdersOrderFidItemsDefault) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}/items][%d] GetOrdersOrderFidItems default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOrdersOrderFidItemsDefault) String() string {
+	return fmt.Sprintf("[GET /orders/{orderFid}/items][%d] GetOrdersOrderFidItems default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOrdersOrderFidItemsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetOrdersOrderFidItemsDefault) readResponse(response runtime.ClientResp
 	return nil
 }
 
-/*GetOrdersOrderFidItemsOKBody get orders order fid items o k body
+/*
+GetOrdersOrderFidItemsOKBody get orders order fid items o k body
 swagger:model GetOrdersOrderFidItemsOKBody
 */
 type GetOrdersOrderFidItemsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetOrdersOrderFidItemsOKBody) validateData(formats strfmt.Registry) err
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrdersOrderFidItemsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getOrdersOrderFidItemsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetOrdersOrderFidItemsOKBody) contextValidateData(ctx context.Context, 
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrdersOrderFidItemsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getOrdersOrderFidItemsOK" + "." + "data")
 			}
 			return err
 		}

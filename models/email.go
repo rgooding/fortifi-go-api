@@ -21,6 +21,9 @@ type Email struct {
 
 	// email
 	Email string `json:"email,omitempty"`
+
+	// message groups
+	MessageGroups *MessageGroups `json:"messageGroups,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -35,12 +38,16 @@ func (m *Email) UnmarshalJSON(raw []byte) error {
 	// AO1
 	var dataAO1 struct {
 		Email string `json:"email,omitempty"`
+
+		MessageGroups *MessageGroups `json:"messageGroups,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
 	}
 
 	m.Email = dataAO1.Email
+
+	m.MessageGroups = dataAO1.MessageGroups
 
 	return nil
 }
@@ -56,9 +63,13 @@ func (m Email) MarshalJSON() ([]byte, error) {
 	_parts = append(_parts, aO0)
 	var dataAO1 struct {
 		Email string `json:"email,omitempty"`
+
+		MessageGroups *MessageGroups `json:"messageGroups,omitempty"`
 	}
 
 	dataAO1.Email = m.Email
+
+	dataAO1.MessageGroups = m.MessageGroups
 
 	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
 	if errAO1 != nil {
@@ -77,9 +88,33 @@ func (m *Email) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateMessageGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Email) validateMessageGroups(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.MessageGroups) { // not required
+		return nil
+	}
+
+	if m.MessageGroups != nil {
+		if err := m.MessageGroups.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("messageGroups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("messageGroups")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -92,9 +127,29 @@ func (m *Email) ContextValidate(ctx context.Context, formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMessageGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Email) contextValidateMessageGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MessageGroups != nil {
+		if err := m.MessageGroups.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("messageGroups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("messageGroups")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

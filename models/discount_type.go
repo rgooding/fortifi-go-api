@@ -20,8 +20,12 @@ import (
 type DiscountType string
 
 func NewDiscountType(value DiscountType) *DiscountType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated DiscountType.
+func (m DiscountType) Pointer() *DiscountType {
+	return &m
 }
 
 const (

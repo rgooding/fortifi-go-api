@@ -20,8 +20,12 @@ import (
 type CreateOrderType string
 
 func NewCreateOrderType(value CreateOrderType) *CreateOrderType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated CreateOrderType.
+func (m CreateOrderType) Pointer() *CreateOrderType {
+	return &m
 }
 
 const (

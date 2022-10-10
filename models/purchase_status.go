@@ -20,8 +20,12 @@ import (
 type PurchaseStatus string
 
 func NewPurchaseStatus(value PurchaseStatus) *PurchaseStatus {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated PurchaseStatus.
+func (m PurchaseStatus) Pointer() *PurchaseStatus {
+	return &m
 }
 
 const (
@@ -67,6 +71,9 @@ const (
 
 	// PurchaseStatusProvisioned captures enum value "provisioned"
 	PurchaseStatusProvisioned PurchaseStatus = "provisioned"
+
+	// PurchaseStatusProvisioningFailed captures enum value "provisioning_failed"
+	PurchaseStatusProvisioningFailed PurchaseStatus = "provisioning_failed"
 )
 
 // for schema
@@ -74,7 +81,7 @@ var purchaseStatusEnum []interface{}
 
 func init() {
 	var res []PurchaseStatus
-	if err := json.Unmarshal([]byte(`["setup","trial","active","inactive","upgraded","suspended","cancelled","deleted","ended","setting_up","invalid","provision_prepare","provisioning","provisioned"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["setup","trial","active","inactive","upgraded","suspended","cancelled","deleted","ended","setting_up","invalid","provision_prepare","provisioning","provisioned","provisioning_failed"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

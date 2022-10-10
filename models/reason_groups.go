@@ -51,6 +51,8 @@ func (m *ReasonGroups) validateReasonGroups(formats strfmt.Registry) error {
 			if err := m.ReasonGroups[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reasonGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("reasonGroups" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *ReasonGroups) contextValidateReasonGroups(ctx context.Context, formats 
 			if err := m.ReasonGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("reasonGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("reasonGroups" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

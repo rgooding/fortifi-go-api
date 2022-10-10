@@ -52,10 +52,12 @@ func NewGetBrandsParamsWithHTTPClient(client *http.Client) *GetBrandsParams {
 	}
 }
 
-/* GetBrandsParams contains all the parameters to send to the API endpoint
-   for the get brands operation.
+/*
+GetBrandsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get brands operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBrandsParams struct {
 	timeout    time.Duration

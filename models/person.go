@@ -292,6 +292,8 @@ func (m *Person) validateAddresses(formats strfmt.Registry) error {
 		if err := m.Addresses.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("addresses")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("addresses")
 			}
 			return err
 		}
@@ -310,6 +312,8 @@ func (m *Person) validateEmails(formats strfmt.Registry) error {
 		if err := m.Emails.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("emails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("emails")
 			}
 			return err
 		}
@@ -328,6 +332,8 @@ func (m *Person) validatePhones(formats strfmt.Registry) error {
 		if err := m.Phones.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("phones")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("phones")
 			}
 			return err
 		}
@@ -369,6 +375,8 @@ func (m *Person) contextValidateAddresses(ctx context.Context, formats strfmt.Re
 		if err := m.Addresses.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("addresses")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("addresses")
 			}
 			return err
 		}
@@ -383,6 +391,8 @@ func (m *Person) contextValidateEmails(ctx context.Context, formats strfmt.Regis
 		if err := m.Emails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("emails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("emails")
 			}
 			return err
 		}
@@ -397,6 +407,8 @@ func (m *Person) contextValidatePhones(ctx context.Context, formats strfmt.Regis
 		if err := m.Phones.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("phones")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("phones")
 			}
 			return err
 		}

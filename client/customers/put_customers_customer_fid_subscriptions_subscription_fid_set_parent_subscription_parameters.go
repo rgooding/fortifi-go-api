@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscription
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid set parent subscription operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid set parent subscription operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetParentSubscriptionParams struct {
 

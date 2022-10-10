@@ -49,7 +49,8 @@ func NewPutOrdersOrderFidProductsOK() *PutOrdersOrderFidProductsOK {
 	return &PutOrdersOrderFidProductsOK{}
 }
 
-/* PutOrdersOrderFidProductsOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidProductsOK describes a response with status code 200, with default header values.
 
 Order products successfully updated
 */
@@ -57,9 +58,39 @@ type PutOrdersOrderFidProductsOK struct {
 	Payload *PutOrdersOrderFidProductsOKBody
 }
 
+// IsSuccess returns true when this put orders order fid products o k response has a 2xx status code
+func (o *PutOrdersOrderFidProductsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid products o k response has a 3xx status code
+func (o *PutOrdersOrderFidProductsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid products o k response has a 4xx status code
+func (o *PutOrdersOrderFidProductsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid products o k response has a 5xx status code
+func (o *PutOrdersOrderFidProductsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid products o k response a status code equal to that given
+func (o *PutOrdersOrderFidProductsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidProductsOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products][%d] putOrdersOrderFidProductsOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidProductsOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/products][%d] putOrdersOrderFidProductsOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidProductsOK) GetPayload() *PutOrdersOrderFidProductsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutOrdersOrderFidProductsDefault(code int) *PutOrdersOrderFidProductsDef
 	}
 }
 
-/* PutOrdersOrderFidProductsDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidProductsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutOrdersOrderFidProductsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid products default response has a 2xx status code
+func (o *PutOrdersOrderFidProductsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid products default response has a 3xx status code
+func (o *PutOrdersOrderFidProductsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid products default response has a 4xx status code
+func (o *PutOrdersOrderFidProductsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid products default response has a 5xx status code
+func (o *PutOrdersOrderFidProductsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid products default response a status code equal to that given
+func (o *PutOrdersOrderFidProductsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidProductsDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products][%d] PutOrdersOrderFidProducts default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidProductsDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/products][%d] PutOrdersOrderFidProducts default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidProductsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutOrdersOrderFidProductsDefault) readResponse(response runtime.ClientR
 	return nil
 }
 
-/*PutOrdersOrderFidProductsOKBody put orders order fid products o k body
+/*
+PutOrdersOrderFidProductsOKBody put orders order fid products o k body
 swagger:model PutOrdersOrderFidProductsOKBody
 */
 type PutOrdersOrderFidProductsOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutOrdersOrderFidProductsOKBody) validateData(formats strfmt.Registry) 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidProductsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidProductsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutOrdersOrderFidProductsOKBody) contextValidateData(ctx context.Contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidProductsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidProductsOK" + "." + "data")
 			}
 			return err
 		}

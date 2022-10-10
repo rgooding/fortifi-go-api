@@ -54,10 +54,12 @@ func NewPostAdvertisersAdvertiserFidCampaignsParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* PostAdvertisersAdvertiserFidCampaignsParams contains all the parameters to send to the API endpoint
-   for the post advertisers advertiser fid campaigns operation.
+/*
+PostAdvertisersAdvertiserFidCampaignsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post advertisers advertiser fid campaigns operation.
+
+	Typically these are written to a http.Request.
 */
 type PostAdvertisersAdvertiserFidCampaignsParams struct {
 

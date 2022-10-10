@@ -46,14 +46,44 @@ func NewPutAdvertisersAdvertiserFidApprovedOK() *PutAdvertisersAdvertiserFidAppr
 	return &PutAdvertisersAdvertiserFidApprovedOK{}
 }
 
-/* PutAdvertisersAdvertiserFidApprovedOK describes a response with status code 200, with default header values.
+/*
+PutAdvertisersAdvertiserFidApprovedOK describes a response with status code 200, with default header values.
 
 Approved Advertiser
 */
 type PutAdvertisersAdvertiserFidApprovedOK struct {
 }
 
+// IsSuccess returns true when this put advertisers advertiser fid approved o k response has a 2xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put advertisers advertiser fid approved o k response has a 3xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put advertisers advertiser fid approved o k response has a 4xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put advertisers advertiser fid approved o k response has a 5xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put advertisers advertiser fid approved o k response a status code equal to that given
+func (o *PutAdvertisersAdvertiserFidApprovedOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutAdvertisersAdvertiserFidApprovedOK) Error() string {
+	return fmt.Sprintf("[PUT /advertisers/{advertiserFid}/approved][%d] putAdvertisersAdvertiserFidApprovedOK ", 200)
+}
+
+func (o *PutAdvertisersAdvertiserFidApprovedOK) String() string {
 	return fmt.Sprintf("[PUT /advertisers/{advertiserFid}/approved][%d] putAdvertisersAdvertiserFidApprovedOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutAdvertisersAdvertiserFidApprovedDefault(code int) *PutAdvertisersAdve
 	}
 }
 
-/* PutAdvertisersAdvertiserFidApprovedDefault describes a response with status code -1, with default header values.
+/*
+PutAdvertisersAdvertiserFidApprovedDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutAdvertisersAdvertiserFidApprovedDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put advertisers advertiser fid approved default response has a 2xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put advertisers advertiser fid approved default response has a 3xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put advertisers advertiser fid approved default response has a 4xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put advertisers advertiser fid approved default response has a 5xx status code
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put advertisers advertiser fid approved default response a status code equal to that given
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutAdvertisersAdvertiserFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[PUT /advertisers/{advertiserFid}/approved][%d] PutAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutAdvertisersAdvertiserFidApprovedDefault) String() string {
+	return fmt.Sprintf("[PUT /advertisers/{advertiserFid}/approved][%d] PutAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutAdvertisersAdvertiserFidApprovedDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

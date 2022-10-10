@@ -103,6 +103,8 @@ func (m *Periods) validatePeriods(formats strfmt.Registry) error {
 			if err := m.Periods[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("periods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("periods" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *Periods) contextValidatePeriods(ctx context.Context, formats strfmt.Reg
 			if err := m.Periods[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("periods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("periods" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

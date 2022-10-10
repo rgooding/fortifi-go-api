@@ -49,7 +49,8 @@ func NewGetLicenceCheckOK() *GetLicenceCheckOK {
 	return &GetLicenceCheckOK{}
 }
 
-/* GetLicenceCheckOK describes a response with status code 200, with default header values.
+/*
+GetLicenceCheckOK describes a response with status code 200, with default header values.
 
 Licence Information
 */
@@ -57,9 +58,39 @@ type GetLicenceCheckOK struct {
 	Payload *GetLicenceCheckOKBody
 }
 
+// IsSuccess returns true when this get licence check o k response has a 2xx status code
+func (o *GetLicenceCheckOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get licence check o k response has a 3xx status code
+func (o *GetLicenceCheckOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get licence check o k response has a 4xx status code
+func (o *GetLicenceCheckOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get licence check o k response has a 5xx status code
+func (o *GetLicenceCheckOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get licence check o k response a status code equal to that given
+func (o *GetLicenceCheckOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetLicenceCheckOK) Error() string {
 	return fmt.Sprintf("[GET /licence/check][%d] getLicenceCheckOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLicenceCheckOK) String() string {
+	return fmt.Sprintf("[GET /licence/check][%d] getLicenceCheckOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLicenceCheckOK) GetPayload() *GetLicenceCheckOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetLicenceCheckDefault(code int) *GetLicenceCheckDefault {
 	}
 }
 
-/* GetLicenceCheckDefault describes a response with status code -1, with default header values.
+/*
+GetLicenceCheckDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetLicenceCheckDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get licence check default response has a 2xx status code
+func (o *GetLicenceCheckDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get licence check default response has a 3xx status code
+func (o *GetLicenceCheckDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get licence check default response has a 4xx status code
+func (o *GetLicenceCheckDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get licence check default response has a 5xx status code
+func (o *GetLicenceCheckDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get licence check default response a status code equal to that given
+func (o *GetLicenceCheckDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetLicenceCheckDefault) Error() string {
 	return fmt.Sprintf("[GET /licence/check][%d] GetLicenceCheck default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetLicenceCheckDefault) String() string {
+	return fmt.Sprintf("[GET /licence/check][%d] GetLicenceCheck default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetLicenceCheckDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetLicenceCheckDefault) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-/*GetLicenceCheckOKBody get licence check o k body
+/*
+GetLicenceCheckOKBody get licence check o k body
 swagger:model GetLicenceCheckOKBody
 */
 type GetLicenceCheckOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetLicenceCheckOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getLicenceCheckOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getLicenceCheckOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetLicenceCheckOKBody) contextValidateData(ctx context.Context, formats
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getLicenceCheckOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getLicenceCheckOK" + "." + "data")
 			}
 			return err
 		}

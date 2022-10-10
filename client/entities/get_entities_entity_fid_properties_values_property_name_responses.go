@@ -49,7 +49,8 @@ func NewGetEntitiesEntityFidPropertiesValuesPropertyNameOK() *GetEntitiesEntityF
 	return &GetEntitiesEntityFidPropertiesValuesPropertyNameOK{}
 }
 
-/* GetEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
+/*
+GetEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
 
 Property Value
 */
@@ -57,9 +58,39 @@ type GetEntitiesEntityFidPropertiesValuesPropertyNameOK struct {
 	Payload *GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody
 }
 
+// IsSuccess returns true when this get entities entity fid properties values property name o k response has a 2xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get entities entity fid properties values property name o k response has a 3xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get entities entity fid properties values property name o k response has a 4xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get entities entity fid properties values property name o k response has a 5xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get entities entity fid properties values property name o k response a status code equal to that given
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties/values/{propertyName}][%d] getEntitiesEntityFidPropertiesValuesPropertyNameOK  %+v", 200, o.Payload)
 }
+
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) String() string {
+	return fmt.Sprintf("[GET /entities/{entityFid}/properties/values/{propertyName}][%d] getEntitiesEntityFidPropertiesValuesPropertyNameOK  %+v", 200, o.Payload)
+}
+
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOK) GetPayload() *GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetEntitiesEntityFidPropertiesValuesPropertyNameDefault(code int) *GetEn
 	}
 }
 
-/* GetEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
+/*
+GetEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get entities entity fid properties values property name default response has a 2xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get entities entity fid properties values property name default response has a 3xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get entities entity fid properties values property name default response has a 4xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get entities entity fid properties values property name default response has a 5xx status code
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get entities entity fid properties values property name default response a status code equal to that given
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/properties/values/{propertyName}][%d] GetEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) String() string {
+	return fmt.Sprintf("[GET /entities/{entityFid}/properties/values/{propertyName}][%d] GetEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameDefault) readResponse(r
 	return nil
 }
 
-/*GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody get entities entity fid properties values property name o k body
+/*
+GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody get entities entity fid properties values property name o k body
 swagger:model GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody
 */
 type GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody) validateData(fo
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidPropertiesValuesPropertyNameOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getEntitiesEntityFidPropertiesValuesPropertyNameOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetEntitiesEntityFidPropertiesValuesPropertyNameOKBody) contextValidate
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidPropertiesValuesPropertyNameOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getEntitiesEntityFidPropertiesValuesPropertyNameOK" + "." + "data")
 			}
 			return err
 		}

@@ -103,6 +103,8 @@ func (m *Subscriptions) validateSubscriptions(formats strfmt.Registry) error {
 			if err := m.Subscriptions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subscriptions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subscriptions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *Subscriptions) contextValidateSubscriptions(ctx context.Context, format
 			if err := m.Subscriptions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subscriptions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subscriptions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

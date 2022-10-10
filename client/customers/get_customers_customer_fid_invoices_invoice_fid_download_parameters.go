@@ -52,10 +52,12 @@ func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadParamsWithHTTPClient(cl
 	}
 }
 
-/* GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid invoices invoice fid download operation.
+/*
+GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid invoices invoice fid download operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidInvoicesInvoiceFidDownloadParams struct {
 

@@ -53,10 +53,12 @@ func NewGetCustomersCustomerFidContactsContactFidParamsWithHTTPClient(client *ht
 	}
 }
 
-/* GetCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid contacts contact fid operation.
+/*
+GetCustomersCustomerFidContactsContactFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid contacts contact fid operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidContactsContactFidParams struct {
 

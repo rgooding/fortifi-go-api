@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK() *PostCustomersC
 	return &PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK{}
 }
 
-/* PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK describes a response with status code 200, with default header values.
 
 Credit Note Added
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK struct {
 	Payload *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid invoices invoice fid credit note o k response has a 2xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid invoices invoice fid credit note o k response has a 3xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid invoices invoice fid credit note o k response has a 4xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid invoices invoice fid credit note o k response has a 5xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid invoices invoice fid credit note o k response a status code equal to that given
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK) GetPayload() *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault(code int) *P
 	}
 }
 
-/* PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Code() int
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid invoices invoice fid credit note default response has a 2xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid invoices invoice fid credit note default response has a 3xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid invoices invoice fid credit note default response has a 4xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid invoices invoice fid credit note default response has a 5xx status code
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid invoices invoice fid credit note default response a status code equal to that given
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] PostCustomersCustomerFidInvoicesInvoiceFidCreditNote default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/invoices/{invoiceFid}/creditNote][%d] PostCustomersCustomerFidInvoicesInvoiceFidCreditNote default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteDefault) readRespon
 	return nil
 }
 
-/*PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody post customers customer fid invoices invoice fid credit note o k body
+/*
+PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody post customers customer fid invoices invoice fid credit note o k body
 swagger:model PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody
 */
 type PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) validateDat
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidInvoicesInvoiceFidCreditNoteOKBody) contextVali
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidInvoicesInvoiceFidCreditNoteOK" + "." + "data")
 			}
 			return err
 		}

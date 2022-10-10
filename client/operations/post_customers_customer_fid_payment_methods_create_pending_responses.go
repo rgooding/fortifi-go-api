@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidPaymentMethodsCreatePendingOK() *PostCustomersCu
 	return &PostCustomersCustomerFidPaymentMethodsCreatePendingOK{}
 }
 
-/* PostCustomersCustomerFidPaymentMethodsCreatePendingOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidPaymentMethodsCreatePendingOK describes a response with status code 200, with default header values.
 
 Pending Payment Method Created
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidPaymentMethodsCreatePendingOK struct {
 	Payload *PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid payment methods create pending o k response has a 2xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid payment methods create pending o k response has a 3xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid payment methods create pending o k response has a 4xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid payment methods create pending o k response has a 5xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid payment methods create pending o k response a status code equal to that given
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/createPending][%d] postCustomersCustomerFidPaymentMethodsCreatePendingOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/createPending][%d] postCustomersCustomerFidPaymentMethodsCreatePendingOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOK) GetPayload() *PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidPaymentMethodsCreatePendingDefault(code int) *Po
 	}
 }
 
-/* PostCustomersCustomerFidPaymentMethodsCreatePendingDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidPaymentMethodsCreatePendingDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) Code() int 
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid payment methods create pending default response has a 2xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid payment methods create pending default response has a 3xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid payment methods create pending default response has a 4xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid payment methods create pending default response has a 5xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid payment methods create pending default response a status code equal to that given
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/createPending][%d] PostCustomersCustomerFidPaymentMethodsCreatePending default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/createPending][%d] PostCustomersCustomerFidPaymentMethodsCreatePending default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingDefault) readRespons
 	return nil
 }
 
-/*PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody post customers customer fid payment methods create pending o k body
+/*
+PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody post customers customer fid payment methods create pending o k body
 swagger:model PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody
 */
 type PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody) validateData
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentMethodsCreatePendingOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidPaymentMethodsCreatePendingOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidPaymentMethodsCreatePendingOKBody) contextValid
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentMethodsCreatePendingOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidPaymentMethodsCreatePendingOK" + "." + "data")
 			}
 			return err
 		}

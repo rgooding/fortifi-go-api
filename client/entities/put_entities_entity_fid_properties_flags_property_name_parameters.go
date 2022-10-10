@@ -54,10 +54,12 @@ func NewPutEntitiesEntityFidPropertiesFlagsPropertyNameParamsWithHTTPClient(clie
 	}
 }
 
-/* PutEntitiesEntityFidPropertiesFlagsPropertyNameParams contains all the parameters to send to the API endpoint
-   for the put entities entity fid properties flags property name operation.
+/*
+PutEntitiesEntityFidPropertiesFlagsPropertyNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put entities entity fid properties flags property name operation.
+
+	Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidPropertiesFlagsPropertyNameParams struct {
 

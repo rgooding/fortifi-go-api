@@ -44,6 +44,8 @@ func (m *SetSubscriptionTypePayload) validateSubscriptionType(formats strfmt.Reg
 	if err := m.SubscriptionType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("subscriptionType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("subscriptionType")
 		}
 		return err
 	}
@@ -70,6 +72,8 @@ func (m *SetSubscriptionTypePayload) contextValidateSubscriptionType(ctx context
 	if err := m.SubscriptionType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("subscriptionType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("subscriptionType")
 		}
 		return err
 	}

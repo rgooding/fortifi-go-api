@@ -34,7 +34,7 @@ type ClientService interface {
 }
 
 /*
-  PutMessengerDeliveriesDeliveryFidUnsubscribe unsubscribes an email based on the delivery fid
+PutMessengerDeliveriesDeliveryFidUnsubscribe unsubscribes an email based on the delivery fid
 */
 func (a *Client) PutMessengerDeliveriesDeliveryFidUnsubscribe(params *PutMessengerDeliveriesDeliveryFidUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidUnsubscribeOK, error) {
 	// TODO: Validate the params before sending

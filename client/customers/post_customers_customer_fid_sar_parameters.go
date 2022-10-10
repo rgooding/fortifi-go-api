@@ -52,10 +52,12 @@ func NewPostCustomersCustomerFidSarParamsWithHTTPClient(client *http.Client) *Po
 	}
 }
 
-/* PostCustomersCustomerFidSarParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid sar operation.
+/*
+PostCustomersCustomerFidSarParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid sar operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidSarParams struct {
 

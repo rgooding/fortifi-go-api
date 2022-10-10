@@ -44,6 +44,8 @@ func (m *SetAccountStatusPayload) validateAccountStatus(formats strfmt.Registry)
 	if err := m.AccountStatus.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accountStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("accountStatus")
 		}
 		return err
 	}
@@ -70,6 +72,8 @@ func (m *SetAccountStatusPayload) contextValidateAccountStatus(ctx context.Conte
 	if err := m.AccountStatus.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accountStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("accountStatus")
 		}
 		return err
 	}

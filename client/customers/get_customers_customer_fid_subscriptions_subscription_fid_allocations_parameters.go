@@ -52,10 +52,12 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParamsWith
 	}
 }
 
-/* GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid subscriptions subscription fid allocations operation.
+/*
+GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid subscriptions subscription fid allocations operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidSubscriptionsSubscriptionFidAllocationsParams struct {
 

@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefun
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK describes a response with status code 200, with default header values.
 
 Refund Actioned
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid periods period fid refund o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid periods period fid refund o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid periods period fid refund o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid periods period fid refund o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid periods period fid refund o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefun
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefu
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid periods period fid refund default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid periods period fid refund default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid periods period fid refund default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid periods period fid refund default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid periods period fid refund default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/periods/{periodFid}/refund][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefund default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidPeriodsPeriodFidRefundDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

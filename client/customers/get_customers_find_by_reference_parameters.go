@@ -53,10 +53,12 @@ func NewGetCustomersFindByReferenceParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetCustomersFindByReferenceParams contains all the parameters to send to the API endpoint
-   for the get customers find by reference operation.
+/*
+GetCustomersFindByReferenceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers find by reference operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersFindByReferenceParams struct {
 

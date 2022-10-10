@@ -54,10 +54,12 @@ func NewPutOrdersOrderFidVerifyParamsWithHTTPClient(client *http.Client) *PutOrd
 	}
 }
 
-/* PutOrdersOrderFidVerifyParams contains all the parameters to send to the API endpoint
-   for the put orders order fid verify operation.
+/*
+PutOrdersOrderFidVerifyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid verify operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidVerifyParams struct {
 

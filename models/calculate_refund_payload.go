@@ -61,6 +61,8 @@ func (m *CalculateRefundPayload) validateSubscriptionRefundType(formats strfmt.R
 		if err := m.SubscriptionRefundType.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("subscriptionRefundType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("subscriptionRefundType")
 			}
 			return err
 		}
@@ -89,6 +91,8 @@ func (m *CalculateRefundPayload) contextValidateSubscriptionRefundType(ctx conte
 		if err := m.SubscriptionRefundType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("subscriptionRefundType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("subscriptionRefundType")
 			}
 			return err
 		}

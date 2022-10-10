@@ -52,10 +52,12 @@ func NewPutOrdersOrderFidCancelParamsWithHTTPClient(client *http.Client) *PutOrd
 	}
 }
 
-/* PutOrdersOrderFidCancelParams contains all the parameters to send to the API endpoint
-   for the put orders order fid cancel operation.
+/*
+PutOrdersOrderFidCancelParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid cancel operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidCancelParams struct {
 

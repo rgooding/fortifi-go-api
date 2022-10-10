@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidTicketsTicketFidPostsOK() *PostCustomersCustomer
 	return &PostCustomersCustomerFidTicketsTicketFidPostsOK{}
 }
 
-/* PostCustomersCustomerFidTicketsTicketFidPostsOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidTicketsTicketFidPostsOK describes a response with status code 200, with default header values.
 
 Ticket Data
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidTicketsTicketFidPostsOK struct {
 	Payload *PostCustomersCustomerFidTicketsTicketFidPostsOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid tickets ticket fid posts o k response has a 2xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid tickets ticket fid posts o k response has a 3xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid tickets ticket fid posts o k response has a 4xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid tickets ticket fid posts o k response has a 5xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid tickets ticket fid posts o k response a status code equal to that given
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/tickets/{ticketFid}/posts][%d] postCustomersCustomerFidTicketsTicketFidPostsOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/tickets/{ticketFid}/posts][%d] postCustomersCustomerFidTicketsTicketFidPostsOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidTicketsTicketFidPostsOK) GetPayload() *PostCustomersCustomerFidTicketsTicketFidPostsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidTicketsTicketFidPostsDefault(code int) *PostCust
 	}
 }
 
-/* PostCustomersCustomerFidTicketsTicketFidPostsDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidTicketsTicketFidPostsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid tickets ticket fid posts default response has a 2xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid tickets ticket fid posts default response has a 3xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid tickets ticket fid posts default response has a 4xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid tickets ticket fid posts default response has a 5xx status code
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid tickets ticket fid posts default response a status code equal to that given
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/tickets/{ticketFid}/posts][%d] PostCustomersCustomerFidTicketsTicketFidPosts default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/tickets/{ticketFid}/posts][%d] PostCustomersCustomerFidTicketsTicketFidPosts default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidTicketsTicketFidPostsDefault) readResponse(resp
 	return nil
 }
 
-/*PostCustomersCustomerFidTicketsTicketFidPostsOKBody post customers customer fid tickets ticket fid posts o k body
+/*
+PostCustomersCustomerFidTicketsTicketFidPostsOKBody post customers customer fid tickets ticket fid posts o k body
 swagger:model PostCustomersCustomerFidTicketsTicketFidPostsOKBody
 */
 type PostCustomersCustomerFidTicketsTicketFidPostsOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidTicketsTicketFidPostsOKBody) validateData(forma
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidTicketsTicketFidPostsOKBody) contextValidateDat
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidTicketsTicketFidPostsOK" + "." + "data")
 			}
 			return err
 		}

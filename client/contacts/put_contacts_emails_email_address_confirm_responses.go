@@ -46,14 +46,44 @@ func NewPutContactsEmailsEmailAddressConfirmOK() *PutContactsEmailsEmailAddressC
 	return &PutContactsEmailsEmailAddressConfirmOK{}
 }
 
-/* PutContactsEmailsEmailAddressConfirmOK describes a response with status code 200, with default header values.
+/*
+PutContactsEmailsEmailAddressConfirmOK describes a response with status code 200, with default header values.
 
 Email Address Confirmed
 */
 type PutContactsEmailsEmailAddressConfirmOK struct {
 }
 
+// IsSuccess returns true when this put contacts emails email address confirm o k response has a 2xx status code
+func (o *PutContactsEmailsEmailAddressConfirmOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put contacts emails email address confirm o k response has a 3xx status code
+func (o *PutContactsEmailsEmailAddressConfirmOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put contacts emails email address confirm o k response has a 4xx status code
+func (o *PutContactsEmailsEmailAddressConfirmOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put contacts emails email address confirm o k response has a 5xx status code
+func (o *PutContactsEmailsEmailAddressConfirmOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put contacts emails email address confirm o k response a status code equal to that given
+func (o *PutContactsEmailsEmailAddressConfirmOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutContactsEmailsEmailAddressConfirmOK) Error() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/confirm][%d] putContactsEmailsEmailAddressConfirmOK ", 200)
+}
+
+func (o *PutContactsEmailsEmailAddressConfirmOK) String() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/confirm][%d] putContactsEmailsEmailAddressConfirmOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutContactsEmailsEmailAddressConfirmDefault(code int) *PutContactsEmails
 	}
 }
 
-/* PutContactsEmailsEmailAddressConfirmDefault describes a response with status code -1, with default header values.
+/*
+PutContactsEmailsEmailAddressConfirmDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutContactsEmailsEmailAddressConfirmDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put contacts emails email address confirm default response has a 2xx status code
+func (o *PutContactsEmailsEmailAddressConfirmDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put contacts emails email address confirm default response has a 3xx status code
+func (o *PutContactsEmailsEmailAddressConfirmDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put contacts emails email address confirm default response has a 4xx status code
+func (o *PutContactsEmailsEmailAddressConfirmDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put contacts emails email address confirm default response has a 5xx status code
+func (o *PutContactsEmailsEmailAddressConfirmDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put contacts emails email address confirm default response a status code equal to that given
+func (o *PutContactsEmailsEmailAddressConfirmDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutContactsEmailsEmailAddressConfirmDefault) Error() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/confirm][%d] PutContactsEmailsEmailAddressConfirm default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutContactsEmailsEmailAddressConfirmDefault) String() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/confirm][%d] PutContactsEmailsEmailAddressConfirm default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutContactsEmailsEmailAddressConfirmDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetProductsProductFidSkusParamsWithHTTPClient(client *http.Client) *GetP
 	}
 }
 
-/* GetProductsProductFidSkusParams contains all the parameters to send to the API endpoint
-   for the get products product fid skus operation.
+/*
+GetProductsProductFidSkusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get products product fid skus operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProductsProductFidSkusParams struct {
 

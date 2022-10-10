@@ -53,10 +53,12 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalCompleteParamsWithHTTPClient
 	}
 }
 
-/* PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid payment methods paypal complete operation.
+/*
+PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid payment methods paypal complete operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPaymentMethodsPaypalCompleteParams struct {
 

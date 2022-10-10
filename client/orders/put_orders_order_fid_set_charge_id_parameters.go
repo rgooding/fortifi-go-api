@@ -52,10 +52,12 @@ func NewPutOrdersOrderFidSetChargeIDParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* PutOrdersOrderFidSetChargeIDParams contains all the parameters to send to the API endpoint
-   for the put orders order fid set charge ID operation.
+/*
+PutOrdersOrderFidSetChargeIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid set charge ID operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidSetChargeIDParams struct {
 

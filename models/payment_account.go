@@ -148,6 +148,8 @@ func (m *PaymentAccount) validateAccountType(formats strfmt.Registry) error {
 	if err := m.AccountType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accountType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("accountType")
 		}
 		return err
 	}
@@ -164,6 +166,8 @@ func (m *PaymentAccount) validatePaymentMethod(formats strfmt.Registry) error {
 	if err := m.PaymentMethod.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMethod")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentMethod")
 		}
 		return err
 	}
@@ -180,6 +184,8 @@ func (m *PaymentAccount) validatePaymentMode(formats strfmt.Registry) error {
 	if err := m.PaymentMode.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMode")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentMode")
 		}
 		return err
 	}
@@ -219,6 +225,8 @@ func (m *PaymentAccount) contextValidateAccountType(ctx context.Context, formats
 	if err := m.AccountType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accountType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("accountType")
 		}
 		return err
 	}
@@ -231,6 +239,8 @@ func (m *PaymentAccount) contextValidatePaymentMethod(ctx context.Context, forma
 	if err := m.PaymentMethod.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMethod")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentMethod")
 		}
 		return err
 	}
@@ -243,6 +253,8 @@ func (m *PaymentAccount) contextValidatePaymentMode(ctx context.Context, formats
 	if err := m.PaymentMode.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMode")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentMode")
 		}
 		return err
 	}

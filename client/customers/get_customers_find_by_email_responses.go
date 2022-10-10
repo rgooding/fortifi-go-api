@@ -49,7 +49,8 @@ func NewGetCustomersFindByEmailOK() *GetCustomersFindByEmailOK {
 	return &GetCustomersFindByEmailOK{}
 }
 
-/* GetCustomersFindByEmailOK describes a response with status code 200, with default header values.
+/*
+GetCustomersFindByEmailOK describes a response with status code 200, with default header values.
 
 Located Customer
 */
@@ -57,9 +58,39 @@ type GetCustomersFindByEmailOK struct {
 	Payload *GetCustomersFindByEmailOKBody
 }
 
+// IsSuccess returns true when this get customers find by email o k response has a 2xx status code
+func (o *GetCustomersFindByEmailOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers find by email o k response has a 3xx status code
+func (o *GetCustomersFindByEmailOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers find by email o k response has a 4xx status code
+func (o *GetCustomersFindByEmailOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers find by email o k response has a 5xx status code
+func (o *GetCustomersFindByEmailOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers find by email o k response a status code equal to that given
+func (o *GetCustomersFindByEmailOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersFindByEmailOK) Error() string {
 	return fmt.Sprintf("[GET /customers/findByEmail][%d] getCustomersFindByEmailOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersFindByEmailOK) String() string {
+	return fmt.Sprintf("[GET /customers/findByEmail][%d] getCustomersFindByEmailOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersFindByEmailOK) GetPayload() *GetCustomersFindByEmailOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersFindByEmailDefault(code int) *GetCustomersFindByEmailDefault
 	}
 }
 
-/* GetCustomersFindByEmailDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersFindByEmailDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersFindByEmailDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers find by email default response has a 2xx status code
+func (o *GetCustomersFindByEmailDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers find by email default response has a 3xx status code
+func (o *GetCustomersFindByEmailDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers find by email default response has a 4xx status code
+func (o *GetCustomersFindByEmailDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers find by email default response has a 5xx status code
+func (o *GetCustomersFindByEmailDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers find by email default response a status code equal to that given
+func (o *GetCustomersFindByEmailDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersFindByEmailDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/findByEmail][%d] GetCustomersFindByEmail default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersFindByEmailDefault) String() string {
+	return fmt.Sprintf("[GET /customers/findByEmail][%d] GetCustomersFindByEmail default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersFindByEmailDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersFindByEmailDefault) readResponse(response runtime.ClientRes
 	return nil
 }
 
-/*GetCustomersFindByEmailOKBody get customers find by email o k body
+/*
+GetCustomersFindByEmailOKBody get customers find by email o k body
 swagger:model GetCustomersFindByEmailOKBody
 */
 type GetCustomersFindByEmailOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersFindByEmailOKBody) validateData(formats strfmt.Registry) er
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersFindByEmailOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersFindByEmailOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersFindByEmailOKBody) contextValidateData(ctx context.Context,
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersFindByEmailOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersFindByEmailOK" + "." + "data")
 			}
 			return err
 		}

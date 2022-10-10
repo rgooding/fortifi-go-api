@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK() *PostCustomer
 	return &PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK{}
 }
 
-/* PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK describes a response with status code 200, with default header values.
 
 Redirect instructions
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK struct {
 	Payload *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid payment methods paypal initialise o k response has a 2xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid payment methods paypal initialise o k response has a 3xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid payment methods paypal initialise o k response has a 4xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid payment methods paypal initialise o k response has a 5xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid payment methods paypal initialise o k response a status code equal to that given
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOK) GetPayload() *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault(code int) 
 	}
 }
 
-/* PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) Code() i
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid payment methods paypal initialise default response has a 2xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid payment methods paypal initialise default response has a 3xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid payment methods paypal initialise default response has a 4xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid payment methods paypal initialise default response has a 5xx status code
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid payment methods paypal initialise default response a status code equal to that given
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] PostCustomersCustomerFidPaymentMethodsPaypalInitialise default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/paymentMethods/paypal/initialise][%d] PostCustomersCustomerFidPaymentMethodsPaypalInitialise default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseDefault) readResp
 	return nil
 }
 
-/*PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody post customers customer fid payment methods paypal initialise o k body
+/*
+PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody post customers customer fid payment methods paypal initialise o k body
 swagger:model PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody
 */
 type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody) validateD
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidPaymentMethodsPaypalInitialiseOKBody) contextVa
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidPaymentMethodsPaypalInitialiseOK" + "." + "data")
 			}
 			return err
 		}

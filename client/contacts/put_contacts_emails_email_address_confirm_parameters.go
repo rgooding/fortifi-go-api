@@ -52,10 +52,12 @@ func NewPutContactsEmailsEmailAddressConfirmParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* PutContactsEmailsEmailAddressConfirmParams contains all the parameters to send to the API endpoint
-   for the put contacts emails email address confirm operation.
+/*
+PutContactsEmailsEmailAddressConfirmParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put contacts emails email address confirm operation.
+
+	Typically these are written to a http.Request.
 */
 type PutContactsEmailsEmailAddressConfirmParams struct {
 

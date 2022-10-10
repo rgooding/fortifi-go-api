@@ -52,10 +52,12 @@ func NewPutPublishersPublisherFidDisableParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* PutPublishersPublisherFidDisableParams contains all the parameters to send to the API endpoint
-   for the put publishers publisher fid disable operation.
+/*
+PutPublishersPublisherFidDisableParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put publishers publisher fid disable operation.
+
+	Typically these are written to a http.Request.
 */
 type PutPublishersPublisherFidDisableParams struct {
 

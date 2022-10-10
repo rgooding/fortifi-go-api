@@ -50,8 +50,6 @@ type ClientService interface {
 
 	PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmCardOK, error)
 
-	PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfirmNewCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmNewCardOK, error)
-
 	PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirmPayPalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmPayPalOK, error)
 
 	PutOrdersOrderFidExternalReference(params *PutOrdersOrderFidExternalReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidExternalReferenceOK, error)
@@ -74,7 +72,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteOrdersOrderFidOffersOfferFid removes an offer from an order
+DeleteOrdersOrderFidOffersOfferFid removes an offer from an order
 */
 func (a *Client) DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFidOffersOfferFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrdersOrderFidOffersOfferFidOK, error) {
 	// TODO: Validate the params before sending
@@ -112,7 +110,7 @@ func (a *Client) DeleteOrdersOrderFidOffersOfferFid(params *DeleteOrdersOrderFid
 }
 
 /*
-  DeleteOrdersOrderFidProductsOrderProductFid removes a product from an order
+DeleteOrdersOrderFidProductsOrderProductFid removes a product from an order
 */
 func (a *Client) DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrdersOrderFidProductsOrderProductFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrdersOrderFidProductsOrderProductFidOK, error) {
 	// TODO: Validate the params before sending
@@ -150,7 +148,7 @@ func (a *Client) DeleteOrdersOrderFidProductsOrderProductFid(params *DeleteOrder
 }
 
 /*
-  GetOrdersOrderFid retrieves an order
+GetOrdersOrderFid retrieves an order
 */
 func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidOK, error) {
 	// TODO: Validate the params before sending
@@ -188,7 +186,7 @@ func (a *Client) GetOrdersOrderFid(params *GetOrdersOrderFidParams, authInfo run
 }
 
 /*
-  GetOrdersOrderFidFraudScan retrieves fraud scan
+GetOrdersOrderFidFraudScan retrieves fraud scan
 */
 func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidFraudScanOK, error) {
 	// TODO: Validate the params before sending
@@ -226,7 +224,7 @@ func (a *Client) GetOrdersOrderFidFraudScan(params *GetOrdersOrderFidFraudScanPa
 }
 
 /*
-  GetOrdersOrderFidItems lists an orders items
+GetOrdersOrderFidItems lists an orders items
 */
 func (a *Client) GetOrdersOrderFidItems(params *GetOrdersOrderFidItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidItemsOK, error) {
 	// TODO: Validate the params before sending
@@ -264,7 +262,7 @@ func (a *Client) GetOrdersOrderFidItems(params *GetOrdersOrderFidItemsParams, au
 }
 
 /*
-  GetOrdersOrderFidProducts retrieves order products
+GetOrdersOrderFidProducts retrieves order products
 */
 func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrdersOrderFidProductsOK, error) {
 	// TODO: Validate the params before sending
@@ -302,7 +300,7 @@ func (a *Client) GetOrdersOrderFidProducts(params *GetOrdersOrderFidProductsPara
 }
 
 /*
-  PostOrders creates a new order
+PostOrders creates a new order
 */
 func (a *Client) PostOrders(params *PostOrdersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOK, error) {
 	// TODO: Validate the params before sending
@@ -340,7 +338,7 @@ func (a *Client) PostOrders(params *PostOrdersParams, authInfo runtime.ClientAut
 }
 
 /*
-  PostOrdersOrderFidOffers adds an offer to an order
+PostOrdersOrderFidOffers adds an offer to an order
 */
 func (a *Client) PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOrderFidOffersOK, error) {
 	// TODO: Validate the params before sending
@@ -378,7 +376,7 @@ func (a *Client) PostOrdersOrderFidOffers(params *PostOrdersOrderFidOffersParams
 }
 
 /*
-  PostOrdersOrderFidProducts adds a product to an order
+PostOrdersOrderFidProducts adds a product to an order
 */
 func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostOrdersOrderFidProductsOK, error) {
 	// TODO: Validate the params before sending
@@ -416,7 +414,7 @@ func (a *Client) PostOrdersOrderFidProducts(params *PostOrdersOrderFidProductsPa
 }
 
 /*
-  PutOrdersOrderFidCancel cancels an order
+PutOrdersOrderFidCancel cancels an order
 */
 func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidCancelOK, error) {
 	// TODO: Validate the params before sending
@@ -454,7 +452,7 @@ func (a *Client) PutOrdersOrderFidCancel(params *PutOrdersOrderFidCancelParams, 
 }
 
 /*
-  PutOrdersOrderFidConfirmCard confirms an order authorize the payment
+PutOrdersOrderFidConfirmCard confirms an order authorize the payment
 */
 func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmCardOK, error) {
 	// TODO: Validate the params before sending
@@ -492,45 +490,7 @@ func (a *Client) PutOrdersOrderFidConfirmCard(params *PutOrdersOrderFidConfirmCa
 }
 
 /*
-  PutOrdersOrderFidConfirmNewCard confirms an order with a new card authorize the payment
-*/
-func (a *Client) PutOrdersOrderFidConfirmNewCard(params *PutOrdersOrderFidConfirmNewCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmNewCardOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPutOrdersOrderFidConfirmNewCardParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "PutOrdersOrderFidConfirmNewCard",
-		Method:             "PUT",
-		PathPattern:        "/orders/{orderFid}/confirmNewCard",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PutOrdersOrderFidConfirmNewCardReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PutOrdersOrderFidConfirmNewCardOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	unexpectedSuccess := result.(*PutOrdersOrderFidConfirmNewCardDefault)
-	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
-}
-
-/*
-  PutOrdersOrderFidConfirmPayPal confirms an order authorize the payment
+PutOrdersOrderFidConfirmPayPal confirms an order authorize the payment
 */
 func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirmPayPalParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidConfirmPayPalOK, error) {
 	// TODO: Validate the params before sending
@@ -568,7 +528,7 @@ func (a *Client) PutOrdersOrderFidConfirmPayPal(params *PutOrdersOrderFidConfirm
 }
 
 /*
-  PutOrdersOrderFidExternalReference sets the external reference on an order
+PutOrdersOrderFidExternalReference sets the external reference on an order
 */
 func (a *Client) PutOrdersOrderFidExternalReference(params *PutOrdersOrderFidExternalReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidExternalReferenceOK, error) {
 	// TODO: Validate the params before sending
@@ -606,7 +566,7 @@ func (a *Client) PutOrdersOrderFidExternalReference(params *PutOrdersOrderFidExt
 }
 
 /*
-  PutOrdersOrderFidFinalize marks an order as finalized
+PutOrdersOrderFidFinalize marks an order as finalized
 */
 func (a *Client) PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidFinalizeOK, error) {
 	// TODO: Validate the params before sending
@@ -644,7 +604,7 @@ func (a *Client) PutOrdersOrderFidFinalize(params *PutOrdersOrderFidFinalizePara
 }
 
 /*
-  PutOrdersOrderFidItemsProductFidOrderItemFid updates an order item
+PutOrdersOrderFidItemsProductFidOrderItemFid updates an order item
 */
 func (a *Client) PutOrdersOrderFidItemsProductFidOrderItemFid(params *PutOrdersOrderFidItemsProductFidOrderItemFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidItemsProductFidOrderItemFidOK, error) {
 	// TODO: Validate the params before sending
@@ -682,7 +642,7 @@ func (a *Client) PutOrdersOrderFidItemsProductFidOrderItemFid(params *PutOrdersO
 }
 
 /*
-  PutOrdersOrderFidProducts sets the products on an order
+PutOrdersOrderFidProducts sets the products on an order
 */
 func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOK, error) {
 	// TODO: Validate the params before sending
@@ -720,7 +680,7 @@ func (a *Client) PutOrdersOrderFidProducts(params *PutOrdersOrderFidProductsPara
 }
 
 /*
-  PutOrdersOrderFidProductsOrderProductFidQuantity sets the quantity of a product on an order
+PutOrdersOrderFidProductsOrderProductFidQuantity sets the quantity of a product on an order
 */
 func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrdersOrderFidProductsOrderProductFidQuantityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOrderProductFidQuantityOK, error) {
 	// TODO: Validate the params before sending
@@ -758,7 +718,7 @@ func (a *Client) PutOrdersOrderFidProductsOrderProductFidQuantity(params *PutOrd
 }
 
 /*
-  PutOrdersOrderFidProductsOrderProductFidSetInitialTerm sets the initial term of a product on an order
+PutOrdersOrderFidProductsOrderProductFidSetInitialTerm sets the initial term of a product on an order
 */
 func (a *Client) PutOrdersOrderFidProductsOrderProductFidSetInitialTerm(params *PutOrdersOrderFidProductsOrderProductFidSetInitialTermParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidProductsOrderProductFidSetInitialTermOK, error) {
 	// TODO: Validate the params before sending
@@ -796,7 +756,7 @@ func (a *Client) PutOrdersOrderFidProductsOrderProductFidSetInitialTerm(params *
 }
 
 /*
-  PutOrdersOrderFidSetChargeID sets a charge hive com charge ID on an order
+PutOrdersOrderFidSetChargeID sets a charge hive com charge ID on an order
 */
 func (a *Client) PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetChargeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidSetChargeIDOK, error) {
 	// TODO: Validate the params before sending
@@ -834,7 +794,7 @@ func (a *Client) PutOrdersOrderFidSetChargeID(params *PutOrdersOrderFidSetCharge
 }
 
 /*
-  PutOrdersOrderFidVerify verifies an order returning any security urls
+PutOrdersOrderFidVerify verifies an order returning any security urls
 */
 func (a *Client) PutOrdersOrderFidVerify(params *PutOrdersOrderFidVerifyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutOrdersOrderFidVerifyOK, error) {
 	// TODO: Validate the params before sending

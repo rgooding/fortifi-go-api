@@ -54,10 +54,12 @@ func NewPutOrdersOrderFidConfirmPayPalParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* PutOrdersOrderFidConfirmPayPalParams contains all the parameters to send to the API endpoint
-   for the put orders order fid confirm pay pal operation.
+/*
+PutOrdersOrderFidConfirmPayPalParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid confirm pay pal operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidConfirmPayPalParams struct {
 

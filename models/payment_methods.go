@@ -51,6 +51,8 @@ func (m *PaymentMethods) validateAccounts(formats strfmt.Registry) error {
 			if err := m.Accounts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("accounts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accounts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *PaymentMethods) contextValidateAccounts(ctx context.Context, formats st
 			if err := m.Accounts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("accounts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accounts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

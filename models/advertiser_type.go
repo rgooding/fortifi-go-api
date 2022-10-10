@@ -20,8 +20,12 @@ import (
 type AdvertiserType string
 
 func NewAdvertiserType(value AdvertiserType) *AdvertiserType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated AdvertiserType.
+func (m AdvertiserType) Pointer() *AdvertiserType {
+	return &m
 }
 
 const (

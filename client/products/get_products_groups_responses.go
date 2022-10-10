@@ -49,7 +49,8 @@ func NewGetProductsGroupsOK() *GetProductsGroupsOK {
 	return &GetProductsGroupsOK{}
 }
 
-/* GetProductsGroupsOK describes a response with status code 200, with default header values.
+/*
+GetProductsGroupsOK describes a response with status code 200, with default header values.
 
 Products groups
 */
@@ -57,9 +58,39 @@ type GetProductsGroupsOK struct {
 	Payload *GetProductsGroupsOKBody
 }
 
+// IsSuccess returns true when this get products groups o k response has a 2xx status code
+func (o *GetProductsGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get products groups o k response has a 3xx status code
+func (o *GetProductsGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get products groups o k response has a 4xx status code
+func (o *GetProductsGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get products groups o k response has a 5xx status code
+func (o *GetProductsGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get products groups o k response a status code equal to that given
+func (o *GetProductsGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProductsGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /products/groups][%d] getProductsGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProductsGroupsOK) String() string {
+	return fmt.Sprintf("[GET /products/groups][%d] getProductsGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProductsGroupsOK) GetPayload() *GetProductsGroupsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetProductsGroupsDefault(code int) *GetProductsGroupsDefault {
 	}
 }
 
-/* GetProductsGroupsDefault describes a response with status code -1, with default header values.
+/*
+GetProductsGroupsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetProductsGroupsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get products groups default response has a 2xx status code
+func (o *GetProductsGroupsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get products groups default response has a 3xx status code
+func (o *GetProductsGroupsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get products groups default response has a 4xx status code
+func (o *GetProductsGroupsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get products groups default response has a 5xx status code
+func (o *GetProductsGroupsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get products groups default response a status code equal to that given
+func (o *GetProductsGroupsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetProductsGroupsDefault) Error() string {
 	return fmt.Sprintf("[GET /products/groups][%d] GetProductsGroups default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetProductsGroupsDefault) String() string {
+	return fmt.Sprintf("[GET /products/groups][%d] GetProductsGroups default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetProductsGroupsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetProductsGroupsDefault) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-/*GetProductsGroupsOKBody get products groups o k body
+/*
+GetProductsGroupsOKBody get products groups o k body
 swagger:model GetProductsGroupsOKBody
 */
 type GetProductsGroupsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetProductsGroupsOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsGroupsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsGroupsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetProductsGroupsOKBody) contextValidateData(ctx context.Context, forma
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsGroupsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsGroupsOK" + "." + "data")
 			}
 			return err
 		}

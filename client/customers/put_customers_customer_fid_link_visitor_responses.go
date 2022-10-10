@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidLinkVisitorOK() *PutCustomersCustomerFidLinkVisit
 	return &PutCustomersCustomerFidLinkVisitorOK{}
 }
 
-/* PutCustomersCustomerFidLinkVisitorOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidLinkVisitorOK describes a response with status code 200, with default header values.
 
 Visitor ID linked to customer
 */
 type PutCustomersCustomerFidLinkVisitorOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid link visitor o k response has a 2xx status code
+func (o *PutCustomersCustomerFidLinkVisitorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid link visitor o k response has a 3xx status code
+func (o *PutCustomersCustomerFidLinkVisitorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid link visitor o k response has a 4xx status code
+func (o *PutCustomersCustomerFidLinkVisitorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid link visitor o k response has a 5xx status code
+func (o *PutCustomersCustomerFidLinkVisitorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid link visitor o k response a status code equal to that given
+func (o *PutCustomersCustomerFidLinkVisitorOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidLinkVisitorOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/linkVisitor][%d] putCustomersCustomerFidLinkVisitorOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidLinkVisitorOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/linkVisitor][%d] putCustomersCustomerFidLinkVisitorOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidLinkVisitorDefault(code int) *PutCustomersCustome
 	}
 }
 
-/* PutCustomersCustomerFidLinkVisitorDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidLinkVisitorDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidLinkVisitorDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid link visitor default response has a 2xx status code
+func (o *PutCustomersCustomerFidLinkVisitorDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid link visitor default response has a 3xx status code
+func (o *PutCustomersCustomerFidLinkVisitorDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid link visitor default response has a 4xx status code
+func (o *PutCustomersCustomerFidLinkVisitorDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid link visitor default response has a 5xx status code
+func (o *PutCustomersCustomerFidLinkVisitorDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid link visitor default response a status code equal to that given
+func (o *PutCustomersCustomerFidLinkVisitorDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidLinkVisitorDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/linkVisitor][%d] PutCustomersCustomerFidLinkVisitor default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidLinkVisitorDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/linkVisitor][%d] PutCustomersCustomerFidLinkVisitor default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidLinkVisitorDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

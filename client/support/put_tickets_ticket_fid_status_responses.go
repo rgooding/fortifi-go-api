@@ -49,7 +49,8 @@ func NewPutTicketsTicketFidStatusOK() *PutTicketsTicketFidStatusOK {
 	return &PutTicketsTicketFidStatusOK{}
 }
 
-/* PutTicketsTicketFidStatusOK describes a response with status code 200, with default header values.
+/*
+PutTicketsTicketFidStatusOK describes a response with status code 200, with default header values.
 
 Success Response
 */
@@ -57,9 +58,39 @@ type PutTicketsTicketFidStatusOK struct {
 	Payload *PutTicketsTicketFidStatusOKBody
 }
 
+// IsSuccess returns true when this put tickets ticket fid status o k response has a 2xx status code
+func (o *PutTicketsTicketFidStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put tickets ticket fid status o k response has a 3xx status code
+func (o *PutTicketsTicketFidStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put tickets ticket fid status o k response has a 4xx status code
+func (o *PutTicketsTicketFidStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put tickets ticket fid status o k response has a 5xx status code
+func (o *PutTicketsTicketFidStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put tickets ticket fid status o k response a status code equal to that given
+func (o *PutTicketsTicketFidStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutTicketsTicketFidStatusOK) Error() string {
 	return fmt.Sprintf("[PUT /tickets/{ticketFid}/status][%d] putTicketsTicketFidStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *PutTicketsTicketFidStatusOK) String() string {
+	return fmt.Sprintf("[PUT /tickets/{ticketFid}/status][%d] putTicketsTicketFidStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *PutTicketsTicketFidStatusOK) GetPayload() *PutTicketsTicketFidStatusOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutTicketsTicketFidStatusDefault(code int) *PutTicketsTicketFidStatusDef
 	}
 }
 
-/* PutTicketsTicketFidStatusDefault describes a response with status code -1, with default header values.
+/*
+PutTicketsTicketFidStatusDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutTicketsTicketFidStatusDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put tickets ticket fid status default response has a 2xx status code
+func (o *PutTicketsTicketFidStatusDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put tickets ticket fid status default response has a 3xx status code
+func (o *PutTicketsTicketFidStatusDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put tickets ticket fid status default response has a 4xx status code
+func (o *PutTicketsTicketFidStatusDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put tickets ticket fid status default response has a 5xx status code
+func (o *PutTicketsTicketFidStatusDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put tickets ticket fid status default response a status code equal to that given
+func (o *PutTicketsTicketFidStatusDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutTicketsTicketFidStatusDefault) Error() string {
 	return fmt.Sprintf("[PUT /tickets/{ticketFid}/status][%d] PutTicketsTicketFidStatus default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutTicketsTicketFidStatusDefault) String() string {
+	return fmt.Sprintf("[PUT /tickets/{ticketFid}/status][%d] PutTicketsTicketFidStatus default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutTicketsTicketFidStatusDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutTicketsTicketFidStatusDefault) readResponse(response runtime.ClientR
 	return nil
 }
 
-/*PutTicketsTicketFidStatusOKBody put tickets ticket fid status o k body
+/*
+PutTicketsTicketFidStatusOKBody put tickets ticket fid status o k body
 swagger:model PutTicketsTicketFidStatusOKBody
 */
 type PutTicketsTicketFidStatusOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutTicketsTicketFidStatusOKBody) validateData(formats strfmt.Registry) 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putTicketsTicketFidStatusOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putTicketsTicketFidStatusOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutTicketsTicketFidStatusOKBody) contextValidateData(ctx context.Contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putTicketsTicketFidStatusOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putTicketsTicketFidStatusOK" + "." + "data")
 			}
 			return err
 		}

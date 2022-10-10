@@ -49,7 +49,8 @@ func NewGetOrdersOrderFidFraudScanOK() *GetOrdersOrderFidFraudScanOK {
 	return &GetOrdersOrderFidFraudScanOK{}
 }
 
-/* GetOrdersOrderFidFraudScanOK describes a response with status code 200, with default header values.
+/*
+GetOrdersOrderFidFraudScanOK describes a response with status code 200, with default header values.
 
 Fraud scan result
 */
@@ -57,9 +58,39 @@ type GetOrdersOrderFidFraudScanOK struct {
 	Payload *GetOrdersOrderFidFraudScanOKBody
 }
 
+// IsSuccess returns true when this get orders order fid fraud scan o k response has a 2xx status code
+func (o *GetOrdersOrderFidFraudScanOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get orders order fid fraud scan o k response has a 3xx status code
+func (o *GetOrdersOrderFidFraudScanOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get orders order fid fraud scan o k response has a 4xx status code
+func (o *GetOrdersOrderFidFraudScanOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get orders order fid fraud scan o k response has a 5xx status code
+func (o *GetOrdersOrderFidFraudScanOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get orders order fid fraud scan o k response a status code equal to that given
+func (o *GetOrdersOrderFidFraudScanOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOrdersOrderFidFraudScanOK) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}/fraudScan][%d] getOrdersOrderFidFraudScanOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOrdersOrderFidFraudScanOK) String() string {
+	return fmt.Sprintf("[GET /orders/{orderFid}/fraudScan][%d] getOrdersOrderFidFraudScanOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOrdersOrderFidFraudScanOK) GetPayload() *GetOrdersOrderFidFraudScanOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetOrdersOrderFidFraudScanDefault(code int) *GetOrdersOrderFidFraudScanD
 	}
 }
 
-/* GetOrdersOrderFidFraudScanDefault describes a response with status code -1, with default header values.
+/*
+GetOrdersOrderFidFraudScanDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetOrdersOrderFidFraudScanDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get orders order fid fraud scan default response has a 2xx status code
+func (o *GetOrdersOrderFidFraudScanDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get orders order fid fraud scan default response has a 3xx status code
+func (o *GetOrdersOrderFidFraudScanDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get orders order fid fraud scan default response has a 4xx status code
+func (o *GetOrdersOrderFidFraudScanDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get orders order fid fraud scan default response has a 5xx status code
+func (o *GetOrdersOrderFidFraudScanDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get orders order fid fraud scan default response a status code equal to that given
+func (o *GetOrdersOrderFidFraudScanDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOrdersOrderFidFraudScanDefault) Error() string {
 	return fmt.Sprintf("[GET /orders/{orderFid}/fraudScan][%d] GetOrdersOrderFidFraudScan default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOrdersOrderFidFraudScanDefault) String() string {
+	return fmt.Sprintf("[GET /orders/{orderFid}/fraudScan][%d] GetOrdersOrderFidFraudScan default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOrdersOrderFidFraudScanDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetOrdersOrderFidFraudScanDefault) readResponse(response runtime.Client
 	return nil
 }
 
-/*GetOrdersOrderFidFraudScanOKBody get orders order fid fraud scan o k body
+/*
+GetOrdersOrderFidFraudScanOKBody get orders order fid fraud scan o k body
 swagger:model GetOrdersOrderFidFraudScanOKBody
 */
 type GetOrdersOrderFidFraudScanOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetOrdersOrderFidFraudScanOKBody) validateData(formats strfmt.Registry)
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrdersOrderFidFraudScanOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getOrdersOrderFidFraudScanOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetOrdersOrderFidFraudScanOKBody) contextValidateData(ctx context.Conte
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrdersOrderFidFraudScanOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getOrdersOrderFidFraudScanOK" + "." + "data")
 			}
 			return err
 		}

@@ -46,14 +46,44 @@ func NewPutOrdersOrderFidProductsOrderProductFidQuantityOK() *PutOrdersOrderFidP
 	return &PutOrdersOrderFidProductsOrderProductFidQuantityOK{}
 }
 
-/* PutOrdersOrderFidProductsOrderProductFidQuantityOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidProductsOrderProductFidQuantityOK describes a response with status code 200, with default header values.
 
 Quantity updated
 */
 type PutOrdersOrderFidProductsOrderProductFidQuantityOK struct {
 }
 
+// IsSuccess returns true when this put orders order fid products order product fid quantity o k response has a 2xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid products order product fid quantity o k response has a 3xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid products order product fid quantity o k response has a 4xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid products order product fid quantity o k response has a 5xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid products order product fid quantity o k response a status code equal to that given
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) Error() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/quantity][%d] putOrdersOrderFidProductsOrderProductFidQuantityOK ", 200)
+}
+
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityOK) String() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/quantity][%d] putOrdersOrderFidProductsOrderProductFidQuantityOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutOrdersOrderFidProductsOrderProductFidQuantityDefault(code int) *PutOr
 	}
 }
 
-/* PutOrdersOrderFidProductsOrderProductFidQuantityDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidProductsOrderProductFidQuantityDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid products order product fid quantity default response has a 2xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid products order product fid quantity default response has a 3xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid products order product fid quantity default response has a 4xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid products order product fid quantity default response has a 5xx status code
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid products order product fid quantity default response a status code equal to that given
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/quantity][%d] PutOrdersOrderFidProductsOrderProductFidQuantity default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/products/{orderProductFid}/quantity][%d] PutOrdersOrderFidProductsOrderProductFidQuantity default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidProductsOrderProductFidQuantityDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

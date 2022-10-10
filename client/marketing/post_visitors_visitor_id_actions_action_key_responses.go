@@ -49,7 +49,8 @@ func NewPostVisitorsVisitorIDActionsActionKeyOK() *PostVisitorsVisitorIDActionsA
 	return &PostVisitorsVisitorIDActionsActionKeyOK{}
 }
 
-/* PostVisitorsVisitorIDActionsActionKeyOK describes a response with status code 200, with default header values.
+/*
+PostVisitorsVisitorIDActionsActionKeyOK describes a response with status code 200, with default header values.
 
 Action Tracked
 */
@@ -57,9 +58,39 @@ type PostVisitorsVisitorIDActionsActionKeyOK struct {
 	Payload *PostVisitorsVisitorIDActionsActionKeyOKBody
 }
 
+// IsSuccess returns true when this post visitors visitor Id actions action key o k response has a 2xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post visitors visitor Id actions action key o k response has a 3xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post visitors visitor Id actions action key o k response has a 4xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post visitors visitor Id actions action key o k response has a 5xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post visitors visitor Id actions action key o k response a status code equal to that given
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyOK) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] postVisitorsVisitorIdActionsActionKeyOK  %+v", 200, o.Payload)
 }
+
+func (o *PostVisitorsVisitorIDActionsActionKeyOK) String() string {
+	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] postVisitorsVisitorIdActionsActionKeyOK  %+v", 200, o.Payload)
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyOK) GetPayload() *PostVisitorsVisitorIDActionsActionKeyOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostVisitorsVisitorIDActionsActionKeyDefault(code int) *PostVisitorsVisi
 	}
 }
 
-/* PostVisitorsVisitorIDActionsActionKeyDefault describes a response with status code -1, with default header values.
+/*
+PostVisitorsVisitorIDActionsActionKeyDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostVisitorsVisitorIDActionsActionKeyDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post visitors visitor ID actions action key default response has a 2xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post visitors visitor ID actions action key default response has a 3xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post visitors visitor ID actions action key default response has a 4xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post visitors visitor ID actions action key default response has a 5xx status code
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post visitors visitor ID actions action key default response a status code equal to that given
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyDefault) Error() string {
 	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] PostVisitorsVisitorIDActionsActionKey default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostVisitorsVisitorIDActionsActionKeyDefault) String() string {
+	return fmt.Sprintf("[POST /visitors/{visitorId}/actions/{actionKey}][%d] PostVisitorsVisitorIDActionsActionKey default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostVisitorsVisitorIDActionsActionKeyDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostVisitorsVisitorIDActionsActionKeyDefault) readResponse(response run
 	return nil
 }
 
-/*PostVisitorsVisitorIDActionsActionKeyOKBody post visitors visitor ID actions action key o k body
+/*
+PostVisitorsVisitorIDActionsActionKeyOKBody post visitors visitor ID actions action key o k body
 swagger:model PostVisitorsVisitorIDActionsActionKeyOKBody
 */
 type PostVisitorsVisitorIDActionsActionKeyOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostVisitorsVisitorIDActionsActionKeyOKBody) validateData(formats strfm
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postVisitorsVisitorIdActionsActionKeyOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostVisitorsVisitorIDActionsActionKeyOKBody) contextValidateData(ctx co
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postVisitorsVisitorIdActionsActionKeyOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postVisitorsVisitorIdActionsActionKeyOK" + "." + "data")
 			}
 			return err
 		}

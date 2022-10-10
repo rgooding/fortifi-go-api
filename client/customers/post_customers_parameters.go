@@ -54,10 +54,12 @@ func NewPostCustomersParamsWithHTTPClient(client *http.Client) *PostCustomersPar
 	}
 }
 
-/* PostCustomersParams contains all the parameters to send to the API endpoint
-   for the post customers operation.
+/*
+PostCustomersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersParams struct {
 

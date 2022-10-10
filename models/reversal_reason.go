@@ -20,8 +20,12 @@ import (
 type ReversalReason string
 
 func NewReversalReason(value ReversalReason) *ReversalReason {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated ReversalReason.
+func (m ReversalReason) Pointer() *ReversalReason {
+	return &m
 }
 
 const (

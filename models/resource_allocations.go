@@ -103,6 +103,8 @@ func (m *ResourceAllocations) validateAllocations(formats strfmt.Registry) error
 			if err := m.Allocations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allocations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allocations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *ResourceAllocations) contextValidateAllocations(ctx context.Context, fo
 			if err := m.Allocations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allocations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allocations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

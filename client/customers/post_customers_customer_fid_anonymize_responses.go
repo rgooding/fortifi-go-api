@@ -49,7 +49,8 @@ func NewPostCustomersCustomerFidAnonymizeOK() *PostCustomersCustomerFidAnonymize
 	return &PostCustomersCustomerFidAnonymizeOK{}
 }
 
-/* PostCustomersCustomerFidAnonymizeOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidAnonymizeOK describes a response with status code 200, with default header values.
 
 Anonymize Request
 */
@@ -57,9 +58,39 @@ type PostCustomersCustomerFidAnonymizeOK struct {
 	Payload *PostCustomersCustomerFidAnonymizeOKBody
 }
 
+// IsSuccess returns true when this post customers customer fid anonymize o k response has a 2xx status code
+func (o *PostCustomersCustomerFidAnonymizeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid anonymize o k response has a 3xx status code
+func (o *PostCustomersCustomerFidAnonymizeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid anonymize o k response has a 4xx status code
+func (o *PostCustomersCustomerFidAnonymizeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid anonymize o k response has a 5xx status code
+func (o *PostCustomersCustomerFidAnonymizeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid anonymize o k response a status code equal to that given
+func (o *PostCustomersCustomerFidAnonymizeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidAnonymizeOK) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/anonymize][%d] postCustomersCustomerFidAnonymizeOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidAnonymizeOK) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/anonymize][%d] postCustomersCustomerFidAnonymizeOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidAnonymizeOK) GetPayload() *PostCustomersCustomerFidAnonymizeOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersCustomerFidAnonymizeDefault(code int) *PostCustomersCustome
 	}
 }
 
-/* PostCustomersCustomerFidAnonymizeDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidAnonymizeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersCustomerFidAnonymizeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid anonymize default response has a 2xx status code
+func (o *PostCustomersCustomerFidAnonymizeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid anonymize default response has a 3xx status code
+func (o *PostCustomersCustomerFidAnonymizeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid anonymize default response has a 4xx status code
+func (o *PostCustomersCustomerFidAnonymizeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid anonymize default response has a 5xx status code
+func (o *PostCustomersCustomerFidAnonymizeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid anonymize default response a status code equal to that given
+func (o *PostCustomersCustomerFidAnonymizeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidAnonymizeDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/anonymize][%d] PostCustomersCustomerFidAnonymize default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidAnonymizeDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/anonymize][%d] PostCustomersCustomerFidAnonymize default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidAnonymizeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersCustomerFidAnonymizeDefault) readResponse(response runtime
 	return nil
 }
 
-/*PostCustomersCustomerFidAnonymizeOKBody post customers customer fid anonymize o k body
+/*
+PostCustomersCustomerFidAnonymizeOKBody post customers customer fid anonymize o k body
 swagger:model PostCustomersCustomerFidAnonymizeOKBody
 */
 type PostCustomersCustomerFidAnonymizeOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersCustomerFidAnonymizeOKBody) validateData(formats strfmt.Re
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidAnonymizeOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidAnonymizeOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersCustomerFidAnonymizeOKBody) contextValidateData(ctx contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersCustomerFidAnonymizeOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersCustomerFidAnonymizeOK" + "." + "data")
 			}
 			return err
 		}

@@ -34,10 +34,9 @@ type ClientService interface {
 }
 
 /*
-  GetBrands yours brand
+GetBrands yours brand
 
-  Retrieve a list of all the brands within your Fortifi account
-
+Retrieve a list of all the brands within your Fortifi account
 */
 func (a *Client) GetBrands(params *GetBrandsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrandsOK, error) {
 	// TODO: Validate the params before sending

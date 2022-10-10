@@ -20,8 +20,12 @@ import (
 type ReasonGroupType string
 
 func NewReasonGroupType(value ReasonGroupType) *ReasonGroupType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated ReasonGroupType.
+func (m ReasonGroupType) Pointer() *ReasonGroupType {
+	return &m
 }
 
 const (

@@ -49,7 +49,8 @@ func NewPostReservationsKeyApplicationBrandFidCustomerFidOK() *PostReservationsK
 	return &PostReservationsKeyApplicationBrandFidCustomerFidOK{}
 }
 
-/* PostReservationsKeyApplicationBrandFidCustomerFidOK describes a response with status code 200, with default header values.
+/*
+PostReservationsKeyApplicationBrandFidCustomerFidOK describes a response with status code 200, with default header values.
 
 Pixels
 */
@@ -57,9 +58,39 @@ type PostReservationsKeyApplicationBrandFidCustomerFidOK struct {
 	Payload *PostReservationsKeyApplicationBrandFidCustomerFidOKBody
 }
 
+// IsSuccess returns true when this post reservations key application brand fid customer fid o k response has a 2xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post reservations key application brand fid customer fid o k response has a 3xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post reservations key application brand fid customer fid o k response has a 4xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post reservations key application brand fid customer fid o k response has a 5xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post reservations key application brand fid customer fid o k response a status code equal to that given
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) Error() string {
 	return fmt.Sprintf("[POST /reservations/{key}/{application}/{brandFid}/{customerFid}][%d] postReservationsKeyApplicationBrandFidCustomerFidOK  %+v", 200, o.Payload)
 }
+
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) String() string {
+	return fmt.Sprintf("[POST /reservations/{key}/{application}/{brandFid}/{customerFid}][%d] postReservationsKeyApplicationBrandFidCustomerFidOK  %+v", 200, o.Payload)
+}
+
 func (o *PostReservationsKeyApplicationBrandFidCustomerFidOK) GetPayload() *PostReservationsKeyApplicationBrandFidCustomerFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostReservationsKeyApplicationBrandFidCustomerFidDefault(code int) *Post
 	}
 }
 
-/* PostReservationsKeyApplicationBrandFidCustomerFidDefault describes a response with status code -1, with default header values.
+/*
+PostReservationsKeyApplicationBrandFidCustomerFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post reservations key application brand fid customer fid default response has a 2xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post reservations key application brand fid customer fid default response has a 3xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post reservations key application brand fid customer fid default response has a 4xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post reservations key application brand fid customer fid default response has a 5xx status code
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post reservations key application brand fid customer fid default response a status code equal to that given
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) Error() string {
 	return fmt.Sprintf("[POST /reservations/{key}/{application}/{brandFid}/{customerFid}][%d] PostReservationsKeyApplicationBrandFidCustomerFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) String() string {
+	return fmt.Sprintf("[POST /reservations/{key}/{application}/{brandFid}/{customerFid}][%d] PostReservationsKeyApplicationBrandFidCustomerFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostReservationsKeyApplicationBrandFidCustomerFidDefault) readResponse(
 	return nil
 }
 
-/*PostReservationsKeyApplicationBrandFidCustomerFidOKBody post reservations key application brand fid customer fid o k body
+/*
+PostReservationsKeyApplicationBrandFidCustomerFidOKBody post reservations key application brand fid customer fid o k body
 swagger:model PostReservationsKeyApplicationBrandFidCustomerFidOKBody
 */
 type PostReservationsKeyApplicationBrandFidCustomerFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostReservationsKeyApplicationBrandFidCustomerFidOKBody) validateData(f
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postReservationsKeyApplicationBrandFidCustomerFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postReservationsKeyApplicationBrandFidCustomerFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostReservationsKeyApplicationBrandFidCustomerFidOKBody) contextValidat
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postReservationsKeyApplicationBrandFidCustomerFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postReservationsKeyApplicationBrandFidCustomerFidOK" + "." + "data")
 			}
 			return err
 		}

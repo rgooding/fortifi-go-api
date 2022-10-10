@@ -242,6 +242,8 @@ func (m *ProductOffer) validateDiscountType(formats strfmt.Registry) error {
 	if err := m.DiscountType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("discountType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("discountType")
 		}
 		return err
 	}
@@ -271,6 +273,8 @@ func (m *ProductOffer) validateSetupDiscountType(formats strfmt.Registry) error 
 	if err := m.SetupDiscountType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("setupDiscountType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("setupDiscountType")
 		}
 		return err
 	}
@@ -287,6 +291,8 @@ func (m *ProductOffer) validateTermType(formats strfmt.Registry) error {
 	if err := m.TermType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("termType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("termType")
 		}
 		return err
 	}
@@ -326,6 +332,8 @@ func (m *ProductOffer) contextValidateDiscountType(ctx context.Context, formats 
 	if err := m.DiscountType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("discountType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("discountType")
 		}
 		return err
 	}
@@ -338,6 +346,8 @@ func (m *ProductOffer) contextValidateSetupDiscountType(ctx context.Context, for
 	if err := m.SetupDiscountType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("setupDiscountType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("setupDiscountType")
 		}
 		return err
 	}
@@ -350,6 +360,8 @@ func (m *ProductOffer) contextValidateTermType(ctx context.Context, formats strf
 	if err := m.TermType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("termType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("termType")
 		}
 		return err
 	}

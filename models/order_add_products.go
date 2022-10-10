@@ -97,6 +97,8 @@ func (m *OrderAddProducts) validateOrder(formats strfmt.Registry) error {
 		if err := m.Order.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("order")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("order")
 			}
 			return err
 		}
@@ -130,6 +132,8 @@ func (m *OrderAddProducts) contextValidateOrder(ctx context.Context, formats str
 		if err := m.Order.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("order")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("order")
 			}
 			return err
 		}

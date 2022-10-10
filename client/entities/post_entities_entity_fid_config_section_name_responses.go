@@ -46,14 +46,44 @@ func NewPostEntitiesEntityFidConfigSectionNameOK() *PostEntitiesEntityFidConfigS
 	return &PostEntitiesEntityFidConfigSectionNameOK{}
 }
 
-/* PostEntitiesEntityFidConfigSectionNameOK describes a response with status code 200, with default header values.
+/*
+PostEntitiesEntityFidConfigSectionNameOK describes a response with status code 200, with default header values.
 
 Config Item Saved
 */
 type PostEntitiesEntityFidConfigSectionNameOK struct {
 }
 
+// IsSuccess returns true when this post entities entity fid config section name o k response has a 2xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post entities entity fid config section name o k response has a 3xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post entities entity fid config section name o k response has a 4xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post entities entity fid config section name o k response has a 5xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post entities entity fid config section name o k response a status code equal to that given
+func (o *PostEntitiesEntityFidConfigSectionNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostEntitiesEntityFidConfigSectionNameOK) Error() string {
+	return fmt.Sprintf("[POST /entities/{entityFid}/config/{sectionName}][%d] postEntitiesEntityFidConfigSectionNameOK ", 200)
+}
+
+func (o *PostEntitiesEntityFidConfigSectionNameOK) String() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/config/{sectionName}][%d] postEntitiesEntityFidConfigSectionNameOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPostEntitiesEntityFidConfigSectionNameDefault(code int) *PostEntitiesEnt
 	}
 }
 
-/* PostEntitiesEntityFidConfigSectionNameDefault describes a response with status code -1, with default header values.
+/*
+PostEntitiesEntityFidConfigSectionNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PostEntitiesEntityFidConfigSectionNameDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post entities entity fid config section name default response has a 2xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post entities entity fid config section name default response has a 3xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post entities entity fid config section name default response has a 4xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post entities entity fid config section name default response has a 5xx status code
+func (o *PostEntitiesEntityFidConfigSectionNameDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post entities entity fid config section name default response a status code equal to that given
+func (o *PostEntitiesEntityFidConfigSectionNameDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostEntitiesEntityFidConfigSectionNameDefault) Error() string {
 	return fmt.Sprintf("[POST /entities/{entityFid}/config/{sectionName}][%d] PostEntitiesEntityFidConfigSectionName default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostEntitiesEntityFidConfigSectionNameDefault) String() string {
+	return fmt.Sprintf("[POST /entities/{entityFid}/config/{sectionName}][%d] PostEntitiesEntityFidConfigSectionName default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostEntitiesEntityFidConfigSectionNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

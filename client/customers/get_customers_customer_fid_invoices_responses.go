@@ -46,7 +46,8 @@ func NewGetCustomersCustomerFidInvoicesOK() *GetCustomersCustomerFidInvoicesOK {
 	return &GetCustomersCustomerFidInvoicesOK{}
 }
 
-/* GetCustomersCustomerFidInvoicesOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidInvoicesOK describes a response with status code 200, with default header values.
 
 List of invoices summaries
 */
@@ -54,9 +55,39 @@ type GetCustomersCustomerFidInvoicesOK struct {
 	Payload *models.Invoices
 }
 
+// IsSuccess returns true when this get customers customer fid invoices o k response has a 2xx status code
+func (o *GetCustomersCustomerFidInvoicesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid invoices o k response has a 3xx status code
+func (o *GetCustomersCustomerFidInvoicesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid invoices o k response has a 4xx status code
+func (o *GetCustomersCustomerFidInvoicesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid invoices o k response has a 5xx status code
+func (o *GetCustomersCustomerFidInvoicesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid invoices o k response a status code equal to that given
+func (o *GetCustomersCustomerFidInvoicesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidInvoicesOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices][%d] getCustomersCustomerFidInvoicesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidInvoicesOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/invoices][%d] getCustomersCustomerFidInvoicesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidInvoicesOK) GetPayload() *models.Invoices {
 	return o.Payload
 }
@@ -80,7 +111,8 @@ func NewGetCustomersCustomerFidInvoicesDefault(code int) *GetCustomersCustomerFi
 	}
 }
 
-/* GetCustomersCustomerFidInvoicesDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidInvoicesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -95,9 +127,39 @@ func (o *GetCustomersCustomerFidInvoicesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid invoices default response has a 2xx status code
+func (o *GetCustomersCustomerFidInvoicesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid invoices default response has a 3xx status code
+func (o *GetCustomersCustomerFidInvoicesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid invoices default response has a 4xx status code
+func (o *GetCustomersCustomerFidInvoicesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid invoices default response has a 5xx status code
+func (o *GetCustomersCustomerFidInvoicesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid invoices default response a status code equal to that given
+func (o *GetCustomersCustomerFidInvoicesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidInvoicesDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices][%d] GetCustomersCustomerFidInvoices default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidInvoicesDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/invoices][%d] GetCustomersCustomerFidInvoices default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidInvoicesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -111,6 +111,8 @@ func (m *CreateOrderPayload) validateModifySubscriptions(formats strfmt.Registry
 			if err := m.ModifySubscriptions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -135,6 +137,8 @@ func (m *CreateOrderPayload) validateProducts(formats strfmt.Registry) error {
 			if err := m.Products[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("products" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -154,6 +158,8 @@ func (m *CreateOrderPayload) validatePublisher(formats strfmt.Registry) error {
 		if err := m.Publisher.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("publisher")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("publisher")
 			}
 			return err
 		}
@@ -170,6 +176,8 @@ func (m *CreateOrderPayload) validateType(formats strfmt.Registry) error {
 	if err := m.Type.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
 		}
 		return err
 	}
@@ -211,6 +219,8 @@ func (m *CreateOrderPayload) contextValidateModifySubscriptions(ctx context.Cont
 			if err := m.ModifySubscriptions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("modifySubscriptions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -229,6 +239,8 @@ func (m *CreateOrderPayload) contextValidateProducts(ctx context.Context, format
 			if err := m.Products[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("products" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("products" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -245,6 +257,8 @@ func (m *CreateOrderPayload) contextValidatePublisher(ctx context.Context, forma
 		if err := m.Publisher.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("publisher")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("publisher")
 			}
 			return err
 		}
@@ -258,6 +272,8 @@ func (m *CreateOrderPayload) contextValidateType(ctx context.Context, formats st
 	if err := m.Type.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
 		}
 		return err
 	}

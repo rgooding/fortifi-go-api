@@ -49,7 +49,8 @@ func NewGetOrganisationOK() *GetOrganisationOK {
 	return &GetOrganisationOK{}
 }
 
-/* GetOrganisationOK describes a response with status code 200, with default header values.
+/*
+GetOrganisationOK describes a response with status code 200, with default header values.
 
 Organisation Information
 */
@@ -57,9 +58,39 @@ type GetOrganisationOK struct {
 	Payload *GetOrganisationOKBody
 }
 
+// IsSuccess returns true when this get organisation o k response has a 2xx status code
+func (o *GetOrganisationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get organisation o k response has a 3xx status code
+func (o *GetOrganisationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get organisation o k response has a 4xx status code
+func (o *GetOrganisationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get organisation o k response has a 5xx status code
+func (o *GetOrganisationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get organisation o k response a status code equal to that given
+func (o *GetOrganisationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetOrganisationOK) Error() string {
 	return fmt.Sprintf("[GET /organisation][%d] getOrganisationOK  %+v", 200, o.Payload)
 }
+
+func (o *GetOrganisationOK) String() string {
+	return fmt.Sprintf("[GET /organisation][%d] getOrganisationOK  %+v", 200, o.Payload)
+}
+
 func (o *GetOrganisationOK) GetPayload() *GetOrganisationOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetOrganisationDefault(code int) *GetOrganisationDefault {
 	}
 }
 
-/* GetOrganisationDefault describes a response with status code -1, with default header values.
+/*
+GetOrganisationDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetOrganisationDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get organisation default response has a 2xx status code
+func (o *GetOrganisationDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get organisation default response has a 3xx status code
+func (o *GetOrganisationDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get organisation default response has a 4xx status code
+func (o *GetOrganisationDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get organisation default response has a 5xx status code
+func (o *GetOrganisationDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get organisation default response a status code equal to that given
+func (o *GetOrganisationDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetOrganisationDefault) Error() string {
 	return fmt.Sprintf("[GET /organisation][%d] getOrganisation default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetOrganisationDefault) String() string {
+	return fmt.Sprintf("[GET /organisation][%d] getOrganisation default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetOrganisationDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetOrganisationDefault) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-/*GetOrganisationOKBody get organisation o k body
+/*
+GetOrganisationOKBody get organisation o k body
 swagger:model GetOrganisationOKBody
 */
 type GetOrganisationOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetOrganisationOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrganisationOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getOrganisationOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetOrganisationOKBody) contextValidateData(ctx context.Context, formats
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getOrganisationOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getOrganisationOK" + "." + "data")
 			}
 			return err
 		}

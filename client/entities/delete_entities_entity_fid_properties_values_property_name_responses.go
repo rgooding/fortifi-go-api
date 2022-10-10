@@ -46,14 +46,44 @@ func NewDeleteEntitiesEntityFidPropertiesValuesPropertyNameOK() *DeleteEntitiesE
 	return &DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK{}
 }
 
-/* DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
+/*
+DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
 
 Property Deleted
 */
 type DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK struct {
 }
 
+// IsSuccess returns true when this delete entities entity fid properties values property name o k response has a 2xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete entities entity fid properties values property name o k response has a 3xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete entities entity fid properties values property name o k response has a 4xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete entities entity fid properties values property name o k response has a 5xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete entities entity fid properties values property name o k response a status code equal to that given
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) Error() string {
+	return fmt.Sprintf("[DELETE /entities/{entityFid}/properties/values/{propertyName}][%d] deleteEntitiesEntityFidPropertiesValuesPropertyNameOK ", 200)
+}
+
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK) String() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/properties/values/{propertyName}][%d] deleteEntitiesEntityFidPropertiesValuesPropertyNameOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault(code int) *De
 	}
 }
 
-/* DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
+/*
+DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int 
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete entities entity fid properties values property name default response has a 2xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete entities entity fid properties values property name default response has a 3xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete entities entity fid properties values property name default response has a 4xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete entities entity fid properties values property name default response has a 5xx status code
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete entities entity fid properties values property name default response a status code equal to that given
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[DELETE /entities/{entityFid}/properties/values/{propertyName}][%d] DeleteEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) String() string {
+	return fmt.Sprintf("[DELETE /entities/{entityFid}/properties/values/{propertyName}][%d] DeleteEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteEntitiesEntityFidPropertiesValuesPropertyNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

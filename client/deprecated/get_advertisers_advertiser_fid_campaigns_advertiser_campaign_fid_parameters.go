@@ -52,10 +52,12 @@ func NewGetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParamsWithHTTPC
 	}
 }
 
-/* GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams contains all the parameters to send to the API endpoint
-   for the get advertisers advertiser fid campaigns advertiser campaign fid operation.
+/*
+GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get advertisers advertiser fid campaigns advertiser campaign fid operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams struct {
 

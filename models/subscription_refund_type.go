@@ -20,8 +20,12 @@ import (
 type SubscriptionRefundType string
 
 func NewSubscriptionRefundType(value SubscriptionRefundType) *SubscriptionRefundType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated SubscriptionRefundType.
+func (m SubscriptionRefundType) Pointer() *SubscriptionRefundType {
+	return &m
 }
 
 const (

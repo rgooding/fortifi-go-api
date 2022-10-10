@@ -49,7 +49,8 @@ func NewPutOrdersOrderFidItemsProductFidOrderItemFidOK() *PutOrdersOrderFidItems
 	return &PutOrdersOrderFidItemsProductFidOrderItemFidOK{}
 }
 
-/* PutOrdersOrderFidItemsProductFidOrderItemFidOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidItemsProductFidOrderItemFidOK describes a response with status code 200, with default header values.
 
 Order retrieved
 */
@@ -57,9 +58,39 @@ type PutOrdersOrderFidItemsProductFidOrderItemFidOK struct {
 	Payload *PutOrdersOrderFidItemsProductFidOrderItemFidOKBody
 }
 
+// IsSuccess returns true when this put orders order fid items product fid order item fid o k response has a 2xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid items product fid order item fid o k response has a 3xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid items product fid order item fid o k response has a 4xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid items product fid order item fid o k response has a 5xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid items product fid order item fid o k response a status code equal to that given
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/items/{productFid}/{orderItemFid}][%d] putOrdersOrderFidItemsProductFidOrderItemFidOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/items/{productFid}/{orderItemFid}][%d] putOrdersOrderFidItemsProductFidOrderItemFidOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOK) GetPayload() *PutOrdersOrderFidItemsProductFidOrderItemFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutOrdersOrderFidItemsProductFidOrderItemFidDefault(code int) *PutOrders
 	}
 }
 
-/* PutOrdersOrderFidItemsProductFidOrderItemFidDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidItemsProductFidOrderItemFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid items product fid order item fid default response has a 2xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid items product fid order item fid default response has a 3xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid items product fid order item fid default response has a 4xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid items product fid order item fid default response has a 5xx status code
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid items product fid order item fid default response a status code equal to that given
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/items/{productFid}/{orderItemFid}][%d] PutOrdersOrderFidItemsProductFidOrderItemFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/items/{productFid}/{orderItemFid}][%d] PutOrdersOrderFidItemsProductFidOrderItemFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutOrdersOrderFidItemsProductFidOrderItemFidDefault) readResponse(respo
 	return nil
 }
 
-/*PutOrdersOrderFidItemsProductFidOrderItemFidOKBody put orders order fid items product fid order item fid o k body
+/*
+PutOrdersOrderFidItemsProductFidOrderItemFidOKBody put orders order fid items product fid order item fid o k body
 swagger:model PutOrdersOrderFidItemsProductFidOrderItemFidOKBody
 */
 type PutOrdersOrderFidItemsProductFidOrderItemFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOKBody) validateData(format
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidItemsProductFidOrderItemFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidItemsProductFidOrderItemFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutOrdersOrderFidItemsProductFidOrderItemFidOKBody) contextValidateData
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidItemsProductFidOrderItemFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidItemsProductFidOrderItemFidOK" + "." + "data")
 			}
 			return err
 		}

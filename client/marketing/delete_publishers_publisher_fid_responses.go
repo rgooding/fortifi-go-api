@@ -46,14 +46,44 @@ func NewDeletePublishersPublisherFidOK() *DeletePublishersPublisherFidOK {
 	return &DeletePublishersPublisherFidOK{}
 }
 
-/* DeletePublishersPublisherFidOK describes a response with status code 200, with default header values.
+/*
+DeletePublishersPublisherFidOK describes a response with status code 200, with default header values.
 
 Publisher Deleted
 */
 type DeletePublishersPublisherFidOK struct {
 }
 
+// IsSuccess returns true when this delete publishers publisher fid o k response has a 2xx status code
+func (o *DeletePublishersPublisherFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete publishers publisher fid o k response has a 3xx status code
+func (o *DeletePublishersPublisherFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete publishers publisher fid o k response has a 4xx status code
+func (o *DeletePublishersPublisherFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete publishers publisher fid o k response has a 5xx status code
+func (o *DeletePublishersPublisherFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete publishers publisher fid o k response a status code equal to that given
+func (o *DeletePublishersPublisherFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeletePublishersPublisherFidOK) Error() string {
+	return fmt.Sprintf("[DELETE /publishers/{publisherFid}][%d] deletePublishersPublisherFidOK ", 200)
+}
+
+func (o *DeletePublishersPublisherFidOK) String() string {
 	return fmt.Sprintf("[DELETE /publishers/{publisherFid}][%d] deletePublishersPublisherFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeletePublishersPublisherFidDefault(code int) *DeletePublishersPublisher
 	}
 }
 
-/* DeletePublishersPublisherFidDefault describes a response with status code -1, with default header values.
+/*
+DeletePublishersPublisherFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeletePublishersPublisherFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete publishers publisher fid default response has a 2xx status code
+func (o *DeletePublishersPublisherFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete publishers publisher fid default response has a 3xx status code
+func (o *DeletePublishersPublisherFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete publishers publisher fid default response has a 4xx status code
+func (o *DeletePublishersPublisherFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete publishers publisher fid default response has a 5xx status code
+func (o *DeletePublishersPublisherFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete publishers publisher fid default response a status code equal to that given
+func (o *DeletePublishersPublisherFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeletePublishersPublisherFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /publishers/{publisherFid}][%d] DeletePublishersPublisherFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeletePublishersPublisherFidDefault) String() string {
+	return fmt.Sprintf("[DELETE /publishers/{publisherFid}][%d] DeletePublishersPublisherFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeletePublishersPublisherFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

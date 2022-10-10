@@ -54,10 +54,12 @@ func NewPostEntitiesEntityFidEventsParamsWithHTTPClient(client *http.Client) *Po
 	}
 }
 
-/* PostEntitiesEntityFidEventsParams contains all the parameters to send to the API endpoint
-   for the post entities entity fid events operation.
+/*
+PostEntitiesEntityFidEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post entities entity fid events operation.
+
+	Typically these are written to a http.Request.
 */
 type PostEntitiesEntityFidEventsParams struct {
 

@@ -46,7 +46,8 @@ func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadOK() *GetCustomersCusto
 	return &GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK{}
 }
 
-/* GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK describes a response with status code 200, with default header values.
 
 Download URL
 */
@@ -54,9 +55,39 @@ type GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK struct {
 	Payload *models.InvoiceDownloadResponse
 }
 
+// IsSuccess returns true when this get customers customer fid invoices invoice fid download o k response has a 2xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid invoices invoice fid download o k response has a 3xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid invoices invoice fid download o k response has a 4xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid invoices invoice fid download o k response has a 5xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid invoices invoice fid download o k response a status code equal to that given
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}/download][%d] getCustomersCustomerFidInvoicesInvoiceFidDownloadOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}/download][%d] getCustomersCustomerFidInvoicesInvoiceFidDownloadOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadOK) GetPayload() *models.InvoiceDownloadResponse {
 	return o.Payload
 }
@@ -80,7 +111,8 @@ func NewGetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault(code int) *GetC
 	}
 }
 
-/* GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -95,9 +127,39 @@ func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid invoices invoice fid download default response has a 2xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid invoices invoice fid download default response has a 3xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid invoices invoice fid download default response has a 4xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid invoices invoice fid download default response has a 5xx status code
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid invoices invoice fid download default response a status code equal to that given
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}/download][%d] GetCustomersCustomerFidInvoicesInvoiceFidDownload default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/invoices/{invoiceFid}/download][%d] GetCustomersCustomerFidInvoicesInvoiceFidDownload default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidInvoicesInvoiceFidDownloadDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -49,7 +49,8 @@ func NewPutOrdersOrderFidCancelOK() *PutOrdersOrderFidCancelOK {
 	return &PutOrdersOrderFidCancelOK{}
 }
 
-/* PutOrdersOrderFidCancelOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidCancelOK describes a response with status code 200, with default header values.
 
 Order cancelled
 */
@@ -57,9 +58,39 @@ type PutOrdersOrderFidCancelOK struct {
 	Payload *PutOrdersOrderFidCancelOKBody
 }
 
+// IsSuccess returns true when this put orders order fid cancel o k response has a 2xx status code
+func (o *PutOrdersOrderFidCancelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid cancel o k response has a 3xx status code
+func (o *PutOrdersOrderFidCancelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid cancel o k response has a 4xx status code
+func (o *PutOrdersOrderFidCancelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid cancel o k response has a 5xx status code
+func (o *PutOrdersOrderFidCancelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid cancel o k response a status code equal to that given
+func (o *PutOrdersOrderFidCancelOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidCancelOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/cancel][%d] putOrdersOrderFidCancelOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidCancelOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/cancel][%d] putOrdersOrderFidCancelOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidCancelOK) GetPayload() *PutOrdersOrderFidCancelOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutOrdersOrderFidCancelDefault(code int) *PutOrdersOrderFidCancelDefault
 	}
 }
 
-/* PutOrdersOrderFidCancelDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidCancelDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutOrdersOrderFidCancelDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid cancel default response has a 2xx status code
+func (o *PutOrdersOrderFidCancelDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid cancel default response has a 3xx status code
+func (o *PutOrdersOrderFidCancelDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid cancel default response has a 4xx status code
+func (o *PutOrdersOrderFidCancelDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid cancel default response has a 5xx status code
+func (o *PutOrdersOrderFidCancelDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid cancel default response a status code equal to that given
+func (o *PutOrdersOrderFidCancelDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidCancelDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/cancel][%d] PutOrdersOrderFidCancel default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidCancelDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/cancel][%d] PutOrdersOrderFidCancel default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidCancelDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutOrdersOrderFidCancelDefault) readResponse(response runtime.ClientRes
 	return nil
 }
 
-/*PutOrdersOrderFidCancelOKBody put orders order fid cancel o k body
+/*
+PutOrdersOrderFidCancelOKBody put orders order fid cancel o k body
 swagger:model PutOrdersOrderFidCancelOKBody
 */
 type PutOrdersOrderFidCancelOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutOrdersOrderFidCancelOKBody) validateData(formats strfmt.Registry) er
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidCancelOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidCancelOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutOrdersOrderFidCancelOKBody) contextValidateData(ctx context.Context,
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidCancelOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidCancelOK" + "." + "data")
 			}
 			return err
 		}

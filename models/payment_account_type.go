@@ -20,8 +20,12 @@ import (
 type PaymentAccountType string
 
 func NewPaymentAccountType(value PaymentAccountType) *PaymentAccountType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated PaymentAccountType.
+func (m PaymentAccountType) Pointer() *PaymentAccountType {
+	return &m
 }
 
 const (

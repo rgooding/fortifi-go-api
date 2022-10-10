@@ -36,10 +36,9 @@ type ClientService interface {
 }
 
 /*
-  PostTickets creates a support ticket
+PostTickets creates a support ticket
 
-  The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
-
+The attachments property is an array of unique filenames that have been created using ```/upload/uploadUrl```
 */
 func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostTicketsOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +76,7 @@ func (a *Client) PostTickets(params *PostTicketsParams, authInfo runtime.ClientA
 }
 
 /*
-  PutTicketsTicketFidStatus sets the status of a ticket
+PutTicketsTicketFidStatus sets the status of a ticket
 */
 func (a *Client) PutTicketsTicketFidStatus(params *PutTicketsTicketFidStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutTicketsTicketFidStatusOK, error) {
 	// TODO: Validate the params before sending

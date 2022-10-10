@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidUpgradePaymentAccountOK() *PutCustomersCustomerFi
 	return &PutCustomersCustomerFidUpgradePaymentAccountOK{}
 }
 
-/* PutCustomersCustomerFidUpgradePaymentAccountOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidUpgradePaymentAccountOK describes a response with status code 200, with default header values.
 
 Customer queued for upgrade or already upgraded
 */
 type PutCustomersCustomerFidUpgradePaymentAccountOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid upgrade payment account o k response has a 2xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid upgrade payment account o k response has a 3xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid upgrade payment account o k response has a 4xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid upgrade payment account o k response has a 5xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid upgrade payment account o k response a status code equal to that given
+func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/upgradePaymentAccount][%d] putCustomersCustomerFidUpgradePaymentAccountOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidUpgradePaymentAccountOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/upgradePaymentAccount][%d] putCustomersCustomerFidUpgradePaymentAccountOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidUpgradePaymentAccountDefault(code int) *PutCustom
 	}
 }
 
-/* PutCustomersCustomerFidUpgradePaymentAccountDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidUpgradePaymentAccountDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid upgrade payment account default response has a 2xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid upgrade payment account default response has a 3xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid upgrade payment account default response has a 4xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid upgrade payment account default response has a 5xx status code
+func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid upgrade payment account default response a status code equal to that given
+func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/upgradePaymentAccount][%d] PutCustomersCustomerFidUpgradePaymentAccount default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/upgradePaymentAccount][%d] PutCustomersCustomerFidUpgradePaymentAccount default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidUpgradePaymentAccountDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

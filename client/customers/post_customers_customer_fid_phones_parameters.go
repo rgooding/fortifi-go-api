@@ -53,10 +53,12 @@ func NewPostCustomersCustomerFidPhonesParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* PostCustomersCustomerFidPhonesParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid phones operation.
+/*
+PostCustomersCustomerFidPhonesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid phones operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPhonesParams struct {
 
@@ -68,6 +70,12 @@ type PostCustomersCustomerFidPhonesParams struct {
 
 	// DisplayName.
 	DisplayName *string
+
+	/* OptInStatus.
+
+	   Status of customer email opt-in
+	*/
+	OptInStatus *string
 
 	// PhoneNumber.
 	PhoneNumber string
@@ -150,6 +158,17 @@ func (o *PostCustomersCustomerFidPhonesParams) SetDisplayName(displayName *strin
 	o.DisplayName = displayName
 }
 
+// WithOptInStatus adds the optInStatus to the post customers customer fid phones params
+func (o *PostCustomersCustomerFidPhonesParams) WithOptInStatus(optInStatus *string) *PostCustomersCustomerFidPhonesParams {
+	o.SetOptInStatus(optInStatus)
+	return o
+}
+
+// SetOptInStatus adds the optInStatus to the post customers customer fid phones params
+func (o *PostCustomersCustomerFidPhonesParams) SetOptInStatus(optInStatus *string) {
+	o.OptInStatus = optInStatus
+}
+
 // WithPhoneNumber adds the phoneNumber to the post customers customer fid phones params
 func (o *PostCustomersCustomerFidPhonesParams) WithPhoneNumber(phoneNumber string) *PostCustomersCustomerFidPhonesParams {
 	o.SetPhoneNumber(phoneNumber)
@@ -195,6 +214,21 @@ func (o *PostCustomersCustomerFidPhonesParams) WriteToRequest(r runtime.ClientRe
 		fDisplayName := frDisplayName
 		if fDisplayName != "" {
 			if err := r.SetFormParam("displayName", fDisplayName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.OptInStatus != nil {
+
+		// form param optInStatus
+		var frOptInStatus string
+		if o.OptInStatus != nil {
+			frOptInStatus = *o.OptInStatus
+		}
+		fOptInStatus := frOptInStatus
+		if fOptInStatus != "" {
+			if err := r.SetFormParam("optInStatus", fOptInStatus); err != nil {
 				return err
 			}
 		}

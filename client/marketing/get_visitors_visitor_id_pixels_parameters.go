@@ -52,10 +52,12 @@ func NewGetVisitorsVisitorIDPixelsParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetVisitorsVisitorIDPixelsParams contains all the parameters to send to the API endpoint
-   for the get visitors visitor ID pixels operation.
+/*
+GetVisitorsVisitorIDPixelsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get visitors visitor ID pixels operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVisitorsVisitorIDPixelsParams struct {
 

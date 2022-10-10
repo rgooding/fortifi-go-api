@@ -52,10 +52,12 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsPara
 	}
 }
 
-/* GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsParams contains all the parameters to send to the API endpoint
-   for the get customers customer fid subscriptions subscription fid cancel flow reasons operation.
+/*
+GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers customer fid subscriptions subscription fid cancel flow reasons operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsParams struct {
 

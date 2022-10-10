@@ -207,6 +207,8 @@ func (m *Product) validateDefaultPrice(formats strfmt.Registry) error {
 		if err := m.DefaultPrice.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("defaultPrice")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("defaultPrice")
 			}
 			return err
 		}
@@ -240,6 +242,8 @@ func (m *Product) contextValidateDefaultPrice(ctx context.Context, formats strfm
 		if err := m.DefaultPrice.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("defaultPrice")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("defaultPrice")
 			}
 			return err
 		}

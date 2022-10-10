@@ -52,10 +52,12 @@ func NewDeleteCustomersCustomerFidVipParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* DeleteCustomersCustomerFidVipParams contains all the parameters to send to the API endpoint
-   for the delete customers customer fid vip operation.
+/*
+DeleteCustomersCustomerFidVipParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete customers customer fid vip operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCustomersCustomerFidVipParams struct {
 

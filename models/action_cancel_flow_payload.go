@@ -11,36 +11,69 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
-// ActionCancelFlowPayload action cancel flow payload
+// ActionCancelFlowPayload Generic Response
 //
 // swagger:model ActionCancelFlowPayload
 type ActionCancelFlowPayload struct {
+	ActionableCancelFlowPayload
 
 	// decision key
 	DecisionKey string `json:"decisionKey,omitempty"`
+}
 
-	// ip
-	IP string `json:"ip,omitempty"`
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (m *ActionCancelFlowPayload) UnmarshalJSON(raw []byte) error {
+	// AO0
+	var aO0 ActionableCancelFlowPayload
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	m.ActionableCancelFlowPayload = aO0
 
-	// Time in ISO 8601 standard with optional fractions of a second e.g 2015-12-05T13:11:59.888Z
-	// Format: date-time
-	Time strfmt.DateTime `json:"time,omitempty"`
+	// AO1
+	var dataAO1 struct {
+		DecisionKey string `json:"decisionKey,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
+		return err
+	}
 
-	// user agent
-	UserAgent string `json:"userAgent,omitempty"`
+	m.DecisionKey = dataAO1.DecisionKey
 
-	// user fid
-	UserFid string `json:"userFid,omitempty"`
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (m ActionCancelFlowPayload) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	aO0, err := swag.WriteJSON(m.ActionableCancelFlowPayload)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+	var dataAO1 struct {
+		DecisionKey string `json:"decisionKey,omitempty"`
+	}
+
+	dataAO1.DecisionKey = m.DecisionKey
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
+	return swag.ConcatJSON(_parts...), nil
 }
 
 // Validate validates this action cancel flow payload
 func (m *ActionCancelFlowPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateTime(formats); err != nil {
+	// validation for a type composition with ActionableCancelFlowPayload
+	if err := m.ActionableCancelFlowPayload.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -50,20 +83,18 @@ func (m *ActionCancelFlowPayload) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ActionCancelFlowPayload) validateTime(formats strfmt.Registry) error {
-	if swag.IsZero(m.Time) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("time", "body", "date-time", m.Time.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this action cancel flow payload based on context it is used
+// ContextValidate validate this action cancel flow payload based on the context it is used
 func (m *ActionCancelFlowPayload) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with ActionableCancelFlowPayload
+	if err := m.ActionableCancelFlowPayload.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 

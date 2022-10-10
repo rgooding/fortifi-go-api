@@ -53,10 +53,12 @@ func NewGetPolymersListCodeParentFidParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetPolymersListCodeParentFidParams contains all the parameters to send to the API endpoint
-   for the get polymers list code parent fid operation.
+/*
+GetPolymersListCodeParentFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get polymers list code parent fid operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPolymersListCodeParentFidParams struct {
 

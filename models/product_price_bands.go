@@ -51,6 +51,8 @@ func (m *ProductPriceBands) validatePricebands(formats strfmt.Registry) error {
 			if err := m.Pricebands[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("pricebands" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("pricebands" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *ProductPriceBands) contextValidatePricebands(ctx context.Context, forma
 			if err := m.Pricebands[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("pricebands" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("pricebands" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

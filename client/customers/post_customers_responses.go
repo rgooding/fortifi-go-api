@@ -49,7 +49,8 @@ func NewPostCustomersOK() *PostCustomersOK {
 	return &PostCustomersOK{}
 }
 
-/* PostCustomersOK describes a response with status code 200, with default header values.
+/*
+PostCustomersOK describes a response with status code 200, with default header values.
 
 Customer Created
 */
@@ -57,9 +58,39 @@ type PostCustomersOK struct {
 	Payload *PostCustomersOKBody
 }
 
+// IsSuccess returns true when this post customers o k response has a 2xx status code
+func (o *PostCustomersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers o k response has a 3xx status code
+func (o *PostCustomersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers o k response has a 4xx status code
+func (o *PostCustomersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers o k response has a 5xx status code
+func (o *PostCustomersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers o k response a status code equal to that given
+func (o *PostCustomersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersOK) Error() string {
 	return fmt.Sprintf("[POST /customers][%d] postCustomersOK  %+v", 200, o.Payload)
 }
+
+func (o *PostCustomersOK) String() string {
+	return fmt.Sprintf("[POST /customers][%d] postCustomersOK  %+v", 200, o.Payload)
+}
+
 func (o *PostCustomersOK) GetPayload() *PostCustomersOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostCustomersDefault(code int) *PostCustomersDefault {
 	}
 }
 
-/* PostCustomersDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostCustomersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers default response has a 2xx status code
+func (o *PostCustomersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers default response has a 3xx status code
+func (o *PostCustomersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers default response has a 4xx status code
+func (o *PostCustomersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers default response has a 5xx status code
+func (o *PostCustomersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers default response a status code equal to that given
+func (o *PostCustomersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersDefault) Error() string {
 	return fmt.Sprintf("[POST /customers][%d] PostCustomers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersDefault) String() string {
+	return fmt.Sprintf("[POST /customers][%d] PostCustomers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostCustomersDefault) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-/*PostCustomersOKBody post customers o k body
+/*
+PostCustomersOKBody post customers o k body
 swagger:model PostCustomersOKBody
 */
 type PostCustomersOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostCustomersOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostCustomersOKBody) contextValidateData(ctx context.Context, formats s
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postCustomersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postCustomersOK" + "." + "data")
 			}
 			return err
 		}

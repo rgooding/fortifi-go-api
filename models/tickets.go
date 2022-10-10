@@ -103,6 +103,8 @@ func (m *Tickets) validateTickets(formats strfmt.Registry) error {
 			if err := m.Tickets[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tickets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tickets" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *Tickets) contextValidateTickets(ctx context.Context, formats strfmt.Reg
 			if err := m.Tickets[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tickets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tickets" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

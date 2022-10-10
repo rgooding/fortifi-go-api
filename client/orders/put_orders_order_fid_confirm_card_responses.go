@@ -49,7 +49,8 @@ func NewPutOrdersOrderFidConfirmCardOK() *PutOrdersOrderFidConfirmCardOK {
 	return &PutOrdersOrderFidConfirmCardOK{}
 }
 
-/* PutOrdersOrderFidConfirmCardOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidConfirmCardOK describes a response with status code 200, with default header values.
 
 Order confirmed and payment authroized
 */
@@ -57,9 +58,39 @@ type PutOrdersOrderFidConfirmCardOK struct {
 	Payload *PutOrdersOrderFidConfirmCardOKBody
 }
 
+// IsSuccess returns true when this put orders order fid confirm card o k response has a 2xx status code
+func (o *PutOrdersOrderFidConfirmCardOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid confirm card o k response has a 3xx status code
+func (o *PutOrdersOrderFidConfirmCardOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid confirm card o k response has a 4xx status code
+func (o *PutOrdersOrderFidConfirmCardOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid confirm card o k response has a 5xx status code
+func (o *PutOrdersOrderFidConfirmCardOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid confirm card o k response a status code equal to that given
+func (o *PutOrdersOrderFidConfirmCardOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidConfirmCardOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] putOrdersOrderFidConfirmCardOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidConfirmCardOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] putOrdersOrderFidConfirmCardOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidConfirmCardOK) GetPayload() *PutOrdersOrderFidConfirmCardOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutOrdersOrderFidConfirmCardDefault(code int) *PutOrdersOrderFidConfirmC
 	}
 }
 
-/* PutOrdersOrderFidConfirmCardDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidConfirmCardDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutOrdersOrderFidConfirmCardDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid confirm card default response has a 2xx status code
+func (o *PutOrdersOrderFidConfirmCardDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid confirm card default response has a 3xx status code
+func (o *PutOrdersOrderFidConfirmCardDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid confirm card default response has a 4xx status code
+func (o *PutOrdersOrderFidConfirmCardDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid confirm card default response has a 5xx status code
+func (o *PutOrdersOrderFidConfirmCardDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid confirm card default response a status code equal to that given
+func (o *PutOrdersOrderFidConfirmCardDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidConfirmCardDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] PutOrdersOrderFidConfirmCard default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidConfirmCardDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/confirmCard][%d] PutOrdersOrderFidConfirmCard default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidConfirmCardDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutOrdersOrderFidConfirmCardDefault) readResponse(response runtime.Clie
 	return nil
 }
 
-/*PutOrdersOrderFidConfirmCardOKBody put orders order fid confirm card o k body
+/*
+PutOrdersOrderFidConfirmCardOKBody put orders order fid confirm card o k body
 swagger:model PutOrdersOrderFidConfirmCardOKBody
 */
 type PutOrdersOrderFidConfirmCardOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutOrdersOrderFidConfirmCardOKBody) validateData(formats strfmt.Registr
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidConfirmCardOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidConfirmCardOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutOrdersOrderFidConfirmCardOKBody) contextValidateData(ctx context.Con
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putOrdersOrderFidConfirmCardOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putOrdersOrderFidConfirmCardOK" + "." + "data")
 			}
 			return err
 		}

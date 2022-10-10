@@ -52,10 +52,12 @@ func NewPostEntitiesEntityFidConfigSectionNameParamsWithHTTPClient(client *http.
 	}
 }
 
-/* PostEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
-   for the post entities entity fid config section name operation.
+/*
+PostEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post entities entity fid config section name operation.
+
+	Typically these are written to a http.Request.
 */
 type PostEntitiesEntityFidConfigSectionNameParams struct {
 

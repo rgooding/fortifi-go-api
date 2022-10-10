@@ -54,10 +54,12 @@ func NewPostEntitiesEntityFidAttachmentsUploadURLParamsWithHTTPClient(client *ht
 	}
 }
 
-/* PostEntitiesEntityFidAttachmentsUploadURLParams contains all the parameters to send to the API endpoint
-   for the post entities entity fid attachments upload URL operation.
+/*
+PostEntitiesEntityFidAttachmentsUploadURLParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post entities entity fid attachments upload URL operation.
+
+	Typically these are written to a http.Request.
 */
 type PostEntitiesEntityFidAttachmentsUploadURLParams struct {
 

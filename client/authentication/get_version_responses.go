@@ -49,7 +49,8 @@ func NewGetVersionOK() *GetVersionOK {
 	return &GetVersionOK{}
 }
 
-/* GetVersionOK describes a response with status code 200, with default header values.
+/*
+GetVersionOK describes a response with status code 200, with default header values.
 
 Version
 */
@@ -57,9 +58,39 @@ type GetVersionOK struct {
 	Payload *GetVersionOKBody
 }
 
+// IsSuccess returns true when this get version o k response has a 2xx status code
+func (o *GetVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get version o k response has a 3xx status code
+func (o *GetVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version o k response has a 4xx status code
+func (o *GetVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get version o k response has a 5xx status code
+func (o *GetVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version o k response a status code equal to that given
+func (o *GetVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVersionOK) Error() string {
 	return fmt.Sprintf("[GET /version][%d] getVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVersionOK) String() string {
+	return fmt.Sprintf("[GET /version][%d] getVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVersionOK) GetPayload() *GetVersionOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetVersionDefault(code int) *GetVersionDefault {
 	}
 }
 
-/* GetVersionDefault describes a response with status code -1, with default header values.
+/*
+GetVersionDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetVersionDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get version default response has a 2xx status code
+func (o *GetVersionDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get version default response has a 3xx status code
+func (o *GetVersionDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get version default response has a 4xx status code
+func (o *GetVersionDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get version default response has a 5xx status code
+func (o *GetVersionDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get version default response a status code equal to that given
+func (o *GetVersionDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetVersionDefault) Error() string {
 	return fmt.Sprintf("[GET /version][%d] getVersion default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetVersionDefault) String() string {
+	return fmt.Sprintf("[GET /version][%d] getVersion default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetVersionDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetVersionDefault) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-/*GetVersionOKBody get version o k body
+/*
+GetVersionOKBody get version o k body
 swagger:model GetVersionOKBody
 */
 type GetVersionOKBody struct {

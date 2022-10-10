@@ -34,7 +34,7 @@ type ClientService interface {
 }
 
 /*
-  GetProperties gets defined properties
+GetProperties gets defined properties
 */
 func (a *Client) GetProperties(params *GetPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPropertiesOK, error) {
 	// TODO: Validate the params before sending

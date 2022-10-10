@@ -54,10 +54,12 @@ func NewPostReservationsKeyApplicationBrandFidCustomerFidParamsWithHTTPClient(cl
 	}
 }
 
-/* PostReservationsKeyApplicationBrandFidCustomerFidParams contains all the parameters to send to the API endpoint
-   for the post reservations key application brand fid customer fid operation.
+/*
+PostReservationsKeyApplicationBrandFidCustomerFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post reservations key application brand fid customer fid operation.
+
+	Typically these are written to a http.Request.
 */
 type PostReservationsKeyApplicationBrandFidCustomerFidParams struct {
 

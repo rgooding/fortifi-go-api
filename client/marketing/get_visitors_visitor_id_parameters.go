@@ -52,10 +52,12 @@ func NewGetVisitorsVisitorIDParamsWithHTTPClient(client *http.Client) *GetVisito
 	}
 }
 
-/* GetVisitorsVisitorIDParams contains all the parameters to send to the API endpoint
-   for the get visitors visitor ID operation.
+/*
+GetVisitorsVisitorIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get visitors visitor ID operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVisitorsVisitorIDParams struct {
 

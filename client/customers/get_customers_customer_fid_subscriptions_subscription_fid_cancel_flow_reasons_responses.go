@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK()
 	return &GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK{}
 }
 
-/* GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK describes a response with status code 200, with default header values.
 
 Cancel Flow Reasons
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK stru
 	Payload *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons o k response has a 2xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons o k response has a 3xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons o k response has a 4xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons o k response has a 5xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons o k response a status code equal to that given
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/reasons][%d] getCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/reasons][%d] getCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK) GetPayload() *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefa
 	}
 }
 
-/* GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDef
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons default response has a 2xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons default response has a 3xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons default response has a 4xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons default response has a 5xx status code
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid subscriptions subscription fid cancel flow reasons default response a status code equal to that given
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/reasons][%d] GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasons default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/subscriptions/{subscriptionFid}/cancelFlow/reasons][%d] GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasons default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsDef
 	return nil
 }
 
-/*GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKBody get customers customer fid subscriptions subscription fid cancel flow reasons o k body
+/*
+GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKBody get customers customer fid subscriptions subscription fid cancel flow reasons o k body
 swagger:model GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKBody
 */
 type GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKB
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOKB
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidSubscriptionsSubscriptionFidCancelFlowReasonsOK" + "." + "data")
 			}
 			return err
 		}

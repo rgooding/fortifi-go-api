@@ -52,10 +52,12 @@ func NewPutOrdersOrderFidProductsOrderProductFidSetInitialTermParamsWithHTTPClie
 	}
 }
 
-/* PutOrdersOrderFidProductsOrderProductFidSetInitialTermParams contains all the parameters to send to the API endpoint
-   for the put orders order fid products order product fid set initial term operation.
+/*
+PutOrdersOrderFidProductsOrderProductFidSetInitialTermParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid products order product fid set initial term operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidProductsOrderProductFidSetInitialTermParams struct {
 

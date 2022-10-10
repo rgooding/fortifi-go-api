@@ -46,14 +46,44 @@ func NewDeleteAdvertisersAdvertiserFidApprovedOK() *DeleteAdvertisersAdvertiserF
 	return &DeleteAdvertisersAdvertiserFidApprovedOK{}
 }
 
-/* DeleteAdvertisersAdvertiserFidApprovedOK describes a response with status code 200, with default header values.
+/*
+DeleteAdvertisersAdvertiserFidApprovedOK describes a response with status code 200, with default header values.
 
 Advertiser no longer approved
 */
 type DeleteAdvertisersAdvertiserFidApprovedOK struct {
 }
 
+// IsSuccess returns true when this delete advertisers advertiser fid approved o k response has a 2xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete advertisers advertiser fid approved o k response has a 3xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete advertisers advertiser fid approved o k response has a 4xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete advertisers advertiser fid approved o k response has a 5xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete advertisers advertiser fid approved o k response a status code equal to that given
+func (o *DeleteAdvertisersAdvertiserFidApprovedOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteAdvertisersAdvertiserFidApprovedOK) Error() string {
+	return fmt.Sprintf("[DELETE /advertisers/{advertiserFid}/approved][%d] deleteAdvertisersAdvertiserFidApprovedOK ", 200)
+}
+
+func (o *DeleteAdvertisersAdvertiserFidApprovedOK) String() string {
 	return fmt.Sprintf("[DELETE /advertisers/{advertiserFid}/approved][%d] deleteAdvertisersAdvertiserFidApprovedOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteAdvertisersAdvertiserFidApprovedDefault(code int) *DeleteAdvertise
 	}
 }
 
-/* DeleteAdvertisersAdvertiserFidApprovedDefault describes a response with status code -1, with default header values.
+/*
+DeleteAdvertisersAdvertiserFidApprovedDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete advertisers advertiser fid approved default response has a 2xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete advertisers advertiser fid approved default response has a 3xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete advertisers advertiser fid approved default response has a 4xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete advertisers advertiser fid approved default response has a 5xx status code
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete advertisers advertiser fid approved default response a status code equal to that given
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[DELETE /advertisers/{advertiserFid}/approved][%d] DeleteAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) String() string {
+	return fmt.Sprintf("[DELETE /advertisers/{advertiserFid}/approved][%d] DeleteAdvertisersAdvertiserFidApproved default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteAdvertisersAdvertiserFidApprovedDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

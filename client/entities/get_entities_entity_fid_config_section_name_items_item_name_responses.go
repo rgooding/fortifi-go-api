@@ -49,7 +49,8 @@ func NewGetEntitiesEntityFidConfigSectionNameItemsItemNameOK() *GetEntitiesEntit
 	return &GetEntitiesEntityFidConfigSectionNameItemsItemNameOK{}
 }
 
-/* GetEntitiesEntityFidConfigSectionNameItemsItemNameOK describes a response with status code 200, with default header values.
+/*
+GetEntitiesEntityFidConfigSectionNameItemsItemNameOK describes a response with status code 200, with default header values.
 
 Config Item
 */
@@ -57,9 +58,39 @@ type GetEntitiesEntityFidConfigSectionNameItemsItemNameOK struct {
 	Payload *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody
 }
 
+// IsSuccess returns true when this get entities entity fid config section name items item name o k response has a 2xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get entities entity fid config section name items item name o k response has a 3xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get entities entity fid config section name items item name o k response has a 4xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get entities entity fid config section name items item name o k response has a 5xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get entities entity fid config section name items item name o k response a status code equal to that given
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] getEntitiesEntityFidConfigSectionNameItemsItemNameOK  %+v", 200, o.Payload)
 }
+
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) String() string {
+	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] getEntitiesEntityFidConfigSectionNameItemsItemNameOK  %+v", 200, o.Payload)
+}
+
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOK) GetPayload() *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetEntitiesEntityFidConfigSectionNameItemsItemNameDefault(code int) *Get
 	}
 }
 
-/* GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault describes a response with status code -1, with default header values.
+/*
+GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get entities entity fid config section name items item name default response has a 2xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get entities entity fid config section name items item name default response has a 3xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get entities entity fid config section name items item name default response has a 4xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get entities entity fid config section name items item name default response has a 5xx status code
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get entities entity fid config section name items item name default response a status code equal to that given
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] GetEntitiesEntityFidConfigSectionNameItemsItemName default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) String() string {
+	return fmt.Sprintf("[GET /entities/{entityFid}/config/{sectionName}/items/{itemName}][%d] GetEntitiesEntityFidConfigSectionNameItemsItemName default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameDefault) readResponse
 	return nil
 }
 
-/*GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody get entities entity fid config section name items item name o k body
+/*
+GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody get entities entity fid config section name items item name o k body
 swagger:model GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody
 */
 type GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) validateData(
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidConfigSectionNameItemsItemNameOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getEntitiesEntityFidConfigSectionNameItemsItemNameOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetEntitiesEntityFidConfigSectionNameItemsItemNameOKBody) contextValida
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidConfigSectionNameItemsItemNameOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getEntitiesEntityFidConfigSectionNameItemsItemNameOK" + "." + "data")
 			}
 			return err
 		}

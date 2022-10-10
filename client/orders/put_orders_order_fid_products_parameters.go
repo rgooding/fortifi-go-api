@@ -54,10 +54,12 @@ func NewPutOrdersOrderFidProductsParamsWithHTTPClient(client *http.Client) *PutO
 	}
 }
 
-/* PutOrdersOrderFidProductsParams contains all the parameters to send to the API endpoint
-   for the put orders order fid products operation.
+/*
+PutOrdersOrderFidProductsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid products operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidProductsParams struct {
 

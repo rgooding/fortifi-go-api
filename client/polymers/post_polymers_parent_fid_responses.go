@@ -49,7 +49,8 @@ func NewPostPolymersParentFidOK() *PostPolymersParentFidOK {
 	return &PostPolymersParentFidOK{}
 }
 
-/* PostPolymersParentFidOK describes a response with status code 200, with default header values.
+/*
+PostPolymersParentFidOK describes a response with status code 200, with default header values.
 
 Polymer created
 */
@@ -57,9 +58,39 @@ type PostPolymersParentFidOK struct {
 	Payload *PostPolymersParentFidOKBody
 }
 
+// IsSuccess returns true when this post polymers parent fid o k response has a 2xx status code
+func (o *PostPolymersParentFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post polymers parent fid o k response has a 3xx status code
+func (o *PostPolymersParentFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post polymers parent fid o k response has a 4xx status code
+func (o *PostPolymersParentFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post polymers parent fid o k response has a 5xx status code
+func (o *PostPolymersParentFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post polymers parent fid o k response a status code equal to that given
+func (o *PostPolymersParentFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostPolymersParentFidOK) Error() string {
 	return fmt.Sprintf("[POST /polymers/{parentFid}][%d] postPolymersParentFidOK  %+v", 200, o.Payload)
 }
+
+func (o *PostPolymersParentFidOK) String() string {
+	return fmt.Sprintf("[POST /polymers/{parentFid}][%d] postPolymersParentFidOK  %+v", 200, o.Payload)
+}
+
 func (o *PostPolymersParentFidOK) GetPayload() *PostPolymersParentFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostPolymersParentFidDefault(code int) *PostPolymersParentFidDefault {
 	}
 }
 
-/* PostPolymersParentFidDefault describes a response with status code -1, with default header values.
+/*
+PostPolymersParentFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostPolymersParentFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post polymers parent fid default response has a 2xx status code
+func (o *PostPolymersParentFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post polymers parent fid default response has a 3xx status code
+func (o *PostPolymersParentFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post polymers parent fid default response has a 4xx status code
+func (o *PostPolymersParentFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post polymers parent fid default response has a 5xx status code
+func (o *PostPolymersParentFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post polymers parent fid default response a status code equal to that given
+func (o *PostPolymersParentFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostPolymersParentFidDefault) Error() string {
 	return fmt.Sprintf("[POST /polymers/{parentFid}][%d] PostPolymersParentFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostPolymersParentFidDefault) String() string {
+	return fmt.Sprintf("[POST /polymers/{parentFid}][%d] PostPolymersParentFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostPolymersParentFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostPolymersParentFidDefault) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-/*PostPolymersParentFidOKBody post polymers parent fid o k body
+/*
+PostPolymersParentFidOKBody post polymers parent fid o k body
 swagger:model PostPolymersParentFidOKBody
 */
 type PostPolymersParentFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostPolymersParentFidOKBody) validateData(formats strfmt.Registry) erro
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postPolymersParentFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postPolymersParentFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostPolymersParentFidOKBody) contextValidateData(ctx context.Context, f
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postPolymersParentFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postPolymersParentFidOK" + "." + "data")
 			}
 			return err
 		}

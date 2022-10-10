@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidInvoicesRetryOK() *PutCustomersCustomerFidInvoice
 	return &PutCustomersCustomerFidInvoicesRetryOK{}
 }
 
-/* PutCustomersCustomerFidInvoicesRetryOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidInvoicesRetryOK describes a response with status code 200, with default header values.
 
 Invoice set to retry payment
 */
 type PutCustomersCustomerFidInvoicesRetryOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid invoices retry o k response has a 2xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid invoices retry o k response has a 3xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid invoices retry o k response has a 4xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid invoices retry o k response has a 5xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid invoices retry o k response a status code equal to that given
+func (o *PutCustomersCustomerFidInvoicesRetryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidInvoicesRetryOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/retry][%d] putCustomersCustomerFidInvoicesRetryOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidInvoicesRetryOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/retry][%d] putCustomersCustomerFidInvoicesRetryOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidInvoicesRetryDefault(code int) *PutCustomersCusto
 	}
 }
 
-/* PutCustomersCustomerFidInvoicesRetryDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidInvoicesRetryDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidInvoicesRetryDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid invoices retry default response has a 2xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid invoices retry default response has a 3xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid invoices retry default response has a 4xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid invoices retry default response has a 5xx status code
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid invoices retry default response a status code equal to that given
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidInvoicesRetryDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/retry][%d] PutCustomersCustomerFidInvoicesRetry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidInvoicesRetryDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/invoices/retry][%d] PutCustomersCustomerFidInvoicesRetry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidInvoicesRetryDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

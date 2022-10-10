@@ -49,7 +49,8 @@ func NewGetServicesServiceFidIncidentsOK() *GetServicesServiceFidIncidentsOK {
 	return &GetServicesServiceFidIncidentsOK{}
 }
 
-/* GetServicesServiceFidIncidentsOK describes a response with status code 200, with default header values.
+/*
+GetServicesServiceFidIncidentsOK describes a response with status code 200, with default header values.
 
 Service incidents
 */
@@ -57,9 +58,39 @@ type GetServicesServiceFidIncidentsOK struct {
 	Payload *GetServicesServiceFidIncidentsOKBody
 }
 
+// IsSuccess returns true when this get services service fid incidents o k response has a 2xx status code
+func (o *GetServicesServiceFidIncidentsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get services service fid incidents o k response has a 3xx status code
+func (o *GetServicesServiceFidIncidentsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get services service fid incidents o k response has a 4xx status code
+func (o *GetServicesServiceFidIncidentsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get services service fid incidents o k response has a 5xx status code
+func (o *GetServicesServiceFidIncidentsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get services service fid incidents o k response a status code equal to that given
+func (o *GetServicesServiceFidIncidentsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServicesServiceFidIncidentsOK) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] getServicesServiceFidIncidentsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServicesServiceFidIncidentsOK) String() string {
+	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] getServicesServiceFidIncidentsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServicesServiceFidIncidentsOK) GetPayload() *GetServicesServiceFidIncidentsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetServicesServiceFidIncidentsDefault(code int) *GetServicesServiceFidIn
 	}
 }
 
-/* GetServicesServiceFidIncidentsDefault describes a response with status code -1, with default header values.
+/*
+GetServicesServiceFidIncidentsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetServicesServiceFidIncidentsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get services service fid incidents default response has a 2xx status code
+func (o *GetServicesServiceFidIncidentsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get services service fid incidents default response has a 3xx status code
+func (o *GetServicesServiceFidIncidentsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get services service fid incidents default response has a 4xx status code
+func (o *GetServicesServiceFidIncidentsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get services service fid incidents default response has a 5xx status code
+func (o *GetServicesServiceFidIncidentsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get services service fid incidents default response a status code equal to that given
+func (o *GetServicesServiceFidIncidentsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServicesServiceFidIncidentsDefault) Error() string {
 	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] GetServicesServiceFidIncidents default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServicesServiceFidIncidentsDefault) String() string {
+	return fmt.Sprintf("[GET /services/{serviceFid}/incidents][%d] GetServicesServiceFidIncidents default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServicesServiceFidIncidentsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetServicesServiceFidIncidentsDefault) readResponse(response runtime.Cl
 	return nil
 }
 
-/*GetServicesServiceFidIncidentsOKBody get services service fid incidents o k body
+/*
+GetServicesServiceFidIncidentsOKBody get services service fid incidents o k body
 swagger:model GetServicesServiceFidIncidentsOKBody
 */
 type GetServicesServiceFidIncidentsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetServicesServiceFidIncidentsOKBody) validateData(formats strfmt.Regis
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetServicesServiceFidIncidentsOKBody) contextValidateData(ctx context.C
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getServicesServiceFidIncidentsOK" + "." + "data")
 			}
 			return err
 		}

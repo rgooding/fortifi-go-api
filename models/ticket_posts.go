@@ -51,6 +51,8 @@ func (m *TicketPosts) validatePosts(formats strfmt.Registry) error {
 			if err := m.Posts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("posts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("posts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *TicketPosts) contextValidatePosts(ctx context.Context, formats strfmt.R
 			if err := m.Posts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("posts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("posts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

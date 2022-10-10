@@ -49,7 +49,8 @@ func NewPostPublishersPublisherFidCampaignsOK() *PostPublishersPublisherFidCampa
 	return &PostPublishersPublisherFidCampaignsOK{}
 }
 
-/* PostPublishersPublisherFidCampaignsOK describes a response with status code 200, with default header values.
+/*
+PostPublishersPublisherFidCampaignsOK describes a response with status code 200, with default header values.
 
 Campaign Created
 */
@@ -57,9 +58,39 @@ type PostPublishersPublisherFidCampaignsOK struct {
 	Payload *PostPublishersPublisherFidCampaignsOKBody
 }
 
+// IsSuccess returns true when this post publishers publisher fid campaigns o k response has a 2xx status code
+func (o *PostPublishersPublisherFidCampaignsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post publishers publisher fid campaigns o k response has a 3xx status code
+func (o *PostPublishersPublisherFidCampaignsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post publishers publisher fid campaigns o k response has a 4xx status code
+func (o *PostPublishersPublisherFidCampaignsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post publishers publisher fid campaigns o k response has a 5xx status code
+func (o *PostPublishersPublisherFidCampaignsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post publishers publisher fid campaigns o k response a status code equal to that given
+func (o *PostPublishersPublisherFidCampaignsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostPublishersPublisherFidCampaignsOK) Error() string {
 	return fmt.Sprintf("[POST /publishers/{publisherFid}/campaigns][%d] postPublishersPublisherFidCampaignsOK  %+v", 200, o.Payload)
 }
+
+func (o *PostPublishersPublisherFidCampaignsOK) String() string {
+	return fmt.Sprintf("[POST /publishers/{publisherFid}/campaigns][%d] postPublishersPublisherFidCampaignsOK  %+v", 200, o.Payload)
+}
+
 func (o *PostPublishersPublisherFidCampaignsOK) GetPayload() *PostPublishersPublisherFidCampaignsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostPublishersPublisherFidCampaignsDefault(code int) *PostPublishersPubl
 	}
 }
 
-/* PostPublishersPublisherFidCampaignsDefault describes a response with status code -1, with default header values.
+/*
+PostPublishersPublisherFidCampaignsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostPublishersPublisherFidCampaignsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post publishers publisher fid campaigns default response has a 2xx status code
+func (o *PostPublishersPublisherFidCampaignsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post publishers publisher fid campaigns default response has a 3xx status code
+func (o *PostPublishersPublisherFidCampaignsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post publishers publisher fid campaigns default response has a 4xx status code
+func (o *PostPublishersPublisherFidCampaignsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post publishers publisher fid campaigns default response has a 5xx status code
+func (o *PostPublishersPublisherFidCampaignsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post publishers publisher fid campaigns default response a status code equal to that given
+func (o *PostPublishersPublisherFidCampaignsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostPublishersPublisherFidCampaignsDefault) Error() string {
 	return fmt.Sprintf("[POST /publishers/{publisherFid}/campaigns][%d] PostPublishersPublisherFidCampaigns default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostPublishersPublisherFidCampaignsDefault) String() string {
+	return fmt.Sprintf("[POST /publishers/{publisherFid}/campaigns][%d] PostPublishersPublisherFidCampaigns default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostPublishersPublisherFidCampaignsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostPublishersPublisherFidCampaignsDefault) readResponse(response runti
 	return nil
 }
 
-/*PostPublishersPublisherFidCampaignsOKBody post publishers publisher fid campaigns o k body
+/*
+PostPublishersPublisherFidCampaignsOKBody post publishers publisher fid campaigns o k body
 swagger:model PostPublishersPublisherFidCampaignsOKBody
 */
 type PostPublishersPublisherFidCampaignsOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostPublishersPublisherFidCampaignsOKBody) validateData(formats strfmt.
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postPublishersPublisherFidCampaignsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postPublishersPublisherFidCampaignsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostPublishersPublisherFidCampaignsOKBody) contextValidateData(ctx cont
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postPublishersPublisherFidCampaignsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postPublishersPublisherFidCampaignsOK" + "." + "data")
 			}
 			return err
 		}

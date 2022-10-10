@@ -87,6 +87,8 @@ func (m *ReverseActionPayload) validateMetaData(formats strfmt.Registry) error {
 	if err := m.MetaData.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("metaData")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("metaData")
 		}
 		return err
 	}
@@ -102,6 +104,8 @@ func (m *ReverseActionPayload) validateReason(formats strfmt.Registry) error {
 	if err := m.Reason.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("reason")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reason")
 		}
 		return err
 	}
@@ -144,6 +148,8 @@ func (m *ReverseActionPayload) contextValidateMetaData(ctx context.Context, form
 	if err := m.MetaData.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("metaData")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("metaData")
 		}
 		return err
 	}
@@ -156,6 +162,8 @@ func (m *ReverseActionPayload) contextValidateReason(ctx context.Context, format
 	if err := m.Reason.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("reason")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reason")
 		}
 		return err
 	}

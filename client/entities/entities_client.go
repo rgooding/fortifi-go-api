@@ -72,7 +72,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteEntitiesEntityFidConfigSectionName removes a config section or property from an entity
+DeleteEntitiesEntityFidConfigSectionName removes a config section or property from an entity
 */
 func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
@@ -110,7 +110,7 @@ func (a *Client) DeleteEntitiesEntityFidConfigSectionName(params *DeleteEntities
 }
 
 /*
-  DeleteEntitiesEntityFidPropertiesCountersPropertyName removes a counter from an entity
+DeleteEntitiesEntityFidPropertiesCountersPropertyName removes a counter from an entity
 */
 func (a *Client) DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *DeleteEntitiesEntityFidPropertiesCountersPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesCountersPropertyNameOK, error) {
 	// TODO: Validate the params before sending
@@ -148,7 +148,7 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesCountersPropertyName(params *D
 }
 
 /*
-  DeleteEntitiesEntityFidPropertiesFlagsPropertyName removes a flag from an entity
+DeleteEntitiesEntityFidPropertiesFlagsPropertyName removes a flag from an entity
 */
 func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
@@ -186,7 +186,7 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesFlagsPropertyName(params *Dele
 }
 
 /*
-  DeleteEntitiesEntityFidPropertiesValuesPropertyName removes a value property from an entity
+DeleteEntitiesEntityFidPropertiesValuesPropertyName removes a value property from an entity
 */
 func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *DeleteEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
 	// TODO: Validate the params before sending
@@ -224,7 +224,7 @@ func (a *Client) DeleteEntitiesEntityFidPropertiesValuesPropertyName(params *Del
 }
 
 /*
-  GetEntitiesEntityFidConfigSectionName retrieves a config section
+GetEntitiesEntityFidConfigSectionName retrieves a config section
 */
 func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
@@ -262,7 +262,7 @@ func (a *Client) GetEntitiesEntityFidConfigSectionName(params *GetEntitiesEntity
 }
 
 /*
-  GetEntitiesEntityFidConfigSectionNameItemsItemName retrieves a config item
+GetEntitiesEntityFidConfigSectionNameItemsItemName retrieves a config item
 */
 func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetEntitiesEntityFidConfigSectionNameItemsItemNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidConfigSectionNameItemsItemNameOK, error) {
 	// TODO: Validate the params before sending
@@ -300,7 +300,7 @@ func (a *Client) GetEntitiesEntityFidConfigSectionNameItemsItemName(params *GetE
 }
 
 /*
-  GetEntitiesEntityFidLabels gets all labels for an entity
+GetEntitiesEntityFidLabels gets all labels for an entity
 */
 func (a *Client) GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidLabelsOK, error) {
 	// TODO: Validate the params before sending
@@ -338,7 +338,7 @@ func (a *Client) GetEntitiesEntityFidLabels(params *GetEntitiesEntityFidLabelsPa
 }
 
 /*
-  GetEntitiesEntityFidProperties gets all properties for an entity
+GetEntitiesEntityFidProperties gets all properties for an entity
 */
 func (a *Client) GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesOK, error) {
 	// TODO: Validate the params before sending
@@ -376,7 +376,7 @@ func (a *Client) GetEntitiesEntityFidProperties(params *GetEntitiesEntityFidProp
 }
 
 /*
-  GetEntitiesEntityFidPropertiesFlagsPropertyName gets a flag property from an entity
+GetEntitiesEntityFidPropertiesFlagsPropertyName gets a flag property from an entity
 */
 func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
@@ -414,7 +414,7 @@ func (a *Client) GetEntitiesEntityFidPropertiesFlagsPropertyName(params *GetEnti
 }
 
 /*
-  GetEntitiesEntityFidPropertiesValuesPropertyName gets a property value from an entity
+GetEntitiesEntityFidPropertiesValuesPropertyName gets a property value from an entity
 */
 func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
 	// TODO: Validate the params before sending
@@ -452,7 +452,7 @@ func (a *Client) GetEntitiesEntityFidPropertiesValuesPropertyName(params *GetEnt
 }
 
 /*
-  PostEntitiesEntityFidAttachmentsUploadURL creates an upload url
+PostEntitiesEntityFidAttachmentsUploadURL creates an upload url
 */
 func (a *Client) PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesEntityFidAttachmentsUploadURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidAttachmentsUploadURLOK, error) {
 	// TODO: Validate the params before sending
@@ -490,7 +490,7 @@ func (a *Client) PostEntitiesEntityFidAttachmentsUploadURL(params *PostEntitiesE
 }
 
 /*
-  PostEntitiesEntityFidConfigSectionName writes a config item
+PostEntitiesEntityFidConfigSectionName writes a config item
 */
 func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEntityFidConfigSectionNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidConfigSectionNameOK, error) {
 	// TODO: Validate the params before sending
@@ -528,7 +528,7 @@ func (a *Client) PostEntitiesEntityFidConfigSectionName(params *PostEntitiesEnti
 }
 
 /*
-  PostEntitiesEntityFidEvents triggers a new event
+PostEntitiesEntityFidEvents triggers a new event
 */
 func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostEntitiesEntityFidEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -566,10 +566,9 @@ func (a *Client) PostEntitiesEntityFidEvents(params *PostEntitiesEntityFidEvents
 }
 
 /*
-  PostUploadUploadURL creates an upload attachment url
+PostUploadUploadURL creates an upload attachment url
 
-  This call will give you a URL to PUT files to and a unique filename. You can upload files to the URL like this: ```curl -X PUT -d @filename -H 'content-type: text/plain' 'url'```
-
+This call will give you a URL to PUT files to and a unique filename. You can upload files to the URL like this: ```curl -X PUT -d @filename -H 'content-type: text/plain' 'url'```
 */
 func (a *Client) PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostUploadUploadURLOK, error) {
 	// TODO: Validate the params before sending
@@ -607,7 +606,7 @@ func (a *Client) PostUploadUploadURL(params *PostUploadUploadURLParams, authInfo
 }
 
 /*
-  PutEntitiesEntityFidLabelsAssign assigns label to entity
+PutEntitiesEntityFidLabelsAssign assigns label to entity
 */
 func (a *Client) PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLabelsAssignParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidLabelsAssignOK, error) {
 	// TODO: Validate the params before sending
@@ -645,7 +644,7 @@ func (a *Client) PutEntitiesEntityFidLabelsAssign(params *PutEntitiesEntityFidLa
 }
 
 /*
-  PutEntitiesEntityFidProperties writes multiple entity properties
+PutEntitiesEntityFidProperties writes multiple entity properties
 */
 func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidPropertiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesOK, error) {
 	// TODO: Validate the params before sending
@@ -683,7 +682,7 @@ func (a *Client) PutEntitiesEntityFidProperties(params *PutEntitiesEntityFidProp
 }
 
 /*
-  PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement decrements an entity counter
+PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement decrements an entity counter
 */
 func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK, error) {
 	// TODO: Validate the params before sending
@@ -721,7 +720,7 @@ func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement(par
 }
 
 /*
-  PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement increments an entity counter
+PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement increments an entity counter
 */
 func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(params *PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesCountersPropertyNameIncrementOK, error) {
 	// TODO: Validate the params before sending
@@ -759,7 +758,7 @@ func (a *Client) PutEntitiesEntityFidPropertiesCountersPropertyNameIncrement(par
 }
 
 /*
-  PutEntitiesEntityFidPropertiesFlagsPropertyName writes an entity flag
+PutEntitiesEntityFidPropertiesFlagsPropertyName writes an entity flag
 */
 func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEntitiesEntityFidPropertiesFlagsPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesFlagsPropertyNameOK, error) {
 	// TODO: Validate the params before sending
@@ -797,7 +796,7 @@ func (a *Client) PutEntitiesEntityFidPropertiesFlagsPropertyName(params *PutEnti
 }
 
 /*
-  PutEntitiesEntityFidPropertiesValuesPropertyName writes an entity value property
+PutEntitiesEntityFidPropertiesValuesPropertyName writes an entity value property
 */
 func (a *Client) PutEntitiesEntityFidPropertiesValuesPropertyName(params *PutEntitiesEntityFidPropertiesValuesPropertyNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutEntitiesEntityFidPropertiesValuesPropertyNameOK, error) {
 	// TODO: Validate the params before sending

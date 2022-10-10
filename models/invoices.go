@@ -103,6 +103,8 @@ func (m *Invoices) validateInvoices(formats strfmt.Registry) error {
 			if err := m.Invoices[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("invoices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("invoices" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *Invoices) contextValidateInvoices(ctx context.Context, formats strfmt.R
 			if err := m.Invoices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("invoices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("invoices" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

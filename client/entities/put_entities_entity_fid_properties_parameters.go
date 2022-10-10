@@ -54,10 +54,12 @@ func NewPutEntitiesEntityFidPropertiesParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* PutEntitiesEntityFidPropertiesParams contains all the parameters to send to the API endpoint
-   for the put entities entity fid properties operation.
+/*
+PutEntitiesEntityFidPropertiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put entities entity fid properties operation.
+
+	Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidPropertiesParams struct {
 

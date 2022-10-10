@@ -54,10 +54,12 @@ func NewPostReviewParamsWithHTTPClient(client *http.Client) *PostReviewParams {
 	}
 }
 
-/* PostReviewParams contains all the parameters to send to the API endpoint
-   for the post review operation.
+/*
+PostReviewParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post review operation.
+
+	Typically these are written to a http.Request.
 */
 type PostReviewParams struct {
 

@@ -84,6 +84,8 @@ func (m *InvoiceCreditNotePayload) validateCreditAmountType(formats strfmt.Regis
 		if err := m.CreditAmountType.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("creditAmountType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("creditAmountType")
 			}
 			return err
 		}
@@ -112,6 +114,8 @@ func (m *InvoiceCreditNotePayload) contextValidateCreditAmountType(ctx context.C
 		if err := m.CreditAmountType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("creditAmountType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("creditAmountType")
 			}
 			return err
 		}

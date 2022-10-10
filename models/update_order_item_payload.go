@@ -54,6 +54,8 @@ func (m *UpdateOrderItemPayload) validateSetProperties(formats strfmt.Registry) 
 		if err := m.SetProperties.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setProperties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("setProperties")
 			}
 			return err
 		}
@@ -82,6 +84,8 @@ func (m *UpdateOrderItemPayload) contextValidateSetProperties(ctx context.Contex
 		if err := m.SetProperties.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setProperties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("setProperties")
 			}
 			return err
 		}

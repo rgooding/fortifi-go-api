@@ -51,6 +51,8 @@ func (m *ProductOffers) validateOffers(formats strfmt.Registry) error {
 			if err := m.Offers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("offers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("offers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *ProductOffers) contextValidateOffers(ctx context.Context, formats strfm
 			if err := m.Offers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("offers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("offers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

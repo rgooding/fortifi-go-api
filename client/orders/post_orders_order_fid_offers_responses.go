@@ -46,14 +46,44 @@ func NewPostOrdersOrderFidOffersOK() *PostOrdersOrderFidOffersOK {
 	return &PostOrdersOrderFidOffersOK{}
 }
 
-/* PostOrdersOrderFidOffersOK describes a response with status code 200, with default header values.
+/*
+PostOrdersOrderFidOffersOK describes a response with status code 200, with default header values.
 
 Offer added to the order successfully
 */
 type PostOrdersOrderFidOffersOK struct {
 }
 
+// IsSuccess returns true when this post orders order fid offers o k response has a 2xx status code
+func (o *PostOrdersOrderFidOffersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post orders order fid offers o k response has a 3xx status code
+func (o *PostOrdersOrderFidOffersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post orders order fid offers o k response has a 4xx status code
+func (o *PostOrdersOrderFidOffersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post orders order fid offers o k response has a 5xx status code
+func (o *PostOrdersOrderFidOffersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post orders order fid offers o k response a status code equal to that given
+func (o *PostOrdersOrderFidOffersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostOrdersOrderFidOffersOK) Error() string {
+	return fmt.Sprintf("[POST /orders/{orderFid}/offers][%d] postOrdersOrderFidOffersOK ", 200)
+}
+
+func (o *PostOrdersOrderFidOffersOK) String() string {
 	return fmt.Sprintf("[POST /orders/{orderFid}/offers][%d] postOrdersOrderFidOffersOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPostOrdersOrderFidOffersDefault(code int) *PostOrdersOrderFidOffersDefau
 	}
 }
 
-/* PostOrdersOrderFidOffersDefault describes a response with status code -1, with default header values.
+/*
+PostOrdersOrderFidOffersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PostOrdersOrderFidOffersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post orders order fid offers default response has a 2xx status code
+func (o *PostOrdersOrderFidOffersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post orders order fid offers default response has a 3xx status code
+func (o *PostOrdersOrderFidOffersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post orders order fid offers default response has a 4xx status code
+func (o *PostOrdersOrderFidOffersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post orders order fid offers default response has a 5xx status code
+func (o *PostOrdersOrderFidOffersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post orders order fid offers default response a status code equal to that given
+func (o *PostOrdersOrderFidOffersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostOrdersOrderFidOffersDefault) Error() string {
 	return fmt.Sprintf("[POST /orders/{orderFid}/offers][%d] PostOrdersOrderFidOffers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostOrdersOrderFidOffersDefault) String() string {
+	return fmt.Sprintf("[POST /orders/{orderFid}/offers][%d] PostOrdersOrderFidOffers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostOrdersOrderFidOffersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

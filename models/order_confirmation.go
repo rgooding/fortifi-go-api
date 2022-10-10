@@ -53,6 +53,8 @@ func (m *OrderConfirmation) validatePaymentMode(formats strfmt.Registry) error {
 	if err := m.PaymentMode.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMode")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentMode")
 		}
 		return err
 	}
@@ -79,6 +81,8 @@ func (m *OrderConfirmation) contextValidatePaymentMode(ctx context.Context, form
 	if err := m.PaymentMode.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentMode")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentMode")
 		}
 		return err
 	}

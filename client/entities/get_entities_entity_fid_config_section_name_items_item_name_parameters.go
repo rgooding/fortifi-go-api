@@ -52,10 +52,12 @@ func NewGetEntitiesEntityFidConfigSectionNameItemsItemNameParamsWithHTTPClient(c
 	}
 }
 
-/* GetEntitiesEntityFidConfigSectionNameItemsItemNameParams contains all the parameters to send to the API endpoint
-   for the get entities entity fid config section name items item name operation.
+/*
+GetEntitiesEntityFidConfigSectionNameItemsItemNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get entities entity fid config section name items item name operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEntitiesEntityFidConfigSectionNameItemsItemNameParams struct {
 

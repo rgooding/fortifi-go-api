@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK describes a response with status code 200, with default header values.
 
 New payment method set
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid set payment account o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid set payment account o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid set payment account o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid set payment account o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid set payment account o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefa
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDef
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid set payment account default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid set payment account default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid set payment account default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid set payment account default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid set payment account default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/setPaymentAccount][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccount default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidSetPaymentAccountDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

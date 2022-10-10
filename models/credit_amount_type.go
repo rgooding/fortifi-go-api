@@ -20,8 +20,12 @@ import (
 type CreditAmountType string
 
 func NewCreditAmountType(value CreditAmountType) *CreditAmountType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated CreditAmountType.
+func (m CreditAmountType) Pointer() *CreditAmountType {
+	return &m
 }
 
 const (

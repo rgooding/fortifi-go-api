@@ -53,10 +53,12 @@ func NewGetAdvertisersParamsWithHTTPClient(client *http.Client) *GetAdvertisersP
 	}
 }
 
-/* GetAdvertisersParams contains all the parameters to send to the API endpoint
-   for the get advertisers operation.
+/*
+GetAdvertisersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get advertisers operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAdvertisersParams struct {
 

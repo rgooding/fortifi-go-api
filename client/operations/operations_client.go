@@ -34,7 +34,7 @@ type ClientService interface {
 }
 
 /*
-  PostCustomersCustomerFidPaymentMethodsCreatePending creates a new pending payment method
+PostCustomersCustomerFidPaymentMethodsCreatePending creates a new pending payment method
 */
 func (a *Client) PostCustomersCustomerFidPaymentMethodsCreatePending(params *PostCustomersCustomerFidPaymentMethodsCreatePendingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostCustomersCustomerFidPaymentMethodsCreatePendingOK, error) {
 	// TODO: Validate the params before sending

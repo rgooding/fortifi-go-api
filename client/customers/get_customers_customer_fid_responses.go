@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidOK() *GetCustomersCustomerFidOK {
 	return &GetCustomersCustomerFidOK{}
 }
 
-/* GetCustomersCustomerFidOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidOK describes a response with status code 200, with default header values.
 
 Loaded Customer
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidOK struct {
 	Payload *GetCustomersCustomerFidOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid o k response has a 2xx status code
+func (o *GetCustomersCustomerFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid o k response has a 3xx status code
+func (o *GetCustomersCustomerFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid o k response has a 4xx status code
+func (o *GetCustomersCustomerFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid o k response has a 5xx status code
+func (o *GetCustomersCustomerFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid o k response a status code equal to that given
+func (o *GetCustomersCustomerFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}][%d] getCustomersCustomerFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}][%d] getCustomersCustomerFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidOK) GetPayload() *GetCustomersCustomerFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidDefault(code int) *GetCustomersCustomerFidDefault
 	}
 }
 
-/* GetCustomersCustomerFidDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid default response has a 2xx status code
+func (o *GetCustomersCustomerFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid default response has a 3xx status code
+func (o *GetCustomersCustomerFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid default response has a 4xx status code
+func (o *GetCustomersCustomerFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid default response has a 5xx status code
+func (o *GetCustomersCustomerFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid default response a status code equal to that given
+func (o *GetCustomersCustomerFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}][%d] GetCustomersCustomerFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}][%d] GetCustomersCustomerFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidDefault) readResponse(response runtime.ClientRes
 	return nil
 }
 
-/*GetCustomersCustomerFidOKBody get customers customer fid o k body
+/*
+GetCustomersCustomerFidOKBody get customers customer fid o k body
 swagger:model GetCustomersCustomerFidOKBody
 */
 type GetCustomersCustomerFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidOKBody) validateData(formats strfmt.Registry) er
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidOKBody) contextValidateData(ctx context.Context,
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidOK" + "." + "data")
 			}
 			return err
 		}

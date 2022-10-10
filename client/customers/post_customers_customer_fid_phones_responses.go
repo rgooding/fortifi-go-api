@@ -46,14 +46,44 @@ func NewPostCustomersCustomerFidPhonesOK() *PostCustomersCustomerFidPhonesOK {
 	return &PostCustomersCustomerFidPhonesOK{}
 }
 
-/* PostCustomersCustomerFidPhonesOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidPhonesOK describes a response with status code 200, with default header values.
 
 Phone Number Added
 */
 type PostCustomersCustomerFidPhonesOK struct {
 }
 
+// IsSuccess returns true when this post customers customer fid phones o k response has a 2xx status code
+func (o *PostCustomersCustomerFidPhonesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid phones o k response has a 3xx status code
+func (o *PostCustomersCustomerFidPhonesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid phones o k response has a 4xx status code
+func (o *PostCustomersCustomerFidPhonesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid phones o k response has a 5xx status code
+func (o *PostCustomersCustomerFidPhonesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid phones o k response a status code equal to that given
+func (o *PostCustomersCustomerFidPhonesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidPhonesOK) Error() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/phones][%d] postCustomersCustomerFidPhonesOK ", 200)
+}
+
+func (o *PostCustomersCustomerFidPhonesOK) String() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/phones][%d] postCustomersCustomerFidPhonesOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPostCustomersCustomerFidPhonesDefault(code int) *PostCustomersCustomerFi
 	}
 }
 
-/* PostCustomersCustomerFidPhonesDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidPhonesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PostCustomersCustomerFidPhonesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid phones default response has a 2xx status code
+func (o *PostCustomersCustomerFidPhonesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid phones default response has a 3xx status code
+func (o *PostCustomersCustomerFidPhonesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid phones default response has a 4xx status code
+func (o *PostCustomersCustomerFidPhonesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid phones default response has a 5xx status code
+func (o *PostCustomersCustomerFidPhonesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid phones default response a status code equal to that given
+func (o *PostCustomersCustomerFidPhonesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidPhonesDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/phones][%d] PostCustomersCustomerFidPhones default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidPhonesDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/phones][%d] PostCustomersCustomerFidPhones default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidPhonesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

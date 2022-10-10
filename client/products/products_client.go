@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  GetProducts lists all products
+GetProducts lists all products
 */
 func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsOK, error) {
 	// TODO: Validate the params before sending
@@ -88,7 +88,7 @@ func (a *Client) GetProducts(params *GetProductsParams, authInfo runtime.ClientA
 }
 
 /*
-  GetProductsGroups gets a list of all product groups
+GetProductsGroups gets a list of all product groups
 */
 func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) GetProductsGroups(params *GetProductsGroupsParams, authInfo run
 }
 
 /*
-  GetProductsGroupsProductGroupFidProducts gets a list of products belonging to the group
+GetProductsGroupsProductGroupFidProducts gets a list of products belonging to the group
 */
 func (a *Client) GetProductsGroupsProductGroupFidProducts(params *GetProductsGroupsProductGroupFidProductsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsGroupsProductGroupFidProductsOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) GetProductsGroupsProductGroupFidProducts(params *GetProductsGro
 }
 
 /*
-  GetProductsOffers retrieves all offers
+GetProductsOffers retrieves all offers
 */
 func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsOffersOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) GetProductsOffers(params *GetProductsOffersParams, authInfo run
 }
 
 /*
-  GetProductsProductFidPricebands retrieves product price bands
+GetProductsProductFidPricebands retrieves product price bands
 */
 func (a *Client) GetProductsProductFidPricebands(params *GetProductsProductFidPricebandsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidPricebandsOK, error) {
 	// TODO: Validate the params before sending
@@ -240,7 +240,7 @@ func (a *Client) GetProductsProductFidPricebands(params *GetProductsProductFidPr
 }
 
 /*
-  GetProductsProductFidPrices retrieves product prices
+GetProductsProductFidPrices retrieves product prices
 */
 func (a *Client) GetProductsProductFidPrices(params *GetProductsProductFidPricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidPricesOK, error) {
 	// TODO: Validate the params before sending
@@ -278,7 +278,7 @@ func (a *Client) GetProductsProductFidPrices(params *GetProductsProductFidPrices
 }
 
 /*
-  GetProductsProductFidSkus retrieves product s k us
+GetProductsProductFidSkus retrieves product s k us
 */
 func (a *Client) GetProductsProductFidSkus(params *GetProductsProductFidSkusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetProductsProductFidSkusOK, error) {
 	// TODO: Validate the params before sending
@@ -316,7 +316,7 @@ func (a *Client) GetProductsProductFidSkus(params *GetProductsProductFidSkusPara
 }
 
 /*
-  PostProductsProductFidAvailabilityCheck checks product availability
+PostProductsProductFidAvailabilityCheck checks product availability
 */
 func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsProductFidAvailabilityCheckParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostProductsProductFidAvailabilityCheckOK, error) {
 	// TODO: Validate the params before sending
@@ -354,7 +354,7 @@ func (a *Client) PostProductsProductFidAvailabilityCheck(params *PostProductsPro
 }
 
 /*
-  PostProductsProductFidAvailabilityReserve reserves product
+PostProductsProductFidAvailabilityReserve reserves product
 */
 func (a *Client) PostProductsProductFidAvailabilityReserve(params *PostProductsProductFidAvailabilityReserveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostProductsProductFidAvailabilityReserveOK, error) {
 	// TODO: Validate the params before sending

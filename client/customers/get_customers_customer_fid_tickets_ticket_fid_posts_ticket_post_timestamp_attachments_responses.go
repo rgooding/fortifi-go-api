@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmen
 	return &GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK{}
 }
 
-/* GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK describes a response with status code 200, with default header values.
 
 List of ticket attachments
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsO
 	Payload *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k response has a 2xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k response has a 3xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k response has a 4xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k response has a 5xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k response a status code equal to that given
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts/{ticketPostTimestamp}/attachments][%d] getCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts/{ticketPostTimestamp}/attachments][%d] getCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK) GetPayload() *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmen
 	}
 }
 
-/* GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachme
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments default response has a 2xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments default response has a 3xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments default response has a 4xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments default response has a 5xx status code
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid tickets ticket fid posts ticket post timestamp attachments default response a status code equal to that given
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts/{ticketPostTimestamp}/attachments][%d] GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/tickets/{ticketFid}/posts/{ticketPostTimestamp}/attachments][%d] GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachments default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachme
 	return nil
 }
 
-/*GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOKBody get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k body
+/*
+GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOKBody get customers customer fid tickets ticket fid posts ticket post timestamp attachments o k body
 swagger:model GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOKBody
 */
 type GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachme
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachme
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidTicketsTicketFidPostsTicketPostTimestampAttachmentsOK" + "." + "data")
 			}
 			return err
 		}

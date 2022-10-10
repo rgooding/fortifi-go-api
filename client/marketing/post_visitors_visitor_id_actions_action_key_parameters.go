@@ -54,10 +54,12 @@ func NewPostVisitorsVisitorIDActionsActionKeyParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* PostVisitorsVisitorIDActionsActionKeyParams contains all the parameters to send to the API endpoint
-   for the post visitors visitor ID actions action key operation.
+/*
+PostVisitorsVisitorIDActionsActionKeyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post visitors visitor ID actions action key operation.
+
+	Typically these are written to a http.Request.
 */
 type PostVisitorsVisitorIDActionsActionKeyParams struct {
 

@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK describes a response with status code 200, with default header values.
 
 Provisioning Queued
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid provisioning retry o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid provisioning retry o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid provisioning retry o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid provisioning retry o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid provisioning retry o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/provisioning/retry][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/provisioning/retry][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefa
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDef
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid provisioning retry default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid provisioning retry default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid provisioning retry default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid provisioning retry default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid provisioning retry default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/provisioning/retry][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetry default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/provisioning/retry][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetry default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidProvisioningRetryDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteAdvertisersAdvertiserFidApproved removes approved status on an advertiser
+DeleteAdvertisersAdvertiserFidApproved removes approved status on an advertiser
 */
 func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteAdvertisersAdvertiserFidApprovedOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +84,7 @@ func (a *Client) DeleteAdvertisersAdvertiserFidApproved(params *DeleteAdvertiser
 }
 
 /*
-  GetAdvertisers lists advertisers
+GetAdvertisers lists advertisers
 */
 func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) GetAdvertisers(params *GetAdvertisersParams, authInfo runtime.C
 }
 
 /*
-  GetAdvertisersAdvertiserFid retrieves an advertiser
+GetAdvertisersAdvertiserFid retrieves an advertiser
 */
 func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersAdvertiserFidOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GetAdvertisersAdvertiserFid(params *GetAdvertisersAdvertiserFid
 }
 
 /*
-  GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid retrieves an advertiser campaign
+GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid retrieves an advertiser campaign
 */
 func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(params *GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFidOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetAdvertisersAdvertiserFidCampaignsAdvertiserCampaignFid(param
 }
 
 /*
-  PostAdvertisers creates a new advertiser
+PostAdvertisers creates a new advertiser
 */
 func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostAdvertisersOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +236,7 @@ func (a *Client) PostAdvertisers(params *PostAdvertisersParams, authInfo runtime
 }
 
 /*
-  PostAdvertisersAdvertiserFidCampaigns creates a new advertiser campaign
+PostAdvertisersAdvertiserFidCampaigns creates a new advertiser campaign
 */
 func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAdvertiserFidCampaignsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostAdvertisersAdvertiserFidCampaignsOK, error) {
 	// TODO: Validate the params before sending
@@ -274,7 +274,7 @@ func (a *Client) PostAdvertisersAdvertiserFidCampaigns(params *PostAdvertisersAd
 }
 
 /*
-  PutAdvertisersAdvertiserFidApproved sets approved status on an advertiser
+PutAdvertisersAdvertiserFidApproved sets approved status on an advertiser
 */
 func (a *Client) PutAdvertisersAdvertiserFidApproved(params *PutAdvertisersAdvertiserFidApprovedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutAdvertisersAdvertiserFidApprovedOK, error) {
 	// TODO: Validate the params before sending

@@ -49,7 +49,8 @@ func NewGetIntegrationsVerifyUserOK() *GetIntegrationsVerifyUserOK {
 	return &GetIntegrationsVerifyUserOK{}
 }
 
-/* GetIntegrationsVerifyUserOK describes a response with status code 200, with default header values.
+/*
+GetIntegrationsVerifyUserOK describes a response with status code 200, with default header values.
 
 Integration User
 */
@@ -57,9 +58,39 @@ type GetIntegrationsVerifyUserOK struct {
 	Payload *GetIntegrationsVerifyUserOKBody
 }
 
+// IsSuccess returns true when this get integrations verify user o k response has a 2xx status code
+func (o *GetIntegrationsVerifyUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get integrations verify user o k response has a 3xx status code
+func (o *GetIntegrationsVerifyUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get integrations verify user o k response has a 4xx status code
+func (o *GetIntegrationsVerifyUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get integrations verify user o k response has a 5xx status code
+func (o *GetIntegrationsVerifyUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get integrations verify user o k response a status code equal to that given
+func (o *GetIntegrationsVerifyUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetIntegrationsVerifyUserOK) Error() string {
 	return fmt.Sprintf("[GET /integrations/verifyUser][%d] getIntegrationsVerifyUserOK  %+v", 200, o.Payload)
 }
+
+func (o *GetIntegrationsVerifyUserOK) String() string {
+	return fmt.Sprintf("[GET /integrations/verifyUser][%d] getIntegrationsVerifyUserOK  %+v", 200, o.Payload)
+}
+
 func (o *GetIntegrationsVerifyUserOK) GetPayload() *GetIntegrationsVerifyUserOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetIntegrationsVerifyUserDefault(code int) *GetIntegrationsVerifyUserDef
 	}
 }
 
-/* GetIntegrationsVerifyUserDefault describes a response with status code -1, with default header values.
+/*
+GetIntegrationsVerifyUserDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetIntegrationsVerifyUserDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get integrations verify user default response has a 2xx status code
+func (o *GetIntegrationsVerifyUserDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get integrations verify user default response has a 3xx status code
+func (o *GetIntegrationsVerifyUserDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get integrations verify user default response has a 4xx status code
+func (o *GetIntegrationsVerifyUserDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get integrations verify user default response has a 5xx status code
+func (o *GetIntegrationsVerifyUserDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get integrations verify user default response a status code equal to that given
+func (o *GetIntegrationsVerifyUserDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetIntegrationsVerifyUserDefault) Error() string {
 	return fmt.Sprintf("[GET /integrations/verifyUser][%d] GetIntegrationsVerifyUser default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetIntegrationsVerifyUserDefault) String() string {
+	return fmt.Sprintf("[GET /integrations/verifyUser][%d] GetIntegrationsVerifyUser default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetIntegrationsVerifyUserDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetIntegrationsVerifyUserDefault) readResponse(response runtime.ClientR
 	return nil
 }
 
-/*GetIntegrationsVerifyUserOKBody get integrations verify user o k body
+/*
+GetIntegrationsVerifyUserOKBody get integrations verify user o k body
 swagger:model GetIntegrationsVerifyUserOKBody
 */
 type GetIntegrationsVerifyUserOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetIntegrationsVerifyUserOKBody) validateData(formats strfmt.Registry) 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getIntegrationsVerifyUserOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getIntegrationsVerifyUserOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetIntegrationsVerifyUserOKBody) contextValidateData(ctx context.Contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getIntegrationsVerifyUserOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getIntegrationsVerifyUserOK" + "." + "data")
 			}
 			return err
 		}

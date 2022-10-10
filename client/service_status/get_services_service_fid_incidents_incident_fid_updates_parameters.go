@@ -52,10 +52,12 @@ func NewGetServicesServiceFidIncidentsIncidentFidUpdatesParamsWithHTTPClient(cli
 	}
 }
 
-/* GetServicesServiceFidIncidentsIncidentFidUpdatesParams contains all the parameters to send to the API endpoint
-   for the get services service fid incidents incident fid updates operation.
+/*
+GetServicesServiceFidIncidentsIncidentFidUpdatesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get services service fid incidents incident fid updates operation.
+
+	Typically these are written to a http.Request.
 */
 type GetServicesServiceFidIncidentsIncidentFidUpdatesParams struct {
 

@@ -52,10 +52,12 @@ func NewGetPublishersPublisherFidParamsWithHTTPClient(client *http.Client) *GetP
 	}
 }
 
-/* GetPublishersPublisherFidParams contains all the parameters to send to the API endpoint
-   for the get publishers publisher fid operation.
+/*
+GetPublishersPublisherFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get publishers publisher fid operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPublishersPublisherFidParams struct {
 

@@ -52,10 +52,12 @@ func NewDeletePublishersPublisherFidApprovedParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* DeletePublishersPublisherFidApprovedParams contains all the parameters to send to the API endpoint
-   for the delete publishers publisher fid approved operation.
+/*
+DeletePublishersPublisherFidApprovedParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete publishers publisher fid approved operation.
+
+	Typically these are written to a http.Request.
 */
 type DeletePublishersPublisherFidApprovedParams struct {
 

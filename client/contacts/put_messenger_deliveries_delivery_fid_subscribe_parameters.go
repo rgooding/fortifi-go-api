@@ -53,10 +53,12 @@ func NewPutMessengerDeliveriesDeliveryFidSubscribeParamsWithHTTPClient(client *h
 	}
 }
 
-/* PutMessengerDeliveriesDeliveryFidSubscribeParams contains all the parameters to send to the API endpoint
-   for the put messenger deliveries delivery fid subscribe operation.
+/*
+PutMessengerDeliveriesDeliveryFidSubscribeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put messenger deliveries delivery fid subscribe operation.
+
+	Typically these are written to a http.Request.
 */
 type PutMessengerDeliveriesDeliveryFidSubscribeParams struct {
 

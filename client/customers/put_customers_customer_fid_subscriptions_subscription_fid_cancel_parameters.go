@@ -54,10 +54,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParamsWithHTTPC
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid cancel operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid cancel operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCancelParams struct {
 

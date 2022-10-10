@@ -54,10 +54,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParamsWithHTTPC
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid modify operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid modify operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidModifyParams struct {
 

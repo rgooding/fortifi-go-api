@@ -49,7 +49,8 @@ func NewGetServiceAuthTokenOK() *GetServiceAuthTokenOK {
 	return &GetServiceAuthTokenOK{}
 }
 
-/* GetServiceAuthTokenOK describes a response with status code 200, with default header values.
+/*
+GetServiceAuthTokenOK describes a response with status code 200, with default header values.
 
 Token
 */
@@ -57,9 +58,39 @@ type GetServiceAuthTokenOK struct {
 	Payload *GetServiceAuthTokenOKBody
 }
 
+// IsSuccess returns true when this get service auth token o k response has a 2xx status code
+func (o *GetServiceAuthTokenOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get service auth token o k response has a 3xx status code
+func (o *GetServiceAuthTokenOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get service auth token o k response has a 4xx status code
+func (o *GetServiceAuthTokenOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get service auth token o k response has a 5xx status code
+func (o *GetServiceAuthTokenOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get service auth token o k response a status code equal to that given
+func (o *GetServiceAuthTokenOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetServiceAuthTokenOK) Error() string {
 	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthTokenOK  %+v", 200, o.Payload)
 }
+
+func (o *GetServiceAuthTokenOK) String() string {
+	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthTokenOK  %+v", 200, o.Payload)
+}
+
 func (o *GetServiceAuthTokenOK) GetPayload() *GetServiceAuthTokenOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetServiceAuthTokenDefault(code int) *GetServiceAuthTokenDefault {
 	}
 }
 
-/* GetServiceAuthTokenDefault describes a response with status code -1, with default header values.
+/*
+GetServiceAuthTokenDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetServiceAuthTokenDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get service auth token default response has a 2xx status code
+func (o *GetServiceAuthTokenDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get service auth token default response has a 3xx status code
+func (o *GetServiceAuthTokenDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get service auth token default response has a 4xx status code
+func (o *GetServiceAuthTokenDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get service auth token default response has a 5xx status code
+func (o *GetServiceAuthTokenDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get service auth token default response a status code equal to that given
+func (o *GetServiceAuthTokenDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetServiceAuthTokenDefault) Error() string {
 	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthToken default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetServiceAuthTokenDefault) String() string {
+	return fmt.Sprintf("[POST /svcauth/verify][%d] getServiceAuthToken default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetServiceAuthTokenDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetServiceAuthTokenDefault) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-/*GetServiceAuthTokenOKBody get service auth token o k body
+/*
+GetServiceAuthTokenOKBody get service auth token o k body
 swagger:model GetServiceAuthTokenOKBody
 */
 type GetServiceAuthTokenOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetServiceAuthTokenOKBody) validateData(formats strfmt.Registry) error 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServiceAuthTokenOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getServiceAuthTokenOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetServiceAuthTokenOKBody) contextValidateData(ctx context.Context, for
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getServiceAuthTokenOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getServiceAuthTokenOK" + "." + "data")
 			}
 			return err
 		}

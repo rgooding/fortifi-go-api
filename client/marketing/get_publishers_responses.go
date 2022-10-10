@@ -49,7 +49,8 @@ func NewGetPublishersOK() *GetPublishersOK {
 	return &GetPublishersOK{}
 }
 
-/* GetPublishersOK describes a response with status code 200, with default header values.
+/*
+GetPublishersOK describes a response with status code 200, with default header values.
 
 List of publishers
 */
@@ -57,9 +58,39 @@ type GetPublishersOK struct {
 	Payload *GetPublishersOKBody
 }
 
+// IsSuccess returns true when this get publishers o k response has a 2xx status code
+func (o *GetPublishersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get publishers o k response has a 3xx status code
+func (o *GetPublishersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get publishers o k response has a 4xx status code
+func (o *GetPublishersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get publishers o k response has a 5xx status code
+func (o *GetPublishersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get publishers o k response a status code equal to that given
+func (o *GetPublishersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPublishersOK) Error() string {
 	return fmt.Sprintf("[GET /publishers][%d] getPublishersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPublishersOK) String() string {
+	return fmt.Sprintf("[GET /publishers][%d] getPublishersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPublishersOK) GetPayload() *GetPublishersOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetPublishersDefault(code int) *GetPublishersDefault {
 	}
 }
 
-/* GetPublishersDefault describes a response with status code -1, with default header values.
+/*
+GetPublishersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetPublishersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get publishers default response has a 2xx status code
+func (o *GetPublishersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get publishers default response has a 3xx status code
+func (o *GetPublishersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get publishers default response has a 4xx status code
+func (o *GetPublishersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get publishers default response has a 5xx status code
+func (o *GetPublishersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get publishers default response a status code equal to that given
+func (o *GetPublishersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetPublishersDefault) Error() string {
 	return fmt.Sprintf("[GET /publishers][%d] GetPublishers default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetPublishersDefault) String() string {
+	return fmt.Sprintf("[GET /publishers][%d] GetPublishers default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetPublishersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetPublishersDefault) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-/*GetPublishersOKBody get publishers o k body
+/*
+GetPublishersOKBody get publishers o k body
 swagger:model GetPublishersOKBody
 */
 type GetPublishersOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetPublishersOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPublishersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getPublishersOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetPublishersOKBody) contextValidateData(ctx context.Context, formats s
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPublishersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getPublishersOK" + "." + "data")
 			}
 			return err
 		}

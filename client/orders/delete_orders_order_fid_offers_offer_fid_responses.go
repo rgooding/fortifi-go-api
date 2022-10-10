@@ -46,14 +46,44 @@ func NewDeleteOrdersOrderFidOffersOfferFidOK() *DeleteOrdersOrderFidOffersOfferF
 	return &DeleteOrdersOrderFidOffersOfferFidOK{}
 }
 
-/* DeleteOrdersOrderFidOffersOfferFidOK describes a response with status code 200, with default header values.
+/*
+DeleteOrdersOrderFidOffersOfferFidOK describes a response with status code 200, with default header values.
 
 Offer removed from the order successfully
 */
 type DeleteOrdersOrderFidOffersOfferFidOK struct {
 }
 
+// IsSuccess returns true when this delete orders order fid offers offer fid o k response has a 2xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete orders order fid offers offer fid o k response has a 3xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete orders order fid offers offer fid o k response has a 4xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete orders order fid offers offer fid o k response has a 5xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete orders order fid offers offer fid o k response a status code equal to that given
+func (o *DeleteOrdersOrderFidOffersOfferFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteOrdersOrderFidOffersOfferFidOK) Error() string {
+	return fmt.Sprintf("[DELETE /orders/{orderFid}/offers/{offerFid}][%d] deleteOrdersOrderFidOffersOfferFidOK ", 200)
+}
+
+func (o *DeleteOrdersOrderFidOffersOfferFidOK) String() string {
 	return fmt.Sprintf("[DELETE /orders/{orderFid}/offers/{offerFid}][%d] deleteOrdersOrderFidOffersOfferFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteOrdersOrderFidOffersOfferFidDefault(code int) *DeleteOrdersOrderFi
 	}
 }
 
-/* DeleteOrdersOrderFidOffersOfferFidDefault describes a response with status code -1, with default header values.
+/*
+DeleteOrdersOrderFidOffersOfferFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteOrdersOrderFidOffersOfferFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete orders order fid offers offer fid default response has a 2xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete orders order fid offers offer fid default response has a 3xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete orders order fid offers offer fid default response has a 4xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete orders order fid offers offer fid default response has a 5xx status code
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete orders order fid offers offer fid default response a status code equal to that given
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteOrdersOrderFidOffersOfferFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /orders/{orderFid}/offers/{offerFid}][%d] DeleteOrdersOrderFidOffersOfferFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteOrdersOrderFidOffersOfferFidDefault) String() string {
+	return fmt.Sprintf("[DELETE /orders/{orderFid}/offers/{offerFid}][%d] DeleteOrdersOrderFidOffersOfferFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteOrdersOrderFidOffersOfferFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

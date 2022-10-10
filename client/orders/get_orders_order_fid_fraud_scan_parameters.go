@@ -52,10 +52,12 @@ func NewGetOrdersOrderFidFraudScanParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetOrdersOrderFidFraudScanParams contains all the parameters to send to the API endpoint
-   for the get orders order fid fraud scan operation.
+/*
+GetOrdersOrderFidFraudScanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get orders order fid fraud scan operation.
+
+	Typically these are written to a http.Request.
 */
 type GetOrdersOrderFidFraudScanParams struct {
 

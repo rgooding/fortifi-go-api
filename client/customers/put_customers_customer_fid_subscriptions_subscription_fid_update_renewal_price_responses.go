@@ -49,7 +49,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK(
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK describes a response with status code 200, with default header values.
 
 Subscription price updated
 */
@@ -57,9 +58,39 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK str
 	Payload *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid update renewal price o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid update renewal price o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid update renewal price o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid update renewal price o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid update renewal price o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK  %+v", 200, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK  %+v", 200, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDef
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDe
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid update renewal price default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid update renewal price default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid update renewal price default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid update renewal price default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid update renewal price default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/updateRenewalPrice][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPrice default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceDe
 	return nil
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody put customers customer fid subscriptions subscription fid update renewal price o k body
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody put customers customer fid subscriptions subscription fid update renewal price o k body
 swagger:model PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidUpdateRenewalPriceOK" + "." + "data")
 			}
 			return err
 		}

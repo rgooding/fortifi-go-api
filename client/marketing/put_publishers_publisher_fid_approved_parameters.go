@@ -52,10 +52,12 @@ func NewPutPublishersPublisherFidApprovedParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* PutPublishersPublisherFidApprovedParams contains all the parameters to send to the API endpoint
-   for the put publishers publisher fid approved operation.
+/*
+PutPublishersPublisherFidApprovedParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put publishers publisher fid approved operation.
+
+	Typically these are written to a http.Request.
 */
 type PutPublishersPublisherFidApprovedParams struct {
 

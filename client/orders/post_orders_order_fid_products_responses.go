@@ -49,7 +49,8 @@ func NewPostOrdersOrderFidProductsOK() *PostOrdersOrderFidProductsOK {
 	return &PostOrdersOrderFidProductsOK{}
 }
 
-/* PostOrdersOrderFidProductsOK describes a response with status code 200, with default header values.
+/*
+PostOrdersOrderFidProductsOK describes a response with status code 200, with default header values.
 
 Product added to the order successfully
 */
@@ -57,9 +58,39 @@ type PostOrdersOrderFidProductsOK struct {
 	Payload *PostOrdersOrderFidProductsOKBody
 }
 
+// IsSuccess returns true when this post orders order fid products o k response has a 2xx status code
+func (o *PostOrdersOrderFidProductsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post orders order fid products o k response has a 3xx status code
+func (o *PostOrdersOrderFidProductsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post orders order fid products o k response has a 4xx status code
+func (o *PostOrdersOrderFidProductsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post orders order fid products o k response has a 5xx status code
+func (o *PostOrdersOrderFidProductsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post orders order fid products o k response a status code equal to that given
+func (o *PostOrdersOrderFidProductsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostOrdersOrderFidProductsOK) Error() string {
 	return fmt.Sprintf("[POST /orders/{orderFid}/products][%d] postOrdersOrderFidProductsOK  %+v", 200, o.Payload)
 }
+
+func (o *PostOrdersOrderFidProductsOK) String() string {
+	return fmt.Sprintf("[POST /orders/{orderFid}/products][%d] postOrdersOrderFidProductsOK  %+v", 200, o.Payload)
+}
+
 func (o *PostOrdersOrderFidProductsOK) GetPayload() *PostOrdersOrderFidProductsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostOrdersOrderFidProductsDefault(code int) *PostOrdersOrderFidProductsD
 	}
 }
 
-/* PostOrdersOrderFidProductsDefault describes a response with status code -1, with default header values.
+/*
+PostOrdersOrderFidProductsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostOrdersOrderFidProductsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post orders order fid products default response has a 2xx status code
+func (o *PostOrdersOrderFidProductsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post orders order fid products default response has a 3xx status code
+func (o *PostOrdersOrderFidProductsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post orders order fid products default response has a 4xx status code
+func (o *PostOrdersOrderFidProductsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post orders order fid products default response has a 5xx status code
+func (o *PostOrdersOrderFidProductsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post orders order fid products default response a status code equal to that given
+func (o *PostOrdersOrderFidProductsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostOrdersOrderFidProductsDefault) Error() string {
 	return fmt.Sprintf("[POST /orders/{orderFid}/products][%d] PostOrdersOrderFidProducts default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostOrdersOrderFidProductsDefault) String() string {
+	return fmt.Sprintf("[POST /orders/{orderFid}/products][%d] PostOrdersOrderFidProducts default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostOrdersOrderFidProductsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostOrdersOrderFidProductsDefault) readResponse(response runtime.Client
 	return nil
 }
 
-/*PostOrdersOrderFidProductsOKBody post orders order fid products o k body
+/*
+PostOrdersOrderFidProductsOKBody post orders order fid products o k body
 swagger:model PostOrdersOrderFidProductsOKBody
 */
 type PostOrdersOrderFidProductsOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostOrdersOrderFidProductsOKBody) validateData(formats strfmt.Registry)
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postOrdersOrderFidProductsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postOrdersOrderFidProductsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostOrdersOrderFidProductsOKBody) contextValidateData(ctx context.Conte
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postOrdersOrderFidProductsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postOrdersOrderFidProductsOK" + "." + "data")
 			}
 			return err
 		}

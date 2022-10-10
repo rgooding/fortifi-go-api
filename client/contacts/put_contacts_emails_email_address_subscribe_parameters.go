@@ -53,10 +53,12 @@ func NewPutContactsEmailsEmailAddressSubscribeParamsWithHTTPClient(client *http.
 	}
 }
 
-/* PutContactsEmailsEmailAddressSubscribeParams contains all the parameters to send to the API endpoint
-   for the put contacts emails email address subscribe operation.
+/*
+PutContactsEmailsEmailAddressSubscribeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put contacts emails email address subscribe operation.
+
+	Typically these are written to a http.Request.
 */
 type PutContactsEmailsEmailAddressSubscribeParams struct {
 

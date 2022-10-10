@@ -49,7 +49,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK() *
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK describes a response with status code 200, with default header values.
 
 Returns calculated refund amounts
 */
@@ -57,9 +58,39 @@ type PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK struct
 	Payload *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBody
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid calculate refund o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid calculate refund o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid calculate refund o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid calculate refund o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid calculate refund o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/calculateRefund][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK  %+v", 200, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/calculateRefund][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK  %+v", 200, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK) GetPayload() *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefaul
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefau
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid calculate refund default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid calculate refund default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid calculate refund default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid calculate refund default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid calculate refund default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/calculateRefund][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/calculateRefund][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefund default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundDefau
 	return nil
 }
 
-/*PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBody put customers customer fid subscriptions subscription fid calculate refund o k body
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBody put customers customer fid subscriptions subscription fid calculate refund o k body
 swagger:model PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBody
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBody struct {
@@ -201,6 +264,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBod
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOKBod
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("putCustomersCustomerFidSubscriptionsSubscriptionFidCalculateRefundOK" + "." + "data")
 			}
 			return err
 		}

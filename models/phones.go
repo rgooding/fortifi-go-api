@@ -51,6 +51,8 @@ func (m *Phones) validatePhones(formats strfmt.Registry) error {
 			if err := m.Phones[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("phones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("phones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *Phones) contextValidatePhones(ctx context.Context, formats strfmt.Regis
 			if err := m.Phones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("phones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("phones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidLifecycleStageOK() *PutCustomersCustomerFidLifecy
 	return &PutCustomersCustomerFidLifecycleStageOK{}
 }
 
-/* PutCustomersCustomerFidLifecycleStageOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidLifecycleStageOK describes a response with status code 200, with default header values.
 
 Customer lifecycle updated
 */
 type PutCustomersCustomerFidLifecycleStageOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid lifecycle stage o k response has a 2xx status code
+func (o *PutCustomersCustomerFidLifecycleStageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid lifecycle stage o k response has a 3xx status code
+func (o *PutCustomersCustomerFidLifecycleStageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid lifecycle stage o k response has a 4xx status code
+func (o *PutCustomersCustomerFidLifecycleStageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid lifecycle stage o k response has a 5xx status code
+func (o *PutCustomersCustomerFidLifecycleStageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid lifecycle stage o k response a status code equal to that given
+func (o *PutCustomersCustomerFidLifecycleStageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidLifecycleStageOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/lifecycleStage][%d] putCustomersCustomerFidLifecycleStageOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidLifecycleStageOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/lifecycleStage][%d] putCustomersCustomerFidLifecycleStageOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidLifecycleStageDefault(code int) *PutCustomersCust
 	}
 }
 
-/* PutCustomersCustomerFidLifecycleStageDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidLifecycleStageDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidLifecycleStageDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid lifecycle stage default response has a 2xx status code
+func (o *PutCustomersCustomerFidLifecycleStageDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid lifecycle stage default response has a 3xx status code
+func (o *PutCustomersCustomerFidLifecycleStageDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid lifecycle stage default response has a 4xx status code
+func (o *PutCustomersCustomerFidLifecycleStageDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid lifecycle stage default response has a 5xx status code
+func (o *PutCustomersCustomerFidLifecycleStageDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid lifecycle stage default response a status code equal to that given
+func (o *PutCustomersCustomerFidLifecycleStageDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidLifecycleStageDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/lifecycleStage][%d] PutCustomersCustomerFidLifecycleStage default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidLifecycleStageDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/lifecycleStage][%d] PutCustomersCustomerFidLifecycleStage default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidLifecycleStageDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

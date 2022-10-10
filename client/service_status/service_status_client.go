@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetServices retrieves all services
+GetServices retrieves all services
 */
 func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetServices(params *GetServicesParams, authInfo runtime.ClientA
 }
 
 /*
-  GetServicesServiceFidIncidents retrieves incidents for service within timeframe
+GetServicesServiceFidIncidents retrieves incidents for service within timeframe
 */
 func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesServiceFidIncidentsOK, error) {
 	// TODO: Validate the params before sending
@@ -114,7 +114,7 @@ func (a *Client) GetServicesServiceFidIncidents(params *GetServicesServiceFidInc
 }
 
 /*
-  GetServicesServiceFidIncidentsIncidentFidUpdates retrieves incident updates for incident
+GetServicesServiceFidIncidentsIncidentFidUpdates retrieves incident updates for incident
 */
 func (a *Client) GetServicesServiceFidIncidentsIncidentFidUpdates(params *GetServicesServiceFidIncidentsIncidentFidUpdatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetServicesServiceFidIncidentsIncidentFidUpdatesOK, error) {
 	// TODO: Validate the params before sending

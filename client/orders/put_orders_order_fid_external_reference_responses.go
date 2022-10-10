@@ -46,7 +46,8 @@ func NewPutOrdersOrderFidExternalReferenceOK() *PutOrdersOrderFidExternalReferen
 	return &PutOrdersOrderFidExternalReferenceOK{}
 }
 
-/* PutOrdersOrderFidExternalReferenceOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidExternalReferenceOK describes a response with status code 200, with default header values.
 
 External Reference Updated
 */
@@ -54,9 +55,39 @@ type PutOrdersOrderFidExternalReferenceOK struct {
 	Payload *models.Envelope
 }
 
+// IsSuccess returns true when this put orders order fid external reference o k response has a 2xx status code
+func (o *PutOrdersOrderFidExternalReferenceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid external reference o k response has a 3xx status code
+func (o *PutOrdersOrderFidExternalReferenceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid external reference o k response has a 4xx status code
+func (o *PutOrdersOrderFidExternalReferenceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid external reference o k response has a 5xx status code
+func (o *PutOrdersOrderFidExternalReferenceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid external reference o k response a status code equal to that given
+func (o *PutOrdersOrderFidExternalReferenceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidExternalReferenceOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/externalReference][%d] putOrdersOrderFidExternalReferenceOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidExternalReferenceOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/externalReference][%d] putOrdersOrderFidExternalReferenceOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidExternalReferenceOK) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -80,7 +111,8 @@ func NewPutOrdersOrderFidExternalReferenceDefault(code int) *PutOrdersOrderFidEx
 	}
 }
 
-/* PutOrdersOrderFidExternalReferenceDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidExternalReferenceDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -95,9 +127,39 @@ func (o *PutOrdersOrderFidExternalReferenceDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid external reference default response has a 2xx status code
+func (o *PutOrdersOrderFidExternalReferenceDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid external reference default response has a 3xx status code
+func (o *PutOrdersOrderFidExternalReferenceDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid external reference default response has a 4xx status code
+func (o *PutOrdersOrderFidExternalReferenceDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid external reference default response has a 5xx status code
+func (o *PutOrdersOrderFidExternalReferenceDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid external reference default response a status code equal to that given
+func (o *PutOrdersOrderFidExternalReferenceDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidExternalReferenceDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/externalReference][%d] PutOrdersOrderFidExternalReference default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidExternalReferenceDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/externalReference][%d] PutOrdersOrderFidExternalReference default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidExternalReferenceDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

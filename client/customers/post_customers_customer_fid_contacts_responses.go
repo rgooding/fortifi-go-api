@@ -49,14 +49,44 @@ func NewPostCustomersCustomerFidContactsOK() *PostCustomersCustomerFidContactsOK
 	return &PostCustomersCustomerFidContactsOK{}
 }
 
-/* PostCustomersCustomerFidContactsOK describes a response with status code 200, with default header values.
+/*
+PostCustomersCustomerFidContactsOK describes a response with status code 200, with default header values.
 
 FID of the new contact
 */
 type PostCustomersCustomerFidContactsOK struct {
 }
 
+// IsSuccess returns true when this post customers customer fid contacts o k response has a 2xx status code
+func (o *PostCustomersCustomerFidContactsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post customers customer fid contacts o k response has a 3xx status code
+func (o *PostCustomersCustomerFidContactsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post customers customer fid contacts o k response has a 4xx status code
+func (o *PostCustomersCustomerFidContactsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post customers customer fid contacts o k response has a 5xx status code
+func (o *PostCustomersCustomerFidContactsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post customers customer fid contacts o k response a status code equal to that given
+func (o *PostCustomersCustomerFidContactsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostCustomersCustomerFidContactsOK) Error() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/contacts][%d] postCustomersCustomerFidContactsOK ", 200)
+}
+
+func (o *PostCustomersCustomerFidContactsOK) String() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/contacts][%d] postCustomersCustomerFidContactsOK ", 200)
 }
 
@@ -72,7 +102,8 @@ func NewPostCustomersCustomerFidContactsDefault(code int) *PostCustomersCustomer
 	}
 }
 
-/* PostCustomersCustomerFidContactsDefault describes a response with status code -1, with default header values.
+/*
+PostCustomersCustomerFidContactsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -87,9 +118,39 @@ func (o *PostCustomersCustomerFidContactsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post customers customer fid contacts default response has a 2xx status code
+func (o *PostCustomersCustomerFidContactsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post customers customer fid contacts default response has a 3xx status code
+func (o *PostCustomersCustomerFidContactsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post customers customer fid contacts default response has a 4xx status code
+func (o *PostCustomersCustomerFidContactsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post customers customer fid contacts default response has a 5xx status code
+func (o *PostCustomersCustomerFidContactsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post customers customer fid contacts default response a status code equal to that given
+func (o *PostCustomersCustomerFidContactsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostCustomersCustomerFidContactsDefault) Error() string {
 	return fmt.Sprintf("[POST /customers/{customerFid}/contacts][%d] PostCustomersCustomerFidContacts default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostCustomersCustomerFidContactsDefault) String() string {
+	return fmt.Sprintf("[POST /customers/{customerFid}/contacts][%d] PostCustomersCustomerFidContacts default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostCustomersCustomerFidContactsDefault) GetPayload() *PostCustomersCustomerFidContactsDefaultBody {
 	return o.Payload
 }
@@ -106,7 +167,8 @@ func (o *PostCustomersCustomerFidContactsDefault) readResponse(response runtime.
 	return nil
 }
 
-/*PostCustomersCustomerFidContactsDefaultBody post customers customer fid contacts default body
+/*
+PostCustomersCustomerFidContactsDefaultBody post customers customer fid contacts default body
 swagger:model PostCustomersCustomerFidContactsDefaultBody
 */
 type PostCustomersCustomerFidContactsDefaultBody struct {
@@ -190,6 +252,8 @@ func (o *PostCustomersCustomerFidContactsDefaultBody) validateData(formats strfm
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("PostCustomersCustomerFidContacts default" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("PostCustomersCustomerFidContacts default" + "." + "data")
 			}
 			return err
 		}
@@ -223,6 +287,8 @@ func (o *PostCustomersCustomerFidContactsDefaultBody) contextValidateData(ctx co
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("PostCustomersCustomerFidContacts default" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("PostCustomersCustomerFidContacts default" + "." + "data")
 			}
 			return err
 		}

@@ -52,10 +52,12 @@ func NewPostCustomersCustomerFidNoteParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* PostCustomersCustomerFidNoteParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid note operation.
+/*
+PostCustomersCustomerFidNoteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid note operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidNoteParams struct {
 

@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetIntegrationsVerifyUser verifies a user
+GetIntegrationsVerifyUser verifies a user
 */
 func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIntegrationsVerifyUserOK, error) {
 	// TODO: Validate the params before sending
@@ -80,10 +80,9 @@ func (a *Client) GetIntegrationsVerifyUser(params *GetIntegrationsVerifyUserPara
 }
 
 /*
-  GetMe currents user
+GetMe currents user
 
-  Retrieve information about the current connected user (you)
-
+Retrieve information about the current connected user (you)
 */
 func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeOK, error) {
 	// TODO: Validate the params before sending
@@ -121,10 +120,9 @@ func (a *Client) GetMe(params *GetMeParams, authInfo runtime.ClientAuthInfoWrite
 }
 
 /*
-  GetOrganisation currents organisation
+GetOrganisation currents organisation
 
-  Retrieve information about the current organisation
-
+Retrieve information about the current organisation
 */
 func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganisationOK, error) {
 	// TODO: Validate the params before sending
@@ -162,10 +160,9 @@ func (a *Client) GetOrganisation(params *GetOrganisationParams, authInfo runtime
 }
 
 /*
-  GetServiceAuthToken verifies service account get access token
+GetServiceAuthToken verifies service account get access token
 
-  User service account credentials to retrieve an API token
-
+User service account credentials to retrieve an API token
 */
 func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams, opts ...ClientOption) (*GetServiceAuthTokenOK, error) {
 	// TODO: Validate the params before sending
@@ -202,10 +199,9 @@ func (a *Client) GetServiceAuthToken(params *GetServiceAuthTokenParams, opts ...
 }
 
 /*
-  GetVersion currents version
+GetVersion currents version
 
-  Retrieve the current version of the Fortifi api
-
+Retrieve the current version of the Fortifi api
 */
 func (a *Client) GetVersion(params *GetVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVersionOK, error) {
 	// TODO: Validate the params before sending

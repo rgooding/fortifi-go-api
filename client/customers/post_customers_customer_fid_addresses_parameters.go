@@ -54,10 +54,12 @@ func NewPostCustomersCustomerFidAddressesParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* PostCustomersCustomerFidAddressesParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid addresses operation.
+/*
+PostCustomersCustomerFidAddressesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid addresses operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidAddressesParams struct {
 

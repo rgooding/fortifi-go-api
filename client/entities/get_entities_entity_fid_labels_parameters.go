@@ -52,10 +52,12 @@ func NewGetEntitiesEntityFidLabelsParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetEntitiesEntityFidLabelsParams contains all the parameters to send to the API endpoint
-   for the get entities entity fid labels operation.
+/*
+GetEntitiesEntityFidLabelsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get entities entity fid labels operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEntitiesEntityFidLabelsParams struct {
 

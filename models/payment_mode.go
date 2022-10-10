@@ -20,8 +20,12 @@ import (
 type PaymentMode string
 
 func NewPaymentMode(value PaymentMode) *PaymentMode {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated PaymentMode.
+func (m PaymentMode) Pointer() *PaymentMode {
+	return &m
 }
 
 const (

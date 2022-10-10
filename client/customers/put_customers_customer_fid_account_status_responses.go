@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidAccountStatusOK() *PutCustomersCustomerFidAccount
 	return &PutCustomersCustomerFidAccountStatusOK{}
 }
 
-/* PutCustomersCustomerFidAccountStatusOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidAccountStatusOK describes a response with status code 200, with default header values.
 
 Customer Status Updated
 */
 type PutCustomersCustomerFidAccountStatusOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid account status o k response has a 2xx status code
+func (o *PutCustomersCustomerFidAccountStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid account status o k response has a 3xx status code
+func (o *PutCustomersCustomerFidAccountStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid account status o k response has a 4xx status code
+func (o *PutCustomersCustomerFidAccountStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid account status o k response has a 5xx status code
+func (o *PutCustomersCustomerFidAccountStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid account status o k response a status code equal to that given
+func (o *PutCustomersCustomerFidAccountStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidAccountStatusOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/accountStatus][%d] putCustomersCustomerFidAccountStatusOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidAccountStatusOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/accountStatus][%d] putCustomersCustomerFidAccountStatusOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidAccountStatusDefault(code int) *PutCustomersCusto
 	}
 }
 
-/* PutCustomersCustomerFidAccountStatusDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidAccountStatusDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidAccountStatusDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid account status default response has a 2xx status code
+func (o *PutCustomersCustomerFidAccountStatusDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid account status default response has a 3xx status code
+func (o *PutCustomersCustomerFidAccountStatusDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid account status default response has a 4xx status code
+func (o *PutCustomersCustomerFidAccountStatusDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid account status default response has a 5xx status code
+func (o *PutCustomersCustomerFidAccountStatusDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid account status default response a status code equal to that given
+func (o *PutCustomersCustomerFidAccountStatusDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidAccountStatusDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/accountStatus][%d] PutCustomersCustomerFidAccountStatus default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidAccountStatusDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/accountStatus][%d] PutCustomersCustomerFidAccountStatus default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidAccountStatusDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

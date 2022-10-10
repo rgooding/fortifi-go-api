@@ -49,7 +49,8 @@ func NewGetProductsProductFidSkusOK() *GetProductsProductFidSkusOK {
 	return &GetProductsProductFidSkusOK{}
 }
 
-/* GetProductsProductFidSkusOK describes a response with status code 200, with default header values.
+/*
+GetProductsProductFidSkusOK describes a response with status code 200, with default header values.
 
 List of product skus
 */
@@ -57,9 +58,39 @@ type GetProductsProductFidSkusOK struct {
 	Payload *GetProductsProductFidSkusOKBody
 }
 
+// IsSuccess returns true when this get products product fid skus o k response has a 2xx status code
+func (o *GetProductsProductFidSkusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get products product fid skus o k response has a 3xx status code
+func (o *GetProductsProductFidSkusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get products product fid skus o k response has a 4xx status code
+func (o *GetProductsProductFidSkusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get products product fid skus o k response has a 5xx status code
+func (o *GetProductsProductFidSkusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get products product fid skus o k response a status code equal to that given
+func (o *GetProductsProductFidSkusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProductsProductFidSkusOK) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/skus][%d] getProductsProductFidSkusOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProductsProductFidSkusOK) String() string {
+	return fmt.Sprintf("[GET /products/{productFid}/skus][%d] getProductsProductFidSkusOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProductsProductFidSkusOK) GetPayload() *GetProductsProductFidSkusOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetProductsProductFidSkusDefault(code int) *GetProductsProductFidSkusDef
 	}
 }
 
-/* GetProductsProductFidSkusDefault describes a response with status code -1, with default header values.
+/*
+GetProductsProductFidSkusDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetProductsProductFidSkusDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get products product fid skus default response has a 2xx status code
+func (o *GetProductsProductFidSkusDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get products product fid skus default response has a 3xx status code
+func (o *GetProductsProductFidSkusDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get products product fid skus default response has a 4xx status code
+func (o *GetProductsProductFidSkusDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get products product fid skus default response has a 5xx status code
+func (o *GetProductsProductFidSkusDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get products product fid skus default response a status code equal to that given
+func (o *GetProductsProductFidSkusDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetProductsProductFidSkusDefault) Error() string {
 	return fmt.Sprintf("[GET /products/{productFid}/skus][%d] GetProductsProductFidSkus default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetProductsProductFidSkusDefault) String() string {
+	return fmt.Sprintf("[GET /products/{productFid}/skus][%d] GetProductsProductFidSkus default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetProductsProductFidSkusDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetProductsProductFidSkusDefault) readResponse(response runtime.ClientR
 	return nil
 }
 
-/*GetProductsProductFidSkusOKBody get products product fid skus o k body
+/*
+GetProductsProductFidSkusOKBody get products product fid skus o k body
 swagger:model GetProductsProductFidSkusOKBody
 */
 type GetProductsProductFidSkusOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetProductsProductFidSkusOKBody) validateData(formats strfmt.Registry) 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsProductFidSkusOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsProductFidSkusOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetProductsProductFidSkusOKBody) contextValidateData(ctx context.Contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getProductsProductFidSkusOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getProductsProductFidSkusOK" + "." + "data")
 			}
 			return err
 		}

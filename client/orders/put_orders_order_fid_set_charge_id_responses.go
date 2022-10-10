@@ -52,7 +52,8 @@ func NewPutOrdersOrderFidSetChargeIDOK() *PutOrdersOrderFidSetChargeIDOK {
 	return &PutOrdersOrderFidSetChargeIDOK{}
 }
 
-/* PutOrdersOrderFidSetChargeIDOK describes a response with status code 200, with default header values.
+/*
+PutOrdersOrderFidSetChargeIDOK describes a response with status code 200, with default header values.
 
 Charge ID Accepted
 */
@@ -60,9 +61,39 @@ type PutOrdersOrderFidSetChargeIDOK struct {
 	Payload *models.Envelope
 }
 
+// IsSuccess returns true when this put orders order fid set charge Id o k response has a 2xx status code
+func (o *PutOrdersOrderFidSetChargeIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put orders order fid set charge Id o k response has a 3xx status code
+func (o *PutOrdersOrderFidSetChargeIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid set charge Id o k response has a 4xx status code
+func (o *PutOrdersOrderFidSetChargeIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put orders order fid set charge Id o k response has a 5xx status code
+func (o *PutOrdersOrderFidSetChargeIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid set charge Id o k response a status code equal to that given
+func (o *PutOrdersOrderFidSetChargeIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutOrdersOrderFidSetChargeIDOK) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] putOrdersOrderFidSetChargeIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PutOrdersOrderFidSetChargeIDOK) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] putOrdersOrderFidSetChargeIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PutOrdersOrderFidSetChargeIDOK) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -84,7 +115,8 @@ func NewPutOrdersOrderFidSetChargeIDBadRequest() *PutOrdersOrderFidSetChargeIDBa
 	return &PutOrdersOrderFidSetChargeIDBadRequest{}
 }
 
-/* PutOrdersOrderFidSetChargeIDBadRequest describes a response with status code 400, with default header values.
+/*
+PutOrdersOrderFidSetChargeIDBadRequest describes a response with status code 400, with default header values.
 
 Invalid Charge ID
 */
@@ -92,9 +124,39 @@ type PutOrdersOrderFidSetChargeIDBadRequest struct {
 	Payload *models.Envelope
 }
 
+// IsSuccess returns true when this put orders order fid set charge Id bad request response has a 2xx status code
+func (o *PutOrdersOrderFidSetChargeIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this put orders order fid set charge Id bad request response has a 3xx status code
+func (o *PutOrdersOrderFidSetChargeIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put orders order fid set charge Id bad request response has a 4xx status code
+func (o *PutOrdersOrderFidSetChargeIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this put orders order fid set charge Id bad request response has a 5xx status code
+func (o *PutOrdersOrderFidSetChargeIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put orders order fid set charge Id bad request response a status code equal to that given
+func (o *PutOrdersOrderFidSetChargeIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PutOrdersOrderFidSetChargeIDBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] putOrdersOrderFidSetChargeIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PutOrdersOrderFidSetChargeIDBadRequest) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] putOrdersOrderFidSetChargeIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PutOrdersOrderFidSetChargeIDBadRequest) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -118,7 +180,8 @@ func NewPutOrdersOrderFidSetChargeIDDefault(code int) *PutOrdersOrderFidSetCharg
 	}
 }
 
-/* PutOrdersOrderFidSetChargeIDDefault describes a response with status code -1, with default header values.
+/*
+PutOrdersOrderFidSetChargeIDDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -133,9 +196,39 @@ func (o *PutOrdersOrderFidSetChargeIDDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put orders order fid set charge ID default response has a 2xx status code
+func (o *PutOrdersOrderFidSetChargeIDDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put orders order fid set charge ID default response has a 3xx status code
+func (o *PutOrdersOrderFidSetChargeIDDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put orders order fid set charge ID default response has a 4xx status code
+func (o *PutOrdersOrderFidSetChargeIDDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put orders order fid set charge ID default response has a 5xx status code
+func (o *PutOrdersOrderFidSetChargeIDDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put orders order fid set charge ID default response a status code equal to that given
+func (o *PutOrdersOrderFidSetChargeIDDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutOrdersOrderFidSetChargeIDDefault) Error() string {
 	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] PutOrdersOrderFidSetChargeID default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutOrdersOrderFidSetChargeIDDefault) String() string {
+	return fmt.Sprintf("[PUT /orders/{orderFid}/setChargeId][%d] PutOrdersOrderFidSetChargeID default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutOrdersOrderFidSetChargeIDDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

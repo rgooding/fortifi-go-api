@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidVipParamsWithHTTPClient(client *http.Client) *Put
 	}
 }
 
-/* PutCustomersCustomerFidVipParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid vip operation.
+/*
+PutCustomersCustomerFidVipParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid vip operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidVipParams struct {
 

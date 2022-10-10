@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParamsWith
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid renewal mode operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid renewal mode operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidRenewalModeParams struct {
 

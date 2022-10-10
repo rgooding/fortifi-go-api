@@ -103,6 +103,8 @@ func (m *ChatSessions) validateChatSessions(formats strfmt.Registry) error {
 			if err := m.ChatSessions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("chatSessions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("chatSessions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *ChatSessions) contextValidateChatSessions(ctx context.Context, formats 
 			if err := m.ChatSessions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("chatSessions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("chatSessions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -49,7 +49,8 @@ func NewGetBrandsOK() *GetBrandsOK {
 	return &GetBrandsOK{}
 }
 
-/* GetBrandsOK describes a response with status code 200, with default header values.
+/*
+GetBrandsOK describes a response with status code 200, with default header values.
 
 Brand Information
 */
@@ -57,9 +58,39 @@ type GetBrandsOK struct {
 	Payload *GetBrandsOKBody
 }
 
+// IsSuccess returns true when this get brands o k response has a 2xx status code
+func (o *GetBrandsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get brands o k response has a 3xx status code
+func (o *GetBrandsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get brands o k response has a 4xx status code
+func (o *GetBrandsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get brands o k response has a 5xx status code
+func (o *GetBrandsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get brands o k response a status code equal to that given
+func (o *GetBrandsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBrandsOK) Error() string {
 	return fmt.Sprintf("[GET /brands][%d] getBrandsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBrandsOK) String() string {
+	return fmt.Sprintf("[GET /brands][%d] getBrandsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBrandsOK) GetPayload() *GetBrandsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetBrandsDefault(code int) *GetBrandsDefault {
 	}
 }
 
-/* GetBrandsDefault describes a response with status code -1, with default header values.
+/*
+GetBrandsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetBrandsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get brands default response has a 2xx status code
+func (o *GetBrandsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get brands default response has a 3xx status code
+func (o *GetBrandsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get brands default response has a 4xx status code
+func (o *GetBrandsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get brands default response has a 5xx status code
+func (o *GetBrandsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get brands default response a status code equal to that given
+func (o *GetBrandsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetBrandsDefault) Error() string {
 	return fmt.Sprintf("[GET /brands][%d] getBrands default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetBrandsDefault) String() string {
+	return fmt.Sprintf("[GET /brands][%d] getBrands default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetBrandsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetBrandsDefault) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-/*GetBrandsOKBody get brands o k body
+/*
+GetBrandsOKBody get brands o k body
 swagger:model GetBrandsOKBody
 */
 type GetBrandsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetBrandsOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getBrandsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getBrandsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetBrandsOKBody) contextValidateData(ctx context.Context, formats strfm
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getBrandsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getBrandsOK" + "." + "data")
 			}
 			return err
 		}

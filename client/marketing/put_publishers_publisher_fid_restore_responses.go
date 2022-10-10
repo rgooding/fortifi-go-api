@@ -46,14 +46,44 @@ func NewPutPublishersPublisherFidRestoreOK() *PutPublishersPublisherFidRestoreOK
 	return &PutPublishersPublisherFidRestoreOK{}
 }
 
-/* PutPublishersPublisherFidRestoreOK describes a response with status code 200, with default header values.
+/*
+PutPublishersPublisherFidRestoreOK describes a response with status code 200, with default header values.
 
 Publisher restored
 */
 type PutPublishersPublisherFidRestoreOK struct {
 }
 
+// IsSuccess returns true when this put publishers publisher fid restore o k response has a 2xx status code
+func (o *PutPublishersPublisherFidRestoreOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put publishers publisher fid restore o k response has a 3xx status code
+func (o *PutPublishersPublisherFidRestoreOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put publishers publisher fid restore o k response has a 4xx status code
+func (o *PutPublishersPublisherFidRestoreOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put publishers publisher fid restore o k response has a 5xx status code
+func (o *PutPublishersPublisherFidRestoreOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put publishers publisher fid restore o k response a status code equal to that given
+func (o *PutPublishersPublisherFidRestoreOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutPublishersPublisherFidRestoreOK) Error() string {
+	return fmt.Sprintf("[PUT /publishers/{publisherFid}/restore][%d] putPublishersPublisherFidRestoreOK ", 200)
+}
+
+func (o *PutPublishersPublisherFidRestoreOK) String() string {
 	return fmt.Sprintf("[PUT /publishers/{publisherFid}/restore][%d] putPublishersPublisherFidRestoreOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutPublishersPublisherFidRestoreDefault(code int) *PutPublishersPublishe
 	}
 }
 
-/* PutPublishersPublisherFidRestoreDefault describes a response with status code -1, with default header values.
+/*
+PutPublishersPublisherFidRestoreDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutPublishersPublisherFidRestoreDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put publishers publisher fid restore default response has a 2xx status code
+func (o *PutPublishersPublisherFidRestoreDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put publishers publisher fid restore default response has a 3xx status code
+func (o *PutPublishersPublisherFidRestoreDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put publishers publisher fid restore default response has a 4xx status code
+func (o *PutPublishersPublisherFidRestoreDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put publishers publisher fid restore default response has a 5xx status code
+func (o *PutPublishersPublisherFidRestoreDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put publishers publisher fid restore default response a status code equal to that given
+func (o *PutPublishersPublisherFidRestoreDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutPublishersPublisherFidRestoreDefault) Error() string {
 	return fmt.Sprintf("[PUT /publishers/{publisherFid}/restore][%d] PutPublishersPublisherFidRestore default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutPublishersPublisherFidRestoreDefault) String() string {
+	return fmt.Sprintf("[PUT /publishers/{publisherFid}/restore][%d] PutPublishersPublisherFidRestore default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutPublishersPublisherFidRestoreDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

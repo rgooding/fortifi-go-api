@@ -52,10 +52,12 @@ func NewGetProductsProductFidPricesParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetProductsProductFidPricesParams contains all the parameters to send to the API endpoint
-   for the get products product fid prices operation.
+/*
+GetProductsProductFidPricesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get products product fid prices operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProductsProductFidPricesParams struct {
 

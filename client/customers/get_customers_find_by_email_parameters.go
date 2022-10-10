@@ -53,10 +53,12 @@ func NewGetCustomersFindByEmailParamsWithHTTPClient(client *http.Client) *GetCus
 	}
 }
 
-/* GetCustomersFindByEmailParams contains all the parameters to send to the API endpoint
-   for the get customers find by email operation.
+/*
+GetCustomersFindByEmailParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get customers find by email operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomersFindByEmailParams struct {
 

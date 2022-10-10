@@ -54,10 +54,12 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParamsWithHTT
 	}
 }
 
-/* PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams contains all the parameters to send to the API endpoint
-   for the put entities entity fid properties counters property name decrement operation.
+/*
+PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put entities entity fid properties counters property name decrement operation.
+
+	Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementParams struct {
 

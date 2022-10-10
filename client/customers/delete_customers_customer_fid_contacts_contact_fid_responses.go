@@ -46,14 +46,44 @@ func NewDeleteCustomersCustomerFidContactsContactFidOK() *DeleteCustomersCustome
 	return &DeleteCustomersCustomerFidContactsContactFidOK{}
 }
 
-/* DeleteCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
+/*
+DeleteCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
 
 Contact removed
 */
 type DeleteCustomersCustomerFidContactsContactFidOK struct {
 }
 
+// IsSuccess returns true when this delete customers customer fid contacts contact fid o k response has a 2xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete customers customer fid contacts contact fid o k response has a 3xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete customers customer fid contacts contact fid o k response has a 4xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete customers customer fid contacts contact fid o k response has a 5xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete customers customer fid contacts contact fid o k response a status code equal to that given
+func (o *DeleteCustomersCustomerFidContactsContactFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteCustomersCustomerFidContactsContactFidOK) Error() string {
+	return fmt.Sprintf("[DELETE /customers/{customerFid}/contacts/{contactFid}][%d] deleteCustomersCustomerFidContactsContactFidOK ", 200)
+}
+
+func (o *DeleteCustomersCustomerFidContactsContactFidOK) String() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/contacts/{contactFid}][%d] deleteCustomersCustomerFidContactsContactFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteCustomersCustomerFidContactsContactFidDefault(code int) *DeleteCus
 	}
 }
 
-/* DeleteCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
+/*
+DeleteCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteCustomersCustomerFidContactsContactFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete customers customer fid contacts contact fid default response has a 2xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete customers customer fid contacts contact fid default response has a 3xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete customers customer fid contacts contact fid default response has a 4xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete customers customer fid contacts contact fid default response has a 5xx status code
+func (o *DeleteCustomersCustomerFidContactsContactFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete customers customer fid contacts contact fid default response a status code equal to that given
+func (o *DeleteCustomersCustomerFidContactsContactFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteCustomersCustomerFidContactsContactFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}/contacts/{contactFid}][%d] DeleteCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteCustomersCustomerFidContactsContactFidDefault) String() string {
+	return fmt.Sprintf("[DELETE /customers/{customerFid}/contacts/{contactFid}][%d] DeleteCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteCustomersCustomerFidContactsContactFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

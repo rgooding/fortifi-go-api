@@ -46,14 +46,44 @@ func NewPutContactsEmailsEmailAddressUnsubscribeOK() *PutContactsEmailsEmailAddr
 	return &PutContactsEmailsEmailAddressUnsubscribeOK{}
 }
 
-/* PutContactsEmailsEmailAddressUnsubscribeOK describes a response with status code 200, with default header values.
+/*
+PutContactsEmailsEmailAddressUnsubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Unsubscribed
 */
 type PutContactsEmailsEmailAddressUnsubscribeOK struct {
 }
 
+// IsSuccess returns true when this put contacts emails email address unsubscribe o k response has a 2xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put contacts emails email address unsubscribe o k response has a 3xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put contacts emails email address unsubscribe o k response has a 4xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put contacts emails email address unsubscribe o k response has a 5xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put contacts emails email address unsubscribe o k response a status code equal to that given
+func (o *PutContactsEmailsEmailAddressUnsubscribeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutContactsEmailsEmailAddressUnsubscribeOK) Error() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/unsubscribe][%d] putContactsEmailsEmailAddressUnsubscribeOK ", 200)
+}
+
+func (o *PutContactsEmailsEmailAddressUnsubscribeOK) String() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/unsubscribe][%d] putContactsEmailsEmailAddressUnsubscribeOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutContactsEmailsEmailAddressUnsubscribeDefault(code int) *PutContactsEm
 	}
 }
 
-/* PutContactsEmailsEmailAddressUnsubscribeDefault describes a response with status code -1, with default header values.
+/*
+PutContactsEmailsEmailAddressUnsubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put contacts emails email address unsubscribe default response has a 2xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put contacts emails email address unsubscribe default response has a 3xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put contacts emails email address unsubscribe default response has a 4xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put contacts emails email address unsubscribe default response has a 5xx status code
+func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put contacts emails email address unsubscribe default response a status code equal to that given
+func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/unsubscribe][%d] PutContactsEmailsEmailAddressUnsubscribe default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) String() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/unsubscribe][%d] PutContactsEmailsEmailAddressUnsubscribe default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutContactsEmailsEmailAddressUnsubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

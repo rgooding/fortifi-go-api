@@ -39,6 +39,9 @@ type PaymentMethodResponse struct {
 	// identify count
 	IdentifyCount float64 `json:"identifyCount,omitempty"`
 
+	// is pending
+	IsPending bool `json:"isPending,omitempty"`
+
 	// is primary
 	IsPrimary bool `json:"isPrimary,omitempty"`
 
@@ -113,6 +116,8 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 
 		IdentifyCount float64 `json:"identifyCount,omitempty"`
 
+		IsPending bool `json:"isPending,omitempty"`
+
 		IsPrimary bool `json:"isPrimary,omitempty"`
 
 		IssueNumber string `json:"issueNumber,omitempty"`
@@ -158,6 +163,8 @@ func (m *PaymentMethodResponse) UnmarshalJSON(raw []byte) error {
 	m.ExternalReference = dataAO1.ExternalReference
 
 	m.IdentifyCount = dataAO1.IdentifyCount
+
+	m.IsPending = dataAO1.IsPending
 
 	m.IsPrimary = dataAO1.IsPrimary
 
@@ -214,6 +221,8 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 
 		IdentifyCount float64 `json:"identifyCount,omitempty"`
 
+		IsPending bool `json:"isPending,omitempty"`
+
 		IsPrimary bool `json:"isPrimary,omitempty"`
 
 		IssueNumber string `json:"issueNumber,omitempty"`
@@ -256,6 +265,8 @@ func (m PaymentMethodResponse) MarshalJSON() ([]byte, error) {
 	dataAO1.ExternalReference = m.ExternalReference
 
 	dataAO1.IdentifyCount = m.IdentifyCount
+
+	dataAO1.IsPending = m.IsPending
 
 	dataAO1.IsPrimary = m.IsPrimary
 

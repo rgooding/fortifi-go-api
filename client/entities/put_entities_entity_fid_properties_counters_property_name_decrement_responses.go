@@ -46,14 +46,44 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK() *PutEnti
 	return &PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK{}
 }
 
-/* PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK describes a response with status code 200, with default header values.
+/*
+PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK describes a response with status code 200, with default header values.
 
 Counter Decremented
 */
 type PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK struct {
 }
 
+// IsSuccess returns true when this put entities entity fid properties counters property name decrement o k response has a 2xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put entities entity fid properties counters property name decrement o k response has a 3xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put entities entity fid properties counters property name decrement o k response has a 4xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put entities entity fid properties counters property name decrement o k response has a 5xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put entities entity fid properties counters property name decrement o k response a status code equal to that given
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) Error() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/decrement][%d] putEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK ", 200)
+}
+
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK) String() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/decrement][%d] putEntitiesEntityFidPropertiesCountersPropertyNameDecrementOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault(code 
 	}
 }
 
-/* PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault describes a response with status code -1, with default header values.
+/*
+PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) Cod
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put entities entity fid properties counters property name decrement default response has a 2xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put entities entity fid properties counters property name decrement default response has a 3xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put entities entity fid properties counters property name decrement default response has a 4xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put entities entity fid properties counters property name decrement default response has a 5xx status code
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put entities entity fid properties counters property name decrement default response a status code equal to that given
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/decrement][%d] PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) String() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/counters/{propertyName}/decrement][%d] PutEntitiesEntityFidPropertiesCountersPropertyNameDecrement default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutEntitiesEntityFidPropertiesCountersPropertyNameDecrementDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

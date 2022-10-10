@@ -19,14 +19,44 @@ import (
 type Customer struct {
 	Fid
 
+	// account manager fid
+	AccountManagerFid string `json:"accountManagerFid,omitempty"`
+
+	// account status
+	AccountStatus string `json:"accountStatus,omitempty"`
+
+	// account type
+	AccountType string `json:"accountType,omitempty"`
+
+	// affiliate fid
+	AffiliateFid string `json:"affiliateFid,omitempty"`
+
+	// affiliate type
+	AffiliateType string `json:"affiliateType,omitempty"`
+
 	// billing type
 	BillingType string `json:"billingType,omitempty"`
+
+	// campaign fid
+	CampaignFid string `json:"campaignFid,omitempty"`
+
+	// city
+	City string `json:"city,omitempty"`
 
 	// company fid
 	CompanyFid string `json:"companyFid,omitempty"`
 
 	// company number
 	CompanyNumber string `json:"companyNumber,omitempty"`
+
+	// continent
+	Continent string `json:"continent,omitempty"`
+
+	// country
+	Country string `json:"country,omitempty"`
+
+	// county
+	County string `json:"county,omitempty"`
 
 	// currency
 	Currency string `json:"currency,omitempty"`
@@ -46,6 +76,9 @@ type Customer struct {
 	// flags
 	Flags *CustomerFlags `json:"flags,omitempty"`
 
+	// foundation fid
+	FoundationFid string `json:"foundationFid,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
@@ -55,6 +88,9 @@ type Customer struct {
 	// last name
 	LastName string `json:"lastName,omitempty"`
 
+	// lifecycle stage
+	LifecycleStage string `json:"lifecycleStage,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
@@ -63,6 +99,21 @@ type Customer struct {
 
 	// phone number
 	PhoneNumber string `json:"phoneNumber,omitempty"`
+
+	// postal
+	Postal string `json:"postal,omitempty"`
+
+	// sid1
+	Sid1 string `json:"sid1,omitempty"`
+
+	// sid2
+	Sid2 string `json:"sid2,omitempty"`
+
+	// sid3
+	Sid3 string `json:"sid3,omitempty"`
+
+	// subscription type
+	SubscriptionType string `json:"subscriptionType,omitempty"`
 
 	// tax number
 	TaxNumber string `json:"taxNumber,omitempty"`
@@ -82,11 +133,31 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 	// AO1
 	var dataAO1 struct {
+		AccountManagerFid string `json:"accountManagerFid,omitempty"`
+
+		AccountStatus string `json:"accountStatus,omitempty"`
+
+		AccountType string `json:"accountType,omitempty"`
+
+		AffiliateFid string `json:"affiliateFid,omitempty"`
+
+		AffiliateType string `json:"affiliateType,omitempty"`
+
 		BillingType string `json:"billingType,omitempty"`
+
+		CampaignFid string `json:"campaignFid,omitempty"`
+
+		City string `json:"city,omitempty"`
 
 		CompanyFid string `json:"companyFid,omitempty"`
 
 		CompanyNumber string `json:"companyNumber,omitempty"`
+
+		Continent string `json:"continent,omitempty"`
+
+		Country string `json:"country,omitempty"`
+
+		County string `json:"county,omitempty"`
 
 		Currency string `json:"currency,omitempty"`
 
@@ -100,17 +171,31 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 		Flags *CustomerFlags `json:"flags,omitempty"`
 
+		FoundationFid string `json:"foundationFid,omitempty"`
+
 		ID string `json:"id,omitempty"`
 
 		KnownIP string `json:"knownIP,omitempty"`
 
 		LastName string `json:"lastName,omitempty"`
 
+		LifecycleStage string `json:"lifecycleStage,omitempty"`
+
 		Name string `json:"name,omitempty"`
 
 		Phone string `json:"phone,omitempty"`
 
 		PhoneNumber string `json:"phoneNumber,omitempty"`
+
+		Postal string `json:"postal,omitempty"`
+
+		Sid1 string `json:"sid1,omitempty"`
+
+		Sid2 string `json:"sid2,omitempty"`
+
+		Sid3 string `json:"sid3,omitempty"`
+
+		SubscriptionType string `json:"subscriptionType,omitempty"`
 
 		TaxNumber string `json:"taxNumber,omitempty"`
 
@@ -120,11 +205,31 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 		return err
 	}
 
+	m.AccountManagerFid = dataAO1.AccountManagerFid
+
+	m.AccountStatus = dataAO1.AccountStatus
+
+	m.AccountType = dataAO1.AccountType
+
+	m.AffiliateFid = dataAO1.AffiliateFid
+
+	m.AffiliateType = dataAO1.AffiliateType
+
 	m.BillingType = dataAO1.BillingType
+
+	m.CampaignFid = dataAO1.CampaignFid
+
+	m.City = dataAO1.City
 
 	m.CompanyFid = dataAO1.CompanyFid
 
 	m.CompanyNumber = dataAO1.CompanyNumber
+
+	m.Continent = dataAO1.Continent
+
+	m.Country = dataAO1.Country
+
+	m.County = dataAO1.County
 
 	m.Currency = dataAO1.Currency
 
@@ -138,17 +243,31 @@ func (m *Customer) UnmarshalJSON(raw []byte) error {
 
 	m.Flags = dataAO1.Flags
 
+	m.FoundationFid = dataAO1.FoundationFid
+
 	m.ID = dataAO1.ID
 
 	m.KnownIP = dataAO1.KnownIP
 
 	m.LastName = dataAO1.LastName
 
+	m.LifecycleStage = dataAO1.LifecycleStage
+
 	m.Name = dataAO1.Name
 
 	m.Phone = dataAO1.Phone
 
 	m.PhoneNumber = dataAO1.PhoneNumber
+
+	m.Postal = dataAO1.Postal
+
+	m.Sid1 = dataAO1.Sid1
+
+	m.Sid2 = dataAO1.Sid2
+
+	m.Sid3 = dataAO1.Sid3
+
+	m.SubscriptionType = dataAO1.SubscriptionType
 
 	m.TaxNumber = dataAO1.TaxNumber
 
@@ -167,11 +286,31 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 	var dataAO1 struct {
+		AccountManagerFid string `json:"accountManagerFid,omitempty"`
+
+		AccountStatus string `json:"accountStatus,omitempty"`
+
+		AccountType string `json:"accountType,omitempty"`
+
+		AffiliateFid string `json:"affiliateFid,omitempty"`
+
+		AffiliateType string `json:"affiliateType,omitempty"`
+
 		BillingType string `json:"billingType,omitempty"`
+
+		CampaignFid string `json:"campaignFid,omitempty"`
+
+		City string `json:"city,omitempty"`
 
 		CompanyFid string `json:"companyFid,omitempty"`
 
 		CompanyNumber string `json:"companyNumber,omitempty"`
+
+		Continent string `json:"continent,omitempty"`
+
+		Country string `json:"country,omitempty"`
+
+		County string `json:"county,omitempty"`
 
 		Currency string `json:"currency,omitempty"`
 
@@ -185,11 +324,15 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 		Flags *CustomerFlags `json:"flags,omitempty"`
 
+		FoundationFid string `json:"foundationFid,omitempty"`
+
 		ID string `json:"id,omitempty"`
 
 		KnownIP string `json:"knownIP,omitempty"`
 
 		LastName string `json:"lastName,omitempty"`
+
+		LifecycleStage string `json:"lifecycleStage,omitempty"`
 
 		Name string `json:"name,omitempty"`
 
@@ -197,16 +340,46 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 		PhoneNumber string `json:"phoneNumber,omitempty"`
 
+		Postal string `json:"postal,omitempty"`
+
+		Sid1 string `json:"sid1,omitempty"`
+
+		Sid2 string `json:"sid2,omitempty"`
+
+		Sid3 string `json:"sid3,omitempty"`
+
+		SubscriptionType string `json:"subscriptionType,omitempty"`
+
 		TaxNumber string `json:"taxNumber,omitempty"`
 
 		Timezone string `json:"timezone,omitempty"`
 	}
 
+	dataAO1.AccountManagerFid = m.AccountManagerFid
+
+	dataAO1.AccountStatus = m.AccountStatus
+
+	dataAO1.AccountType = m.AccountType
+
+	dataAO1.AffiliateFid = m.AffiliateFid
+
+	dataAO1.AffiliateType = m.AffiliateType
+
 	dataAO1.BillingType = m.BillingType
+
+	dataAO1.CampaignFid = m.CampaignFid
+
+	dataAO1.City = m.City
 
 	dataAO1.CompanyFid = m.CompanyFid
 
 	dataAO1.CompanyNumber = m.CompanyNumber
+
+	dataAO1.Continent = m.Continent
+
+	dataAO1.Country = m.Country
+
+	dataAO1.County = m.County
 
 	dataAO1.Currency = m.Currency
 
@@ -220,17 +393,31 @@ func (m Customer) MarshalJSON() ([]byte, error) {
 
 	dataAO1.Flags = m.Flags
 
+	dataAO1.FoundationFid = m.FoundationFid
+
 	dataAO1.ID = m.ID
 
 	dataAO1.KnownIP = m.KnownIP
 
 	dataAO1.LastName = m.LastName
 
+	dataAO1.LifecycleStage = m.LifecycleStage
+
 	dataAO1.Name = m.Name
 
 	dataAO1.Phone = m.Phone
 
 	dataAO1.PhoneNumber = m.PhoneNumber
+
+	dataAO1.Postal = m.Postal
+
+	dataAO1.Sid1 = m.Sid1
+
+	dataAO1.Sid2 = m.Sid2
+
+	dataAO1.Sid3 = m.Sid3
+
+	dataAO1.SubscriptionType = m.SubscriptionType
 
 	dataAO1.TaxNumber = m.TaxNumber
 
@@ -273,6 +460,8 @@ func (m *Customer) validateFlags(formats strfmt.Registry) error {
 		if err := m.Flags.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flags")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("flags")
 			}
 			return err
 		}
@@ -306,6 +495,8 @@ func (m *Customer) contextValidateFlags(ctx context.Context, formats strfmt.Regi
 		if err := m.Flags.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("flags")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("flags")
 			}
 			return err
 		}

@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidPaymentsPaymentFidRefundOK() *PutCustomersCustome
 	return &PutCustomersCustomerFidPaymentsPaymentFidRefundOK{}
 }
 
-/* PutCustomersCustomerFidPaymentsPaymentFidRefundOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidPaymentsPaymentFidRefundOK describes a response with status code 200, with default header values.
 
 Payment Refunded
 */
 type PutCustomersCustomerFidPaymentsPaymentFidRefundOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid payments payment fid refund o k response has a 2xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid payments payment fid refund o k response has a 3xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid payments payment fid refund o k response has a 4xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid payments payment fid refund o k response has a 5xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid payments payment fid refund o k response a status code equal to that given
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/payments/{paymentFid}/refund][%d] putCustomersCustomerFidPaymentsPaymentFidRefundOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/payments/{paymentFid}/refund][%d] putCustomersCustomerFidPaymentsPaymentFidRefundOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidPaymentsPaymentFidRefundDefault(code int) *PutCus
 	}
 }
 
-/* PutCustomersCustomerFidPaymentsPaymentFidRefundDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidPaymentsPaymentFidRefundDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid payments payment fid refund default response has a 2xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid payments payment fid refund default response has a 3xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid payments payment fid refund default response has a 4xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid payments payment fid refund default response has a 5xx status code
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid payments payment fid refund default response a status code equal to that given
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/payments/{paymentFid}/refund][%d] PutCustomersCustomerFidPaymentsPaymentFidRefund default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/payments/{paymentFid}/refund][%d] PutCustomersCustomerFidPaymentsPaymentFidRefund default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidPaymentsPaymentFidRefundDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

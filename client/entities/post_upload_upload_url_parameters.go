@@ -54,10 +54,12 @@ func NewPostUploadUploadURLParamsWithHTTPClient(client *http.Client) *PostUpload
 	}
 }
 
-/* PostUploadUploadURLParams contains all the parameters to send to the API endpoint
-   for the post upload upload URL operation.
+/*
+PostUploadUploadURLParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post upload upload URL operation.
+
+	Typically these are written to a http.Request.
 */
 type PostUploadUploadURLParams struct {
 

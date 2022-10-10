@@ -52,10 +52,12 @@ func NewPutEntitiesEntityFidLabelsAssignParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* PutEntitiesEntityFidLabelsAssignParams contains all the parameters to send to the API endpoint
-   for the put entities entity fid labels assign operation.
+/*
+PutEntitiesEntityFidLabelsAssignParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put entities entity fid labels assign operation.
+
+	Typically these are written to a http.Request.
 */
 type PutEntitiesEntityFidLabelsAssignParams struct {
 

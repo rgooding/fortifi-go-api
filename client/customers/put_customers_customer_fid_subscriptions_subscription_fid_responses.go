@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidOK() *PutCustomersCus
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidOK describes a response with status code 200, with default header values.
 
 Subscription Updated
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidDefault(code int) *Pu
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Code() int 
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

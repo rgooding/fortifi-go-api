@@ -20,8 +20,12 @@ import (
 type CustomerSubscriptionType string
 
 func NewCustomerSubscriptionType(value CustomerSubscriptionType) *CustomerSubscriptionType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated CustomerSubscriptionType.
+func (m CustomerSubscriptionType) Pointer() *CustomerSubscriptionType {
+	return &m
 }
 
 const (

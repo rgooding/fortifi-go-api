@@ -46,14 +46,44 @@ func NewPutContactsEmailsEmailAddressSubscribeOK() *PutContactsEmailsEmailAddres
 	return &PutContactsEmailsEmailAddressSubscribeOK{}
 }
 
-/* PutContactsEmailsEmailAddressSubscribeOK describes a response with status code 200, with default header values.
+/*
+PutContactsEmailsEmailAddressSubscribeOK describes a response with status code 200, with default header values.
 
 Email Address Subscribed
 */
 type PutContactsEmailsEmailAddressSubscribeOK struct {
 }
 
+// IsSuccess returns true when this put contacts emails email address subscribe o k response has a 2xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put contacts emails email address subscribe o k response has a 3xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put contacts emails email address subscribe o k response has a 4xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put contacts emails email address subscribe o k response has a 5xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put contacts emails email address subscribe o k response a status code equal to that given
+func (o *PutContactsEmailsEmailAddressSubscribeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutContactsEmailsEmailAddressSubscribeOK) Error() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/subscribe][%d] putContactsEmailsEmailAddressSubscribeOK ", 200)
+}
+
+func (o *PutContactsEmailsEmailAddressSubscribeOK) String() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/subscribe][%d] putContactsEmailsEmailAddressSubscribeOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutContactsEmailsEmailAddressSubscribeDefault(code int) *PutContactsEmai
 	}
 }
 
-/* PutContactsEmailsEmailAddressSubscribeDefault describes a response with status code -1, with default header values.
+/*
+PutContactsEmailsEmailAddressSubscribeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutContactsEmailsEmailAddressSubscribeDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put contacts emails email address subscribe default response has a 2xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put contacts emails email address subscribe default response has a 3xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put contacts emails email address subscribe default response has a 4xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put contacts emails email address subscribe default response has a 5xx status code
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put contacts emails email address subscribe default response a status code equal to that given
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutContactsEmailsEmailAddressSubscribeDefault) Error() string {
 	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/subscribe][%d] PutContactsEmailsEmailAddressSubscribe default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutContactsEmailsEmailAddressSubscribeDefault) String() string {
+	return fmt.Sprintf("[PUT /contacts/emails/{emailAddress}/subscribe][%d] PutContactsEmailsEmailAddressSubscribe default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutContactsEmailsEmailAddressSubscribeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

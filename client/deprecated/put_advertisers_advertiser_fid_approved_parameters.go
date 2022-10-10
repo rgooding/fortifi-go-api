@@ -52,10 +52,12 @@ func NewPutAdvertisersAdvertiserFidApprovedParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* PutAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
-   for the put advertisers advertiser fid approved operation.
+/*
+PutAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put advertisers advertiser fid approved operation.
+
+	Typically these are written to a http.Request.
 */
 type PutAdvertisersAdvertiserFidApprovedParams struct {
 

@@ -30,11 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContactsFindByReferenceContactReferenceOK, error)
 
+	PutContactsDeviceHardwareIDSubscribe(params *PutContactsDeviceHardwareIDSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsDeviceHardwareIDSubscribeOK, error)
+
+	PutContactsDeviceHardwareIDUnsubscribe(params *PutContactsDeviceHardwareIDUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsDeviceHardwareIDUnsubscribeOK, error)
+
 	PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressConfirmOK, error)
 
 	PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressSubscribeOK, error)
 
 	PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressUnsubscribeOK, error)
+
+	PutContactsPhonePhoneNumberConfirm(params *PutContactsPhonePhoneNumberConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsPhonePhoneNumberConfirmOK, error)
 
 	PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error)
 
@@ -42,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  GetContactsFindByReferenceContactReference finds a person with a reference
+GetContactsFindByReferenceContactReference finds a person with a reference
 */
 func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsFindByReferenceContactReferenceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContactsFindByReferenceContactReferenceOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +86,83 @@ func (a *Client) GetContactsFindByReferenceContactReference(params *GetContactsF
 }
 
 /*
-  PutContactsEmailsEmailAddressConfirm confirms email address
+PutContactsDeviceHardwareIDSubscribe subscribes an device
+*/
+func (a *Client) PutContactsDeviceHardwareIDSubscribe(params *PutContactsDeviceHardwareIDSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsDeviceHardwareIDSubscribeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutContactsDeviceHardwareIDSubscribeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutContactsDeviceHardwareIDSubscribe",
+		Method:             "PUT",
+		PathPattern:        "/contacts/device/{hardwareId}/subscribe",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutContactsDeviceHardwareIDSubscribeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutContactsDeviceHardwareIDSubscribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutContactsDeviceHardwareIDSubscribeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+PutContactsDeviceHardwareIDUnsubscribe unsubscribes a device
+*/
+func (a *Client) PutContactsDeviceHardwareIDUnsubscribe(params *PutContactsDeviceHardwareIDUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsDeviceHardwareIDUnsubscribeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutContactsDeviceHardwareIDUnsubscribeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutContactsDeviceHardwareIDUnsubscribe",
+		Method:             "PUT",
+		PathPattern:        "/contacts/device/{hardwareId}/unsubscribe",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutContactsDeviceHardwareIDUnsubscribeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutContactsDeviceHardwareIDUnsubscribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutContactsDeviceHardwareIDUnsubscribeDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+PutContactsEmailsEmailAddressConfirm confirms email address
 */
 func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsEmailAddressConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressConfirmOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +200,7 @@ func (a *Client) PutContactsEmailsEmailAddressConfirm(params *PutContactsEmailsE
 }
 
 /*
-  PutContactsEmailsEmailAddressSubscribe subscribes an email address
+PutContactsEmailsEmailAddressSubscribe subscribes an email address
 */
 func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmailsEmailAddressSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressSubscribeOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +238,7 @@ func (a *Client) PutContactsEmailsEmailAddressSubscribe(params *PutContactsEmail
 }
 
 /*
-  PutContactsEmailsEmailAddressUnsubscribe unsubscribes an email address
+PutContactsEmailsEmailAddressUnsubscribe unsubscribes an email address
 */
 func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEmailsEmailAddressUnsubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsEmailsEmailAddressUnsubscribeOK, error) {
 	// TODO: Validate the params before sending
@@ -194,7 +276,45 @@ func (a *Client) PutContactsEmailsEmailAddressUnsubscribe(params *PutContactsEma
 }
 
 /*
-  PutMessengerDeliveriesDeliveryFidSubscribe subscribes an email based on the delivery fid
+PutContactsPhonePhoneNumberConfirm confirms phone number
+*/
+func (a *Client) PutContactsPhonePhoneNumberConfirm(params *PutContactsPhonePhoneNumberConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutContactsPhonePhoneNumberConfirmOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutContactsPhonePhoneNumberConfirmParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutContactsPhonePhoneNumberConfirm",
+		Method:             "PUT",
+		PathPattern:        "/contacts/phone/{phoneNumber}/confirm",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutContactsPhonePhoneNumberConfirmReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutContactsPhonePhoneNumberConfirmOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutContactsPhonePhoneNumberConfirmDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+PutMessengerDeliveriesDeliveryFidSubscribe subscribes an email based on the delivery fid
 */
 func (a *Client) PutMessengerDeliveriesDeliveryFidSubscribe(params *PutMessengerDeliveriesDeliveryFidSubscribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutMessengerDeliveriesDeliveryFidSubscribeOK, error) {
 	// TODO: Validate the params before sending

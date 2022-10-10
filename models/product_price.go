@@ -48,6 +48,9 @@ type ProductPrice struct {
 
 	// sku fid
 	SkuFid string `json:"skuFid,omitempty"`
+
+	// tax inclusive
+	TaxInclusive bool `json:"taxInclusive,omitempty"`
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -80,6 +83,8 @@ func (m *ProductPrice) UnmarshalJSON(raw []byte) error {
 		SetupFee string `json:"setupFee,omitempty"`
 
 		SkuFid string `json:"skuFid,omitempty"`
+
+		TaxInclusive bool `json:"taxInclusive,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
 		return err
@@ -104,6 +109,8 @@ func (m *ProductPrice) UnmarshalJSON(raw []byte) error {
 	m.SetupFee = dataAO1.SetupFee
 
 	m.SkuFid = dataAO1.SkuFid
+
+	m.TaxInclusive = dataAO1.TaxInclusive
 
 	return nil
 }
@@ -137,6 +144,8 @@ func (m ProductPrice) MarshalJSON() ([]byte, error) {
 		SetupFee string `json:"setupFee,omitempty"`
 
 		SkuFid string `json:"skuFid,omitempty"`
+
+		TaxInclusive bool `json:"taxInclusive,omitempty"`
 	}
 
 	dataAO1.Currency = m.Currency
@@ -158,6 +167,8 @@ func (m ProductPrice) MarshalJSON() ([]byte, error) {
 	dataAO1.SetupFee = m.SetupFee
 
 	dataAO1.SkuFid = m.SkuFid
+
+	dataAO1.TaxInclusive = m.TaxInclusive
 
 	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
 	if errAO1 != nil {
@@ -195,6 +206,8 @@ func (m *ProductPrice) validateCycleType(formats strfmt.Registry) error {
 	if err := m.CycleType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cycleType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cycleType")
 		}
 		return err
 	}
@@ -226,6 +239,8 @@ func (m *ProductPrice) contextValidateCycleType(ctx context.Context, formats str
 	if err := m.CycleType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cycleType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cycleType")
 		}
 		return err
 	}

@@ -20,8 +20,12 @@ import (
 type CustomerAccountType string
 
 func NewCustomerAccountType(value CustomerAccountType) *CustomerAccountType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated CustomerAccountType.
+func (m CustomerAccountType) Pointer() *CustomerAccountType {
+	return &m
 }
 
 const (

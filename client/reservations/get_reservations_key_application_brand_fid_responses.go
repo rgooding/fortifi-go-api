@@ -49,7 +49,8 @@ func NewGetReservationsKeyApplicationBrandFidOK() *GetReservationsKeyApplication
 	return &GetReservationsKeyApplicationBrandFidOK{}
 }
 
-/* GetReservationsKeyApplicationBrandFidOK describes a response with status code 200, with default header values.
+/*
+GetReservationsKeyApplicationBrandFidOK describes a response with status code 200, with default header values.
 
 Pixels
 */
@@ -57,9 +58,39 @@ type GetReservationsKeyApplicationBrandFidOK struct {
 	Payload *GetReservationsKeyApplicationBrandFidOKBody
 }
 
+// IsSuccess returns true when this get reservations key application brand fid o k response has a 2xx status code
+func (o *GetReservationsKeyApplicationBrandFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get reservations key application brand fid o k response has a 3xx status code
+func (o *GetReservationsKeyApplicationBrandFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reservations key application brand fid o k response has a 4xx status code
+func (o *GetReservationsKeyApplicationBrandFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get reservations key application brand fid o k response has a 5xx status code
+func (o *GetReservationsKeyApplicationBrandFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reservations key application brand fid o k response a status code equal to that given
+func (o *GetReservationsKeyApplicationBrandFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetReservationsKeyApplicationBrandFidOK) Error() string {
 	return fmt.Sprintf("[GET /reservations/{key}/{application}/{brandFid}][%d] getReservationsKeyApplicationBrandFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReservationsKeyApplicationBrandFidOK) String() string {
+	return fmt.Sprintf("[GET /reservations/{key}/{application}/{brandFid}][%d] getReservationsKeyApplicationBrandFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReservationsKeyApplicationBrandFidOK) GetPayload() *GetReservationsKeyApplicationBrandFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetReservationsKeyApplicationBrandFidDefault(code int) *GetReservationsK
 	}
 }
 
-/* GetReservationsKeyApplicationBrandFidDefault describes a response with status code -1, with default header values.
+/*
+GetReservationsKeyApplicationBrandFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetReservationsKeyApplicationBrandFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get reservations key application brand fid default response has a 2xx status code
+func (o *GetReservationsKeyApplicationBrandFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get reservations key application brand fid default response has a 3xx status code
+func (o *GetReservationsKeyApplicationBrandFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get reservations key application brand fid default response has a 4xx status code
+func (o *GetReservationsKeyApplicationBrandFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get reservations key application brand fid default response has a 5xx status code
+func (o *GetReservationsKeyApplicationBrandFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get reservations key application brand fid default response a status code equal to that given
+func (o *GetReservationsKeyApplicationBrandFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetReservationsKeyApplicationBrandFidDefault) Error() string {
 	return fmt.Sprintf("[GET /reservations/{key}/{application}/{brandFid}][%d] GetReservationsKeyApplicationBrandFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetReservationsKeyApplicationBrandFidDefault) String() string {
+	return fmt.Sprintf("[GET /reservations/{key}/{application}/{brandFid}][%d] GetReservationsKeyApplicationBrandFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetReservationsKeyApplicationBrandFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetReservationsKeyApplicationBrandFidDefault) readResponse(response run
 	return nil
 }
 
-/*GetReservationsKeyApplicationBrandFidOKBody get reservations key application brand fid o k body
+/*
+GetReservationsKeyApplicationBrandFidOKBody get reservations key application brand fid o k body
 swagger:model GetReservationsKeyApplicationBrandFidOKBody
 */
 type GetReservationsKeyApplicationBrandFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetReservationsKeyApplicationBrandFidOKBody) validateData(formats strfm
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReservationsKeyApplicationBrandFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getReservationsKeyApplicationBrandFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetReservationsKeyApplicationBrandFidOKBody) contextValidateData(ctx co
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReservationsKeyApplicationBrandFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getReservationsKeyApplicationBrandFidOK" + "." + "data")
 			}
 			return err
 		}

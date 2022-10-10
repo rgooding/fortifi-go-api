@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidLifecycleStageParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* PutCustomersCustomerFidLifecycleStageParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid lifecycle stage operation.
+/*
+PutCustomersCustomerFidLifecycleStageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid lifecycle stage operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidLifecycleStageParams struct {
 

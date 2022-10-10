@@ -54,10 +54,12 @@ func NewPutCustomersCustomerFidPaymentMethodsCardsCardFidParamsWithHTTPClient(cl
 	}
 }
 
-/* PutCustomersCustomerFidPaymentMethodsCardsCardFidParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid payment methods cards card fid operation.
+/*
+PutCustomersCustomerFidPaymentMethodsCardsCardFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid payment methods cards card fid operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidPaymentMethodsCardsCardFidParams struct {
 

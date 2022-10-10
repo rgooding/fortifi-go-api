@@ -46,14 +46,44 @@ func NewPutEntitiesEntityFidPropertiesValuesPropertyNameOK() *PutEntitiesEntityF
 	return &PutEntitiesEntityFidPropertiesValuesPropertyNameOK{}
 }
 
-/* PutEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
+/*
+PutEntitiesEntityFidPropertiesValuesPropertyNameOK describes a response with status code 200, with default header values.
 
 Property Saved
 */
 type PutEntitiesEntityFidPropertiesValuesPropertyNameOK struct {
 }
 
+// IsSuccess returns true when this put entities entity fid properties values property name o k response has a 2xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put entities entity fid properties values property name o k response has a 3xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put entities entity fid properties values property name o k response has a 4xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put entities entity fid properties values property name o k response has a 5xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put entities entity fid properties values property name o k response a status code equal to that given
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) Error() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] putEntitiesEntityFidPropertiesValuesPropertyNameOK ", 200)
+}
+
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameOK) String() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] putEntitiesEntityFidPropertiesValuesPropertyNameOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutEntitiesEntityFidPropertiesValuesPropertyNameDefault(code int) *PutEn
 	}
 }
 
-/* PutEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
+/*
+PutEntitiesEntityFidPropertiesValuesPropertyNameDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put entities entity fid properties values property name default response has a 2xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put entities entity fid properties values property name default response has a 3xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put entities entity fid properties values property name default response has a 4xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put entities entity fid properties values property name default response has a 5xx status code
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put entities entity fid properties values property name default response a status code equal to that given
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] PutEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) String() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/properties/values/{propertyName}][%d] PutEntitiesEntityFidPropertiesValuesPropertyName default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutEntitiesEntityFidPropertiesValuesPropertyNameDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

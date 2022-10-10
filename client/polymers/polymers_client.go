@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetPolymersParentFidPolymerFid reads a polymer
+GetPolymersParentFidPolymerFid reads a polymer
 */
 func (a *Client) GetPolymersParentFidPolymerFid(params *GetPolymersParentFidPolymerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPolymersParentFidPolymerFidOK, error) {
 	// TODO: Validate the params before sending
@@ -74,7 +74,7 @@ func (a *Client) GetPolymersParentFidPolymerFid(params *GetPolymersParentFidPoly
 }
 
 /*
-  PostPolymersParentFid creates a new polymer
+PostPolymersParentFid creates a new polymer
 */
 func (a *Client) PostPolymersParentFid(params *PostPolymersParentFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPolymersParentFidOK, error) {
 	// TODO: Validate the params before sending

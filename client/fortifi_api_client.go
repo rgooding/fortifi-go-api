@@ -10,12 +10,13 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
+	"github.com/fortifi/go-api/client/appstore"
 	"github.com/fortifi/go-api/client/authentication"
 	"github.com/fortifi/go-api/client/brands"
-	"github.com/fortifi/go-api/client/configuration"
 	"github.com/fortifi/go-api/client/contacts"
 	"github.com/fortifi/go-api/client/customers"
 	"github.com/fortifi/go-api/client/deprecated"
+	"github.com/fortifi/go-api/client/devices"
 	"github.com/fortifi/go-api/client/entities"
 	"github.com/fortifi/go-api/client/finance"
 	"github.com/fortifi/go-api/client/licence"
@@ -23,7 +24,6 @@ import (
 	"github.com/fortifi/go-api/client/messenger"
 	"github.com/fortifi/go-api/client/operations"
 	"github.com/fortifi/go-api/client/orders"
-	"github.com/fortifi/go-api/client/payment_methods"
 	"github.com/fortifi/go-api/client/polymer"
 	"github.com/fortifi/go-api/client/polymers"
 	"github.com/fortifi/go-api/client/products"
@@ -77,12 +77,13 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FortifiAPI
 
 	cli := new(FortifiAPI)
 	cli.Transport = transport
+	cli.Appstore = appstore.New(transport, formats)
 	cli.Authentication = authentication.New(transport, formats)
 	cli.Brands = brands.New(transport, formats)
-	cli.Configuration = configuration.New(transport, formats)
 	cli.Contacts = contacts.New(transport, formats)
 	cli.Customers = customers.New(transport, formats)
 	cli.Deprecated = deprecated.New(transport, formats)
+	cli.Devices = devices.New(transport, formats)
 	cli.Entities = entities.New(transport, formats)
 	cli.Finance = finance.New(transport, formats)
 	cli.Licence = licence.New(transport, formats)
@@ -90,7 +91,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FortifiAPI
 	cli.Messenger = messenger.New(transport, formats)
 	cli.Operations = operations.New(transport, formats)
 	cli.Orders = orders.New(transport, formats)
-	cli.PaymentMethods = payment_methods.New(transport, formats)
 	cli.Polymer = polymer.New(transport, formats)
 	cli.Polymers = polymers.New(transport, formats)
 	cli.Products = products.New(transport, formats)
@@ -144,17 +144,19 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // FortifiAPI is a client for fortifi API
 type FortifiAPI struct {
+	Appstore appstore.ClientService
+
 	Authentication authentication.ClientService
 
 	Brands brands.ClientService
-
-	Configuration configuration.ClientService
 
 	Contacts contacts.ClientService
 
 	Customers customers.ClientService
 
 	Deprecated deprecated.ClientService
+
+	Devices devices.ClientService
 
 	Entities entities.ClientService
 
@@ -169,8 +171,6 @@ type FortifiAPI struct {
 	Operations operations.ClientService
 
 	Orders orders.ClientService
-
-	PaymentMethods payment_methods.ClientService
 
 	Polymer polymer.ClientService
 
@@ -196,12 +196,13 @@ type FortifiAPI struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *FortifiAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
+	c.Appstore.SetTransport(transport)
 	c.Authentication.SetTransport(transport)
 	c.Brands.SetTransport(transport)
-	c.Configuration.SetTransport(transport)
 	c.Contacts.SetTransport(transport)
 	c.Customers.SetTransport(transport)
 	c.Deprecated.SetTransport(transport)
+	c.Devices.SetTransport(transport)
 	c.Entities.SetTransport(transport)
 	c.Finance.SetTransport(transport)
 	c.Licence.SetTransport(transport)
@@ -209,7 +210,6 @@ func (c *FortifiAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Messenger.SetTransport(transport)
 	c.Operations.SetTransport(transport)
 	c.Orders.SetTransport(transport)
-	c.PaymentMethods.SetTransport(transport)
 	c.Polymer.SetTransport(transport)
 	c.Polymers.SetTransport(transport)
 	c.Products.SetTransport(transport)

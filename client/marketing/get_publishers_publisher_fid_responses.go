@@ -49,7 +49,8 @@ func NewGetPublishersPublisherFidOK() *GetPublishersPublisherFidOK {
 	return &GetPublishersPublisherFidOK{}
 }
 
-/* GetPublishersPublisherFidOK describes a response with status code 200, with default header values.
+/*
+GetPublishersPublisherFidOK describes a response with status code 200, with default header values.
 
 Loaded Publisher
 */
@@ -57,9 +58,39 @@ type GetPublishersPublisherFidOK struct {
 	Payload *GetPublishersPublisherFidOKBody
 }
 
+// IsSuccess returns true when this get publishers publisher fid o k response has a 2xx status code
+func (o *GetPublishersPublisherFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get publishers publisher fid o k response has a 3xx status code
+func (o *GetPublishersPublisherFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get publishers publisher fid o k response has a 4xx status code
+func (o *GetPublishersPublisherFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get publishers publisher fid o k response has a 5xx status code
+func (o *GetPublishersPublisherFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get publishers publisher fid o k response a status code equal to that given
+func (o *GetPublishersPublisherFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPublishersPublisherFidOK) Error() string {
 	return fmt.Sprintf("[GET /publishers/{publisherFid}][%d] getPublishersPublisherFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPublishersPublisherFidOK) String() string {
+	return fmt.Sprintf("[GET /publishers/{publisherFid}][%d] getPublishersPublisherFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPublishersPublisherFidOK) GetPayload() *GetPublishersPublisherFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetPublishersPublisherFidDefault(code int) *GetPublishersPublisherFidDef
 	}
 }
 
-/* GetPublishersPublisherFidDefault describes a response with status code -1, with default header values.
+/*
+GetPublishersPublisherFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetPublishersPublisherFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get publishers publisher fid default response has a 2xx status code
+func (o *GetPublishersPublisherFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get publishers publisher fid default response has a 3xx status code
+func (o *GetPublishersPublisherFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get publishers publisher fid default response has a 4xx status code
+func (o *GetPublishersPublisherFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get publishers publisher fid default response has a 5xx status code
+func (o *GetPublishersPublisherFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get publishers publisher fid default response a status code equal to that given
+func (o *GetPublishersPublisherFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetPublishersPublisherFidDefault) Error() string {
 	return fmt.Sprintf("[GET /publishers/{publisherFid}][%d] GetPublishersPublisherFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetPublishersPublisherFidDefault) String() string {
+	return fmt.Sprintf("[GET /publishers/{publisherFid}][%d] GetPublishersPublisherFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetPublishersPublisherFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetPublishersPublisherFidDefault) readResponse(response runtime.ClientR
 	return nil
 }
 
-/*GetPublishersPublisherFidOKBody get publishers publisher fid o k body
+/*
+GetPublishersPublisherFidOKBody get publishers publisher fid o k body
 swagger:model GetPublishersPublisherFidOKBody
 */
 type GetPublishersPublisherFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetPublishersPublisherFidOKBody) validateData(formats strfmt.Registry) 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPublishersPublisherFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getPublishersPublisherFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetPublishersPublisherFidOKBody) contextValidateData(ctx context.Contex
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPublishersPublisherFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getPublishersPublisherFidOK" + "." + "data")
 			}
 			return err
 		}

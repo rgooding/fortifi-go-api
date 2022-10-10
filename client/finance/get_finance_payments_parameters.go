@@ -53,10 +53,12 @@ func NewGetFinancePaymentsParamsWithHTTPClient(client *http.Client) *GetFinanceP
 	}
 }
 
-/* GetFinancePaymentsParams contains all the parameters to send to the API endpoint
-   for the get finance payments operation.
+/*
+GetFinancePaymentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get finance payments operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFinancePaymentsParams struct {
 

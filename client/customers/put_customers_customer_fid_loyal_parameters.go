@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidLoyalParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* PutCustomersCustomerFidLoyalParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid loyal operation.
+/*
+PutCustomersCustomerFidLoyalParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid loyal operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidLoyalParams struct {
 

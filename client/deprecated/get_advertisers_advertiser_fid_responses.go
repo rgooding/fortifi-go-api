@@ -49,7 +49,8 @@ func NewGetAdvertisersAdvertiserFidOK() *GetAdvertisersAdvertiserFidOK {
 	return &GetAdvertisersAdvertiserFidOK{}
 }
 
-/* GetAdvertisersAdvertiserFidOK describes a response with status code 200, with default header values.
+/*
+GetAdvertisersAdvertiserFidOK describes a response with status code 200, with default header values.
 
 Loaded Advertiser
 */
@@ -57,9 +58,39 @@ type GetAdvertisersAdvertiserFidOK struct {
 	Payload *GetAdvertisersAdvertiserFidOKBody
 }
 
+// IsSuccess returns true when this get advertisers advertiser fid o k response has a 2xx status code
+func (o *GetAdvertisersAdvertiserFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get advertisers advertiser fid o k response has a 3xx status code
+func (o *GetAdvertisersAdvertiserFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get advertisers advertiser fid o k response has a 4xx status code
+func (o *GetAdvertisersAdvertiserFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get advertisers advertiser fid o k response has a 5xx status code
+func (o *GetAdvertisersAdvertiserFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get advertisers advertiser fid o k response a status code equal to that given
+func (o *GetAdvertisersAdvertiserFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAdvertisersAdvertiserFidOK) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}][%d] getAdvertisersAdvertiserFidOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAdvertisersAdvertiserFidOK) String() string {
+	return fmt.Sprintf("[GET /advertisers/{advertiserFid}][%d] getAdvertisersAdvertiserFidOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAdvertisersAdvertiserFidOK) GetPayload() *GetAdvertisersAdvertiserFidOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetAdvertisersAdvertiserFidDefault(code int) *GetAdvertisersAdvertiserFi
 	}
 }
 
-/* GetAdvertisersAdvertiserFidDefault describes a response with status code -1, with default header values.
+/*
+GetAdvertisersAdvertiserFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetAdvertisersAdvertiserFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get advertisers advertiser fid default response has a 2xx status code
+func (o *GetAdvertisersAdvertiserFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get advertisers advertiser fid default response has a 3xx status code
+func (o *GetAdvertisersAdvertiserFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get advertisers advertiser fid default response has a 4xx status code
+func (o *GetAdvertisersAdvertiserFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get advertisers advertiser fid default response has a 5xx status code
+func (o *GetAdvertisersAdvertiserFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get advertisers advertiser fid default response a status code equal to that given
+func (o *GetAdvertisersAdvertiserFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetAdvertisersAdvertiserFidDefault) Error() string {
 	return fmt.Sprintf("[GET /advertisers/{advertiserFid}][%d] GetAdvertisersAdvertiserFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetAdvertisersAdvertiserFidDefault) String() string {
+	return fmt.Sprintf("[GET /advertisers/{advertiserFid}][%d] GetAdvertisersAdvertiserFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetAdvertisersAdvertiserFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetAdvertisersAdvertiserFidDefault) readResponse(response runtime.Clien
 	return nil
 }
 
-/*GetAdvertisersAdvertiserFidOKBody get advertisers advertiser fid o k body
+/*
+GetAdvertisersAdvertiserFidOKBody get advertisers advertiser fid o k body
 swagger:model GetAdvertisersAdvertiserFidOKBody
 */
 type GetAdvertisersAdvertiserFidOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetAdvertisersAdvertiserFidOKBody) validateData(formats strfmt.Registry
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAdvertisersAdvertiserFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getAdvertisersAdvertiserFidOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetAdvertisersAdvertiserFidOKBody) contextValidateData(ctx context.Cont
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getAdvertisersAdvertiserFidOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getAdvertisersAdvertiserFidOK" + "." + "data")
 			}
 			return err
 		}

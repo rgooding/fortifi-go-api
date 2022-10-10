@@ -49,7 +49,8 @@ func NewGetPropertiesOK() *GetPropertiesOK {
 	return &GetPropertiesOK{}
 }
 
-/* GetPropertiesOK describes a response with status code 200, with default header values.
+/*
+GetPropertiesOK describes a response with status code 200, with default header values.
 
 Defined Properties
 */
@@ -57,9 +58,39 @@ type GetPropertiesOK struct {
 	Payload *GetPropertiesOKBody
 }
 
+// IsSuccess returns true when this get properties o k response has a 2xx status code
+func (o *GetPropertiesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get properties o k response has a 3xx status code
+func (o *GetPropertiesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get properties o k response has a 4xx status code
+func (o *GetPropertiesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get properties o k response has a 5xx status code
+func (o *GetPropertiesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get properties o k response a status code equal to that given
+func (o *GetPropertiesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPropertiesOK) Error() string {
 	return fmt.Sprintf("[GET /properties][%d] getPropertiesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPropertiesOK) String() string {
+	return fmt.Sprintf("[GET /properties][%d] getPropertiesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPropertiesOK) GetPayload() *GetPropertiesOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetPropertiesDefault(code int) *GetPropertiesDefault {
 	}
 }
 
-/* GetPropertiesDefault describes a response with status code -1, with default header values.
+/*
+GetPropertiesDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetPropertiesDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get properties default response has a 2xx status code
+func (o *GetPropertiesDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get properties default response has a 3xx status code
+func (o *GetPropertiesDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get properties default response has a 4xx status code
+func (o *GetPropertiesDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get properties default response has a 5xx status code
+func (o *GetPropertiesDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get properties default response a status code equal to that given
+func (o *GetPropertiesDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetPropertiesDefault) Error() string {
 	return fmt.Sprintf("[GET /properties][%d] GetProperties default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetPropertiesDefault) String() string {
+	return fmt.Sprintf("[GET /properties][%d] GetProperties default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetPropertiesDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetPropertiesDefault) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-/*GetPropertiesOKBody get properties o k body
+/*
+GetPropertiesOKBody get properties o k body
 swagger:model GetPropertiesOKBody
 */
 type GetPropertiesOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetPropertiesOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPropertiesOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getPropertiesOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetPropertiesOKBody) contextValidateData(ctx context.Context, formats s
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getPropertiesOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getPropertiesOK" + "." + "data")
 			}
 			return err
 		}

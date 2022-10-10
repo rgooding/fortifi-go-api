@@ -51,6 +51,8 @@ func (m *PaymentCards) validateCards(formats strfmt.Registry) error {
 			if err := m.Cards[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cards" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cards" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *PaymentCards) contextValidateCards(ctx context.Context, formats strfmt.
 			if err := m.Cards[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cards" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cards" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

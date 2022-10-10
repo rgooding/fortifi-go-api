@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK()
 	return &PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK{}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK describes a response with status code 200, with default header values.
 
 Auto charge disabled
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid disable auto charge o k response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid disable auto charge o k response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid disable auto charge o k response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid disable auto charge o k response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid disable auto charge o k response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/disableAutoCharge][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/disableAutoCharge][%d] putCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefa
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDef
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid subscriptions subscription fid disable auto charge default response has a 2xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid subscriptions subscription fid disable auto charge default response has a 3xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid subscriptions subscription fid disable auto charge default response has a 4xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid subscriptions subscription fid disable auto charge default response has a 5xx status code
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid subscriptions subscription fid disable auto charge default response a status code equal to that given
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/disableAutoCharge][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/subscriptions/{subscriptionFid}/disableAutoCharge][%d] PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoCharge default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidSubscriptionsSubscriptionFidDisableAutoChargeDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

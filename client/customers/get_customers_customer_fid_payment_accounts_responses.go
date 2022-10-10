@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidPaymentAccountsOK() *GetCustomersCustomerFidPayme
 	return &GetCustomersCustomerFidPaymentAccountsOK{}
 }
 
-/* GetCustomersCustomerFidPaymentAccountsOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidPaymentAccountsOK describes a response with status code 200, with default header values.
 
 List of payment accounts
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidPaymentAccountsOK struct {
 	Payload *GetCustomersCustomerFidPaymentAccountsOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid payment accounts o k response has a 2xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid payment accounts o k response has a 3xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid payment accounts o k response has a 4xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid payment accounts o k response has a 5xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid payment accounts o k response a status code equal to that given
+func (o *GetCustomersCustomerFidPaymentAccountsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidPaymentAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/paymentAccounts][%d] getCustomersCustomerFidPaymentAccountsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidPaymentAccountsOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/paymentAccounts][%d] getCustomersCustomerFidPaymentAccountsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidPaymentAccountsOK) GetPayload() *GetCustomersCustomerFidPaymentAccountsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidPaymentAccountsDefault(code int) *GetCustomersCus
 	}
 }
 
-/* GetCustomersCustomerFidPaymentAccountsDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidPaymentAccountsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidPaymentAccountsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid payment accounts default response has a 2xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid payment accounts default response has a 3xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid payment accounts default response has a 4xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid payment accounts default response has a 5xx status code
+func (o *GetCustomersCustomerFidPaymentAccountsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid payment accounts default response a status code equal to that given
+func (o *GetCustomersCustomerFidPaymentAccountsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidPaymentAccountsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/paymentAccounts][%d] GetCustomersCustomerFidPaymentAccounts default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidPaymentAccountsDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/paymentAccounts][%d] GetCustomersCustomerFidPaymentAccounts default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidPaymentAccountsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidPaymentAccountsDefault) readResponse(response ru
 	return nil
 }
 
-/*GetCustomersCustomerFidPaymentAccountsOKBody get customers customer fid payment accounts o k body
+/*
+GetCustomersCustomerFidPaymentAccountsOKBody get customers customer fid payment accounts o k body
 swagger:model GetCustomersCustomerFidPaymentAccountsOKBody
 */
 type GetCustomersCustomerFidPaymentAccountsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidPaymentAccountsOKBody) validateData(formats strf
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidPaymentAccountsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidPaymentAccountsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidPaymentAccountsOKBody) contextValidateData(ctx c
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidPaymentAccountsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidPaymentAccountsOK" + "." + "data")
 			}
 			return err
 		}

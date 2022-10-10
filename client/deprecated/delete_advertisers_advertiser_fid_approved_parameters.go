@@ -52,10 +52,12 @@ func NewDeleteAdvertisersAdvertiserFidApprovedParamsWithHTTPClient(client *http.
 	}
 }
 
-/* DeleteAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
-   for the delete advertisers advertiser fid approved operation.
+/*
+DeleteAdvertisersAdvertiserFidApprovedParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete advertisers advertiser fid approved operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteAdvertisersAdvertiserFidApprovedParams struct {
 

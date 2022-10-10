@@ -52,10 +52,12 @@ func NewGetReasonsGroupsReasonGroupFidParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetReasonsGroupsReasonGroupFidParams contains all the parameters to send to the API endpoint
-   for the get reasons groups reason group fid operation.
+/*
+GetReasonsGroupsReasonGroupFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get reasons groups reason group fid operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReasonsGroupsReasonGroupFidParams struct {
 

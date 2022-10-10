@@ -54,10 +54,12 @@ func NewPostPublishersParamsWithHTTPClient(client *http.Client) *PostPublishersP
 	}
 }
 
-/* PostPublishersParams contains all the parameters to send to the API endpoint
-   for the post publishers operation.
+/*
+PostPublishersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post publishers operation.
+
+	Typically these are written to a http.Request.
 */
 type PostPublishersParams struct {
 

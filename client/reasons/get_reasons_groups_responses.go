@@ -49,7 +49,8 @@ func NewGetReasonsGroupsOK() *GetReasonsGroupsOK {
 	return &GetReasonsGroupsOK{}
 }
 
-/* GetReasonsGroupsOK describes a response with status code 200, with default header values.
+/*
+GetReasonsGroupsOK describes a response with status code 200, with default header values.
 
 Reason groups
 */
@@ -57,9 +58,39 @@ type GetReasonsGroupsOK struct {
 	Payload *GetReasonsGroupsOKBody
 }
 
+// IsSuccess returns true when this get reasons groups o k response has a 2xx status code
+func (o *GetReasonsGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get reasons groups o k response has a 3xx status code
+func (o *GetReasonsGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get reasons groups o k response has a 4xx status code
+func (o *GetReasonsGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get reasons groups o k response has a 5xx status code
+func (o *GetReasonsGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get reasons groups o k response a status code equal to that given
+func (o *GetReasonsGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetReasonsGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups][%d] getReasonsGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetReasonsGroupsOK) String() string {
+	return fmt.Sprintf("[GET /reasons/groups][%d] getReasonsGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetReasonsGroupsOK) GetPayload() *GetReasonsGroupsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetReasonsGroupsDefault(code int) *GetReasonsGroupsDefault {
 	}
 }
 
-/* GetReasonsGroupsDefault describes a response with status code -1, with default header values.
+/*
+GetReasonsGroupsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetReasonsGroupsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get reasons groups default response has a 2xx status code
+func (o *GetReasonsGroupsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get reasons groups default response has a 3xx status code
+func (o *GetReasonsGroupsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get reasons groups default response has a 4xx status code
+func (o *GetReasonsGroupsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get reasons groups default response has a 5xx status code
+func (o *GetReasonsGroupsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get reasons groups default response a status code equal to that given
+func (o *GetReasonsGroupsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetReasonsGroupsDefault) Error() string {
 	return fmt.Sprintf("[GET /reasons/groups][%d] GetReasonsGroups default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetReasonsGroupsDefault) String() string {
+	return fmt.Sprintf("[GET /reasons/groups][%d] GetReasonsGroups default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetReasonsGroupsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetReasonsGroupsDefault) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-/*GetReasonsGroupsOKBody get reasons groups o k body
+/*
+GetReasonsGroupsOKBody get reasons groups o k body
 swagger:model GetReasonsGroupsOKBody
 */
 type GetReasonsGroupsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetReasonsGroupsOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReasonsGroupsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getReasonsGroupsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetReasonsGroupsOKBody) contextValidateData(ctx context.Context, format
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getReasonsGroupsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getReasonsGroupsOK" + "." + "data")
 			}
 			return err
 		}

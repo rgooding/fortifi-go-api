@@ -54,10 +54,12 @@ func NewPutOrdersOrderFidConfirmCardParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* PutOrdersOrderFidConfirmCardParams contains all the parameters to send to the API endpoint
-   for the put orders order fid confirm card operation.
+/*
+PutOrdersOrderFidConfirmCardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid confirm card operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidConfirmCardParams struct {
 

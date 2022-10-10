@@ -53,10 +53,12 @@ func NewPostOrdersOrderFidOffersParamsWithHTTPClient(client *http.Client) *PostO
 	}
 }
 
-/* PostOrdersOrderFidOffersParams contains all the parameters to send to the API endpoint
-   for the post orders order fid offers operation.
+/*
+PostOrdersOrderFidOffersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post orders order fid offers operation.
+
+	Typically these are written to a http.Request.
 */
 type PostOrdersOrderFidOffersParams struct {
 

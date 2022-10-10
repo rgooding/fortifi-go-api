@@ -46,14 +46,44 @@ func NewDeletePublishersPublisherFidApprovedOK() *DeletePublishersPublisherFidAp
 	return &DeletePublishersPublisherFidApprovedOK{}
 }
 
-/* DeletePublishersPublisherFidApprovedOK describes a response with status code 200, with default header values.
+/*
+DeletePublishersPublisherFidApprovedOK describes a response with status code 200, with default header values.
 
 Publisher no longer approved
 */
 type DeletePublishersPublisherFidApprovedOK struct {
 }
 
+// IsSuccess returns true when this delete publishers publisher fid approved o k response has a 2xx status code
+func (o *DeletePublishersPublisherFidApprovedOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete publishers publisher fid approved o k response has a 3xx status code
+func (o *DeletePublishersPublisherFidApprovedOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete publishers publisher fid approved o k response has a 4xx status code
+func (o *DeletePublishersPublisherFidApprovedOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete publishers publisher fid approved o k response has a 5xx status code
+func (o *DeletePublishersPublisherFidApprovedOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete publishers publisher fid approved o k response a status code equal to that given
+func (o *DeletePublishersPublisherFidApprovedOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeletePublishersPublisherFidApprovedOK) Error() string {
+	return fmt.Sprintf("[DELETE /publishers/{publisherFid}/approved][%d] deletePublishersPublisherFidApprovedOK ", 200)
+}
+
+func (o *DeletePublishersPublisherFidApprovedOK) String() string {
 	return fmt.Sprintf("[DELETE /publishers/{publisherFid}/approved][%d] deletePublishersPublisherFidApprovedOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeletePublishersPublisherFidApprovedDefault(code int) *DeletePublishersP
 	}
 }
 
-/* DeletePublishersPublisherFidApprovedDefault describes a response with status code -1, with default header values.
+/*
+DeletePublishersPublisherFidApprovedDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeletePublishersPublisherFidApprovedDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete publishers publisher fid approved default response has a 2xx status code
+func (o *DeletePublishersPublisherFidApprovedDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete publishers publisher fid approved default response has a 3xx status code
+func (o *DeletePublishersPublisherFidApprovedDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete publishers publisher fid approved default response has a 4xx status code
+func (o *DeletePublishersPublisherFidApprovedDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete publishers publisher fid approved default response has a 5xx status code
+func (o *DeletePublishersPublisherFidApprovedDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete publishers publisher fid approved default response a status code equal to that given
+func (o *DeletePublishersPublisherFidApprovedDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeletePublishersPublisherFidApprovedDefault) Error() string {
 	return fmt.Sprintf("[DELETE /publishers/{publisherFid}/approved][%d] DeletePublishersPublisherFidApproved default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeletePublishersPublisherFidApprovedDefault) String() string {
+	return fmt.Sprintf("[DELETE /publishers/{publisherFid}/approved][%d] DeletePublishersPublisherFidApproved default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeletePublishersPublisherFidApprovedDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

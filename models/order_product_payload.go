@@ -27,6 +27,9 @@ type OrderProductPayload struct {
 	// cycle type
 	CycleType CycleTermType `json:"cycleType,omitempty"`
 
+	// description
+	Description string `json:"description,omitempty"`
+
 	// display name
 	DisplayName string `json:"displayName,omitempty"`
 
@@ -96,6 +99,8 @@ func (m *OrderProductPayload) validateCycleType(formats strfmt.Registry) error {
 	if err := m.CycleType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cycleType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cycleType")
 		}
 		return err
 	}
@@ -112,6 +117,8 @@ func (m *OrderProductPayload) validateProperties(formats strfmt.Registry) error 
 		if err := m.Properties.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("properties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("properties")
 			}
 			return err
 		}
@@ -143,6 +150,8 @@ func (m *OrderProductPayload) contextValidateCycleType(ctx context.Context, form
 	if err := m.CycleType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cycleType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cycleType")
 		}
 		return err
 	}
@@ -156,6 +165,8 @@ func (m *OrderProductPayload) contextValidateProperties(ctx context.Context, for
 		if err := m.Properties.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("properties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("properties")
 			}
 			return err
 		}

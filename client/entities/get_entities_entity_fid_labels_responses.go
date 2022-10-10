@@ -49,7 +49,8 @@ func NewGetEntitiesEntityFidLabelsOK() *GetEntitiesEntityFidLabelsOK {
 	return &GetEntitiesEntityFidLabelsOK{}
 }
 
-/* GetEntitiesEntityFidLabelsOK describes a response with status code 200, with default header values.
+/*
+GetEntitiesEntityFidLabelsOK describes a response with status code 200, with default header values.
 
 Labels
 */
@@ -57,9 +58,39 @@ type GetEntitiesEntityFidLabelsOK struct {
 	Payload *GetEntitiesEntityFidLabelsOKBody
 }
 
+// IsSuccess returns true when this get entities entity fid labels o k response has a 2xx status code
+func (o *GetEntitiesEntityFidLabelsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get entities entity fid labels o k response has a 3xx status code
+func (o *GetEntitiesEntityFidLabelsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get entities entity fid labels o k response has a 4xx status code
+func (o *GetEntitiesEntityFidLabelsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get entities entity fid labels o k response has a 5xx status code
+func (o *GetEntitiesEntityFidLabelsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get entities entity fid labels o k response a status code equal to that given
+func (o *GetEntitiesEntityFidLabelsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEntitiesEntityFidLabelsOK) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/labels][%d] getEntitiesEntityFidLabelsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetEntitiesEntityFidLabelsOK) String() string {
+	return fmt.Sprintf("[GET /entities/{entityFid}/labels][%d] getEntitiesEntityFidLabelsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetEntitiesEntityFidLabelsOK) GetPayload() *GetEntitiesEntityFidLabelsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetEntitiesEntityFidLabelsDefault(code int) *GetEntitiesEntityFidLabelsD
 	}
 }
 
-/* GetEntitiesEntityFidLabelsDefault describes a response with status code -1, with default header values.
+/*
+GetEntitiesEntityFidLabelsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetEntitiesEntityFidLabelsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get entities entity fid labels default response has a 2xx status code
+func (o *GetEntitiesEntityFidLabelsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get entities entity fid labels default response has a 3xx status code
+func (o *GetEntitiesEntityFidLabelsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get entities entity fid labels default response has a 4xx status code
+func (o *GetEntitiesEntityFidLabelsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get entities entity fid labels default response has a 5xx status code
+func (o *GetEntitiesEntityFidLabelsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get entities entity fid labels default response a status code equal to that given
+func (o *GetEntitiesEntityFidLabelsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetEntitiesEntityFidLabelsDefault) Error() string {
 	return fmt.Sprintf("[GET /entities/{entityFid}/labels][%d] GetEntitiesEntityFidLabels default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetEntitiesEntityFidLabelsDefault) String() string {
+	return fmt.Sprintf("[GET /entities/{entityFid}/labels][%d] GetEntitiesEntityFidLabels default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetEntitiesEntityFidLabelsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetEntitiesEntityFidLabelsDefault) readResponse(response runtime.Client
 	return nil
 }
 
-/*GetEntitiesEntityFidLabelsOKBody get entities entity fid labels o k body
+/*
+GetEntitiesEntityFidLabelsOKBody get entities entity fid labels o k body
 swagger:model GetEntitiesEntityFidLabelsOKBody
 */
 type GetEntitiesEntityFidLabelsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetEntitiesEntityFidLabelsOKBody) validateData(formats strfmt.Registry)
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidLabelsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getEntitiesEntityFidLabelsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetEntitiesEntityFidLabelsOKBody) contextValidateData(ctx context.Conte
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getEntitiesEntityFidLabelsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getEntitiesEntityFidLabelsOK" + "." + "data")
 			}
 			return err
 		}

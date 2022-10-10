@@ -52,10 +52,12 @@ func NewPutCustomersCustomerFidBillingDataParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* PutCustomersCustomerFidBillingDataParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid billing data operation.
+/*
+PutCustomersCustomerFidBillingDataParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid billing data operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidBillingDataParams struct {
 

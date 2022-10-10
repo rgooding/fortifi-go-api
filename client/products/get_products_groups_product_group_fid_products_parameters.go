@@ -52,10 +52,12 @@ func NewGetProductsGroupsProductGroupFidProductsParamsWithHTTPClient(client *htt
 	}
 }
 
-/* GetProductsGroupsProductGroupFidProductsParams contains all the parameters to send to the API endpoint
-   for the get products groups product group fid products operation.
+/*
+GetProductsGroupsProductGroupFidProductsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get products groups product group fid products operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProductsGroupsProductGroupFidProductsParams struct {
 

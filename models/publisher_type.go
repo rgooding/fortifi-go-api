@@ -20,8 +20,12 @@ import (
 type PublisherType string
 
 func NewPublisherType(value PublisherType) *PublisherType {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated PublisherType.
+func (m PublisherType) Pointer() *PublisherType {
+	return &m
 }
 
 const (

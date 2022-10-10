@@ -20,8 +20,12 @@ import (
 type CustomerLifecycle string
 
 func NewCustomerLifecycle(value CustomerLifecycle) *CustomerLifecycle {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated CustomerLifecycle.
+func (m CustomerLifecycle) Pointer() *CustomerLifecycle {
+	return &m
 }
 
 const (

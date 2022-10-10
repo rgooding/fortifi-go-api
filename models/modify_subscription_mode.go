@@ -20,8 +20,12 @@ import (
 type ModifySubscriptionMode string
 
 func NewModifySubscriptionMode(value ModifySubscriptionMode) *ModifySubscriptionMode {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated ModifySubscriptionMode.
+func (m ModifySubscriptionMode) Pointer() *ModifySubscriptionMode {
+	return &m
 }
 
 const (

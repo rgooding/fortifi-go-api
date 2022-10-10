@@ -53,10 +53,12 @@ func NewPostCustomersCustomerFidPaymentMethodsPaypalInitialiseParamsWithHTTPClie
 	}
 }
 
-/* PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams contains all the parameters to send to the API endpoint
-   for the post customers customer fid payment methods paypal initialise operation.
+/*
+PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post customers customer fid payment methods paypal initialise operation.
+
+	Typically these are written to a http.Request.
 */
 type PostCustomersCustomerFidPaymentMethodsPaypalInitialiseParams struct {
 

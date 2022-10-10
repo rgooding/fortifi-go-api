@@ -52,10 +52,12 @@ func NewDeleteEntitiesEntityFidConfigSectionNameParamsWithHTTPClient(client *htt
 	}
 }
 
-/* DeleteEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
-   for the delete entities entity fid config section name operation.
+/*
+DeleteEntitiesEntityFidConfigSectionNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete entities entity fid config section name operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteEntitiesEntityFidConfigSectionNameParams struct {
 

@@ -103,6 +103,8 @@ func (m *PublisherCampaigns) validateCampaigns(formats strfmt.Registry) error {
 			if err := m.Campaigns[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("campaigns" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("campaigns" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *PublisherCampaigns) contextValidateCampaigns(ctx context.Context, forma
 			if err := m.Campaigns[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("campaigns" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("campaigns" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

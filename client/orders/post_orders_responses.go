@@ -49,7 +49,8 @@ func NewPostOrdersOK() *PostOrdersOK {
 	return &PostOrdersOK{}
 }
 
-/* PostOrdersOK describes a response with status code 200, with default header values.
+/*
+PostOrdersOK describes a response with status code 200, with default header values.
 
 Order created successfully
 */
@@ -57,9 +58,39 @@ type PostOrdersOK struct {
 	Payload *PostOrdersOKBody
 }
 
+// IsSuccess returns true when this post orders o k response has a 2xx status code
+func (o *PostOrdersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post orders o k response has a 3xx status code
+func (o *PostOrdersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post orders o k response has a 4xx status code
+func (o *PostOrdersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post orders o k response has a 5xx status code
+func (o *PostOrdersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post orders o k response a status code equal to that given
+func (o *PostOrdersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostOrdersOK) Error() string {
 	return fmt.Sprintf("[POST /orders][%d] postOrdersOK  %+v", 200, o.Payload)
 }
+
+func (o *PostOrdersOK) String() string {
+	return fmt.Sprintf("[POST /orders][%d] postOrdersOK  %+v", 200, o.Payload)
+}
+
 func (o *PostOrdersOK) GetPayload() *PostOrdersOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostOrdersDefault(code int) *PostOrdersDefault {
 	}
 }
 
-/* PostOrdersDefault describes a response with status code -1, with default header values.
+/*
+PostOrdersDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostOrdersDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post orders default response has a 2xx status code
+func (o *PostOrdersDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post orders default response has a 3xx status code
+func (o *PostOrdersDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post orders default response has a 4xx status code
+func (o *PostOrdersDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post orders default response has a 5xx status code
+func (o *PostOrdersDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post orders default response a status code equal to that given
+func (o *PostOrdersDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostOrdersDefault) Error() string {
 	return fmt.Sprintf("[POST /orders][%d] PostOrders default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostOrdersDefault) String() string {
+	return fmt.Sprintf("[POST /orders][%d] PostOrders default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostOrdersDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostOrdersDefault) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-/*PostOrdersOKBody post orders o k body
+/*
+PostOrdersOKBody post orders o k body
 swagger:model PostOrdersOKBody
 */
 type PostOrdersOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostOrdersOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postOrdersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postOrdersOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostOrdersOKBody) contextValidateData(ctx context.Context, formats strf
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postOrdersOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postOrdersOK" + "." + "data")
 			}
 			return err
 		}

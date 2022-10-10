@@ -30,11 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	PostReview(params *PostReviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostReviewOK, error)
 
+	PutReview(params *PutReviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutReviewOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  PostReview creates a new review and review audit
+PostReview creates a new review and review audit
 */
 func (a *Client) PostReview(params *PostReviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostReviewOK, error) {
 	// TODO: Validate the params before sending
@@ -68,6 +70,44 @@ func (a *Client) PostReview(params *PostReviewParams, authInfo runtime.ClientAut
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*PostReviewDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+PutReview updates a review
+*/
+func (a *Client) PutReview(params *PutReviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutReviewOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutReviewParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PutReview",
+		Method:             "PUT",
+		PathPattern:        "/review",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutReviewReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutReviewOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PutReviewDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

@@ -53,10 +53,12 @@ func NewPutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams
 	}
 }
 
-/* PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams contains all the parameters to send to the API endpoint
-   for the put customers customer fid subscriptions subscription fid auto suspend days operation.
+/*
+PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put customers customer fid subscriptions subscription fid auto suspend days operation.
+
+	Typically these are written to a http.Request.
 */
 type PutCustomersCustomerFidSubscriptionsSubscriptionFidAutoSuspendDaysParams struct {
 

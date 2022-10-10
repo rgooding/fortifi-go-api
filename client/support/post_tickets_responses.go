@@ -49,7 +49,8 @@ func NewPostTicketsOK() *PostTicketsOK {
 	return &PostTicketsOK{}
 }
 
-/* PostTicketsOK describes a response with status code 200, with default header values.
+/*
+PostTicketsOK describes a response with status code 200, with default header values.
 
 Ticket Information
 */
@@ -57,9 +58,39 @@ type PostTicketsOK struct {
 	Payload *PostTicketsOKBody
 }
 
+// IsSuccess returns true when this post tickets o k response has a 2xx status code
+func (o *PostTicketsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post tickets o k response has a 3xx status code
+func (o *PostTicketsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post tickets o k response has a 4xx status code
+func (o *PostTicketsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post tickets o k response has a 5xx status code
+func (o *PostTicketsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post tickets o k response a status code equal to that given
+func (o *PostTicketsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostTicketsOK) Error() string {
 	return fmt.Sprintf("[POST /tickets][%d] postTicketsOK  %+v", 200, o.Payload)
 }
+
+func (o *PostTicketsOK) String() string {
+	return fmt.Sprintf("[POST /tickets][%d] postTicketsOK  %+v", 200, o.Payload)
+}
+
 func (o *PostTicketsOK) GetPayload() *PostTicketsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostTicketsDefault(code int) *PostTicketsDefault {
 	}
 }
 
-/* PostTicketsDefault describes a response with status code -1, with default header values.
+/*
+PostTicketsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *PostTicketsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this post tickets default response has a 2xx status code
+func (o *PostTicketsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this post tickets default response has a 3xx status code
+func (o *PostTicketsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this post tickets default response has a 4xx status code
+func (o *PostTicketsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this post tickets default response has a 5xx status code
+func (o *PostTicketsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this post tickets default response a status code equal to that given
+func (o *PostTicketsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PostTicketsDefault) Error() string {
 	return fmt.Sprintf("[POST /tickets][%d] PostTickets default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PostTicketsDefault) String() string {
+	return fmt.Sprintf("[POST /tickets][%d] PostTickets default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PostTicketsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *PostTicketsDefault) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-/*PostTicketsOKBody post tickets o k body
+/*
+PostTicketsOKBody post tickets o k body
 swagger:model PostTicketsOKBody
 */
 type PostTicketsOKBody struct {
@@ -201,6 +264,8 @@ func (o *PostTicketsOKBody) validateData(formats strfmt.Registry) error {
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postTicketsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postTicketsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *PostTicketsOKBody) contextValidateData(ctx context.Context, formats str
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("postTicketsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("postTicketsOK" + "." + "data")
 			}
 			return err
 		}

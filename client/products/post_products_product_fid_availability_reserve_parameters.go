@@ -54,10 +54,12 @@ func NewPostProductsProductFidAvailabilityReserveParamsWithHTTPClient(client *ht
 	}
 }
 
-/* PostProductsProductFidAvailabilityReserveParams contains all the parameters to send to the API endpoint
-   for the post products product fid availability reserve operation.
+/*
+PostProductsProductFidAvailabilityReserveParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post products product fid availability reserve operation.
+
+	Typically these are written to a http.Request.
 */
 type PostProductsProductFidAvailabilityReserveParams struct {
 

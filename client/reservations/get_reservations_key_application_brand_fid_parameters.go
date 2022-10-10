@@ -52,10 +52,12 @@ func NewGetReservationsKeyApplicationBrandFidParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* GetReservationsKeyApplicationBrandFidParams contains all the parameters to send to the API endpoint
-   for the get reservations key application brand fid operation.
+/*
+GetReservationsKeyApplicationBrandFidParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get reservations key application brand fid operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReservationsKeyApplicationBrandFidParams struct {
 

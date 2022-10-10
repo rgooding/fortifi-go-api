@@ -57,6 +57,8 @@ func (m *AvailabilityCheckResponse) validateSuggestions(formats strfmt.Registry)
 			if err := m.Suggestions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("suggestions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("suggestions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -89,6 +91,8 @@ func (m *AvailabilityCheckResponse) contextValidateSuggestions(ctx context.Conte
 			if err := m.Suggestions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("suggestions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("suggestions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

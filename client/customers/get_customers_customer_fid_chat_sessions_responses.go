@@ -49,7 +49,8 @@ func NewGetCustomersCustomerFidChatSessionsOK() *GetCustomersCustomerFidChatSess
 	return &GetCustomersCustomerFidChatSessionsOK{}
 }
 
-/* GetCustomersCustomerFidChatSessionsOK describes a response with status code 200, with default header values.
+/*
+GetCustomersCustomerFidChatSessionsOK describes a response with status code 200, with default header values.
 
 Chat sessions
 */
@@ -57,9 +58,39 @@ type GetCustomersCustomerFidChatSessionsOK struct {
 	Payload *GetCustomersCustomerFidChatSessionsOKBody
 }
 
+// IsSuccess returns true when this get customers customer fid chat sessions o k response has a 2xx status code
+func (o *GetCustomersCustomerFidChatSessionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get customers customer fid chat sessions o k response has a 3xx status code
+func (o *GetCustomersCustomerFidChatSessionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get customers customer fid chat sessions o k response has a 4xx status code
+func (o *GetCustomersCustomerFidChatSessionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get customers customer fid chat sessions o k response has a 5xx status code
+func (o *GetCustomersCustomerFidChatSessionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get customers customer fid chat sessions o k response a status code equal to that given
+func (o *GetCustomersCustomerFidChatSessionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomersCustomerFidChatSessionsOK) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/chatSessions][%d] getCustomersCustomerFidChatSessionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidChatSessionsOK) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/chatSessions][%d] getCustomersCustomerFidChatSessionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidChatSessionsOK) GetPayload() *GetCustomersCustomerFidChatSessionsOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCustomersCustomerFidChatSessionsDefault(code int) *GetCustomersCustom
 	}
 }
 
-/* GetCustomersCustomerFidChatSessionsDefault describes a response with status code -1, with default header values.
+/*
+GetCustomersCustomerFidChatSessionsDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetCustomersCustomerFidChatSessionsDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get customers customer fid chat sessions default response has a 2xx status code
+func (o *GetCustomersCustomerFidChatSessionsDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get customers customer fid chat sessions default response has a 3xx status code
+func (o *GetCustomersCustomerFidChatSessionsDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get customers customer fid chat sessions default response has a 4xx status code
+func (o *GetCustomersCustomerFidChatSessionsDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get customers customer fid chat sessions default response has a 5xx status code
+func (o *GetCustomersCustomerFidChatSessionsDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get customers customer fid chat sessions default response a status code equal to that given
+func (o *GetCustomersCustomerFidChatSessionsDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetCustomersCustomerFidChatSessionsDefault) Error() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/chatSessions][%d] GetCustomersCustomerFidChatSessions default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetCustomersCustomerFidChatSessionsDefault) String() string {
+	return fmt.Sprintf("[GET /customers/{customerFid}/chatSessions][%d] GetCustomersCustomerFidChatSessions default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetCustomersCustomerFidChatSessionsDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetCustomersCustomerFidChatSessionsDefault) readResponse(response runti
 	return nil
 }
 
-/*GetCustomersCustomerFidChatSessionsOKBody get customers customer fid chat sessions o k body
+/*
+GetCustomersCustomerFidChatSessionsOKBody get customers customer fid chat sessions o k body
 swagger:model GetCustomersCustomerFidChatSessionsOKBody
 */
 type GetCustomersCustomerFidChatSessionsOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetCustomersCustomerFidChatSessionsOKBody) validateData(formats strfmt.
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidChatSessionsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidChatSessionsOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetCustomersCustomerFidChatSessionsOKBody) contextValidateData(ctx cont
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getCustomersCustomerFidChatSessionsOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidChatSessionsOK" + "." + "data")
 			}
 			return err
 		}

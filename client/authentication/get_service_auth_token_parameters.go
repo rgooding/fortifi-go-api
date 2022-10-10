@@ -54,10 +54,12 @@ func NewGetServiceAuthTokenParamsWithHTTPClient(client *http.Client) *GetService
 	}
 }
 
-/* GetServiceAuthTokenParams contains all the parameters to send to the API endpoint
-   for the get service auth token operation.
+/*
+GetServiceAuthTokenParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get service auth token operation.
+
+	Typically these are written to a http.Request.
 */
 type GetServiceAuthTokenParams struct {
 

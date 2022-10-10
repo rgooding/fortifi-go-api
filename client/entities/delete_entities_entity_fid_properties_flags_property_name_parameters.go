@@ -52,10 +52,12 @@ func NewDeleteEntitiesEntityFidPropertiesFlagsPropertyNameParamsWithHTTPClient(c
 	}
 }
 
-/* DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams contains all the parameters to send to the API endpoint
-   for the delete entities entity fid properties flags property name operation.
+/*
+DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete entities entity fid properties flags property name operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteEntitiesEntityFidPropertiesFlagsPropertyNameParams struct {
 

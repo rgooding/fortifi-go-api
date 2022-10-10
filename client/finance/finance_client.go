@@ -30,11 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetFinancePayments(params *GetFinancePaymentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFinancePaymentsOK, error)
 
+	GetPublishersPublisherFidFinanceCostImportCostImportFid(params *GetPublishersPublisherFidFinanceCostImportCostImportFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidFinanceCostImportCostImportFidOK, error)
+
+	PostPublishersPublisherFidFinanceCostImport(params *PostPublishersPublisherFidFinanceCostImportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersPublisherFidFinanceCostImportOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetFinancePayments performs a payment search
+GetFinancePayments performs a payment search
 */
 func (a *Client) GetFinancePayments(params *GetFinancePaymentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFinancePaymentsOK, error) {
 	// TODO: Validate the params before sending
@@ -68,6 +72,82 @@ func (a *Client) GetFinancePayments(params *GetFinancePaymentsParams, authInfo r
 	}
 	// unexpected success response
 	unexpectedSuccess := result.(*GetFinancePaymentsDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+GetPublishersPublisherFidFinanceCostImportCostImportFid retrieves the status of cost import
+*/
+func (a *Client) GetPublishersPublisherFidFinanceCostImportCostImportFid(params *GetPublishersPublisherFidFinanceCostImportCostImportFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPublishersPublisherFidFinanceCostImportCostImportFidOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPublishersPublisherFidFinanceCostImportCostImportFidParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetPublishersPublisherFidFinanceCostImportCostImportFid",
+		Method:             "GET",
+		PathPattern:        "/publishers/{publisherFid}/finance/costImport/{costImportFid}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPublishersPublisherFidFinanceCostImportCostImportFidReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPublishersPublisherFidFinanceCostImportCostImportFidOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*GetPublishersPublisherFidFinanceCostImportCostImportFidDefault)
+	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
+}
+
+/*
+PostPublishersPublisherFidFinanceCostImport imports cost data
+*/
+func (a *Client) PostPublishersPublisherFidFinanceCostImport(params *PostPublishersPublisherFidFinanceCostImportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostPublishersPublisherFidFinanceCostImportOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostPublishersPublisherFidFinanceCostImportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PostPublishersPublisherFidFinanceCostImport",
+		Method:             "POST",
+		PathPattern:        "/publishers/{publisherFid}/finance/costImport",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostPublishersPublisherFidFinanceCostImportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostPublishersPublisherFidFinanceCostImportOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	unexpectedSuccess := result.(*PostPublishersPublisherFidFinanceCostImportDefault)
 	return nil, runtime.NewAPIError("unexpected success response: content available as default response in error", unexpectedSuccess, unexpectedSuccess.Code())
 }
 

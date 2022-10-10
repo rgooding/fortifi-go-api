@@ -56,6 +56,8 @@ func (m *ConfirmOrderPayload) validatePaymentServiceProcessor(formats strfmt.Reg
 	if err := m.PaymentServiceProcessor.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentServiceProcessor")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentServiceProcessor")
 		}
 		return err
 	}
@@ -82,6 +84,8 @@ func (m *ConfirmOrderPayload) contextValidatePaymentServiceProcessor(ctx context
 	if err := m.PaymentServiceProcessor.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("paymentServiceProcessor")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("paymentServiceProcessor")
 		}
 		return err
 	}

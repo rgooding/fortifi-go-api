@@ -54,10 +54,12 @@ func NewPutOrdersOrderFidFinalizeParamsWithHTTPClient(client *http.Client) *PutO
 	}
 }
 
-/* PutOrdersOrderFidFinalizeParams contains all the parameters to send to the API endpoint
-   for the put orders order fid finalize operation.
+/*
+PutOrdersOrderFidFinalizeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid finalize operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidFinalizeParams struct {
 

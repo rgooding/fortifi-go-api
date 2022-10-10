@@ -49,7 +49,8 @@ func NewGetContactsFindByReferenceContactReferenceOK() *GetContactsFindByReferen
 	return &GetContactsFindByReferenceContactReferenceOK{}
 }
 
-/* GetContactsFindByReferenceContactReferenceOK describes a response with status code 200, with default header values.
+/*
+GetContactsFindByReferenceContactReferenceOK describes a response with status code 200, with default header values.
 
 Person info
 */
@@ -57,9 +58,39 @@ type GetContactsFindByReferenceContactReferenceOK struct {
 	Payload *GetContactsFindByReferenceContactReferenceOKBody
 }
 
+// IsSuccess returns true when this get contacts find by reference contact reference o k response has a 2xx status code
+func (o *GetContactsFindByReferenceContactReferenceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get contacts find by reference contact reference o k response has a 3xx status code
+func (o *GetContactsFindByReferenceContactReferenceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get contacts find by reference contact reference o k response has a 4xx status code
+func (o *GetContactsFindByReferenceContactReferenceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get contacts find by reference contact reference o k response has a 5xx status code
+func (o *GetContactsFindByReferenceContactReferenceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get contacts find by reference contact reference o k response a status code equal to that given
+func (o *GetContactsFindByReferenceContactReferenceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetContactsFindByReferenceContactReferenceOK) Error() string {
 	return fmt.Sprintf("[GET /contacts/findByReference/{contactReference}][%d] getContactsFindByReferenceContactReferenceOK  %+v", 200, o.Payload)
 }
+
+func (o *GetContactsFindByReferenceContactReferenceOK) String() string {
+	return fmt.Sprintf("[GET /contacts/findByReference/{contactReference}][%d] getContactsFindByReferenceContactReferenceOK  %+v", 200, o.Payload)
+}
+
 func (o *GetContactsFindByReferenceContactReferenceOK) GetPayload() *GetContactsFindByReferenceContactReferenceOKBody {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetContactsFindByReferenceContactReferenceDefault(code int) *GetContacts
 	}
 }
 
-/* GetContactsFindByReferenceContactReferenceDefault describes a response with status code -1, with default header values.
+/*
+GetContactsFindByReferenceContactReferenceDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -98,9 +130,39 @@ func (o *GetContactsFindByReferenceContactReferenceDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this get contacts find by reference contact reference default response has a 2xx status code
+func (o *GetContactsFindByReferenceContactReferenceDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this get contacts find by reference contact reference default response has a 3xx status code
+func (o *GetContactsFindByReferenceContactReferenceDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this get contacts find by reference contact reference default response has a 4xx status code
+func (o *GetContactsFindByReferenceContactReferenceDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this get contacts find by reference contact reference default response has a 5xx status code
+func (o *GetContactsFindByReferenceContactReferenceDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this get contacts find by reference contact reference default response a status code equal to that given
+func (o *GetContactsFindByReferenceContactReferenceDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *GetContactsFindByReferenceContactReferenceDefault) Error() string {
 	return fmt.Sprintf("[GET /contacts/findByReference/{contactReference}][%d] GetContactsFindByReferenceContactReference default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *GetContactsFindByReferenceContactReferenceDefault) String() string {
+	return fmt.Sprintf("[GET /contacts/findByReference/{contactReference}][%d] GetContactsFindByReferenceContactReference default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *GetContactsFindByReferenceContactReferenceDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
@@ -117,7 +179,8 @@ func (o *GetContactsFindByReferenceContactReferenceDefault) readResponse(respons
 	return nil
 }
 
-/*GetContactsFindByReferenceContactReferenceOKBody get contacts find by reference contact reference o k body
+/*
+GetContactsFindByReferenceContactReferenceOKBody get contacts find by reference contact reference o k body
 swagger:model GetContactsFindByReferenceContactReferenceOKBody
 */
 type GetContactsFindByReferenceContactReferenceOKBody struct {
@@ -201,6 +264,8 @@ func (o *GetContactsFindByReferenceContactReferenceOKBody) validateData(formats 
 		if err := o.Data.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getContactsFindByReferenceContactReferenceOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getContactsFindByReferenceContactReferenceOK" + "." + "data")
 			}
 			return err
 		}
@@ -234,6 +299,8 @@ func (o *GetContactsFindByReferenceContactReferenceOKBody) contextValidateData(c
 		if err := o.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("getContactsFindByReferenceContactReferenceOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getContactsFindByReferenceContactReferenceOK" + "." + "data")
 			}
 			return err
 		}

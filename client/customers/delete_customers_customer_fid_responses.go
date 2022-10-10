@@ -46,14 +46,44 @@ func NewDeleteCustomersCustomerFidOK() *DeleteCustomersCustomerFidOK {
 	return &DeleteCustomersCustomerFidOK{}
 }
 
-/* DeleteCustomersCustomerFidOK describes a response with status code 200, with default header values.
+/*
+DeleteCustomersCustomerFidOK describes a response with status code 200, with default header values.
 
 Customer Archived
 */
 type DeleteCustomersCustomerFidOK struct {
 }
 
+// IsSuccess returns true when this delete customers customer fid o k response has a 2xx status code
+func (o *DeleteCustomersCustomerFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete customers customer fid o k response has a 3xx status code
+func (o *DeleteCustomersCustomerFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete customers customer fid o k response has a 4xx status code
+func (o *DeleteCustomersCustomerFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete customers customer fid o k response has a 5xx status code
+func (o *DeleteCustomersCustomerFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete customers customer fid o k response a status code equal to that given
+func (o *DeleteCustomersCustomerFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteCustomersCustomerFidOK) Error() string {
+	return fmt.Sprintf("[DELETE /customers/{customerFid}][%d] deleteCustomersCustomerFidOK ", 200)
+}
+
+func (o *DeleteCustomersCustomerFidOK) String() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}][%d] deleteCustomersCustomerFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewDeleteCustomersCustomerFidDefault(code int) *DeleteCustomersCustomerFidD
 	}
 }
 
-/* DeleteCustomersCustomerFidDefault describes a response with status code -1, with default header values.
+/*
+DeleteCustomersCustomerFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *DeleteCustomersCustomerFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this delete customers customer fid default response has a 2xx status code
+func (o *DeleteCustomersCustomerFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this delete customers customer fid default response has a 3xx status code
+func (o *DeleteCustomersCustomerFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this delete customers customer fid default response has a 4xx status code
+func (o *DeleteCustomersCustomerFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this delete customers customer fid default response has a 5xx status code
+func (o *DeleteCustomersCustomerFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this delete customers customer fid default response a status code equal to that given
+func (o *DeleteCustomersCustomerFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *DeleteCustomersCustomerFidDefault) Error() string {
 	return fmt.Sprintf("[DELETE /customers/{customerFid}][%d] DeleteCustomersCustomerFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *DeleteCustomersCustomerFidDefault) String() string {
+	return fmt.Sprintf("[DELETE /customers/{customerFid}][%d] DeleteCustomersCustomerFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *DeleteCustomersCustomerFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

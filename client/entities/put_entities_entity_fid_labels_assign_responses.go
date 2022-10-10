@@ -46,14 +46,44 @@ func NewPutEntitiesEntityFidLabelsAssignOK() *PutEntitiesEntityFidLabelsAssignOK
 	return &PutEntitiesEntityFidLabelsAssignOK{}
 }
 
-/* PutEntitiesEntityFidLabelsAssignOK describes a response with status code 200, with default header values.
+/*
+PutEntitiesEntityFidLabelsAssignOK describes a response with status code 200, with default header values.
 
 Properties Saved
 */
 type PutEntitiesEntityFidLabelsAssignOK struct {
 }
 
+// IsSuccess returns true when this put entities entity fid labels assign o k response has a 2xx status code
+func (o *PutEntitiesEntityFidLabelsAssignOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put entities entity fid labels assign o k response has a 3xx status code
+func (o *PutEntitiesEntityFidLabelsAssignOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put entities entity fid labels assign o k response has a 4xx status code
+func (o *PutEntitiesEntityFidLabelsAssignOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put entities entity fid labels assign o k response has a 5xx status code
+func (o *PutEntitiesEntityFidLabelsAssignOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put entities entity fid labels assign o k response a status code equal to that given
+func (o *PutEntitiesEntityFidLabelsAssignOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutEntitiesEntityFidLabelsAssignOK) Error() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/labels/assign][%d] putEntitiesEntityFidLabelsAssignOK ", 200)
+}
+
+func (o *PutEntitiesEntityFidLabelsAssignOK) String() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/labels/assign][%d] putEntitiesEntityFidLabelsAssignOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutEntitiesEntityFidLabelsAssignDefault(code int) *PutEntitiesEntityFidL
 	}
 }
 
-/* PutEntitiesEntityFidLabelsAssignDefault describes a response with status code -1, with default header values.
+/*
+PutEntitiesEntityFidLabelsAssignDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutEntitiesEntityFidLabelsAssignDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put entities entity fid labels assign default response has a 2xx status code
+func (o *PutEntitiesEntityFidLabelsAssignDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put entities entity fid labels assign default response has a 3xx status code
+func (o *PutEntitiesEntityFidLabelsAssignDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put entities entity fid labels assign default response has a 4xx status code
+func (o *PutEntitiesEntityFidLabelsAssignDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put entities entity fid labels assign default response has a 5xx status code
+func (o *PutEntitiesEntityFidLabelsAssignDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put entities entity fid labels assign default response a status code equal to that given
+func (o *PutEntitiesEntityFidLabelsAssignDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutEntitiesEntityFidLabelsAssignDefault) Error() string {
 	return fmt.Sprintf("[PUT /entities/{entityFid}/labels/assign][%d] PutEntitiesEntityFidLabelsAssign default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutEntitiesEntityFidLabelsAssignDefault) String() string {
+	return fmt.Sprintf("[PUT /entities/{entityFid}/labels/assign][%d] PutEntitiesEntityFidLabelsAssign default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutEntitiesEntityFidLabelsAssignDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }

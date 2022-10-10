@@ -52,10 +52,12 @@ func NewPutOrdersOrderFidExternalReferenceParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* PutOrdersOrderFidExternalReferenceParams contains all the parameters to send to the API endpoint
-   for the put orders order fid external reference operation.
+/*
+PutOrdersOrderFidExternalReferenceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put orders order fid external reference operation.
+
+	Typically these are written to a http.Request.
 */
 type PutOrdersOrderFidExternalReferenceParams struct {
 

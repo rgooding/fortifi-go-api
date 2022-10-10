@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetReservationsKeyApplicationBrandFid retrieves reservations
+GetReservationsKeyApplicationBrandFid retrieves reservations
 
-  This call will return information related to how a visitor arrived
+This call will return information related to how a visitor arrived
 */
 func (a *Client) GetReservationsKeyApplicationBrandFid(params *GetReservationsKeyApplicationBrandFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReservationsKeyApplicationBrandFidOK, error) {
 	// TODO: Validate the params before sending
@@ -76,9 +76,9 @@ func (a *Client) GetReservationsKeyApplicationBrandFid(params *GetReservationsKe
 }
 
 /*
-  PostReservationsKeyApplicationBrandFidCustomerFid makes a new reservation
+PostReservationsKeyApplicationBrandFidCustomerFid makes a new reservation
 
-  Reserve against a key
+Reserve against a key
 */
 func (a *Client) PostReservationsKeyApplicationBrandFidCustomerFid(params *PostReservationsKeyApplicationBrandFidCustomerFidParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostReservationsKeyApplicationBrandFidCustomerFidOK, error) {
 	// TODO: Validate the params before sending

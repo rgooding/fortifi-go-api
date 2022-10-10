@@ -46,14 +46,44 @@ func NewPutCustomersCustomerFidContactsContactFidOK() *PutCustomersCustomerFidCo
 	return &PutCustomersCustomerFidContactsContactFidOK{}
 }
 
-/* PutCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
+/*
+PutCustomersCustomerFidContactsContactFidOK describes a response with status code 200, with default header values.
 
 Contact Updated
 */
 type PutCustomersCustomerFidContactsContactFidOK struct {
 }
 
+// IsSuccess returns true when this put customers customer fid contacts contact fid o k response has a 2xx status code
+func (o *PutCustomersCustomerFidContactsContactFidOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put customers customer fid contacts contact fid o k response has a 3xx status code
+func (o *PutCustomersCustomerFidContactsContactFidOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put customers customer fid contacts contact fid o k response has a 4xx status code
+func (o *PutCustomersCustomerFidContactsContactFidOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put customers customer fid contacts contact fid o k response has a 5xx status code
+func (o *PutCustomersCustomerFidContactsContactFidOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put customers customer fid contacts contact fid o k response a status code equal to that given
+func (o *PutCustomersCustomerFidContactsContactFidOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutCustomersCustomerFidContactsContactFidOK) Error() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/contacts/{contactFid}][%d] putCustomersCustomerFidContactsContactFidOK ", 200)
+}
+
+func (o *PutCustomersCustomerFidContactsContactFidOK) String() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/contacts/{contactFid}][%d] putCustomersCustomerFidContactsContactFidOK ", 200)
 }
 
@@ -69,7 +99,8 @@ func NewPutCustomersCustomerFidContactsContactFidDefault(code int) *PutCustomers
 	}
 }
 
-/* PutCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
+/*
+PutCustomersCustomerFidContactsContactFidDefault describes a response with status code -1, with default header values.
 
 Error
 */
@@ -84,9 +115,39 @@ func (o *PutCustomersCustomerFidContactsContactFidDefault) Code() int {
 	return o._statusCode
 }
 
+// IsSuccess returns true when this put customers customer fid contacts contact fid default response has a 2xx status code
+func (o *PutCustomersCustomerFidContactsContactFidDefault) IsSuccess() bool {
+	return o._statusCode/100 == 2
+}
+
+// IsRedirect returns true when this put customers customer fid contacts contact fid default response has a 3xx status code
+func (o *PutCustomersCustomerFidContactsContactFidDefault) IsRedirect() bool {
+	return o._statusCode/100 == 3
+}
+
+// IsClientError returns true when this put customers customer fid contacts contact fid default response has a 4xx status code
+func (o *PutCustomersCustomerFidContactsContactFidDefault) IsClientError() bool {
+	return o._statusCode/100 == 4
+}
+
+// IsServerError returns true when this put customers customer fid contacts contact fid default response has a 5xx status code
+func (o *PutCustomersCustomerFidContactsContactFidDefault) IsServerError() bool {
+	return o._statusCode/100 == 5
+}
+
+// IsCode returns true when this put customers customer fid contacts contact fid default response a status code equal to that given
+func (o *PutCustomersCustomerFidContactsContactFidDefault) IsCode(code int) bool {
+	return o._statusCode == code
+}
+
 func (o *PutCustomersCustomerFidContactsContactFidDefault) Error() string {
 	return fmt.Sprintf("[PUT /customers/{customerFid}/contacts/{contactFid}][%d] PutCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
 }
+
+func (o *PutCustomersCustomerFidContactsContactFidDefault) String() string {
+	return fmt.Sprintf("[PUT /customers/{customerFid}/contacts/{contactFid}][%d] PutCustomersCustomerFidContactsContactFid default  %+v", o._statusCode, o.Payload)
+}
+
 func (o *PutCustomersCustomerFidContactsContactFidDefault) GetPayload() *models.Envelope {
 	return o.Payload
 }
