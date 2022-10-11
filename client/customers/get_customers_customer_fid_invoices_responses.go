@@ -6,11 +6,14 @@ package customers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
 	"github.com/fortifi/go-api/models"
 )
@@ -52,7 +55,7 @@ GetCustomersCustomerFidInvoicesOK describes a response with status code 200, wit
 List of invoices summaries
 */
 type GetCustomersCustomerFidInvoicesOK struct {
-	Payload *models.Invoices
+	Payload *GetCustomersCustomerFidInvoicesOKBody
 }
 
 // IsSuccess returns true when this get customers customer fid invoices o k response has a 2xx status code
@@ -88,13 +91,13 @@ func (o *GetCustomersCustomerFidInvoicesOK) String() string {
 	return fmt.Sprintf("[GET /customers/{customerFid}/invoices][%d] getCustomersCustomerFidInvoicesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetCustomersCustomerFidInvoicesOK) GetPayload() *models.Invoices {
+func (o *GetCustomersCustomerFidInvoicesOK) GetPayload() *GetCustomersCustomerFidInvoicesOKBody {
 	return o.Payload
 }
 
 func (o *GetCustomersCustomerFidInvoicesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Invoices)
+	o.Payload = new(GetCustomersCustomerFidInvoicesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -173,5 +176,153 @@ func (o *GetCustomersCustomerFidInvoicesDefault) readResponse(response runtime.C
 		return err
 	}
 
+	return nil
+}
+
+/*
+GetCustomersCustomerFidInvoicesOKBody get customers customer fid invoices o k body
+swagger:model GetCustomersCustomerFidInvoicesOKBody
+*/
+type GetCustomersCustomerFidInvoicesOKBody struct {
+	models.Envelope
+
+	// data
+	Data *models.Invoices `json:"data,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *GetCustomersCustomerFidInvoicesOKBody) UnmarshalJSON(raw []byte) error {
+	// GetCustomersCustomerFidInvoicesOKBodyAO0
+	var getCustomersCustomerFidInvoicesOKBodyAO0 models.Envelope
+	if err := swag.ReadJSON(raw, &getCustomersCustomerFidInvoicesOKBodyAO0); err != nil {
+		return err
+	}
+	o.Envelope = getCustomersCustomerFidInvoicesOKBodyAO0
+
+	// GetCustomersCustomerFidInvoicesOKBodyAO1
+	var dataGetCustomersCustomerFidInvoicesOKBodyAO1 struct {
+		Data *models.Invoices `json:"data,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataGetCustomersCustomerFidInvoicesOKBodyAO1); err != nil {
+		return err
+	}
+
+	o.Data = dataGetCustomersCustomerFidInvoicesOKBodyAO1.Data
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o GetCustomersCustomerFidInvoicesOKBody) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	getCustomersCustomerFidInvoicesOKBodyAO0, err := swag.WriteJSON(o.Envelope)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, getCustomersCustomerFidInvoicesOKBodyAO0)
+	var dataGetCustomersCustomerFidInvoicesOKBodyAO1 struct {
+		Data *models.Invoices `json:"data,omitempty"`
+	}
+
+	dataGetCustomersCustomerFidInvoicesOKBodyAO1.Data = o.Data
+
+	jsonDataGetCustomersCustomerFidInvoicesOKBodyAO1, errGetCustomersCustomerFidInvoicesOKBodyAO1 := swag.WriteJSON(dataGetCustomersCustomerFidInvoicesOKBodyAO1)
+	if errGetCustomersCustomerFidInvoicesOKBodyAO1 != nil {
+		return nil, errGetCustomersCustomerFidInvoicesOKBodyAO1
+	}
+	_parts = append(_parts, jsonDataGetCustomersCustomerFidInvoicesOKBodyAO1)
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this get customers customer fid invoices o k body
+func (o *GetCustomersCustomerFidInvoicesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.Validate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidInvoicesOKBody) validateData(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	if o.Data != nil {
+		if err := o.Data.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidInvoicesOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidInvoicesOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this get customers customer fid invoices o k body based on the context it is used
+func (o *GetCustomersCustomerFidInvoicesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with models.Envelope
+	if err := o.Envelope.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GetCustomersCustomerFidInvoicesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Data != nil {
+		if err := o.Data.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("getCustomersCustomerFidInvoicesOK" + "." + "data")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("getCustomersCustomerFidInvoicesOK" + "." + "data")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GetCustomersCustomerFidInvoicesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GetCustomersCustomerFidInvoicesOKBody) UnmarshalBinary(b []byte) error {
+	var res GetCustomersCustomerFidInvoicesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }
