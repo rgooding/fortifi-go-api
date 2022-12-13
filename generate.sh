@@ -9,7 +9,7 @@ echo -e "\033[4mEnsuring swagger generator...\033[0m"
 (brew update && brew upgrade go-swagger || true)
 
 # Get latest swagger spec from citadel
-#echo -e "\033[4mGetting latest swagger...\033[0m"
+echo -e "\033[4mGetting latest swagger...\033[0m"
 rm -f swagger.yaml
 curl "https://api.fortifi.io/swagger.yaml" --output swagger.yaml
 
