@@ -26,6 +26,9 @@ type InteractionInviteStatusResponse struct {
 	// expiry time
 	ExpiryTime string `json:"expiryTime,omitempty"`
 
+	// interaction fid
+	InteractionFid string `json:"interactionFid,omitempty"`
+
 	// invite code
 	InviteCode string `json:"inviteCode,omitempty"`
 

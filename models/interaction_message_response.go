@@ -20,6 +20,9 @@ type InteractionMessageResponse struct {
 	// action type
 	ActionType string `json:"actionType,omitempty"`
 
+	// author name
+	AuthorName string `json:"authorName,omitempty"`
+
 	// content
 	Content string `json:"content,omitempty"`
 

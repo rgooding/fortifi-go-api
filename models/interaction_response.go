@@ -17,14 +17,23 @@ import (
 // swagger:model InteractionResponse
 type InteractionResponse struct {
 
-	// interaction fid
-	InteractionFid string `json:"interactionFid,omitempty"`
+	// agent name
+	AgentName string `json:"agentName,omitempty"`
+
+	// fid
+	Fid string `json:"fid,omitempty"`
 
 	// provider
 	Provider string `json:"provider,omitempty"`
 
 	// provider reference
 	ProviderReference string `json:"providerReference,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// topic
+	Topic string `json:"topic,omitempty"`
 }
 
 // Validate validates this interaction response
