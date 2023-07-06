@@ -59,7 +59,7 @@ type Ticket struct {
 	InboundName string `json:"inboundName,omitempty"`
 
 	// is spam
-	IsSpam bool `json:"isSpam,omitempty"`
+	IsSpam int64 `json:"isSpam,omitempty"`
 
 	// language
 	Language string `json:"language,omitempty"`
@@ -156,7 +156,7 @@ func (m *Ticket) UnmarshalJSON(raw []byte) error {
 
 		InboundName string `json:"inboundName,omitempty"`
 
-		IsSpam bool `json:"isSpam,omitempty"`
+		IsSpam int64 `json:"isSpam,omitempty"`
 
 		Language string `json:"language,omitempty"`
 
@@ -305,7 +305,7 @@ func (m Ticket) MarshalJSON() ([]byte, error) {
 
 		InboundName string `json:"inboundName,omitempty"`
 
-		IsSpam bool `json:"isSpam,omitempty"`
+		IsSpam int64 `json:"isSpam,omitempty"`
 
 		Language string `json:"language,omitempty"`
 
